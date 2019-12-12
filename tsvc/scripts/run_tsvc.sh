@@ -2,11 +2,8 @@
 
 # globals
 ROOT=${HOME}
-#ROOT=/home/thesis-code
 BINARY_PATH_EQ=${ROOT}/superopt/build/etfg_i386/
 BINARY_PATH_HARVEST=${ROOT}/superopt/build/i386_i386/
-# BINARY_PATH="${ROOT}/superopt/build/"
-export LD_LIBRARY_PATH=$ROOT/superopt/build/third_party/z3-z3-4.8.4/build
 DEFAULT_EQ_PARAMS="--sage-query-timeout 200 --smt-query-timeout 200"
 usage() {
 	echo

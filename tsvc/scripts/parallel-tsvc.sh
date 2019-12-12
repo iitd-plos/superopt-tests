@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ROOT=${HOME}
-#ROOT=/home/thesis-code
 LAST_LINK_NAME="last_result_cache"
 
 usage() {
@@ -53,9 +51,7 @@ else
   INPUT_FNAME=$1
 fi
 
-COMMIT_ID=$(cat ${ROOT}/superopt/git-commit)
-BUILD_BRANCH=$(readlink ${ROOT}/superopt/build)
-RUN_ID="${BUILD_BRANCH}_$(date +"%F_%T")_${COMMIT_ID}"
+RUN_ID="$(date +"%F_%T")"
 OUTPUT_FNAME="${RUN_ID}_result_cache"
 OUTPUT_DIRNAME="eqlogs_${RUN_ID}"
 
