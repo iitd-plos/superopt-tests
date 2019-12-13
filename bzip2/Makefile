@@ -43,6 +43,8 @@ LLVM_PROGS_ASM = $(addsuffix .s, $(LLVM_PROGS))
 # targets
 
 all: $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
+	# HACK for current build
+	$(foreach t,$(BC_O0_PROGS),sed -i 's/immarg//g' $(t).s;)
 
 clean:
 	rm -f *.o *.tmp $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
