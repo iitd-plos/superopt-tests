@@ -151,7 +151,7 @@ elif [[ ${PROG_NAME} == *"run_bzip2.sh"* ]];
 then
   if [[ -v BINARY_NAME ]];
   then
-    TEST_PREFIX=cprog.${BINARY_NAME}
+    TEST_PREFIX=${BINARY_NAME}
     TEST_SUFFIX=${COMPILER}.eqchecker.${OPT_LVL}
     LLVM_SRC=${INPUT_FILES_DIR}/bzip2/${BINARY_NAME}.bc.O0
     X86_SRC=${INPUT_FILES_DIR}/bzip2/${BINARY_NAME}.${TEST_SUFFIX}.i386
