@@ -30,3 +30,18 @@ For deleting only the compiled files, use:
 ```sh
 make clean
 ```
+
+## Editing paths
+
+All paths are set in `Make.conf`.
+
+In addition, some environment variables are used for some paths.  The exhaustive list of environment variables used are:
+
+1. `SUPEROPT_PROJECT_ROOT`: Directory where `superopt-project` is cloned.
+
+2. `ICC_INSTALL_DIR`: Directory where ICC is installed.  `icc` is then located to `${ICC_INSTALL_DIR}/bin/icc`.
+
+3. `COMPCERT_INSTALL_BIN`: Directory where CompCert is installed.  `ccomp` is then located to `${COMPCERT_INSTALL_BIN}/ccomp`
+
+4. `COMPCERT_INSTALL_LIB`: Search path for CompCert libs.
+
