@@ -163,7 +163,7 @@ elif [[ ${PROG_NAME} == *"run_tsvc.sh"* ]];
 then
   if [[ -v BINARY_NAME ]];
   then
-    TEST_PREFIX=tsvc.${BINARY_NAME}
+    TEST_PREFIX=${BINARY_NAME}
     TEST_SUFFIX=${COMPILER}.eqchecker.${OPT_LVL}
     LLVM_SRC=${INPUT_FILES_DIR}/tsvc/${BINARY_NAME}.bc.O0
     X86_SRC=${INPUT_FILES_DIR}/tsvc/${BINARY_NAME}.${TEST_SUFFIX}.i386
@@ -171,14 +171,14 @@ then
     echo "Error! BINARY_NAME is required for tsvc."
     usage
   fi
-elif [[ ${PROG_NAME} == *"run_tsvc_nonvec.sh"* ]];
+elif [[ ${PROG_NAME} == *"run_semalign.sh"* ]];
 then
   if [[ -v BINARY_NAME ]];
   then
-    TEST_PREFIX=tsvc.${BINARY_NAME}
+    TEST_PREFIX=${BINARY_NAME}
     TEST_SUFFIX=${COMPILER}.eqchecker.${OPT_LVL}
-    LLVM_SRC=${INPUT_FILES_DIR}/tsvc/${BINARY_NAME}.bc.O0
-    X86_SRC=${INPUT_FILES_DIR}/tsvc/${BINARY_NAME}.${TEST_SUFFIX}.i386
+    LLVM_SRC=${INPUT_FILES_DIR}/semalign/${BINARY_NAME}_src.bc.O0
+    X86_SRC=${INPUT_FILES_DIR}/semalign/${BINARY_NAME}_dst.${TEST_SUFFIX}.i386
   else
     echo "Error! BINARY_NAME is required for tsvc."
     usage

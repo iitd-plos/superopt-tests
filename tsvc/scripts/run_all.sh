@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CORES=$(nproc)
-CORES=$((CORES/3))
+CORES=$((CORES/4))
 
 # XXX change this!
 export SUPEROPT_PROJECT_ROOT=${SUPEROPT_ROOT}

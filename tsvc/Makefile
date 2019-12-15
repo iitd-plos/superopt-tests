@@ -6,7 +6,7 @@ include $(SRCDIR)/Makefile.eqchecker.tsvc    # build rules
 VPATH = $(SRCDIR)/tsvc
 
 PROGS_EQCHECKER := tsvc
-PROG_EQCHECKER_ICC := tsvc_icc
+PROGS_EQCHECKER_ICC := tsvc_icc
 
 BC_O0_PROGS = $(addsuffix .bc.O0, $(PROGS_EQCHECKER) $(PROGS_EQCHECKER_ICC))
 BC_O2_PROGS = $(addsuffix .bc.O2, $(PROGS_EQCHECKER) $(PROGS_EQCHECKER_ICC))
