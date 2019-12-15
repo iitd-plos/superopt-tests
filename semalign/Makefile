@@ -3,7 +3,7 @@ include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.eqchecker.tsvcnonvec    # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/tsvc_nonvec
+VPATH = $(SRCDIR)/semalign
 
 PROGS_EQCHECKER := semalign_ex_src semalign_ex_dst
 
