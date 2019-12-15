@@ -224,6 +224,18 @@ int s1351()
 	return 0;
 }
 
+int s162(int k)
+{
+//	control flow
+//	deriving assertions
+
+		if (k > 0) {
+			for (int i = 0; i < LEN-1; i++) {
+				a[i] = a[i + k] + b[i] * c[i];
+			}
+		}
+	return 0;
+}
 
 int s173()
 {
@@ -237,6 +249,20 @@ int s173()
 	return 0;
 }
 
+int s176()
+{
+
+//	symbolics
+//	convolution
+	int m = LEN/2;
+		for (int j = 0; j < (LEN/2); j++) {
+			for (int i = 0; i < m; i++) {
+				a[i] += b[i+m-j-1] * c[j];
+			}
+//			DBG(__LINE__);
+		}
+	return 0;
+}
 
 int s2244()
 {
@@ -472,6 +498,18 @@ int s113()
 	return 0;
 }
 
+int s1113()
+{
+
+//	linear dependence testing
+//	one iteration dependency on a(LEN/2) but still vectorizable
+
+		for (int i = 0; i < LEN; i++) {
+			a[i] = a[LEN/2] + b[i];
+		}
+	return 0;
+}
+
 
 int s114()
 {
@@ -532,6 +570,20 @@ int s116()
 }
 
 
+int s118()
+{
+
+//	linear dependence testing
+//	potential dot product recursion
+
+		for (int i = 1; i < LEN2; i++) {
+			for (int j = 0; j <= i - 1; j++) {
+				a[i] += bb[j][i] * a[i-j-1];
+			}
+		}
+	return 0;
+}
+
 
 int s119()
 {
@@ -547,9 +599,63 @@ int s119()
 	return 0;
 }
 
+int s1119()
+{
+
+//	linear dependence testing
+//	no dependence - vectorizable
+		for (int i = 1; i < LEN2; i++) {
+			for (int j = 0; j < LEN2; j++) {
+				aa[i][j] = aa[i-1][j] + bb[i][j];
+			}
+		}
+	return 0;
+}
 
 
 
+
+int s123()
+{
+
+//	induction variable recognition
+//	induction variable under an if
+//	not vectorizable, the condition cannot be speculated
+
+	int j;
+		j = -1;
+		for (int i = 0; i < (LEN/2); i++) {
+			j++;
+			a[j] = b[i] + d[i] * e[i];
+			if (c[i] > (TYPE)0.) {
+				j++;
+				a[j] = c[i] + d[i] * e[i];
+			}
+		}
+	return 0;
+}
+
+
+
+ int s124()
+ {
+ 
+ //	induction variable recognition
+ //	induction variable under both sides of if (same value)
+ 
+ 	int j;
+ 		j = -1;
+ 		for (int i = 0; i < LEN; i++) {
+ 			if (b[i] > (TYPE)0.) {
+ 				j++;
+ 				a[j] = b[i] + d[i] * e[i];
+ 			} else {
+ 				j++;
+ 				a[j] = c[i] + d[i] * e[i];
+ 			}
+ 		}
+ 	return 0;
+ }
 
 
 int s125()
@@ -569,6 +675,24 @@ int s125()
 	return 0;
 }
 
+
+int s126()
+{
+
+//	induction variable recognition
+//	induction variable in two loops; recurrence in inner loop
+
+	int k;
+		k = 1;
+		for (int i = 0; i < LEN2; i++) {
+			for (int j = 1; j < LEN2; j++) {
+				bb[j][i] = bb[j-1][i] + array[k-1] * cc[j][i];
+				++k;
+			}
+			++k;
+		}
+	return 0;
+}
 
 
 
@@ -623,6 +747,109 @@ int s132()
 
 
 
+int s141()
+{
+
+//	nonlinear dependence testing
+//	walk a row in a symmetric packed array
+//	element a(i,j) for (int j>i) stored in location j*(j-1)/2+i
+
+	int k;
+		for (int i = 0; i < LEN2; i++) {
+			k = (i+1) * ((i+1) - 1) / 2 + (i+1)-1;
+			for (int j = i; j < LEN2; j++) {
+				array[k] += bb[j][i];
+				k += j+1;
+			}
+		}
+	return 0;
+}
+
+
+
+//int s151s(TYPE a[LEN], TYPE b[LEN],  int m)
+//{
+//	for (int i = 0; i < LEN-1; i++) {
+//		a[i] = a[i + m] + b[i];
+//	}
+//	return 0;
+//}
+//
+//int s151()
+//{
+//
+////	interprocedural data flow analysis
+////	passing parameter information into a subroutine
+//
+//	s151s(a, b,  1);
+//	return 0;
+//}
+//
+//
+//
+//int s152s(TYPE a[LEN], TYPE b[LEN], TYPE c[LEN], int i)
+//{
+//	a[i] += b[i] * c[i];
+//	return 0;
+//}
+//
+//int s152()
+//{
+//
+////	interprocedural data flow analysis
+////	collecting information from a subroutine
+//		for (int i = 0; i < LEN; i++) {
+//			b[i] = d[i] * e[i];
+//			s152s(a, b, c, i);
+//		}
+//	return 0;
+//}
+
+
+
+int s161()
+{
+
+//	control flow
+//	tests for recognition of loop independent dependences
+//	between statements in mutually exclusive regions.
+
+		for (int i = 0; i < LEN-1; ++i) {
+			if (b[i] < (TYPE)0.) {
+				goto L20;
+			}
+			a[i] = c[i] + d[i] * e[i];
+			goto L10;
+L20:
+			c[i+1] = a[i] + d[i] * d[i];
+L10:
+			;
+		}
+	return 0;
+}
+//icc undef pblend
+
+int s1161()
+{
+
+//	control flow
+//	tests for recognition of loop independent dependences
+//	between statements in mutually exclusive regions.
+
+		for (int i = 0; i < LEN-1; ++i) {
+			if (c[i] < (TYPE)0.) {
+				goto L20;
+			}
+			a[i] = c[i] + d[i] * e[i];
+			goto L10;
+L20:
+			b[i] = a[i] + d[i] * d[i];
+L10:
+			;
+		}
+	return 0;
+}
+
 
 int s171(int inc)
 {
@@ -636,6 +863,18 @@ int s171(int inc)
 	return 0;
 }
 
+
+
+int s172( int n1, int n3)
+{
+//	symbolics
+//	vectorizable if n3 .ne. 0
+
+		for (int i = n1-1; i < LEN; i += n3) {
+			a[i] += b[i];
+		}
+	return 0;
+}
 
 
 
@@ -653,6 +892,17 @@ int s174(int M)
 
 
 
+int s175(int inc)
+{
+
+//	symbolics
+//	symbolic dependence tests
+
+		for (int i = 0; i < LEN-1; i += inc) {
+			a[i] = a[i + inc] + b[i];
+		}
+	return 0;
+}
 
 // **********************************************************
 // *							    *
@@ -737,7 +987,48 @@ int s222()
 
 
 
+int s231()
+{
+//	loop interchange
+//	loop with data dependency
 
+		for (int i = 0; i < LEN2; ++i) {
+			for (int j = 1; j < LEN2; j++) {
+				aa[j][i] = aa[j - 1][i] + bb[j][i];
+			}
+		}
+	return 0;
+}
+
+
+
+int s232()
+{
+
+//	loop interchange
+//	interchanging of triangular loops
+
+		for (int j = 1; j < LEN2; j++) {
+			for (int i = 1; i <= j; i++) {
+				aa[j][i] = aa[j][i-1]*aa[j][i-1]+bb[j][i];
+			}
+		}
+	return 0;
+}
+
+int s1232()
+{
+
+//	loop interchange
+//	interchanging of triangular loops
+
+		for (int j = 0; j < LEN2; j++) {
+			for (int i = j; i < LEN2; i++) {
+				aa[i][j] = bb[i][j] + cc[i][j];
+			}
+		}
+	return 0;
+}
 
 
 
@@ -775,6 +1066,21 @@ int s2233()
 	return 0;
 }
 
+
+int s235()
+{
+
+//	loop interchanging
+//	imperfectly nested loops
+
+		for (int i = 0; i < LEN2; i++) {
+			a[i] += b[i] * c[i];
+			for (int j = 1; j < LEN2; j++) {
+				aa[j][i] = aa[j-1][i] + bb[j][i] * a[i];
+			}
+		}
+	return 0;
+}
 
 
 
@@ -873,6 +1179,24 @@ int s252()
 //icc undef pblend
 
 
+int s253()
+{
+
+//	scalar and array expansion
+//	scalar expansio assigned under if
+
+	TYPE s;
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] > b[i]) {
+				s = a[i] - b[i] * d[i];
+				c[i] += s;
+				a[i] = s;
+			}
+		}
+	return 0;
+}
+
+
 
 int s254()
 {
@@ -909,6 +1233,56 @@ int s254()
 //}
 
 
+
+int s256()
+{
+
+//	scalar and array expansion
+//	array expansion
+
+		for (int i = 0; i < LEN2; i++) {
+			for (int j = 1; j < LEN2; j++) {
+				a[j] = (TYPE)1.0 - a[j - 1];
+				cc[j][i] = a[j] + bb[j][i]*d[j];
+			}
+		}
+	return 0;
+}
+
+
+
+int s257()
+{
+
+//	scalar and array expansion
+//	array expansion
+
+		for (int i = 1; i < LEN2; i++) {
+			for (int j = 0; j < LEN2; j++) {
+				a[i] = aa[j][i] - a[i-1];
+				aa[j][i] = a[i] + bb[j][i];
+			}
+		}
+	return 0;
+}
+
+int s258()
+{
+
+//	scalar and array expansion
+//	wrap-around scalar under an if
+
+	TYPE s;
+		s = 0.;
+		for (int i = 0; i < LEN2; ++i) {
+			if (a[i] > 0.) {
+				s = d[i] * d[i];
+			}
+			b[i] = s * c[i] + d[i];
+			e[i] = (s + (TYPE)1.) * aa[0][i];
+		}
+	return 0;
+}
 
 
 
@@ -979,6 +1353,57 @@ int s273()
 
 //icc undef pblend
 
+int s274()
+{
+
+//	control flow
+//	complex loop with dependent conditional
+
+		for (int i = 0; i < LEN; i++) {
+			a[i] = c[i] + e[i] * d[i];
+			if (a[i] > (TYPE)0.) {
+				b[i] = a[i] + b[i];
+			} else {
+				a[i] = d[i] * e[i];
+			}
+		}
+	return 0;
+}
+
+
+
+
+int s275()
+{
+
+//	control flow
+//	if around inner loop, interchanging needed
+
+		for (int i = 0; i < LEN2; i++) {
+			if (aa[0][i] > (TYPE)0.) {
+				for (int j = 1; j < LEN2; j++) {
+					aa[j][i] = aa[j-1][i] + bb[j][i] * cc[j][i];
+				}
+			}
+		}
+	return 0;
+}
+
+int s2275()
+{
+
+//	loop distribution is needed to be able to interchange
+
+		for (int i = 0; i < LEN2; i++) {
+			for (int j = 0; j < LEN2; j++) {
+				aa[j][i] = aa[j][i] + bb[j][i] * cc[j][i];
+			}
+			a[i] = b[i] + c[i] * d[i];
+		}
+	return 0;
+}
+
+
 
 int s276()
 {
@@ -998,6 +1423,76 @@ int s276()
 }
 
 
+int s277()
+{
+
+//	control flow
+//	test for dependences arising from guard variable computation.
+
+		for (int i = 0; i < LEN-1; i++) {
+				if (a[i] >= (TYPE)0.) {
+					goto L20;
+				}
+				if (b[i] >= (TYPE)0.) {
+					goto L30;
+				}
+				a[i] += c[i] * d[i];
+L30:
+				b[i+1] = c[i] + d[i] * e[i];
+L20:
+;
+		}
+	return 0;
+}
+
+
+
+//icc undef pblend
+
+int s278()
+{
+
+//	control flow
+//	if/goto to block if-then-else
+
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] > (TYPE)0.) {
+				goto L20;
+			}
+			b[i] = -b[i] + d[i] * e[i];
+			goto L30;
+L20:
+			c[i] = -c[i] + d[i] * e[i];
+L30:
+			a[i] = b[i] + c[i] * d[i];
+		}
+	return 0;
+}
+
+
+
+int s279()
+{
+
+//	control flow
+//	vector if/gotos
+
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] > (TYPE)0.) {
+				goto L20;
+			}
+			b[i] = -b[i] + d[i] * d[i];
+			if (b[i] <= a[i]) {
+				goto L30;
+			}
+			c[i] += d[i] * e[i];
+			goto L30;
+L20:
+			c[i] = -c[i] + e[i] * e[i];
+L30:
+			a[i] = b[i] + c[i] * d[i];
+		}
+}
 
 int s1279()
 {
@@ -1014,6 +1509,37 @@ int s1279()
 		}
 	return 0;
 }
+
+
+
+//icc undef pblend
+
+int s2710( TYPE x)
+{
+
+//	control flow
+//	scalar and vector ifs
+
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] > b[i]) {
+				a[i] += b[i] * d[i];
+				if (LEN > 10) {
+					c[i] += d[i] * d[i];
+				} else {
+					c[i] = d[i] * e[i] + (TYPE)1.;
+				}
+			} else {
+				b[i] = a[i] + e[i] * e[i];
+				if (x > (TYPE)0.) {
+					c[i] = a[i] + d[i] * d[i];
+				} else {
+					c[i] += e[i] * e[i];
+				}
+			}
+		}
+	return 0;
+}
+
 
 
 
@@ -1048,6 +1574,22 @@ int s2712()
 }
 
 
+
+int s281()
+{
+
+//	crossing thresholds
+//	index set splitting
+//	reverse data access
+
+	TYPE x;
+		for (int i = 0; i < LEN; i++) {
+			x = a[LEN-i-1] + b[i] * c[i];
+			a[i] = x-(TYPE)1.0;
+			b[i] = x;
+		}
+	return 0;
+}
 
 
 
@@ -1103,6 +1645,19 @@ int s293()
 }
 
 
+
+int s2101()
+{
+
+//	diagonals
+//	main diagonal calculation
+//	jump in data access
+
+		for (int i = 0; i < LEN2; i++) {
+			aa[i][i] += bb[i][i] * cc[i][i];
+		}
+	return 0;
+}
 
 
 
@@ -1173,6 +1728,157 @@ TYPE test(TYPE* A){
   return s;
 }
 
+int s31111()
+{
+
+//	reductions
+//	sum reduction
+
+	TYPE sum;
+		sum = (TYPE)0.;
+		sum += test(a);
+		sum += test(&a[4]);
+		sum += test(&a[8]);
+		sum += test(&a[12]);
+		sum += test(&a[16]);
+		sum += test(&a[20]);
+		sum += test(&a[24]);
+		sum += test(&a[28]);
+		temp = sum;
+	return 0;
+}
+
+
+
+//int s312()
+//{
+//
+////	reductions
+////	product reduction
+//
+//	TYPE prod;
+//		prod = (TYPE)1.;
+//		for (int i = 0; i < LEN; i++) {
+//			prod *= a[i];
+//		}
+//		temp = prod;
+//	return 0;
+//}
+//
+//
+//
+//
+//int s314()
+//{
+//
+////	reductions
+////	if to max reduction
+//
+//	TYPE x;
+//		x = a[0];
+//		for (int i = 0; i < LEN; i++) {
+//			if (a[i] > x) {
+//				x = a[i];
+//			}
+//		}
+//	temp = x;
+//	return 0;
+//}
+//
+//
+//
+//int s315()
+//{
+//
+////	reductions
+////	if to max with index reductio 1 dimension
+//
+//	for (int i = 0; i < LEN; i++)
+//		a[i] = (i * 7) % LEN;
+//
+//	TYPE x, chksum;
+//	int index;
+//		x = a[0];
+//		index = 0;
+//		for (int i = 0; i < LEN; ++i) {
+//			if (a[i] > x) {
+//				x = a[i];
+//				index = i;
+//			}
+//		}
+//		chksum = x + (TYPE) index;
+//	temp = index+x+1;
+//	return 0;
+//}
+//
+//
+//
+//
+////int s316()
+////{
+////
+//////	reductions
+//////	if to min reduction
+////
+////	TYPE x;
+////		x = a[0];
+////		for (int i = 1; i < LEN; ++i) {
+////			if (a[i] < x) {
+////				x = a[i];
+////			}
+////		}
+////	temp = x;
+////	return 0;
+////}
+//
+//
+//int s317()
+//{
+//
+////	reductions
+////	product reductio vectorize with
+////	1. scalar expansion of factor, and product reduction
+////	2. closed form solution: q = factor**n
+//
+//	TYPE q;
+//		q = (TYPE)1.;
+//		for (int i = 0; i < LEN/2; i++) {
+//			q *= (TYPE)99;
+//		}
+//	temp = q;
+//	return 0;
+//}
+
+
+
+int s318( int inc)
+{
+
+//	reductions
+//	isamax, max absolute value, increments not equal to 1
+
+
+	int k, index;
+	TYPE max, chksum;
+		k = 0;
+		index = 0;
+		max = abs(a[0]);
+		k += inc;
+		for (int i = 1; i < LEN; i++) {
+			if (abs(a[k]) <= max) {
+				goto L5;
+			}
+			index = i;
+			max = abs(a[k]);
+L5:
+			k += inc;
+		}
+		chksum = max + (TYPE) index;
+	temp = max + index+1;
+	return 0;
+}
+
+
 
 int s319()
 {
@@ -1194,6 +1900,57 @@ int s319()
 
 
 
+int s3110()
+{
+
+//	reductions
+//	if to max with index reductio 2 dimensions
+//	similar to S315
+
+	int xindex, yindex;
+	TYPE max, chksum;
+		max = aa[(0)][0];
+		xindex = 0;
+		yindex = 0;
+		for (int i = 0; i < LEN2; i++) {
+			for (int j = 0; j < LEN2; j++) {
+				if (aa[i][j] > max) {
+					max = aa[i][j];
+					xindex = i;
+					yindex = j;
+				}
+			}
+		}
+		chksum = max + (TYPE) xindex + (TYPE) yindex;
+	temp = max + xindex+1 + yindex+1;
+	return 0;
+}
+// clang unrolls the inner loop
+// takes hours in eqgen
+int s13110()
+{
+
+//	reductions
+//	if to max with index reductio 2 dimensions
+
+	int xindex, yindex;
+	TYPE max, chksum;
+		max = aa[(0)][0];
+		xindex = 0;
+		yindex = 0;
+		for (int i = 0; i < LEN2; i++) {
+			for (int j = 0; j < LEN2; j++) {
+				if (aa[i][j] > max) {
+					max = aa[i][j];
+				}
+			}
+		}
+		chksum = max + (TYPE) xindex + (TYPE) yindex;
+	temp = max + xindex+1 + yindex+1;
+	return 0;
+}
+
+
 
 int s3111()
 {
@@ -1212,6 +1969,218 @@ int s3111()
 	return 0;
 }
 
+
+
+int s3112()
+{
+
+//	reductions
+//	sum reduction saving running sums
+
+	TYPE sum;
+		sum = (TYPE)0.0;
+		for (int i = 0; i < LEN; i++) {
+			sum += a[i];
+			b[i] = sum;
+		}
+	temp = sum;
+	return 0;
+}
+
+
+
+int s3113()
+{
+
+//	reductions
+//	maximum of absolute value
+
+	TYPE max;
+		max = abs(a[0]);
+		for (int i = 0; i < LEN; i++) {
+			if ((abs(a[i])) > max) {
+				max = abs(a[i]);
+			}
+		}
+	temp = max;
+	return 0;
+}
+
+
+
+int s321()
+{
+
+//	recurrences
+//	first order linear recurrence
+
+		for (int i = 1; i < LEN; i++) {
+			a[i] += a[i-1] * b[i];
+		}
+	return 0;
+}
+
+
+
+int s322()
+{
+
+//	recurrences
+//	second order linear recurrence
+
+		for (int i = 2; i < LEN; i++) {
+			a[i] = a[i] + a[i - 1] * b[i] + a[i - 2] * c[i];
+		}
+	return 0;
+}
+
+
+
+int s323()
+{
+
+//	recurrences
+//	coupled recurrence
+
+		for (int i = 1; i < LEN; i++) {
+			a[i] = b[i-1] + c[i] * d[i];
+			b[i] = a[i] + c[i] * e[i];
+		}
+	return 0;
+}
+
+
+// ICC  UNDEF OPCODE -- movmskps
+/*
+int s331()
+{
+
+//	search loops
+//	if to last-1
+
+	int j;
+	TYPE chksum;
+		j = -1;
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] < (TYPE)0.) {
+				j = i;
+			}
+		}
+		chksum = (TYPE) j;
+	temp = j+1;
+	return 0;
+}
+*/
+
+int s332( TYPE t)
+{
+
+//	search loops
+//	first value greater than threshoLEN
+
+	int index;
+	TYPE value;
+	TYPE chksum;
+		index = -2;
+		value = -1.;
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] > t) {
+				index = i;
+				value = a[i];
+				goto L20;
+			}
+		}
+L20:
+		chksum = value + (TYPE) index;
+	temp = value;
+	return 0;
+}
+
+
+
+
+int s341()
+{
+
+//	packing
+//	pack positive values
+//	not vectorizable, value of j in unknown at each iteration
+
+	int j;
+		j = -1;
+		for (int i = 0; i < LEN; i++) {
+			if (b[i] > (TYPE)0.) {
+				j++;
+				a[j] = b[i];
+			}
+		}
+	return 0;
+}
+
+
+
+int s342()
+{
+
+//	packing
+//	unpacking
+//	not vectorizable, value of j in unknown at each iteration
+
+
+	int j = 0;
+		j = -1;
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] > (TYPE)0.) {
+				j++;
+				a[i] = b[j];
+			}
+		}
+	return 0;
+}
+
+
+
+int s343()
+{
+
+//	packing
+//	pack 2-d array into one dimension
+//	not vectorizable, value of k in unknown at each iteration
+
+
+	int k;
+		k = -1;
+		for (int i = 0; i < LEN2; i++) {
+			for (int j = 0; j < LEN2; j++) {
+				if (bb[j][i] > (TYPE)0.) {
+					k++;
+					array[k] = aa[j][i];
+				}
+			}
+		}
+	return 0;
+}
+
+
+
+int s351_gcc()
+{
+
+//	loop rerolling
+//	unrolled saxpy
+
+	TYPE alpha = c[0];
+	int m = LEN/5;
+		for (int i1 = 0; i1 < m; i1++) {
+		  int i = 5*i1;
+			a[i] += alpha * b[i];
+			a[i + 1] += alpha * b[i + 1];
+			a[i + 2] += alpha * b[i + 2];
+			a[i + 3] += alpha * b[i + 3];
+			a[i + 4] += alpha * b[i + 4];
+		}
+	return 0;
+}
 
 
 int s352()
@@ -1260,6 +2229,23 @@ int s353(int* __restrict__ ip)
 
 
 
+
+int s421()
+{
+
+//	storage classes and equivalencing
+//	equivalence- no overlap
+
+		yy = arr;
+		for (int i = 0; i < LEN - 1; i++) {
+			arr[i] = yy[i+1] + a[i];
+		}
+	temp = 0;
+	for (int i = 0; i < LEN; i++){
+		temp += arr[i];
+	}
+	return 0;
+}
 
 int s1421()
 {
@@ -1362,6 +2348,36 @@ int s424()
 
 
 
+int s442()
+{
+
+//	non-logical if's
+//	computed goto
+
+		for (int i = 0; i < LEN; i++) {
+			switch (indx[i]) {
+				case 1:  goto L15;
+				case 2:  goto L20;
+				case 3:  goto L30;
+				case 4:  goto L40;
+			}
+L15:
+			a[i] += b[i] * b[i];
+			goto L50;
+L20:
+			a[i] += c[i] * c[i];
+			goto L50;
+L30:
+			a[i] += d[i] * d[i];
+			goto L50;
+L40:
+			a[i] += e[i] * e[i];
+L50:
+			;
+		}
+	return 0;
+}
+
 
 
  int s443()
@@ -1388,6 +2404,19 @@ int s424()
  }
 
 
+//Floating point
+//int s451()
+//{
+//
+////	intrinsic functions
+////	intrinsics
+//
+//		for (int i = 0; i < LEN; i++) {
+//			a[i] = sinf(b[i]) + cosf(c[i]);
+//		}
+//	return 0;
+//}
+
 
 
 int s471(){
@@ -1406,6 +2435,54 @@ int s471(){
 
 
 
+int s481()
+{
+
+//	non-local goto's
+//	stop statement
+
+		for (int i = 0; i < LEN; i++) {
+			if (d[i] < (TYPE)0.) {
+				MYmyexit (0);
+			}
+			a[i] += b[i] * c[i];
+		}
+	return 0;
+}
+
+
+
+
+int s482()
+{
+
+//	non-local goto's
+//	other loop exit with code before exit
+
+		for (int i = 0; i < LEN; i++) {
+			a[i] += b[i] * c[i];
+			if (c[i] > b[i]) break;
+		}
+	return 0;
+}
+
+
+
+int s491(int* __restrict__ ip)
+{
+
+//	vector semantics
+//	indirect addressing on lhs, store in sequence
+//	scatter is required
+
+		for (int i = 0; i < LEN; i++) {
+			a[ip[i]] = b[i] + c[i] * d[i];
+		}
+	return 0;
+}
+
+
+
 int s4112(int* __restrict__ ip, TYPE s)
 {
 
@@ -1419,6 +2496,38 @@ int s4112(int* __restrict__ ip, TYPE s)
 	return 0;
 }
 
+
+
+int s4113(int* __restrict__ ip)
+{
+
+//	indirect addressing
+//	indirect addressing on rhs and lhs
+//	gather and scatter is required
+
+		for (int i = 0; i < LEN; i++) {
+			a[ip[i]] = b[ip[i]] + c[i];
+		}
+	return 0;
+}
+
+
+
+int s4114(int* ip, int n1)
+{
+
+//	indirect addressing
+//	mix indirect addressing with variable lower and upper bounds
+//	gather is required
+
+	int k;
+		for (int i = n1-1; i < LEN; i++) {
+			k = ip[i];
+			a[i] = b[i] + c[LEN-k+1-2] * d[i];
+			k += 5;
+		}
+	return 0;
+}
 
 
 
@@ -1440,10 +2549,54 @@ int s4115(int* __restrict__ ip)
 
 
 
+int s4116(int* __restrict__ ip, int j, int inc)
+{
+
+//	indirect addressing
+//	more complicated sparse sdot
+//	gather is required
+
+	TYPE sum;
+	int off;
+		sum = 0.;
+		for (int i = 0; i < LEN2-1; i++) {
+			off = inc + i;
+			sum += a[off] * aa[j-1][ip[i]];
+		}
+	temp = sum;
+	return 0;
+}
+
+
+
+int s4117()
+{
+
+//	indirect addressing
+//	seq function
+
+		for (int i = 0; i < LEN; i++) {
+			a[i] = b[i] + c[i/2] * d[i];
+		}
+	return 0;
+}
+
 
 
 TYPE f(TYPE a, TYPE b){
 	return a*b;
+}
+
+int s4121()
+{
+
+//	statement functions
+//	elementwise multiplication
+
+		for (int i = 0; i < LEN; i++) {
+			a[i] += f(b[i],c[i]);
+		}
+	return 0;
 }
 
 
@@ -1476,6 +2629,19 @@ int vag( int* __restrict__ ip)
 }
 
 
+
+int vas( int* __restrict__ ip)
+{
+
+//	control loops
+//	vector assignment, scatter
+//	scatter is required
+
+		for (int i = 0; i < LEN; i++) {
+			a[ip[i]] = b[i];
+		}
+	return 0;
+}
 
 
 
@@ -1548,6 +2714,36 @@ int vdotr()
 
 
 
+int vbor()
+{
+
+//	control loops
+//	basic operations rates, isolate arithmetic from memory traffic
+//	all combinations of three, 59 flops for 6 loads and 1 store.
+
+	TYPE a1, b1, c1, d1, e1, f1;
+		for (int i = 0; i < LEN2; i++) {
+			a1 = a[i];
+			b1 = b[i];
+			c1 = c[i];
+			d1 = d[i];
+			e1 = e[i];
+			f1 = aa[0][i];
+			a1 = a1 * b1 * c1 + a1 * b1 * d1 + a1 * b1 * e1 + a1 * b1 * f1 +
+				a1 * c1 * d1 + a1 * c1 * e1 + a1 * c1 * f1 + a1 * d1 * e1
+				+ a1 * d1 * f1 + a1 * e1 * f1;
+			b1 = b1 * c1 * d1 + b1 * c1 * e1 + b1 * c1 * f1 + b1 * d1 * e1 +
+				b1 * d1 * f1 + b1 * e1 * f1;
+			c1 = c1 * d1 * e1 + c1 * d1 * f1 + c1 * e1 * f1;
+			d1 = d1 * e1 * f1;
+			x[i] = a1 * b1 * c1 * d1;
+		}
+	temp = 0.;
+	for (int i = 0; i < LEN; i++){
+		temp += x[i];
+	}
+	return 0;
+}
 
 int main(){
 

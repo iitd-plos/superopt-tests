@@ -41,7 +41,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <assert.h>
-#include "eqchecker_helper.h"
+#include "tsvc/tsvc_helper.h"
 //#include <xmmintrin.h>
 
 //#include <builtins.h>

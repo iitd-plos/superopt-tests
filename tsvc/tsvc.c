@@ -37,7 +37,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <assert.h>
-#include "eqchecker_helper.h"
+#include "tsvc_helper.h"
 
 //#include <builtins.h>
 
@@ -2052,24 +2052,24 @@ int s323()
 
 // ICC  UNDEF OPCODE -- movmskps
 
-//int s331()
-//{
-//
-////	search loops
-////	if to last-1
-//
-//	int j;
-//	TYPE chksum;
-//		j = -1;
-//		for (int i = 0; i < LEN; i++) {
-//			if (a[i] < (TYPE)0.) {
-//				j = i;
-//			}
-//		}
-//		chksum = (TYPE) j;
-//	temp = j+1;
-//	return 0;
-//}
+int s331()
+{
+
+//	search loops
+//	if to last-1
+
+	int j;
+	TYPE chksum;
+		j = -1;
+		for (int i = 0; i < LEN; i++) {
+			if (a[i] < (TYPE)0.) {
+				j = i;
+			}
+		}
+		chksum = (TYPE) j;
+	temp = j+1;
+	return 0;
+}
 
 
 int s332( TYPE t)
