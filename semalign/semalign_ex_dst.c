@@ -10,7 +10,7 @@
 
 void __attribute__ ((noinline)) bitflip (int *array, unsigned int len) {
   unsigned i=0;
-  while((len-i)%4 != 0) {
+  while((len-i)%4 != 0 && i < len) {
     array[i]^= 0xFFFFFFFF;
     i++;
   }
