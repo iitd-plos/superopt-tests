@@ -1,11 +1,16 @@
 include ../config.mak                        # paths
 include $(SRCDIR)/Make.conf                  # compiler paths and flags
-include $(SRCDIR)/Makefile.eqchecker.tsvcnonvec    # build rules
+include $(SRCDIR)/Makefile.eqchecker.common  # build rules
 
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/semalign
 
 PROGS_EQCHECKER := semalign_ex_src semalign_ex_dst
+
+# compiler flags
+GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(GCC_EQCHECKER_NOUNROLL_FLAGS)
+CLANG_I386_EQCHECKER_FLAGS= $(CLANG_I386_EQCHECKER_FLAGS_COMMON) $(CLANG_EQCHECKER_NOUNROLL_FLAGS)
+ICC_I386_EQCHECKER_FLAGS= $(ICC_I386_EQCHECKER_FLAGS_COMMON) $(ICC_EQCHECKER_NOUNROLL_FLAGS)
 
 BC_O0_PROGS = $(addsuffix .bc.O0, $(PROGS_EQCHECKER))
 BC_O2_PROGS = $(addsuffix .bc.O2, $(PROGS_EQCHECKER))

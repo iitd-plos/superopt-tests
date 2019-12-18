@@ -1,12 +1,17 @@
 include ../config.mak                        # paths
 include $(SRCDIR)/Make.conf                  # compiler paths and flags
-include $(SRCDIR)/Makefile.eqchecker.tsvc    # build rules
+include $(SRCDIR)/Makefile.eqchecker.common    # build rules
 
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/tsvc
 
 PROGS_EQCHECKER := tsvc
 PROGS_EQCHECKER_ICC := tsvc_icc
+
+# compiler flags
+GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(EQCHECKER_VEC_FLAGS)
+CLANG_I386_EQCHECKER_FLAGS= $(CLANG_I386_EQCHECKER_FLAGS_COMMON) $(EQCHECKER_VEC_FLAGS)
+ICC_I386_EQCHECKER_FLAGS= $(ICC_I386_EQCHECKER_FLAGS_COMMON) $(EQCHECKER_VEC_FLAGS)
 
 BC_O0_PROGS = $(addsuffix .bc.O0, $(PROGS_EQCHECKER) $(PROGS_EQCHECKER_ICC))
 BC_O2_PROGS = $(addsuffix .bc.O2, $(PROGS_EQCHECKER) $(PROGS_EQCHECKER_ICC))
