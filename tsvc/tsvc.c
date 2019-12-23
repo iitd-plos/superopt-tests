@@ -1832,22 +1832,22 @@ int s31111()
 ////}
 //
 //
-//int s317()
-//{
-//
-////	reductions
-////	product reductio vectorize with
-////	1. scalar expansion of factor, and product reduction
-////	2. closed form solution: q = factor**n
-//
-//	TYPE q;
-//		q = (TYPE)1.;
-//		for (int i = 0; i < LEN/2; i++) {
-//			q *= (TYPE)99;
-//		}
-//	temp = q;
-//	return 0;
-//}
+int s317()
+{
+
+//	reductions
+//	product reductio vectorize with
+//	1. scalar expansion of factor, and product reduction
+//	2. closed form solution: q = factor**n
+
+	TYPE q;
+		q = (TYPE)1.;
+		for (int i = 0; i < LEN/2; i++) {
+			q *= (TYPE)99;
+		}
+	temp = q;
+	return 0;
+}
 
 
 
@@ -1927,28 +1927,28 @@ int s3110()
 }
 // clang unrolls the inner loop
 // takes hours in eqgen
-int s13110()
-{
-
-//	reductions
-//	if to max with index reductio 2 dimensions
-
-	int xindex, yindex;
-	TYPE max, chksum;
-		max = aa[(0)][0];
-		xindex = 0;
-		yindex = 0;
-		for (int i = 0; i < LEN2; i++) {
-			for (int j = 0; j < LEN2; j++) {
-				if (aa[i][j] > max) {
-					max = aa[i][j];
-				}
-			}
-		}
-		chksum = max + (TYPE) xindex + (TYPE) yindex;
-	temp = max + xindex+1 + yindex+1;
-	return 0;
-}
+//int s13110()
+//{
+//
+////	reductions
+////	if to max with index reductio 2 dimensions
+//
+//	int xindex, yindex;
+//	TYPE max, chksum;
+//		max = aa[(0)][0];
+//		xindex = 0;
+//		yindex = 0;
+//		for (int i = 0; i < LEN2; i++) {
+//			for (int j = 0; j < LEN2; j++) {
+//				if (aa[i][j] > max) {
+//					max = aa[i][j];
+//				}
+//			}
+//		}
+//		chksum = max + (TYPE) xindex + (TYPE) yindex;
+//	temp = max + xindex+1 + yindex+1;
+//	return 0;
+//}
 
 
 
