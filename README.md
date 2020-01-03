@@ -37,7 +37,7 @@ All paths are set in `Make.conf`.
 
 In addition, some environment variables are used for some paths.  The exhaustive list of environment variables used are:
 
-1. `SUPEROPT_PROJECT_ROOT`: Directory where `superopt-project` is cloned.
+1. `SUPEROPT_PROJECT_DIR`: Directory where `superopt-project` is cloned.
 
 2. `ICC_INSTALL_DIR`: Directory where ICC is installed.  `icc` is then located to `${ICC_INSTALL_DIR}/bin/icc`.
 

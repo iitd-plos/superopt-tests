@@ -5,7 +5,7 @@ TARGETS := bzip2 tsvc semalign
 
 # rules
 
-all:: $(BUILDDIR) $(TARGETS)
+all: $(BUILDDIR) $(TARGETS)
 
 clean:
 	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) clean;)
@@ -16,10 +16,14 @@ distclean: clean
 $(BUILDDIR):
 	mkdir -p $@
 
-$(TARGETS)::
+$(TARGETS):
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	make -C $(BUILDDIR)/$@
 
+gentest:
+	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) gentest;)
 
+runtest:
+	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) runtest;)
 
-.PHONY: all clean distclean $(TARGETS)
+.PHONY: all clean distclean $(TARGETS) gentest runtest

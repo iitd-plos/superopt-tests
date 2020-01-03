@@ -38,24 +38,31 @@ EQCHECKER_I386_PROGS = \
   $(EQCHECKER_I386_GCC_O3_PROGS) \
   $(EQCHECKER_I386_CLANG_O0_PROGS) \
   $(EQCHECKER_I386_CLANG_O3_PROGS) \
-  $(EQCHECKER_I386_ICC_O0_PROGS) \
-  $(EQCHECKER_I386_ICC_O3_PROGS) \
-  #$(EQCHECKER_I386_CCOMP_O2_PROGS) \
+  #$(EQCHECKER_I386_ICC_O0_PROGS) \
+  #$(EQCHECKER_I386_ICC_O3_PROGS) \
+  #$(EQCHECKER_I386_CCOMP_O2_PROGS)
 
-BC_PROGS = $(BC_O0_PROGS) $(BC_O3_PROGS)
-LLVM_PROGS = $(BC_PROGS)
-
+LLVM_PROGS     = $(BC_O0_PROGS) $(BC_O3_PROGS)
 LLVM_PROGS_ASM = $(addsuffix .s, $(LLVM_PROGS))
+
+ALL_PROGS = $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
 
 # targets
 
-all: $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
+all: $(ALL_PROGS)
 	# HACK for current build
 	$(foreach t,$(BC_O0_PROGS),sed -i 's/immarg//g' $(t).s;)
 
 clean:
-	rm -f *.o *.tmp $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
+	rm -f *.o *.tmp $(ALL_PROGS)
+
+gentest:
+	bash $(VPATH)/gentest.sh
+
+runtest:
+	cp $(VPATH)/*eq_funcs* -t .
+	bash $(VPATH)/runtest.sh
 
 .DEFAULT_GOAL := all
 
-.PHONY: all clean
+.PHONY: all clean gentest runtest
