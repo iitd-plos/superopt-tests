@@ -21,9 +21,9 @@ $(TARGETS):
 	make -C $(BUILDDIR)/$@
 
 gentest:
-	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) gentest;)
+	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) gentest || exit;)
 
 runtest:
-	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) runtest;)
+	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) runtest || exit;)
 
 .PHONY: all clean distclean $(TARGETS) gentest runtest
