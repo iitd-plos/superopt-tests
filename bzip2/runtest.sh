@@ -2,6 +2,8 @@
 
 set -eu # fail on error
 
+EQLOGS=${PWD}/eqlogs
+
 gen_commands()
 {
   infile="$1"
@@ -14,11 +16,11 @@ gen_commands()
     arr=(${line})
     func=${arr[0]} # take out the first space separated word
 
-    echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"eqlogs/${binary}.${func}.${compiler}.O3.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${func} ${eq_opts} ${binary}.bc.O0.s.ALL.etfg ${binary}.${compiler}.eqchecker.O3.i386.ALL.tfg\""
+    echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${binary}.${func}.${compiler}.O3.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${func} ${eq_opts} ${binary}.bc.O0.s.ALL.etfg ${binary}.${compiler}.eqchecker.O3.i386.ALL.tfg\""
   done < ${infile}
 }
 
-mkdir -p eqlogs
+mkdir -p ${EQLOGS}
 
 binary=bzip2
 compiler=clang
