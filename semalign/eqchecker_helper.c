@@ -98,11 +98,6 @@ char MYmy_char_inc(char *i)
   return ret;
 }
 
-size_t address_taken_local_var_callee(char **a, char **b, char **c, char **d)
-{
-  return b - a + (d - c) + 2;
-}
-
 int MYmyrand_char()
 {
   return rand() % 255;
