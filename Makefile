@@ -1,7 +1,7 @@
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-TARGETS := bzip2 tsvc semalign
+TARGETS := bzip2 tsvc semalign #reve
 
 # rules
 
@@ -17,6 +17,7 @@ $(BUILDDIR):
 	mkdir -p $@
 
 $(TARGETS):
+	mkdir -p $(BUILDDIR)/$@
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	make -C $(BUILDDIR)/$@
 
