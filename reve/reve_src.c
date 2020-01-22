@@ -1,3 +1,6 @@
+int garr[100];
+int *gto, *gfrom;
+
 int digit10(unsigned n)
 {
   unsigned r = 0;
@@ -17,7 +20,16 @@ void propagate(int* a, int n)
   }
 }
 
-int garr[100];
+// harvest fail for reve_dst:send
+/*void send(short *to, short* from, int count)
+{
+  if (count <= 0) {
+    return;
+  }
+  do {
+    *to = *from++;
+  } while (--count > 0);
+}*/
 
 int main(int argc, char* argv[])
 {

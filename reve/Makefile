@@ -5,7 +5,7 @@ include $(SRCDIR)/Makefile.eqchecker.common  # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/reve
 
-PROGS_EQCHECKER := reve_src reve_dst #llreve_src llreve_dst -- harvest fails
+PROGS_EQCHECKER := reve_src reve_dst
 
 # flags
 GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS) $(GCC_EQCHECKER_NOUNROLL_FLAGS)
