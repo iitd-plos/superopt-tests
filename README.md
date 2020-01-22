@@ -19,6 +19,32 @@ make <dirname>
 make bzip2
 ```
 
+## Generating testcases .etfg and .tfg files
+
+```sh
+# for all
+make gentest
+
+# Or, for a particular test suite
+make -C build/<dirname> gentest
+
+# For example, for generating bzip2 test files
+make -C build/bzip2 gentest
+```
+
+## Running tests
+
+```sh
+# for all
+make runtest
+
+# Or, for a particular test suite
+make -C build/<dirname> runtest
+
+# For example, for running bzip2 test
+make -C build/bzip2 runtest
+```
+
 ## Cleaning-up
 
 For restoring the pristine state use:
