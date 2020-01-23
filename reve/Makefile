@@ -5,7 +5,35 @@ include $(SRCDIR)/Makefile.eqchecker.common  # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/reve
 
-PROGS_EQCHECKER := reve_src reve_dst
+PROGS_PREFIX := digit10      \
+                findmax      \
+                memccpy      \
+                memchr       \
+                memcpy_a     \
+                memcpy_b     \
+                memmem       \
+                memmove      \
+                memrchr      \
+                memset       \
+                propagate    \
+                send         \
+                stpcpy       \
+                strcmp       \
+                strcspn_a    \
+                strcspn_b    \
+                strcspn_c    \
+                strncasecmp  \
+                strncmp_a    \
+                strncmp_b    \
+                strncmp_c    \
+                strpbrk_a    \
+                strpbrk_b    \
+                strpbrk_c    \
+                swaparray    \
+
+export PROGS_PREFIX
+
+PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
 
 # flags
 GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS) $(GCC_EQCHECKER_NOUNROLL_FLAGS)
