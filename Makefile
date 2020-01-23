@@ -1,7 +1,7 @@
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-TARGETS := bzip2 tsvc semalign reve
+TARGETS := bzip2 tsvc semalign reve micro
 
 # rules
 
