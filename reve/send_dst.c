@@ -1,5 +1,4 @@
 // using Duff's device (https://en.wikipedia.org/wiki/Duff%27s_device)
-// harvest fails on clang's output which creates a jump of the form [rodata_addr+esi*4]
 void send(short* to, short* from, int count)
 {
   if (count <= 0) {
