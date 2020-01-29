@@ -11,7 +11,7 @@ gen_for_src_dst()
   python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${infile_pfx}_src.bc.O0.s ${infile_pfx}_dst.icc.eqchecker.O3.i386
 }
 
-gen_for_src_dst barthe
-gen_for_src_dst break_r
-#gen_for_src_dst lookuptable
-gen_for_src_dst loop_unswitching
+for f in ${PROGS_PREFIX}
+do
+  gen_for_src_dst ${f}
+done

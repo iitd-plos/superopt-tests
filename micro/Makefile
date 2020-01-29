@@ -6,9 +6,11 @@ include $(SRCDIR)/Makefile.eqchecker.common  # build rules
 VPATH = $(SRCDIR)/micro
 
 PROGS_PREFIX := barthe \
-                break_r \
                 loop_unswitching \
                 #lookuptable
+
+# make PROGS_PREFIX available to gentest.sh and runtest.sh
+export PROGS_PREFIX
 
 PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
 

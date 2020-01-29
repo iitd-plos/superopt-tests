@@ -5,8 +5,8 @@ int barthe(int n, int c) {
     int x = 0;
 
     while (i < n) {
-        j = j + 5;
         x = x + j;
+        j = j + 5;
         i++;
     }
     return x;
