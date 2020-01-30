@@ -5,14 +5,16 @@ include $(SRCDIR)/Makefile.eqchecker.common  # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/micro
 
+PROGS :=
 PROGS_PREFIX := barthe \
                 loop_unswitching \
-                #lookuptable
+                #lookuptable # reading from RODATA is not supported
 
-# make PROGS_PREFIX available to gentest.sh and runtest.sh
+# make them available to gentest.sh and runtest.sh
+export PROGS
 export PROGS_PREFIX
 
-PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
+PROGS_EQCHECKER := $(PROGS) $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
 
 # flags
 GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS) $(GCC_EQCHECKER_NOUNROLL_FLAGS)
