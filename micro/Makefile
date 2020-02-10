@@ -5,9 +5,15 @@ include $(SRCDIR)/Makefile.eqchecker.common  # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/micro
 
-PROGS :=
+PROGS := ddec \
+         lerner
+
 PROGS_PREFIX := barthe \
                 loop_unswitching \
+                peeling \
+                soft_pipe \
+                splitting \
+                tiling
                 #lookuptable # reading from RODATA is not supported
 
 # make them available to gentest.sh and runtest.sh
