@@ -11,7 +11,6 @@ PROGS := chomp \
 				 nsieve \
 				 qsort \
 				 sha1 \
-				 delme
 				 #nsievebits \ # ext_rotate_left expr is generated which is not supported by solvers
 
 PROGS_PREFIX :=
