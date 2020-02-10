@@ -7,6 +7,7 @@ set -eu # fail on error
 # function specific eqflags
 declare -A fn_eqflags
 fn_eqflags["propagate"]="--max_lookahead 1"
+fn_eqflags["digit10"]="--max_lookahead 8 --unroll-factor 8"
 
 ###########################
 

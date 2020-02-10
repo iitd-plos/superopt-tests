@@ -16,7 +16,6 @@ PROGS_PREFIX := digit10      \
                 memrchr      \
                 memset       \
                 propagate    \
-                send         \
                 stpcpy       \
                 strcmp       \
                 strcspn_a    \
@@ -30,6 +29,7 @@ PROGS_PREFIX := digit10      \
                 strpbrk_b    \
                 strpbrk_c    \
                 swaparray    \
+                #send         \ # eqgen fails for send_dst.icc
 
 export PROGS_PREFIX
 
