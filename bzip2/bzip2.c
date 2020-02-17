@@ -1771,11 +1771,11 @@ void sendMTFValues ( void )
      }
      if (verbosity >= 3) {
        fprintf ( stderr,
-           "      pass %d: size is %d, grp uses are ",
+           "      pass %d: size is %d, grp uses are [",
            iter+1, totc/8 );
        for (t = 0; t < nGroups; t++)
          fprintf ( stderr, "%d ", fave[t] );
-       fprintf ( stderr, "\n" );
+       fprintf ( stderr, "] \n" );
      }
 
      /*--
@@ -2772,7 +2772,7 @@ void doReversibleTransformation ( void )
 {
    Int32 i;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   if (verbosity >= 2) fprintf ( stderr, "doReversibleTransformation\n" );
 
    workLimit       = workFactor * last;
    workDone        = 0;
@@ -3268,7 +3268,7 @@ void compressStream ( FILE *stream, FILE *zStream )
 
    combinedCRC = 0;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   if (verbosity >= 2) fprintf ( stderr, "compressStream\n" );
 
    while (True) {
 
@@ -3534,7 +3534,7 @@ Bool testStream ( FILE *zStream )
    setDecompressStructureSizes ( magic4 - '0' );
    computedCombinedCRC = 0;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   if (verbosity >= 2) fprintf ( stderr, "testStream\n" );
    currBlockNo = 0;
 
    while (True) {
