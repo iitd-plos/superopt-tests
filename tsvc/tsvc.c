@@ -66,7 +66,7 @@ __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
 int indx[LEN] __attribute__((aligned(16)));
 
 
-TYPE* __restrict__ xx;
+TYPE* /*__restrict__*/ xx;
 TYPE* yy;
 TYPE arr[LEN];
 
@@ -2203,7 +2203,7 @@ int s352()
 
 
 
-int s353(int* __restrict__ ip)
+int s353(int* /*__restrict__*/ ip)
 {
 
 //	loop rerolling
@@ -2468,7 +2468,7 @@ int s482()
 
 
 
-int s491(int* __restrict__ ip)
+int s491(int* /*__restrict__*/ ip)
 {
 
 //	vector semantics
@@ -2483,7 +2483,7 @@ int s491(int* __restrict__ ip)
 
 
 
-int s4112(int* __restrict__ ip, TYPE s)
+int s4112(int* /*__restrict__*/ ip, TYPE s)
 {
 
 //	indirect addressing
@@ -2498,7 +2498,7 @@ int s4112(int* __restrict__ ip, TYPE s)
 
 
 
-int s4113(int* __restrict__ ip)
+int s4113(int* /*__restrict__*/ ip)
 {
 
 //	indirect addressing
@@ -2531,7 +2531,7 @@ int s4114(int* ip, int n1)
 
 
 
-int s4115(int* __restrict__ ip)
+int s4115(int* /*__restrict__*/ ip)
 {
 
 //	indirect addressing
@@ -2549,7 +2549,7 @@ int s4115(int* __restrict__ ip)
 
 
 
-int s4116(int* __restrict__ ip, int j, int inc)
+int s4116(int* /*__restrict__*/ ip, int j, int inc)
 {
 
 //	indirect addressing
@@ -2615,7 +2615,8 @@ int va()
 
 
 
-int vag( int* __restrict__ ip)
+// with restrict compiler vectorizes the loop
+int vag( int* /*__restrict__*/ ip)
 {
 
 //	control loops
@@ -2630,7 +2631,8 @@ int vag( int* __restrict__ ip)
 
 
 
-int vas( int* __restrict__ ip)
+// with restrict compiler vectorizes the loop
+int vas( int* /*__restrict__*/ ip)
 {
 
 //	control loops
