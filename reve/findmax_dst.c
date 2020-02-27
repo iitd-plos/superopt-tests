@@ -1,3 +1,4 @@
+// safety check fails -- a[0] remains unmatched, need predicate which says a[0] _and_ a[1]...a[n] are safe
 int findmax(int *a, int n) {
 
    int i = 1;

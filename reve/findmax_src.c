@@ -1,3 +1,4 @@
+// safety check fails -- see findmax_dst.c
 int findmax(int *a, int n) {
 
    int i = 1;
