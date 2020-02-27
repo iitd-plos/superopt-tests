@@ -6,7 +6,8 @@ set -eu # fail on error
 
 # function specific eqflags
 declare -A g_eqflags
-g_eqflags["barthe"]=""
+g_common_eqflags="--global-timeout 120" # as the testcases are "micro"
+#g_eqflags["barthe"]=""
 g_eqflags["loop_unswitching"]="--unroll-factor 1"
 
 ###########################
@@ -19,7 +20,7 @@ mkdir -p ${EQLOGS}
 gen_for_src_dst()
 {
   infile_pfx="$1"
-  eqflags=${g_eqflags[$infile_pfx]:-}
+  eqflags="${g_common_eqflags} ${g_eqflags[$infile_pfx]:-}"
   eqflags_clang=${g_eqflags[${infile_pfx}.clang]:-${eqflags}}
   echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${infile_pfx}.clang.O3.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${infile_pfx} ${eqflags_clang} --proof ${infile_pfx}.clang.proof ${infile_pfx}_src.bc.O0.s.ALL.etfg ${infile_pfx}_dst.clang.eqchecker.O3.i386.ALL.tfg\""  >> chaperon_commands
   eqflags_gcc=${g_eqflags[${infile_pfx}.gcc]:-${eqflags}}
