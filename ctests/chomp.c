@@ -145,7 +145,8 @@ void show_move(int *data) /* puts in the "(" and ")" for show_data() */
 {
   putchar('(');
   show_data(data);
-  printf(")\n");
+  putchar(')');
+  putchar('\n');
 }
 
 void show_list(struct _list *list) /* show the entire list of moves */
