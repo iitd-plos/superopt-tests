@@ -7,7 +7,7 @@ TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS)
 
 # rules
 
-all: $(BUILDDIR) $(TARGETS) $(CODEGEN_TARGETS)
+all: $(BUILDDIR) $(TARGETS)
 
 clean:
 	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) clean;)
@@ -18,16 +18,16 @@ distclean: clean
 $(BUILDDIR):
 	mkdir -p $@
 
-$(TARGETS) $(CODEGEN_TARGETS):
+$(EQCHECK_TARGETS) $(CODEGEN_TARGETS):
 	mkdir -p $(BUILDDIR)/$@
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	make -C $(BUILDDIR)/$@
 
 gentest:
-	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) gentest || exit;)
+	$(foreach t,$(EQCHECK_TARGETS),make -C $(BUILDDIR)/$(t) gentest || exit;)
 
 runtest:
-	$(foreach t,$(TARGETS),make -C $(BUILDDIR)/$(t) runtest || exit;)
+	$(foreach t,$(EQCHECK_TARGETS),make -C $(BUILDDIR)/$(t) runtest || exit;)
 
 typecheck_test:
 	$(SUPEROPT_PROJECT_DIR)/superopt/typecheck
