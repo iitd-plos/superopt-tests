@@ -23,6 +23,13 @@ eqchecker_helper.gcc.eqchecker.O3.i386.o: eqchecker_helper.c
 %.gcc.eqchecker.O3.i386: %.gcc.eqchecker.O3.i386.o eqchecker_helper.gcc.eqchecker.O3.i386.o
 	$(GCC_I386) $(CFLAGS) $(GCC_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O3 $^ -o $@ $(LIBS)
 
+%.gcc.O0.i386: %.c
+	$(GCC_I386) $(CFLAGS) $(GCC_I386_FLAGS) -O0 $< -o $@
+%.gcc.O2.i386: %.c
+	$(GCC_I386) $(CFLAGS) $(GCC_I386_FLAGS) -O2 $< -o $@
+%.gcc.O3.i386: %.c
+	$(GCC_I386) $(CFLAGS) $(GCC_I386_FLAGS) -O3 $< -o $@
+
 # CLANG
 
 %.clang.eqchecker.O0.i386.o: %.c
@@ -45,6 +52,13 @@ eqchecker_helper.clang.eqchecker.O3.i386.o: eqchecker_helper.c
 	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O3 $< -o $@
 %.clang.eqchecker.O3.i386: %.clang.eqchecker.O3.i386.o eqchecker_helper.clang.eqchecker.O3.i386.o
 	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O3 $^ -o $@ $(LIBS)
+
+%.clang.O0.i386: %.c
+	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_FLAGS) -O0 $< -o $@
+%.clang.O2.i386: %.c
+	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_FLAGS) -O2 $< -o $@
+%.clang.O3.i386: %.c
+	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_FLAGS) -O3 $< -o $@
 
 # ICC
 
@@ -69,6 +83,14 @@ eqchecker_helper.icc.eqchecker.O3.i386.o: eqchecker_helper.c
 %.icc.eqchecker.O3.i386: %.icc.eqchecker.O3.i386.o eqchecker_helper.icc.eqchecker.O3.i386.o
 	$(ICC_I386) $(CFLAGS) $(ICC_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O3 $^ -o $@ $(LIBS)
 
+%.icc.O0.i386: %.c
+	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O0 $< -o $@
+%.icc.O2.i386: %.c
+	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O2 $< -o $@
+%.icc.O3.i386: %.c
+	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O3 $< -o $@
+
+
 # CCOMP
 
 %.ccomp.eqchecker.O2.i386.o: %.c
@@ -92,6 +114,13 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 %.ccomp.O2.i386: %.ccomp.O2.i386.o eqchecker_helper.ccomp.O2.i386.o
 	$(CCOMP_I386) $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
 
+%.ccomp.O0.i386: %.c
+	$(CCOMP_I386) $(CCOMP_CFLAGS) -O0 $< -o $@
+%.ccomp.O2.i386: %.c
+	$(CCOMP_I386) $(CCOMP_CFLAGS) -O2 $< -o $@
+%.ccomp.O3.i386: %.c
+	$(CCOMP_I386) $(CCOMP_CFLAGS) -O3 $< -o $@
+
 # LLVM BC
 
 %.c.O0.eqchecker.bc: %.c
@@ -102,33 +131,52 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 	$(CLANG_I386) $(CFLAGS) -Xclang -disable-O0-optnone $(INCLUDES) -m32 -O0 -emit-llvm $^ -c -o $@.tmp
 	$(LLVM_OPT) -mem2reg -strip-debug -die -o $@ $@.tmp
 
-%.bc.O0: %.c.O0.bc eqchecker_helper.c.O0.bc
+%.bc.eqchecker.O0: %.c.O0.bc eqchecker_helper.c.O0.bc
 	$(LLVM_LINK) $^ -o $@
 
-%.bc.O2: %.bc.O0
+%.bc.eqchecker.O2: %.bc.eqchecker.O0
 	$(LLVM_OPT) -O2 -o $@ $<
+
+%.bc.eqchecker.O3: %.bc.eqchecker.O0
+	$(LLVM_OPT) -O3 -o $@ $<
 
 #%.bc.O3: %.bc.O0
 #	$(LLVM_OPT) -O3 -o $@ $<
 
 #see http://lists.llvm.org/pipermail/llvm-dev/2017-April/111989.html for the sequence of commands used to generate bc.O3 below
-%.bc.O3: %.c
-	$(CLANG_I386) $(CFLAGS) -Xclang -disable-llvm-passes $(INCLUDES) -m32 -O3 -emit-llvm $^ -c -o $@.tmp
-	$(LLVM_OPT) $(LLVM_OPT_FLAGS) -o $@ $@.tmp
+%.bc.O0: %.c
+	$(CLANG_I386) $(CFLAGS) -Xclang -disable-llvm-passes $(INCLUDES) -m32 -O3 -emit-llvm $^ -c -o $@ #XXX: get rid of O3 flag here?
+%.bc.O2: %.bc.O0
+	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O2) -o $@ $<
+%.bc.O3: %.bc.O0
+	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O3) -o $@ $<
 
 %.bc.O3.cg: %.bc.O3
-	#$(MYLLC) -O3 $< -o $<.cg.tmp
-	#rm -f $<.cg.tmp
-	#$(MYLLVM_AS) $@.ll -o $@
+	$(MYLLC) -O3 $< -o $<.cg.tmp
+	rm -f $<.cg.tmp
+	$(MYLLVM_AS) $@.ll -o $@
 
-#%.bc.O3.cg: %.c
-#	$(CLANG_I386) $(CFLAGS) -Xclang -disable-llvm-passes $(INCLUDES) -m32 -O3 -emit-llvm $^ -c -o $@.tmp
-#	$(MYLLC) -O3 $@.tmp -o $@.cg.tmp
-#	#rm -f $@.cg.tmp
-#	mv -f $@.tmp.cg.ll $@.ll
-#	$(MYLLVM_AS) $@.ll -o $@
+# Executable files generated using LLC (should be identical as clang; here, just to check)
+%.llc.O0.i386: %.bc.O0
+	$(LLC) -O0 -filetype=obj $< -o $@.tmp.o
+	$(CLANG_I386) -O0 $@.tmp.o $(LIBS) -o $@
+
+%.llc.O2.i386: %.bc.O0
+	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O2) -o $@.tmp $<
+	$(LLC) -O2 -filetype=obj $@.tmp -o $@.tmp.o
+	$(CLANG_I386) -O2 $@.tmp.o $(LIBS) -o $@
+
+%.llc.O3.i386: %.bc.O0
+	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O3) -o $@.tmp $<
+	$(LLC) -O3 -filetype=obj $@.tmp -o $@.tmp.o
+	$(CLANG_I386) -O3 $@.tmp.o $(LIBS) -o $@
 
 # LLVM BC text
 
-%.s: %
+%.bc.s: %.bc
 	$(LLVM_DIS) < $< > $@
+
+# objdump
+
+%.s: %
+	$(OBJDUMP) -dx $< > $@

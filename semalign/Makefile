@@ -1,6 +1,6 @@
 include ../config.mak                        # paths
 include $(SRCDIR)/Make.conf                  # compiler paths and flags
-include $(SRCDIR)/Makefile.eqchecker.common  # build rules
+include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/semalign
@@ -12,10 +12,10 @@ GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(GCC_EQCHECKER_NOU
 CLANG_I386_EQCHECKER_FLAGS= $(CLANG_I386_EQCHECKER_FLAGS_COMMON) $(CLANG_EQCHECKER_NOUNROLL_FLAGS)
 ICC_I386_EQCHECKER_FLAGS= $(ICC_I386_EQCHECKER_FLAGS_COMMON) $(ICC_EQCHECKER_NOUNROLL_FLAGS)
 
-BC_O0_PROGS = $(addsuffix .bc.O0, $(PROGS_EQCHECKER))
-BC_O2_PROGS = $(addsuffix .bc.O2, $(PROGS_EQCHECKER))
-BC_O3_PROGS = $(addsuffix .bc.O3, $(PROGS_EQCHECKER))
-BC_O3cg_PROGS = $(addsuffix .bc.O3.cg, $(PROGS_EQCHECKER))
+EQCHECKER_BC_O0_PROGS = $(addsuffix .bc.eqchecker.O0, $(PROGS_EQCHECKER))
+EQCHECKER_BC_O2_PROGS = $(addsuffix .bc.eqchecker.O2, $(PROGS_EQCHECKER))
+EQCHECKER_BC_O3_PROGS = $(addsuffix .bc.eqchecker.O3, $(PROGS_EQCHECKER))
+EQCHECKER_BC_O3cg_PROGS = $(addsuffix .bc.eqchecker.O3.cg, $(PROGS_EQCHECKER))
 
 EQCHECKER_I386_GCC_O0_PROGS = $(addsuffix .gcc.eqchecker.O0.i386, $(PROGS_EQCHECKER))
 EQCHECKER_I386_GCC_O2_PROGS = $(addsuffix .gcc.eqchecker.O2.i386, $(PROGS_EQCHECKER))
@@ -40,7 +40,7 @@ EQCHECKER_I386_PROGS = \
   $(EQCHECKER_I386_ICC_O3_PROGS) \
   #$(EQCHECKER_I386_CCOMP_O2_PROGS) \
 
-LLVM_PROGS     = $(BC_O0_PROGS) $(BC_O3_PROGS)
+LLVM_PROGS     = $(EQCHECKER_BC_O0_PROGS) $(EQCHECKER_BC_O3_PROGS)
 LLVM_PROGS_ASM = $(addsuffix .s, $(LLVM_PROGS))
 
 ALL_PROGS = $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
