@@ -71,7 +71,7 @@ EQCHECKER_I386_PROGS = \
   #$(EQCHECKER_I386_CCOMP_O2_PROGS)
 
 LLVM_PROGS     = $(EQCHECKER_BC_O0_PROGS) $(EQCHECKER_BC_O3_PROGS)
-LLVM_PROGS_ASM = $(addsuffix .s, $(LLVM_PROGS))
+LLVM_PROGS_ASM = $(addsuffix .ll, $(LLVM_PROGS))
 
 ALL_PROGS = $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
 
@@ -79,7 +79,7 @@ ALL_PROGS = $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
 
 all: $(ALL_PROGS)
 	# HACK for current build
-	$(foreach t,$(EQCHECKER_BC_O0_PROGS),sed -i 's/immarg//g' $(t).s;)
+	$(foreach t,$(EQCHECKER_BC_O0_PROGS),sed -i 's/immarg//g' $(t).ll;)
 
 clean:
 	rm -f *.o *.tmp $(ALL_PROGS)
