@@ -2,8 +2,9 @@
 
 set -eu # fail on error
 
-# generate .etfg and .tfg files 
-python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n semalign_ex_src.bc.O0.s semalign_ex_dst.gcc.eqchecker.O3.i386
-python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n semalign_ex_src.bc.O0.s semalign_ex_dst.clang.eqchecker.O3.i386
-python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n semalign_ex_src.bc.O0.s semalign_ex_dst.icc.eqchecker.O3.i386
-	
+source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_gentest.sh
+
+for f in ${PROGS_PREFIX}
+do
+  gen_for_src_dst ${f}
+done
