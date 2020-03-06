@@ -18,7 +18,7 @@ source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh
 > chaperon_commands
 for f in ${PROGS}
 do
-  gen_for_all ${f} > chaperon_commands
+  gen_for_all ${f} >> chaperon_commands
 done
 
 parallel --load '100%' < chaperon_commands
