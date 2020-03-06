@@ -6,13 +6,11 @@ set -eu # fail on error
 
 # function specific eqflags
 declare -A g_eqflags
-g_eqflags["propagate"]="--max_lookahead 2"
-g_eqflags["digit10"]="--max_lookahead 8 --unroll-factor 8"
-#g_eqflags["memmove.clang"]="--unroll-factor 8 --max_lookahead 8" # need disjunctive inequality predicates
-#g_eqflags["memset.clang"]="--max_lookahead 16 --unroll-factor 16" # clang generates unsupported opcode `pshufb`
-g_eqflags["findmax.clang"]="--global-timeout 60" # clang generates vectorized max opcode; fail early
-g_eqflags["memccpy_fail"]="--global-timeout 3600" # is supposed to fail; 3600s should be enough to test soundness
-g_eqflags["memchr_fail"]="--global-timeout 3600"  # is supposed to fail; 3600s should be enough to test soundness
+g_eqflags["propagate.propagate"]="--max_lookahead 2"
+g_eqflags["digit10.digit10"]="--max_lookahead 8 --unroll-factor 8"
+#g_eqflags["memmove.memmove.clang"]="--unroll-factor 8 --max_lookahead 8" # need disjunctive inequality predicates
+#g_eqflags["memset.memset.clang"]="--max_lookahead 16 --unroll-factor 16" # clang generates unsupported opcode `pshufb`
+g_eqflags["findmax.findmax.clang"]="--global-timeout 60" # clang generates vectorized max opcode; fail early
 
 ###########################
 

@@ -7,14 +7,11 @@ VPATH = $(SRCDIR)/reve
 
 PROGS_PREFIX := digit10      \
                 memccpy      \
-                memccpy_fail \
                 memchr       \
-                memchr_fail  \
                 memcpy_a     \
                 memcpy_b     \
                 memmove      \
                 memrchr      \
-                memrchr_fail \
                 propagate    \
                 stpcpy       \
                 strcmp       \
