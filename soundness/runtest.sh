@@ -6,7 +6,7 @@ set -eu # fail on error
 
 # function specific eqflags
 declare -A g_eqflags
-g_global_eqflags="--global-timeout 3600" # are supposed to fail; 3600s should be enough to test soundness
+g_global_eqflags="--global-timeout 3600" # these tests are supposed to fail; 3600s should be enough to test soundness
 
 ###########################
 

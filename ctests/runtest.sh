@@ -22,6 +22,8 @@ g_eqflags["knucleotide.hash_table_size.icc"]="--unroll-factor 4 --max_lookahead 
 g_eqflags["knucleotide.main"]="--unroll-factor 2"
 g_eqflags["sha1.do_bench.clang"]="--unroll-factor 16" # reads from RODATA
 
+g_global_eqflags="--global-timeout 7200" # should be enough for most
+
 ###########################
 
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh

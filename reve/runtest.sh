@@ -12,6 +12,8 @@ g_eqflags["digit10.digit10"]="--max_lookahead 8 --unroll-factor 8"
 #g_eqflags["memset.memset.clang"]="--max_lookahead 16 --unroll-factor 16" # clang generates unsupported opcode `pshufb`
 g_eqflags["findmax.findmax.clang"]="--global-timeout 60" # clang generates vectorized max opcode; fail early
 
+g_global_eqflags="--global-timeout 600" # should be enough
+
 ###########################
 
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh
