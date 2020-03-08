@@ -17,4 +17,4 @@ do
   gen_for_src_dst ${f} >> chaperon_commands
 done
 
-parallel --load '100%' < chaperon_commands
+parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
