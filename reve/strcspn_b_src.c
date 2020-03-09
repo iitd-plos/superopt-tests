@@ -20,7 +20,7 @@ size_t strcspn(const char *s, const char *reject) {
 
     while (*s) {
         char ch = *s++;
-        if (strchr(reject, ch) == NULL) {
+        if (strchr(reject, ch) == NULL) { // inlining is required
             ++count;
         } else {
             return count;
