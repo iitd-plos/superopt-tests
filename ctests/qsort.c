@@ -112,6 +112,7 @@ int quicksort_char(int lo, int hi, char base[])
       }
     }
     temp=base[i]; base[i]=base[hi]; base[hi]=temp;
+    quicksort_char(lo,i-1,base);  quicksort_char(i+1,hi,base);
   }
   return 0;
 }
