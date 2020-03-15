@@ -5,6 +5,7 @@ include $(SRCDIR)/Makefile.common            # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/bzip2
 
+#PROGS := bzip2 bzip2_minimal_changes
 PROGS := bzip2
 # make available to gentest.sh and runtest.sh
 export PROGS
