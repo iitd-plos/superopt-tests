@@ -3,9 +3,9 @@ include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/bzip2
+VPATH = $(SRCDIR)/bzip2_minimal_changes
 
-PROGS := bzip2
+PROGS := bzip2_minimal_changes
 # make available to gentest.sh and runtest.sh
 export PROGS
 

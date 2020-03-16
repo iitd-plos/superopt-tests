@@ -365,9 +365,9 @@ int debug_time();
 /*--
    change to 1, or compile with -DDEBUG=1 to debug
 --*/
-#ifndef DEBUG
-#define DEBUG 0
-#endif
+//#ifndef DEBUG
+//#define DEBUG 0
+//#endif
 
 
 /*---------------------------------------------------*/
@@ -1245,6 +1245,7 @@ void makeMaps ( void )
 
 
 /*---------------------------------------------*/
+UChar  yy[256];
 void generateMTFValues ( void )
 {
    UChar  yy[256];
@@ -1329,6 +1330,7 @@ void generateMTFValues ( void )
 #define GREATER_ICOST 15
 
 Bool inUse16[16];
+UChar pos[N_GROUPS];
 void sendMTFValues ( void )
 {
    Int32 v, t, i, j, gs, ge, totc, bt, bc, iter;
@@ -1481,7 +1483,7 @@ void sendMTFValues ( void )
                    iter+1, totc/8 );
          for (t = 0; t < nGroups; t++)
             fprintf ( stderr, "%d ", fave[t] );
-         fprintf ( stderr, "\n" );
+         fprintf ( stderr, ".\n" );
       }
 
       /*--
@@ -1500,7 +1502,7 @@ void sendMTFValues ( void )
 
    /*--- Compute MTF values for the selectors. ---*/
    {
-      UChar pos[N_GROUPS], ll_i, tmp2, tmp;
+      UChar /*pos[N_GROUPS],*/ ll_i, tmp2, tmp;
       for (i = 0; i < nGroups; i++) pos[i] = i;
       for (i = 0; i < nSelectors; i++) {
          ll_i = selector[i];
@@ -1656,7 +1658,7 @@ void recvDecodingTables ( void )
 
    /*--- Undo the MTF values for the selectors. ---*/
    {
-      UChar pos[N_GROUPS], tmp, v;
+      UChar /*pos[N_GROUPS],*/ tmp, v;
       for (v = 0; v < nGroups; v++) pos[v] = v;
    
       for (i = 0; i < nSelectors; i++) {
@@ -1717,7 +1719,6 @@ void recvDecodingTables ( void )
 
 
 /*---------------------------------------------*/
-UChar  yy[256];
 void getAndMoveToFrontDecode ( void )
 {
    //UChar  yy[256];
@@ -2418,7 +2419,7 @@ void doReversibleTransformation ( void )
 {
    Int32 i;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   if (verbosity >= 2) fprintf ( stderr, "doReversibleTransformation: \n");
 
    workLimit       = workFactor * last;
    workDone        = 0;
@@ -2894,7 +2895,7 @@ void compressStream ( FILE *stream, FILE *zStream )
 
    combinedCRC = 0;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   if (verbosity >= 2) fprintf ( stderr, "compressStream:\n");
 
    while (True) {
 
@@ -3165,7 +3166,7 @@ Bool testStream ( FILE *zStream )
    setDecompressStructureSizes ( magic4 - '0' );
    computedCombinedCRC = 0;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   if (verbosity >= 2) fprintf ( stderr, "testStream:\n");
    currBlockNo = 0;
 
    while (True) {
@@ -4303,7 +4304,7 @@ int spec_write(int fd, unsigned char *buf, int size);
 int spec_putc(unsigned char ch, int fd);
 int debug_time();
 
-#define DEBUG
+//#define DEBUG
 
 #ifdef DEBUG
 int dbglvl=4;
