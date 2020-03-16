@@ -1031,7 +1031,7 @@ void initWeightUsingfreq(Int32* freq, Int32 alphaSize)
 {
   Int32 i;
   for (i = 0; i < alphaSize; i++) {
-    DBG(__LINE__); // required to prevent vectorization with RODATA load
+    //DBG(__LINE__); // required to prevent vectorization with RODATA load
     weight[i+1] = (freq[i] == 0 ? 1 : freq[i]) << 8;
   }
 }
@@ -1336,7 +1336,7 @@ void inityy(Int32 n)
 {
   Int32 i;
   for (i = 0; i < n; i++) {
-    DBG(__LINE__); // required to prevent vectorization with RODATA load
+    //DBG(__LINE__); // required to prevent vectorization with RODATA load
     yy[i] = (UChar) i;
   }
 }
@@ -1468,7 +1468,7 @@ generateInitialCodingTables(Int32 nGroups, Int32 alphaSize)
           (100.0 * (float)aFreq) / (float)nMTF */);
 
     for (v = 0; v < alphaSize; v++) {
-      DBG(__LINE__); // required to prevent vectorization with loads from RODATA
+      //DBG(__LINE__); // required to prevent vectorization with loads from RODATA
       if (v >= gs && v <= ge)
         len[nPart-1][v] = LESSER_ICOST;
       else
@@ -1490,7 +1490,7 @@ computeMTFforSelectors(Int32 nGroups, Int32 nSelectors)
   //UChar pos[N_GROUPS];
   UChar ll_i, tmp2, tmp;
   for (i = 0; i < nGroups; i++) {
-    DBG(__LINE__); // required to prevent vectorization with RODATA load
+    //DBG(__LINE__); // required to prevent vectorization with RODATA load
     pos[i] = i;
   }
   for (i = 0; i < nSelectors; i++) {
@@ -1699,7 +1699,7 @@ void sendMTFValues ( void )
    for (t = 0; t < N_GROUPS; t++) {
       DBG(__LINE__); // easy anchor
       for (v = 0; v < alphaSize; v++) {
-         DBG(__LINE__); // required for preventing vectorization with RODATA load
+         //DBG(__LINE__); // required for preventing vectorization with RODATA load
          len[t][v] = GREATER_ICOST;
       }
    }
@@ -1860,7 +1860,7 @@ void initpos(Int32 nGroups)
 {
   UChar v;;
   for (v = 0; v < nGroups; v++) {
-    DBG(__LINE__); // required to prevent vectorization with RODATA load
+    //DBG(__LINE__); // required to prevent vectorization with RODATA load
     pos[v] = v;
   }
 }
@@ -2415,7 +2415,7 @@ void initrunningOrder()
 {
   Int32 i;
   for (i = 0; i <= 255; i++) {
-    DBG(__LINE__); // required to prevent vectorization with RODATA load
+    //DBG(__LINE__); // required to prevent vectorization with RODATA load
     runningOrder[i] = i;
   }
 }
