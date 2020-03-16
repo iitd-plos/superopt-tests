@@ -2212,7 +2212,7 @@ void sortIt ( void )
       {
          Int32 vv;
          Int32 h = 1;
-         do h = 3 * h + 1; while (h <= 256);
+         do h = 3 * h + 1; while (h <= 256); // closed form computation optimization here
          do {
             h = h / 3;
             for (i = h; i <= 255; i++) {
@@ -2948,10 +2948,11 @@ void compressStream ( FILE *stream, FILE *zStream )
       ERROR_IF_NOT_ZERO ( ferror(zStream) );
    }
 
-   if (verbosity >= 2 && nBlocksRandomised > 0)
-      fprintf ( stderr, "    %d block%s needed randomisation\n", 
-                        nBlocksRandomised,
-                        nBlocksRandomised == 1 ? "" : "s" );
+   // XXX we cannot match ITE on RODATA function args
+   //if (verbosity >= 2 && nBlocksRandomised > 0)
+   //   fprintf ( stderr, "    %d block%s needed randomisation\n",
+   //                     nBlocksRandomised,
+   //                     nBlocksRandomised == 1 ? "" : "s" );
 
    /*--
       Now another magic 48-bit number, 0x177245385090, to
@@ -3428,6 +3429,7 @@ void mySignalCatcher ( IntNative n )
 /*---------------------------------------------*/
 void mySIGSEGVorSIGBUScatcher ( IntNative n )
 {
+  // XXX tail merging here -- single call to fprintf
    if (opMode == OM_Z)
       fprintf ( stderr,
                 "\n%s: Caught a SIGSEGV or SIGBUS whilst compressing,\n"
