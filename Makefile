@@ -1,7 +1,7 @@
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-EQCHECK_TARGETS := bzip2 tsvc semalign reve micro
+EQCHECK_TARGETS := bzip2 tsvc semalign reve micro #ctests
 CODEGEN_TARGETS := compcert-tests
 TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS)
 

@@ -16,5 +16,12 @@ void *memccpy(void *t, const void *f, int c, size_t n) {
 
 int main(int argc, char* argv[])
 {
+  // only 1 byte is written (cf. memccpy_fail_src where 4 bytes are written for same input)
+  /*const char src[] = { 128, 1, 2, 3 };
+  char dst[4] = { 'A', 'B', 'C', 'D' };
+  memccpy(dst, src, 128, 4);
+  for (int i = 0; i < 4; ++i)
+    printf("%c", dst[i]);
+  */
   return 0;
 }
