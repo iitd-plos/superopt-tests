@@ -3,24 +3,15 @@ include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/micro
+VPATH = $(SRCDIR)/soundness
 
-PROGS := ddec \
-         lerner
+PROGS_PREFIX := memccpy      \
+                memchr       \
+                memrchr      \
 
-PROGS_PREFIX := barthe \
-                loop_unswitching \
-                peeling \
-                soft_pipe \
-                splitting \
-                tiling
-                #lookuptable # reading from RODATA is not supported
-
-# make them available to gentest.sh and runtest.sh
-export PROGS
 export PROGS_PREFIX
 
-PROGS_EQCHECKER := $(PROGS) $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
+PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
 
 # flags
 GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS) $(GCC_EQCHECKER_NOUNROLL_FLAGS)

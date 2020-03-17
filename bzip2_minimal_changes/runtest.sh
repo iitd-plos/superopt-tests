@@ -6,20 +6,14 @@ set -eu # fail on error
 
 declare -A g_eqflags
 g_eqflags["qSort3"]="--smt-query-timeout 600" # timeouts otherwise
+#g_eqflags["loadAndRLEsource"]="--unroll-factor 16" # higher unroll-factor required on exit path
+#g_eqflags["getAndMoveToFrontDecode"]="--unroll-factor 16" # higher unroll-factor required on exit path
 
 ###########################
 
-<<<<<<< HEAD
-    echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${binary}.${func}.${compiler}.O3.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${func} ${eq_opts} ${binary}.bc.eqchecker.O0.ll.ALL.etfg ${binary}.${compiler}.eqchecker.O3.i386.ALL.tfg\""
-  done < ${infile}
-}
-
-mkdir -p ${EQLOGS}
-=======
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest_from_file.sh
->>>>>>> origin/ipa
 
-binary=bzip2
+binary=bzip2_minimal_changes
 compiler=clang
 > chaperon_commands
 

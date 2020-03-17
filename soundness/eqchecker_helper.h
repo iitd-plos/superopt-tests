@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdio.h>
+
 void MYmyexit(int ec);
 void MYmymemset(void *s, int c, size_t n);
 void *MYmymemcpy(void *a, const void *b, size_t sz);
@@ -12,14 +14,13 @@ char MYmy_char_inc(char *i);
 int MYmyrand_char();
 void MYmyprint_char(char c);
 void MYmyprint_int(int c);
-void *MYmymalloc(size_t size);
 void MYmyfree(void *ptr);
 void *MYmycalloc(size_t nmemb, size_t size);
 char *MYmystrdup(char const *);
 FILE *MYmyfopen(char const *path, char const *mode);
 void *MYmyrealloc(void *ptr, size_t size);
 int MYmytoupper(int c);
-char* MYmystrerrorno();
+char* MYmystrerrno();
 void MYmydebug(int n);
 void MYmydebug2(int n);
 
@@ -29,8 +30,6 @@ void MYmydebug2(int n);
 #define memcmp MYmymemcmp
 #define strcmp MYmystrcmp
 #define strncmp MYmystrncmp
-#define malloc MYmymalloc
-#define exit MYmyexit
 
 
 extern void (*dbgptr)(int);
