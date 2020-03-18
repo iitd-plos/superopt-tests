@@ -19,7 +19,8 @@ gen_commands()
     [[ "${line}" == '#'* ]] && continue
     arr=(${line})
     func=${arr[0]} # take out the first space separated word
-    eqflags=${g_eqflags[$func]:-}
+    eqflags=${g_global_eqflags:-}
+    eqflags="${eqflags} ${g_eqflags[$func]:-}"
     eqflags_comp=${g_eqflags[${func}.${compiler}]:-${eqflags}}
     final_eq_opts="${eq_opts} ${eqflags_comp}"
 
