@@ -7,6 +7,8 @@ set -eu # fail on error
 declare -A g_eqflags
 g_eqflags["qSort3"]="--smt-query-timeout 600" # timeouts otherwise
 
+g_global_eqflags="--global-timeout 7200" # everything above this should be terminated anyway
+
 ###########################
 
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest_from_file.sh
