@@ -34,4 +34,4 @@ do
   gen_for_all ${f} >> chaperon_commands
 done
 
-parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
+#parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
