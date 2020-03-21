@@ -18,9 +18,13 @@ do
   gen_for_src_dst ${f} >> chaperon_commands
 done
 
+<<<<<<< HEAD
+#parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
+=======
 for f in ${LL_ASM_PROGS:-}
 do
   gen_for_ll_as ${f} >> chaperon_commands
 done
 
 parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
+>>>>>>> ae1457e28482375cfdb293b614cba2941fca2a21
