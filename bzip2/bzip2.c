@@ -1031,7 +1031,7 @@ void initWeightUsingfreq(Int32* freq, Int32 alphaSize)
 {
   Int32 i;
   for (i = 0; i < alphaSize; i++) {
-    //DBG(__LINE__); // required to prevent vectorization with RODATA load
+    DBG(__LINE__); // required to prevent vectorization with ~~RODATA load~~ aliasing check which necessitate disjunctive invariant
     weight[i+1] = (freq[i] == 0 ? 1 : freq[i]) << 8;
   }
 }

@@ -21,3 +21,9 @@ gen_for_all()
   python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${file_pfx}.${BC_O0_SUFFIX} ${file_pfx}.${CLANG_O3_SUFFIX}
   python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${file_pfx}.${BC_O0_SUFFIX} ${file_pfx}.${ICC_O3_SUFFIX}
 }
+
+gen_for_ll_as()
+{
+  infile_pfx="$1"
+  python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${infile_pfx}.ll.${BC_O0_SUFFIX} ${infile_pfx}.as.${O0_SUFFIX}
+}
