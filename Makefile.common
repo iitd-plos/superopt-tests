@@ -180,3 +180,18 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 
 %.s: %
 	$(OBJDUMP) -dx $< > $@
+
+# .s files
+
+%.as.eqchecker.O0.i386.o: %.s
+	$(GCC_I386) -c $< -o $@
+
+%.as.eqchecker.O0.i386: %.as.eqchecker.O0.i386.o
+	cp $< $@
+	# no-op for now as `main' may not be present
+
+# LLVM LL
+
+%.ll.bc.eqchecker.O0: %.ll
+	$(LLVM_OPT) -mem2reg -strip-debug $< -o $@
+	# no linking

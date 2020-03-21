@@ -21,7 +21,7 @@ gen_commands()
     func=${arr[0]} # take out the first space separated word
     eqflags=${g_eqflags[$func]:-}
     eqflags_comp=${g_eqflags[${func}.${compiler}]:-${eqflags}}
-    final_eq_opts="${eq_opts} ${eqflags_comp}"
+    final_eq_opts="${eq_opts} ${g_global_eqflags:-} ${eqflags_comp}"
 
     echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${binary}.${func}.${compiler}.O3.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${func} ${final_eq_opts} ${binary}.${BC_O0_SUFFIX}.ALL.etfg ${binary}.${compiler}.${O3_SUFFIX}.ALL.tfg\""
   done < ${infile}
