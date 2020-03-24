@@ -12,7 +12,7 @@ g_eqflags["digit10.digit10"]="--unroll-factor 8"
 #g_eqflags["memset.memset.clang"]="--unroll-factor 8" # clang generates unsupported opcode `pshufb`
 g_eqflags["findmax.findmax.clang"]="--global-timeout 60" # clang generates vectorized max opcode; fail early
 
-g_global_eqflags="--global-timeout 0" # should be enough
+g_global_eqflags="--global-timeout 600" # should be enough
 
 ###########################
 
