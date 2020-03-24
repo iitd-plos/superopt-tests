@@ -25,7 +25,7 @@ gen_for_src_dst()
     eqflags="${eqflags} ${g_eqflags[$infile_pfx]:-}"
     for compiler in clang gcc icc; do
       eqflags_comp=${g_eqflags[${infile_pfx}.${compiler}]:-${eqflags}}
-      echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${infile_pfx}.${compiler}.${O3_SUFFIX}.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags_comp} --proof ${PWD}/${infile_pfx}.${compiler}.proof ${PWD}/${file_pfx}_src.${BC_O0_SUFFIX}.ALL.etfg ${PWD}/${file_pfx}_dst.${compiler}.${O3_SUFFIX}.ALL.tfg\""
+      echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${infile_pfx}.${compiler}.${O3_SUFFIX}${EQLOG_SUFFIX:-}.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags_comp} --proof ${PWD}/${infile_pfx}.${compiler}.proof ${PWD}/${file_pfx}_src.${BC_O0_SUFFIX}.ALL.etfg ${PWD}/${file_pfx}_dst.${compiler}.${O3_SUFFIX}.ALL.tfg\""
     done
   done
 }
@@ -40,7 +40,7 @@ gen_for_all()
     eqflags="${eqflags} ${g_eqflags[$infile_pfx]:-}"
     for compiler in clang gcc icc; do
       eqflags_comp=${g_eqflags[${infile_pfx}.${compiler}]:-${eqflags}}
-    echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${infile_pfx}.${compiler}.O3.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags_comp} --proof ${PWD}/${infile_pfx}.${compiler}.proof ${PWD}/${file_pfx}.${BC_O0_SUFFIX}.ALL.etfg ${PWD}/${file_pfx}.${compiler}.${O3_SUFFIX}.ALL.tfg\""
+    echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${infile_pfx}.${compiler}.O3${EQLOG_SUFFIX:-}.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags_comp} --proof ${PWD}/${infile_pfx}.${compiler}.proof ${PWD}/${file_pfx}.${BC_O0_SUFFIX}.ALL.etfg ${PWD}/${file_pfx}.${compiler}.${O3_SUFFIX}.ALL.tfg\""
     done
   done
 }
@@ -53,6 +53,6 @@ gen_for_ll_as()
     infile_pfx="${file_pfx}.${fn}"
     eqflags=${g_global_eqflags:-}
     eqflags="${eqflags} ${g_eqflags[$infile_pfx]:-}"
-    echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${infile_pfx}.O0.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags} --proof ${infile_pfx}.proof ${file_pfx}.ll.${BC_O0_SUFFIX}.ALL.etfg ${file_pfx}.as.${O0_SUFFIX}.ALL.tfg\""
+    echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${EQLOGS}/${infile_pfx}.O0${EQLOG_SUFFIX}.eqlog\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags} --proof ${infile_pfx}.proof ${file_pfx}.ll.${BC_O0_SUFFIX}.ALL.etfg ${file_pfx}.as.${O0_SUFFIX}.ALL.tfg\""
   done
 }
