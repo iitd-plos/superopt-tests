@@ -3,6 +3,7 @@
 set -eu # fail on error
 
 EQLOGS=${EQLOGS_DIR:-${PWD}/eqlogs}
+EQLOGS=$(realpath ${EQLOGS})
 mkdir -p ${EQLOGS}
 
 BC_O0_SUFFIX=${BC_O0_SUFFIX}.ll
