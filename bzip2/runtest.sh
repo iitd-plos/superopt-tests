@@ -6,6 +6,7 @@ set -eu # fail on error
 
 declare -A g_eqflags
 g_eqflags["qSort3"]="--smt-query-timeout 600" # timeouts otherwise
+g_eqflags["loadAndRLEsource"]="--smt-query-timeout 600" # timeouts otherwise
 
 g_global_eqflags=" --global-timeout 7200"  # everything above this should be terminated anyway
 
