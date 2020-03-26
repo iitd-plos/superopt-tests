@@ -18,6 +18,11 @@ do
   gen_for_src_dst ${f} >> chaperon_commands
 done
 
+for f in ${PROGS:-}
+do
+  gen_for_all ${f} >> chaperon_commands
+done
+
 for f in ${LL_ASM_PROGS:-}
 do
   gen_for_ll_as ${f} >> chaperon_commands
