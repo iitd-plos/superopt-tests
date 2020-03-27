@@ -1,5 +1,6 @@
 int x,y;
-__attribute__((noinline)) void ddai(int n)
+// closed-form computation by clang; store sinking by gcc and icc
+void ddai(int n)
 {
   x=0; y=0; 
   int i=0; 
