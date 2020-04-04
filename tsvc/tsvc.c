@@ -2260,7 +2260,7 @@ int s1421()
 		}
 	temp = 0;
 	for (int i = 0; i < LEN/2; i++){
-		temp += xx[i];
+		temp += xx[i]; // store sinking in gcc,clang
 	}
 	return 0;
 }
@@ -2300,7 +2300,7 @@ int s423()
 		}
 	temp = 0.;
 	for (int i = 0; i < LEN; i++){
-		temp += array[i];
+		temp += array[i]; // store sinking in gcc, clang
 	}
 	return 0;
 }
@@ -2427,9 +2427,9 @@ int s471(){
 			x[i] = b[i] + d[i] * d[i];
 			b[i] = c[i] + d[i] * e[i];
 		}
-	temp = 0.;
+	temp = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += x[i];
+		temp += x[i]; // store sinking in gcc,clang
 	}
 	return 0;
 }
