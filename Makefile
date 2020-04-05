@@ -7,7 +7,7 @@ EQCHECK_TARGETS := bzip2 tsvc semalign reve ctests micro soundness #bzip2_minima
 CODEGEN_TARGETS := compcert-tests
 TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS)
 
-PARALLEL_LOAD_PERCENT ?= 75
+PARALLEL_LOAD_PERCENT ?= 33
 
 # rules
 
