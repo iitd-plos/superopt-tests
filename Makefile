@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
@@ -5,6 +7,8 @@ EQCHECK_TARGETS := bzip2 tsvc semalign reve ctests micro soundness #bzip2_minima
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS)
+
+PARALLEL_LOAD_PERCENT ?= 33
 
 # rules
 
@@ -29,6 +33,9 @@ gentest:
 
 runtest:
 	$(foreach t,$(EQCHECK_TARGETS),make -C $(BUILDDIR)/$(t) runtest || exit;)
+	true > $(BUILDDIR)/all_chaperon_commands
+	$(foreach t,$(EQCHECK_TARGETS), [[ -f $(BUILDDIR)/$(t)/chaperon_commands ]] && cat $(BUILDDIR)/$(t)/chaperon_commands >> $(BUILDDIR)/all_chaperon_commands || exit;)
+	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands
 
 typecheck_test:
 	$(SUPEROPT_PROJECT_DIR)/superopt/typecheck

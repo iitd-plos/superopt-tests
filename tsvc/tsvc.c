@@ -1201,15 +1201,16 @@ int s253()
 int s254()
 {
 
-//	scalar and array expansion
-//	carry around variable
+  //	scalar and array expansion
+  //	carry around variable
 
 	TYPE x;
-		x = b[LEN-1];
-		for (int i = 0; i < LEN; i++) {
-			a[i] = (b[i] + x) * (TYPE).5;
-			x = b[i];
-		}
+	x = b[LEN-1];
+	for (int i = 0; i < LEN; i++) {
+		//a[i] = (b[i] + x) * (TYPE).5;
+		a[i] = (b[i] + x) / 2;
+		x = b[i];
+	}
 	return 0;
 }
 
@@ -2260,7 +2261,7 @@ int s1421()
 		}
 	temp = 0;
 	for (int i = 0; i < LEN/2; i++){
-		temp += xx[i];
+		temp += xx[i]; // store sinking in gcc,clang
 	}
 	return 0;
 }
@@ -2300,7 +2301,7 @@ int s423()
 		}
 	temp = 0.;
 	for (int i = 0; i < LEN; i++){
-		temp += array[i];
+		temp += array[i]; // store sinking in gcc, clang
 	}
 	return 0;
 }
@@ -2427,9 +2428,9 @@ int s471(){
 			x[i] = b[i] + d[i] * d[i];
 			b[i] = c[i] + d[i] * e[i];
 		}
-	temp = 0.;
+	temp = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += x[i];
+		temp += x[i]; // store sinking in gcc,clang
 	}
 	return 0;
 }

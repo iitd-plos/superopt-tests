@@ -1699,7 +1699,7 @@ void sendMTFValues ( void )
    for (t = 0; t < N_GROUPS; t++) {
       DBG(__LINE__); // easy anchor
       for (v = 0; v < alphaSize; v++) {
-         //DBG(__LINE__); // required for preventing vectorization with RODATA load
+         DBG(__LINE__); // required for preventing ~~vectorization with RODATA load~~ timeouts
          len[t][v] = GREATER_ICOST;
       }
    }

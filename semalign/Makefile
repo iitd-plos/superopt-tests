@@ -5,7 +5,7 @@ include $(SRCDIR)/Makefile.common            # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/semalign
 
-PROGS_PREFIX := semalign_ex
+PROGS_PREFIX := bitflip strlen #strchrnul
 export PROGS_PREFIX
 
 PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))

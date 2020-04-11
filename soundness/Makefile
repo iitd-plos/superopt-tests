@@ -5,15 +5,17 @@ include $(SRCDIR)/Makefile.common            # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/soundness
 
-LL_ASM_PROGS := out_of_bounds
-PROGS_PREFIX := #memccpy      \
+LL_ASM_PROGS := out_of_bounds loop_out_of_bounds
+PROGS :=
+PROGS_PREFIX := memccpy      \
                 memchr       \
                 memrchr      \
 
 export LL_ASM_PROGS
+export PROGS
 export PROGS_PREFIX
 
-PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
+PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX)) $(PROGS)
 ASM_PROGS_EQCHECKER := $(LL_ASM_PROGS)
 LL_PROGS_EQCHECKER := $(LL_ASM_PROGS)
 

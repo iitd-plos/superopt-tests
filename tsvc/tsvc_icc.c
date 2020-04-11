@@ -2426,6 +2426,7 @@ int s471(){
 			x[i] = b[i] + d[i] * d[i];
 			b[i] = c[i] + d[i] * e[i];
 		}
+	  // icc fuses the following loop into the first one
 	temp = 0.;
 	for (int i = 0; i < LEN; i++){
 		temp += x[i];
