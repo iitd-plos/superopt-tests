@@ -3,7 +3,8 @@ include config-host.mak      # BUILDDIR
 # add new dirs' targets here
 EQCHECK_TARGETS := bzip2 tsvc semalign reve ctests micro soundness #bzip2_minimal_changes
 CODEGEN_TARGETS := compcert-tests
-TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS)
+OOELALA_TARGETS := ooelala-tests
+TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS)
 
 # rules
 
@@ -18,7 +19,7 @@ distclean: clean
 $(BUILDDIR):
 	mkdir -p $@
 
-$(EQCHECK_TARGETS) $(CODEGEN_TARGETS):
+$(TARGETS):
 	mkdir -p $(BUILDDIR)/$@
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	make -C $(BUILDDIR)/$@
@@ -34,5 +35,8 @@ typecheck_test:
 
 codegen_test:
 	$(foreach t,$(CODEGEN_TARGETS),make -C $(BUILDDIR)/$(t) codegen_test || exit;)
+
+ooelala_test:
+	$(foreach t,$(OOELALA_TARGETS),make -C $(BUILDDIR)/$(t) ooelala_test || exit;)
 
 .PHONY: all clean distclean $(TARGETS) gentest runtest
