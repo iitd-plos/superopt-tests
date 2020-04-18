@@ -23,7 +23,7 @@ superopt_tests_dir = os.path.abspath(superopt_root + "/superopt-tests")
 superopt_tests_build = os.path.abspath(superopt_tests_dir + "/build")
 prefix = args.prefix
 lli = "lli-3.4"
-llvm2tfg_build_dir = os.path.abspath(superopt_root + "/llvm-build")
+llvm2tfg_build_dir = os.path.abspath(superopt_root + "/llvm-project/build")
 
 color_red="`tput bold; tput setaf 1`"
 color_green="`tput bold; tput setaf 2`"
