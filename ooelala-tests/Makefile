@@ -48,3 +48,6 @@ ooelala_test: array_min_max-run nested_loop-run
 	$(TIME) -f "gcc : %U" ./$(test).gcc
 	$(TIME) -f "icc : %U" ./$(test).icc
 	$(TIME) -f "ooelala : %U" ./$(test).ooelala
+
+clean::
+	rm -f *.gcc *.clang *.icc *.ooelala
