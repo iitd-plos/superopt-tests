@@ -30,6 +30,9 @@ $(TARGETS):
 
 gentest:
 	$(foreach t,$(EQCHECK_TARGETS),make -C $(BUILDDIR)/$(t) gentest || exit;)
+	true > $(BUILDDIR)/all_gentest_chaperon_commands
+	$(foreach t,$(EQCHECK_TARGETS), [[ -f $(BUILDDIR)/$(t)/gentest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/gentest_chaperon_commands >> $(BUILDDIR)/all_gentest_chaperon_commands || exit;)
+	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_gentest_chaperon_commands
 
 runtest:
 	$(foreach t,$(EQCHECK_TARGETS),make -C $(BUILDDIR)/$(t) runtest || exit;)

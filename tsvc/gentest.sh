@@ -4,8 +4,9 @@ set -eu # fail on error
 
 BC_O0_SUFFIX=${BC_O0_SUFFIX}.ll
 
+> gentest_chaperon_commands
 # generate .etfg and .tfg files 
-python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n  tsvc.${BC_O0_SUFFIX} tsvc.${CLANG_O3_SUFFIX}
+echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/tsvc.${BC_O0_SUFFIX}     ${PWD}/tsvc.${CLANG_O3_SUFFIX}"     >> gentest_chaperon_commands
 # TODO: pass a flag so that .etfg is not regenerated
-python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n tsvc.${BC_O0_SUFFIX} tsvc.${GCC_O3_SUFFIX}
-python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n  tsvc_icc.${BC_O0_SUFFIX} tsvc_icc.${ICC_O3_SUFFIX}
+echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/tsvc.${BC_O0_SUFFIX}     ${PWD}/tsvc.${GCC_O3_SUFFIX}"       >> gentest_chaperon_commands
+echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/tsvc_icc.${BC_O0_SUFFIX} ${PWD}/tsvc_icc.${ICC_O3_SUFFIX}"   >> gentest_chaperon_commands
