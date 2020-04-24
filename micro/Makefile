@@ -8,13 +8,16 @@ VPATH = $(SRCDIR)/micro
 PROGS := ddec \
          lerner
 
-PROGS_PREFIX := barthe \
-                loop_unswitching \
-                peeling \
-                soft_pipe \
-                splitting \
-                tiling
-                #lookuptable # reading from RODATA is not supported
+PROGS_PREFIX := basedon \
+                #the following programs are non-bisimilar and so do not work currently
+                #barthe \
+                #loop_unswitching \
+                #peeling \
+                #soft_pipe \
+                #splitting \
+                #tiling
+                ##lookuptable # reading from RODATA is not supported
+
 
 # make them available to gentest.sh and runtest.sh
 export PROGS

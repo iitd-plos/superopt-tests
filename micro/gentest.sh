@@ -9,3 +9,7 @@ for f in ${PROGS}
 do
   gen_for_all ${f} >> gentest_chaperon_commands
 done
+for f in ${PROGS_PREFIX}
+do
+  gen_for_src_dst ${f} >> gentest_chaperon_commands
+done
