@@ -1,4 +1,4 @@
-/* glibc */
+/* old glibc */
 #include <stddef.h>
 void *memrchr(const void *s, int c, size_t n) {
     const unsigned char *char_ptr;

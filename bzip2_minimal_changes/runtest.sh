@@ -15,14 +15,14 @@ g_global_eqflags="${g_global_eqflags:-} --disable_residual_loop_unroll" # path e
 
 ###########################
 
-source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest_from_file.sh
+source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh
 
 binary=bzip2_minimal_changes
 compiler=clang
 > chaperon_commands
 
-gen_commands eq_funcs_spec2k_bzip2_ext_nv ""                   >> chaperon_commands
-gen_commands eq_funcs_spec2k_bzip2_ext_v2 "--unroll-factor 4"  >> chaperon_commands
-gen_commands eq_funcs_spec2k_bzip2_ext_v8 "--unroll-factor 16" >> chaperon_commands
+gen_commands_from_file eq_funcs_spec2k_bzip2_ext_nv ""                   >> chaperon_commands
+gen_commands_from_file eq_funcs_spec2k_bzip2_ext_v2 "--unroll-factor 4"  >> chaperon_commands
+gen_commands_from_file eq_funcs_spec2k_bzip2_ext_v8 "--unroll-factor 16" >> chaperon_commands
 
 #parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
