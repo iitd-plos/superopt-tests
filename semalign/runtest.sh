@@ -26,8 +26,7 @@ done
 
 # expected memory safety check failure on page_size < 4
 g_eqflags["strlen.strlen"]="--unroll-factor 8 --page_size 2"
-EQLOG_SUFFIX=".safety_fail"
 
-gen_for_src_dst "strlen" >> chaperon_commands
+gen_for_src_dst "strlen" "safety_fail" >> chaperon_commands
 
 #parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands

@@ -15,18 +15,18 @@ g_eqflags["s423.clang"]="--unroll-factor 8"
 
 ################################
 
-source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest_from_file.sh
+source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh
 
 binary=tsvc
 > chaperon_commands
-compiler=gcc   gen_commands gcc_tsvc_funcs_vec      "--unroll-factor 4  --global-timeout 10000 --smt-query-timeout 300"                       >> chaperon_commands
-compiler=gcc   gen_commands gcc_tsvc_funcs_nonvec   "--unroll-factor 2  --global-timeout 10000 --smt-query-timeout 300"                       >> chaperon_commands
-compiler=clang gen_commands clang_tsvc_funcs_vec    "--unroll-factor 8 --global-timeout 10000 --smt-query-timeout 300"                        >> chaperon_commands
-compiler=clang gen_commands clang_tsvc_funcs_nonvec "--unroll-factor 2  --global-timeout 10000 --smt-query-timeout 300"                       >> chaperon_commands
+compiler=gcc   gen_commands_from_file gcc_tsvc_funcs_vec      "--unroll-factor 4  --global-timeout 10000 --smt-query-timeout 300"                       >> chaperon_commands
+compiler=gcc   gen_commands_from_file gcc_tsvc_funcs_nonvec   "--unroll-factor 2  --global-timeout 10000 --smt-query-timeout 300"                       >> chaperon_commands
+compiler=clang gen_commands_from_file clang_tsvc_funcs_vec    "--unroll-factor 8 --global-timeout 10000 --smt-query-timeout 300"                        >> chaperon_commands
+compiler=clang gen_commands_from_file clang_tsvc_funcs_nonvec "--unroll-factor 2  --global-timeout 10000 --smt-query-timeout 300"                       >> chaperon_commands
 
 binary=tsvc_icc
-compiler=icc   gen_commands icc_tsvc_funcs_vec      "--unroll-factor 4 --global-timeout 10000 --smt-query-timeout 300"                        >> chaperon_commands
-compiler=icc   gen_commands icc_tsvc_funcs_nonvec   "--unroll-factor 2 --global-timeout 10000 --smt-query-timeout 300"                        >> chaperon_commands
-compiler=icc   gen_commands icc_tsvc_funcs_reroll   "--unroll-factor 4 --dst-unroll-factor 5 --global-timeout 10000 --smt-query-timeout 300"  >> chaperon_commands
+compiler=icc   gen_commands_from_file icc_tsvc_funcs_vec      "--unroll-factor 4 --global-timeout 10000 --smt-query-timeout 300"                        >> chaperon_commands
+compiler=icc   gen_commands_from_file icc_tsvc_funcs_nonvec   "--unroll-factor 2 --global-timeout 10000 --smt-query-timeout 300"                        >> chaperon_commands
+compiler=icc   gen_commands_from_file icc_tsvc_funcs_reroll   "--unroll-factor 4 --dst-unroll-factor 5 --global-timeout 10000 --smt-query-timeout 300"  >> chaperon_commands
 
 #parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
