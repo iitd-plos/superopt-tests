@@ -5,7 +5,12 @@ include $(SRCDIR)/Makefile.common            # build rules
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/oopsla_tests
 
-PROGS_EQCHECKER := oopsla_tests
+PROGS := oopsla_tests
+
+# make available to gentest.sh and runtest.sh
+export PROGS
+
+PROGS_EQCHECKER := $(PROGS)
 
 # compiler flags
 GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS)
