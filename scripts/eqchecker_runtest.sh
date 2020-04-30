@@ -32,17 +32,17 @@ gen_command_all_compilers()
 {
   fn=$1
   etfg_file=$2
-  tfg_pfx=$3
+  tfg_comm_pfx=$3
   file_fn_pfx=$4
   user_sfx_opt=${5:-}
 
-  eqflags=${g_global_eqflags:-}
-  eqflags="${eqflags} ${g_eqflags[$file_fn_pfx]:-}"
+  eqflags_non_comp=${g_global_eqflags:-}
+  eqflags_non_comp="${eqflags_non_comp} ${g_eqflags[$file_fn_pfx]:-}"
 
   for compiler in clang gcc icc;
   do
-      eqflags_comp=${g_eqflags[${file_fn_pfx}.${compiler}]:-${eqflags}}
-      tfg_pfx=${tfg_pfx}.${compiler}.${O3_SUFFIX}
+      eqflags_comp=${g_eqflags[${file_fn_pfx}.${compiler}]:-${eqflags_non_comp}}
+      tfg_pfx=${tfg_comm_pfx}.${compiler}.${O3_SUFFIX}
       gen_command_internal ${fn} ${etfg_file} ${tfg_pfx} "${eqflags_comp}" ".${fn}${user_sfx_opt}"
   done
 }
@@ -59,11 +59,11 @@ gen_for_src_dst()
   user_sfx_opt="${2:+.${2}}"
 
   etfg_file="${filename_pfx}_src.${ETFG_SUFFIX}"
-  tfg_pfx="${filename_pfx}_dst"
+  tfg_file_pfx="${filename_pfx}_dst"
   for fn in $(get_funcs_except_main_and_MYmy_from_etfg "${etfg_file}");
   do
     file_fn_pfx="${filename_pfx}.${fn}"
-    gen_command_all_compilers ${fn} ${etfg_file} ${tfg_pfx} ${file_fn_pfx} "${user_sfx_opt}"
+    gen_command_all_compilers ${fn} ${etfg_file} ${tfg_file_pfx} ${file_fn_pfx} "${user_sfx_opt}"
   done
 }
 
@@ -73,12 +73,12 @@ gen_for_all()
   user_sfx_opt="${2:+.${2}}"
 
   etfg_file="${filename_pfx}.${ETFG_SUFFIX}"
-  tfg_pfx="${filename_pfx}"
+  tfg_file_pfx="${filename_pfx}"
 
   for fn in $(get_funcs_except_main_and_MYmy_from_etfg "${etfg_file}");
   do
     file_fn_pfx="${filename_pfx}.${fn}"
-    gen_command_all_compilers ${fn} ${etfg_file} ${tfg_pfx} ${file_fn_pfx} "${user_sfx_opt}"
+    gen_command_all_compilers ${fn} ${etfg_file} ${tfg_file_pfx} ${file_fn_pfx} "${user_sfx_opt}"
   done
 }
 
@@ -88,13 +88,13 @@ gen_for_ll_as()
   user_sfx_opt="${2:+.${2}}"
 
   etfg_file="${filename_pfx}.ll.${ETFG_SUFFIX}"
-  tfg_pfx="${filename_pfx}.as.${O0_SUFFIX}"
+  tfg_file_pfx="${filename_pfx}.as.${O0_SUFFIX}"
   for fn in $(get_funcs_except_main_and_MYmy_from_etfg "${etfg_file}");
   do
     file_fn_pfx="${filename_pfx}.${fn}"
-    eqflags=${g_global_eqflags:-}
-    eqflags="${eqflags} ${g_eqflags[$file_fn_pfx]:-}"
-    gen_command_internal ${fn} ${etfg_file} ${tfg_pfx} "${eqflags}" ".${fn}${user_sfx_opt}"
+    eqflags_all=${g_global_eqflags:-}
+    eqflags_all="${eqflags_all} ${g_eqflags[$file_fn_pfx]:-}"
+    gen_command_internal ${fn} ${etfg_file} ${tfg_file_pfx} "${eqflags_all}" ".${fn}${user_sfx_opt}"
   done
 }
 
