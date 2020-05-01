@@ -162,6 +162,16 @@ TYPE ex105(){
 	return ret;
 }
 
+int foo(){
+int sum = 0;
+  for( int i =0; i <100; i ++) {
+    for(int j=i; j <50; j ++) {
+      sum += aa[i][j];
+    }
+  }
+  return sum ;
+}
+
 //int ex6()
 //{
 //

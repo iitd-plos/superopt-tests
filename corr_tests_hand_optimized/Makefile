@@ -3,18 +3,18 @@ include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/oopsla_tests
+VPATH = $(SRCDIR)/corr_tests_hand_optimized
 
-PROGS := oopsla_tests
-# make available to gentest.sh and runtest.sh
-export PROGS
+PROGS_PREFIX := corr_mutations
+export PROGS_PREFIX
 
-PROGS_EQCHECKER := $(PROGS) 
+PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
 
 # compiler flags
-GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS)
-CLANG_I386_EQCHECKER_FLAGS= $(CLANG_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS)
-ICC_I386_EQCHECKER_FLAGS= $(ICC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS)
+# Do not unroll
+GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(GCC_EQCHECKER_NOUNROLL_FLAGS) $(VEC_FLAGS)
+CLANG_I386_EQCHECKER_FLAGS= $(CLANG_I386_EQCHECKER_FLAGS_COMMON) $(CLANG_EQCHECKER_NOUNROLL_FLAGS) $(VEC_FLAGS)
+ICC_I386_EQCHECKER_FLAGS= $(ICC_I386_EQCHECKER_FLAGS_COMMON) $(ICC_EQCHECKER_NOUNROLL_FLAGS) $(VEC_FLAGS)
 
 # define target variables
 
@@ -72,7 +72,6 @@ gentest:
 	bash $(VPATH)/gentest.sh
 
 runtest:
-	cp $(VPATH)/*oopsla_funcs* -t .
 	bash $(VPATH)/runtest.sh
 
 .DEFAULT_GOAL := all
