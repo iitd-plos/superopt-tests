@@ -1468,7 +1468,7 @@ generateInitialCodingTables(Int32 nGroups, Int32 alphaSize)
           (100.0 * (float)aFreq) / (float)nMTF */);
 
     for (v = 0; v < alphaSize; v++) {
-      //DBG(__LINE__); // required to prevent vectorization with loads from RODATA
+      DBG(__LINE__); // ~~required to prevent vectorization with loads from RODATA~~; required for PASSING within time limit
       if (v >= gs && v <= ge)
         len[nPart-1][v] = LESSER_ICOST;
       else
