@@ -22,7 +22,7 @@ gen_command_internal()
 
   etfg_path=${PWD}/${etfg_file}
   tfg_path=${PWD}/${tfg_pfx}.ALL.tfg
-  proof_path=${PWD}/${eqrun_ident}.proof
+  proof_path=${EQLOGS}/${eqrun_ident}.proof
   eqlog_path=${EQLOGS}/${eqrun_ident}.eqlog
 
   echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${eqlog_path}\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags} --proof ${proof_path} ${etfg_path} ${tfg_path}\""
