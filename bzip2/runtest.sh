@@ -7,6 +7,8 @@ set -eu # fail on error
 declare -A g_eqflags
 g_eqflags["qSort3"]="--smt-query-timeout 600" # timeouts otherwise
 g_eqflags["loadAndRLEsource"]="--smt-query-timeout 600" # timeouts otherwise
+g_eqflags["recvDecodingTables"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
+g_eqflags["hbCreateDecodeTables"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
 
 g_global_eqflags=" --global-timeout 7200"  # everything above this should be terminated anyway
 
