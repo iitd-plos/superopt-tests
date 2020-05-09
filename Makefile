@@ -7,7 +7,8 @@ EQCHECK_TARGETS := bzip2 tsvc semalign reve ctests micro soundness #bzip2_minima
 OOPSLA_TARGETS := oopsla_tests
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
-TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS)
+UNITTEST_TARGETS := unit-tests
+TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS) $(UNITTEST_TARGETS)
 
 PARALLEL_LOAD_PERCENT ?= 33
 
@@ -61,4 +62,4 @@ codegen_test:
 ooelala_test:
 	$(foreach t,$(OOELALA_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) ooelala_test || exit;)
 
-.PHONY: all clean distclean $(TARGETS) gentest runtest gen_oopsla_test run_oopsla_test
+.PHONY: all clean distclean $(TARGETS) gentest runtest gen_oopsla_test run_oopsla_test unittest
