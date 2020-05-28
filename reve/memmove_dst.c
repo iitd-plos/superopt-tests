@@ -1,4 +1,4 @@
-// openbsd
+// openbsd -- simplified; transfer at byte level instead of word
 #include <stddef.h>
 
 void *memmove(void *dst0, const void *src0, size_t length) {

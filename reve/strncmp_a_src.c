@@ -1,4 +1,4 @@
-/* glibc */
+// glibc -- simplified; removed word level comparison part
 #include <stddef.h>
 
 int
