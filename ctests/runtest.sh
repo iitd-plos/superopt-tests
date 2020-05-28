@@ -28,6 +28,11 @@ g_eqflags["knucleotide.main"]="--unroll-factor 2"
 g_eqflags["sha1.do_bench.clang"]="--unroll-factor 8" # reads from RODATA
 g_eqflags["sha1.SHA1_rounds"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
 
+g_eqflags["nsieve.nsieve_static.gcc"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
+g_eqflags["nsieve.nsieve_static.icc"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
+
+g_eqflags["qsort.quicksort.gcc"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
+
 g_global_eqflags="--global-timeout 7200" # should be enough for most
 
 ###########################
