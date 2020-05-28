@@ -9,7 +9,8 @@ LL_ASM_PROGS := out_of_bounds loop_out_of_bounds
 PROGS :=
 PROGS_PREFIX := memccpy      \
                 memchr       \
-                memrchr      \
+                memrchr_a    \
+                memrchr_b    \
 
 export LL_ASM_PROGS
 export PROGS

@@ -16,7 +16,7 @@ void *memrchr(const void *s, int c, size_t n) {
 int main(int argc, char* argv[])
 {
   // memchr stops at first byte
-  const char src[] = { 1, 2, 3, 255 };
-  printf("%p %p", src, (int*)memrchr(src, ~0x0, 4));
+  //const char src[] = { 1, 2, 3, 255 };
+  //printf("%p %p", src, (int*)memrchr(src, ~0x0, 4));
   return 0;
 }
