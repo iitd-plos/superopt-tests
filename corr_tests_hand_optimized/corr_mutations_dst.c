@@ -63,94 +63,186 @@ TYPE* yy;
 TYPE arr[LEN];
 
 
-//sum2d
-TYPE ex2(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j+=8)
-    {
-		  ret += aa[i][j];
-		  ret += aa[i][j+ 1];
-		  ret += aa[i][j+ 2];
-		  ret += aa[i][j+ 3];
-		  ret += aa[i][j+ 4];
-		  ret += aa[i][j+ 5];
-		  ret += aa[i][j+ 6];
-		  ret += aa[i][j+ 7];
-    }
-	return ret;
+
+// 1d-mw
+// loop peeling
+int ex1020()
+{
+
+  b[0] = 0;
+  b[1] = 0;
+  b[2] = 0;
+	for (int j = 3; j < LEN ; j++) {
+		  b[j] = a[j];
+	}
+	return 0;
 }
 
-//sum2d-1d
-TYPE ex3(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j+=8)
-    {
-		  ret += aa[i][j];
-		  ret += aa[i][j+ 1];
-		  ret += aa[i][j+ 2];
-		  ret += aa[i][j+ 3];
-		  ret += aa[i][j+ 4];
-		  ret += aa[i][j+ 5];
-		  ret += aa[i][j+ 6];
-		  ret += aa[i][j+ 7];
-    }
-	for (int i = 0; i < LEN; i++)
-		ret += a[i];
-	return ret;
+// 1d-sum
+// loop peeling
+int ex20()
+{
+  int sum = 0;
+  sum += 2*b[0];
+  sum += 2*b[1];
+  sum += 2*b[2];
+	for (int j = 3; j < LEN ; j++) {
+		  sum += b[j];
+	}
+	return sum;
 }
 
-//sum2d-1d-imperfect
-TYPE ex4(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++) {
-	  for (int j = 0; j < LEN2; j+=8)
-    {
-		  ret += aa[i][j];
-		  ret += aa[i][j+ 1];
-		  ret += aa[i][j+ 2];
-		  ret += aa[i][j+ 3];
-		  ret += aa[i][j+ 4];
-		  ret += aa[i][j+ 5];
-		  ret += aa[i][j+ 6];
-		  ret += aa[i][j+ 7];
+
+// 1d-mw
+// loop peeling
+int ex1020_8()
+{
+
+  a[0] = 100;
+  a[1] = 100;
+  a[2] = 100;
+  #pragma GCC unroll 2
+	for (int j = 3; j < LEN ; j++) {
+		  a[j] = b[j]+2;
+	}
+	return 0;
+}
+
+// 1d-sum
+// loop peeling
+int ex20_8()
+{
+  int sum = 0;
+  sum += 4;
+  #pragma GCC unroll 2
+	for (int j = 1; j < LEN ; j++) {
+		  sum += a[j];
+	}
+	return sum;
+}
+
+
+
+
+//loop unswitching, distribution 1D loop
+// icc --NB
+//gcc vec
+int ex108()
+{
+
+//	control flow
+//	if test using loop index
+
+	int mid = (LEN/2);
+		for (int i = 0; i < mid; i++) {
+				a[i] += b[i];
     }
-		ret += a[i];
+		for (int i = mid; i < LEN; i++) {
+				a[i] += c[i];
+		}
+	return 0;
+}
+
+//loop unswitching, distributiona 1D loop
+//Sum
+int ex8()
+{
+
+//	control flow
+//	if test using loop index
+  int sum = 0;
+  int len = 16384;
+	int mid = (len/2);
+		for (int i = 0; i < mid; i++) {
+				sum += b[2*i];
+    }
+		for (int i = mid; i < len; i++) {
+				sum += c[i];
+		}
+	return sum;
+}
+
+int ex8_8()
+{
+
+//	control flow
+//	if test using loop index
+  int sum = 0;
+	int mid = (LEN/2);
+		for (int i = 0; i < mid; i++) {
+				sum += c[a[i]];
+    }
+  #pragma GCC unroll 2
+		for (int i = mid; i < LEN; i++) {
+				sum += b[i];
+		}
+	return sum;
+}
+
+//loop fission 1D
+int ex22()
+{
+
+  int sum1 = 0;
+  int sum2 = 0;
+	for (int i = 0; i < LEN; i++) {
+		sum1 += a[c[i]];
+	}
+	for (int i = 0; i < LEN; i++) {
+		sum2 += b[i];
+	}
+	return sum1 + sum2;
+}
+
+//loop unroll complete 1D
+//Sum
+int ex27()
+{
+
+  int sum1 = 0;
+	sum1 += a[0];
+	sum1 += a[1];
+	sum1 += a[2];
+	sum1 += a[3];
+	for (int j = 4; j < LEN; j++) 
+	  sum1 += b[j];
+	return sum1;
+}
+
+int ex28()
+{
+
+  int sum1 = 0;
+	c[0] += a[0];
+	c[1] += a[1];
+	c[2] += a[2];
+	for (int j = 3; j < LEN; j++) 
+	  c[j] += b[j];
+	return 0;
+}
+
+//remainder loop  fusion
+int ex25(int n)
+{
+
+  int sum1 = 0;
+  int sum2 = 0;
+  if( n < 4)
+  {
+    if(n >= 0) {  sum1 += a[0]; sum2 += b[0];}
+    if(n >= 1) {  sum1 += a[1]; sum2 += b[1];}
+    if(n >= 2) {  sum1 += a[2]; sum2 += b[2];}
+    if(n >= 3) {  sum1 += a[3]; sum2 += b[3];}
   }
-	return ret;
-}
-
-//sum1d-2d
-TYPE ex5(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN; i++)
-		ret += a[i];
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j+=8)
-    {
-		  ret += aa[i][j];
-		  ret += aa[i][j+ 1];
-		  ret += aa[i][j+ 2];
-		  ret += aa[i][j+ 3];
-		  ret += aa[i][j+ 4];
-		  ret += aa[i][j+ 5];
-		  ret += aa[i][j+ 6];
-		  ret += aa[i][j+ 7];
-    }
-	return ret;
-}
-
-int foo(){
-int sum = 0;
-  for( int i =0; i <100; i ++) {
-    if( i < 50) {
-      for(int j=i; j <50; j ++) {
-        sum += aa[i][j];
-      }
-    }
+  else
+  {
+  	for (int i = 0; i < n; i++) 
+  		sum1 += a[i];
+  	for (int i = 0; i < n; i++) {
+  		sum2 += b[i];
+  	}
   }
-  return sum ;
+	return sum1 + sum2;
 }
 
 int main(){

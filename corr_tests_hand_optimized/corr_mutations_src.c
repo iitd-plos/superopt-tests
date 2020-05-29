@@ -25,7 +25,7 @@
 
 #define LEN 32000
 #define LEN1 3200
-#define LEN2 256
+#define LEN2 2048
 
 #include <stdlib.h>
 #include <math.h>
@@ -62,58 +62,176 @@ TYPE* /*__restrict__*/ xx;
 TYPE* yy;
 TYPE arr[LEN];
 
+// 1D-MW
+// loop peeling
+//GCC
+int ex1020()
+{
 
-//sum2d
-TYPE ex2(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j++)
-		  ret += aa[i][j];
-	return ret;
+	for (int j = 0; j < LEN ; j++) {
+    if(j < 3)
+      b[j] = 0;
+    else 
+		  b[j] = a[j];
+	}
+	return 0;
 }
 
-//sum2d-1d
-TYPE ex3(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j++)
-		 ret += aa[i][j];
-	for (int i = 0; i < LEN; i++)
-		ret += a[i];
-	return ret;
+// 1D-Sum
+// loop peeling
+//GCC
+int ex20()
+{
+  int sum = 0;
+	for (int j = 0; j < LEN ; j++) {
+    if(j < 3)
+      sum += 2*b[j];
+    else 
+		  sum += b[j];
+	}
+	return sum;
 }
 
-//sum2d-1d-imperfect
-TYPE ex4(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++) {
-	  for (int j = 0; j < LEN2; j++)
-		  ret += aa[i][j];
-		ret += a[i];
-  }
-	return ret;
+// 1D-MW
+// loop peeling
+//GCC
+int ex1020_8()
+{
+
+	for (int j = 0; j < LEN ; j++) {
+    if(j < 3)
+      a[j] = 100;
+    else 
+		  a[j] = b[j]+2;
+	}
+	return 0;
 }
 
-//sum1d-2d
-TYPE ex5(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN; i++)
-		ret += a[i];
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j++)
-		  ret += aa[i][j];
-	return ret;
+// 1D-Sum
+// loop peeling
+//GCC
+int ex20_8()
+{
+  int sum = 0;
+	for (int j = 0; j < LEN ; j++) {
+    if(j < 1)
+      sum += 4;
+    else 
+		  sum += a[j];
+	}
+	return sum;
 }
 
-int foo(){
-int sum = 0;
-  for( int i =0; i <100; i ++) {
-    for(int j=i; j <50; j ++) {
-      sum += aa[i][j];
-    }
-  }
-  return sum ;
+
+//loop unswitching, distribution 1D loop
+//GCC, Clang
+int ex108()
+{
+
+//	control flow
+//	if test using loop index
+
+	int mid = (LEN/2);
+		for (int i = 0; i < LEN; i++) {
+			if (i < mid) 
+				a[i] += b[i];
+			if (i >= mid) 
+				a[i] += c[i];
+		}
+	return 0;
 }
+
+//loop unswitching, distribution 1D loop
+//Sum
+int ex8()
+{
+
+//	control flow
+//	if test using loop index
+  int sum = 0;
+  int len = 16384;
+	int mid = (len/2);
+		for (int i = 0; i < len; i++) {
+			if (i < mid) 
+				sum += b[2*i];
+			if (i >= mid) 
+				sum += c[i];
+		}
+	return sum;
+}
+int ex8_8()
+{
+
+//	control flow
+//	if test using loop index
+  int sum = 0;
+  int len = 16384;
+	int mid = (LEN/2);
+		for (int i = 0; i < LEN; i++) {
+			if (i < mid) 
+				sum += c[a[i]];
+			if (i >= mid) 
+				sum += b[i];
+		}
+	return sum;
+}
+
+
+//loop fission 1D
+int ex22()
+{
+
+  int sum1 = 0;
+  int sum2 = 0;
+	for (int i = 0; i < LEN; i++) {
+		sum1 += a[c[i]];
+		sum2 += b[i];
+	}
+	return sum1 + sum2;
+}
+
+//loop unroll complete 1D
+//Sum
+int ex27()
+{
+
+  int sum1 = 0;
+	for (int j = 0; j < 3; j++) 
+	  sum1 += a[j];
+	for (int j = 4; j < LEN; j++) 
+	  sum1 += b[j];
+	return sum1;
+}
+
+//loop unroll complete 1D
+//Sum
+int ex28()
+{
+
+  int sum1 = 0;
+	for (int j = 0; j < 3; j++) 
+	  c[j] += a[j];
+	for (int j = 3; j < LEN; j++) 
+	  c[j] += b[j];
+	return 0;
+}
+
+
+//remainder loop  fusion
+int ex25(int n)
+{
+
+  int sum1 = 0;
+  int sum2 = 0;
+	for (int i = 0; i < n; i++) {
+		sum1 += a[i];
+	}
+	for (int i = 0; i < n; i++) {
+		sum2 += b[i];
+	}
+	return sum1 + sum2;
+}
+
 
 int main(){
 
