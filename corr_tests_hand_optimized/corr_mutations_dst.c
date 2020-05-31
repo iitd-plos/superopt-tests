@@ -203,8 +203,7 @@ int ex27()
 	sum1 += a[0];
 	sum1 += a[1];
 	sum1 += a[2];
-	sum1 += a[3];
-	for (int j = 4; j < LEN; j++) 
+	for (int j = 3; j < LEN; j++) 
 	  sum1 += b[j];
 	return sum1;
 }
@@ -229,10 +228,9 @@ int ex25(int n)
   int sum2 = 0;
   if( n < 4)
   {
-    if(n >= 0) {  sum1 += a[0]; sum2 += b[0];}
-    if(n >= 1) {  sum1 += a[1]; sum2 += b[1];}
-    if(n >= 2) {  sum1 += a[2]; sum2 += b[2];}
-    if(n >= 3) {  sum1 += a[3]; sum2 += b[3];}
+    if(n >= 1) {  sum1 += a[0]; sum2 += b[0];}
+    if(n >= 2) {  sum1 += a[1]; sum2 += b[1];}
+    if(n == 3) {  sum1 += a[2]; sum2 += b[2];}
   }
   else
   {

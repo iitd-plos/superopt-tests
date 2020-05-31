@@ -198,7 +198,7 @@ int ex27()
   int sum1 = 0;
 	for (int j = 0; j < 3; j++) 
 	  sum1 += a[j];
-	for (int j = 4; j < LEN; j++) 
+	for (int j = 3; j < LEN; j++) 
 	  sum1 += b[j];
 	return sum1;
 }
