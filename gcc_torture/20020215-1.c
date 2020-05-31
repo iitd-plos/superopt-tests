@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test failed on an architecture that:
 
    - had 16-bit registers,
@@ -28,6 +29,6 @@ int main ()
 {
   struct s s = foo ((struct s) { 1000, 2000L, 3000 });
   if (s.i1 != 1000 || s.i2 != 2001L || s.i3 != 3000)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

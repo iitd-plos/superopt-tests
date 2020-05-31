@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   char x;
@@ -18,6 +19,6 @@ main ()
   s1a.x = 100;
   s1b = f (s1a);
   if (s1b.x != 100)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

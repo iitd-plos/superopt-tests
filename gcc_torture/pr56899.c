@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/56899 */
 
 #if __SIZEOF_INT__ == 4 && __CHAR_BIT__ == 8
@@ -6,7 +7,7 @@ f1 (int v)
 {
   int x = -214748365 * (v - 1);
   if (x != -1932735285)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline, noclone)) void
@@ -14,7 +15,7 @@ f2 (int v)
 {
   int x = 214748365 * (v + 1);
   if (x != -1932735285)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline, noclone)) void
@@ -22,7 +23,7 @@ f3 (unsigned int v)
 {
   unsigned int x = -214748365U * (v - 1);
   if (x != -1932735285U)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline, noclone)) void
@@ -30,7 +31,7 @@ f4 (unsigned int v)
 {
   unsigned int x = 214748365U * (v + 1);
   if (x != -1932735285U)
-    __builtin_abort ();
+    Mymyabort ();
 }
 #endif
 

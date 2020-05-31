@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 /* PR24716, scalar evolution returning the wrong result
    for pdest.  */
 
 int Link[] = { -1 };
 int W[] = { 2 };
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int f (int k, int p)
 {
@@ -53,7 +54,7 @@ int f (int k, int p)
 int main ()
 {
   if (!f (0, 2))
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

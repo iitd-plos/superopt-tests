@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-mpc64"  { target { i?86-*-* x86_64-*-* } } } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 void
 fpEq (double x, double y)
 {
   if (x != y)
-    abort ();
+    Mymyabort ();
 }
 
 void

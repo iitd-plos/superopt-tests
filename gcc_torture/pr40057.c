@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/40057 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__((noinline)) int
 foo (unsigned long long x)
@@ -26,12 +27,12 @@ main (void)
   if (sizeof (long long) != 8)
     return 0;
   if (foo (0x1682a9aaaULL))
-    abort ();
+    Mymyabort ();
   if (!foo (0x1882a9aaaULL))
-    abort ();
+    Mymyabort ();
   if (bar (0x1682a9aaaLL))
-    abort ();
+    Mymyabort ();
   if (!bar (0x1882a9aaaLL))
-    abort ();
+    Mymyabort ();
   return 0;
 }

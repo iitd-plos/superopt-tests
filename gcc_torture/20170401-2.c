@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void adjust_xy (short *, short *);
 
 struct adjust_template
@@ -15,7 +16,7 @@ main ()
   adjust_xy (&x, &y);
 
   if (x != 2)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

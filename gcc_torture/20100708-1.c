@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/44843 */
 /* Verify that we don't use the alignment of struct S for inner accesses.  */
 

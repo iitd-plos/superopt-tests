@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static void *self(void *p){ return p; }
 
 int
@@ -16,7 +17,7 @@ f()
 main()
 {
   if (f () != 1)
-    abort ();
+    Mymyabort ();
   else
     exit (0);
 }

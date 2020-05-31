@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 char a;
 int b, c;
@@ -23,5 +24,5 @@ int main ()
     }
   return 0;
 die:
-  abort ();
+  Mymyabort ();
 }

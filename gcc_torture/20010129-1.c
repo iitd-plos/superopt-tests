@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-mtune=i686" { target { { i?86-*-* x86_64-*-* } && ia32 } } } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 long baz1 (void *a)
@@ -17,7 +18,7 @@ int baz2 (const char *a)
 int baz3 (int i)
 {
   if (!i)
-    abort ();
+    Mymyabort ();
   return 1;
 }
 

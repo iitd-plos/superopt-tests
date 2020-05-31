@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 void fdouble (double one, ...)
@@ -10,7 +11,7 @@ void fdouble (double one, ...)
   va_end (ap);
 
   if (one != 1.0 || value != 2.0)
-    abort ();
+    Mymyabort ();
 }
 
 int main ()

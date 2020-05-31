@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR sanitizer/81281 */
 
 void
@@ -9,7 +10,7 @@ foo (unsigned p, unsigned a, unsigned b)
   int d = p + b;
   int c = p + a;
   if (c - d != __INT_MAX__)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 void
@@ -21,7 +22,7 @@ bar (unsigned p, unsigned a)
   int c = p;
   int d = p + a;
   if (c - d != -__INT_MAX__ - 1)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

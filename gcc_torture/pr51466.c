@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/51466 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__((noinline, noclone)) int
 foo (int i)
@@ -38,6 +39,6 @@ int
 main ()
 {
   if (foo (3) != 6 || bar (2) != 8 || baz (0) != 8 || baz (1) != 6)
-    abort ();
+    Mymyabort ();
   return 0;
 }

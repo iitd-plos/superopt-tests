@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/51933 */
 
 static signed char v1;
@@ -54,6 +55,6 @@ main (void)
   foo ();
   if (bar (17, s, buf) != 17
       || __builtin_memcmp (buf, "abcdeghhijkmmnoqq", 18) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

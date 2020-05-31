@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires io" { freestanding } }  */
 
 #ifndef test
@@ -13,7 +14,7 @@ __vfprintf_chk (FILE *f, int flag, const char *fmt, va_list ap)
 {
 #ifdef __OPTIMIZE__
   if (should_optimize)
-    abort ();
+    Mymyabort ();
 #endif
   should_optimize = 1;
   return vfprintf (f, fmt, ap);
@@ -33,17 +34,17 @@ inner (int x, ...)
       should_optimize = opt;				\
       __vfprintf_chk (stdout, 1, fmt, ap);		\
       if (! should_optimize)				\
-	abort ();					\
+	Mymyabort ();					\
       should_optimize = 0;				\
       if (__vfprintf_chk (stdout, 1, fmt, ap2) != ret)	\
-	abort ();					\
+	Mymyabort ();					\
       if (! should_optimize)				\
-	abort ();					\
+	Mymyabort ();					\
       break;
 #include "vfprintf-chk-1.c"
 #undef test
     default:
-      abort ();
+      Mymyabort ();
     }
 
   va_end (ap);

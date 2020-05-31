@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/58209 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 typedef __INTPTR_TYPE__ T;
 T buf[1024];
 
@@ -27,6 +28,6 @@ main ()
   int i;
   for (i = 0; i < 27; i++)
     if (foo (i) != buf + i || bar (i) != buf + i)
-      abort ();
+      Mymyabort ();
   return 0;
 }

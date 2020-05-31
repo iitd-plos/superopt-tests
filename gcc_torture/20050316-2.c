@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* This testcase generates MMX instructions together with x87 instructions.
    Currently, there is no "emms" generated to switch between register sets,
    so the testcase fails for targets where MMX insns are enabled.  */
 /* { dg-options "-mno-mmx -Wno-psabi" { target { x86_64-*-* i?86-*-* } } } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef int V2SI __attribute__ ((vector_size (8)));
 typedef unsigned int V2USI __attribute__ ((vector_size (8)));
@@ -39,16 +40,16 @@ main (void)
   union { long long l; float f[2]; int i[2]; } u;
   u.l = test1 (x);
   if (u.f[0] != 2.0 || u.f[1] != 2.0)
-    abort ();
+    Mymyabort ();
 
   V2SF y = { 6.0, 6.0 };
   u.l = test2 (y);
   if (u.f[0] != 6.0 || u.f[1] != 6.0)
-    abort ();
+    Mymyabort ();
 
   V2SI z = { 4, 4 };
   u.l = test3 (z);
   if (u.i[0] != 4 || u.i[1] != 4)
-    abort ();
+    Mymyabort ();
   return 0;
 }

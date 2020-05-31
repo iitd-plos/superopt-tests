@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/69097 */
 
 __attribute__((noinline, noclone)) int
@@ -25,6 +26,6 @@ main ()
   if (f1 (-__INT_MAX__ - 1, 1) != 0
       || f2 (-__INT_MAX__ - 1, -1) != 0
       || f3 (-__INT_MAX__ - 1, -1) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

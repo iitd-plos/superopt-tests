@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/19084, rtl-optimization/19348 */
 
 unsigned int
@@ -17,7 +18,7 @@ bar (unsigned short x)
   return (unsigned long long) x << 32;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main (void)
@@ -26,14 +27,14 @@ main (void)
     return 0;
 
   if (foo (0) != 0)
-    abort ();
+    Mymyabort ();
   if (foo (0xffffffffULL) != 0)
-    abort ();
+    Mymyabort ();
   if (foo (0x25ff00ff00ULL) != 0x25)
-    abort ();
+    Mymyabort ();
   if (bar (0) != 0)
-    abort ();
+    Mymyabort ();
   if (bar (0x25) != 0x2500000000ULL)
-    abort ();
+    Mymyabort ();
   return 0;
 }

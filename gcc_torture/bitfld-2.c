@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* Test whether bit field boundaries aren't advanced if bit field type
    has alignment large enough.  */
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 struct A {
@@ -22,7 +23,7 @@ int main ()
     exit (0);
 
   if (sizeof (struct A) != sizeof (struct B))
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

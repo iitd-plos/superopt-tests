@@ -1,17 +1,18 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 #include <limits.h>
 
 extern void exit (int);
-extern void abort ();
+extern void Mymyabort ();
 
 void test01(unsigned int a, unsigned int b)
 {
   if (a < 5)
-    abort();
+    Mymyabort();
   if (b < 5)
-    abort();
+    Mymyabort();
   if (a - b != 5)
-    abort();
+    Mymyabort();
 }
 
 void test02(unsigned int a, unsigned int b)
@@ -19,7 +20,7 @@ void test02(unsigned int a, unsigned int b)
   if (a >= 12)
     if (b > 15)
       if (a - b < UINT_MAX - 15U)
-	abort ();
+	Mymyabort ();
 }
 
 int main(int argc, char *argv[])

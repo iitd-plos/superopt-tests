@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Macros to emit "L Nxx R" for each octal number xx between 000 and 037.  */
 #define OP1(L, N, R, I, J) L N##I##J R
 #define OP2(L, N, R, I) \
@@ -53,6 +54,6 @@ int main ()
   foo (1);
   for (i = 0; i < 32; i++)
     if (gd[i] != i * 4 || gf[i] != i)
-      abort ();
+      Mymyabort ();
   exit (0);
 }

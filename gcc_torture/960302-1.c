@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long a = 1;
 
 foo ()
@@ -16,6 +17,6 @@ foo ()
 main ()
 {
   if (foo () != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

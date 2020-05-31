@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct _RenderInfo RenderInfo;
 struct _RenderInfo
 {
@@ -43,6 +44,6 @@ int main (void)
     info.scaley = 1.0;
 
     if (render_image_rgb_a(&info) != 256)
-       abort ();
+       Mymyabort ();
     exit(0);
 }

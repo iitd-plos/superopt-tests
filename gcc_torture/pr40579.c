@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 static char * __attribute__((noinline))
 itos(int num)
 {
@@ -8,7 +9,7 @@ static void __attribute__((noinline))
 foo(int i, const char *x)
 {
   if (i >= 4)
-    abort ();
+    Mymyabort ();
 }
 int main()
 {

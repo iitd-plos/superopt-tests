@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/56205 */
 
 #include <stdarg.h>
@@ -11,12 +12,12 @@ f1 (const char *fmt, ...)
   va_list ap;
   asm volatile ("" : : : "memory");
   if (__builtin_strcmp (fmt, "%s %d %s") != 0)
-    __builtin_abort ();
+    Mymyabort ();
   va_start (ap, fmt);
   if (__builtin_strcmp (va_arg (ap, const char *), "foo") != 0
       || va_arg (ap, int) != 1
       || __builtin_strcmp (va_arg (ap, const char *), "bar") != 0)
-    __builtin_abort ();
+    Mymyabort ();
   va_end (ap);
 }
 
@@ -28,7 +29,7 @@ f2 (const char *fmt, va_list ap)
       || __builtin_strcmp (va_arg (ap, const char *), "foo") != 0
       || va_arg (ap, double) != 12.0
       || va_arg (ap, int) != 26)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 static void
@@ -56,6 +57,6 @@ main ()
   asm volatile ("" : : : "memory");
   f4 (0, "baz", "foo", 12.0, 26);
   if (a != 1 || b != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

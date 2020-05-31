@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/94734 */
 
 __attribute__((noipa)) int
@@ -44,16 +45,16 @@ int
 main ()
 {
   if (foo (10374) != 15 * 16 / 2)
-    __builtin_abort ();
+    Mymyabort ();
   if (bar (25, 0x25, (unsigned long) 0xdeadbeefbeefdeadULL, 4) != 42)
-    __builtin_abort ();
+    Mymyabort ();
   if (bar (25, 4, 15, 15) != 22)
-    __builtin_abort ();
+    Mymyabort ();
   if (baz (25, 0x25, 12) != 42)
-    __builtin_abort ();
+    Mymyabort ();
   if (baz (25, 4, 7) != 22)
-    __builtin_abort ();
+    Mymyabort ();
   if (baz (25, 4, 12) != 42)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

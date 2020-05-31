@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct Foo {
   int i;
   unsigned precision : 10;
@@ -11,7 +12,7 @@ foo (struct Foo *p)
   return (*q).precision;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main()
 {
@@ -19,6 +20,6 @@ int main()
   f.precision = 0;
   f.blah = -1;
   if (foo (&f) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

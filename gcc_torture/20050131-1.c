@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify that we do not lose side effects on a MOD expression.  */
 
 #include <stdlib.h>
@@ -13,6 +14,6 @@ foo (int a)
 main()
 {
   if (foo (9) != 10)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

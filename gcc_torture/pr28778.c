@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 typedef long GLint;
 void aglChoosePixelFormat (const GLint *);
 
@@ -22,7 +23,7 @@ aglChoosePixelFormat (const GLint * a)
 {
   int *b = (int *) a;
   if (b[3] != 42)
-    abort ();
+    Mymyabort ();
 }
 
 int

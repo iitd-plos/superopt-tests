@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* Test arithmetics on bitfields.  */
 /* { dg-require-effective-target int32plus } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 unsigned int
@@ -67,7 +68,7 @@ void test##S (void)				\
   if (x.i != s##S.i || x.j != s##S.j		\
       || x.k != s##S.k || x.l != s##S.l		\
       || ((v + a) & mask) != r)			\
-    abort ();					\
+    Mymyabort ();					\
   v = myrnd ();					\
   a = myrnd ();					\
   s##S.k = v;					\
@@ -76,7 +77,7 @@ void test##S (void)				\
   if (x.i != s##S.i || x.j != s##S.j		\
       || x.k != s##S.k || x.l != s##S.l		\
       || ((((v + a) & mask) % 15) & mask) != r)	\
-    abort ();					\
+    Mymyabort ();					\
   v = myrnd ();					\
   a = myrnd ();					\
   s##S.k = v;					\
@@ -85,7 +86,7 @@ void test##S (void)				\
   if (x.i != s##S.i || x.j != s##S.j		\
       || s##S.k != r || x.l != s##S.l		\
       || ((v + a) & mask) != r)			\
-    abort ();					\
+    Mymyabort ();					\
 }
 
 #define pck __attribute__((packed))

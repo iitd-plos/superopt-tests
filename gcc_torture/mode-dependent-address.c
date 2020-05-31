@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target stdint_types } */
 
 #include <stdint.h>
@@ -45,7 +46,7 @@ int main (void)
   f883b(result, arg1, arg2, arg3, arg4);
 
   for (i=0; i < 96; i++)
-    if (result[i] != correct[i]) abort();
+    if (result[i] != correct[i]) Mymyabort();
 
   return 0;
 }

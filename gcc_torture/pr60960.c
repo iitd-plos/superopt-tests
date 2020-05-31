@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/60960 */
 
 typedef unsigned char v4qi __attribute__ ((vector_size (4)));
@@ -27,12 +28,12 @@ main ()
   v4qi y = { 2, 2, 2, 2 };
   v4qi z = f1 (x);
   if (__builtin_memcmp (&y, &z, sizeof (y)) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   z = f2 (x);
   if (__builtin_memcmp (&y, &z, sizeof (y)) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   z = f3 (x, y);
   if (__builtin_memcmp (&y, &z, sizeof (y)) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

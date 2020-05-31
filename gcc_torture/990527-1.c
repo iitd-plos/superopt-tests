@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int sum;
 
 void
@@ -24,7 +25,7 @@ main ()
 {
   f (0);
   if (sum != 81)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

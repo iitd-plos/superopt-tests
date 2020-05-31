@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a, b, c = 1, d = 1, e;
 
 __attribute__ ((noinline, noclone))
@@ -12,7 +13,7 @@ __attribute__ ((noinline, noclone))
 {
   asm volatile (""::"g" (x), "g" (y):"memory");
   if (y == 0)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

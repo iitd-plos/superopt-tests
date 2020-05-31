@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int __attribute__ ((noinline))
 foo ()
 {
@@ -15,6 +16,6 @@ int
 main ()
 {
   if (foo () != 28)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 sub (int i, int array[i++])
 {
   return i;

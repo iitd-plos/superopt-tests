@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 /* PR optimization/8750
@@ -13,8 +14,8 @@
 #define STRLEN     13371
 #endif
 
-extern void *memset (void *, int, __SIZE_TYPE__);
-extern void abort (void);
+//extern void *memset (void *, int, __SIZE_TYPE__);
+//extern void Mymyabort (void);
 
 static void foo ()
 {
@@ -24,7 +25,7 @@ static void foo ()
     memset( &a[0], 0xCD, STRLEN );
     a[STRLEN]=0;
     if (strlen(a) != STRLEN)
-      abort ();
+      Mymyabort ();
 }
 
 int main ( int argc, char* argv[] )

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct __attribute__((packed)) S
 {
   int a, b, c;

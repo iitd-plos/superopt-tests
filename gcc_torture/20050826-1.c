@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/23561 */
 
 struct A
@@ -9,20 +10,20 @@ struct A
 } a;
 
 typedef __SIZE_TYPE__ size_t;
-extern void *memset (void *, int, size_t);
-extern void *memcpy (void *, const void *, size_t);
-extern int memcmp (const void *, const void *, size_t);
-extern void abort (void);
+//extern void *memset (void *, int, size_t);
+//extern void *memcpy (void *, const void *, size_t);
+//extern int memcmp (const void *, const void *, size_t);
+//extern void Mymyabort (void);
 
 void
 bar (struct A *x)
 {
   size_t i;
   if (memcmp (x, "\1HELLO\1", sizeof "\1HELLO\1"))
-    abort ();
+    Mymyabort ();
   for (i = 0; i < sizeof (x->a4); i++)
     if (x->a4[i])
-      abort ();
+      Mymyabort ();
 }
 
 int

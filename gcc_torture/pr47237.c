@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* { dg-xfail-if "can cause stack underflow" { nios2-*-* } } */
 /* { dg-require-effective-target untyped_assembly } */
 #define INTEGER_ARG  5
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 static void foo(int arg)
 {
   if (arg != INTEGER_ARG)
-    abort();
+    Mymyabort();
 }
 
 static void bar(int arg)

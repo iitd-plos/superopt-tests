@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s { volatile struct s *next; };
 
 void __attribute__((noinline))

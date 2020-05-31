@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* "i" overflows in f().  Check that x[i] is not treated as a giv.  */
 #include <limits.h>
 
@@ -27,7 +28,7 @@ int main ()
   f (x);
   for (i = 0; i < 256; i++)
     if (x[i] != (i >= 0x08 && i < 0xf8))
-      abort ();
+      Mymyabort ();
   exit (0);
 }
 #else

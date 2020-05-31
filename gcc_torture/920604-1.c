@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long long
 mod (a, b)
      long long a, b;

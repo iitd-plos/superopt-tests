@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/84524 */
 
 __attribute__((noipa)) void
@@ -35,7 +36,7 @@ main ()
 	    v = v << 1;
 	}
       if (a[i] != v)
-	__builtin_abort ();
+	Mymyabort ();
     }
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct descriptor_dimension
 {
   int stride;

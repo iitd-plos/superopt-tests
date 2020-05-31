@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 g ()
 {
@@ -20,7 +21,7 @@ f ()
   sprintf (sp + 1, "X");
 
   if (s[12] != 'X')
-    abort ();
+    Mymyabort ();
 }
 
 main ()

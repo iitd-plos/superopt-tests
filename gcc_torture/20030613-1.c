@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR optimization/10955 */
 /* Originator: <heinrich.brand@fujitsu-siemens.com> */
 
@@ -5,7 +6,7 @@
    wrongly thought it could eliminate a pseudo in a loop, while
    the pseudo was used outside the loop.  */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 #define COMPLEX struct CS
 
@@ -56,7 +57,7 @@ int main (void)
   x.y = -7;
 
   if (!c5p(x))
-    abort();
+    Mymyabort();
 
   return 0;
 }

@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/51447 */
 /* { dg-require-effective-target label_values } */
 /* { dg-require-effective-target indirect_jumps } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 #ifdef __x86_64__
 register void *ptr asm ("rbx");
@@ -24,6 +25,6 @@ main (void)
   return 1;
 nonlocal_lab:
   if (ptr != &&nonlocal_lab)
-    abort ();
+    Mymyabort ();
   return 0;
 }

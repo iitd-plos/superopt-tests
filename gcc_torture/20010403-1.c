@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void b (int *);
 void c (int, int);
 void d (int);
@@ -22,7 +23,7 @@ void b (int *y)
 void c (int x, int y)
 {
   if (x == y)
-    abort ();
+    Mymyabort ();
 }
 
 void d (int x)

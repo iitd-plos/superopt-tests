@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/82192 */
 
 unsigned long long int a = 0x95dd3d896f7422e2ULL;
@@ -17,6 +18,6 @@ main ()
     return 0;
   foo ();
   if (b.m != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

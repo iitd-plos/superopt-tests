@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 f (int n)
 {
@@ -7,10 +8,10 @@ f (int n)
 main ()
 {
   if (f (-1) != -1)
-    abort ();
+    Mymyabort ();
   if (f (1) != 1)
-    abort ();
+    Mymyabort ();
   if (f (0) != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

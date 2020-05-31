@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 _Complex v = 3.0 + 1.0iF;
 
@@ -6,7 +7,7 @@ void
 foo (_Complex z, int *x)
 {
   if (z != v)
-    abort ();
+    Mymyabort ();
 }
 
 _Complex bar (_Complex z) __attribute__ ((pure));

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int gl;
 
 g (x)
@@ -17,6 +18,6 @@ main ()
 {
   f (3);
   if (gl != -4)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

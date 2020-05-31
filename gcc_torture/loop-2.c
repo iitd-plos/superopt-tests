@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a[2];
 
 f (b)
@@ -12,6 +13,6 @@ main ()
   a[0] = a[1] = 0;
   f (2);
   if (a[0] != -2 || a[1] != -1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

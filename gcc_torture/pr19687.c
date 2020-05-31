@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 union U
 {
@@ -12,7 +13,7 @@ int main ()
 
   for (i = 0; i < 4; ++i)
     if (t.j[i] != 0)
-      abort ();
+      Mymyabort ();
 
   return 0;
 }

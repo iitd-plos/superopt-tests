@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 typedef __SIZE_TYPE__ size_t;
 extern void *memcpy (void *__restrict, const void *__restrict, size_t);
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 typedef struct t
@@ -41,7 +42,7 @@ T baz (T x)
 T bar (U d, unsigned int m)
 {
   if (d.r[0] != 21 || d.r[1] != 22 || d.r[2] != 23)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

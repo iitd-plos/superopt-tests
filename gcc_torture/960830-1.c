@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #ifdef __i386__
 f (rp)
      unsigned int *rp;
@@ -11,7 +12,7 @@ main ()
 
   f (s);
   if (s[1] != 0 || s[0] != 49)
-    abort ();
+    Mymyabort ();
  exit (0);
 }
 #else

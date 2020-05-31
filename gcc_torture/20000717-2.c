@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 static void
 compare (long long foo)
 {
   if (foo < 4294967297LL)
-    abort();
+    Mymyabort();
 }
 int main(void)
 {

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Bad PTA results (incorrect store handling) was causing us to delete
    *na = 0 store.  */
 
@@ -52,13 +53,13 @@ main (void)
 
   foo (&c, &e[0]);
   if (c.cn != 1 || c.cp != 1)
-    __builtin_abort ();
+    Mymyabort ();
   if (c.x != &e[1])
-    __builtin_abort ();
+    Mymyabort ();
   if (e[1].n != &e[0])
-    __builtin_abort ();
+    Mymyabort ();
   if (e[0].n)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;  
 }
 

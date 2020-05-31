@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/58726 */
 
 int a, c;
@@ -21,6 +22,6 @@ main ()
   d = e == 0 ? b.f1 : 0;
   c = foo (d);
   if (c != (short) 56374)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

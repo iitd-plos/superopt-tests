@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long long a;
 unsigned b;
 int c[70];
@@ -28,7 +29,7 @@ int main() {
   fn2();
   f(&a, e);
   if (a)
-    __builtin_abort();
+    Mymyabort();
   return 0;
 }
 

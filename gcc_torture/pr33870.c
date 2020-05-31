@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef struct PgHdr PgHdr;
 typedef unsigned char u8;
@@ -82,6 +83,6 @@ int main()
   a[3].pDirty = 0;
   p = sort_pagelist (&a[0]);
   if (p->pDirty == p)
-    abort ();
+    Mymyabort ();
   return 0;
 }

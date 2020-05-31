@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/58277 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 static int a[1], b, c, e, i, j, k, m, q[] = { 1, 1 }, t;
 int volatile d;
 int **r;
@@ -92,7 +93,7 @@ main ()
   fn1 ();
  
   if (n)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

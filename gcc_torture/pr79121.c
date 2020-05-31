@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #if __SIZEOF_INT__ < 4
   __extension__ typedef __UINT32_TYPE__ uint32_t;
   __extension__ typedef __INT32_TYPE__ int32_t;
@@ -6,7 +7,7 @@
   typedef int int32_t;
 #endif
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__ ((noinline, noclone)) unsigned long long f1 (int32_t x)
 {
@@ -31,12 +32,12 @@ __attribute__ ((noinline, noclone)) long long f4 (int32_t x)
 int main ()
 {
   if (f1 (0xf0000000) != 0xffffffff00000000)
-    abort ();
+    Mymyabort ();
   if (f2 (0xf0000000) != 0xf00000000)
-    abort ();
+    Mymyabort ();
   if (f3 (0xf0000000) != 0xf00000000)
-    abort ();
+    Mymyabort ();
   if (f4 (0xf0000000) != 0xffffffff00000000)
-    abort ();
+    Mymyabort ();
   return 0;
 }

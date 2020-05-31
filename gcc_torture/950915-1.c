@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long int a = 100000;
 long int b = 21475;
 
@@ -10,6 +11,6 @@ f ()
 main ()
 {
   if (f () < 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

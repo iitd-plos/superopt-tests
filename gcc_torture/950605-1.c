@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 f (c)
     unsigned char c;
 {
   if (c != 0xFF)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target trampolines } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 static void recursive (int n, void (*proc) (void))
@@ -24,11 +25,11 @@ l1:
   if (n == 3)
     exit (0);
   else
-    abort ();
+    Mymyabort ();
 }
 
 int main ()
 {
-  recursive (10, abort);
-  abort ();
+  recursive (10, Mymyabort);
+  Mymyabort ();
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s
 {
   int a;
@@ -15,6 +16,6 @@ main ()
   struct s x;
   x.a = x.b = -1;
   if (f (&x) == 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

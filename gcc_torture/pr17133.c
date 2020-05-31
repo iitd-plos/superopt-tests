@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int foo = 0;
 void *bar = 0;
@@ -22,6 +23,6 @@ int main ()
 {
   pure_alloc ();
   if (!foo)
-    abort ();
+    Mymyabort ();
   return 0;
 }

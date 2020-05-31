@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 struct foo { int a, b, c; };
 
 void
 brother (int a, int b, int c)
 {
   if (a)
-    abort ();
+    Mymyabort ();
 }
 
 void

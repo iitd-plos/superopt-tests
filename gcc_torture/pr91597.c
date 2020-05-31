@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/91597 */
 
 enum E { A, B, C };
@@ -22,7 +23,7 @@ static inline void
 baz (struct S *o, int d)
 {
   if (__builtin_expect (!bar (o), 0))
-    __builtin_abort ();
+    Mymyabort ();
   if (d > 2) return;
   baz (o, d + 1);
 }

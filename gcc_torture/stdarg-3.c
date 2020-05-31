@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int foo_arg, bar_arg;
 long x;
@@ -121,16 +122,16 @@ main (void)
 
   f1 (7, 1L, 2L, 3L, 5L, 7L, 9L, 11L, 13L);
   if (x != 11L)
-    abort ();
+    Mymyabort ();
   f2 (6, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0);
   if (d != 32.0)
-    abort ();
+    Mymyabort ();
   f3 (2, 1L, 3L);
   if (bar_arg != 1L || x != 1L)
-    abort ();
+    Mymyabort ();
   f4 (2, 17.0, 19.0);
   if (bar_arg != 21 || d != 17.0)
-    abort ();
+    Mymyabort ();
   a1.i = 131;
   a1.j = 251;
   a1.d = 15.0;
@@ -140,27 +141,27 @@ main (void)
   a3.e = 178.0;
   f5 (2, a1, a3, a1);
   if (s1.i != 131 || s1.j != 254 || s1.d != 15.0 || s1.e != 178.0)
-    abort ();
+    Mymyabort ();
   f5 (3, a1, a3, a1);
   if (s1.i != 131 || s1.j != 251 || s1.d != 15.0 || s1.e != 191.0)
-    abort ();
+    Mymyabort ();
   a2.i = 138;
   a2.d = 16.0;
   a4.i = 257;
   a4.d = 176.0;
   f6 (2, a2, a4, a2);
   if (s2.i != 257 || s2.d != 176.0)
-    abort ();
+    Mymyabort ();
   f6 (3, a2, a4, a2);
   if (s2.i != 138 || s2.d != 16.0)
-    abort ();
+    Mymyabort ();
   f7 (2, a3, a1, a1);
   if (s1.i != 131 || s1.j != 254 || s1.d != 15.0 || s1.e != 178.0)
-    abort ();
+    Mymyabort ();
   if (bar_arg != 131)
-    abort ();
+    Mymyabort ();
   f8 (3, a4, a2, a2);
   if (s2.i != 257 || s2.d != 176.0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

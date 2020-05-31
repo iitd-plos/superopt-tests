@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct F { int i; };
 
 void f1(struct F *x, struct F *y)
@@ -5,7 +6,7 @@ void f1(struct F *x, struct F *y)
   int timeout = 0;
   for (; ((const struct F*)x)->i < y->i ; x->i++)
     if (++timeout > 5)
-      abort ();
+      Mymyabort ();
 }
 
 main()

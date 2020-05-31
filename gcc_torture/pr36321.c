@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires alloca" { ! alloca } { "-O0" } { "" } } */
-extern void abort (void);
+extern void Mymyabort (void);
 
 extern __SIZE_TYPE__ strlen (const char *);
 void foo(char *str)
@@ -11,7 +12,7 @@ void foo(char *str)
   if ((int) (a-b) < (len2*3))
     {
 #ifdef _WIN32
-      abort ();
+      Mymyabort ();
 #endif
       return;
     }

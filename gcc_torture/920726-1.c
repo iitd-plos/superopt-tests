@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -58,6 +59,6 @@ main()
   first(buf1, "i i ", 5, 20);
   second(buf2, "i i ", 5, 20);
   if (strcmp ("5 20 ", buf1) || strcmp ("5 20 ", buf2))
-    abort();
+    Mymyabort();
   exit(0);
 }

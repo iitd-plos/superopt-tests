@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/38422 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -19,6 +20,6 @@ main ()
   s.s = 24;
   foo ();
   if (s.s != 48)
-    abort ();
+    Mymyabort ();
   return 0;
 }

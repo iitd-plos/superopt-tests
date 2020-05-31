@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-stack-size "0x12000" } */
 
 #if __INT_MAX__ < 32768
@@ -27,7 +28,7 @@ int
 main ()
 {
   if (foo (100) != 102)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 #endif

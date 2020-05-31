@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test to verify that even strictly undefined strlen() calls with
    unterminated character arrays yield the "expected" results when
    the terminating nul is present in a subsequent suobobject.  */
@@ -649,5 +650,5 @@ int main (void)
   test_nonconst_union_member_arrays ();
 
   if (nfails)
-    __builtin_abort ();
+    Mymyabort ();
 }

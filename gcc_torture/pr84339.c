@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/84339 */
 
 struct S { int a; char b[1]; };
@@ -23,7 +24,7 @@ main ()
       p->a = 1;
       __builtin_strcpy (p->b, "abcdefg");
       if (foo (p) != 7 || bar (p) != 7)
-	__builtin_abort ();
+	Mymyabort ();
       __builtin_free (p);
     }
   return 0;

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/78791 */
 
 __attribute__((used, noinline, noclone)) unsigned long long
@@ -14,6 +15,6 @@ int
 main ()
 {
   if (foo (64, 7, 0) != 10 || foo (28, 3, 2) != 14)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct rtx_def
 {
   int f1 :1;
@@ -17,7 +18,7 @@ f (orig)
 void
 f2 ()
 {
-  abort ();
+  Mymyabort ();
 }
 
 main ()
@@ -29,6 +30,6 @@ main ()
   foo.f2 = 0;
   bar = f (&foo);
   if (bar != &foo || bar->f2 != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

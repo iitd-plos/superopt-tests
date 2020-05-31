@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a[251];
 __attribute__ ((noinline))
 t(int i)
@@ -5,7 +6,7 @@ t(int i)
   if (i==0)
     exit(0);
   if (i>255)
-    abort ();
+    Mymyabort ();
 }
 main()
 {

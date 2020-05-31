@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test that __builtin_prefetch does no harm.
 
    Check that the expression containing the address to prefetch is
@@ -224,48 +225,48 @@ int
 main ()
 {
   if (!assign_arg_ptr (ptr))
-    abort ();
+    Mymyabort ();
   if (!assign_glob_ptr ())
-    abort ();
+    Mymyabort ();
   if (!assign_arg_idx (ptr, 4))
-    abort ();
+    Mymyabort ();
   if (!assign_glob_idx ())
-    abort ();
+    Mymyabort ();
   if (!preinc_arg_ptr (ptr))
-    abort ();
+    Mymyabort ();
   if (!preinc_glob_ptr ())
-    abort ();
+    Mymyabort ();
   if (!postinc_arg_ptr (ptr))
-    abort ();
+    Mymyabort ();
   if (!postinc_glob_ptr ())
-    abort ();
+    Mymyabort ();
   if (!predec_arg_ptr (ptr))
-    abort ();
+    Mymyabort ();
   if (!predec_glob_ptr ())
-    abort ();
+    Mymyabort ();
   if (!postdec_arg_ptr (ptr))
-    abort ();
+    Mymyabort ();
   if (!postdec_glob_ptr ())
-    abort ();
+    Mymyabort ();
   if (!preinc_arg_idx (ptr, 3))
-    abort ();
+    Mymyabort ();
   if (!preinc_glob_idx ())
-    abort ();
+    Mymyabort ();
   if (!postinc_arg_idx (ptr, 3))
-    abort ();
+    Mymyabort ();
   if (!postinc_glob_idx ())
-    abort ();
+    Mymyabort ();
   if (!predec_arg_idx (ptr, 3))
-    abort ();
+    Mymyabort ();
   if (!predec_glob_idx ())
-    abort ();
+    Mymyabort ();
   if (!postdec_arg_idx (ptr, 3))
-    abort ();
+    Mymyabort ();
   if (!postdec_glob_idx ())
-    abort ();
+    Mymyabort ();
   if (!funccall_arg_ptr (ptr))
-    abort ();
+    Mymyabort ();
   if (!funccall_arg_idx (ptr, 3))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

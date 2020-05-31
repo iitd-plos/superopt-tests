@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int count = 0;
 int dummy;
 
@@ -18,6 +19,6 @@ main()
 {
   foo();
   if (count != 1)
-    abort();
+    Mymyabort();
   exit(0);
 }

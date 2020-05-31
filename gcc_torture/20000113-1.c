@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct x { 
   unsigned x1:1;
   unsigned x2:2;
@@ -12,7 +13,7 @@ foobar (int x, int y, int z)
 
   c->x3 += (a.x2 - a.x1) * c->x2;
   if (a.x1 != 1 || c->x3 != 5)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

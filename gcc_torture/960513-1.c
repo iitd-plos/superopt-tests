@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long double
 f (d, i)
      long double d;
@@ -20,6 +21,6 @@ f (d, i)
 main ()
 {
   if (! (int) (f (2.0L, 1)))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

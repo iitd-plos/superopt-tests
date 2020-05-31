@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int foo (void)
 {
   int i;
@@ -11,6 +12,6 @@ int foo (void)
 int main ()
 {
   if (foo () != 26)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

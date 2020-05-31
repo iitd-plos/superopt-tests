@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned
 f1 (x)
 {
@@ -13,12 +14,12 @@ f2 (x)
 main ()
 {
   if (f1 (1) != (~(unsigned) 0) >> 1)
-    abort ();
+    Mymyabort ();
   if (f1 (0) != ((~(unsigned) 0) >> 1) - 1)
-    abort ();
+    Mymyabort ();
   if (f2 (1) != (~(unsigned long long) 0) >> 1)
-    abort ();
+    Mymyabort ();
   if (f2 (0) != ((~(unsigned long long) 0) >> 1) - 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

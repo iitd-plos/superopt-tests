@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 int n = 2;
 
@@ -12,6 +13,6 @@ main ()
     }
 
   if (x != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

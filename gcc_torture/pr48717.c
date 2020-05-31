@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/48717 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int v = 1, w;
 
@@ -21,6 +22,6 @@ main ()
 {
   bar ();
   if (v != (unsigned short) -1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long long
 simple_rand ()
 {
@@ -56,7 +57,7 @@ main ()
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (r2 >= yy || r1 * yy + r2 != xx)
-	  abort ();
+	  Mymyabort ();
       }
       { signed long long xx = x, yy = y, r1, r2;
 	if ((unsigned long long) xx << 1 == 0 && yy == -1)
@@ -64,7 +65,7 @@ main ()
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (ABS (r2) >= (unsigned long long) ABS (yy) || (signed long long) (r1 * yy + r2) != xx)
-	  abort ();
+	  Mymyabort ();
       }
     save_time:
       { unsigned int xx = x, yy = y, r1, r2;
@@ -72,7 +73,7 @@ main ()
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (r2 >= yy || r1 * yy + r2 != xx)
-	  abort ();
+	  Mymyabort ();
       }
       { signed int xx = x, yy = y, r1, r2;
 	if ((unsigned int) xx << 1 == 0 && yy == -1)
@@ -80,33 +81,33 @@ main ()
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (ABS (r2) >= (unsigned int) ABS (yy) || (signed int) (r1 * yy + r2) != xx || ((xx < 0) != (r2 < 0) && r2))
-	  abort ();
+	  Mymyabort ();
       }
       { unsigned short xx = x, yy = y, r1, r2;
 	if (yy == 0) continue;
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (r2 >= yy || r1 * yy + r2 != xx)
-	  abort ();
+	  Mymyabort ();
       }
       { signed short xx = x, yy = y, r1, r2;
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (ABS (r2) >= (unsigned short) ABS (yy) || (signed short) (r1 * yy + r2) != xx)
-	  abort ();
+	  Mymyabort ();
       }
       { unsigned char xx = x, yy = y, r1, r2;
 	if (yy == 0) continue;
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (r2 >= yy || r1 * yy + r2 != xx)
-	  abort ();
+	  Mymyabort ();
       }
       { signed char xx = x, yy = y, r1, r2;
 	r1 = xx / yy;
 	r2 = xx % yy;
 	if (ABS (r2) >= (unsigned char) ABS (yy) || (signed char) (r1 * yy + r2) != xx)
-	  abort ();
+	  Mymyabort ();
       }
     }
 

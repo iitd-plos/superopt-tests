@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 long long __attribute__((noinline,noclone))
 foo (long long t)
@@ -12,6 +13,6 @@ foo (long long t)
 int main(void)
 {
   if (foo (0) != -4)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/48973 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 struct S { int f : 1; } s;
 int v = -1;
 
@@ -9,6 +10,6 @@ main ()
 {
   s.f = v < 0;
   if ((unsigned int) s.f != -1U)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* PR opt/7409.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 char g_list[] = { '1' };
 
 void g (void *p, char *list, int length, char **elementPtr, char **nextPtr)
 {
   if (*nextPtr != g_list)
-    abort ();
+    Mymyabort ();
 
   **nextPtr = 0;
 }

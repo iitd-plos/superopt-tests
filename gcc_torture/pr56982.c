@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target indirect_jumps } */
 #include <setjmp.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 static jmp_buf env;
@@ -35,7 +36,7 @@ int f(int *e)
     if (n == 0)
       exit(0);
     if (x)
-      abort();
+      Mymyabort();
     longjmp(env, 42);
 }
 

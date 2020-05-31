@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 void * a[255];
@@ -21,11 +22,11 @@ main ()
   a[0x08] = 0;
   f (INT_MAX/2 + INT_MAX/4 + 2);
   if (a[0x10] || a[0x08])
-    abort ();
+    Mymyabort ();
   a[0x10] = 0;
   a[0x08] = 0;
   f (INT_MAX/2 + 1);
   if (! a[0x10] || a[0x08])
-    abort ();
+    Mymyabort ();
   exit (0);
 }

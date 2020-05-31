@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/20601 */
 /* { dg-xfail-if "ptxas crashes" { nvptx-*-* } { "-O1" } { "" } } */
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 struct T
@@ -57,7 +58,7 @@ setup1 (int x)
       if (t.t1 && *t.t1)
         e[0] = t.t1;
       else
-        abort ();
+        Mymyabort ();
 
       for (h = e + 1; (*h = *i); ++i, ++h)
         ;
@@ -75,13 +76,13 @@ setup2 (void)
   while (d > 0 && e[0][0] == '-')
     {
       if (e[0][1] != '\0' && e[0][2] != '\0')
-        abort ();
+        Mymyabort ();
 
       switch (e[0][1])
         {
         case 'u':
           if (!e[1])
-            abort ();
+            Mymyabort ();
 
           t.t3 = &e[1];
           d--;
@@ -102,7 +103,7 @@ setup2 (void)
     }
 
   if (d > 0 && !(j & 1))
-    abort ();
+    Mymyabort ();
 
   return j;
 }
@@ -118,6 +119,6 @@ main (void)
   setup1 (x);
   /* PRE shouldn't transform x into the constant 0x601 here, it's not legal.  */
   if ((x & 0x400) && !a[4])
-    abort ();
+    Mymyabort ();
   exit (0);
 }

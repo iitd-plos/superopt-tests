@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/93582 */
 
 short a;
@@ -17,6 +18,6 @@ main ()
   a = 14;
   foo ();
   if (b != 27 || a != 6)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

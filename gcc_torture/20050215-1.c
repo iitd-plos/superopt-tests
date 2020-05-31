@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/19857 */
 
 typedef struct { char c[8]; } V
@@ -7,7 +8,7 @@ typedef struct { char c[8]; } V
   ;
 typedef __SIZE_TYPE__ size_t;
 V v;
-void abort (void);
+void Mymyabort (void);
 
 int
 main (void)
@@ -19,7 +20,7 @@ main (void)
 #ifndef __ELF__
       if (((size_t) &v & 7) == 0)
 #endif
-	abort ();
+	Mymyabort ();
     }
   return 0;
 }

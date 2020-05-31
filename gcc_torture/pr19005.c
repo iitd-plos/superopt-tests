@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* PR target/19005 */
-extern void abort (void);
+extern void Mymyabort (void);
 
 int v, s;
 
@@ -11,10 +12,10 @@ bar (int a, int b)
   if (!s)
     {
       if (a != x || b != (unsigned char) (x + 1))
-        abort ();
+        Mymyabort ();
     }
   else if (a != (unsigned char) (x + 1) || b != x)
-    abort ();
+    Mymyabort ();
   s ^= 1;
 }
 

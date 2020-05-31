@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   unsigned char a __attribute__ ((packed));
@@ -23,7 +24,7 @@ main ()
   three_byte.a = f ();
   three_byte.b = g ();
   if (three_byte.a != 0xab || three_byte.b != 0x1234)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

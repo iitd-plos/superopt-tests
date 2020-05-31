@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify that the CALL sideeffect isn't optimized away.  */
 /* Contributed by Greg Parker  25 Jan 2005  <gparker@apple.com> */
 
@@ -29,7 +30,7 @@ int main(int argc __attribute__((unused)), char **argv __attribute__((unused)))
   p.error = 0;
   bracket_empty(&p);
   if (p.error != 7)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

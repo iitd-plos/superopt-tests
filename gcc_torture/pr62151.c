@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/62151 */
 
 int a, c, d, e, f, g, h, i;
@@ -36,6 +37,6 @@ main ()
 {
   fn1 ();
   if (g != -1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

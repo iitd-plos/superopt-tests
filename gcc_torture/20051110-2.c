@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 void add_unwind_adjustsp (long);
-void abort (void);
+void Mymyabort (void);
 
 unsigned char bytes[5];
 
@@ -34,6 +35,6 @@ int main(void)
 {
   add_unwind_adjustsp (4132);
   if (bytes[0] != 0x88 || bytes[1] != 0x07)
-    abort ();
+    Mymyabort ();
   return 0;
 }

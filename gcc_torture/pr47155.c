@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/47155 */
 
 unsigned int a;
@@ -9,6 +10,6 @@ main (void)
 {
   a = b <= (unsigned char) (-6 * c);
   if (!a)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

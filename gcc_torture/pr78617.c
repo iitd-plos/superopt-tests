@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a = 0;
 int d = 1;
 int f = 1;
@@ -20,6 +21,6 @@ int fn4(int p1, int p2) {
 
 int main() {
   if (fn4(0, 0) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

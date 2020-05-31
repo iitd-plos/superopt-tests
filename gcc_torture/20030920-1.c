@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int main()
 {
@@ -9,7 +10,7 @@ int main()
     if (!(((unsigned int)(*c)) < 0x80)) hicount++;
   }
   if (hicount != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

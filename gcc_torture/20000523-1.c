@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 main (void)
 {
@@ -11,12 +12,12 @@ main (void)
   x = (((long long) n) << 55) / 0xff; 
 
   if (x == 0)
-    abort ();
+    Mymyabort ();
 
   x = (((long long) 9) << 55) / 0xff;
 
   if (x == 0)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

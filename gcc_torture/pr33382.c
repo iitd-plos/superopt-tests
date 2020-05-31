@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct Foo {
   int i;
   int j[];
@@ -11,11 +12,11 @@ int foo(void)
   return x.j[1];
 }
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 int main()
 {
   if (foo() != 0)
-    abort();
+    Mymyabort();
   return 0;
 }

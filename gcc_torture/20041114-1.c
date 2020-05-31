@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify that
    
    var <= 0 || ((long unsigned) (unsigned) (var - 1) < MAX_UNSIGNED_INT)
@@ -6,7 +7,7 @@
 
 #include <limits.h>
 
-void abort (void);
+void Mymyabort (void);
 void link_failure (void);
 
 volatile int v;
@@ -30,6 +31,6 @@ main (int argc, char **argv)
 void
 link_failure (void)
 {
-  abort ();
+  Mymyabort ();
 }
 #endif

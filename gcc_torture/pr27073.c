@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void __attribute__((noinline))
 foo (int *p, int d1, int d2, int d3,
      short count, int s1, int s2, int s3, int s4, int s5)
@@ -20,6 +21,6 @@ int main()
   foo (x, 0, 0, 0, 2, 100, 200, 300, 400, 500);
   for (i = 0; i < 10; i++)
     if (x[i] != (i % 5 + 1) * 100)
-      abort ();
+      Mymyabort ();
   exit (0);
 }

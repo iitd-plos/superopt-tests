@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c/43385 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int e;
 
@@ -27,33 +28,33 @@ main (void)
   asm ("" : "+r" (z));
   foo (z + 2, z + 1);
   if (e != 1)
-    abort ();
+    Mymyabort ();
   foo (z + 2, z);
   if (e != 1)
-    abort ();
+    Mymyabort ();
   foo (z + 1, z + 1);
   if (e != 2)
-    abort ();
+    Mymyabort ();
   foo (z + 1, z);
   if (e != 2)
-    abort ();
+    Mymyabort ();
   foo (z, z + 1);
   if (e != 2)
-    abort ();
+    Mymyabort ();
   foo (z, z);
   if (e != 2)
-    abort ();
+    Mymyabort ();
   if (bar (z + 2, z + 1) != 1)
-    abort ();
+    Mymyabort ();
   if (bar (z + 2, z) != 0)
-    abort ();
+    Mymyabort ();
   if (bar (z + 1, z + 1) != 1)
-    abort ();
+    Mymyabort ();
   if (bar (z + 1, z) != 0)
-    abort ();
+    Mymyabort ();
   if (bar (z, z + 1) != 0)
-    abort ();
+    Mymyabort ();
   if (bar (z, z) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 struct T { int t; int r[8]; };
 struct S { int a; int b; int c[6]; struct T d; };
 
@@ -16,10 +17,10 @@ main (void)
   foo (&s);
   if (s.a != 12 || s.b != 6
       || s.c[0] || s.c[1] || s.c[2] || s.c[3] || s.c[4] || s.c[5])
-    abort ();
+    Mymyabort ();
   if (s.d.t != 7 || s.d.r[0] != 8 || s.d.r[1] != 9 || s.d.r[2] != 10
       || s.d.r[3] != 11 || s.d.r[4] != 12 || s.d.r[5] != 13
       || s.d.r[6] != 14 || s.d.r[7] != 15)
-    abort ();
+    Mymyabort ();
   return 0;
 }

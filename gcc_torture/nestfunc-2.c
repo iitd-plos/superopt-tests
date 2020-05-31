@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target trampolines } */
 
 extern int foo (int, int, int (*) (int, int, int, int, int, int, int));
@@ -34,10 +35,10 @@ main (void)
     }
 
   if (sum != 2300)
-    abort ();
+    Mymyabort ();
 
   if (z != 0x1b)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

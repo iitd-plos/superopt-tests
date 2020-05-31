@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/90311 */
 
 int a, b;
@@ -11,6 +12,6 @@ main ()
   b -= c < (unsigned char) a;
   x = b;
   if (x)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

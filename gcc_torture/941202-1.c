@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires alloca" { ! alloca } { "-O0" } { "" } } */
 g (x, y)
 {
   if (x != 3)
-    abort ();
+    Mymyabort ();
 }
 
 static inline

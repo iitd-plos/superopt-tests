@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/80501 */
 
 signed char v = 0;
@@ -18,6 +19,6 @@ int
 main ()
 {
   if (sizeof (int) > sizeof (char) && bar () != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

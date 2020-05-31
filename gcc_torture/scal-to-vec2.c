@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define vector(elcount, type)  \
 __attribute__((vector_size((elcount)*sizeof(type)))) type
 
@@ -11,7 +12,7 @@ do {\
     int __i; \
     for (__i = 0; __i < count; __i++) {\
         if (vidx (type, vec1, __i) != oper##lr (num, vidx (type, vec0, __i), op)) \
-            __builtin_abort (); \
+            Mymyabort (); \
     }\
 } while (0)
 
@@ -20,7 +21,7 @@ do {\
     int __i; \
     for (__i = 0; __i < count; __i++) { \
         if (vidx (type, v0, __i) != vidx (type, v1, __i)) \
-            __builtin_abort (); \
+            Mymyabort (); \
     } \
 } while (0)
 

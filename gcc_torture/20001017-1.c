@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
  
 void bug (double *Cref, char transb, int m, int n, int k,
 	  double a, double *A, int fdA, double *B, int fdB,
 	  double b, double *C, int fdC)
 {
-  if (C != Cref) abort ();
+  if (C != Cref) Mymyabort ();
 }
  
 int main (void)

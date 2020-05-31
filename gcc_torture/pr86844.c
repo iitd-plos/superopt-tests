@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86844 */
 
 __attribute__((noipa)) void
@@ -19,6 +20,6 @@ main ()
   foo (a);
   if (((char *)a)[0] != 0 || ((char *)a)[1] != 2
       || ((char *)a)[2] != 3 || ((char *)a)[3] != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

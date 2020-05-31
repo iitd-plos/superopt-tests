@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target return_address } */
 /* { dg-options "-finstrument-functions" } */
 /* { dg-xfail-run-if "" { powerpc-ibm-aix* } } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
-#define ASSERT(X)	if (!(X)) abort ();
+#define ASSERT(X)	if (!(X)) Mymyabort ();
 #define NOCHK __attribute__ ((no_instrument_function))
 
 int entry_calls, exit_calls;

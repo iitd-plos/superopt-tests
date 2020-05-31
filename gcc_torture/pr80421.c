@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/80421 */
 
 __attribute__ ((noinline, noclone)) void
@@ -5,7 +6,7 @@ baz (const char *t, ...)
 {
   asm volatile (""::"r" (t):"memory");
   if (*t == 'T')
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 unsigned int

@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct s
 {
@@ -20,6 +21,6 @@ int
 main ()
 {
   if (!f (s, 0x87654321u))
-    abort ();
+    Mymyabort ();
   return 0;
 }

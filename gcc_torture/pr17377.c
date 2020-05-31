@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/17377
    Bug in code emitted by "return" pattern on CRIS: missing pop of
    forced return address on stack.  */
@@ -55,6 +56,6 @@ main (void)
       || y (3) != 0
       || y (-1) != 0
       || calls != 5)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

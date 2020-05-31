@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test that variable
      int val;
    may hold value of tyope "struct c" which has same size.
@@ -15,5 +16,5 @@ main(void)
   val = 2;
   a2=cptr->b.a;
   if (a2.val == a.val)
-    __builtin_abort ();
+    Mymyabort ();
 }

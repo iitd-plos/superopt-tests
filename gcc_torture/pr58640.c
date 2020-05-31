@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a, b, c, d = 1, e;
 
 static signed char

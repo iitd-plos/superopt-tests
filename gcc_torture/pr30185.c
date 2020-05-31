@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR target/30185 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef struct S { char a; long long b; } S;
 
@@ -19,10 +20,10 @@ main (void)
   a.b = 32LL;
   b.b = 4LL;
   if (foo (a, b).b != 8LL)
-    abort ();
+    Mymyabort ();
   a.b = -8LL;
   b.b = -2LL;
   if (foo (a, b).b != 4LL)
-    abort ();
+    Mymyabort ();
   return 0;
 }

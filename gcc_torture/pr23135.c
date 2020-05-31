@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Based on execute/simd-1.c, modified by joern.rennecke@st.com to
    trigger a reload bug.  Verified for gcc mainline from 20050722 13:00 UTC
    for sh-elf -m4 -O2.  */
@@ -8,7 +9,7 @@
 #define STACK_SIZE (256*1024)
 #endif
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 typedef struct { char c[STACK_SIZE/2]; } big_t;
@@ -30,7 +31,7 @@ verify (siint a1, siint a2, siint b1, siint b2, big_t big)
 {
   if (a1 != b1
       || a2 != b2)
-    abort ();
+    Mymyabort ();
 }
 
 int

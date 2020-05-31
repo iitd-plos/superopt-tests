@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 
 int
@@ -18,7 +19,7 @@ main (void)
   if (   x (0) != 2
       || x (1) != 3
       || x (2) != 5)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

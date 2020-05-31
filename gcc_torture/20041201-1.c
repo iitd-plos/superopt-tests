@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-opt/15289 */
 
 typedef struct { _Complex char a; _Complex char b; } Scc2;

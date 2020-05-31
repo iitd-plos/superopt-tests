@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Test strlen with various combinations of pointer alignments and lengths to
@@ -50,7 +51,7 @@ main ()
 	p = u.buf + off;
 	len2 = strlen (p);
 	if (len != len2)
-	  abort ();
+	  Mymyabort ();
       }
 
   exit (0);

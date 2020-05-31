@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* derived from mozilla source code */
 
 #include <stdarg.h>
@@ -10,7 +11,7 @@ typedef struct {
 
 void dummy (va_list vap)
 {
-  if (va_arg (vap, int) != 1234) abort();
+  if (va_arg (vap, int) != 1234) Mymyabort();
   return;
 }
 

@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/45262 */
 
 /* { dg-require-effective-target int32plus } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (unsigned int x)
@@ -20,16 +21,16 @@ int
 main (void)
 {
   if (foo (1) != 1)
-    abort ();
+    Mymyabort ();
   if (foo (0) != 0)
-    abort ();
+    Mymyabort ();
   if (foo (-1) != 1)
-    abort ();
+    Mymyabort ();
   if (bar (1) != 1)
-    abort ();
+    Mymyabort ();
   if (bar (0) != 0)
-    abort ();
+    Mymyabort ();
   if (bar (-1) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

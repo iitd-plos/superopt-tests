@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test to make sure memset of small old size works
    correctly. */
 #define SIZE 15
@@ -21,7 +22,7 @@ int main(void)
   for(i = 0; i < sizeof(b); i++)
     {
       if (0 != b[i])
-	__builtin_abort ();
+	Mymyabort ();
     }
   return 0;
 }

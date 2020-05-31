@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/59387 */
 
 int a, *d, **e = &d, f;

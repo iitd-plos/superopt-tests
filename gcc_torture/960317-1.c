@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 f (unsigned bitcount, int mant)
 {
@@ -17,6 +18,6 @@ auf:
 main ()
 {
   if (f (0, -1))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

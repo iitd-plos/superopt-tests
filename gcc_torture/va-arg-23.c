@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR 9700 */
 /* Alpha got the base address for the va_list incorrect when there was
    a structure that was passed partially in registers and partially on
@@ -15,7 +16,7 @@ void foo(int a, int b, int c, int d, int e, struct two f, int g, ...)
   va_start(args, g);
   h = va_arg(args, int);
   if (g != 1 || h != 2)
-    abort ();
+    Mymyabort ();
 }
 
 int main()

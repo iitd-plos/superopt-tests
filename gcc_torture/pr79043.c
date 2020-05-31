@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR ipa/78791 */
 
 int val;
@@ -17,5 +18,5 @@ main()
   *ptr=1;
   typepun ();
   if (*ptr)
-    __builtin_abort ();
+    Mymyabort ();
 }

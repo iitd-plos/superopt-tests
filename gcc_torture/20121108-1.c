@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 char temp[] = "192.168.190.160";
 unsigned result = (((((192u<<8)|168u)<<8)|190u)<<8)|160u;
 
@@ -13,7 +14,7 @@ int strtoul1(const char *a, char **b, int c)
     return 190;
   else if (a == temp+12)
     return 160;
-  __builtin_abort();
+  Mymyabort();
 }
 
 int string_to_ip(const char *s) __attribute__((noinline,noclone));
@@ -44,7 +45,7 @@ int main(void)
   printf ("%x\n", t);
   printf ("%x\n", result);
   if (t != result)
-    __builtin_abort ();
+    Mymyabort ();
   printf ("WORKS.\n");
   return 0;
 }

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 union _D_rep
 {
@@ -18,7 +19,7 @@ int add(double* key, double* table)
 
     union _D_rep _D_inf = {{ 0, 0, 0, 0x7ff0 }};
     if (*entry != _D_inf.val)
-      abort ();
+      Mymyabort ();
 
     union _D_rep _D_inf2 = {{ 0, 0, 0, 0x7ff0 }};
     if (!_D_inf2.val)

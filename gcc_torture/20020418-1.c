@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* ifcvt accidentally deletes a referenced label while generating
    conditional traps on machines having such patterns */
 

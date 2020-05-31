@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR optimization/11320 */
 /* Origin: Andreas Schwab <schwab@suse.de> */
 

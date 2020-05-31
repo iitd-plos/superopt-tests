@@ -1,4 +1,5 @@
-void abort(void);
+#include"eqchecker_helper.h"
+void Mymyabort(void);
 
 int
 movegt(int x, int y, long long a)
@@ -34,7 +35,7 @@ main()
   for (i = 0; i < sizeof (tests) / sizeof (tests[0]); i++)
     {
       if (movegt (-1, 1, tests[i].val) != tests[i].ret)
-	abort ();
+	Mymyabort ();
     }
   return 0;
 }

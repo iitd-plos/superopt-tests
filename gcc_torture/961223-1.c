@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fgnu89-inline" } */
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct s {
   double d;
@@ -20,6 +21,6 @@ main ()
   struct s t = { 2.0 };
   t = sub (t);
   if (t.d != 3.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

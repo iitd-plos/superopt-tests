@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct mouse_button_str {
         unsigned char left      : 1;
         unsigned char right     : 1;
@@ -21,43 +22,43 @@ int main(void)
   newbutton1.middle = 1;
   newbutton1.right = 1;
   if (!fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
 
   newbutton1.left = 0;
   newbutton1.middle = 1;
   newbutton1.right = 1;
   if (!fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
   newbutton1.left = 1;
   newbutton1.middle = 0;
   newbutton1.right = 1;
   if (!fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
   newbutton1.left = 1;
   newbutton1.middle = 1;
   newbutton1.right = 0;
   if (!fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
 
 
   newbutton1.left = 1;
   newbutton1.middle = 0;
   newbutton1.right = 0;
   if (!fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
   newbutton1.left = 0;
   newbutton1.middle = 1;
   newbutton1.right = 0;
   if (!fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
   newbutton1.left = 0;
   newbutton1.middle = 0;
   newbutton1.right = 1;
   if (!fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
   newbutton1.left = 0;
   newbutton1.middle = 0;
   newbutton1.right = 0;
   if (fct (newbutton1))
-    __builtin_abort ();
+    Mymyabort ();
 }

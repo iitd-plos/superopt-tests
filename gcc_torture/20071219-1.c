@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR c++/34459 */
 
-extern void abort (void);
-extern void *memset (void *s, int c, __SIZE_TYPE__ n);
+//extern void Mymyabort (void);
+//extern void *memset (void *s, int c, __SIZE_TYPE__ n);
 
 struct S
 {
@@ -16,7 +17,7 @@ foo (struct S *x, int set)
   int i;
   for (i = 0; i < sizeof (x->s); ++i)
     if (x->s[i] != 0)
-      abort ();
+      Mymyabort ();
     else if (set)
       x->s[i] = set;
   p = x;

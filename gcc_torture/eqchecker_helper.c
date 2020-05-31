@@ -6,6 +6,11 @@
 
 //const char interp_section[] __attribute__((section(".interp"))) = "/path/to/dynamic/linker";
 
+void Mymyabort()
+{
+  abort();
+}
+
 void MYmyexit(int ec)
 {
   _exit(ec);

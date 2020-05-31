@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   unsigned char a  : 2;
@@ -28,7 +29,7 @@ main ()
   flags.b  = 3;
 
   if (foo (&flags) != 0)
-    abort ();
+    Mymyabort ();
   else
     exit (0);
 }

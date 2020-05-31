@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 
 int expect_do1 = 1, expect_do2 = 2;
@@ -22,12 +23,12 @@ lbl2:
  
 static void do1(void) {
   if (doit(0) != expect_do1)
-    abort ();
+    Mymyabort ();
 }
  
 static void do2(void){
   if (doit(1) != expect_do2)
-    abort ();
+    Mymyabort ();
 }
  
 int main(void){

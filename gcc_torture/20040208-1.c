@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main ()
 {
   long double x;
@@ -5,6 +6,6 @@ int main ()
   x = 0x1.0p-500L;
   x *= 0x1.0p-522L;
   if (x != 0x1.0p-1022L)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

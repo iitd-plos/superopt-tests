@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-xfail-if "Can not call system libm.a with -msoft-float" { powerpc-*-aix* rs6000-*-aix* } { "-msoft-float" } { "" } } */
 #include <math.h>
 
@@ -11,5 +12,5 @@ main()
       && c - 0.1 < 3.174802)
     exit (0);
   else
-    abort ();
+    Mymyabort ();
 }

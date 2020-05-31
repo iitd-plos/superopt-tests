@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a, c, d;
 short b;
 

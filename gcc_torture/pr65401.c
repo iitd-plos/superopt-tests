@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/65401 */
 
 struct S { unsigned short s[64]; };
@@ -37,11 +38,11 @@ main ()
 #if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
   for (i = 0; i < 64; i++)
     if (s.s[i] != (64 - i) + (i << 8))
-      __builtin_abort ();
+      Mymyabort ();
 #elif __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
   for (i = 0; i < 64; i++)
     if (s.s[i] != i + ((64 - i) << 8))
-      __builtin_abort ();
+      Mymyabort ();
 #endif
   for (i = 0; i < 64; i++)
     s.s[i] = i + ((64 - i) << 8);
@@ -49,11 +50,11 @@ main ()
 #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
   for (i = 0; i < 64; i++)
     if (s.s[i] != (64 - i) + (i << 8))
-      __builtin_abort ();
+      Mymyabort ();
 #elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
   for (i = 0; i < 64; i++)
     if (s.s[i] != i + ((64 - i) << 8))
-      __builtin_abort ();
+      Mymyabort ();
 #endif
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Simple alignment checks;
    looking for compiler/assembler alignment disagreements,
    agreement between struct initialization and access.  */
@@ -18,33 +19,33 @@ struct e_ldouble { double d; long double ld; } s_d_ld = { 34.0, 35.0 };
 
 int main ()
 {
-  if (s_c_s.c != 'a') abort ();
-  if (s_c_s.s != 13) abort ();
-  if (s_c_i.c != 'b') abort ();
-  if (s_c_i.i != 14) abort ();
-  if (s_s_i.s != 15) abort ();
-  if (s_s_i.i != 16) abort ();
-  if (s_c_f.c != 'c') abort ();
-  if (s_c_f.f != 17.0) abort ();
-  if (s_s_f.s != 18) abort ();
-  if (s_s_f.f != 19.0) abort ();
-  if (s_c_d.c != 'd') abort ();
-  if (s_c_d.d != 20.0) abort ();
-  if (s_s_d.s != 21) abort ();
-  if (s_s_d.d != 22.0) abort ();
-  if (s_i_d.i != 23) abort ();
-  if (s_i_d.d != 24.0) abort ();
-  if (s_f_d.f != 25.0) abort ();
-  if (s_f_d.d != 26.0) abort ();
-  if (s_c_ld.c != 'e') abort ();
-  if (s_c_ld.ld != 27.0) abort ();
-  if (s_s_ld.s != 28) abort ();
-  if (s_s_ld.ld != 29.0) abort ();
-  if (s_i_ld.i != 30) abort ();
-  if (s_i_ld.ld != 31.0) abort ();
-  if (s_f_ld.f != 32.0) abort ();
-  if (s_f_ld.ld != 33.0) abort ();
-  if (s_d_ld.d != 34.0) abort ();
-  if (s_d_ld.ld != 35.0) abort ();
+  if (s_c_s.c != 'a') Mymyabort ();
+  if (s_c_s.s != 13) Mymyabort ();
+  if (s_c_i.c != 'b') Mymyabort ();
+  if (s_c_i.i != 14) Mymyabort ();
+  if (s_s_i.s != 15) Mymyabort ();
+  if (s_s_i.i != 16) Mymyabort ();
+  if (s_c_f.c != 'c') Mymyabort ();
+  if (s_c_f.f != 17.0) Mymyabort ();
+  if (s_s_f.s != 18) Mymyabort ();
+  if (s_s_f.f != 19.0) Mymyabort ();
+  if (s_c_d.c != 'd') Mymyabort ();
+  if (s_c_d.d != 20.0) Mymyabort ();
+  if (s_s_d.s != 21) Mymyabort ();
+  if (s_s_d.d != 22.0) Mymyabort ();
+  if (s_i_d.i != 23) Mymyabort ();
+  if (s_i_d.d != 24.0) Mymyabort ();
+  if (s_f_d.f != 25.0) Mymyabort ();
+  if (s_f_d.d != 26.0) Mymyabort ();
+  if (s_c_ld.c != 'e') Mymyabort ();
+  if (s_c_ld.ld != 27.0) Mymyabort ();
+  if (s_s_ld.s != 28) Mymyabort ();
+  if (s_s_ld.ld != 29.0) Mymyabort ();
+  if (s_i_ld.i != 30) Mymyabort ();
+  if (s_i_ld.ld != 31.0) Mymyabort ();
+  if (s_f_ld.f != 32.0) Mymyabort ();
+  if (s_f_ld.ld != 33.0) Mymyabort ();
+  if (s_d_ld.d != 34.0) Mymyabort ();
+  if (s_d_ld.ld != 35.0) Mymyabort ();
   return 0;
 }

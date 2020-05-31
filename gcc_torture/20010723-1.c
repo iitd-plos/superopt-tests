@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 test ()
 {
@@ -11,6 +12,6 @@ test ()
 main()
 {
   if (test () != 8)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR c/8032 */
 /* Verify that an empty initializer inside a partial
    parent initializer doesn't confuse GCC.  */
@@ -14,7 +15,7 @@ struct X x = { .b = 40, .z = {} };
 int main ()
 {
   if (x.b != 40)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

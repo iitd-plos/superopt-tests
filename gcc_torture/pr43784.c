@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s {
   unsigned char a[256];
 };
@@ -28,6 +29,6 @@ int main()
   qp();
   for (i = 0; i < 256; i++)
     if (q->a[i] != i)
-      __builtin_abort();
+      Mymyabort();
   return 0;
 }

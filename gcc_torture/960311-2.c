@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 
 #ifdef DEBUG
-#define abort() printf ("error, line %d\n", __LINE__)
+#define Mymyabort() printf ("error, line %d\n", __LINE__)
 #endif
 
 int count;
@@ -25,42 +26,42 @@ main ()
   count = 0;
   b (0);
   if (count != 0)
-    abort ();
+    Mymyabort ();
 
   count = 0;
   b (0x8000);
   if (count != 1)
-    abort ();
+    Mymyabort ();
 
   count = 0;
   b (0x4000);
   if (count != 1)
-    abort ();
+    Mymyabort ();
 
   count = 0;
   b (0x2000);
   if (count != 1)
-    abort ();
+    Mymyabort ();
 
   count = 0;
   b (0xc000);
   if (count != 2)
-    abort ();
+    Mymyabort ();
 
   count = 0;
   b (0xa000);
   if (count != 2)
-    abort ();
+    Mymyabort ();
 
   count = 0;
   b (0x6000);
   if (count != 2)
-    abort ();
+    Mymyabort ();
 
   count = 0;
   b (0xe000);
   if (count != 3)
-    abort ();
+    Mymyabort ();
 
 #ifdef DEBUG
   printf ("Done.\n");

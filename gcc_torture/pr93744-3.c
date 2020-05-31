@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/93744 */
 
 int w;
@@ -14,8 +15,8 @@ main ()
 {
   w = 4;
   if (foo (5, 7, 12) != 4 || w != 5)
-    __builtin_abort ();
+    Mymyabort ();
   if (foo (7, 5, 12) != 12 || w != 6)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

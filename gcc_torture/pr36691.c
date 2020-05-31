@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned char g_5;
 
 void func_1 (void)
@@ -6,12 +7,12 @@ void func_1 (void)
     ;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 int main (void)
 {
   func_1 ();
   if (g_5 != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

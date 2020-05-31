@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/49161 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int c;
 
@@ -8,7 +9,7 @@ __attribute__((noinline, noclone)) void
 bar (int x)
 {
   if (x != c++)
-    abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline, noclone)) void
@@ -41,6 +42,6 @@ main ()
 {
   foo (3);
   if (c != 3)
-    abort ();
+    Mymyabort ();
   return 0;
 }

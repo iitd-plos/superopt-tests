@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/59643 */
 
 #define N 32
@@ -34,6 +35,6 @@ main ()
   foo (a, b, c, 2.0, 3.0, N);
   for (i = 0; i < N; i++)
     if (a[i] != expected[i])
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

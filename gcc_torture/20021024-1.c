@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* Origin: PR target/6981 from Mattias Engdegaard <mattias@virtutech.se>.  */
 /* { dg-require-effective-target int32plus } */
 
 void exit (int);
-void abort (void);
+void Mymyabort (void);
 
 unsigned long long *cp, m;
 
@@ -39,6 +40,6 @@ int main(void)
   bar((8 << 23) | (4 << 9) | 15, r);
 
   if (m != 47 + 11)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

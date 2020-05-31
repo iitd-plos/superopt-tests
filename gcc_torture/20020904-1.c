@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR c/7102 */
 
 /* Verify that GCC zero-extends integer constants
@@ -14,6 +15,6 @@ u8 fun(u8 y)
 int main(void)
 {
   if (fun((u8)2) != 127)
-    abort ();
+    Mymyabort ();
   return 0;
 }

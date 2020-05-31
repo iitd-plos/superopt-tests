@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options ieee } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 static inline int __attribute__((always_inline)) testf (float b)
 {
@@ -26,13 +27,13 @@ static inline int __attribute__((always_inline)) testl (long double b)
 int main()
 {
   if (testf (__FLT_MAX__) < 1)
-    abort ();
+    Mymyabort ();
 
   if (test (__DBL_MAX__) < 1)
-    abort ();
+    Mymyabort ();
 
   if (testl (__LDBL_MAX__) < 1)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

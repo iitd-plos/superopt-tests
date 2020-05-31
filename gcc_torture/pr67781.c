@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 #ifdef __UINT32_TYPE__
 typedef __UINT32_TYPE__ uint32_t;
@@ -30,6 +31,6 @@ main ()
     return 0;
 
   if (pr67781 () != 0x12345678)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned
 f ()
 {
@@ -25,8 +26,8 @@ g ()
 main ()
 {
   if (f () != (unsigned short) -1)
-    abort ();
+    Mymyabort ();
   if (g () != (unsigned short) -1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

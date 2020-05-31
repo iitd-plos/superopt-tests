@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR c/3444
    This used to fail because bitwise xor was improperly computed in char type
    and sign extended to int type.  */
 
-extern void abort ();
+extern void Mymyabort ();
 extern void exit (int);
 
 signed char c = (signed char) 0xffffffff;
@@ -19,6 +20,6 @@ int main (void)
       || sizeof (int) != 4)
     exit (0);
   if (foo () != (int) 0xffff0066)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR target/60017 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S0
 {
@@ -27,7 +28,7 @@ int main (void)
   struct S1 ret = func ();
 
   if (ret.m2[1].m1 != 9)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

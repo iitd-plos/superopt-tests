@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/27285 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S { unsigned char a, b, c, d[16]; };
 
@@ -41,6 +42,6 @@ main (void)
   foo (&x, &y);
   if (x.d[0] != y.d[0] || x.d[1] != y.d[1]
       || x.d[2] != y.d[2] || (x.d[3] & 0x80) != y.d[3])
-    abort ();
+    Mymyabort ();
    return 0;
 }

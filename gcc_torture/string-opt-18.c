@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2003  Free Software Foundation.
 
    Test equal pointer optimizations don't break anything.
 
    Written by Roger Sayle, July 14, 2003.  */
 
-extern void abort ();
+extern void Mymyabort ();
 typedef __SIZE_TYPE__ size_t;
 
 extern void *memcpy(void*, const void*, size_t);
@@ -19,43 +20,43 @@ extern int strncmp(const char*, const char*, size_t);
 void test1 (void *ptr)
 {
   if (memcpy(ptr,ptr,8) != ptr)
-    abort ();
+    Mymyabort ();
 }
 
 void test2 (char *ptr)
 {
   if (mempcpy(ptr,ptr,8) != ptr+8)
-    abort ();
+    Mymyabort ();
 }
 
 void test3 (void *ptr)
 {
   if (memmove(ptr,ptr,8) != ptr)
-    abort ();
+    Mymyabort ();
 }
 
 void test4 (char *ptr)
 {
   if (strcpy(ptr,ptr) != ptr)
-    abort ();
+    Mymyabort ();
 }
 
 void test5 (void *ptr)
 {
   if (memcmp(ptr,ptr,8) != 0)
-    abort ();
+    Mymyabort ();
 }
 
 void test6 (const char *ptr)
 {
   if (strcmp(ptr,ptr) != 0)
-    abort ();
+    Mymyabort ();
 }
 
 void test7 (const char *ptr)
 {
   if (strncmp(ptr,ptr,8) != 0)
-    abort ();
+    Mymyabort ();
 }
 
 

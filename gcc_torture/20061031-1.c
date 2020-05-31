@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/29631 */
 /* Origin: Falk Hueffner <falk@debian.org> */
 

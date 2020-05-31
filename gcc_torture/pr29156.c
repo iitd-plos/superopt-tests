@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 struct test1
 {
   int a;
@@ -25,7 +26,7 @@ int main(void)
   struct test2 pom;
 
   if (bla (&pom.sub, &pom) != 8)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   short s __attribute__ ((aligned(2), packed));
@@ -20,6 +21,6 @@ main ()
   trial.d = 16.0;
 
   if (check (&trial) != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

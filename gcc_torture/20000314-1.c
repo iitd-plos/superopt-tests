@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main ()
 {
   long winds = 0;
@@ -11,7 +12,7 @@ int main ()
   if (winds == 0 || winds != 0 || *(char *) winds)
     exit (0);
 
-  abort ();
+  Mymyabort ();
 }
 
 

@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-Wno-psabi" } */
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef int V2SI __attribute__ ((vector_size (8)));
 typedef unsigned int V2USI __attribute__ ((vector_size (8)));
@@ -28,10 +29,10 @@ main (void)
   V2SI a = { -3, -3 };
   u.z = test1 (a);
   if (u.y[0] != -3 || u.y[1] != -3)
-    abort ();
+    Mymyabort ();
 
   u.l = test2 (a);
   if (u.y[0] != -3 || u.y[1] != -3)
-    abort ();
+    Mymyabort ();
   return 0;
 }

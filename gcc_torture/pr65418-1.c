@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65418 */
 
 __attribute__((noinline, noclone)) int
@@ -14,6 +15,6 @@ main ()
   volatile int i;
   for (i = -230; i < -120; i++)
     if (foo (i) != (i == -216 || i == -132 || i == -218 || i == -146))
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

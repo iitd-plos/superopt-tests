@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target trampolines } */
 
 main ()
@@ -11,7 +12,7 @@ main ()
     }
 
   if (a (2) != 0)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 void __attribute__((noinline))
 bar (int **p)
@@ -26,7 +27,7 @@ foo (int b)
 int main()
 {
   if (foo(0) != 0.0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

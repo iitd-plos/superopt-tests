@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 extern void exit (int);
 
 int a, b, c, d, e, f[3]; 

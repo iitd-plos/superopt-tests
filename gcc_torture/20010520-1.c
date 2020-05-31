@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static unsigned int expr_hash_table_size = 1;
 
 int
@@ -8,5 +9,5 @@ main ()
 
   if (i < expr_hash_table_size && del)
     exit (0);
-  abort ();
+  Mymyabort ();
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int Sub(int a, int b) {
   return  b -a;
 }

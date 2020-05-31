@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Origin: Joseph Myers <jsm28@cam.ac.uk>.  */
 /* Case labels in a switch statement are converted to the promoted
    type of the controlling expression, not an unpromoted version.
@@ -5,7 +6,7 @@
    Andreas Krakowczyk <Andreas.Krakowczyk@fujitsu-siemens.com>.  */
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 static int i;
 
@@ -15,7 +16,7 @@ main (void)
   i = -1;
   switch ((signed char) i) {
   case 255:
-    abort ();
+    Mymyabort ();
   default:
     exit (0);
   }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test saving and restoring of SIMD registers.  */
 
 typedef short Q __attribute__((vector_size(8)));
@@ -47,13 +48,13 @@ main (void)
   func2 ();
 
   if (memcmp (&w1, &w3, sizeof (Q)) != 0)
-    abort ();
+    Mymyabort ();
   if (memcmp (&w2, &w4, sizeof (Q)) != 0)
-    abort ();
+    Mymyabort ();
   if (memcmp (&z1, &z3, sizeof (Q)) != 0)
-    abort ();
+    Mymyabort ();
   if (memcmp (&z2, &z4, sizeof (Q)) != 0)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

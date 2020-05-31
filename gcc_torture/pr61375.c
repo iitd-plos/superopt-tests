@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #ifdef __UINT64_TYPE__
 typedef __UINT64_TYPE__ uint64_t;
 #else
@@ -30,6 +31,6 @@ main(int argc, char **argv)
   if (sizeof (unsigned __int128) * __CHAR_BIT__ != 128)
     return 0;
   if (uint128_central_bitsi_ior (in, 2) != 0x102)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

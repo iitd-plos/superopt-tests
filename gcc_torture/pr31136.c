@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 struct S {
   unsigned b4:4;
@@ -11,7 +12,7 @@ int main()
   s.b4 = s.b6;
   s.b6 = s.b4;
   if (s.b6 != 15)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

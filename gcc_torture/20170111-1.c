@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/79032 */
 /* Reported by Daniel Cederman <cederman@gaisler.com> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S {
   short a;
@@ -28,6 +29,6 @@ int main (void)
   struct S s = { 0, 0, 0, 0, 2, &val };
   val = foo (&s);
   if (val != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

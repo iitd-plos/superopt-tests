@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define ENDIANBIG __attribute((scalar_storage_order ("little-endian")))
 
 typedef struct ENDIANBIG 
@@ -30,13 +31,13 @@ main(void)
   value3 = ((flag)?10:20);
 
   if (value1 != 10)
-    __builtin_abort ();
+    Mymyabort ();
 
   if (value2 != 10)
-    __builtin_abort ();
+    Mymyabort ();
 
   if (value3 != 10)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

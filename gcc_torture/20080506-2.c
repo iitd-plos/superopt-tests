@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/36013 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void __attribute__((noinline))
 foo (int **__restrict p, int **__restrict q)
@@ -8,7 +9,7 @@ foo (int **__restrict p, int **__restrict q)
   *p[0] = 1;
   *q[0] = 2;
   if (*p[0] != 2)
-    abort ();
+    Mymyabort ();
 }
 
 int

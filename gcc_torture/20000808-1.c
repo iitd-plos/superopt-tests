@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {
   long int p_x, p_y;
 } Point;
@@ -17,7 +18,7 @@ f (p0, p1, p2, p3, p4, p5)
       || p3.p_x != -1 || p3.p_y != 1
       || p4.p_x != 0 || p4.p_y != -1
       || p5.p_x != 1 || p5.p_y != 0)
-    abort ();
+    Mymyabort ();
 }
 
 void

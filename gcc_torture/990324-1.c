@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 void f(long i)
 {
   if ((signed char)i < 0 || (signed char)i == 0) 
-    abort ();
+    Mymyabort ();
   else
     exit (0);
 }

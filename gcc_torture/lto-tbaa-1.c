@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-additional-options "-fno-early-inlining -fno-ipa-cp" }  */
 struct a {
   float *b;
@@ -36,7 +37,7 @@ main ()
   set_b (ptr);
   b3=b;
   if (b3.b != &d)
-  __builtin_abort ();
+  Mymyabort ();
   c= (void *)0;
   return 0;
 }

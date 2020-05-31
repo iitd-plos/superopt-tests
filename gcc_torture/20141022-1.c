@@ -1,4 +1,5 @@
-#define ABORT() do { __builtin_printf("assert.\n");  __builtin_abort (); }while(0)
+#include"eqchecker_helper.h"
+#define ABORT() do { __builtin_printf("assert.\n");  Mymyabort (); }while(0)
 int f(int a) __attribute__((noinline));
 int f(int a)
 {

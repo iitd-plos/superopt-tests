@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/70602 */
 /* { dg-require-effective-target int32plus } */
 

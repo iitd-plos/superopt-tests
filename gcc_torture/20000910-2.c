@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2000  Free Software Foundation  */
 /* by Alexandre Oliva <aoliva@redhat.com> */
 
@@ -17,7 +18,7 @@ static void foo () {
     if (bar (fmt))
       continue;
     if (i == 0)
-      abort ();
+      Mymyabort ();
     else
       exit (0);
   }

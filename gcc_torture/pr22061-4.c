@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires alloca" { ! alloca } { "-O0" } { "" } } */
 void
 bar (int N)
@@ -8,11 +9,11 @@ bar (int N)
   int b[2][N];
   foo (b);
   if (sizeof (a) != sizeof (int) * 2 * 1)
-    abort ();
+    Mymyabort ();
   if (sizeof (b) != sizeof (int) * 2 * 2)
-    abort ();
+    Mymyabort ();
   if (N != 3)
-    abort ();
+    Mymyabort ();
 }
 
 int

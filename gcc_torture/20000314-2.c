@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned long long uint64;
 const uint64 bigconst = 1ULL << 34;
 
@@ -16,7 +17,7 @@ main()
 {
     uint64 f = getmask();
     if (sizeof (long long) == 8
-	&& f != bigconst) abort ();
+	&& f != bigconst) Mymyabort ();
     exit (0);
 }
 

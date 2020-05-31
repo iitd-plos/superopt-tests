@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Test that (A & C1) op C2 optimizations behave correctly where C1 is
@@ -7,7 +8,7 @@
 
 #include <limits.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void test1 (signed char c, int set);
 void test2 (unsigned char c, int set);
@@ -34,31 +35,31 @@ test1 (signed char c, int set)
 {
   if ((c & (SCHAR_MAX+1)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((c & (SCHAR_MAX+1)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((c & (SCHAR_MAX+1)) == (SCHAR_MAX+1))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((c & (SCHAR_MAX+1)) != (SCHAR_MAX+1))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 void
@@ -66,31 +67,31 @@ test2 (unsigned char c, int set)
 {
   if ((c & (SCHAR_MAX+1)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((c & (SCHAR_MAX+1)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((c & (SCHAR_MAX+1)) == (SCHAR_MAX+1))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((c & (SCHAR_MAX+1)) != (SCHAR_MAX+1))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 void
@@ -98,31 +99,31 @@ test3 (short s, int set)
 {
   if ((s & (SHRT_MAX+1)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((s & (SHRT_MAX+1)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((s & (SHRT_MAX+1)) == (SHRT_MAX+1))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((s & (SHRT_MAX+1)) != (SHRT_MAX+1))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 void
@@ -130,31 +131,31 @@ test4 (unsigned short s, int set)
 {
   if ((s & (SHRT_MAX+1)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((s & (SHRT_MAX+1)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((s & (SHRT_MAX+1)) == (SHRT_MAX+1))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((s & (SHRT_MAX+1)) != (SHRT_MAX+1))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 void
@@ -162,31 +163,31 @@ test5 (int i, int set)
 {
   if ((i & (INT_MAX+1U)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((i & (INT_MAX+1U)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((i & (INT_MAX+1U)) == (INT_MAX+1U))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((i & (INT_MAX+1U)) != (INT_MAX+1U))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 void
@@ -194,31 +195,31 @@ test6 (unsigned int i, int set)
 {
   if ((i & (INT_MAX+1U)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((i & (INT_MAX+1U)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((i & (INT_MAX+1U)) == (INT_MAX+1U))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((i & (INT_MAX+1U)) != (INT_MAX+1U))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 void
@@ -226,31 +227,31 @@ test7 (long long l, int set)
 {
   if ((l & (LONG_LONG_MAX+1ULL)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((l & (LONG_LONG_MAX+1ULL)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((l & (LONG_LONG_MAX+1ULL)) == (LONG_LONG_MAX+1ULL))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((l & (LONG_LONG_MAX+1ULL)) != (LONG_LONG_MAX+1ULL))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 void
@@ -258,31 +259,31 @@ test8 (unsigned long long l, int set)
 {
   if ((l & (LONG_LONG_MAX+1ULL)) == 0)
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 
   if ((l & (LONG_LONG_MAX+1ULL)) != 0)
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((l & (LONG_LONG_MAX+1ULL)) == (LONG_LONG_MAX+1ULL))
     {
-      if (!set) abort ();
+      if (!set) Mymyabort ();
     }
   else
-    if (set) abort ();
+    if (set) Mymyabort ();
 
   if ((l & (LONG_LONG_MAX+1ULL)) != (LONG_LONG_MAX+1ULL))
     {
-      if (set) abort ();
+      if (set) Mymyabort ();
     }
   else
-    if (!set) abort ();
+    if (!set) Mymyabort ();
 }
 
 int

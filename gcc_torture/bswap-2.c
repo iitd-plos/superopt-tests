@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 
 #ifdef __UINT32_TYPE__
@@ -109,28 +110,28 @@ main ()
      what is the expected result as there is too many possible results with
      bitfields.  */
   if (out == 0x89878583)
-    __builtin_abort ();
+    Mymyabort ();
   bfin.inval = (struct ok) { 0x83, 0x85, 0x87, 0x89 };
   out = partial_read_be32 (bfin);
   /* Test what bswap would do if its check are not strict enough instead of
      what is the expected result as there is too many possible results with
      bitfields.  */
   if (out == 0x83858789)
-    __builtin_abort ();
+    Mymyabort ();
   out = fake_read_le32 (cin, &cin[2]);
   if (out != 0x89018583)
-    __builtin_abort ();
+    Mymyabort ();
   cin[2] = 0x87;
   out = fake_read_be32 (cin, &cin[2]);
   if (out != 0x83850189)
-    __builtin_abort ();
+    Mymyabort ();
   cin[2] = 0x87;
   out = incorrect_read_le32 (cin, &cin[2]);
   if (out != 0x89878583)
-    __builtin_abort ();
+    Mymyabort ();
   cin[2] = 0x87;
   out = incorrect_read_be32 (cin, &cin[2]);
   if (out != 0x83858789)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/63302 */
 
 #ifdef __SIZEOF_INT128__
@@ -42,7 +43,7 @@ main ()
       || foo (((__int128) -1 << 63) | 1) != 0
       || foo (((__int128) -1 << 63) | 0x800) != 1
       || foo (((__int128) -1 << 63) | 0x801) != 0)
-    __builtin_abort ();
+    Mymyabort ();
 #endif
 #ifdef USE_LLONG
   if (bar (0) != 1
@@ -54,7 +55,7 @@ main ()
       || bar ((-1LL << 31) | 1) != 0
       || bar ((-1LL << 31) | 0x800) != 1
       || bar ((-1LL << 31) | 0x801) != 0)
-    __builtin_abort ();
+    Mymyabort ();
 #endif
   return 0;
 }

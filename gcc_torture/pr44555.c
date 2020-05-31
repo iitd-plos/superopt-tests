@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct a {
     char b[100];
 };
@@ -7,10 +8,10 @@ int foo(struct a *a)
     return 1;
   return 0;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (foo((struct a *)0) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

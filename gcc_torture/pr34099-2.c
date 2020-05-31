@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int test1 (int b, int c)
 {
   char x;
@@ -31,17 +32,17 @@ int test4 (int b, int c)
     return 1;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (test1(1, 1000) != 0)
-    abort ();
+    Mymyabort ();
   if (test2(1, 0) != 0)
-    abort ();
+    Mymyabort ();
   if (test3(1, 1) != 0)
-    abort ();
+    Mymyabort ();
   if (test4(1, 1000) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

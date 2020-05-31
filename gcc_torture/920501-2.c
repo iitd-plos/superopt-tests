@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned long
 gcd_ll (unsigned long long x, unsigned long long y)
 {
@@ -109,6 +110,6 @@ main ()
 
   facts (t, a, x0, p);
   if (factab[0] != 7 || factab[1] != 73 || factab[2] != 262657)
-    abort();
+    Mymyabort();
   exit (0);
 }

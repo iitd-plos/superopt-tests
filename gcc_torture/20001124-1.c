@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 struct inode {
 	long long		i_size;
@@ -18,7 +19,7 @@ static char *
 isofs_bread(unsigned int block)
 {
 	if (block)
-	  abort ();
+	  Mymyabort ();
 	exit(0);
 }
 
@@ -72,5 +73,5 @@ main(int argc, char **argv)
 	f.f_pos = 0;
 
 	do_isofs_readdir(&i,&f);
-	abort ();
+	Mymyabort ();
 }

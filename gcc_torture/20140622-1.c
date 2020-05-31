@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned p;
 
 long __attribute__((noinline, noclone))
@@ -11,17 +12,17 @@ main ()
 {
   p = (unsigned) -2;
   if (test (0) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   if (test (1) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   if (test (2) != -(long)(unsigned)-2)
-    __builtin_abort ();
+    Mymyabort ();
   p = (unsigned) -1;
   if (test (0) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   if (test (1) != -(long)(unsigned)-1)
-    __builtin_abort ();
+    Mymyabort ();
   if (test (2) != -(long)(unsigned)-2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

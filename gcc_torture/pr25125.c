@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 extern unsigned short f (short a) __attribute__((__noinline__));
 
 unsigned short
@@ -21,7 +22,7 @@ main (void)
     exit (0);
 
   if (f (-32767) != 1)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

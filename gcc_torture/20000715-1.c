@@ -1,4 +1,5 @@
-void abort(void);
+#include"eqchecker_helper.h"
+void Mymyabort(void);
 void exit(int);
 
 void
@@ -7,13 +8,13 @@ test1(void)
   int x = 3, y = 2;
 
   if ((x < y ? x++ : y++) != 2)
-    abort ();
+    Mymyabort ();
 
   if (x != 3)
-    abort ();
+    Mymyabort ();
 
   if (y != 3)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -23,13 +24,13 @@ test2(void)
 
   z = (x < y) ? x++ : y++;
   if (z != 2)
-    abort ();
+    Mymyabort ();
 
   if (x != 3)
-    abort ();
+    Mymyabort ();
 
   if (y != 3)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -39,13 +40,13 @@ test3(void)
   int xx = 3, yy = 2;
 
   if ((xx < yy ? x++ : y++) != 2)
-    abort ();
+    Mymyabort ();
 
   if (x != 3)
-    abort ();
+    Mymyabort ();
 
   if (y != 3)
-    abort ();
+    Mymyabort ();
 }
 
 int x, y;
@@ -62,13 +63,13 @@ test4(void)
 {
   init_xy();
   if ((x < y ? x++ : y++) != 2)
-    abort ();
+    Mymyabort ();
 
   if (x != 3)
-    abort ();
+    Mymyabort ();
 
   if (y != 3)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -79,13 +80,13 @@ test5(void)
   init_xy();
   z = (x < y) ? x++ : y++;
   if (z != 2)
-    abort ();
+    Mymyabort ();
 
   if (x != 3)
-    abort ();
+    Mymyabort ();
 
   if (y != 3)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -97,13 +98,13 @@ test6(void)
   init_xy();
   z = (xx < y) ? x++ : y++;
   if (z != 2)
-    abort ();
+    Mymyabort ();
 
   if (x != 3)
-    abort ();
+    Mymyabort ();
 
   if (y != 3)
-    abort ();
+    Mymyabort ();
 }
 
 int

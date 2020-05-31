@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 int flag;
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   int x;
@@ -8,6 +9,6 @@ int main()
   else 
     x &= 0xff;
   if (x & ~0xff)
-    abort ();
+    Mymyabort ();
   return 0;
 }

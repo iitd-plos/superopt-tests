@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/66233 */
 
 unsigned int v[8];
@@ -17,6 +18,6 @@ main ()
   foo ();
   for (i = 0; i < 8; i++)
     if (v[i] != i)
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 void test (int x, ...)
@@ -6,13 +7,13 @@ void test (int x, ...)
     int i;
     va_start (ap, x);
     if (va_arg (ap, int) != 1)
-	abort ();
+	Mymyabort ();
     if (va_arg (ap, int) != 2)
-	abort ();
+	Mymyabort ();
     if (va_arg (ap, int) != 3)
-	abort ();
+	Mymyabort ();
     if (va_arg (ap, int) != 4)
-	abort ();
+	Mymyabort ();
 }
 
 double a = 40.0;

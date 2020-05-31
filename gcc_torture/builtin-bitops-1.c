@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 #include <assert.h>
 
@@ -94,7 +95,7 @@ MAKE_FUNS (, unsigned);
 MAKE_FUNS (l, unsigned long);
 MAKE_FUNS (ll, unsigned long long);
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 #define NUMS16					\
@@ -179,72 +180,72 @@ main (void)
   for (i = 0; i < N(ints); i++)
     {
       if (__builtin_ffs (ints[i]) != my_ffs (ints[i]))
-	abort ();
+	Mymyabort ();
       if (ints[i] != 0
 	  && __builtin_clz (ints[i]) != my_clz (ints[i]))
-	abort ();
+	Mymyabort ();
       if (ints[i] != 0
 	  && __builtin_ctz (ints[i]) != my_ctz (ints[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_clrsb (ints[i]) != my_clrsb (ints[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_popcount (ints[i]) != my_popcount (ints[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_parity (ints[i]) != my_parity (ints[i]))
-	abort ();
+	Mymyabort ();
     }
 
   for (i = 0; i < N(longs); i++)
     {
       if (__builtin_ffsl (longs[i]) != my_ffsl (longs[i]))
-	abort ();
+	Mymyabort ();
       if (longs[i] != 0
 	  && __builtin_clzl (longs[i]) != my_clzl (longs[i]))
-	abort ();
+	Mymyabort ();
       if (longs[i] != 0
 	  && __builtin_ctzl (longs[i]) != my_ctzl (longs[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_clrsbl (longs[i]) != my_clrsbl (longs[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_popcountl (longs[i]) != my_popcountl (longs[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_parityl (longs[i]) != my_parityl (longs[i]))
-	abort ();
+	Mymyabort ();
     }
 
   for (i = 0; i < N(longlongs); i++)
     {
       if (__builtin_ffsll (longlongs[i]) != my_ffsll (longlongs[i]))
-	abort ();
+	Mymyabort ();
       if (longlongs[i] != 0
 	  && __builtin_clzll (longlongs[i]) != my_clzll (longlongs[i]))
-	abort ();
+	Mymyabort ();
       if (longlongs[i] != 0
 	  && __builtin_ctzll (longlongs[i]) != my_ctzll (longlongs[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_clrsbll (longlongs[i]) != my_clrsbll (longlongs[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_popcountll (longlongs[i]) != my_popcountll (longlongs[i]))
-	abort ();
+	Mymyabort ();
       if (__builtin_parityll (longlongs[i]) != my_parityll (longlongs[i]))
-	abort ();
+	Mymyabort ();
     }
 
   /* Test constant folding.  */
 
 #define TEST(x, suffix)							\
   if (__builtin_ffs##suffix (x) != my_ffs##suffix (x))			\
-    abort ();								\
+    Mymyabort ();								\
   if (x != 0 && __builtin_clz##suffix (x) != my_clz##suffix (x))	\
-    abort ();								\
+    Mymyabort ();								\
   if (x != 0 && __builtin_ctz##suffix (x) != my_ctz##suffix (x))	\
-    abort ();								\
+    Mymyabort ();								\
   if (__builtin_clrsb##suffix (x) != my_clrsb##suffix (x))		\
-    abort ();								\
+    Mymyabort ();								\
   if (__builtin_popcount##suffix (x) != my_popcount##suffix (x))	\
-    abort ();								\
+    Mymyabort ();								\
   if (__builtin_parity##suffix (x) != my_parity##suffix (x))		\
-    abort ();
+    Mymyabort ();
 
 #if BITSIZEOF_INT == 32
   TEST(0x00000000UL,);

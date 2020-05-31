@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/85169 */
 
 typedef char V __attribute__((vector_size (64)));
@@ -17,6 +18,6 @@ main ()
   foo (&v);
   for (unsigned i = 0; i < 64; i++)
     if (v[i] != (i == 63))
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

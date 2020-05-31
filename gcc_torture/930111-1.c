@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 main()
 {
   if (wwrite((long long) 0) != 123)
-    abort();
+    Mymyabort();
   exit(0);
 }
 

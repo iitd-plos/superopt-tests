@@ -1,11 +1,12 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 __attribute__((noinline)) void
 foo (void *p)
 {
   long l = (long) p;
   if (l < 0 || l > 6)
-    abort ();
+    Mymyabort ();
 }
 
 int

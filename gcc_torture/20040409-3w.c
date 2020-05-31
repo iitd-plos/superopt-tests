@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* { dg-additional-options "-fwrapv" } */
 
 #include <limits.h>
 
-extern void abort ();
+extern void Mymyabort ();
 
 int test2(int x)
 {
@@ -30,13 +31,13 @@ int test6(int x)
 void test(int a, int b)
 {
   if (test2(a) != b)
-    abort();
+    Mymyabort();
   if (test3(a) != b)
-    abort();
+    Mymyabort();
   if (test5(a) != b)
-    abort();
+    Mymyabort();
   if (test6(a) != b)
-    abort();
+    Mymyabort();
 }
 
 

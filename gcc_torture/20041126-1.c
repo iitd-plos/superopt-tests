@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 extern int abs (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 check (int *p)
@@ -7,10 +8,10 @@ check (int *p)
   int i;
   for (i = 0; i < 5; ++i)
     if (p[i])
-      abort ();
+      Mymyabort ();
   for (; i < 10; ++i)
     if (p[i] != i + 1)
-      abort ();
+      Mymyabort ();
 }
 
 int

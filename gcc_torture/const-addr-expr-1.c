@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 #include        <stdio.h>
 #include        <stdlib.h>
-extern void abort();
+extern void Mymyabort();
 
 typedef struct foo
 {
@@ -25,9 +26,9 @@ int
 main(int argc, char **argv)
 {
 	if (*Upgd_minor_ID != 2)
-	  abort();
+	  Mymyabort();
 
 	if (*Upgd_minor_ID1 != 1)
-	  abort();
+	  Mymyabort();
 	return 0;
 }

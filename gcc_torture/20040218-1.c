@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/14209.  Bug in cris.md, shrinking access size of
    postincrement.
    Origin: <hp@axis.com>.  */
@@ -32,6 +33,6 @@ int main (void)
   if (xb (y) != 16255
       || xw (y) != 81535
       || yb (yw) != 16255)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

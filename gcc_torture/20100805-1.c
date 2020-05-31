@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned int foo (unsigned int a, unsigned int b)
 {
   unsigned i;
@@ -6,10 +7,10 @@ unsigned int foo (unsigned int a, unsigned int b)
     a = a << 1 | a >> (sizeof (unsigned int) * 8 - 1);
   return a;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (foo (1, sizeof (unsigned int) * 8 + 1) != 2)
-    abort ();
+    Mymyabort ();
   return 0;
 }

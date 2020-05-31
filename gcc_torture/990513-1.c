@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <string.h>
 
 void foo (int *BM_tab, int j)
@@ -21,6 +22,6 @@ int main ()
   memset (BM_tab, 0, sizeof (BM_tab));
   foo (BM_tab, 6);
   if (BM_tab[0] != 6)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* On IRIX 6, PB is passed partially in registers and partially on the
    stack, with an odd number of words in the register part.  Check that
    the long double stack argument (PC) is still accessed properly.  */
@@ -21,6 +22,6 @@ int main ()
   for (i = 0; i < 16; i++)
     x.val[i] = i + 1;
   if (f (1, x, 10000.0L) != 10136.0L)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

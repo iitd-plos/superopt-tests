@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/46909 */
 
-extern void abort ();
+extern void Mymyabort ();
 
 int
 __attribute__ ((__noinline__))
@@ -17,6 +18,6 @@ main ()
   int i;
   for (i = -10; i < 10; i++)
     if (foo (i) != 1 - 2 * (i == 4))
-      abort ();
+      Mymyabort ();
   return 0;
 }

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 static int inv_J(int a[][2])
 {
@@ -22,7 +23,7 @@ int foo()
 int main()
 {
   if (foo () != 15)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

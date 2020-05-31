@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void foo (), bar (), baz ();
 int main ()
 {
@@ -19,18 +20,18 @@ int main ()
 void foo (__complex__ double x)
 {
   if (__real__ x != 1.0 || __imag__ x != 2.0)
-    abort ();
+    Mymyabort ();
 }
 
 void bar (__complex__ float x)
 {
   if (__real__ x != 3.0f || __imag__ x != 4.0f)
-    abort ();
+    Mymyabort ();
 }
 
 void baz (__complex__ long double x)
 {
   if (__real__ x != 5.0L || __imag__ x != 6.0L)
-    abort ();
+    Mymyabort ();
 }
 

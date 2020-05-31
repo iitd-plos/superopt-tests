@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (x)
 {
   if (x != 0 || x == 0)
@@ -8,6 +9,6 @@ f (x)
 main ()
 {
   if (f (3))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

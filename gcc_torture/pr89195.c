@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/89195 */
 /* { dg-require-effective-target int32plus } */
 
@@ -17,6 +18,6 @@ main ()
   struct S d = { 0x123456 };
   x = 0x75;
   if (foo (d) != (0x56 & 0x75))
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

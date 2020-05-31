@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target trampolines } */
 
 int f0(int (*fn)(int *), int *p)
@@ -21,7 +22,7 @@ int f1(void)
 int main()
 {
   if (f1() != 2)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

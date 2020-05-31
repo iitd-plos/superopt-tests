@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/94809 */
 
 int
@@ -7,6 +8,6 @@ main ()
   unsigned long long one = 1;
   ((-1ULL / one) < a++, one);
   if (a != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

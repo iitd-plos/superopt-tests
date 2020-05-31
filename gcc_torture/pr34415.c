@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 const char *__attribute__((noinline))
 foo (const char *p)
 {

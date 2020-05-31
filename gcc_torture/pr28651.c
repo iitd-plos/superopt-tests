@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 int __attribute__((noinline))
 foo (unsigned int u)
 {
@@ -13,7 +14,7 @@ main (int argc, char *argv[])
   unsigned int u = INT_MAX;
 
   if (foo (u) == 0)
-    abort();
+    Mymyabort();
   return 0;
 }
 

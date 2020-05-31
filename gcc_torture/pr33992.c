@@ -1,10 +1,11 @@
-extern void abort ();
+#include"eqchecker_helper.h"
+extern void Mymyabort ();
 
 void __attribute__((noinline))
 bar (unsigned long long i)
 {
   if (i)
-    abort ();
+    Mymyabort ();
 }
 
 static void __attribute__((always_inline))

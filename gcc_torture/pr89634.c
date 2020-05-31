@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/89634 */
 
 static unsigned long *
@@ -35,6 +36,6 @@ main ()
 {
   unsigned long a[18] = { 4, 2, -200, 200, 2, -400, 400, 3, -600, 0, 600, 5, -100, -66, 0, 66, 100, __LONG_MAX__ / 8 + 1 };
   if (bar (a) != 17)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long double
 ll_to_ld (long long n)
 {
@@ -15,10 +16,10 @@ main ()
   long long n;
 
   if (ll_to_ld (10LL) != 10.0)
-    abort ();
+    Mymyabort ();
 
   if (ld_to_ll (10.0) != 10)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

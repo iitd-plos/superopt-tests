@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 foo ()
 {
   return 0;
@@ -15,7 +16,7 @@ main()
     
       k = ccp_bad != 0;
       if (k)
-	abort ();
+	Mymyabort ();
     }
 
   exit (0);

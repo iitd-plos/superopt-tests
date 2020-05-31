@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 int n = 0;
@@ -23,6 +24,6 @@ main ()
 {
   f (INT_MAX/8*4);
   if (n != 4)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

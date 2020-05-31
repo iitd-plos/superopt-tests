@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65215 */
 
 struct S { unsigned long long l1 : 24, l2 : 8, l3 : 32; };
@@ -26,6 +27,6 @@ main ()
   if (foo (l >> 32) != s.l3
       || (foo (l) >> 8) != s.l1
       || (foo (l) & 0xff) != s.l2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

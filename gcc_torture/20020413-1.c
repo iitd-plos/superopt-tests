@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void test(long double val, int *eval)
 {
   long double tmp = 1.0l;
@@ -11,14 +12,14 @@ void test(long double val, int *eval)
       {
 	tmp *= 2.0l;
 	if (i++ >= 10)
-	  abort ();
+	  Mymyabort ();
       }
   else if (val != 0.0l)
     while (val < tmp)
       {
 	tmp /= 2.0l;
 	if (i++ >= 10)
-	  abort ();
+	  Mymyabort ();
       }
 
   *eval = i;

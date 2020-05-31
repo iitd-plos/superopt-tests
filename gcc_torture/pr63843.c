@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/63843 */
 
 static inline __attribute__ ((always_inline))
@@ -26,6 +27,6 @@ main ()
       && sizeof (short) == 2
       && sizeof (int) == 4
       && bar (x) != 0x8181U)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

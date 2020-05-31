@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 /* { dg-require-effective-target trampolines } */
 /* { dg-add-options stack_size } */
@@ -32,7 +33,7 @@ main ()
 {
 
   if (x (DEPTH) != DEPTH)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

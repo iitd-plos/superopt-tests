@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct a_struct
 {
   unsigned char a_character;
@@ -38,6 +39,6 @@ f (a, b)
 main ()
 {
   if (f (1, 0UL) != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

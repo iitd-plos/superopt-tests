@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/20100
    Pure function being treated as const.
    Author: Hans-Peter Nilsson.  */
@@ -63,7 +64,7 @@ get_n (void)
   return n;
 }
 
-void abort (void);
+void Mymyabort (void);
 void exit (int);
 int main (void)
 {
@@ -71,6 +72,6 @@ int main (void)
   if (frob (0, 2) != 0 || g != 1 || p != 2 || e != 3
       || get_n () != 1
       || g != 2 || p != 2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

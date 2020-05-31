@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test for alignment handling when a variable is accessed by nested
    function.  */
 /* Origin: Joey Ye <joey.ye@intel.com> */
@@ -8,14 +9,14 @@
 #include <stddef.h>
 
 typedef int aligned __attribute__((aligned));
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 check (int *i)
 {
   *i = 20;
   if ((((ptrdiff_t) i) & (__alignof__(aligned) - 1)) != 0)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -29,10 +30,10 @@ foo (void)
   jj = 0;
   bar ();
   if (jj != -20)
-    abort ();
+    Mymyabort ();
   check (&jj);
   if (jj != 20)
-    abort ();
+    Mymyabort ();
 }
 
 int

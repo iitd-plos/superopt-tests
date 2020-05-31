@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern int memcmp (const void *, const void *, __SIZE_TYPE__);
 
 typedef unsigned char v8qi __attribute__((vector_size(8)));
@@ -17,6 +18,6 @@ int main()
 
   r = foo (a, b);
   if (memcmp (&r, &c, 8) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

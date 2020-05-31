@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/28970 */
 /* Origin: Peter Bergner <bergner@vnet.ibm.com> */
 /* { dg-require-effective-target int32plus } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int tar (int i)
 {
   if (i != 36863)
-    abort ();
+    Mymyabort ();
 
   return -1;
 }

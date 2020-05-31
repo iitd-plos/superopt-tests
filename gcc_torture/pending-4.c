@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 void dummy (x, y)
      int *x;
@@ -28,6 +29,6 @@ main (argc, argv)
 	}
     }
   if (cnt0 != 1 || cnt1 != 7)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

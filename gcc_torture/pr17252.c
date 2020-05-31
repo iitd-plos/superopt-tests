@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR 17252.  When a char * pointer P takes its own address, storing
    into *P changes P itself.  */
 
@@ -15,7 +16,7 @@ main ()
      think that this predicate is superfluous and change it to
      'if (1)'.  */
   if (a == (char *)&a)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

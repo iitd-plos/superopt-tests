@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   int i, j, k[3];
@@ -11,7 +12,7 @@ main ()
   for (i=2; i >= 0; i--)
     {
       if (k[i] != i)
-	abort ();
+	Mymyabort ();
     }
 
   exit (0);

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/87290 */
 
 int c;
@@ -41,22 +42,22 @@ main ()
   for (i = -30; i < 30; i++)
     {
       if (f1 (13 + i * 16) != (i >= 0) || f2 (-13 + i * 16) != (i <= 0))
-	__builtin_abort ();
+	Mymyabort ();
       f3 (13 + i * 16);
       if (c != (i >= 0))
-	__builtin_abort ();
+	Mymyabort ();
       f4 (-13 + i * 16);
       if (c != 1 + (i == 0))
-	__builtin_abort ();
+	Mymyabort ();
       for (j = 1; j < 16; j++)
 	{
 	  if (f1 (13 + i * 16 + j) || f2 (-13 + i * 16 + j))
-	    __builtin_abort ();
+	    Mymyabort ();
 	  f3 (13 + i * 16 + j);
 	  f4 (-13 + i * 16 + j);
 	}
       if (c != 1 + (i == 0))
-	__builtin_abort ();
+	Mymyabort ();
       c = 0;
     }
   return 0;

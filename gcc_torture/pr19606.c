@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR c/19606
    The C front end used to shorten the type of a division to a type
    that does not preserve the semantics of the original computation.
@@ -24,11 +25,11 @@ main (void)
 
   r = foo ();
   if (r != ((unsigned int) (signed int) (signed char) -4) / 2LL)
-    abort ();
+    Mymyabort ();
 
   r = bar ();
   if (r != ((unsigned int) (signed int) (signed char) -4) % 5LL)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

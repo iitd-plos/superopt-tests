@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/89369 */
 
 #if __SIZEOF_INT__ == 4 && __SIZEOF_LONG_LONG__ == 8 && __CHAR_BIT__ == 8
@@ -57,7 +58,7 @@ main ()
   baz (&a[5], &a[0], &a[1], &a[2], &a[3]);
   if (a[4].u[0] != a[5].u[0] || a[4].u[1] != a[5].u[1]
       || a[4].u[2] != a[5].u[2] || a[4].u[3] != a[5].u[3])
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 #else

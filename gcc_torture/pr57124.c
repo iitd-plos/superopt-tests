@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 /* { dg-options "-fno-strict-overflow" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 __attribute__ ((noinline)) void
@@ -19,7 +20,7 @@ foo(short unsigned int *p1, short unsigned int *p2)
   x6 = x3 + x4;
   x7 = (unsigned int) x6;
   if (x7 <= 268435455U)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

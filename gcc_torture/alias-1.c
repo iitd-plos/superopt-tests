@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int val;
 
 int *ptr = &val;
@@ -14,6 +15,6 @@ main()
   *ptr=1;
   typepun ();
   if (*ptr)
-    __builtin_abort ();
+    Mymyabort ();
 }
 

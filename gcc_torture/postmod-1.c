@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define DECLARE_ARRAY(A) array##A[0x10]
 #define DECLARE_COUNTER(A) counter##A = 0
 #define DECLARE_POINTER(A) *pointer##A = array##A + x

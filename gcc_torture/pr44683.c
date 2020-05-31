@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int __attribute__((noinline,noclone))
 copysign_bug (double x)
 {
@@ -12,7 +13,7 @@ int main(void)
 {
   double x = -0.0;
   if (copysign_bug (x) != 2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 

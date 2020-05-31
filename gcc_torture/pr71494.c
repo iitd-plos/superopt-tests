@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/71494 */
 /* { dg-require-effective-target label_values } */
 
@@ -18,6 +19,6 @@ main ()
   i += 2;
   test ();
   if (i != 3)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fgnu89-inline" } */
 
 extern void exit (int);

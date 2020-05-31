@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/29695 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 f1 (void)
@@ -64,20 +65,20 @@ main (void)
   if ((char) 128 != -128 || (int) 0x80000000 != -2147483648)
     return 0;
   if (f1 () != 128)
-    abort ();
+    Mymyabort ();
   if (f2 () != 128)
-    abort ();
+    Mymyabort ();
   if (f3 () != 896)
-    abort ();
+    Mymyabort ();
   if (f4 () != -128)
-    abort ();
+    Mymyabort ();
   if (f5 () != 0x80000000LL)
-    abort ();
+    Mymyabort ();
   if (f6 () != 0x80000000LL)
-    abort ();
+    Mymyabort ();
   if (f7 () != 0x380000000LL)
-    abort ();
+    Mymyabort ();
   if (f8 () != -2147483648LL)
-    abort ();
+    Mymyabort ();
   return 0;
 }

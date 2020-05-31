@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/82524 */
 
 struct S { unsigned char b, g, r, a; };
@@ -32,6 +33,6 @@ main ()
   b.c = (struct S) { 255, 255, 255, 255 };
   c.v = bar (&a, &b);
   if (c.c.b != 255 || c.c.g != 255 || c.c.r != 255 || c.c.a != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

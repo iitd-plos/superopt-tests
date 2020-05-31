@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/94567 */
 
 volatile int a = 1, b;
@@ -21,6 +22,6 @@ main ()
 	d = 0;
     }
   if (d != 4)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

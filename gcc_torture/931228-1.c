@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (x)
 {
   x &= 010000;
@@ -10,6 +11,6 @@ f (x)
 main ()
 {
   if (f (-1) != 017770)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

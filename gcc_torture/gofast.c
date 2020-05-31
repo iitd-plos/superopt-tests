@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires io" { freestanding } }  */
 
 /* Program to test gcc's usage of the gofast library.  */
@@ -96,6 +97,6 @@ main()
   if (lesf2 (1, 0) != 0) fail ("lesf2 1<=0");
 
   if (fail_count != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

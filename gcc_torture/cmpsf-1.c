@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 #define F 140
@@ -144,17 +145,17 @@ main (void)
 	  float arg1 = args[j];
 
 	  if (feq (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fne (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (flt (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fge (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fgt (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fle (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	}
     }
   exit (0);

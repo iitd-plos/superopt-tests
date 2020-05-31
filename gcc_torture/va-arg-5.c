@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 va_double (int n, ...)
@@ -7,13 +8,13 @@ va_double (int n, ...)
   va_start (args, n);
 
   if (va_arg (args, double) != 3.141592)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, double) != 2.71827)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, double) != 2.2360679)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, double) != 2.1474836)
-    abort ();
+    Mymyabort ();
 
   va_end (args);
 }
@@ -25,13 +26,13 @@ va_long_double (int n, ...)
   va_start (args, n);
 
   if (va_arg (args, long double) != 3.141592L)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, long double) != 2.71827L)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, long double) != 2.2360679L)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, long double) != 2.1474836L)
-    abort ();
+    Mymyabort ();
 
   va_end (args);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stddef.h>
 
 struct S {
@@ -36,7 +37,7 @@ test3 (void *q)
   ((struct S *)((char *)q + sizeof (int)))->i = 3;
   return s.a.i;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int
 main()
 {
@@ -47,14 +48,14 @@ main()
   s.a.i = 1;
   s.a.j = 2;
   if (test1 ((void *)&s) != 3)
-    abort ();
+    Mymyabort ();
   s.a.i = 1;
   s.a.j = 2;
   if (test2 ((void *)&s) != 3)
-    abort ();
+    Mymyabort ();
   s.a.i = 1;
   s.a.j = 2;
   if (test3 ((void *)&s) != 3)
-    abort ();
+    Mymyabort ();
   return 0;
 }

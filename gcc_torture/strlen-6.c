@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test to verify that strlen() calls with conditional expressions
    and unterminated arrays or pointers to such things as arguments
    are evaluated without making assumptions about array sizes.  */
@@ -109,5 +110,5 @@ int main (void)
   test_binary_cond_expr_arrayptr ();
 
   if (nfails)
-    __builtin_abort ();
+    Mymyabort ();
 }

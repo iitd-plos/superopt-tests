@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef unsigned long my_uintptr_t;
 
@@ -26,7 +27,7 @@ int __attribute__((noinline)) check_a(my_uintptr_t tagged_ptr)
 int main(void)
 {
   if (try_a(42) < 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int *x;
 static void bar (char a[2][(*x)++]) {}
 int

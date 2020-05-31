@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 // reduced testcase, compile with -O2. Also, with --disable-checking
 // gcc produces wrong code.
 
-void abort (void);
+void Mymyabort (void);
 int i;
 
 void g (void)
@@ -28,6 +29,6 @@ int main (void)
 {
   f (1, 0);
   if (i != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

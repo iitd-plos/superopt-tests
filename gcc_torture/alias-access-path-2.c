@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 main (int argc, char **argv)
 {
@@ -6,6 +7,6 @@ main (int argc, char **argv)
 
   for (int i = 0; i < 3; i++)
     if (!out[i][0])
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

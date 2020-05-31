@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 extern __attribute__ ((__noreturn__)) void exit(int);
-extern __attribute__ ((__noreturn__)) void abort(void);
+extern __attribute__ ((__noreturn__)) void Mymyabort(void);
 __attribute__ ((__noinline__))
 int
 add512(int a, int *b)
@@ -25,6 +26,6 @@ int main(void)
   int b0 = -1;
   int b1 = -1;
   if (add512(-512, &b0) != 0 || b0 != -1 || add513(-513, &b1) != 0 || b1 != -513)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

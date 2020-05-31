@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "small alignment" { pdp11-*-* } } */
 
 typedef __attribute__((aligned(16)))
@@ -7,7 +8,7 @@ struct {
 
 UINT192 bid_Kx192[32];
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main()
 {
@@ -18,6 +19,6 @@ int main()
   for (i = 0; i < 32; ++i)
     x += bid_Kx192[1].w[1];
   if (x != 32)
-    abort ();
+    Mymyabort ();
   return 0;
 }

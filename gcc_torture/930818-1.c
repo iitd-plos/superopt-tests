@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static double one = 1.0;
 
 f()
@@ -5,11 +6,11 @@ f()
   int colinear;
   colinear = (one == 0.0);
   if (colinear)
-    abort ();
+    Mymyabort ();
   return colinear;
 }
 main()
 {
-  if (f()) abort();
+  if (f()) Mymyabort();
   exit (0);
 }

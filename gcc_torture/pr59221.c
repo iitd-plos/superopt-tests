@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-xfail-if "ptxas crashes" { nvptx-*-* } { "*" } { "-O0" "-Os" } } */
 
 
@@ -15,6 +16,6 @@ main ()
   int h = e;
   d = h == 83647 ? 0 : h;
   if (d != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

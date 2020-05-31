@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 foo1 (value)
      long long value;
@@ -30,6 +31,6 @@ main ()
   x = foo1 (value);
   y = foo2 (value);
   if (x != y || x != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

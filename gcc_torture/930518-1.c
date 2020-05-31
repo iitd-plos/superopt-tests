@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int bar = 0;
 
 f (p)
@@ -19,6 +20,6 @@ main ()
   tab[0] = tab[1] = 0;
   f (tab);
   if (tab[0] != 2 || tab[1] != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

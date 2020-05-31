@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 main (int argc, char **argv)
 {
@@ -10,7 +11,7 @@ main (int argc, char **argv)
       }
 
   if (retframe_block() != 15)
-      abort ();
+      Mymyabort ();
   exit (0);
 
   }

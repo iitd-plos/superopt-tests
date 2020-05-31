@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef union
 {
@@ -19,10 +20,10 @@ test (T *t)
 {
   static int i = 11;
   if (t->f.f1 != i++)
-    abort ();
+    Mymyabort ();
   if (t->f.f2 || t->f.f3 || t->f.f4 || t->f.f5 || t->f.f6
       || t->f.f7 || t->f.f8 || t->f.f9 || t->f.f10 || t->f.f11)
-    abort ();
+    Mymyabort ();
   if (i == 20)
     exit (0);
 }
@@ -50,7 +51,7 @@ loop:
   if (cnt < 3)
     goto loop;
   if (t1 != t2 || t1->f.f9 != 2)
-    abort ();
+    Mymyabort ();
   foo (10);
   return 0;
 }

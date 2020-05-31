@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/71554 */
 
 int v;
@@ -23,6 +24,6 @@ main ()
 {
   foo (2);
   if (v)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

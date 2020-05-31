@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/93945 */
 
 union U { char a[8]; struct S { unsigned int b : 8, c : 13, d : 11; } e; } u;
@@ -36,10 +37,10 @@ main ()
   int a = foo ();
   int b = bar ();
   if (a != b)
-    __builtin_abort ();
+    Mymyabort ();
   a = baz ();
   b = qux ();
   if (a != b)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

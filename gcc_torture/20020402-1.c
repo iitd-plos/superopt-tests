@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* derived from PR c/2100 */
 
-extern void abort ();
+extern void Mymyabort ();
 extern void exit (int);
 
 #define SMALL_N  2
@@ -35,7 +36,7 @@ int main(void)
   }
 
   if (listSmall[0] != 5 || listSmall[1] != 2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

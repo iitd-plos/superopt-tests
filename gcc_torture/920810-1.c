@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -18,6 +19,6 @@ main()
   memset(&foo,37,sizeof(t));
   foo.size=sizeof(t);
   bar=f(&foo,sizeof(t));
-  if(bar->super!=&foo||bar->name!=0||bar->size!=sizeof(t))abort();
+  if(bar->super!=&foo||bar->name!=0||bar->size!=sizeof(t))Mymyabort();
   exit(0);
 }

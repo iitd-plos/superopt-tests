@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* This testcase is to make sure we have i in referenced vars and that we
    properly compute aliasing for the loads and stores.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 static int i;
 static int *p = &i;
@@ -27,17 +28,17 @@ int main()
   int j = 0;
 
   if (foo(&i) != 2)
-    abort ();
+    Mymyabort ();
   if (bar(&i) != 1)
-    abort ();
+    Mymyabort ();
   if (foo(&j) != 1)
-    abort ();
+    Mymyabort ();
   if (j != 2)
-    abort ();
+    Mymyabort ();
   if (bar(&j) != 2)
-    abort ();
+    Mymyabort ();
   if (j != 2)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

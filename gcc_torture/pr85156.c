@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/85156 */
 
 int x, y;
@@ -16,6 +17,6 @@ main ()
   x = 1;
   asm volatile ("" : "+m" (x), "+m" (y));
   if (foo (10) != 11)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

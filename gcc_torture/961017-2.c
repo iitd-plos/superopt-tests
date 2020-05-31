@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   int i = 0;
@@ -11,7 +12,7 @@ main ()
 	z -= 0x00004000;
 	i++;
 	if (i > 0x00040000)
-	  abort ();
+	  Mymyabort ();
       } while (z > 0);
       exit (0);
     }
@@ -23,7 +24,7 @@ main ()
 	z -= 0x00004000;
 	i++;
 	if (i > 0x00040000)
-	  abort ();
+	  Mymyabort ();
       } while (z > 0);
       exit (0);
     }

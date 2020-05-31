@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned int foo(unsigned int x)
 {
   if (x < 5)
@@ -10,6 +11,6 @@ unsigned int foo(unsigned int x)
 int main(void)
 {
   if (foo (8) != 8)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

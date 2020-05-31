@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/83383 */
 
 unsigned long long int a = 16ULL;
@@ -20,6 +21,6 @@ main()
 {
   foo ();
   if (a != 1 || c != 3625445792498952485ULL)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

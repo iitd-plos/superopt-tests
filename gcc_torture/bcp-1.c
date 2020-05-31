@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fgnu89-inline" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 __attribute__ ((externally_visible)) int global;
@@ -72,24 +73,24 @@ int main()
 
   for (i = 0; i < N(bad_t0); ++i)
     if ((*bad_t0[i])())
-      abort();
+      Mymyabort();
 
   for (i = 0; i < N(bad_t1); ++i)
     if ((*bad_t1[i])(1))
-      abort();
+      Mymyabort();
 
   for (i = 0; i < N(bad_t2); ++i)
     if ((*bad_t2[i])("hi"))
-      abort();
+      Mymyabort();
 
   for (i = 0; i < N(good_t0); ++i)
     if (! (*good_t0[i])())
-      abort();
+      Mymyabort();
 
 #ifdef __OPTIMIZE__
   for (i = 0; i < N(opt_t0); ++i)
     if (! (*opt_t0[i])())
-      abort();
+      Mymyabort();
 #endif
 
   exit(0);

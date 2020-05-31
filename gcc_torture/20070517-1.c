@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/31691 */
 /* Origin: Chi-Hua Chen <stephaniechc-gccbug@yahoo.com> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 static int get_kind(int) __attribute__ ((noinline));
 
@@ -29,7 +30,7 @@ static void example (int arg)
           if (kind == 9 || kind == 10)
             tmp = arg;
           else
-            abort();
+            Mymyabort();
         }
     }
 } 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct table_elt
 {
   void *exp;
@@ -49,7 +50,7 @@ invalidate_memory (writes)
 }
 
 int cse_rtx_addr_varies_p(void *x) { return 0; }
-void remove_from_table(struct table_elt *x, int y) { abort (); }
+void remove_from_table(struct table_elt *x, int y) { Mymyabort (); }
 
 int
 main()

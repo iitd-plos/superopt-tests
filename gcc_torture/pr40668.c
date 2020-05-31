@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #if (__SIZEOF_INT__ == 2)
 #define TESTVALUE 0x1234
 #else
@@ -35,6 +36,6 @@ main (void)
   unsigned int x;
   bar (1, &x);
   if (x != TESTVALUE)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

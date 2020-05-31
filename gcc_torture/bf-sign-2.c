@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* 
  This test checks promotion of bitfields.  Bitfields should be promoted
  very much like chars and shorts: 
@@ -29,38 +30,38 @@ struct X x;
 main ()
 {
   if ((x.u3 - 2) >= 0)		/* promoted value should be signed */
-    abort ();
+    Mymyabort ();
 
   if ((x.s31 - 2) >= 0)		/* promoted value should be signed */
-    abort ();
+    Mymyabort ();
 
   if ((x.s32 - 2) >= 0)		/* promoted value should be signed */
-    abort ();
+    Mymyabort ();
 
   if ((x.u15 - 2) >= 0)		/* promoted value should be signed */
-    abort ();
+    Mymyabort ();
 
   /* Conditionalize check on whether integers are 4 bytes or larger, i.e.
      larger than a 31 bit bitfield.  */
   if (sizeof (int) >= 4)
     {
       if ((x.u31 - 2) >= 0)	/* promoted value should be signed */
-	abort ();
+	Mymyabort ();
     }
   else
     {
       if ((x.u31 - 2) < 0)	/* promoted value should be UNsigned */
-	abort ();
+	Mymyabort ();
     }
 
   if ((x.u32 - 2) < 0)		/* promoted value should be UNsigned */
-    abort ();
+    Mymyabort ();
 
   if ((x.ull3 - 2) >= 0)	/* promoted value should be signed */
-    abort ();
+    Mymyabort ();
 
   if ((x.ull35 - 2) < 0)	/* promoted value should be UNsigned */
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

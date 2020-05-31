@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct sreal
 {
   unsigned sig;		/* Significant.  */
@@ -29,9 +30,9 @@ int main()
   int i, j;
   for (i = 0; i <= 3; i++) {
     for (j = 0; j < 3; j++) {
-      if (i < j && sreal_compare(&a[i], &a[j]) != -1) abort();
-      if (i == j && sreal_compare(&a[i], &a[j]) != 0) abort();
-      if (i > j && sreal_compare(&a[i], &a[j]) != 1) abort();
+      if (i < j && sreal_compare(&a[i], &a[j]) != -1) Mymyabort();
+      if (i == j && sreal_compare(&a[i], &a[j]) != 0) Mymyabort();
+      if (i > j && sreal_compare(&a[i], &a[j]) != 1) Mymyabort();
     }
   }
   return 0;

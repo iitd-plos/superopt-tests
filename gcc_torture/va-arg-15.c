@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 void vafunction (char *dummy, ...)
@@ -15,13 +16,13 @@ void vafunction (char *dummy, ...)
 	{
 	  darg = va_arg (ap, double);	
 	  if (darg != (double)i)
-	    abort();
+	    Mymyabort();
 	}
       else
 	{
 	  iarg = va_arg (ap, int);
 	  if (iarg != i)
-	    abort();
+	    Mymyabort();
 	}
     }
     va_end(ap);

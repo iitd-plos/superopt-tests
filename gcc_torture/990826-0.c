@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /*
 From: niles@fan745.gsfc.nasa.gov
 To: fortran@gnu.org
@@ -15,7 +16,7 @@ int
 main()
 {
   if (floor (0.1) != 0.)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

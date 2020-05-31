@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-xfail-if "kernel strncmp does not perform unsigned comparisons" { vxworks_kernel } } */
 /* Copyright (C) 2002  Free Software Foundation.
 
@@ -35,11 +36,11 @@ test (const unsigned char *s1, const unsigned char *s2, size_t len, int expected
   int value = strncmp ((char *) s1, (char *) s2, len);
 
   if (expected < 0 && value >= 0)
-    abort ();
+    Mymyabort ();
   else if (expected == 0 && value != 0)
-    abort ();
+    Mymyabort ();
   else if (expected > 0 && value <= 0)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

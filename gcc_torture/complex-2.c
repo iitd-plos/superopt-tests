@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __complex__ double
 f (__complex__ double x, __complex__ double y)
 {
@@ -17,11 +18,11 @@ main ()
   c = f (a, b);
 
   if (a != 1.0 + 1.0i)
-    abort ();
+    Mymyabort ();
   if (b != -2.0 + 2.0i)
-    abort ();
+    Mymyabort ();
   if (c != -1.0 + 3.0i)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

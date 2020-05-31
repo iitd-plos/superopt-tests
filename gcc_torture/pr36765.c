@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int __attribute__((noinline))
 foo(int i)
 {
@@ -6,10 +7,10 @@ foo(int i)
   p[i] = 1;
   return *p;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (foo(0) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct tiny
 {
   char c;
@@ -8,28 +9,28 @@ struct tiny
 f (int n, struct tiny x, struct tiny y, struct tiny z, long l)
 {
   if (x.c != 10)
-    abort();
+    Mymyabort();
   if (x.d != 20)
-    abort();
+    Mymyabort();
   if (x.e != 30)
-    abort();
+    Mymyabort();
 
   if (y.c != 11)
-    abort();
+    Mymyabort();
   if (y.d != 21)
-    abort();
+    Mymyabort();
   if (y.e != 31)
-    abort();
+    Mymyabort();
 
   if (z.c != 12)
-    abort();
+    Mymyabort();
   if (z.d != 22)
-    abort();
+    Mymyabort();
   if (z.e != 32)
-    abort();
+    Mymyabort();
 
   if (l != 123)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

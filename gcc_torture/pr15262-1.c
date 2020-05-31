@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR 15262.
    The alias analyzer only considers relations between pointers and
    symbols.  If two pointers P and Q point to the same symbol S, then
@@ -41,7 +42,7 @@ main ()
      as a redundant load that will be replaced with '10'.  */
   T355 = locp->i;
   if (T355 != 1)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

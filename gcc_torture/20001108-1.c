@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long long
 signed_poly (long long sum, long x)
 {
@@ -16,10 +17,10 @@ int
 main (void)
 {
   if (signed_poly (2LL, -3) != -4LL)
-    abort ();
+    Mymyabort ();
   
   if (unsigned_poly (2ULL, 3) != 8ULL)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

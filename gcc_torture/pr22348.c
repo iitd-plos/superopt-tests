@@ -1,8 +1,9 @@
-void abort (void);
+#include"eqchecker_helper.h"
+void Mymyabort (void);
 void f(int i)
 {
   if (i>4 + 3 * 16)
-    abort();
+    Mymyabort();
 }
 
 int main()

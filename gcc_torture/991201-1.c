@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct vc_data {
 	unsigned long	space;
 	unsigned char   vc_palette[16*3];        
@@ -29,7 +30,7 @@ void reset_palette(int currcons)
 void bar(int k)
 {
 	if (k != 16*3)
-		abort();
+		Mymyabort();
 }
 
 int main()

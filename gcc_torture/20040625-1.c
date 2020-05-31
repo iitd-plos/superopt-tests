@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* From PR target/16176 */
 struct __attribute__ ((packed)) s { struct s *next; };
 
@@ -15,6 +16,6 @@ int main ()
 
   s1.next = &s2;
   if (maybe_next (&s1, 1) != &s2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

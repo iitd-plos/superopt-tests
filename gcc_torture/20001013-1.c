@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct x {
 	int a, b;
 } z = { -4028, 4096 };
@@ -12,6 +13,6 @@ int foo(struct x *p, int y)
 main()
 {
   if (foo (&z, 10))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

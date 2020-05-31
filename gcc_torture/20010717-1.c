@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int
 main ()
@@ -16,7 +17,7 @@ main ()
   r2 = ((unsigned long) (i + j)) >> 1;
 
   if (r1 != r2)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

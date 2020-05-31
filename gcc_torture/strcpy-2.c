@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test to make sure strcpy works correctly. */
 #define STRING "Hi!THE"
 
@@ -18,7 +19,7 @@ int main(void)
   for(i = 0; i < sizeof(b); i++)
     {
       if (a[i] != b[i])
-	__builtin_abort ();
+	Mymyabort ();
     }
   return 0;
 }

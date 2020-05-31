@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int * __restrict__ x;
 
 int foo (int y)
@@ -6,13 +7,13 @@ int foo (int y)
   return *x;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main()
 {
   int i = 0;
   x = &i;
   if (foo(1) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

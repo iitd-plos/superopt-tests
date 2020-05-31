@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65053 */
 
 int i;
@@ -10,7 +11,7 @@ main ()
   unsigned int n = x;
   unsigned int u = 32;
   if (n >= 32)
-    __builtin_abort ();
+    Mymyabort ();
   if (n != 0)
     u = n + 32;
 
@@ -22,6 +23,6 @@ main ()
     }
 
   if (i)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/70222 */
 
 int a = 1;
@@ -16,7 +17,7 @@ __attribute__((noinline, noclone)) void
 bar (int x)
 {
   if (x != -1)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

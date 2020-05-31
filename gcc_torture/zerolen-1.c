@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 
 union iso_directory_record {
@@ -21,7 +22,7 @@ int main (void)
    if (de->u.name_len[0] == 1 && de->u.name[0] == 0)
      exit (0);
    else
-     abort ();
+     Mymyabort ();
 }
 
 void set (union iso_directory_record *p)

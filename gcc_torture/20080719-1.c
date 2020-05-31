@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned int u32;
 
 static const u32 deadfish = 0xdeadf155;
@@ -60,6 +61,6 @@ int main(void)
   const u32 *a = xxx(8);
   int b = a[0];
   if (b != cfb_tab8_be[0])
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

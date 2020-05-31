@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/77718 */
 
 char a[64] __attribute__((aligned (8)));
@@ -20,6 +21,6 @@ main ()
   __builtin_memset (a, 'a', sizeof (a));
   if (((foo () < 0) ^ ('a' > 'b'))
       || ((bar () < 0) ^ ('a' < 'b')))
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

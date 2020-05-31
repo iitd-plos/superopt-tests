@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void f (int *p, int **q)
 {
   int i;
@@ -33,7 +34,7 @@ int main ()
   q[39] = 0;
   f (p, q);
   if (q[39] != (int *)p + 39)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

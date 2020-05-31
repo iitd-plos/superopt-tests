@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* When comparisons of bit-fields to unsigned constants got shortened,
    the shortened signed constant was wrongly marked as overflowing,
    leading to a later integer_zerop failure and misoptimization.
@@ -8,7 +9,7 @@
 
 /* { dg-require-effective-target int32plus } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct s { int a:12, b:20; };
 
@@ -18,6 +19,6 @@ int
 main (void)
 {
   if (x.a != -123U || x.b != -456U)
-    abort ();
+    Mymyabort ();
   return 0;
 }

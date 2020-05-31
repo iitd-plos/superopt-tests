@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 
 /* Convert a decimal string to a long long unsigned.  No error check is
@@ -85,7 +86,7 @@ main (argc, argv)
   nprimes = plist (str2llu ("1234111111"), str2llu ("1234111127"), tab);
 
   if(tab[0]!=1234111117LL||tab[1]!=1234111121LL||tab[2]!=1234111127LL||tab[3]!=0)
-    abort();
+    Mymyabort();
 
   exit(0);
 }

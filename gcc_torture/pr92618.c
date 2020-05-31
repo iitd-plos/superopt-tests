@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/92618 */
 
 typedef long long __m128i __attribute__((__may_alias__, __vector_size__(2 * sizeof (long long))));
@@ -53,11 +54,11 @@ main ()
   unsigned long long c = 0;
   foo (&c);
   if (c != 2 + 3 + 4 + 5)
-    __builtin_abort ();
+    Mymyabort ();
 #if __SIZEOF_LONG_LONG__ == __SIZEOF_DOUBLE__
   double d = 0.0;
   baz (&d);
   if (d != 2.0 + 3.0 + 4.0 + 5.0)
-    __builtin_abort ();
+    Mymyabort ();
 #endif
 }

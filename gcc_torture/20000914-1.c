@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 extern void *malloc(__SIZE_TYPE__);
 
 enum tree_code {
@@ -279,7 +280,7 @@ convert_like_real (convs)
     default:
       break;
     };
-   abort ();
+   Mymyabort ();
 }
 
 main()

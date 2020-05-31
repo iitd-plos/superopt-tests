@@ -1,4 +1,5 @@
-void abort(void);
+#include"eqchecker_helper.h"
+void Mymyabort(void);
 void exit(int);
 struct baz 
 {
@@ -31,9 +32,9 @@ int main()
   struct baz p;
   foo(&p, 71, 18);
   if (p.c != 71 || p.d != 18)
-    abort();
+    Mymyabort();
   bar(&p, 59, 26);
   if (p.c != 59 || p.d != 26)
-    abort();
+    Mymyabort();
   exit(0);
 }

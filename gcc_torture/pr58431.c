@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 char a, h;
 int b, d, e, g, j, k;
 volatile int c;
@@ -27,7 +28,7 @@ main ()
     }
 
   if (h != 0)
-    __builtin_abort(); 
+    Mymyabort(); 
 
   return 0;
 }

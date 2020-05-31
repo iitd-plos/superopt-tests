@@ -1,4 +1,5 @@
-void abort (void);
+#include"eqchecker_helper.h"
+void Mymyabort (void);
 int ii;
 typedef struct {} raw_spinlock_t;
 typedef struct {
@@ -14,7 +15,7 @@ int main(void)
 {
   spinlock_t lock = (spinlock_t) { .raw_lock = one_raw_spinlock() };
   if (ii != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

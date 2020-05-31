@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef __SIZE_TYPE__ size_t;
 extern size_t strlen (const char *s);
 
@@ -22,7 +23,7 @@ void foo (A *x, const char *y, int z)
 A *bar (const char *v, int w, int x, const char *y, int z)
 {
   if (w)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

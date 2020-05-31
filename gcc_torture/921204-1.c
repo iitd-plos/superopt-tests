@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* The bit-field below would have a problem if __INT_MAX__ is too
    small.  */
 #if __INT_MAX__ < 2147483647
@@ -40,7 +41,7 @@ main()
   a.b.b0 = 0;
   r = f(a);
   if (a.w != r.w)
-    abort();
+    Mymyabort();
   exit(0);
 }
 #endif

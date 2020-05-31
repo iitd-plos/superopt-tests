@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-additional-options "-Wl,-u,_printf_float" { target newlib_nano_io } } */
 
 #include <stdio.h>
@@ -35,6 +36,6 @@ main()
 {
   va (1, 1.0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
   if (strcmp ("1,1.000000,2,3,4,5,6,7,8,9,10,11,12,13,14,15", buf))
-    abort();
+    Mymyabort();
   exit(0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/79737 */
 
 #if __SIZEOF_INT__ < 4
@@ -43,5 +44,5 @@ main ()
   bar ();
   asm volatile ("" : : : "memory");
   if (i.b != j.b || i.c != j.c || i.d != j.d || i.e != j.e || i.f != j.f)
-    __builtin_abort ();
+    Mymyabort ();
 }

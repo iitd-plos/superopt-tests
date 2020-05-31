@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 float __complex__
 p (float __complex__  a, float __complex__  b)
 {
@@ -15,6 +16,6 @@ main ()
   z = p (x,y);
   y = p (x, 1.0f / z);
   if (z != w)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

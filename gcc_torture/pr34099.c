@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int foo (int b, int c)
 {
   int x;
@@ -6,11 +7,11 @@ int foo (int b, int c)
   else
     return 1;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (foo(1, 0) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

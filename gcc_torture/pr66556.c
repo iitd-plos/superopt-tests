@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-do run } */
 /* { dg-require-effective-target int32plus } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct {
   unsigned f2;
@@ -47,7 +48,7 @@ main ()
   *n = 3;
   fn2 (b.f2 >> 15);
   if ((a & 0xff) != 0xff)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

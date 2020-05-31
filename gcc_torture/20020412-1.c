@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR c/3711
    This testcase ICEd on IA-32 at -O0 and was miscompiled otherwise,
    because std_expand_builtin_va_arg didn't handle variable size types.  */
@@ -5,7 +6,7 @@
 
 #include <stdarg.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 void bar (int c)
@@ -13,9 +14,9 @@ void bar (int c)
   static int d = '0';
 
   if (c != d++)
-    abort ();
+    Mymyabort ();
   if (c < '0' || c > '9')
-    abort ();
+    Mymyabort ();
 }
 
 void foo (int size, ...)

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int compare(x, y)
 unsigned int x;
 unsigned int y;
@@ -14,7 +15,7 @@ main()
  i = 5; j = 2; k=0; l=2;
  if (compare(5%(~(unsigned) 2), i%~j) 
      || compare(0, k%~l))
-    abort();
+    Mymyabort();
  else
     exit(0);
 }

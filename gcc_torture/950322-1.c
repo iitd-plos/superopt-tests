@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (unsigned char *a)
 {
   int i, j;
@@ -25,6 +26,6 @@ main ()
   a[0] = 8;
   a[1] = 9;
   if (f (a) != 2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

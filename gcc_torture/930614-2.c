@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   int i, j, k, l;
@@ -13,7 +14,7 @@ main ()
 	    else
 	      x[i][k][j][l] = 0.8;
 	    if (x[i][k][j][l] < 0.0)
-	      abort ();
+	      Mymyabort ();
 	  }
 
   exit (0);

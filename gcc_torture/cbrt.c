@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /*
  * ====================================================
  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
@@ -83,7 +84,7 @@ cbrtl (double x)
 main ()
 {
   if ((int) (cbrtl (27.0) + 0.5) != 3)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

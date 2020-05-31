@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/14470 */
 /* Origin: Lodewijk Voge <lvoge@cs.vu.nl> */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 int main()
 {
@@ -10,8 +11,8 @@ int main()
   d = 0;
   d = t[d]++;
   if (t[0] != 1025)
-    abort();
+    Mymyabort();
   if (d != 1024)
-    abort();
+    Mymyabort();
   return 0;
 }

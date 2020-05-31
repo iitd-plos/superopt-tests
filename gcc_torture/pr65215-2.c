@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65215 */
 
 static inline unsigned int
@@ -19,6 +20,6 @@ main ()
     return 0;
   unsigned long long l = foo (0xfeedbea8U) | ((unsigned long long) foo (0xdeadbeefU) << 32);
   if (bar (&l) != 0xfeedbea8deadbeefULL)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

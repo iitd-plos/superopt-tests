@@ -1,4 +1,5 @@
-void abort (void);
+#include"eqchecker_helper.h"
+void Mymyabort (void);
 
 int bar (void) {  return -1;  }
 
@@ -10,6 +11,6 @@ foo ()
   return 3;  }
 
 main ()
-{ if (foo () != 0)  abort ();
+{ if (foo () != 0)  Mymyabort ();
   return 0;  }
 

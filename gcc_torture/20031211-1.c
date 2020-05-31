@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct a { unsigned int bitfield : 1; };
 
 unsigned int x;
@@ -8,6 +9,6 @@ main()
   x = 0xbeef;
   a.bitfield |= x;
   if (a.bitfield != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

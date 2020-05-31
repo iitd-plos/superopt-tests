@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/57344 */
 
 struct __attribute__((packed)) S
@@ -17,7 +18,7 @@ __attribute__((noinline, noclone)) void
 foo (int x)
 {
   if (x != -3161)
-    __builtin_abort ();
+    Mymyabort ();
   asm volatile ("" : : : "memory");
 }
 

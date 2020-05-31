@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 /* Origin: hp@bitrange.com
@@ -21,7 +22,7 @@ main (void)
   if (foo () == -42)
     exit (0);
 
-  abort ();
+  Mymyabort ();
 }
 
 long

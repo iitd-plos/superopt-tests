@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 static max;
 
@@ -30,6 +31,6 @@ static int callback(int depth) {
 int main() {
   CallFunction(callback);
   if (max != 10)
-    abort ();
+    Mymyabort ();
   return 0;
 }

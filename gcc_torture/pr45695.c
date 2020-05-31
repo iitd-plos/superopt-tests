@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/45695 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__((noinline)) void
 g (int x)
@@ -25,8 +26,8 @@ main (void)
   int l;
   asm ("" : "=r" (l) : "0" (0));
   if (f (l + 0, l + 1, l + 4) != -1)
-    abort ();
+    Mymyabort ();
   if (f (l + 4, l + 1, l + 4) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

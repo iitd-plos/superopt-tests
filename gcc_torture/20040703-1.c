@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR 16341 */
 /* { dg-require-effective-target int32plus } */
 
@@ -136,13 +137,13 @@ int main()
    cpp_num res = num_lshift (num, 64, n);
 
    if (res.low != 0x30000)
-     abort ();
+     Mymyabort ();
 
    if (res.high != 0)
-     abort ();
+     Mymyabort ();
 
    if (res.overflow != 0)
-     abort ();
+     Mymyabort ();
 
    exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct A { int i, j; char pad[512]; } a;
 
 int __attribute__((noinline))
@@ -23,17 +24,17 @@ main (void)
     return 0;
 
   if (foo () != 0x26262626)
-    __builtin_abort ();
+    Mymyabort ();
   for (i = 0; i < sizeof a; i++)
     if (((char *)&a)[i] != 0x26)
-      __builtin_abort ();
+      Mymyabort ();
 
   bar ();
   if (a.j != 0x36373636)
-    __builtin_abort ();
+    Mymyabort ();
   a.j = 0x36363636;
   for (i = 0; i < sizeof a; i++)
     if (((char *)&a)[i] != 0x36)
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

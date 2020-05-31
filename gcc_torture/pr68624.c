@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int b, c, d, e = 1, f, g, h, j;
 
 static int
@@ -24,7 +25,7 @@ main ()
   fn1 ();
 
   if (c != -4)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

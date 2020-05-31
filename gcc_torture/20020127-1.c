@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* This used to fail on h8300.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 unsigned long
@@ -13,10 +14,10 @@ int
 main ()
 {
   if (foo (1 << 3) != 0)
-    abort ();
+    Mymyabort ();
 
   if (foo (0) != 1)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

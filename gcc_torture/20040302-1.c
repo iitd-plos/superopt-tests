@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 int code[]={0,0,0,0,1};
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 void

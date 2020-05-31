@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __extension__ union { double d; int i[2]; } u = { d: -0.25 };
 
 /* This assumes the endianness of words in a long long is the same as
@@ -19,7 +20,7 @@ int main(void)
     exit(0);
 
   if (!signbit(-0.25))
-    abort();
+    Mymyabort();
 
   exit(0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 short int i = -1;
 const char * const wordlist[207];
 
@@ -12,6 +13,6 @@ int
 main()
 {
   if (foo() != &wordlist[206])
-    abort ();
+    Mymyabort ();
   exit(0);
 }

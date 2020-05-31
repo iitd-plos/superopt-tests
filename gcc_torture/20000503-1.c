@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned long
 sub (int a)
 {
@@ -7,7 +8,7 @@ sub (int a)
 main ()
 {
   if (sub (0) != 0)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/94524 */
 
 typedef signed char __attribute__ ((__vector_size__ (16))) V;
@@ -14,12 +15,12 @@ main ()
 {
   V x = foo ((V) { -128 });
   if (x[0] != 0)
-    __builtin_abort ();
+    Mymyabort ();
   x = foo ((V) { -127 });
   if (x[0] != -127)
-    __builtin_abort ();
+    Mymyabort ();
   x = foo ((V) { 127 });
   if (x[0] != 127)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

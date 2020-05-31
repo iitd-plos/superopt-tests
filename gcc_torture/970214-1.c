@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define L 1
 main ()
 {

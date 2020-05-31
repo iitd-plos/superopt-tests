@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long double C = 2;
 long double U = 1;
 long double Y2 = 3;
@@ -20,6 +21,6 @@ main ()
   R = R - Y2;
   Y1 = Y1 - 0.5L;
   if (Z != 6)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

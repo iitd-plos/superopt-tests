@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 sub1 (unsigned long long i)
 {
@@ -37,16 +38,16 @@ sub4 (unsigned long long i)
 main()
 {
   if (sub1 (0x80000000ULL))
-    abort ();
+    Mymyabort ();
 
   if (sub2 (0x80000000ULL))
-    abort ();
+    Mymyabort ();
 
   if (sub3 (0x80000000ULL))
-    abort ();
+    Mymyabort ();
 
   if (sub4 (0x80000000ULL))
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

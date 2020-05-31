@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fgnu89-inline" } */
 
 #include <stdbool.h>
 #include <stdlib.h>
-extern void abort (void);
+extern void Mymyabort (void);
 int strcmp (const char*, const char*);
 char s[2048] = "a";
 inline bool foo(const char *str) {
@@ -14,7 +15,7 @@ int i = 0;
     i ++;
     s[0] = '\0';
     if (i>2)
-     abort ();
+     Mymyabort ();
   }
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef enum foo E;
 enum foo { e0, e1 };
 
@@ -7,7 +8,7 @@ struct {
 
 p()
 {
-  abort();
+  Mymyabort();
 }
 
 f()

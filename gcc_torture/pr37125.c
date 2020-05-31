@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 static inline unsigned int
 mod_rhs(int rhs)
@@ -11,7 +12,7 @@ void func_44 (unsigned int p_45);
 void func_44 (unsigned int p_45)
 {
   if (!((p_45 * -9) % mod_rhs (-9))) {
-      abort();
+      Mymyabort();
   }
 }
 

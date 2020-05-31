@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define mask  0xffff0000L
 #define value 0xabcd0000L
 
@@ -13,7 +14,7 @@ int
 main (void)
 {
   if (foo (value) != 0 || foo (0) != 1)
-    abort ();
+    Mymyabort ();
   
   exit (0);
 }

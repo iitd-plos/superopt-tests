@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/59014 */
 
 __attribute__((noinline, noclone)) long long int
@@ -18,6 +19,6 @@ main ()
   long long int y = (5LL << shift_half) << shift_half;
   long long int z = foo (x, y);
   if (z != ((8LL << shift_half) << shift_half))
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

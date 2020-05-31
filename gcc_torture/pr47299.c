@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/47299 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__ ((noinline, noclone)) unsigned short
 foo (unsigned char x)
@@ -12,6 +13,6 @@ int
 main ()
 {
   if (foo (0x40) != 0x3fc0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

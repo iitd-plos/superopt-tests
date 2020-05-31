@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/85095 */
 
 __attribute__((noipa)) unsigned long
@@ -47,6 +48,6 @@ main ()
       || f4 (35U, -36U) != -1U
       || f4 (35U, -35U) != -1U
       || f4 (35U, -34U) != 0U)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

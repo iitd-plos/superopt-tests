@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef enum
 {
   END = -1,
@@ -38,6 +39,6 @@ main ()
 {
   tok = 0;
   if (atom () != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

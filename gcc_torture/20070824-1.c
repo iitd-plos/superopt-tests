@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/33136 */
 /* { dg-require-effective-target alloca } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -20,6 +21,6 @@ main (void)
   *p = n;
 
   if (!s)
-    abort ();
+    Mymyabort ();
   return 0;
 }

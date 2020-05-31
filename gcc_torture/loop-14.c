@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a3[3];
 
 void f(int *a)
@@ -14,7 +15,7 @@ main ()
   f(a3);
 
   if (a3[1] != 42 || a3[2] != 21)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

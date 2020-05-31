@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {
   int a, b, c, d, e, f;
 } A;
@@ -32,6 +33,6 @@ int main ()
   A w = { 100, 110, 20, 30, -1, -1 };
   bar (&w,400,420,50,70);
   if (w.d != 70)
-    abort();
+    Mymyabort();
   exit(0);
 }

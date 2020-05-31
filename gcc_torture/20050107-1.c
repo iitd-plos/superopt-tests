@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 typedef enum { C = 1, D = 2 } B;
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -11,7 +12,7 @@ void
 foo (struct S *x)
 {
   if (x->a != C || x->b != D)
-    abort ();
+    Mymyabort ();
 }
 
 int

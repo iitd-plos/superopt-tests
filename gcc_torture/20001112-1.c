@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main ()
 {
   long long i = 1;
@@ -5,6 +6,6 @@ int main ()
   i = i * 2 + 1;
   
   if (i != 3)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

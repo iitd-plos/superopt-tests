@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   short f:3, g:3, h:10;

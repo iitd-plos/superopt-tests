@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "ptxas seg faults" { nvptx-*-* } { "-O3*" } { "" } } */
 
 extern int f2(void);
@@ -42,5 +43,5 @@ int main(void)
 }
 
 int f3(void) { static int x = 0; x = !x; return x; }
-void f1(void) { abort(); }
-int f2(void) { abort(); }
+void f1(void) { Mymyabort(); }
+int f2(void) { Mymyabort(); }

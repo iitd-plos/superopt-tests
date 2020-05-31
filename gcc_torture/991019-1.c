@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {
      double epsilon;
 } material_type;
@@ -21,7 +22,7 @@ main()
     {
       x = foo (1.0);
       if (x.epsilon != 1.0 + 1.0)
-	abort ();
+	Mymyabort ();
     }
 
   exit (0);

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 /* Test for a reload bug:
@@ -199,7 +200,7 @@ void c(int n, ...)
     {
       int *a = va_arg (list, int *);
       if (a[n] != n)
-	abort ();
+	Mymyabort ();
     }
   va_end (list);
 }

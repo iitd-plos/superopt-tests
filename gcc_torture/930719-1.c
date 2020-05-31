@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 f (foo, bar, com)
 {

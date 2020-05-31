@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Test strcmp with various combinations of pointer alignments and lengths to
@@ -34,11 +35,11 @@ test (const unsigned char *s1, const unsigned char *s2, int expected)
   int value = strcmp ((char *) s1, (char *) s2);
 
   if (expected < 0 && value >= 0)
-    abort ();
+    Mymyabort ();
   else if (expected == 0 && value != 0)
-    abort ();
+    Mymyabort ();
   else if (expected > 0 && value <= 0)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/19551 */
 
-extern void abort ();
+extern void Mymyabort ();
 
 #define T(type, name) \
 __attribute__((pure)) _Complex type		\
@@ -45,11 +46,11 @@ main (void)
     type var = 0;				\
     bar_##name (&var);				\
     if (var != 6)				\
-      abort ();					\
+      Mymyabort ();					\
     var = 0;					\
     baz_##name (&var);				\
     if (var != 4)				\
-      abort ();					\
+      Mymyabort ();					\
   }
   T (float, float)
   T (double, double)

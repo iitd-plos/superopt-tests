@@ -1,12 +1,13 @@
+#include"eqchecker_helper.h"
 int i;
 
 __attribute__((noinline, noclone)) void
 bar (char *p)
 {
   if (i < 1 || i > 6)
-    __builtin_abort ();
+    Mymyabort ();
   if (__builtin_memcmp (p, "abcdefg", i + 1) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   __builtin_memset (p, ' ', 7);
 }
 

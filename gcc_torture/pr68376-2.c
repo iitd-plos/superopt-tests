@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/68376 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__((noinline, noclone)) int
 f1 (int x)
@@ -54,20 +55,20 @@ int
 main ()
 {
   if (f1 (5) != 5 || f1 (-5) != 4 || f1 (0) != 0)
-    abort ();
+    Mymyabort ();
   if (f2 (5) != -6 || f2 (-5) != -5 || f2 (0) != -1)
-    abort ();
+    Mymyabort ();
   if (f3 (5) != 5 || f3 (-5) != 4 || f3 (0) != -1)
-    abort ();
+    Mymyabort ();
   if (f4 (5) != -6 || f4 (-5) != -5 || f4 (0) != 0)
-    abort ();
+    Mymyabort ();
   if (f5 (5) != -6 || f5 (-5) != -5 || f5 (0) != -1)
-    abort ();
+    Mymyabort ();
   if (f6 (5) != 5 || f6 (-5) != 4 || f6 (0) != 0)
-    abort ();
+    Mymyabort ();
   if (f7 (5) != -6 || f7 (-5) != -5 || f7 (0) != 0)
-    abort ();
+    Mymyabort ();
   if (f8 (5) != 5 || f8 (-5) != 4 || f8 (0) != -1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

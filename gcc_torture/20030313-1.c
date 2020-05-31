@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 struct A
 {
   unsigned long p, q, r, s;
 } x = { 13, 14, 15, 16 };
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 static inline struct A *
@@ -14,13 +15,13 @@ bar (void)
   switch (8)
     {
     case 2:
-      abort ();
+      Mymyabort ();
       break;
     case 8:
       r = &x;
       break;
     default:
-      abort ();
+      Mymyabort ();
       break;
     }
   return r;
@@ -30,19 +31,19 @@ void
 foo (unsigned long *x, int y)
 {
   if (y != 12)
-    abort ();
+    Mymyabort ();
   if (x[0] != 1 || x[1] != 11)
-    abort ();
+    Mymyabort ();
   if (x[2] != 2 || x[3] != 12)
-    abort ();
+    Mymyabort ();
   if (x[4] != 3 || x[5] != 13)
-    abort ();
+    Mymyabort ();
   if (x[6] != 4 || x[7] != 14)
-    abort ();
+    Mymyabort ();
   if (x[8] != 5 || x[9] != 15)
-    abort ();
+    Mymyabort ();
   if (x[10] != 6 || x[11] != 16)
-    abort ();
+    Mymyabort ();
 }
 
 int

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   short i __attribute__ ((aligned (2),packed));
@@ -23,6 +24,6 @@ main ()
   a.f[0] = 100;
   a.f[1] = 13;
   if (f (&a) != 139)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

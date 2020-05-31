@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This is a modfied version of va-arg-2.c to test passing a va_list as
    a parameter to another function.  */
 
@@ -11,7 +12,7 @@ to_hex (unsigned int a)
   static char hex[] = "0123456789abcdef";
 
   if (a > 15)
-    abort ();
+    Mymyabort ();
   return hex[a];
 }
 
@@ -19,10 +20,10 @@ void
 fap (int i, char* format, va_list ap)
 {
   if (strlen (format) != 16 - i)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
 }
 
 void

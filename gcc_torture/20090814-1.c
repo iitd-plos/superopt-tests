@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int __attribute__((noinline))
 bar (int *a)
 {
@@ -10,7 +11,7 @@ foo (int (*a)[2])
   return bar (&(*a)[i]);
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 int a[2];
 int main()
 {
@@ -18,6 +19,6 @@ int main()
   a[1] = 42;
   i = 1;
   if (foo (&a) != 42)
-    abort ();
+    Mymyabort ();
   return 0;
 }

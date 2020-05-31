@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/34302 */
 /* { dg-require-effective-target label_values } */
 /* { dg-require-effective-target indirect_jumps } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -13,7 +14,7 @@ __attribute__((noinline)) struct S
 foo (int x, int y, int z)
 {
   if (x != 10 || y != 9 || z != 8)
-    abort ();
+    Mymyabort ();
   struct S s = { 1, 2, 3, 4 };
   return s;
 }
@@ -64,6 +65,6 @@ main (void)
   if (bar (t, &s[1]) != (void **) 0
       || s[0] != 4 || s[1] != 3 || s[2] != 2 || s[3] != 1
       || s[4] != 11 || s[5] != 12)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2003  Free Software Foundation.
 
    Test strcpy optimizations don't evaluate side-effects twice.
@@ -7,7 +8,7 @@
 typedef __SIZE_TYPE__ size_t;
 extern char *strcpy (char *, const char *);
 extern int memcmp (const void *, const void *, size_t);
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 size_t
@@ -22,7 +23,7 @@ check2 (void)
 {
   static size_t r = 5;
   if (r != 5)
-    abort ();
+    Mymyabort ();
   return ++r;
 }
 
@@ -37,9 +38,9 @@ main (void)
 {
   char buf[10];
   if (test1 (buf, 7) != 8 || memcmp (buf, "az", 3))
-    abort ();
+    Mymyabort ();
   test2 (buf);
   if (memcmp (buf, "baz", 4))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

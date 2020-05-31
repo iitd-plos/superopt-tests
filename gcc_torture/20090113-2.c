@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct obstack {};
 struct bitmap_head_def;
 typedef struct bitmap_head_def *bitmap;
@@ -133,12 +134,12 @@ bmp_iter_set (bitmap_iterator *bi, unsigned *bit_no)
     }
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 static void __attribute__((noinline)) catchme(int i)
 {
   if (i != 0 && i != 64)
-    abort ();
+    Mymyabort ();
 }
 static void __attribute__((noinline)) foobar (bitmap_head *chain)
 {

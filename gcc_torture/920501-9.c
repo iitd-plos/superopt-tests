@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 
 long long proc1(){return 1LL;}
@@ -19,9 +20,9 @@ print_longlong(x,buf)
 }
 
 main(){char buf[100];
-print_longlong(proc1(),buf);if(strcmp("1",buf))abort();
-print_longlong(proc2(),buf);if(strcmp("12345678",buf))abort();
-print_longlong(proc3(),buf);if(strcmp("aabbccdd12345678",buf))abort();
-print_longlong(proc4(),buf);if(strcmp("ffffffffffffffff",buf))abort();
-print_longlong(proc5(),buf);if(strcmp("aabbccdd",buf))abort();
+print_longlong(proc1(),buf);if(strcmp("1",buf))Mymyabort();
+print_longlong(proc2(),buf);if(strcmp("12345678",buf))Mymyabort();
+print_longlong(proc3(),buf);if(strcmp("aabbccdd12345678",buf))Mymyabort();
+print_longlong(proc4(),buf);if(strcmp("ffffffffffffffff",buf))Mymyabort();
+print_longlong(proc5(),buf);if(strcmp("aabbccdd",buf))Mymyabort();
 exit(0);}

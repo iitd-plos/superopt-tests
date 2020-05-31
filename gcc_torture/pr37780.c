@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/37780.  */
 
 #define VAL (8 * sizeof (int))
@@ -43,7 +44,7 @@ main (void)
 {
   if (fooctz (0) != VAL || fooctz2 (0) != VAL || fooctz3 (0) != VAL
       || fooclz (0) != VAL || fooclz2 (0) != VAL || fooclz3 (0) != VAL)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

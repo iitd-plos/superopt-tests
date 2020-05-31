@@ -1,11 +1,12 @@
+#include"eqchecker_helper.h"
 /* PR target/11044 */
 /* Originator: Tim McGrath <misty-@charter.net> */
 /* Testcase contributed by Eric Botcazou <ebotcazou@libertysurf.fr> */
 
 /* Testcase copied from gcc.target/i386/loop-3.c */
 
-extern void *memset (void *, int, __SIZE_TYPE__);
-extern void abort (void);
+//extern void *memset (void *, int, __SIZE_TYPE__);
+//extern void Mymyabort (void);
 
 typedef struct
 {
@@ -73,7 +74,7 @@ int main(void)
    cl.frames[0].ping_time = 1.0f;
 
    if (CalcPing(&cl) != 1000)
-     abort();
+     Mymyabort();
 
    return 0;
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/53465 */
 
-extern void abort ();
+extern void Mymyabort ();
 
 static const int a[] = { 1, 2 };
 
@@ -16,7 +17,7 @@ foo (const int *x, int y)
       if (d == 0)
 	break;
       if (b && d <= c)
-	abort ();
+	Mymyabort ();
       c = d;
       b = 1;
     }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires alloca" { ! alloca } { "-O0" } { "" } } */
 /* Verify that alloca storage is sufficiently aligned.  */
 /* ??? May fail if BIGGEST_ALIGNMENT > STACK_BOUNDARY.  Which, I guess
@@ -17,6 +18,6 @@ _Bool foo(void)
 int main()
 {
   if (!foo())
-    abort ();
+    Mymyabort ();
   return 0;
 }

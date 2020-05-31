@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (x)
      unsigned x;
 {
@@ -10,6 +11,6 @@ main ()
 
   for (i = 0; i < 10000; i++)
     if (f (i) != i / 3)
-      abort ();
+      Mymyabort ();
   exit (0);
 }

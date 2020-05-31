@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/41239 */
 
 struct S
@@ -6,7 +7,7 @@ struct S
   unsigned long arg[2];
 };
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 extern char fn1 (int, const char *, int, const char *, const char *);
 extern void fn2 (int, ...);
@@ -32,7 +33,7 @@ main (void)
 {
   struct S s = { 2, { 5, 0 } };
   test (&s);
-  abort ();
+  Mymyabort ();
 }
 
 __attribute__((noinline)) char

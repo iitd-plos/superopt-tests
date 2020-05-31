@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test to verify that a strlen() call with a pointer to a dynamic type
    doesn't make assumptions based on the static type of the original
    pointer.  See g++.dg/init/strlen.C for the corresponding C++ test.  */
@@ -26,7 +27,7 @@ test_dynamic_type (struct A *p)
   init (q, "foobar");
 
   if (6 != __builtin_strlen (q))
-    __builtin_abort();
+    Mymyabort();
 }
 
 int main (void)

@@ -1,90 +1,91 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002 Free Software Foundation.
 
    Test for correctness of composite comparisons.
 
    Written by Roger Sayle, 3rd June 2002.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int ieq (int x, int y, int ok)
 {
   if ((x<=y) && (x>=y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 
   if ((x<=y) && (x==y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 
   if ((x<=y) && (y<=x))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 
   if ((y==x) && (x<=y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 int ine (int x, int y, int ok)
 {
   if ((x<y) || (x>y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 int ilt (int x, int y, int ok)
 {
   if ((x<y) && (x!=y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 int ile (int x, int y, int ok)
 {
   if ((x<y) || (x==y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 int igt (int x, int y, int ok)
 {
   if ((x>y) && (x!=y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 int ige (int x, int y, int ok)
 {
   if ((x>y) || (x==y))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 int

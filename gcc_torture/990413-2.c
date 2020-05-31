@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* This tests for a bug in regstack that was breaking glibc's math library. */
 /* { dg-skip-if "" { ! { i?86-*-* x86_64-*-* } } } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 static __inline double
 minus_zero (void)
@@ -46,6 +47,6 @@ main (void)
   x = asin (x);
 
   if (x != 0.0) /* actually -0.0, but 0.0 == -0.0 */
-    abort ();
+    Mymyabort ();
   return 0;
 }

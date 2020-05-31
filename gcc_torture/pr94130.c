@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/94130 */
 
 int
@@ -9,7 +10,7 @@ main ()
   a[1] = 2;
   a[2] = 3;
   if (b != (char *) a)
-    __builtin_abort ();
+    Mymyabort ();
   else
     asm volatile ("" : : "g" (a) : "memory");
   return 0;

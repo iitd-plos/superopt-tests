@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/80426 */
 /* Testcase by <ishiura-compiler@ml.kwansei.ac.jp> */
 
@@ -17,7 +18,7 @@ int main (void)
   }
 
   if (x != 0)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

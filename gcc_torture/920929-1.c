@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires alloca" { ! alloca } { "-O0" } { "" } } */
 /* REPRODUCED:RUN:SIGNAL MACHINE:sparc OPTIONS: */
 f(int n)

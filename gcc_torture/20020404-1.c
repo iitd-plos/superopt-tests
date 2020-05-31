@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 /* { dg-skip-if "pointers can be truncated" { m32c-*-* } } */
 /* Extracted from GDB sources. */
@@ -92,7 +93,7 @@ static boolean
 bfd_set_section_contents (bfd *abfd, asection *section, void * data, file_ptr offset, bfd_size_type count)
 {
 	if (count != (bfd_size_type)0x1eadbeef)
-		abort();
+		Mymyabort();
 }
 
 static char hello[] = "hello";

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 struct tiny
@@ -16,12 +17,12 @@ f (int n, ...)
     {
       x = va_arg (ap,struct tiny);
       if (x.c != i + 10)
-	abort();
+	Mymyabort();
     }
   {
     long x = va_arg (ap, long);
     if (x != 123)
-      abort();
+      Mymyabort();
   }
   va_end (ap);
 }

@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* Testcase for PR fortran/9974.  This was a miscompilation of the g77
    front-end caused by the jump bypassing optimizations not handling
    instructions inserted on CFG edges.  */
 
-extern void abort ();
+extern void Mymyabort ();
 
 int bar ()
 {
@@ -16,7 +17,7 @@ void foo (int x)
   if (! (error = ((x == 0) || bar ())))
     bar ();
   if (! error)
-    abort ();
+    Mymyabort ();
 }
 
 int main()

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test __builtin_bswap64 . */
 
 unsigned long long g(unsigned long long a) __attribute__((noinline));
@@ -32,20 +33,20 @@ int main(void)
   if (sizeof(i) != sizeof(char)*8)
     return 0;
   if (f(0x12) != g(0x12))
-    __builtin_abort();
+    Mymyabort();
   if (f(0x1234) != g(0x1234))
-    __builtin_abort();
+    Mymyabort();
   if (f(0x123456) != g(0x123456))
-    __builtin_abort();
+    Mymyabort();
   if (f(0x12345678ull) != g(0x12345678ull))
-    __builtin_abort();
+    Mymyabort();
   if (f(0x1234567890ull) != g(0x1234567890ull))
-    __builtin_abort();
+    Mymyabort();
   if (f(0x123456789012ull) != g(0x123456789012ull))
-    __builtin_abort();
+    Mymyabort();
   if (f(0x12345678901234ull) != g(0x12345678901234ull))
-    __builtin_abort();
+    Mymyabort();
   if (f(0x1234567890123456ull) != g(0x1234567890123456ull))
-    __builtin_abort();
+    Mymyabort();
   return 0;
 }

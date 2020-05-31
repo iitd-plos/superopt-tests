@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Origin: PR c/92 from Simon Marlow <t-simonm@microsoft.com>, adapted
    to a testcase by Joseph Myers <jsm28@cam.ac.uk>.
 */
@@ -12,7 +13,7 @@ typedef struct {
 
 st s = { .i = 0, .i2 = 1 };
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main (void)
@@ -20,5 +21,5 @@ main (void)
   if (s.i2 == 1)
     exit (0);
   else
-    abort ();
+    Mymyabort ();
 }

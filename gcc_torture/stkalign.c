@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fno-inline" } */
 /* Check that stack alignment is not affected by variables not placed
    on the stack.  */

@@ -1,10 +1,11 @@
-void abort ();
+#include"eqchecker_helper.h"
+void Mymyabort ();
 
 void
 f (long long a)
 {
   if ((a & 0xffffffffLL) != 0)
-    abort ();
+    Mymyabort ();
 }
 
 long long a = 0x1234567800000000LL;

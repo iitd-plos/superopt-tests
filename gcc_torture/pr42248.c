@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {
   _Complex double a;
   _Complex double b;
@@ -8,7 +9,7 @@ Scf10 g1s;
 void
 check (Scf10 x, _Complex double y)
 {
-  if (x.a != y) __builtin_abort ();
+  if (x.a != y) Mymyabort ();
 }
 
 void

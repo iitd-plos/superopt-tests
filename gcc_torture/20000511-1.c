@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 void f (int value, int expect)
 {
   if (value != expect)
-    abort ();
+    Mymyabort ();
 }
 
 int main()

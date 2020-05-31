@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int foo( unsigned long long aLL )
 {
     switch( aLL )
@@ -6,11 +7,11 @@ int foo( unsigned long long aLL )
         default                                 : return 20 ;
     };
 };
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
     unsigned long long aLL = 1000000000000000000ULL;
     if (foo (aLL) != 19)
-	abort ();
+	Mymyabort ();
     return 0;
 }

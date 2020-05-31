@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdlib.h>
 int a, b, d, f;
 char c;
@@ -15,6 +16,6 @@ int main() {
     b = h;
   if (h)
     exit (0);
-  abort ();
+  Mymyabort ();
 }
 

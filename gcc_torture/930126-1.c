@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s {
   unsigned long long a:8, b:32;
 };
@@ -15,6 +16,6 @@ main()
   i.a = 12;
   i = f(i);
   if (i.a != 12 || i.b != 0xcdef1234)
-    abort();
+    Mymyabort();
   exit(0);
 }

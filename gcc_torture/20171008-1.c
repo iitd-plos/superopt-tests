@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct S { char c1, c2, c3, c4; } __attribute__((aligned(4)));
 
 static char bar (char **p) __attribute__((noclone, noinline));
@@ -33,6 +34,6 @@ int main (void)
 {
   struct S s = foo ();
   if (s.c1 != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

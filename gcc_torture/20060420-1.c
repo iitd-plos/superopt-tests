@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef float v4flt __attribute__ ((vector_size (16)));
 
@@ -67,7 +68,7 @@ main (void)
     {
       float e = (float) i + 11 * (float) i + (float) i + 12 * (float) i;
       if (dst[i] != e)
-	abort ();
+	Mymyabort ();
     }
   return 0;
 }

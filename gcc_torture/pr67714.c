@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned int b;
 int c;
 
@@ -20,7 +21,7 @@ main (void)
   volatile int g = (int) f;
 
   if (g != -15)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

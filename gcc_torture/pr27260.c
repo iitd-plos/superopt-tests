@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/27260 */
 
-extern void abort (void);
-extern void *memset (void *, int, __SIZE_TYPE__);
+//extern void Mymyabort (void);
+//extern void *memset (void *, int, __SIZE_TYPE__);
 
 char buf[65];
 
@@ -18,16 +19,16 @@ main (void)
   buf[64] = 2;
   for (i = 0; i < 64; i++)
     if (buf[i] != 0)
-      abort ();
+      Mymyabort ();
   foo (0);
   for (i = 0; i < 64; i++)
     if (buf[i] != 1)
-      abort ();
+      Mymyabort ();
   foo (2);
   for (i = 0; i < 64; i++)
     if (buf[i] != 0)
-      abort ();
+      Mymyabort ();
   if (buf[64] != 2)
-    abort ();
+    Mymyabort ();
   return 0;
 }

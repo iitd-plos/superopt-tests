@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/59413 */
 
 typedef unsigned int uint32_t;
@@ -16,6 +17,6 @@ main ()
       b = a == c;
     }
   if (a != 7)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

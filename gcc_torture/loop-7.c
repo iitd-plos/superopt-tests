@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void foo (unsigned int n)
 {
   int i, j = -1;
@@ -9,7 +10,7 @@ void foo (unsigned int n)
     }
 
   if (j < 0)
-    abort ();
+    Mymyabort ();
 }
 
 main()

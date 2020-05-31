@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* On ARM, BAR used to get a bogus number in E due to stack
    misalignment.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 void
@@ -14,7 +15,7 @@ foo (void)
       if (e != 0)
 	{
 	  f = 1;
-	  abort ();
+	  Mymyabort ();
 	}
     }
 

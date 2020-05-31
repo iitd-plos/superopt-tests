@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   short a __attribute__ ((aligned (2),packed));

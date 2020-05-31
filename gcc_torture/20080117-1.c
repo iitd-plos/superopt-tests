@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct gs_imager_state_s {
   struct {
     int half_width;
@@ -14,11 +15,11 @@ int gs_state_update_overprint(void)
   return gstate_initial.line_params.half_width;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (gs_state_update_overprint() != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

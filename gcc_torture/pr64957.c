@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/64957 */
 
 __attribute__((noinline, noclone)) int
@@ -18,6 +19,6 @@ main ()
   int i;
   for (i = 0; i < 16; i++)
     if (foo (i) != (i | 1) || bar (i) != (i & ~1))
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 int foo (int, int, int);
 int bar (int, int, int);
 
 int main (void)
 {
   if (foo (5, 10, 21) != 12)
-    abort ();
+    Mymyabort ();
 
   if (bar (9, 12, 15) != 150)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

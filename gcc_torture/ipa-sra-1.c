@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Trivially making sure IPA-SRA does not introduce segfaults where they should
    not be.  */
 

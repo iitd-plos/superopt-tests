@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/59358 */
 
 __attribute__((noinline, noclone)) int
@@ -27,7 +28,7 @@ main ()
       else
 	k = 16;
       if (j != k)
-	__builtin_abort ();
+	Mymyabort ();
       j = foo (&i, 7);
       if (i >= 7)
 	k = i;
@@ -38,7 +39,7 @@ main ()
       else
 	k = 8;
       if (j != k)
-	__builtin_abort ();
+	Mymyabort ();
     }
   return 0;
 }

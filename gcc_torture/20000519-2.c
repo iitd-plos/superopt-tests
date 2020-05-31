@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long x = -1L;
 
 int main()
@@ -5,7 +6,7 @@ int main()
   long b = (x != -1L);
 
   if (b)
-    abort();
+    Mymyabort();
 
   exit(0);
 }

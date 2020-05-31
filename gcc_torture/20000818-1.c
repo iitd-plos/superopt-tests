@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2000  Free Software Foundation.
 
    by Manfred Hollstein <manfredh@redhat.com>  */

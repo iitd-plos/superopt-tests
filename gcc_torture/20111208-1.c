@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/51315 */
 /* Reported by Jurij Smakov <jurij@wooyd.org> */
 
@@ -13,7 +14,7 @@ extern size_t strlen (__const char *__s)
 typedef __INT16_TYPE__ int16_t;
 typedef __INT32_TYPE__ int32_t;
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int a;
 
@@ -89,6 +90,6 @@ main (void)
 {
   int n = pack_unpack ("\200\001\377\376\035\300", "sl");
   if (n != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

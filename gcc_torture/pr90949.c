@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void __attribute__ ((noipa, noinline)) my_puts (const char *str) { }
 
 void __attribute__ ((noipa, noinline)) my_free (void *p) { }

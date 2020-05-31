@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned
 sat_add (unsigned i)
 {
@@ -36,12 +37,12 @@ sat_add4 (unsigned i)
 main ()
 {
   if (sat_add (~0U) != ~0U)
-    abort ();
+    Mymyabort ();
   if (sat_add2 (~0U) != ~0U)
-    abort ();
+    Mymyabort ();
   if (sat_add3 (0U) != 0U)
-    abort ();
+    Mymyabort ();
   if (sat_add4 (0U) != 0U)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

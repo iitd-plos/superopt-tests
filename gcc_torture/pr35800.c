@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int stab_xcoff_builtin_type (int typenum)
 {
@@ -87,17 +88,17 @@ int main()
 {
   int i;
   if (stab_xcoff_builtin_type(0) != 0)
-    abort ();
+    Mymyabort ();
   if (stab_xcoff_builtin_type(-1) != 'i')
-    abort ();
+    Mymyabort ();
   if (stab_xcoff_builtin_type(-2) != 's')
-    abort ();
+    Mymyabort ();
   if (stab_xcoff_builtin_type(-3) != 's')
-    abort ();
+    Mymyabort ();
   for (i = -4; i >= -34; --i)
     if (stab_xcoff_builtin_type(i) != 'i')
-      abort ();
+      Mymyabort ();
   if (stab_xcoff_builtin_type(-35) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

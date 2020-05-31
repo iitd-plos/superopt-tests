@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This testcase failed on mmix-knuth-mmixware.  Problem was with storing
    to an unaligned mem:SC, gcc tried doing it by parts from a (concat:SC
    (reg:SF 293) (reg:SF 294)).  */
@@ -26,5 +27,5 @@ void
 f2 (struct x *y)
 {
   if (y->f != 1 || y->c != 42)
-    abort ();
+    Mymyabort ();
 }

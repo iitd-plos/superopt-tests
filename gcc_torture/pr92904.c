@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/92904 */
 
 #include <stdarg.h>
@@ -220,7 +221,7 @@ main ()
   u.c.b = 0xaaaaaaaaaaaaaaaaULL;
 #define C(x) \
   do {								\
-    if (u.c.a != x.c.a || u.c.b != x.c.b) __builtin_abort ();	\
+    if (u.c.a != x.c.a || u.c.b != x.c.b) Mymyabort ();	\
     u.c.a++;							\
     u.c.b--;							\
   } while (0)
@@ -296,7 +297,7 @@ main ()
 #define C(x) \
   do {								\
     if (u.e.a != x.e.a || u.e.b != x.e.b			\
-	|| u.e.c != x.e.c || u.e.d != x.e.d) __builtin_abort ();\
+	|| u.e.c != x.e.c || u.e.d != x.e.d) Mymyabort ();\
     u.e.a++;							\
     u.e.b--;							\
     u.e.c++;							\
@@ -347,7 +348,7 @@ main ()
 #undef C
 #define C(x) \
   do {								\
-    if (u.e.a != x.e.a || u.e.b != x.e.b) __builtin_abort ();	\
+    if (u.e.a != x.e.a || u.e.b != x.e.b) Mymyabort ();	\
     u.e.a++;							\
     u.e.b--;							\
   } while (0)

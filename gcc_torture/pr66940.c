@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long long __attribute__ ((noinline, noclone))
 foo (long long ival)
 {
@@ -11,10 +12,10 @@ int
 main (void)
 {
   if (foo (-1) != (-0x7fffffffffffffffL - 1))
-    __builtin_abort ();
+    Mymyabort ();
 
   if (foo (1) != 0x7fffffffffffffffL)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 float fx (x)
      float x;
 {
@@ -13,7 +14,7 @@ main ()
   b = fx (c) + a;
   f ();
   if (a != 3.0 || b < 4.3257 || b > 4.3258 || c != 4.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

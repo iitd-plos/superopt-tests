@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/82954 */
 
 __attribute__((noipa)) void
@@ -17,6 +18,6 @@ main ()
   asm volatile ("" : : "g" (p), "g" (q) : "memory");
   foo (p, q);
   if (p[0] != 17 || p[1] != 34 || p[2] != 66 || p[3] != 129)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

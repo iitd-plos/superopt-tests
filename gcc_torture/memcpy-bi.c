@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test builtin-memcpy (which may emit different code for different N).  */
 #include <string.h>
 
@@ -10,7 +11,7 @@ void
 check (char *test, char *match, int n)
 {
   if (memcmp (test, match, n))
-    abort ();
+    Mymyabort ();
 }
 
 #define TN(n) \

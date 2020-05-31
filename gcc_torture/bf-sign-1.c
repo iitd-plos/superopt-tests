@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   struct  {
@@ -7,12 +8,12 @@ main ()
   } x = {-1, -1, -1};
 
   if (x.u != 7)
-    abort ();
+    Mymyabort ();
   if (x.s != - 1)
-    abort ();
+    Mymyabort ();
 
   if (x.i != -1 && x.i != 7)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

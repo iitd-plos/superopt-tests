@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct Foo {
   int *p;
   int *q;
@@ -20,10 +21,10 @@ int foo(void)
   return i;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (foo () != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

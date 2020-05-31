@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -35,11 +36,11 @@ int main()
   args = buildargv(input);
 
   if (strcmp (args[0], "a"))
-    abort ();
+    Mymyabort ();
   if (strcmp (args[1], "b"))
-    abort ();
+    Mymyabort ();
   if (args[2] != NULL)
-    abort ();
+    Mymyabort ();
   
   exit (0);
 }

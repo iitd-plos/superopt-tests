@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int f (int **, int *, int *, int **, int **) __attribute__ ((__noinline__));
 int
 f (int **ipp, int *i1p, int *i2p, int **i3, int **i4)
@@ -10,7 +11,7 @@ f (int **ipp, int *i1p, int *i2p, int **i3, int **i4)
 }
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main (void)
 {
@@ -21,6 +22,6 @@ int main (void)
 
   f (&ip, &i1, &i2, &i3p, &i4p);
   if (i != 66 || ip != &i2 || i2 != 99 || i3 != -1 || i3p != i4p || i4 != 55)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

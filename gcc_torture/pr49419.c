@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/49419 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S { int w, x, y; } *t;
 
@@ -13,7 +14,7 @@ foo (int n, int f, int *s, int m)
   for (x = n, i = 0; t[x].w == f && i < m; i++)
     x = t[x].x;
   if (i == m)
-    abort ();
+    Mymyabort ();
   a = i + 1;
   for (x = n; i > 0; i--)
     {
@@ -31,8 +32,8 @@ main (void)
   struct S buf[3] = { { 1, 1, 2 }, { 0, 0, 0 }, { 0, 0, 0 } };
   t = buf;
   if (foo (0, 1, s, 3) != 2)
-    abort ();
+    Mymyabort ();
   if (s[0] != 1 || s[1] != 2)
-    abort ();
+    Mymyabort ();
   return 0;
 }

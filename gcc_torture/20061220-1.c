@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/30262 */
 /* { dg-skip-if "asm statements do not work as expected" { rl78-*-* } } */
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (void)
@@ -68,6 +69,6 @@ int
 main (void)
 {
   if (foo () != 254 || bar () != 4 || baz () != 8)
-    abort ();
+    Mymyabort ();
   return 0;
 }

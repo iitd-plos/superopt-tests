@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 double
 g0 (double x)
 {
@@ -33,8 +34,8 @@ main ()
 
   x = xcexp (1.0i);
   if (__real__ x != -1.0)
-    abort ();
+    Mymyabort ();
   if (__imag__ x != 0.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

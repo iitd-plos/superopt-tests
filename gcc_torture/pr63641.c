@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/63641 */
 
 __attribute__ ((noinline, noclone)) int
@@ -46,9 +47,9 @@ main ()
   asm volatile ("" : : : "memory");
   for (i = 0; i < 256; i++)
     if (foo (i) != (i < 32 ? tab1[i] : 0))
-      __builtin_abort ();
+      Mymyabort ();
   for (i = 0; i < 256; i++)
     if (bar (i) != (i < 64 ? tab2[i] : 0))
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

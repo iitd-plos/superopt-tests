@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86532 - Wrong code due to a wrong strlen folding  */
 
 extern __SIZE_TYPE__ strlen (const char*);
@@ -12,7 +13,7 @@ volatile int v2 = 2;
 #define A(expr)								\
   ((expr) ? (void)0 : (__builtin_printf ("assertion on line %i: %s\n",	\
 					 __LINE__, #expr),		\
-		       __builtin_abort ()))
+		       Mymyabort ()))
 
 void test_array_ref_2_3 (void)
 {

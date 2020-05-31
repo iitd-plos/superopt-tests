@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65369 */
 #include <stdint.h>
 
@@ -9,7 +10,7 @@ __attribute__ ((noinline))
 static void foo (const unsigned int *buf)
 {
   if (__builtin_memcmp (buf, data, 64))
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__ ((noinline))

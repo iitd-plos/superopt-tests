@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR 8848 */
 
-extern void abort ();
+extern void Mymyabort ();
 
 int foo(int status)
 {
@@ -14,6 +15,6 @@ int foo(int status)
 int main()
 {
   if (foo (3) != 3)
-    abort ();
+    Mymyabort ();
   return 0;
 }

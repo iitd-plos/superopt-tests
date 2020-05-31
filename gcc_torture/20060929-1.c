@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c/29154 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 foo (int **p, int *q)
@@ -29,16 +30,16 @@ main (void)
   int *p = &i;
   foo (&p, &j);
   if (p - 1 != &i || j != 0 || i != 0)
-    abort ();
+    Mymyabort ();
   i = 43;
   p = &i;
   bar (&p, &j);
   if (p - 1 != &i || j != 0 || i != 0)
-    abort ();
+    Mymyabort ();
   i = 44;
   p = &i;
   baz (&p, &j);
   if (p - 1 != &i || j != 0 || i != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

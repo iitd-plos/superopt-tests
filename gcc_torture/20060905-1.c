@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/28386 */
 /* Origin: Volker Reichelt <reichelt@gcc.gnu.org> */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 volatile char s[256][3];
 
@@ -29,7 +30,7 @@ static int foo(void)
 int main(void)
 {
   if (foo () != 128)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

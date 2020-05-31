@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main()
 {
   int i;
@@ -5,6 +6,6 @@ main()
     ;
   if (i == 100) 
     exit (0);
-  abort ();
+  Mymyabort ();
 }
 

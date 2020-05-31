@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 short x1 = 17;
 
 struct
@@ -9,7 +10,7 @@ f ()
 {
   t.i = x1;
   if (t.i != 17)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

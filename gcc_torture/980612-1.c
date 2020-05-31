@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct fd
 {
 	unsigned char a;
@@ -12,6 +13,6 @@ int main()
 	struct fd *f = g();
 	f->b = h();
 	if (((f->a & 0x7f) & ~0x10) <= 2)
-		abort ();
+		Mymyabort ();
 	exit (0);
 }

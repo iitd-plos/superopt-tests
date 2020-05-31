@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 struct A { char x[1]; };
-extern void abort (void);
+extern void Mymyabort (void);
 void __attribute__((noinline,noclone))
 foo (struct A a)
 {
   if (a.x[0] != 'a')
-    abort ();
+    Mymyabort ();
 }
 int main ()
 {

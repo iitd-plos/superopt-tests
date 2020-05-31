@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* Origin: PR c/8467 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 int aim_callhandler(int sess, int conn, unsigned short family, unsigned short type);
@@ -18,7 +19,7 @@ int aim_callhandler(int sess, int conn, unsigned short family, unsigned short ty
     }
 
   if (i >= 1)
-    abort ();
+    Mymyabort ();
 
   i++;
   return aim_callhandler(sess, conn, family, (unsigned short) 0xffff);

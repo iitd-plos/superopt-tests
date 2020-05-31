@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 
 void test(int *ptr)
 {
@@ -19,7 +20,7 @@ int main()
   int i = 1;
   test(&i);
   if (i)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

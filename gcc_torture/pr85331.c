@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/85331 */
 /* { dg-require-effective-target double64plus } */
 
@@ -18,6 +19,6 @@ main ()
   V r;
   foo (&r);
   if (r[0] != 2.0 || r[1] != 1.0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

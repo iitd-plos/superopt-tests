@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 void __attribute__((noinline,noclone))
      test1(int i)
@@ -9,7 +10,7 @@ void __attribute__((noinline,noclone))
     {
       if (i == 15)
 	return;
-      abort ();
+      Mymyabort ();
     }
 }
 

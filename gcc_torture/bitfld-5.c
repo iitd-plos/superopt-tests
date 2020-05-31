@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* See http://gcc.gnu.org/ml/gcc/2009-06/msg00072.html.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct s
 {
@@ -14,7 +15,7 @@ g (unsigned long long a, unsigned long long b)
 {
   asm ("");
   if (a != b)
-    abort ();
+    Mymyabort ();
 }
 
 __attribute__ ((noinline)) void

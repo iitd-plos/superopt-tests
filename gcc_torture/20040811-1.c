@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 /* { dg-require-effective-target alloca } */
 

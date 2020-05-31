@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Ensure that fabs(x) < 0.0 optimization is working.
 
    Written by Roger Sayle, 20th July 2002.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern double fabs (double);
 extern void link_error (void);
 
@@ -30,7 +31,7 @@ main()
 void
 link_error ()
 {
-  abort ();
+  Mymyabort ();
 }
 #endif
 

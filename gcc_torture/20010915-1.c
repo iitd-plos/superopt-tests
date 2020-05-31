@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Bug in reorg.c, deleting the "++" in the last loop in main.
    Origin: <hp@axis.com>.  */
 
@@ -15,7 +16,7 @@ int main (int argc, char **argv)
 {
   char *args[] = {"a", "b", "c", "d", "e"};
   if (x (5, args) != 0 || check != 2 || o != 5)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 
@@ -40,7 +41,7 @@ int x (int argc, char **argv)
 	u = m (argv[o]);
     }
   else
-    abort ();
+    Mymyabort ();
 
   while (++o < argc)
     if (r (argv[o]) == 0)
@@ -49,11 +50,11 @@ int x (int argc, char **argv)
   return 0;
 }
 
-char *m (char *x) { abort (); }
+char *m (char *x) { Mymyabort (); }
 char *s (char *v, char **pp)
 {
   if (strcmp (v, "a") != 0 || check++ > 1)
-    abort ();
+    Mymyabort ();
   *pp = v+1;
   return 0;
 }
@@ -64,7 +65,7 @@ int r (const char *f)
   static int cnt = 0;
 
   if (*f != *c || f[1] != c[1] || cnt > 3)
-    abort ();
+    Mymyabort ();
   c[0]++;
   cnt++;
   return 1;

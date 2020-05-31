@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target indirect_jumps } */
 
-typedef long unsigned int size_t;
-extern void abort (void);
+//typedef long unsigned int size_t;
+//extern void Mymyabort (void);
 extern char *strcpy (char *, const char *);
 extern int strcmp (const char *, const char *);
 typedef __builtin_va_list va_list;
@@ -64,7 +65,7 @@ main (void)
   char buf[10];
   f (buf, "%s", "asdf", 0);
   if (strcmp (buf, "asdf"))
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

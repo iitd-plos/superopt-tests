@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 ts(a)
      int a;
@@ -22,6 +23,6 @@ tu(a)
 main()
 {
   if (ts (0) || tu (0))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

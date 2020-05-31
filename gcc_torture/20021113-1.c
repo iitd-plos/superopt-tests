@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target alloca } */
 
 /* This program tests a data flow bug that would cause constant propagation
@@ -14,6 +15,6 @@ main()
   *ptr = 5;
   foo (ptr);
   if (*ptr == 5)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

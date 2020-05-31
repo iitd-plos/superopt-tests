@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct
   {
     int input;
@@ -26,7 +27,7 @@ ffstesttab[] =
 
 #define NFFSTESTS (sizeof (ffstesttab) / sizeof (ffstesttab[0]))
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 int
@@ -37,7 +38,7 @@ main (void)
   for (i = 0; i < NFFSTESTS; i++)
     {
       if (__builtin_ffs (ffstesttab[i].input) != ffstesttab[i].output)
-	abort ();
+	Mymyabort ();
     }
 
   exit (0);

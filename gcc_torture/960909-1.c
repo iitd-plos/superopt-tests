@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 ffs (x)
      int x;
@@ -19,7 +20,7 @@ f (x)
   int y;
   y = ffs (x) - 1;
   if (y < 0) 
-    abort ();
+    Mymyabort ();
 }
 
 main ()

@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR target/7559
    This testcase was miscompiled on x86-64, because classify_argument
    wrongly computed the offset of nested structure fields.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct A
 {
@@ -19,7 +20,7 @@ struct R R = { 100, 200 };
 void f (struct R r)
 {
   if (r.a.x != R.a.x || r.b.x != R.b.x)
-    abort ();
+    Mymyabort ();
 }
 
 struct R g (void)
@@ -33,6 +34,6 @@ int main (void)
   f(R);
   r = g();
   if (r.a.x != R.a.x || r.b.x != R.b.x)
-    abort ();
+    Mymyabort ();
   return 0;
 }

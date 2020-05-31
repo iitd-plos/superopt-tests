@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __attribute__ ((__noinline__))
 char *sf(char *s, char *s0)
 {
@@ -17,6 +18,6 @@ int main()
   char s[] = "999999";
   char *x = sf (s+2, s);
   if (x != s+1 || __builtin_strcmp (s, "199999") != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

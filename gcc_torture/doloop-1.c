@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 volatile unsigned int i;
 
@@ -13,6 +14,6 @@ main (void)
   do ++i;
   while (--z > 0);
   if (i != UCHAR_MAX + 1U)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,9 +1,10 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 void __attribute__((noinline,noreturn))
 vec_assert_fail (void)
 {
-    abort ();
+    Mymyabort ();
 }
 
 struct ggc_root_tab {
@@ -39,7 +40,7 @@ VEC_deferred_access_base_pop (VEC_deferred_access_base *vec_)
 void __attribute__((noinline))
 perform_access_checks (VEC_deferred_access_check_gc* p)
 {
-    abort ();
+    Mymyabort ();
 }
 
 typedef struct VEC_deferred_access_gc {

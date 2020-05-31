@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct a;
 
 extern int baz (struct a *__restrict x);
@@ -15,7 +16,7 @@ struct b {
 int bar (int x, const struct b *__restrict y, struct b *__restrict z)
 {
   if (y->c.v || y->c.w != 250000 || y->d.v || y->d.w != 250000)
-    abort();
+    Mymyabort();
 }
 
 void foo(void)

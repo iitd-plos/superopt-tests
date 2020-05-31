@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* derived from PR optimization/11440  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 typedef _Bool bool;
@@ -183,11 +184,11 @@ int main (void)
   RenderBox_setStyle (&g_this, &g__style);
   
   if (g_this.m_positioned != true)
-    abort ();
+    Mymyabort ();
   if (g_this.m_relPositioned != false)
-    abort ();
+    Mymyabort ();
   if (g_this.m_floating != false)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR optimization/8634 */
 /* Contributed by Glen Nakamura <glen at imodulo dot com> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct foo {
   char a, b, c, d, e, f, g, h, i, j;
@@ -16,7 +17,7 @@ int test1 ()
       || buffer[2] != 'C' || buffer[3] != 'D'
       || buffer[4] != 'E' || buffer[5] != 'F'
       || buffer[6] != 'G' || buffer[7] != 'H')
-    abort ();
+    Mymyabort ();
   return 0;
 }
 
@@ -30,7 +31,7 @@ int test2 ()
       || buffer[4] != 'E' || buffer[5] != '\0'
       || buffer[6] != '\0' || buffer[7] != '\0'
       || buffer[8] != '\0' || buffer[9] != '\0')
-    abort ();
+    Mymyabort ();
   return 0;
 }
 
@@ -44,7 +45,7 @@ int test3 ()
       || buffer[4] != 'E' || buffer[5] != '\0'
       || buffer[6] != 'G' || buffer[7] != '\0'
       || buffer[8] != 'I' || buffer[9] != '\0')
-    abort ();
+    Mymyabort ();
   return 0;
 }
 
@@ -58,7 +59,7 @@ int test4 ()
       || buffer[4] != '\0' || buffer[5] != 'F'
       || buffer[6] != '\0' || buffer[7] != 'H'
       || buffer[8] != '\0' || buffer[9] != 'J')
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

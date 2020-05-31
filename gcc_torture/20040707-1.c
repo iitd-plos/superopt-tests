@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s { char c1, c2; };
 void foo (struct s s)
 {

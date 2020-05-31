@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 char a;
 short b, d = 5, h;
 char c[1];

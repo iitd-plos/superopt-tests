@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/58984 */
 
 struct S { int f0 : 8; int : 6; int f1 : 5; };
@@ -46,12 +47,12 @@ main ()
   foo (o);
   m = n || o.f0;
   if (a != 1)
-    __builtin_abort ();
+    Mymyabort ();
   e = 0;
   struct T p = { 1, 1 };
   bar (p);
   m |= n || p.f0;
   if (a != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct VEC_char_base
 {
   unsigned num;
@@ -22,7 +23,7 @@ foo (struct VEC_char_base *p, int i)
   return p->u.vec[i];
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void *malloc (__SIZE_TYPE__);
 
 int
@@ -30,6 +31,6 @@ main()
 {
   struct VEC_char_base *p = malloc (sizeof (struct VEC_char_base) + 256);
   if (foo (p, 16) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

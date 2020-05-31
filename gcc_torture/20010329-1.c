@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 int main (void)
@@ -10,5 +11,5 @@ int main (void)
       && y <= ((void *)((unsigned long)LONG_MAX + 6)))
     exit (0);
   else
-    abort ();
+    Mymyabort ();
 }

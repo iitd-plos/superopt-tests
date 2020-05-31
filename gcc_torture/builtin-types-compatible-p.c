@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int i;
 double d;
 
@@ -20,7 +21,7 @@ int main (void)
 	&& __builtin_types_compatible_p (typeof (hot), typeof (laura))
 	&& __builtin_types_compatible_p (int[5], int[])
 	&& __builtin_types_compatible_p (same1, same2)))
-    abort ();
+    Mymyabort ();
 
   /* Incompatible types.  */
   if (__builtin_types_compatible_p (char *, int)
@@ -30,6 +31,6 @@ int main (void)
       || __builtin_types_compatible_p (typeof (dingos), typeof (cranberry))
       || __builtin_types_compatible_p (char, int)
       || __builtin_types_compatible_p (char *, char **))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

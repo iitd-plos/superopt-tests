@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "assumes absence of larger-than-word padding" { epiphany-*-* } } */
-extern void abort(void);
+extern void Mymyabort(void);
 
 typedef int word __attribute__((mode(word)));
 
@@ -12,8 +13,8 @@ struct foo
 int main()
 {
   if (sizeof(word) != sizeof(struct foo))
-    abort();
+    Mymyabort();
   if (__alignof__(word) != __alignof__(struct foo))
-    abort();
+    Mymyabort();
   return 0;
 }

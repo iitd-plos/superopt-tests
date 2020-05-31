@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/92131 */
 /* Testcase by Armin Rigo <arigo@tunes.org> */
 
@@ -6,7 +7,7 @@ char g, h, j, k;
 int *aa;
 
 static void error (void) __attribute__((noipa));
-static void error (void) { __builtin_abort(); }
+static void error (void) { Mymyabort(); }
 
 static void see_me_here (void) __attribute__((noipa));
 static void see_me_here (void) {}

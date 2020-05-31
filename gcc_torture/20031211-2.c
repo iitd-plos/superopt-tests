@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct a
 {
   unsigned int bitfield : 3;
@@ -15,5 +16,5 @@ int main()
 foo(unsigned int z)
 {
   if (z != 3)
-    abort ();
+    Mymyabort ();
 }

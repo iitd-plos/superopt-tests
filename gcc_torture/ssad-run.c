@@ -1,4 +1,5 @@
-extern void abort ();
+#include"eqchecker_helper.h"
+extern void Mymyabort ();
 extern int abs (int __x) __attribute__ ((__nothrow__, __leaf__)) __attribute__ ((__const__));
 
 static int
@@ -43,7 +44,7 @@ main (void)
   bar (m, n, 16, &sum);
 
   if (sum != 2368)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

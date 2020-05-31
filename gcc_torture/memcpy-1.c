@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 #include <string.h>
@@ -27,31 +28,31 @@ main ()
 
   for (i = 0; i < MEMCPY_SIZE / 128; i++)
     if (dst[i] != (unsigned char) i)
-      abort ();
+      Mymyabort ();
 
   (void) memset (dst, 1, MEMCPY_SIZE / 128);
 
   for (i = 0; i < MEMCPY_SIZE / 128; i++)
     if (dst[i] != 1)
-      abort ();
+      Mymyabort ();
 
   (void) memcpy (dst, src, MEMCPY_SIZE);
 
   for (i = 0; i < MEMCPY_SIZE; i++)
     if (dst[i] != (unsigned char) i)
-      abort ();
+      Mymyabort ();
 
   (void) memset (dst, 0, MEMCPY_SIZE);
 
   for (i = 0; i < MEMCPY_SIZE; i++)
     if (dst[i] != 0)
-      abort ();
+      Mymyabort ();
 
   (void) copy (dst, src, MEMCPY_SIZE / 128);
 
   for (i = 0; i < MEMCPY_SIZE / 128; i++)
     if (dst[i] != (unsigned char) i)
-      abort ();
+      Mymyabort ();
 
   (void) memset (dst, 0, MEMCPY_SIZE);
 
@@ -59,7 +60,7 @@ main ()
 
   for (i = 0; i < MEMCPY_SIZE; i++)
     if (dst[i] != (unsigned char) i)
-      abort ();
+      Mymyabort ();
 
   exit (0);
 }

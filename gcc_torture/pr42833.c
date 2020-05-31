@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef __INT_LEAST8_TYPE__ int8_t;
 typedef __UINT_LEAST32_TYPE__ uint32_t;
 typedef int ssize_t;
@@ -160,12 +161,12 @@ helper_neon_rshl_s8 (uint32_t arg1, uint32_t arg2)
   return res;
 }
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 int main()
 {
   uint32_t r = helper_neon_rshl_s8 (0x05050505, 0x01010101);
   if (r != 0x0a0a0a0a)
-    abort ();
+    Mymyabort ();
   return 0;
 }

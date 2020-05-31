@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {
     int v[4];
 } Test1;
@@ -10,13 +11,13 @@ int func1()
     test = func2();
 
     if (test.v[0] != 10)
-      abort ();
+      Mymyabort ();
     if (test.v[1] != 20)
-      abort ();
+      Mymyabort ();
     if (test.v[2] != 30)
-      abort ();
+      Mymyabort ();
     if (test.v[3] != 40)
-      abort ();
+      Mymyabort ();
 }
 
 Test1 func2()

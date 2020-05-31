@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 // { dg-require-effective-target alloca }
 /* PR middle-end/86528 */
 
@@ -9,7 +10,7 @@ test(char *data, __SIZE_TYPE__ len)
     __builtin_memcpy (buf, data, len);
     __builtin_strcpy (buf + len, &appended[data[len - 1] == '/']);
     if (__builtin_strcmp(buf, "test1234/./"))
-        __builtin_abort();
+        Mymyabort();
 }
 
 int

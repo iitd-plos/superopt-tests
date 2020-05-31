@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/20290  */
    
 /* We used to mis-optimize the second loop in main on at least ppc and
@@ -19,7 +20,7 @@
   We used to consider the increment of i as executed in every
   iteration, so we'd miscompute the final value.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 check (unsigned int *l)
@@ -27,7 +28,7 @@ check (unsigned int *l)
   int i;
   for (i = 0; i < 288; i++)
     if (l[i] != 7 + (i < 256 || i >= 280) + (i >= 144 && i < 256))
-      abort ();
+      Mymyabort ();
 }
 
 int

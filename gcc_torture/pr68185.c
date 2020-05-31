@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "ptxas crashes or executes incorrectly" { nvptx-*-* } { "-O0" "-Os" } { "" } } Reported 2015-11-20  */
 
 int a, b, d = 1, e, f, o, u, w = 1, z;
@@ -25,7 +26,7 @@ main ()
     }
 
   if (q != 1)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

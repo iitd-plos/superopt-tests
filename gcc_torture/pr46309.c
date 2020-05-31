@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/46309 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 unsigned int *q;
 
@@ -8,7 +9,7 @@ __attribute__((noinline, noclone)) void
 bar (unsigned int *p)
 {
   if (*p != 2 && *p != 3)
-    (!(!(*q & 263) || *p != 1)) ? abort () : 0;
+    (!(!(*q & 263) || *p != 1)) ? Mymyabort () : 0;
 }
 
 int

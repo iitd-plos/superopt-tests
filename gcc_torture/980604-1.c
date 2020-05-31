@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a = 1;
 int b = -1;
 
@@ -14,7 +15,7 @@ main ()
   g = d;
   e = (a < b) ? f : g;
   if (e)
-    abort ();
+    Mymyabort ();
   exit(0);
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 #if defined (STACK_SIZE)
@@ -24,6 +25,6 @@ f()
 main()
 {
   if (f() != 3.0)
-    abort();
+    Mymyabort();
   exit(0);
 }

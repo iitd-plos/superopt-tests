@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR 41750 - IPA-SRA used to pass hash->sgot by value rather than by
    reference.  */
 
@@ -18,7 +19,7 @@ struct foo_link_info
   struct foo_link_hash_table *hash;
 };
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int __attribute__((noinline))
 foo_create_got_section (int *abfd, struct foo_link_info *info)
@@ -62,7 +63,7 @@ main ()
 {
   link_info.hash = &hash;
   if (elf64_ia64_check_relocs (&abfd, &link_info) != &abfd)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

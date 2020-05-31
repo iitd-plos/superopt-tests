@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* The FR-V port used to fail this test because the andcc patterns
    wrongly claimed to set the C and V flags.  */
 #include <limits.h>
@@ -9,6 +10,6 @@ main ()
 {
   if (x[0] < x[1])
     if ((x[2] & x[3]) < 0)
-      abort ();
+      Mymyabort ();
   exit (0);
 }

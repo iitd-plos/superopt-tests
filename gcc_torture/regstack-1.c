@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long double C = 5;
 long double U = 1;
 long double Y2 = 11;
@@ -21,6 +22,6 @@ main ()
   Y1 = Y1 - 0.5L;
   if (Z != 68. || Y != 49. || X != 58. || Y1 != 186.5 || R != 193. || S != 77.
       || T != 65. || Y2 != 11.)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

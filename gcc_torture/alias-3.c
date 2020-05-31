@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-alias "" } */
 /* { dg-skip-if "" { powerpc-ibm-aix* } } */
 static int a=0;
@@ -13,6 +14,6 @@ main()
   a=0;
   inc ();
   if (a!=1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

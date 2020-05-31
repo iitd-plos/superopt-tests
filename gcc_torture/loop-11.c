@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int a[199];
 
 static void
@@ -15,6 +16,6 @@ main ()
   foo ();
   for (i = 0; i < 199; i++)
     if (a[i] != i)
-      abort ();
+      Mymyabort ();
   return 0;
 }

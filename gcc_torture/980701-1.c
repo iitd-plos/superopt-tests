@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 ns_name_skip (unsigned char **x, unsigned char *y)
 {
   *x = 0;
@@ -17,6 +18,6 @@ int dn_skipname(unsigned char *ptr, unsigned char *eom) {
 main()
 {
   if (dn_skipname (&a[0], &a[1]) == 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

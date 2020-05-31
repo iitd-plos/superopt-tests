@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/68250 */
 
 signed char a, b, h, k, l, m, o;
@@ -20,7 +21,7 @@ __attribute__((noinline, noclone)) void
 fn2 (int k)
 {
   if (k != 1)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

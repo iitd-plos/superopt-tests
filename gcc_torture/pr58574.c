@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/58574 */
 
 __attribute__((noinline, noclone)) double
@@ -214,6 +215,6 @@ main ()
 #endif
   double d = foo (78.4);
   if (d < 0.38 || d > 0.42)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

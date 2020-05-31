@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Undefined behavior from a call to va_arg with a type other than
    that of the argument passed (in particular, with a type such as
    "float" that can never be the type of an argument passed through
@@ -8,7 +9,7 @@
 #include <stdarg.h>
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 va_list ap;
 float f;
@@ -32,5 +33,5 @@ int
 main (void)
 {
   bar (1, 0);
-  abort ();
+  Mymyabort ();
 }

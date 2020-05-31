@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned long long uint64_t;
 void f(uint64_t *a, uint64_t aa) __attribute__((noinline));
 void f(uint64_t *a, uint64_t aa)
@@ -23,7 +24,7 @@ int main(void)
   new_value = (value+1)&(uint64_t)(unsigned)(-1);
   f(&value, new_value);
   if (value != old_value+1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 

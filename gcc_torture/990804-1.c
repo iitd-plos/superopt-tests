@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int gfbyte ( void ) 
 {
  return 0;
@@ -17,7 +18,7 @@ int main( void )
      k = i + 0 ;
 
  if (i != 1)
-   abort ();
+   Mymyabort ();
 
  k = 1 ;
  if ( k <= i)

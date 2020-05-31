@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/70127 */
 
 struct S { int f; signed int g : 2; } a[1], c = {5, 1}, d;
@@ -7,7 +8,7 @@ __attribute__((noinline, noclone)) void
 foo (int x)
 {
   if (x != 1)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

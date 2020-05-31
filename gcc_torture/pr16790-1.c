@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/16790.  */
 
-extern void abort ();
+extern void Mymyabort ();
 
 static void test1(unsigned int u1)
 {
@@ -13,7 +14,7 @@ static void test1(unsigned int u1)
   y_final_2 = (unsigned int)( y_middle * 3 );
 
   if (y_final_1 != y_final_2)
-    abort ();
+    Mymyabort ();
 }
 
 
@@ -28,7 +29,7 @@ static void test2(unsigned int u1)
   y_final_2 = (unsigned int)( y_middle * 3 );
 
   if (y_final_1 != y_final_2)
-    abort ();
+    Mymyabort ();
 }
 
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/91635 */
 
 #if __CHAR_BIT__ == 8 && __SIZEOF_SHORT__ == 2 \
@@ -45,13 +46,13 @@ main ()
 #if __CHAR_BIT__ == 8 && __SIZEOF_SHORT__ == 2 \
     && __SIZEOF_INT__ == 4 && __SIZEOF_LONG_LONG__ == 8
   if (foo (0xffff) != 0x7fff)
-    __builtin_abort ();
+    Mymyabort ();
   if (bar (5) != 5)
-    __builtin_abort ();
+    Mymyabort ();
   if (baz (~0) != 0x7fff)
-    __builtin_abort ();
+    Mymyabort ();
   if (qux (2) != 0x7ffe)
-    __builtin_abort ();
+    Mymyabort ();
 #endif
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 
 int try (int num) {
@@ -52,7 +53,7 @@ main()
   for (i = 1; i <= 6; i++)
     {
       if (try (i) != i)
-	abort();
+	Mymyabort();
     }
   exit(0);
 }

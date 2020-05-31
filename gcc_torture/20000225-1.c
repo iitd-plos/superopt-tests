@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main ()
 {
     int nResult;
@@ -7,7 +8,7 @@ int main ()
     do
     {
      if (b!=0) {
-       abort ();
+       Mymyabort ();
        nResult=1;
      } else {
       nResult=0;

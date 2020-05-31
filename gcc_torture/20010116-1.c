@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* Distilled from optimization/863.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 extern void ok (int);
 
@@ -14,13 +15,13 @@ void find (Data *first, Data *last)
   int i;
   for (i = (last - first) >> 2; i > 0; --i)
     ok(i);
-  abort ();
+  Mymyabort ();
 }
 
 void ok(int i)
 {
   if (i != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

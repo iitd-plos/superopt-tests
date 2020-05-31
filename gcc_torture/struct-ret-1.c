@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -51,7 +52,7 @@ main ()
   Xr.c[0] = Xr.c1 = '\0';
   Xr = (*fp) (B1, c2, d3, B2);
   if (strcmp (tmp, out))
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

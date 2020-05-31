@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR optimization/8613 */
 /* Contributed by Glen Nakamura */
 
-extern void abort (void);
+extern void Mymyabort (void);
  
 int main (void)
 {
@@ -11,7 +12,7 @@ int main (void)
   *p++ = (char) __builtin_strlen (buf);
 
   if ((buf[0] != 10) || (p - buf != 1))
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

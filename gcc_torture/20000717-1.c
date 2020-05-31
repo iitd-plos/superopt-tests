@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 typedef struct trio { int a, b, c; } trio;
 
 int
 bar (int i, trio t)
 {
   if (t.a == t.b || t.a == t.c)
-    abort ();
+    Mymyabort ();
 }
 
 int

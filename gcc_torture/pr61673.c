@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/61673 */
 
 char e;
@@ -6,7 +7,7 @@ __attribute__((noinline, noclone)) void
 bar (char x)
 {
   if (x != 0x54 && x != (char) 0x87)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline, noclone)) void
@@ -35,16 +36,16 @@ main ()
   e = 0x21;
   foo (c);
   if (e != 0x21)
-    __builtin_abort ();
+    Mymyabort ();
   foo (c + 1);
   if (e != (char) 0x87)
-    __builtin_abort ();
+    Mymyabort ();
   e = 0x21;
   baz (c);
   if (e != 0x21)
-    __builtin_abort ();
+    Mymyabort ();
   baz (c + 1);
   if (e != (char) 0x87)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

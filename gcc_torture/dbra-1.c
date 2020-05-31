@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f1 (a)
      long a;
 {
@@ -74,22 +75,22 @@ f6 (a)
 main()
 {
   if (f1 (5L) != 5)
-    abort ();
+    Mymyabort ();
   if (f2 (1L) != 0)
-    abort ();
+    Mymyabort ();
   if (f2 (0L) != 1)
-    abort ();
+    Mymyabort ();
   if (f3 (5L) != 4)
-    abort ();
+    Mymyabort ();
   if (f4 (1L) != 1)
-    abort ();
+    Mymyabort ();
   if (f4 (0L) != 0)
-    abort ();
+    Mymyabort ();
   if (f5 (-5L) != 4)
-    abort ();
+    Mymyabort ();
   if (f6 (-1L) != 1)
-    abort ();
+    Mymyabort ();
   if (f6 (0L) != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/60003 */
 /* { dg-require-effective-target indirect_jumps } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 unsigned long long jmp_buf[5];
 
@@ -43,7 +44,7 @@ int
 main ()
 {
   if (foo (1) == 0)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

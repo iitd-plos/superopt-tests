@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 
 /* As a quality of implementation issue, we should not prevent inlining
@@ -38,7 +39,7 @@ int main()
 
 #ifdef  __OPTIMIZE__
   if (ptr1 == ptr2)
-    abort ();
+    Mymyabort ();
 #endif
 
   exit (0);

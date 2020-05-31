@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR 15454 */
 
-void abort ();
+void Mymyabort ();
 int main () {
         int foo;
         int bar (void)
@@ -12,6 +13,6 @@ int main () {
         }
         foo = 1;
         if (!bar ())
-                abort ();
+                Mymyabort ();
         return 0;
 }

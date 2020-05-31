@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 double a[3] = { 0.0, 1.0, 2.0 };
 
 void bar (int x, double *y)
 {
   if (x || *y != 1.0)
-    abort ();
+    Mymyabort ();
 }
 
 int main ()

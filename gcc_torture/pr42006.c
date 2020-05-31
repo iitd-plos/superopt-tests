@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 static unsigned int
 my_add(unsigned int si1, unsigned int si2)
@@ -18,7 +19,7 @@ static int func_4(unsigned int p_6)
   for (p_6 = 1; p_6 < 3; p_6 = my_add(p_6, 1))
     {
       if (count++ > 1)
-	abort ();
+	Mymyabort ();
 
       if (my_shift(p_6, p_6))
 	return 0;

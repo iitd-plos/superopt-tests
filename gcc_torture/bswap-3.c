@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 
 int f(unsigned int a) __attribute__((noipa));
@@ -18,7 +19,7 @@ int main(void)
   for (int b = 0; b <= 0xF; b++)
     {
       if (f(b) != g(b))
-	__builtin_abort ();
+	Mymyabort ();
     }
   return 0;
 }

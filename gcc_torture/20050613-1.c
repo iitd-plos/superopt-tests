@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/22043 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct A { int i; int j; int k; int l; };
 struct B { struct A a; int r[1]; };
@@ -11,7 +12,7 @@ void
 foo (struct A *x)
 {
   if (x->i != 0 || x->j != 5 || x->k != 0 || x->l != 0)
-    abort ();
+    Mymyabort ();
 }
 
 int

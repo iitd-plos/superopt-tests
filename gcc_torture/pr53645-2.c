@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/53645 */
 /* { dg-options "-std=gnu89" } */
 
 typedef unsigned short int UV __attribute__((vector_size (16)));
 typedef short int SV __attribute__((vector_size (16)));
-extern void abort (void);
+extern void Mymyabort (void);
 
 #define TEST(a, b, c, d, e, f, g, h) \
 __attribute__((noinline)) void			\
@@ -57,29 +58,29 @@ main ()
 #define TEST(a, b, c, d, e, f, g, h)			\
     uq##a##b##c##d##e##f##g##h (&ur, u + i);		\
     if (ur[0] != u[i][0] / a || ur[3] != u[i][3] / d)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");		\
     if (ur[2] != u[i][2] / c || ur[1] != u[i][1] / b)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");		\
     if (ur[4] != u[i][4] / e || ur[7] != u[i][7] / h)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");		\
     if (ur[6] != u[i][6] / g || ur[5] != u[i][5] / f)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");		\
     ur##a##b##c##d##e##f##g##h (&ur, u + i);		\
     if (ur[0] != u[i][0] % a || ur[3] != u[i][3] % d)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");		\
     if (ur[2] != u[i][2] % c || ur[1] != u[i][1] % b)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");		\
     if (ur[4] != u[i][4] % e || ur[7] != u[i][7] % h)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");		\
     if (ur[6] != u[i][6] % g || ur[5] != u[i][5] % f)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&ur) : "memory");
   for (i = 0; i < sizeof (u) / sizeof (u[0]); i++)
     {
@@ -89,29 +90,29 @@ main ()
 #define TEST(a, b, c, d, e, f, g, h)			\
     sq##a##b##c##d##e##f##g##h (&sr, s + i);		\
     if (sr[0] != s[i][0] / a || sr[3] != s[i][3] / d)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");		\
     if (sr[2] != s[i][2] / c || sr[1] != s[i][1] / b)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");		\
     if (sr[4] != s[i][4] / e || sr[7] != s[i][7] / h)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");		\
     if (sr[6] != s[i][6] / g || sr[5] != s[i][5] / f)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");		\
     sr##a##b##c##d##e##f##g##h (&sr, s + i);		\
     if (sr[0] != s[i][0] % a || sr[3] != s[i][3] % d)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");		\
     if (sr[2] != s[i][2] % c || sr[1] != s[i][1] % b)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");		\
     if (sr[4] != s[i][4] % e || sr[7] != s[i][7] % h)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");		\
     if (sr[6] != s[i][6] % g || sr[5] != s[i][5] % f)	\
-     abort ();						\
+     Mymyabort ();						\
     asm volatile ("" : : "r" (&sr) : "memory");
   for (i = 0; i < sizeof (s) / sizeof (s[0]); i++)
     {

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int yf = 0;
 
 void
@@ -14,7 +15,7 @@ main (void)
 {
   pl (1, !yf);
   if (yf != 1)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

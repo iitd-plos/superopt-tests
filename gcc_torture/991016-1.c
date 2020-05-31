@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Two of these types will, on current gcc targets, have the same
    mode but have different alias sets.  DOIT tries to get gcse to
    invalidly hoist one of the values out of the loop.  */
@@ -34,7 +35,7 @@ doit(int sel, int n, void *p)
       return *p2 == 0;
 
     default:
-      abort ();
+      Mymyabort ();
     }
 }
 
@@ -47,9 +48,9 @@ main()
   v1 = 1; doit(1, 5, &v1);
   v2 = 1; doit(2, 5, &v2);
 
-  if (v0 != 32) abort ();
-  if (v1 != 32) abort ();
-  if (v2 != 32) abort ();
+  if (v0 != 32) Mymyabort ();
+  if (v1 != 32) Mymyabort ();
+  if (v2 != 32) Mymyabort ();
 
   exit (0);
 }

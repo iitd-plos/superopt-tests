@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 test (arg)
      int arg;
@@ -10,8 +11,8 @@ test (arg)
 main ()
 {
   if (test (0) != 0)
-    abort ();
+    Mymyabort ();
   if (test (-1) != -1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

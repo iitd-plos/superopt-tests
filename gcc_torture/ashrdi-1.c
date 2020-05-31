@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
-extern void abort(void);
+extern void Mymyabort(void);
 extern void exit(int);
 
 #if __LONG_LONG_MAX__ == 9223372036854775807LL
@@ -296,7 +297,7 @@ constant_shift(long long x, int i)
 #endif
 
     default:
-      abort ();
+      Mymyabort ();
     }
   return x;
 }
@@ -310,25 +311,25 @@ main()
     {
       long long y = variable_shift (zext[0], i);
       if (y != zext[i])
-	abort ();
+	Mymyabort ();
     }
   for (i = 0; i < BITS; ++i)
     {
       long long y = variable_shift (sext[0], i);
       if (y != sext[i])
-	abort ();
+	Mymyabort ();
     }
   for (i = 0; i < BITS; ++i)
     {
       long long y = constant_shift (zext[0], i);
       if (y != zext[i])
-	abort ();
+	Mymyabort ();
     }
   for (i = 0; i < BITS; ++i)
     {
       long long y = constant_shift (sext[0], i);
       if (y != sext[i])
-	abort ();
+	Mymyabort ();
     }
 
   exit (0);

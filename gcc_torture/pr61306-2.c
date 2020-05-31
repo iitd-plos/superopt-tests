@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #ifdef __INT16_TYPE__
 typedef __INT16_TYPE__ int16_t;
 #else
@@ -35,6 +36,6 @@ main(void)
   if (sizeof (int16_t) * __CHAR_BIT__ != 16)
     return 0;
   if (fake_bswap32 (0x81828384) != 0xff838281)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

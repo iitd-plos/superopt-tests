@@ -1,12 +1,13 @@
+#include"eqchecker_helper.h"
 __volatile int a = 0;
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 int
 main (void)
 {
   if (__builtin_ffs (a) != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/22141 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -22,7 +23,7 @@ void __attribute__((noinline))
 c1 (struct T *p)
 {
   if (p->a != 1 || p->b != 2 || p->c != 3 || p->d != 4)
-    abort ();
+    Mymyabort ();
   __builtin_memset (p, 0xaa, sizeof (*p));
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 extern void exit (int);
 
 static inline int

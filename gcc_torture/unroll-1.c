@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fgnu89-inline" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 inline int
@@ -20,5 +21,5 @@ main (void)
       exit (0);
     }
   if (a != 1)
-    abort();
+    Mymyabort();
 }

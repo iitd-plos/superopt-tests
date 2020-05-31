@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 int i, a[99];
 
 void f (int one)
 {
   if (one != 1)
-    abort ();
+    Mymyabort ();
 }
 
 void

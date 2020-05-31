@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
   void f(int i, int j, int radius, int width, int N)
   {
     const int diff   = i-radius;
@@ -7,7 +8,7 @@
     for(k=lowk; k<= 2; k++){
       int idx = ((k-i+radius)*width-j+radius);
       if (idx < 0)
-	abort ();
+	Mymyabort ();
     }
   
     for(k=lowk; k<= 2; k++);

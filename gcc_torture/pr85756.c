@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/85756 */
 
 #if __CHAR_BIT__ == 8 && __SIZEOF_SHORT__ == 2 && __SIZEOF_INT__ == 4

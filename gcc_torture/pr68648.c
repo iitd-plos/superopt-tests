@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 int __attribute__ ((noinline))
 foo (void)
@@ -17,5 +18,5 @@ int
 main ()
 {
   if (bar () != 0x83fd4005)
-    __builtin_abort ();
+    Mymyabort ();
 }

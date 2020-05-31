@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/17099 */
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 check (int a)
 {
   if (a != 1)
-    abort ();
+    Mymyabort ();
 }
 
 void

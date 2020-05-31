@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Bombed with a segfault on powerpc-linux.  doloop.c generated wrong
    loop count.  */
 void
@@ -25,15 +26,15 @@ main (void)
 
 	for (k = 0; k <= start; k++)
 	  if (a[k] != k)
-	    abort ();
+	    Mymyabort ();
 
 	for (k = start + 1; k <= end; k++)
 	  if (a[k] != k - 1)
-	    abort ();
+	    Mymyabort ();
 
 	for (k = end + 1; k < 5; k++)
 	  if (a[k] != k)
-	    abort ();
+	    Mymyabort ();
       }
 
   return 0;

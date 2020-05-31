@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct decision
 {
   char enforce_mode;             

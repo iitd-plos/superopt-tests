@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct A { int a; char b[]; };
 union B { struct A a; char b[sizeof (struct A) + 31]; };
 union B b = { { 1, "123456789012345678901234567890" } };
@@ -16,6 +17,6 @@ main ()
   int *x[2];
   foo (x);
   if (*x[0] != 1 || *x[1] != 2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

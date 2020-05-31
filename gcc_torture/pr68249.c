@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/68249 */
 
 int a, b, c, g, k, l, m, n;
@@ -30,7 +31,7 @@ main ()
     }
 
   if (h != 1) 
-    __builtin_abort (); 
+    Mymyabort (); 
 
   return 0;
 }

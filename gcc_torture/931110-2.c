@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   static int a[] = {3, 4};
@@ -7,6 +8,6 @@ main ()
   b = a;
   c = *b++ % 8;
   if (c != 3)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

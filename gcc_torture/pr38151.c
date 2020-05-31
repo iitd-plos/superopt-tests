@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-Wno-psabi" } */
 /* { dg-require-effective-target int32plus } */
-void abort (void);
+void Mymyabort (void);
 
 struct S2848
 {
@@ -41,7 +42,7 @@ int main (void)
   check2848va (1, s2848);
 
   if (fails)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

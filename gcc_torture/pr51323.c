@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/51323 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 struct S { int a, b, c; };
 int v;
 
@@ -8,7 +9,7 @@ __attribute__((noinline, noclone)) void
 foo (int x, int y, int z)
 {
   if (x != v || y != 0 || z != 9)
-    abort ();
+    Mymyabort ();
 }
 
 static inline int

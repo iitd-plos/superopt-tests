@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main ()
 {
   int v = 42;

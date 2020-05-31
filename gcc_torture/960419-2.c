@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define SIZE 8
 
 main()
@@ -7,7 +8,7 @@ main()
 
   for (i = 1; i < SIZE; i++)
     if (a[i] != 0)
-      abort();
+      Mymyabort();
 
   exit (0);
 }

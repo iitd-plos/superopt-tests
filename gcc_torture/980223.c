@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 typedef struct { char *addr; long type; } object;
 
 object bar (object blah)
 {
-  abort();
+  Mymyabort();
 }
 
 object foo (object x, object y)

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {int dims[0]; } *A;
 
 f(unsigned long obj)
@@ -6,7 +7,7 @@ f(unsigned long obj)
   y &= ~4;
 
   if ((y==0)||(y!=251  ))
-    abort();
+    Mymyabort();
 
   if(((int)obj&7)!=7)return;
 

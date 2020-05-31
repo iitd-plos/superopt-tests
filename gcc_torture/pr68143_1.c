@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define NULL 0
 
 struct stuff
@@ -15,7 +16,7 @@ void __attribute__ ((noinline))
 bar (struct stuff *x)
 {
   if (x->g != 2)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

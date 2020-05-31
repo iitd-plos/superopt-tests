@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long f1(long a){return a&0xff000000L;}
 long f2 (long a){return a&~0xff000000L;}
 long f3(long a){return a&0x000000ffL;}
@@ -15,6 +16,6 @@ main ()
       f4(a)!=0x89ABCD00L||
       f5(a)!=0x0000CDEFL||
       f6(a)!=0x89AB0000L)
-    abort();
+    Mymyabort();
   exit(0);
 }

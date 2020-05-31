@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 f (double x[2], double y[2])
 {
   if (x == y)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

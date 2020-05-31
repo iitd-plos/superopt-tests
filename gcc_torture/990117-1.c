@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 foo (int x, int y, int i, int j)
 {
@@ -10,7 +11,7 @@ foo (int x, int y, int i, int j)
 main ()
 {
   if (foo (2, 24, 3, 4) == 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

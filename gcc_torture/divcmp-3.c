@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 
 int test1(char x)
 {
@@ -68,29 +69,29 @@ int main()
   for (c=-128; c<256; c++)
   {
     if (test1(c) != 0)
-      abort ();
+      Mymyabort ();
     if (test1u(c) != 0)
-      abort ();
+      Mymyabort ();
     if (test2(c) != 1)
-      abort ();
+      Mymyabort ();
     if (test2u(c) != 1)
-      abort ();
+      Mymyabort ();
     if (test3(c) != 1)
-      abort ();
+      Mymyabort ();
     if (test3u(c) != 1)
-      abort ();
+      Mymyabort ();
     if (test4(c) != 1)
-      abort ();
+      Mymyabort ();
     if (test4u(c) != 1)
-      abort ();
+      Mymyabort ();
     if (test5(c) != 0)
-      abort ();
+      Mymyabort ();
     if (test5u(c) != 0)
-      abort ();
+      Mymyabort ();
     if (test6(c) != 0)
-      abort ();
+      Mymyabort ();
     if (test6u(c) != 0)
-      abort ();
+      Mymyabort ();
   }
   return 0;
 }

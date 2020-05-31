@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 double glob_dbl;
 
 f (pdbl, value)
@@ -15,6 +16,6 @@ main ()
   f ((void *) 0, 55.1);
 
   if (glob_dbl != 55.1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

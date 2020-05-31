@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct C
 {
   unsigned int c;
@@ -72,10 +73,10 @@ main (void)
   d = e.defaults.attr;
   d.columns = 2;
   if (__builtin_memcmp (&d, &c[0].attr, sizeof d))
-    __builtin_abort ();
+    Mymyabort ();
   d.fragment = 1;
   if (__builtin_memcmp (&d, &c[1].attr, sizeof d))
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 

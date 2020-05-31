@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2003  Free Software Foundation.
 
    Test that switch statements suitable using case bit tests are
@@ -5,7 +6,7 @@
 
    Written by Roger Sayle, 01/25/2001.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (int x)
@@ -32,25 +33,25 @@ main ()
       if (i == 4)
 	{
 	  if (r != 30)
-	    abort ();
+	    Mymyabort ();
 	}
       else if (i == 6)
 	{
 	  if (r != 30)
-	    abort ();
+	    Mymyabort ();
 	}
       else if (i == 9)
 	{
 	  if (r != 30)
-	    abort ();
+	    Mymyabort ();
 	}
       else if (i == 11)
 	{
 	  if (r != 30)
-	    abort ();
+	    Mymyabort ();
 	}
       else if (r != 31)
-	abort ();
+	Mymyabort ();
     }
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define FALSE 140
 #define TRUE 13
 
@@ -58,82 +59,82 @@ fle (x)
 main ()
 {
   if (feq (0LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (feq (-1LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (feq (0x8000000000000000LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (feq (0x8000000000000001LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (feq (1LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (feq (0x7fffffffffffffffLL) != FALSE)
-    abort ();
+    Mymyabort ();
 
   if (fne (0LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fne (-1LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fne (0x8000000000000000LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fne (0x8000000000000001LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fne (1LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fne (0x7fffffffffffffffLL) != TRUE)
-    abort ();
+    Mymyabort ();
 
   if (flt (0LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (flt (-1LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (flt (0x8000000000000000LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (flt (0x8000000000000001LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (flt (1LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (flt (0x7fffffffffffffffLL) != FALSE)
-    abort ();
+    Mymyabort ();
 
   if (fge (0LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fge (-1LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fge (0x8000000000000000LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fge (0x8000000000000001LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fge (1LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fge (0x7fffffffffffffffLL) != TRUE)
-    abort ();
+    Mymyabort ();
 
   if (fgt (0LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fgt (-1LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fgt (0x8000000000000000LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fgt (0x8000000000000001LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fgt (1LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fgt (0x7fffffffffffffffLL) != TRUE)
-    abort ();
+    Mymyabort ();
 
   if (fle (0LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fle (-1LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fle (0x8000000000000000LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fle (0x8000000000000001LL) != TRUE)
-    abort ();
+    Mymyabort ();
   if (fle (1LL) != FALSE)
-    abort ();
+    Mymyabort ();
   if (fle (0x7fffffffffffffffLL) != FALSE)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

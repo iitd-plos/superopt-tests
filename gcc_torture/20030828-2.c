@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct rtx_def
 {
   int code;
@@ -23,6 +24,6 @@ main()
   *q = 0;
   tmp[1] = 39;
   if (*q != 39)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned long int st;
 typedef unsigned long long dt;
 typedef union
@@ -55,9 +56,9 @@ main ()
   x.s.l = 0xe0000000U;
   if (x.d == 0x10000000e0000000ULL
       && f_be ((t_be) 0x100000000ULL, (t_be) 0x100000000ULL) != -1)
-    abort ();
+    Mymyabort ();
   if (x.d == 0xe000000010000000ULL
       && f_le ((t_le) 0x100000000ULL, (t_le) 0x100000000ULL) != -1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

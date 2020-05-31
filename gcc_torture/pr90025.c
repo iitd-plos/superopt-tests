@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/90025 */
 
 __attribute__((noipa)) void
@@ -6,10 +7,10 @@ bar (char *p)
   int i;
   for (i = 0; i < 6; i++)
     if (p[i] != "foobar"[i])
-      __builtin_abort ();
+      Mymyabort ();
   for (; i < 32; i++)
     if (p[i] != '\0')
-      __builtin_abort ();
+      Mymyabort ();
 }
 
 __attribute__((noipa)) void

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 unsigned int test (unsigned int x)
 {
@@ -8,6 +9,6 @@ unsigned int test (unsigned int x)
 int main()
 {
   if (test(2) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

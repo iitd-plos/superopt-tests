@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 #define F 140
 #define T 13
@@ -175,25 +176,25 @@ main (void)
 	  unsigned int arg1 = args[j];
 
 	  if (feq (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fne (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (flt (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fge (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fgt (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fle (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fltu (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fgeu (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fgtu (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	  if (fleu (arg0, arg1) != *res++)
-	    abort ();
+	    Mymyabort ();
 	}
     }
   exit (0);

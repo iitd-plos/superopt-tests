@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 typedef struct{double x,y;}point;
@@ -10,7 +11,7 @@ static int va1(int nargs,...)
   va_start(args,nargs);
   for(i=0;i<nargs;i++){
     pi=va_arg(args,point);
-    if(pts[i].x!=pi.x||pts[i].y!=pi.y)abort();
+    if(pts[i].x!=pi.x||pts[i].y!=pi.y)Mymyabort();
   }
   va_end(args);
 }
@@ -25,7 +26,7 @@ static int va2(int nargs,...)
   va_start(args,nargs);
   for(i=0;i<nargs;i++){
     pi=va_arg(args,ipoint);
-    if(ipts[i].x!=pi.x||ipts[i].y!=pi.y)abort();
+    if(ipts[i].x!=pi.x||ipts[i].y!=pi.y)Mymyabort();
   }
   va_end(args);
 }

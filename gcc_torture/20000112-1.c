@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <string.h>
 
 static int
@@ -13,9 +14,9 @@ special_format (fmt)
 main()
 {
   if (special_format ("ee"))
-    abort ();
+    Mymyabort ();
   if (!special_format ("*e"))
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

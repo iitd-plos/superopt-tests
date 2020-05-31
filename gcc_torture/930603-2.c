@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int w[2][2];
 
 f ()
@@ -14,6 +15,6 @@ main ()
 {
   f ();
   if (w[0][0] != 1 || w[1][1] != 1 || w[1][0] != 0 || w[0][1] != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

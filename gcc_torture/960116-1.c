@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static inline
 p (int *p)
 {
@@ -15,6 +16,6 @@ f (int *q)
 main ()
 {
   if (f ((int*) 0xffffffff) != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

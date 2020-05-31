@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/51023 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 short int
 foo (long int x)
@@ -13,6 +14,6 @@ main ()
 {
   long int a = 0x4272AL;
   if (foo (a) == a)
-    abort ();
+    Mymyabort ();
   return 0;
 }

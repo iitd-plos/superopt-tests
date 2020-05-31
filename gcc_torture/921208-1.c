@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 double
 f(double x)
 {
@@ -13,6 +14,6 @@ Int(double (*f)(double), double a)
 main()
 {
   if (Int(&f,2.0) != 4.0)
-    abort();
+    Mymyabort();
   exit (0);
 }

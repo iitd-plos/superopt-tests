@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target alloca } */
 #include <string.h>
 #include <stdio.h>
@@ -6,7 +7,7 @@ void
 a(void *x,int y)
 {
   if (y != 1234)
-    abort ();
+    Mymyabort ();
 }
 
 int

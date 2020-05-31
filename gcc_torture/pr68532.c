@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-O2 -ftree-vectorize -fno-vect-cost-model" } */
 /* { dg-additional-options "-fno-common" { target hppa*-*-hpux* } } */
 
@@ -18,6 +19,6 @@ main ()
   for (int i = 0; i < SIZE; i++)
     in[i] = i;
   if (test (0, in, 1) != 960)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

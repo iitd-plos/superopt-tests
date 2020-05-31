@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int which_alternative = 3;
 
 static const char *i960_output_ldconst (void);
@@ -26,6 +27,6 @@ int main(void)
 {
   const char *s = output_25 () ;
   if (s[0] != 's')
-    abort ();
+    Mymyabort ();
   exit (0);
 }

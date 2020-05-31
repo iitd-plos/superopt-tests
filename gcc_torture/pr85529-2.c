@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/85529 */
 
 __attribute__((noipa)) int
@@ -20,6 +21,6 @@ main ()
   int i;
   for (i = 0; i < 63; i++)
     if (foo (i) != 1)
-      __builtin_abort ();
+      Mymyabort ();
   return 0;
 }

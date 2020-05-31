@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/71626 */
 
 typedef __INTPTR_TYPE__ V __attribute__((__vector_size__(sizeof (__INTPTR_TYPE__))));
@@ -14,6 +15,6 @@ main ()
 {
   V v = foo ();
   if (v[0] != (__INTPTR_TYPE__) foo)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

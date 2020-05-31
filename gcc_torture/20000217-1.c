@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned short int showbug(unsigned short int *a, unsigned short int *b)
 {
         *a += *b -8;
@@ -10,7 +11,7 @@ int main()
         unsigned short int y = 10;
 
         if (showbug(&x, &y) != 0)
-	  abort ();
+	  Mymyabort ();
 
 	exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct f
 {
   int i;
@@ -14,13 +15,13 @@ int g(int i, int c, struct f *ff, int *p)
   return *t;
 }
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 int main()
 {
   struct f f;
   f.i = 1;
   if (g(5, 0, &f, &f.i) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

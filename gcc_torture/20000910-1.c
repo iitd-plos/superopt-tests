@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2000  Free Software Foundation  */
 /* by Alexandre Oliva <aoliva@redhat.com> */
 
@@ -23,5 +24,5 @@ void foo (int *i) { bar (*i); }
 
 void baz (int i, int j) {
   if (i != j)
-    abort ();
+    Mymyabort ();
 }

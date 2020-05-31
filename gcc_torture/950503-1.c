@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   int tmp;
@@ -9,7 +10,7 @@ main ()
   utmp2 = (~((unsigned long long) 0)) >> 16;
 
   if (utmp1 != utmp2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

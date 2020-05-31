@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires io" { freestanding } }  */
 
 #ifndef test
@@ -18,12 +19,12 @@ inner (int x, ...)
     case n:				\
       vprintf (fmt, ap);		\
       if (vprintf (fmt, ap2) != ret)	\
-	abort ();			\
+	Mymyabort ();			\
       break;
 #include "vprintf-1.c"
 #undef test
     default:
-      abort ();
+      Mymyabort ();
     }
 
   va_end (ap);

@@ -1,4 +1,5 @@
-extern void abort ();
+#include"eqchecker_helper.h"
+extern void Mymyabort ();
 
 int f(int x)
 {
@@ -11,7 +12,7 @@ int main (void)
   /* Test that the function above returns different values for
      different signs.  */
   if (f(one) == f(-one))
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/16968 */
 /* Testcase by Jakub Jelinek  <jakub@redhat.com> */
 
@@ -22,7 +23,7 @@ struct V
 };
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 void *
 dummy1 (void *x)
@@ -48,7 +49,7 @@ int
 check (void *x, struct S *y)
 {
   if (y->a || y->f.b || y->f.c || y->f.d || y->f.e)
-    abort ();
+    Mymyabort ();
   return 1;
 }
 
@@ -113,5 +114,5 @@ main (void)
   unsigned int one = 1;
   void *p;
   foo (&one, 1, &p);
-  abort ();
+  Mymyabort ();
 }

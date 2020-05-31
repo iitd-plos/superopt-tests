@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target mmap } */
 /* { dg-skip-if "the executable is at the same position the test tries to remap" { m68k-*-linux* } } */
 
@@ -53,11 +54,11 @@ main ()
       p[39] = 0;
       f (0, p);
       if (p[39] != (char)-2)
-	abort ();
+	Mymyabort ();
       p[39] = 0;
       f (-1, p);
       if (p[39] != 0)
-	abort ();
+	Mymyabort ();
     }
 #endif
   exit (0);

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2000  Free Software Foundation.
 
    If the argument to va_end() has side effects, test whether side
@@ -36,9 +37,9 @@ doit (const char *s, ...)
   vprintf (s, **ap_ptr);
   va_end (**ap_ptr);
 
-  /* Just in case, If *ap_ptr is NULL abort anyway.  */
+  /* Just in case, If *ap_ptr is NULL Mymyabort anyway.  */
   if (*ap_ptr == 0)
-    abort();
+    Mymyabort();
 }
 
 int main()

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c/42544 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main ()
@@ -9,6 +10,6 @@ main ()
   if (sizeof (long long) == sizeof (unsigned int))
     return 0;
   if ((unsigned int) s >= 0x100000000ULL)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target trampolines } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int x(int a, int b)
 {
@@ -37,7 +38,7 @@ int main ()
       {
 	int a = x (j, i);
 	if (a != 2 + j)
-	  abort ();
+	  Mymyabort ();
       }
 
   return 0;

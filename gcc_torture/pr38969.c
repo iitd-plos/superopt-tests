@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __complex__ float
 __attribute__ ((noinline)) foo (__complex__ float x)
 {
@@ -19,7 +20,7 @@ int main()
   b = bar (a);
 
   if (a != b)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

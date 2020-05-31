@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR optimization/9325  */
 
 #include <limits.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int f1()
 {
@@ -18,9 +19,9 @@ int main()
 {
 #if INT_MAX == 2147483647
   if (f1() != 2147483647)
-    abort ();
+    Mymyabort ();
   if (f2() != 2147483647)
-    abort ();
+    Mymyabort ();
 #endif
   return 0;
 }

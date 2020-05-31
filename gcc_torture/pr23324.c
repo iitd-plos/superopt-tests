@@ -1,5 +1,6 @@
-extern void abort (void);
-#define A(x) if (!(x)) abort ()
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
+#define A(x) if (!(x)) Mymyabort ()
 
 static union at6 {} vv6 = {};
 static struct et6

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/24899 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__ ((noinline)) int
 foo (int x, int y, int *z)
@@ -23,6 +24,6 @@ int
 main (void)
 {
   if (foo (3, 2, 0) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR c/4308
    This testcase failed because 0x8000000000000000 >> 0
    was incorrectly folded into 0xffffffff00000000.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 long long foo (void)
@@ -16,6 +17,6 @@ long long foo (void)
 int main (void)
 {
   if (foo () != 1ULL << 63)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

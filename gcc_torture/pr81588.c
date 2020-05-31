@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/81588 */
 
 __attribute__((noinline, noclone)) int
@@ -25,21 +26,21 @@ main ()
   volatile unsigned x = 10;
   volatile long long y = -10000;
   if (foo (x, y) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   y = -1;
   if (foo (x, y) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   y = 0;
   if (foo (x, y) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   y = 39;
   if (foo (x, y) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   y = 40;
   if (foo (x, y) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   y = 10000;
   if (foo (x, y) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

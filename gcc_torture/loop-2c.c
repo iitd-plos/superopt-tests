@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fgnu89-inline -Wno-pointer-to-int-cast" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 int a[2];
@@ -25,6 +26,6 @@ main ()
   a[0] = a[1] = 0;
   g (2);
   if (a[0] != (int)a || a[1] != (int)a + 3)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

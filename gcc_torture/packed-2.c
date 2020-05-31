@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct s {
 	unsigned short a;
 	unsigned long b __attribute__ ((packed));

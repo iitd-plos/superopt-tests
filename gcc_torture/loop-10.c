@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Reduced from PR optimization/5076, PR optimization/2847 */
 
 static int count = 0;
@@ -26,6 +27,6 @@ main (void)
       test = 1;
     }
   if (count != 2)
-    abort ();
+    Mymyabort ();
   return 0;
 }

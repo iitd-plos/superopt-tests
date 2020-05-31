@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 int abs(int j);
-extern void abort(void);
+extern void Mymyabort(void);
 
 __attribute__((noinline)) int lisp_atan2(long dy, long dx) {
     if (dx <= 0)
@@ -11,6 +12,6 @@ __attribute__((noinline)) int lisp_atan2(long dy, long dx) {
 int main() {   
     volatile long dy = 63, dx = -77;
     if (lisp_atan2(dy, dx))
-        abort();
+        Mymyabort();
     return 0;
 }

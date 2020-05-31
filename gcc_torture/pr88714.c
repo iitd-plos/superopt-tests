@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR bootstrap/88714 */
 
 struct S { int a, b, c; int *d; };
@@ -10,10 +11,10 @@ void bar (int *x, int y, int z, int w)
   if (w == -1)
     {
       if (x != 0 || y != 0 || z != 0)
-	__builtin_abort ();
+	Mymyabort ();
     }
   else if (w != 0 || x != t->g || y != 0 || z != 12)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__((noipa)) void
@@ -38,6 +39,6 @@ main ()
   t = &u;
   foo (&s, &s, &a[1], 5);
   if (s.c != 12 || s.d != &a[1])
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

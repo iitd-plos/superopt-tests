@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct PMC {
     unsigned flags;
 };
@@ -12,13 +13,13 @@ typedef struct Pcc_cell
 int gi;
 int cond;
 
-extern void abort ();
+extern void Mymyabort ();
 extern void never_ever(int interp, struct PMC *pmc)
   __attribute__((noinline,noclone));
 
 void never_ever (int interp, struct PMC *pmc)
 {
-  abort ();
+  Mymyabort ();
 }
 
 static void mark_cell(int * interp, Pcc_cell *c)

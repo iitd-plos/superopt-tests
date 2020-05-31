@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void link_error (void);
 
 static int ok = 0;
@@ -27,7 +28,7 @@ int main()
 {
   foo (1);
   if (!ok)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

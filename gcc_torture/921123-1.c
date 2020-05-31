@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f(short *p)
 {
   short x = *p;
@@ -8,6 +9,6 @@ main()
 {
   short x = -10;
   if (!f(&x))
-    abort();
+    Mymyabort();
   exit(0);
 }

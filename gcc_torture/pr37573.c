@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/37573 */
 /* { dg-require-effective-target int32plus } */
 
@@ -60,7 +61,7 @@ main (void)
   s = 23;
   bar (p, s, s + 0xa25e);
   if (__builtin_memcmp (p, q, s) != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 

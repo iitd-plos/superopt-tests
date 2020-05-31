@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Origin: PR c/128 from Martin Sebor <sebor@roguewave.com>, adapted
    as a testcase by Joseph Myers <jsm28@cam.ac.uk>.
 */
@@ -5,7 +6,7 @@
    uninitialized elements zeroed.  This isn't clear in the 1990
    standard, but was fixed in TC2 and C99; see DRs #060, #092.
 */
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (void)
@@ -26,5 +27,5 @@ main (void)
   if (foo ())
     exit (0);
   else
-    abort ();
+    Mymyabort ();
 }

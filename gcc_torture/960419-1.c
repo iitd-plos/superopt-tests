@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int i;
 
 void
@@ -5,7 +6,7 @@ check(x)
      int x;
 {
   if (!x)
-    abort();
+    Mymyabort();
 }
 
 main()

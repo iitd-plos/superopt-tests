@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 int x[10] = { 0,1,2,3,4,5,6,7,8,9};
 
@@ -20,7 +21,7 @@ main()
     x[mi] = 0;
     niterations++;
     if (niterations > 10)
-      abort ();
+      Mymyabort ();
   }
 
   exit (0);

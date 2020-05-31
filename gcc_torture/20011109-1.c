@@ -1,18 +1,19 @@
+#include"eqchecker_helper.h"
 void fail1(void)
 {
-  abort ();
+  Mymyabort ();
 }
 void fail2(void)
 {
-  abort ();
+  Mymyabort ();
 }
 void fail3(void)
 {
-  abort ();
+  Mymyabort ();
 }
 void fail4(void)
 {
-  abort ();
+  Mymyabort ();
 }
 
 
@@ -43,7 +44,7 @@ void foo(long x)
     case 1: case 3: 
       break;
     case 2: case 8: 
-      abort ();
+      Mymyabort ();
       break;
     default:
       fail4 ();

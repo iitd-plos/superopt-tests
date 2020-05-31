@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static inline int
 foo (int *x, int y)
 {
@@ -25,7 +26,7 @@ main ()
       else
 	k = 8;
       if (j != k)
-	__builtin_abort ();
+	Mymyabort ();
     }
   return 0;
 }

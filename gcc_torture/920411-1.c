@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long f (w)
      char *w;
 {
@@ -19,6 +20,6 @@ main ()
 
   for (i = sizeof (long); --i >= 0;) a[i] = ' ';
   if (f (a) != ~0UL / (unsigned char) ~0 * ' ')
-    abort ();
+    Mymyabort ();
   exit (0);
 }

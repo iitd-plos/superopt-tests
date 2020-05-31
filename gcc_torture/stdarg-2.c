@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int foo_arg, bar_arg;
 long x;
@@ -26,7 +27,7 @@ foo (int v, va_list ap)
       foo_arg += va_arg (ap, long double);
       break;
     default:
-      abort ();
+      Mymyabort ();
     }
 }
 
@@ -36,7 +37,7 @@ bar (int v)
   if (v == 0x4002)
     {
       if (va_arg (gap, int) != 13 || va_arg (gap, double) != -14.0)
-	abort ();
+	Mymyabort ();
     }
   bar_arg = v;
 }
@@ -145,36 +146,36 @@ main (void)
 {
   f1 (1, 79L);
   if (x != 79L)
-    abort ();
+    Mymyabort ();
   f2 (0x4002, 13, -14.0);
   if (bar_arg != 0x4002)
-    abort ();
+    Mymyabort ();
   f3 (3, 2031L);
   if (x != 2031)
-    abort ();
+    Mymyabort ();
   f4 (4, 18);
   if (bar_arg != 4)
-    abort ();
+    Mymyabort ();
   f5 (5, 1, 19.0, 18LL);
   if (foo_arg != 38)
-    abort ();
+    Mymyabort ();
   f6 (6, 18L);
   if (x != 18L)
-    abort ();
+    Mymyabort ();
   f7 (7);
   if (bar_arg != 7)
-    abort ();
+    Mymyabort ();
   f8 (8, 2031LL, 13.0);
   if (foo_arg != 2044)
-    abort ();
+    Mymyabort ();
   f10 (9, 180L);
   if (x != 180L)
-    abort ();
+    Mymyabort ();
   f11 (10);
   if (bar_arg != 10)
-    abort ();
+    Mymyabort ();
   f12 (11, 2030, 12.0L);
   if (foo_arg != 2042)
-    abort ();
+    Mymyabort ();
   return 0;
 }

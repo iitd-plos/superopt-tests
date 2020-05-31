@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* The purpose of this test is to catch edge cases when arguments are passed
    in regs and on the stack.  We test 16 cases, trying to catch multiple
    targets (some use 3 regs for argument passing, some use 12, etc.).
@@ -13,7 +14,7 @@ to_hex (unsigned int a)
   static char hex[] = "0123456789abcdef";
 
   if (a > 15)
-    abort ();
+    Mymyabort ();
   return hex[a];
 }
 
@@ -24,10 +25,10 @@ f0 (char* format, ...)
 
   va_start (ap, format);
   if (strlen (format) != 16 - 0)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -38,10 +39,10 @@ f1 (int a1, char* format, ...)
 
   va_start(ap, format);
   if (strlen (format) != 16 - 1)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -52,10 +53,10 @@ f2 (int a1, int a2, char* format, ...)
 
   va_start(ap, format);
   if (strlen (format) != 16 - 2)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -66,10 +67,10 @@ f3 (int a1, int a2, int a3, char* format, ...)
 
   va_start(ap, format);
   if (strlen (format) != 16 - 3)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -80,10 +81,10 @@ f4 (int a1, int a2, int a3, int a4, char* format, ...)
 
   va_start(ap, format);
   if (strlen (format) != 16 - 4)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -95,10 +96,10 @@ f5 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 5)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -111,10 +112,10 @@ f6 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 6)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -127,10 +128,10 @@ f7 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 7)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -143,10 +144,10 @@ f8 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 8)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -159,10 +160,10 @@ f9 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 9)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -175,10 +176,10 @@ f10 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 10)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -192,10 +193,10 @@ f11 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 11)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -209,10 +210,10 @@ f12 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 12)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -226,10 +227,10 @@ f13 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 13)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -243,10 +244,10 @@ f14 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 14)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 
@@ -260,10 +261,10 @@ f15 (int a1, int a2, int a3, int a4, int a5,
 
   va_start(ap, format);
   if (strlen (format) != 16 - 15)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   va_end(ap);
 }
 

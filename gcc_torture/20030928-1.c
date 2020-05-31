@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 #if INT_MAX <= 32767
@@ -26,7 +27,7 @@ int main ()
   get_addrs (x, y);
   for (i = 0; i < 8; i++)
     if (*x[i] != 'a')
-      abort ();
+      Mymyabort ();
   exit (0);
 }
 #endif

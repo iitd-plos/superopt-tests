@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* Check that MAX_EXPR and MIN_EXPR are working properly.  */
 
 #define MAX(X,Y) ((X) > (Y) ? (X) : (Y))
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main()
 {
@@ -16,16 +17,16 @@ int main()
 
   end_bit = MAX (ll_bitpos + ll_bitsize, rl_bitpos + rl_bitsize);
   if (end_bit != 64)
-    abort ();
+    Mymyabort ();
   end_bit = MAX (rl_bitpos + rl_bitsize, ll_bitpos + ll_bitsize);
   if (end_bit != 64)
-    abort ();
+    Mymyabort ();
   end_bit = MIN (ll_bitpos + ll_bitsize, rl_bitpos + rl_bitsize);
   if (end_bit != 32)
-    abort ();
+    Mymyabort ();
   end_bit = MIN (rl_bitpos + rl_bitsize, ll_bitpos + ll_bitsize);
   if (end_bit != 32)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

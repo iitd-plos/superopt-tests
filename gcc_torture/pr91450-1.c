@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/91450 */
 
 __attribute__((noipa)) unsigned long long
@@ -5,7 +6,7 @@ foo (int a, int b)
 {
   unsigned long long r;
   if (!__builtin_mul_overflow (a, b, &r))
-    __builtin_abort ();
+    Mymyabort ();
   return r;
 }
 
@@ -16,7 +17,7 @@ bar (int a, int b)
   if (a >= 0)
     return 0;
   if (!__builtin_mul_overflow (a, b, &r))
-    __builtin_abort ();
+    Mymyabort ();
   return r;
 }
 
@@ -27,7 +28,7 @@ baz (int a, int b)
   if (b >= 0)
     return 0;
   if (!__builtin_mul_overflow (a, b, &r))
-    __builtin_abort ();
+    Mymyabort ();
   return r;
 }
 
@@ -40,7 +41,7 @@ qux (int a, int b)
   if (b < 0)
     return 0;
   if (!__builtin_mul_overflow (a, b, &r))
-    __builtin_abort ();
+    Mymyabort ();
   return r;
 }
 
@@ -53,7 +54,7 @@ quux (int a, int b)
   if (b >= 0)
     return 0;
   if (!__builtin_mul_overflow (a, b, &r))
-    __builtin_abort ();
+    Mymyabort ();
   return r;
 }
 
@@ -61,28 +62,28 @@ int
 main ()
 {
   if (foo (-4, 2) != -8ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (foo (2, -4) != -8ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (bar (-4, 2) != -8ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (baz (2, -4) != -8ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (qux (-4, 2) != -8ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (quux (2, -4) != -8ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (foo (-2, 1) != -2ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (foo (1, -2) != -2ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (bar (-2, 1) != -2ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (baz (1, -2) != -2ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (qux (-2, 1) != -2ULL)
-    __builtin_abort ();
+    Mymyabort ();
   if (quux (1, -2) != -2ULL)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 // Origin: abbott@dima.unige.it
 // PR c/5120
 
@@ -66,7 +67,7 @@ DUPFF DUPFFexgcd(DUPFF *fcofac, DUPFF *gcofac, const DUPFF f, const DUPFF g)
 
   printf("DUPFFexgcd called on degrees %d and %d\n", DUPFFdeg(f), DUPFFdeg(g));
   if (DUPFFdeg(f) < DUPFFdeg(g)) return DUPFFexgcd(gcofac, fcofac, g, f);  /*** BUG IN THIS LINE ***/
-  if (DUPFFdeg(f) != 2 || DUPFFdeg(g) != 1) abort();
+  if (DUPFFdeg(f) != 2 || DUPFFdeg(g) != 1) Mymyabort();
   if (f->coeffs[0] == 0) return f;
   /****** NEVER REACH HERE IN THE EXAMPLE ******/
   p = 2;

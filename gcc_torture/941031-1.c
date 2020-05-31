@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef long mpt;
 
 int
@@ -22,6 +23,6 @@ f (mpt us, mpt vs)
 main ()
 {
   if (f ((mpt) 3, (mpt) 17) != 17)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

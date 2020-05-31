@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/21330 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern int strcmp (const char *, const char *);
 
 int
@@ -46,22 +47,22 @@ main (void)
   p = "abcde'fgh";
   foo (&p, buf, 1, 0);
   if (strcmp (p, "fgh") != 0 || strcmp (buf, "abcde") != 0)
-    abort ();
+    Mymyabort ();
   p = "ABCDEFG\"HI";
   foo (&p, buf, 0, 1);
   if (strcmp (p, "HI") != 0 || strcmp (buf, "ABCDEFG") != 0)
-    abort ();
+    Mymyabort ();
   p = "abcd\"e'fgh";
   foo (&p, buf, 1, 1);
   if (strcmp (p, "e'fgh") != 0 || strcmp (buf, "abcd") != 0)
-    abort ();
+    Mymyabort ();
   p = "ABCDEF'G\"HI";
   foo (&p, buf, 1, 1);
   if (strcmp (p, "G\"HI") != 0 || strcmp (buf, "ABCDEF") != 0)
-    abort ();
+    Mymyabort ();
   p = "abcdef@gh";
   foo (&p, buf, 0, 0);
   if (strcmp (p, "gh") != 0 || strcmp (buf, "abcdef") != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

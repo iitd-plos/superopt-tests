@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/78438 */
 
 char a = 0;
@@ -17,6 +18,6 @@ main ()
     return 0;
   foo ();
   if (a != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

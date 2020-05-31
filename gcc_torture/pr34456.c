@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires qsort" { freestanding } }  */
 
 #include <stdlib.h>

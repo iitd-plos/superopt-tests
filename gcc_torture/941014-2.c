@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -28,6 +29,6 @@ main ()
 
   foo_p = f ();
   if (foo_p->b != 0x0100)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

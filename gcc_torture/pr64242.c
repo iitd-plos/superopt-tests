@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target indirect_jumps } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute ((noinline)) void
 broken_longjmp (void *p)
@@ -31,7 +32,7 @@ main ()
 
   /* Fails if stack pointer corrupted.  */
   if (p != __builtin_alloca (x))
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

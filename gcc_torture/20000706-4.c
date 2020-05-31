@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 extern void exit(int);
 
 int *c;
@@ -6,7 +7,7 @@ int *c;
 void bar(int b)
 {
   if (*c != 1 || b != 2)
-    abort();
+    Mymyabort();
 }
 
 void foo(int a, int b)

@@ -1,4 +1,5 @@
-void abort (void);
+#include"eqchecker_helper.h"
+void Mymyabort (void);
 
 int f (int a, int b)
 {
@@ -14,6 +15,6 @@ int f (int a, int b)
 int main (void)
 {
   if (f (1, 1) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

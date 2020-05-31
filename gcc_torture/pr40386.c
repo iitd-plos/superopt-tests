@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fno-ira-share-spill-slots -Wno-shift-overflow" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 #define CHAR_BIT 8
@@ -29,76 +30,76 @@ int
 main ()
 {
   if (ROR (c, shift1) != ROR (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (c, SHIFT1) != ROR (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (s, shift1) != ROR (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (s, SHIFT1) != ROR (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (i, shift1) != ROR (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (i, SHIFT1) != ROR (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (l, shift1) != ROR (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (l, SHIFT1) != ROR (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ll, shift1) != ROR (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ll, SHIFT1) != ROR (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ll, shift2) != ROR (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ll, SHIFT2) != ROR (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   if (ROL (c, shift1) != ROL (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (c, SHIFT1) != ROL (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (s, shift1) != ROL (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (s, SHIFT1) != ROL (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (i, shift1) != ROL (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (i, SHIFT1) != ROL (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (l, shift1) != ROL (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (l, SHIFT1) != ROL (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ll, shift1) != ROL (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ll, SHIFT1) != ROL (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ll, shift2) != ROL (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ll, SHIFT2) != ROL (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

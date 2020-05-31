@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f(int *x)
 {
   *x = 0;
@@ -11,6 +12,6 @@ main()
   f(&s);
   a[c = 0] = s == 0 ? (x=1, 'a') : (x=2, 'b');
   if (a[c] != 'a')
-    abort();
+    Mymyabort();
   exit (0);
 }

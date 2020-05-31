@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   unsigned long long xx;
@@ -6,6 +7,6 @@ main ()
   *x = -3;
   *x = *x * *x;
   if (*x != 9)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

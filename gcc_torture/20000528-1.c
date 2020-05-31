@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2000  Free Software Foundation  */
 /* Contributed by Alexandre Oliva <aoliva@cygnus.com> */
 
@@ -8,6 +9,6 @@ int main () {
   long t = l;
   s = t;
   if (s != (unsigned short)-2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

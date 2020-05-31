@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
-extern void abort ();
+extern void Mymyabort ();
 
 int test1(int x)
 {
@@ -51,25 +52,25 @@ unsigned int test6u(unsigned int x)
 void test(int a, int b)
 {
   if (test1(a) != b)
-    abort();
+    Mymyabort();
   if (test4(a) != b)
-    abort();
+    Mymyabort();
 }
 
 void testu(unsigned int a, unsigned int b)
 {
   if (test1u(a) != b)
-    abort();
+    Mymyabort();
   if (test2u(a) != b)
-    abort();
+    Mymyabort();
   if (test3u(a) != b)
-    abort();
+    Mymyabort();
   if (test4u(a) != b)
-    abort();
+    Mymyabort();
   if (test5u(a) != b)
-    abort();
+    Mymyabort();
   if (test6u(a) != b)
-    abort();
+    Mymyabort();
 }
 
 

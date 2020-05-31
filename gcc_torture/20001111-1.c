@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 static int next_buffer = 0;
 void bar (void);
@@ -33,9 +34,9 @@ int
 main ()
 {
   if (foo (3) != 3)
-    abort ();
+    Mymyabort ();
   next_buffer = 1;
   if (foo (2) != 0xce2f + 2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

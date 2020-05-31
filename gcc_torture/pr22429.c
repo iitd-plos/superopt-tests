@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 #define N	(1 << (sizeof(int) * __CHAR_BIT__ - 2))
 
@@ -12,6 +13,6 @@ int f(int n)
 int main ()
 {
   if (f (N))
-    abort ();
+    Mymyabort ();
   return 0;
 }

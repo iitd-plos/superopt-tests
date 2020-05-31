@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/51667 */
 /* Testcase by Uros Bizjak <ubizjak@gmail.com> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void __attribute__((noinline,noclone))
 bar (int a)
 {
   if (a != -1)
-    abort ();
+    Mymyabort ();
 }
 
 void __attribute__((noinline,noclone))

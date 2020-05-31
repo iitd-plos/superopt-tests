@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned long long ull;
 int global;
 
@@ -18,6 +19,6 @@ int
 main (void)
 {
   if (bar (0x123456789abcdefULL) != (0x123456789abcdefULL >> 18))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

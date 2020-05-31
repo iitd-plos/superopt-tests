@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/61725 */
 
 int
@@ -8,7 +9,7 @@ main ()
     {
       int a = __builtin_ffs (x);
       if (x == 0 && a != 0)
-        __builtin_abort ();
+        Mymyabort ();
     }
   return 0;
 }

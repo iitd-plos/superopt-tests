@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned long long ull;
 volatile int gvol[32];
 ull gull;
@@ -27,10 +28,10 @@ ull gull;
 
 #define RUN_TEST(NAME, N)		\
   if (NAME (3, ~0ULL) != N * 3 - 1)	\
-    abort ();				\
+    Mymyabort ();				\
   if (NAME (3, 0xffffffffULL)		\
       != N * 3 + 0xffffffffULL)		\
-    abort ();
+    Mymyabort ();
 
 #define DO_TESTS(DO_TEST)	\
   DO_TEST (t1, -2048)		\
@@ -55,6 +56,6 @@ main ()
   gull = 100;
   DO_TESTS (RUN_TEST)
   if (neg (gull) != -100ULL)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

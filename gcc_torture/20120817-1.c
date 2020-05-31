@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned long long u64;
 unsigned long foo = 0;
 u64 f() __attribute__((noinline));
@@ -9,6 +10,6 @@ u64 f() {
 int main ()
 {
   if (f () != 16)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 #include <stdlib.h>
 
@@ -24,7 +25,7 @@ fn1 ()
       return f;
     }
   c = &h;
-  abort ();
+  Mymyabort ();
 }
 
 int

@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 extern void exit(int);
 
 struct baz {
@@ -9,7 +10,7 @@ void bar(struct baz *x, int f, int g, int h, int i, int j)
 {
   if (x->a != 1 || x->b != 2 || x->c != 3 || x->d != 4 || x->e != 5 ||
       f != 6 || g != 7 || h != 8 || i != 9 || j != 10)
-    abort();
+    Mymyabort();
 }
 
 void foo(struct baz x, char **y)

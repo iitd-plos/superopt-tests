@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 void foo (unsigned int * p)
 {
   if ((signed char)(*p & 0xFF) == 17 || (signed char)(*p & 0xFF) == 18)
     return;
   else
-    abort ();
+    Mymyabort ();
 }
 
 int main ()

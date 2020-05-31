@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef struct foo_t
 { 
@@ -35,6 +36,6 @@ main ()
   x.bf_cnt = 0;
   xx = foo (&x, 0, 4096);
   if (xx != 0LL)
-    abort ();
+    Mymyabort ();
   return 0;
 }

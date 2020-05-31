@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void func(int, int);
 
 int main()
@@ -12,5 +13,5 @@ void func(int x, int y)
         if (x == y)
                 return;
         else
-                abort ();
+                Mymyabort ();
 }

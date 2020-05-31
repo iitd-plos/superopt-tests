@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/58277 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 static int a[2];
 int b, c, d, *e, f, g, h, **i = &e, k, l = 1, n, o, p;
 static int **volatile j = &e;
@@ -96,7 +97,7 @@ main ()
   baz ();
 
   if (!a[a[a[a[a[a[a[a[a[a[a[a[a[a[a[u]]]]]]]]]]]]]]])
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

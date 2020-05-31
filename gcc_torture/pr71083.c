@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __extension__ typedef __UINT32_TYPE__ uint32_t;
 
 struct lock_chain {

@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 
-extern void abort ();
+extern void Mymyabort ();
 extern void exit (int);
 
 int f (int a) {
@@ -14,7 +15,7 @@ int f (int a) {
 
 int main (int argc, char *argv[]) {
 	if (f (-2))
-		abort ();
+		Mymyabort ();
 	exit (0);
 }
 

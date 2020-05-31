@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 main ()
 {
   if ((__complex__ double) 0.0 != (__complex__ double) (-0.0))
-    abort ();
+    Mymyabort ();
 
   if (0.0 != -0.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

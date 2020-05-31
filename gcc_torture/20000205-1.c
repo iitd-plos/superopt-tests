@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int f (int a)
 {
   if (a == 0)
@@ -12,6 +13,6 @@ static int f (int a)
 int main(void)
 {
   if (f (~128))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 typedef __SIZE_TYPE__ Size_t;
 
@@ -41,13 +42,13 @@ int main()
 {
   /* Check the exact sizeof value. bufsize is aligned on 256b. */
   if (union_size() != sizeof(char) * bufsize)
-    abort();
+    Mymyabort();
 
   if (struct_size() != sizeof(short) * bufsize + 4*sizeof(int))
-    abort();
+    Mymyabort();
 
   if (struct_a_offset() < sizeof(short) * bufsize)
-    abort();  
+    Mymyabort();  
 
   return 0;
 }

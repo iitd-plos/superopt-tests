@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify that flexible arrays can be initialized from STRING_CST
    constructors. */
 
@@ -38,34 +39,34 @@ struct {
 main()
 {
   if (a1.a1c != '4')
-    abort();
+    Mymyabort();
   if (a1.a1p[0] != '6')
-    abort();
+    Mymyabort();
   if (a1.a1p[1] != '2')
-    abort();
+    Mymyabort();
   if (a1.a1p[2] != '\0')
-    abort();
+    Mymyabort();
 
   if (a2.a2c != 'v')
-    abort();
+    Mymyabort();
   if (a2.a2p[0] != 'c')
-    abort();
+    Mymyabort();
   if (a2.a2p[1] != 'q')
-    abort();
+    Mymyabort();
 
   if (a3.a3c != 'o')
-    abort();
+    Mymyabort();
   if (a3.a3p[0] != 'w')
-    abort();
+    Mymyabort();
   if (a3.a3p[1] != 'x')
-    abort();
+    Mymyabort();
 
   if (a4.a4c != '9')
-    abort();
+    Mymyabort();
   if (a4.a4p[0] != 'e')
-    abort();
+    Mymyabort();
   if (a4.a4p[1] != 'b')
-    abort();
+    Mymyabort();
 
   return 0;
 }

@@ -1,4 +1,5 @@
-/* { dg-options "-fno-builtin-abort" } */
+#include"eqchecker_helper.h"
+/* { dg-options "-fno-builtin-Mymyabort" } */
 
 int a, b, m, n, o, p, s, u, i;
 char c, q, y;
@@ -8,7 +9,7 @@ static int f, h;
 static short g, r, v;
 unsigned t;
 
-extern void abort ();
+extern void Mymyabort ();
 
 int
 fn1 (int p1)
@@ -41,7 +42,7 @@ fn3 ()
 	  for (;;)
 	    {
 	      if (!m)
-		abort ();
+		Mymyabort ();
 	      r = 7 - f;
 	      x = e = i | r;
 	      q = u * g;

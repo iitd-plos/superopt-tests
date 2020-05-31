@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main()
 {
   char c;
@@ -10,6 +11,6 @@ main()
       break;
   }
   if (nbits == 100)
-    abort();
+    Mymyabort();
   exit(0);
 }

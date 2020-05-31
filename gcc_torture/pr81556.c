@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/81556 */
 
 unsigned long long int b = 0xb82ff73c5c020599ULL;
@@ -18,6 +19,6 @@ main ()
 {
   foo ();
   if (g != 1 || h != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 typedef double TYPE;
@@ -8,23 +9,23 @@ void vafunction (char *dummy, ...)
 
   va_start(ap, dummy);
   if (va_arg (ap, TYPE) != 1.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 2.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 3.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 4.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 5.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 6.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 7.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 8.)
-    abort();
+    Mymyabort();
   if (va_arg (ap, TYPE) != 9.)
-    abort();
+    Mymyabort();
   va_end(ap);
 }
 

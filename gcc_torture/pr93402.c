@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/93402 */
 
 struct S { unsigned int a; unsigned long long b; };
@@ -16,6 +17,6 @@ main ()
 {
   struct S a = foo (1);
   if (a.a != 0 || a.b != 122222222222ULL)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

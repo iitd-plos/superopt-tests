@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __complex__
 double f ()
 {
@@ -14,6 +15,6 @@ main ()
   __complex__ double c;
 
   if (c = f ())
-    abort ();
+    Mymyabort ();
   exit (0);
 }

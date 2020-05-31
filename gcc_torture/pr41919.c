@@ -1,6 +1,7 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
-#define assert(x) if(!(x)) abort()
+#define assert(x) if(!(x)) Mymyabort()
 
 struct S1
 {
@@ -33,7 +34,7 @@ int main (void)
 {
   struct S1 s = foo();
   if (bar(0x99 ^ (s.f0 && 1), 1) != -104)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

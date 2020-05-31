@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target return_address } */
 int check_fa_work (const char *, const char *) __attribute__((noinline));
 int check_fa_mid (const char *) __attribute__((noinline));
@@ -40,6 +41,6 @@ int main (void)
   char *unused = __builtin_alloca (how_much ());
 
   if (!check_fa(unused))
-    abort();
+    Mymyabort();
   return 0;
 }

@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "signed zero not supported" { "vax-*-*" } } */
-extern void abort (void);
+extern void Mymyabort (void);
 
 double
 __attribute__ ((noinline))
@@ -16,7 +17,7 @@ int main()
   y = not_fabs (x);
 
   if (!__builtin_signbit (y))
-    abort();
+    Mymyabort();
 
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int __attribute__ ((noinline, noclone))
 foo (float a)
 {
@@ -9,7 +10,7 @@ int
 main (void)
 {
   if (foo (10.0f) != 49)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

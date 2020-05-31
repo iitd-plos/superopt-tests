@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* Verify that TRUTH_AND_EXPR is not wrongly changed to TRUTH_ANDIF_EXPR.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int count = 0;
 
@@ -19,10 +20,10 @@ int foo2(void)
 int main(void)
 {
   if ((foo1() == 1) & (foo2() == 1))
-    abort ();
+    Mymyabort ();
 
   if (count != 2)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

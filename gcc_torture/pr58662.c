@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int a, c, d;
 volatile int b;
@@ -17,6 +18,6 @@ main ()
   e = d % 14;
   b = e && c;
   if (b != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

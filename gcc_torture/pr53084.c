@@ -1,12 +1,13 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/53084 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__((noinline, noclone)) void
 bar (const char *p)
 {
   if (p[0] != 'o' || p[1] != 'o' || p[2])
-    abort ();
+    Mymyabort ();
 }
 
 int

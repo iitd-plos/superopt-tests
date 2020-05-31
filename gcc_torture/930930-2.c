@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 test_endianness()
 {
@@ -25,6 +26,6 @@ test_endianness_vol()
 main ()
 {
   if (test_endianness () != test_endianness_vol ())
-    abort ();
+    Mymyabort ();
   exit (0);
 }

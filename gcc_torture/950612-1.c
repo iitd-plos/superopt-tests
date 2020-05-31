@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned int
 f1 (int diff)
 {
@@ -28,21 +29,21 @@ main ()
   for (i = 0; i <= 10; i++)
     {
       if (f1 (i) != i)
-	abort ();
+	Mymyabort ();
       if (f1 (-i) != i)
-	abort ();
+	Mymyabort ();
       if (f2 (i) != i)
-	abort ();
+	Mymyabort ();
       if (f2 (-i) != i)
-	abort ();
+	Mymyabort ();
       if (f3 ((long long) i) != i)
-	abort ();
+	Mymyabort ();
       if (f3 ((long long) -i) != i)
-	abort ();
+	Mymyabort ();
       if (f4 ((long long) i) != i)
-	abort ();
+	Mymyabort ();
       if (f4 ((long long) -i) != i)
-	abort ();
+	Mymyabort ();
     }
   exit (0);
 }

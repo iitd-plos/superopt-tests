@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* PR target/49186 */
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main ()
@@ -9,7 +10,7 @@ main ()
 
   x = (uv < 0x80) ? 1 : ((uv < 0x800) ? 2 : 3);
   if (x != 3)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

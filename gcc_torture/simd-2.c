@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* 
    Purpose: Test generic SIMD support, V8HImode.  This test should work
    regardless of if the target has SIMD instructions.
@@ -23,7 +24,7 @@ verify (int a1, int a2, int a3, int a4,
       || a2 != b2
       || a3 != b3
       || a4 != b4)
-    abort ();
+    Mymyabort ();
 }
 
 int

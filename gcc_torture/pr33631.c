@@ -1,14 +1,15 @@
+#include"eqchecker_helper.h"
 typedef union
 {
   int __lock;
-} pthread_mutex_t;
+} mypthread_mutex_t;
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main()
 {
-    struct { int c; pthread_mutex_t m; } r = { .m = 0 };
+    struct { int c; mypthread_mutex_t m; } r = { .m = 0 };
     if (r.c != 0)
-      abort ();
+      Mymyabort ();
     return 0;
 }

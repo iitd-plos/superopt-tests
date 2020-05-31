@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test that we don't let stmt.c think that the enumeration's values are
    the entire set of possibilities.  Such an assumption is false for C,
    but true for other languages.  */
@@ -18,4 +19,4 @@ int main()
   return 0;
 }
 
-static void y(int x) { abort (); }
+static void y(int x) { Mymyabort (); }

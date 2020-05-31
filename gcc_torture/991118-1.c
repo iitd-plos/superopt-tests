@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct tmp
 {
   long long int pad : 12;
@@ -65,15 +66,15 @@ main()
   tmp2 = sub2 (tmp2);
 
   if (tmp.pad != 0x123 || tmp.field != 0xFFF9551175BDFDB5LL)
-    abort ();
+    Mymyabort ();
   if (tmp2.pad != 0x123 || tmp2.field != 0xFFF9551175BDFDB5LL)
-    abort ();
+    Mymyabort ();
 
   tmp3 = sub3 (tmp3);
   tmp4 = sub4 (tmp4);
   if (tmp3.pad != 0x123 || tmp3.field != 0xFFF989AB12345678LL)
-    abort ();
+    Mymyabort ();
   if (tmp4.pad != 0x123 || tmp4.field != 0xFFF989AB12345678LL)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

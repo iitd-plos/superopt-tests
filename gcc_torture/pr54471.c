@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/54471 */
 
 #ifdef __SIZEOF_INT128__
@@ -6,7 +7,7 @@
 #define T long long
 #endif
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__ ((noinline))
 unsigned T
@@ -22,7 +23,7 @@ foo (T ixi, unsigned ctr)
     }
 
   if (irslt != 14348907)
-    abort ();
+    Mymyabort ();
   return irslt;
 }
 

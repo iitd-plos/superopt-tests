@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Reduced testcase extracted from Samba source code.  */
 
 #include <stdlib.h>
@@ -24,6 +25,6 @@ int main() {
   else
     {
       bar (b & 1);
-      abort ();
+      Mymyabort ();
     }
 }

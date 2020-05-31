@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdlib.h>
 
 int a;
@@ -13,6 +14,6 @@ int main() {
     *f = fn1(c || b, a);
   }
   if ((long long) a != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

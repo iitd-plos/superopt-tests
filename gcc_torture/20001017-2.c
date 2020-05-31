@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 void
 fn_4parms (unsigned char a, long *b, long *c, unsigned int *d)
 {
   if (*b != 1 || *c != 2 || *d != 3)
-    abort ();
+    Mymyabort ();
 }
 
 int

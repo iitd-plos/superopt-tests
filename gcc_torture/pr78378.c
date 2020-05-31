@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/78378 */
 
 unsigned long long __attribute__ ((noinline, noclone))
@@ -13,6 +14,6 @@ main ()
 {
   unsigned long long x = foo (1);
   if (x != 0x2c24)
-    __builtin_abort();
+    Mymyabort();
   return 0;
 }

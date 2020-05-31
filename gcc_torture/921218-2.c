@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f()
 {
   long l2;
@@ -12,6 +13,6 @@ f()
 main()
 {
   if (f()!=(unsigned short)-1)
-    abort();
+    Mymyabort();
   exit(0);
 }

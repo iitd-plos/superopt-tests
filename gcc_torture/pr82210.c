@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR c/82210 */
 /* { dg-require-effective-target alloca } */
 
@@ -16,7 +17,7 @@ foo (int size)
     s.b[i] = 0;
   for (i = 0; i < size; i++)
     if (s.a[i].c != 0x1234 || s.b[i] != 0)
-      __builtin_abort ();
+      Mymyabort ();
 }
 
 int

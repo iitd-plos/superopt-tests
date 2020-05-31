@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/93908 */
 
 struct T
@@ -47,8 +48,8 @@ main ()
   struct T *r[2];
   foo ("foo", r);
   if (r[0]->e || r[0]->f || r[0]->g || r[0]->h || r[0]->i || r[0]->j || r[0]->k != -1)
-    __builtin_abort ();
+    Mymyabort ();
   if (r[1]->e || r[1]->f || r[1]->g || r[1]->h || r[1]->i || r[1]->j || r[1]->k != -1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

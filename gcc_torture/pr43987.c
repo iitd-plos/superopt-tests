@@ -1,20 +1,21 @@
+#include"eqchecker_helper.h"
 char B[256 * sizeof(void *)];
-typedef void *FILE;
+typedef void *MYFILE;
 typedef struct globals {
     int c;
-    FILE *l;
+    MYFILE *l;
 } __attribute__((may_alias)) T;
-void add_input_file(FILE *file)
+void add_input_file(MYFILE *file)
 {
   (*(T*)&B).l[0] = file;
 }
-extern void abort (void);
+//extern void Mymyabort (void);
 int main()
 {
   FILE x;
   (*(T*)&B).l = &x;
   add_input_file ((void *)-1);
   if ((*(T*)&B).l[0] != (void *)-1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

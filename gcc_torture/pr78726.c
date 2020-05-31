@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/78726 */
 
 unsigned char b = 36, c = 173;
@@ -18,6 +19,6 @@ main ()
   asm volatile ("" : : "g" (&b), "g" (&c) : "memory");
   foo ();
   if (d != 799092689U)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

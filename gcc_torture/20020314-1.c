@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target alloca } */
 void f(void * a, double y)
 {
@@ -28,10 +29,10 @@ main ()
   d = 0.0;
 
   if (g (a, b, c, d) != 0.0)
-    abort ();
+    Mymyabort ();
 
   if (a != 1.0 || b != 0.0 || c != 10.0 || d != 0.0)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Origin: PR c/5420 from David Mosberger <davidm@hpl.hp.com>.
    This testcase was miscompiled when tail call optimizing, because a
    compound literal initialization was emitted only in the tail call insn
@@ -5,13 +6,13 @@
 
 typedef struct { unsigned short a; } A;
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 void foo (unsigned int x)
 {
   if (x != 0x800 && x != 0x810)
-    abort ();
+    Mymyabort ();
 }
 
 int

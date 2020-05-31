@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/63659 */
 
 int a, b, c, *d = &b, g, h, i;
@@ -23,7 +24,7 @@ main ()
   *d = e;
 
   if (b != 255)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

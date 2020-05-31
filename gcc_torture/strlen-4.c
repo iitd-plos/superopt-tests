@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86622 - incorrect strlen of array of array plus
    variable offset
    Exercise strlen() with a multi-dimensional array of strings with
@@ -30,7 +31,7 @@ volatile int v7 = 7;
   ((strlen (expr) == N)							\
    ? (void)0 : (printf ("line %i: strlen (%s = \"%s\") != %i\n",	\
 			__LINE__, #expr, expr, N),			\
-		__builtin_abort ()))
+		Mymyabort ()))
 
 /* Verify that strlen() involving pointer to array arguments computes
    the correct result.  */

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct X {
     struct Y {
 	struct YY {
@@ -14,11 +15,11 @@ foo (struct Z *p)
   a.b = (struct Y){};
   return p->i + i;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   a.b.bb.c.i = 1;
   if (foo (&a.b.bb.c) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

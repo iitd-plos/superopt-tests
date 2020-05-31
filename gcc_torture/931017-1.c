@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int v;
 
 main ()
@@ -15,7 +16,7 @@ h2 (e)
      int *e;
 {
   if (e != &v)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 f(long long x)
 {
@@ -8,6 +9,6 @@ f(long long x)
 main()
 {
   if (f(0x0123456789ABCDEFLL) != 0xCD)
-    abort();
+    Mymyabort();
   exit (0);
 }

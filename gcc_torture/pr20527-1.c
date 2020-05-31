@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/20527
    Mishandled postincrement.  This test-case is derived from the
    function BZ2_hbCreateDecodeTables in the file huffman.c from
@@ -68,7 +69,7 @@ void f (long *limit, long *base, long minLen, long maxLen)
     limit[i] = vec-1;
   }
 }
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 long b[] = {1, 5, 11, 23};
 int main (void)
@@ -76,6 +77,6 @@ int main (void)
   long l[3];
   f (l, b, 0, 2);
   if (l[0] != 3 || l[1] != 9 || l[2] != 21)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

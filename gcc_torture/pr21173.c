@@ -1,4 +1,5 @@
-void abort (void);
+#include"eqchecker_helper.h"
+void Mymyabort (void);
 
 char q;
 void *a[2];
@@ -16,6 +17,6 @@ int main (void)
   foo (&q);
   for (i = 0; i < 2; i ++)
     if (a[i])
-      abort ();
+      Mymyabort ();
   return 0;
 }

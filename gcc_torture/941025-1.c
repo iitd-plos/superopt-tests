@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long f (x, y)
      long x,y;
 {
@@ -7,6 +8,6 @@ long f (x, y)
 main ()
 {
   if (f (2L, 0xdecadeL) != 0xdecadeL)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 double
 foo (void)
 {
@@ -18,7 +19,7 @@ main (void)
    for (x = 0; x < 20; x++)
       do_sibcall ();
    if (!(x >= 10))
-      abort ();
+      Mymyabort ();
    exit (0);
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* cse.c failure on x86 target.
    Contributed by Stuart Hastings 10 Oct 2002 <stuart@apple.com> */
 #include <stdlib.h>
@@ -32,6 +33,6 @@ main()
   width = saveRect.maxx - saveRect.minx;
 
   if (width != expectedwidth)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

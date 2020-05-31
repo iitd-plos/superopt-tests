@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 
 unsigned long bar(void) { return 32768; }
 
@@ -8,7 +9,7 @@ int main()
   if (nStyle & 32768)
     nStyle |= 65536;
   if (nStyle != (32768 | 65536))
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

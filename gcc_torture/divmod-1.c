@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 div1 (signed char x)
 {
   return x / -1;
@@ -53,25 +54,25 @@ mod6 (unsigned long x, unsigned long y)
 main ()
 {
   if (div1 (-(1 << 7)) != 1 << 7)
-    abort ();
+    Mymyabort ();
   if (div2 (-(1 << 15)) != 1 << 15)
-    abort ();
+    Mymyabort ();
   if (div3 (-(1 << 7), -1) != 1 << 7)
-    abort ();
+    Mymyabort ();
   if (div4 (-(1 << 15), -1) != 1 << 15)
-    abort ();
+    Mymyabort ();
   if (mod1 (-(1 << 7)) != 0)
-    abort ();
+    Mymyabort ();
   if (mod2 (-(1 << 15)) != 0)
-    abort ();
+    Mymyabort ();
   if (mod3 (-(1 << 7), -1) != 0)
-    abort ();
+    Mymyabort ();
   if (mod4 (-(1 << 15), -1) != 0)
-    abort ();
+    Mymyabort ();
   if (mod5 (0x50000000, 2) != 0)
-    abort ();
+    Mymyabort ();
   if (mod6 (0x50000000, 2) != 0)
-    abort ();
+    Mymyabort ();
   
   exit (0);
 }

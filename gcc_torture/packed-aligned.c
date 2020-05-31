@@ -1,18 +1,19 @@
+#include"eqchecker_helper.h"
 struct c {
   double a;
 } __attribute((packed)) __attribute((aligned));
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 double g_expect = 32.25;
 
 void f(unsigned x, struct c y)
 {
   if (x != 0)
-    abort();
+    Mymyabort();
 
   if (y.a != g_expect)
-    abort();
+    Mymyabort();
 }
 
 struct c e = { 64.25 };

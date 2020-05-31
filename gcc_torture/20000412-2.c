@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int f(int a,int *y)
 {
   int x = a;
@@ -11,6 +12,6 @@ int f(int a,int *y)
 int main(int argc,char **argv)
 {
   if (f (100, (int *) 0) != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

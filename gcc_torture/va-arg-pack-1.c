@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* __builtin_va_arg_pack () builtin tests.  */
 
 #include <stdarg.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int v1 = 8;
 long int v2 = 3;
@@ -24,44 +25,44 @@ foo1 (int x, int y, ...)
 
   va_start (ap, y);
   if (x < 0 || x >= 20 || seen[x])
-    abort ();
+    Mymyabort ();
   seen[x] = ++cnt;
   if (y != 6)
-    abort ();
+    Mymyabort ();
   i = va_arg (ap, int);
   if (i != 5)
-    abort ();
+    Mymyabort ();
   switch (x)
     {
     case 0:
       i = va_arg (ap, int);
       if (i != 9 || v1 != 9)
-	abort ();
+	Mymyabort ();
       a = va_arg (ap, struct A);
       if (__builtin_memcmp (a.c, v4.c, sizeof (a.c)) != 0)
-	abort ();
+	Mymyabort ();
       v = (void *) va_arg (ap, struct A *);
       if (v != (void *) &v4)
-	abort ();
+	Mymyabort ();
       l = va_arg (ap, long int);
       if (l != 3 || v2 != 4)
-	abort ();
+	Mymyabort ();
       break;
     case 1:
       ld = va_arg (ap, long double);
       if (ld != 41 || v5 != ld)
-	abort ();
+	Mymyabort ();
       i = va_arg (ap, int);
       if (i != 8)
-	abort ();
+	Mymyabort ();
       v = va_arg (ap, void *);
       if (v != &v2)
-	abort ();
+	Mymyabort ();
       break;
     case 2:
       break;
     default:
-      abort ();
+      Mymyabort ();
     }
   va_end (ap);
   return x;
@@ -78,10 +79,10 @@ foo2 (int x, int y, ...)
 
   va_start (ap, y);
   if (x < 0 || x >= 20 || seen[x])
-    abort ();
+    Mymyabort ();
   seen[x] = ++cnt | 64;
   if (y != 10)
-    abort ();
+    Mymyabort ();
   switch (x)
     {
     case 11:
@@ -89,24 +90,24 @@ foo2 (int x, int y, ...)
     case 12:
       ld = va_arg (ap, long double);
       if (ld != 41 || v5 != 40)
-	abort ();
+	Mymyabort ();
       a = va_arg (ap, struct A);
       if (__builtin_memcmp (a.c, v4.c, sizeof (a.c)) != 0)
-	abort ();
+	Mymyabort ();
       b = va_arg (ap, struct A);
       if (__builtin_memcmp (b.c, v4.c, sizeof (b.c)) != 0)
-	abort ();
+	Mymyabort ();
       v = va_arg (ap, void *);
       if (v != &v2)
-	abort ();
+	Mymyabort ();
       ll = va_arg (ap, long long int);
       if (ll != 16LL)
-	abort ();
+	Mymyabort ();
       break;
     case 2:
       break;
     default:
-      abort ();
+      Mymyabort ();
     }
   va_end (ap);
   return x + 8;
@@ -130,14 +131,14 @@ int
 main (void)
 {
   if (bar (0, ++v1, v4, &v4, v2++) != 0)
-    abort ();
+    Mymyabort ();
   if (bar (1, ++v5, 8, v3) != 1)
-    abort ();
+    Mymyabort ();
   if (bar (2) != 2)
-    abort ();
+    Mymyabort ();
   if (bar (v1 + 2) != 19)
-    abort ();
+    Mymyabort ();
   if (bar (v1 + 3, v5--, v4, v4, v3, 16LL) != 20)
-    abort ();
+    Mymyabort ();
   return 0;
 }

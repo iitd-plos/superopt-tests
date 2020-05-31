@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 sub1 (int i, int j)
 {
@@ -24,7 +25,7 @@ main ()
    int  c[22];
   }c;
   if (sub1 (20, 3) != sizeof (c)*3)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int array[10] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
 main ()
@@ -12,6 +13,6 @@ main ()
 
  label:
   if (i != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

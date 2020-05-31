@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 
 short optab[5];
@@ -35,6 +36,6 @@ main ()
   p[3] = optab[2];
   execute (&p);
   if (strcmp (buf, "xyxyz"))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct S
 {
   int *sp, fc, *sc, a[2];
@@ -28,6 +29,6 @@ main ()
   s.a[1] = 11;
   f (&s);
   if (s.sp[2] != 2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

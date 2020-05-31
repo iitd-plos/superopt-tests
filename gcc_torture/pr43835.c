@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct PMC {
     unsigned flags;
 };
@@ -9,13 +10,13 @@ typedef struct Pcc_cell
     long type;
 } Pcc_cell;
 
-extern void abort ();
+extern void Mymyabort ();
 extern void Parrot_gc_mark_PMC_alive_fun(int * interp, struct PMC *pmc)
      __attribute__((noinline));
 
 void Parrot_gc_mark_PMC_alive_fun (int * interp, struct PMC *pmc)
 {
-  abort ();
+  Mymyabort ();
 }
 
 static void mark_cell(int * interp, Pcc_cell *c)

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/57876 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 int a, b = 1, c, *d = &c, f, *g, h, j;
 static int e;
 
@@ -22,6 +23,6 @@ main ()
 	}
     }
   if (e != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

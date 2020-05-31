@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2003  Free Software Foundation.
    PR target/13256
    STRICT_LOW_PART was handled incorrectly in delay slots.
@@ -54,7 +55,7 @@ main ()
 {
   io io0;
   f1 (&io0);
-  abort ();
+  Mymyabort ();
 }
 
 void
@@ -62,7 +63,7 @@ test (void)
 {
   io *iop = i;
   if (iop->i12.e0 != 8 || iop->i16.e0 != 8)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 
@@ -72,5 +73,5 @@ f0 (void)
   static int washere = 0;
   io *iop = i;
   if (washere++ || iop->i12.e0 != 32 || iop->i16.e0 != 32)
-    abort ();
+    Mymyabort ();
 }

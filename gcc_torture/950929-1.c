@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int f (char *p) { }
 
 main ()
@@ -16,6 +17,6 @@ main ()
   *pc2 = 1;
   *pc2 &= *pi;
   if (*pc2 != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

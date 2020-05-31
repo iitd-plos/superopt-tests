@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef __SIZE_TYPE__ size_t;
 static int mymemcmp1 (unsigned long int, unsigned long int)
   __attribute__ ((__nothrow__));
@@ -210,6 +211,6 @@ main (void)
   __builtin_memcpy (p + 128 + 24,
 "\x1\x37\x82\xa7\x55\x49\xd0\xf3\xb7\x2a\x6d\x23\x71\x49\x6a", 15);
   if (mymemcmp (p + 9, p + 128 + 24, 33) != -51)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

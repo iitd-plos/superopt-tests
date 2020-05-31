@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 #if (__SIZEOF_INT__ <= 2)
 struct S {
@@ -13,7 +14,7 @@ int main()
 {
   s.ui17 = 0x1ffff;
   if (s.ui17 >= 0xfffffffeu)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

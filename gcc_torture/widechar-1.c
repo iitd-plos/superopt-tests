@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define C L'\400'
 
 #if C
@@ -9,6 +10,6 @@
 main()
 {
   if (zero != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

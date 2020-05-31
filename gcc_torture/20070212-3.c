@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct foo { int i; int j; };
 
 int bar (struct foo *k, int k2, int f, int f2)
@@ -17,7 +18,7 @@ int bar (struct foo *k, int k2, int f, int f2)
   return res + *q;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main()
 {
@@ -25,6 +26,6 @@ int main()
   k.i = 0;
   k.j = 1;
   if (bar (&k, 1, 1, 1) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

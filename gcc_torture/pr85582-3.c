@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/85582 */
 
 #ifdef __SIZEOF_INT128__
@@ -31,25 +32,25 @@ main ()
 {
   U a = (U) 1 << (sizeof (U) * __CHAR_BIT__ - 7);
   if (f1 (a, 5) != ((U) 1 << (sizeof (S) * __CHAR_BIT__ - 3)))
-    __builtin_abort ();
+    Mymyabort ();
   S b = (U) 0x101 << (sizeof (S) * __CHAR_BIT__ / 2 - 7);
   if (f1 (b, sizeof (S) * __CHAR_BIT__ / 2) != (U) 0x101 << (sizeof (S) * __CHAR_BIT__ - 7))
-    __builtin_abort ();
+    Mymyabort ();
   if (f1 (b, sizeof (S) * __CHAR_BIT__ / 2 + 2) != (U) 0x101 << (sizeof (S) * __CHAR_BIT__ - 5))
-    __builtin_abort ();
+    Mymyabort ();
   S c = (U) 1 << (sizeof (S) * __CHAR_BIT__ - 1);
   if ((U) f2 (c, 5) != ((U) 0x1f << (sizeof (S) * __CHAR_BIT__ - 5)))
-    __builtin_abort ();
+    Mymyabort ();
   if ((U) f2 (c, sizeof (S) * __CHAR_BIT__ / 2) != ((U) -1 << (sizeof (S) * __CHAR_BIT__ / 2 - 1)))
-    __builtin_abort ();
+    Mymyabort ();
   if ((U) f2 (c, sizeof (S) * __CHAR_BIT__ / 2 + 2) != ((U) -1 << (sizeof (S) * __CHAR_BIT__ / 2 - 3)))
-    __builtin_abort ();
+    Mymyabort ();
   U d = (U) 1 << (sizeof (S) * __CHAR_BIT__ - 1);
   if (f3 (c, 5) != ((U) 0x1 << (sizeof (S) * __CHAR_BIT__ - 5)))
-    __builtin_abort ();
+    Mymyabort ();
   if (f3 (c, sizeof (S) * __CHAR_BIT__ / 2) != ((U) 1 << (sizeof (S) * __CHAR_BIT__ / 2 - 1)))
-    __builtin_abort ();
+    Mymyabort ();
   if (f3 (c, sizeof (S) * __CHAR_BIT__ / 2 + 2) != ((U) 1 << (sizeof (S) * __CHAR_BIT__ / 2 - 3)))
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

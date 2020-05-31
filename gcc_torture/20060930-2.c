@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/29272 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S { struct S *s; } s;
 struct T { struct T *t; } t;
@@ -26,6 +27,6 @@ main (void)
 {
   t.t = &t;
   if (bar (&s, &s) != (void *) &t)
-    abort ();
+    Mymyabort ();
   return 0;
 }

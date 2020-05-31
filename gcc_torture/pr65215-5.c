@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65215 */
 
 __attribute__((noinline, noclone)) unsigned int
@@ -22,6 +23,6 @@ main ()
     return 0;
   if (foo (&s.b[1]) != 0x03040506U
       || bar (&s.b[1]) != 0x06050403U)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

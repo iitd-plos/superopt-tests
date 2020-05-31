@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned calc_mp(unsigned mod)
 {
       unsigned a,b,c;
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
 
       if ((sizeof (y) == 4 && y != 680)
 	  || (sizeof (y) == 2 && y != 134))
-	abort ();
+	Mymyabort ();
       exit (0);
 }
 

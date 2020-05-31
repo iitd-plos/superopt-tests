@@ -1,10 +1,11 @@
-void abort ();
+#include"eqchecker_helper.h"
+void Mymyabort ();
 void exit (int);
 
 void test(int x, int y)
 {
   if (x == y)
-    abort ();
+    Mymyabort ();
 }
 
 void foo(int x, int y)

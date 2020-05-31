@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65215 */
 
 struct S { unsigned long long l1 : 48; };
@@ -22,6 +23,6 @@ main ()
   struct S s;
   s.l1 = foo (0xdeadbeefU) | (0xfeedULL << 32);
   if (bar (&s) != 0xdeadbeefU)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

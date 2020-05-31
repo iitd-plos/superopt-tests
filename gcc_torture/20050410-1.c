@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int s = 200;
 int __attribute__((noinline))
 foo (void)
@@ -8,6 +9,6 @@ int
 main (void)
 {
   if (foo () != 95)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

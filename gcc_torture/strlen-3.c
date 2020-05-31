@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86532 - Wrong code due to a wrong strlen folding
    starting with r262522
    Exercise strlen() with a multi-dimensional array of strings with
@@ -22,7 +23,7 @@ volatile int v7 = 7;
 #define A(expr)								\
   ((expr) ? (void)0 : (__builtin_printf ("assertion on line %i: %s\n",	\
 					 __LINE__, #expr),		\
-		       __builtin_abort ()))
+		       Mymyabort ()))
 
 void test_array_ref (void)
 {

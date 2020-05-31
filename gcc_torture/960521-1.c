@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 #include <stdlib.h>
@@ -27,6 +28,6 @@ main ()
   *b++ = 0;
   foo ();
   if (b[-1])
-    abort ();
+    Mymyabort ();
   exit (0);
 }

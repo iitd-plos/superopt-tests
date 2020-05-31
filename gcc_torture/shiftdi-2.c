@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target longlong64 } */
 
 long long a = 568513516876543756;
@@ -18,7 +19,7 @@ main (void)
     if ((a << i) != expected_a[i]
 	|| (b >> i) != expected_b[i]
 	|| (c >> i) != expected_c[i])
-      __builtin_abort ();
+      Mymyabort ();
   }
   return 0;
 }

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef unsigned long HARD_REG_SET[2];
 HARD_REG_SET reg_class_contents[2];
@@ -13,7 +14,7 @@ void __attribute__((noinline))
 merge_overlapping_regs (HARD_REG_SET *p)
 {
   if ((*p)[0] != -1 || (*p)[1] != -1)
-    abort ();
+    Mymyabort ();
 }
 
 void __attribute__((noinline))

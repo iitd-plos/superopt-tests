@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/28096 */
 /* Origin: Jan Stein <jan@gatespacetelematics.com> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int bar (int, int) __attribute__((noinline));
 int bar (int a, int b)
 {
   if (b != 1)
-    abort ();
+    Mymyabort ();
 }
 
 void foo(int, int) __attribute__((noinline));

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/83496 */
 /* Reported by Hauke Mehrtens <gcc@hauke-m.de> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef unsigned long mp_digit;
 
@@ -26,6 +27,6 @@ int main (void)
 {
   mp_int i = { 2, 0, -1 };
   if (mytest (&i, 0) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

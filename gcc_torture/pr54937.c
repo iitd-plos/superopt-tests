@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 
 void exit (int);
-void abort (void);
+void Mymyabort (void);
 int a[1];
 void (*terminate_me)(int);
 
@@ -18,5 +19,5 @@ main()
 {
   terminate_me = exit;
   t(100);
-  abort();
+  Mymyabort();
 }

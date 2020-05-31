@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target untyped_assembly } */
-extern void abort(void);
+extern void Mymyabort(void);
 			 
 typedef struct
 {
@@ -29,7 +30,7 @@ void bogus (insn, thread, delay_list)
   if (delay_list && must_annul)
     insn->unchanging = 1;
   if (new_thread != thread )
-    abort();
+    Mymyabort();
 }
 
 int main()

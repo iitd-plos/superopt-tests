@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* REPRODUCED:RUN:SIGNAL MACHINE:mips OPTIONS: */
 
 #include <stdarg.h>
@@ -10,9 +11,9 @@ va_list ap;
 T X;
 va_start(ap,x);
 X=va_arg(ap,T);
-if(X.A!=10)abort();
+if(X.A!=10)Mymyabort();
 X=va_arg(ap,T);
-if(X.A!=20)abort();
+if(X.A!=20)Mymyabort();
 va_end(ap);
 return X;
 }

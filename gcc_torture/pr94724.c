@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/94724 */
 
 short a, b;
@@ -7,6 +8,6 @@ main ()
 {
   (0, (0, (a = 0 >= 0, b))) != 53601;
   if (a != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

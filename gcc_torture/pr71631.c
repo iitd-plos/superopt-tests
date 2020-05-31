@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/71631 */
 
 volatile char v;
@@ -27,6 +28,6 @@ main ()
   if (i == 1)
     foo ("AB");
   if (x != -1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

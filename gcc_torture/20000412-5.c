@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main( void ) {
     struct {
 	int node;
@@ -5,7 +6,7 @@ int main( void ) {
     } lastglob[1] = { { 0   , 1  } };
 
     if (lastglob[0].node != 0 || lastglob[0].type != 1)
-      abort ();
+      Mymyabort ();
     exit (0);
 }
 

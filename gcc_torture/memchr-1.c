@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86711 - wrong folding of memchr
 
    Verify that memchr() of arrays initialized with string literals
@@ -12,7 +13,7 @@ extern void* memchr (const void*, int, size_t);
    ? (void)0							\
    : (__builtin_printf ("assertion failed on line %i: %s\n",	\
 			__LINE__, #expr),			\
-      __builtin_abort ()))
+      Mymyabort ()))
 
 static const char c = '1';
 static const char s1[1] = "1";

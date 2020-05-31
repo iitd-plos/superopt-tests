@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/93744 */
 
 typedef int I;
@@ -9,6 +10,6 @@ main ()
   I b = 0;
   (a > 0) * (b |= 2);
   if (b != 2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

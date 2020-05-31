@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s {
   char text[11];
   int flag;
@@ -17,6 +18,6 @@ main ()
   strcpy (cell.text, "0123456789");
 
   if (check (cell))
-    abort();
+    Mymyabort();
   exit (0);
 }

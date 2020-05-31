@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 struct tag {
   int m1;
@@ -14,7 +15,7 @@ main()
   if ( func1( &p1->m1 ) == -1 )
     foo ("ok");
   else
-    abort ();
+    Mymyabort ();
 
   i = 3;
   s1.m2[3]= "123";
@@ -22,7 +23,7 @@ main()
   if ( strlen( (p1->m2[i])++ ) == 3 )
     foo ("ok");
   else
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

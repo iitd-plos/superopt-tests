@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* This testcase failed on IA-32 at -O and above, because combine attached
    a REG_LABEL note to jump instruction already using JUMP_LABEL.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 enum X { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q };
@@ -44,6 +45,6 @@ main ()
 {
   long i = 24;
   if (foo (N, &i) != 24)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

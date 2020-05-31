@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-additional-options "-Wl,-u,_printf_float" { target newlib_nano_io } } */
 
 #include <stdio.h>
@@ -13,6 +14,6 @@ main ()
 {
   f (&sprintf);
   if (buf[0] != '5' || buf[1] != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

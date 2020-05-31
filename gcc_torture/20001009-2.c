@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int b=1;
 int foo()
 {
@@ -11,7 +12,7 @@ int foo()
     c=(signed char)a;
   }
   if (c!=-1)
-    abort();
+    Mymyabort();
   return c;
 }
 int main()

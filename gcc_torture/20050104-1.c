@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/19060 */
 
-void abort (void);
+void Mymyabort (void);
 
 static
 long long min ()
@@ -12,7 +13,7 @@ void
 foo (long long j)
 {
   if (j > 10 || j < min ())
-    abort ();
+    Mymyabort ();
 }
 
 int

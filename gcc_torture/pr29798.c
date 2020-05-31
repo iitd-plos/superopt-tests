@@ -1,4 +1,5 @@
-extern void abort ();
+#include"eqchecker_helper.h"
+extern void Mymyabort ();
 
 int
 main ()
@@ -13,7 +14,7 @@ main ()
       if (i != 1)
         beta = rho / oldrho;
       if (beta == 1.0)
-        abort ();
+        Mymyabort ();
 
       /* All targets even remotely likely to ever get supported
 	 use at least an even base, so there will never be any

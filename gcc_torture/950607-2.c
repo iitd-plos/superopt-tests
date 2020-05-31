@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {
   long int p_x, p_y;
 } Point;
@@ -36,6 +37,6 @@ main ()
   answer = f (b, p1, p2);
 
   if (answer != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

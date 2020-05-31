@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 extern int printf (const char *,...);
 
 struct s { struct s *n; } *p;
@@ -25,7 +26,7 @@ main()
 
     sub( p, &pp );
     if (count != MAX+2)
-      abort ();
+      Mymyabort ();
 
     exit( 0 );
 }

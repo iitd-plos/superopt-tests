@@ -1,12 +1,13 @@
+#include"eqchecker_helper.h"
 /* PR optimization/13313 */
 /* Origin: Mike Lerwill <mike@ml-solutions.co.uk> */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 void DisplayNumber (unsigned long v)
 {
   if (v != 0x9aL)
-    abort();
+    Mymyabort();
 }
 
 unsigned long ReadNumber (void)

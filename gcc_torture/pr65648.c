@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/65648 */
 
 int a = 0, *b = 0, c = 0;
@@ -18,7 +19,7 @@ bar (const char *x, long long y)
 {
   asm volatile ("" : : "r" (x), "r" (&y) : "memory");
   if (y != 0)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

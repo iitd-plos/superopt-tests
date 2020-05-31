@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/47337 */
 
 static unsigned int a[256], b = 0;
@@ -81,6 +82,6 @@ main ()
   fnx (e, h);
 
   if (d != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

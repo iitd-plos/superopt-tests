@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright 2002 Free Software Foundation, Inc.
 
    Tests correct signedness of operations on bitfields; in particular
@@ -14,7 +15,7 @@
    is a different manifestation of the same bug).
 */
 
-extern void abort ();
+extern void Mymyabort ();
 
 int
 main(int argc, char *argv[])
@@ -30,25 +31,25 @@ main(int argc, char *argv[])
   bit.i = -13, i = -13;
 
   if (i % u != unsigned_result)
-    abort ();
+    Mymyabort ();
   if (i % (unsigned int) u != unsigned_result)
-    abort ();
+    Mymyabort ();
 
   /* Somewhat counter-intuitively, bit.u is promoted to an int, making
      the operands and result an int.  */
   if (i % bit.u != signed_result)
-    abort ();
+    Mymyabort ();
 
   if (bit.i % bit.u != signed_result)
-    abort ();
+    Mymyabort ();
 
   /* But with a cast to unsigned int, the unsigned int is promoted to
      itself as a no-op, and the operands and result are unsigned.  */
   if (i % (unsigned int) bit.u != unsigned_result)
-    abort ();
+    Mymyabort ();
 
   if (bit.i % (unsigned int) bit.u != unsigned_result)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

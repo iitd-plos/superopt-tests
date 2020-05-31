@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/59014 */
 
 int a = 2, b, c, d;
@@ -20,6 +21,6 @@ main ()
 {
   foo ();
   if (d != 2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

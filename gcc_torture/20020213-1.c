@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR c/5681
    This testcase failed on IA-32 at -O0, because safe_from_p
    incorrectly assumed it is safe to first write into a.a2 b-1
@@ -17,7 +18,7 @@ void foo (void)
   a.a2 = bar (a.a1);
   a.a2 = a.a2 < b - 1 ? a.a2 : b - 1;
   if (a.a2 >= b - 1)
-    abort ();
+    Mymyabort ();
 }
 
 int bar (float x)

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/79327 */
 /* { dg-require-effective-target c99_runtime } */
 
@@ -9,18 +10,18 @@ main (void)
   int i;
   char buf[64];
   if (__builtin_sprintf (buf, "%#hho", a) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   if (__builtin_sprintf (buf, "%#hhx", a) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   a = 1;
   if (__builtin_sprintf (buf, "%#hho", a) != 2)
-    __builtin_abort ();
+    Mymyabort ();
   if (__builtin_sprintf (buf, "%#hhx", a) != 3)
-    __builtin_abort ();
+    Mymyabort ();
   a = 127;
   if (__builtin_sprintf (buf, "%#hho", a) != 4)
-    __builtin_abort ();
+    Mymyabort ();
   if (__builtin_sprintf (buf, "%#hhx", a) != 4)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

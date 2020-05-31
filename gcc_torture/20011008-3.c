@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef unsigned int u_int32_t;
 typedef unsigned char u_int8_t;
@@ -28,7 +29,7 @@ struct __db_txnlist {
                 struct {
                         u_int32_t txnid;
                         int32_t generation;
-                        int32_t aborted;
+                        int32_t Mymyaborted;
                 } t;
                 struct {
 
@@ -98,10 +99,10 @@ int main (void)
   el.u.l.lsn_array = lsn_a;
   
   if (__db_txnlist_lsnadd (0, &el, &lsn, 0) != 1)
-    abort ();
+    Mymyabort ();
   
   if (__db_txnlist_lsnadd (0, &el, &lsn, 1) != VLEN-1)
-    abort ();
+    Mymyabort ();
   
   exit (0);
 }

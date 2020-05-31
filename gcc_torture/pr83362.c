@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef __UINT8_TYPE__ u8;
 typedef __UINT32_TYPE__ u32;
 
@@ -24,7 +25,7 @@ main (void)
 {
   u32 x = foo (1164);
   if (x != 0xfd)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 

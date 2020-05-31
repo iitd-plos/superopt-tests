@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c++/55137 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (unsigned int x)
@@ -25,6 +26,6 @@ main ()
 {
   if (foo (__INT_MAX__) != (bar (__INT_MAX__) < __INT_MAX__)
       || foo (__INT_MAX__) != ((int) baz (__INT_MAX__) + 1 < __INT_MAX__))
-    abort ();
+    Mymyabort ();
   return 0;
 }

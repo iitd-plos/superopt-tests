@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef struct {
   long r[(19 + sizeof (long))/(sizeof (long))];
@@ -39,6 +40,6 @@ int main()
   build_real_from_int_cst_1 (&args);
 
   if (args.d.r[0] == 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

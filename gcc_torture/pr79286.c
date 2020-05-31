@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a = 0, c = 0;
 static int d[][8] = {};
 

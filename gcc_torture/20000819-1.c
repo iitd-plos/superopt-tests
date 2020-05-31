@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a[2] = { 2, 0 };
 
 void foo(int *sp, int cnt)
@@ -13,5 +14,5 @@ void foo(int *sp, int cnt)
 int main()
 {
   foo(a + 1, 1);
-  abort();
+  Mymyabort();
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/91347 */
 /* Reported by John David Anglin <danglin@gcc.gnu.org> */
 /* { dg-require-effective-target int32plus } */
@@ -84,7 +85,7 @@ number (char *buf, char *end, unsigned long long num, struct printf_spec spec)
   if (spec.base == 16)
    shift = 4;
   else
-    __builtin_abort ();
+    Mymyabort ();
   do {
    tmp[i++] = (hex_asc_upper[((unsigned char)num) & mask] | locase);
    num >>= shift;

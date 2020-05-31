@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This file tests shifts in various integral modes.  */
 
 #include <limits.h>
@@ -120,7 +121,7 @@ REPEAT_32
 #undef REPEAT_FN
 #endif /* CHAR_BIT == 8 || CHAR_BIT == 16 || CHAR_BIT == 32 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 int
@@ -129,22 +130,22 @@ main ()
   /* Test 8-bit shifts.  */
 #if CHAR_BIT == 8
 # define REPEAT_FN(COUNT) \
-  if (CAT (ashift_qi_, COUNT) (0xff) != (u8) ((u8)0xff << COUNT)) abort ();
+  if (CAT (ashift_qi_, COUNT) (0xff) != (u8) ((u8)0xff << COUNT)) Mymyabort ();
   REPEAT_8;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT) \
-  if (CAT (lshiftrt_qi_, COUNT) (0xff) != (u8) ((u8)0xff >> COUNT)) abort ();
+  if (CAT (lshiftrt_qi_, COUNT) (0xff) != (u8) ((u8)0xff >> COUNT)) Mymyabort ();
   REPEAT_8;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT) \
-  if (CAT (ashiftrt_qi_, COUNT) (-1) != -1) abort ();
+  if (CAT (ashiftrt_qi_, COUNT) (-1) != -1) Mymyabort ();
   REPEAT_8;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT) \
-  if (CAT (ashiftrt_qi_, COUNT) (0) != 0) abort ();
+  if (CAT (ashiftrt_qi_, COUNT) (0) != 0) Mymyabort ();
   REPEAT_8;
 # undef REPEAT_FN
 #endif /* CHAR_BIT == 8 */
@@ -153,23 +154,23 @@ main ()
 #if CHAR_BIT == 8 || CHAR_BIT == 16
 # define REPEAT_FN(COUNT)			\
   if (CAT (ashift_hi_, COUNT) (0xffff)		\
-      != (u16) ((u16) 0xffff << COUNT)) abort ();
+      != (u16) ((u16) 0xffff << COUNT)) Mymyabort ();
   REPEAT_16;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT)			\
   if (CAT (lshiftrt_hi_, COUNT) (0xffff)	\
-      != (u16) ((u16) 0xffff >> COUNT)) abort ();
+      != (u16) ((u16) 0xffff >> COUNT)) Mymyabort ();
   REPEAT_16;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT) \
-  if (CAT (ashiftrt_hi_, COUNT) (-1) != -1) abort ();
+  if (CAT (ashiftrt_hi_, COUNT) (-1) != -1) Mymyabort ();
   REPEAT_16;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT) \
-  if (CAT (ashiftrt_hi_, COUNT) (0) != 0) abort ();
+  if (CAT (ashiftrt_hi_, COUNT) (0) != 0) Mymyabort ();
   REPEAT_16;
 # undef REPEAT_FN
 #endif /* CHAR_BIT == 8 || CHAR_BIT == 16 */
@@ -178,23 +179,23 @@ main ()
 #if CHAR_BIT == 8 || CHAR_BIT == 16 || CHAR_BIT == 32
 # define REPEAT_FN(COUNT)				\
   if (CAT (ashift_si_, COUNT) (0xffffffff)		\
-      != (u32) ((u32) 0xffffffff << COUNT)) abort ();
+      != (u32) ((u32) 0xffffffff << COUNT)) Mymyabort ();
   REPEAT_32;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT)				\
   if (CAT (lshiftrt_si_, COUNT) (0xffffffff)		\
-      != (u32) ((u32) 0xffffffff >> COUNT)) abort ();
+      != (u32) ((u32) 0xffffffff >> COUNT)) Mymyabort ();
   REPEAT_32;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT) \
-  if (CAT (ashiftrt_si_, COUNT) (-1) != -1) abort ();
+  if (CAT (ashiftrt_si_, COUNT) (-1) != -1) Mymyabort ();
   REPEAT_32;
 # undef REPEAT_FN
 
 # define REPEAT_FN(COUNT) \
-  if (CAT (ashiftrt_si_, COUNT) (0) != 0) abort ();
+  if (CAT (ashiftrt_si_, COUNT) (0) != 0) Mymyabort ();
   REPEAT_32;
 # undef REPEAT_FN
 #endif /* CHAR_BIT == 8 || CHAR_BIT == 16 || CHAR_BIT == 32 */

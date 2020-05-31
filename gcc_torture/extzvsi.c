@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* The bit-field below would have a problem if __INT_MAX__ is too
    small.  */
 #if __INT_MAX__ < 2147483647
@@ -35,7 +36,7 @@ main (void)
 {
   x.exponent = 1;
   if (foo () != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 #endif

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 
 main()
@@ -28,7 +29,7 @@ main()
     }
 
     if ((*pa) != -5 || (*pb) != -5 || x != 43)
-      abort ();
+      Mymyabort ();
 
     exit (0);
 }

@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 struct barstruct { char const* some_string; } x;
-extern void abort (void);
+extern void Mymyabort (void);
 void __attribute__((noinline))
 foo(void)
 {
   if (!x.some_string)
-    abort ();
+    Mymyabort ();
 }
 void baz(int b)
 {
@@ -26,7 +27,7 @@ int main()
   x.some_string = (void *)0;
   baz(0);
   if (!x.some_string)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

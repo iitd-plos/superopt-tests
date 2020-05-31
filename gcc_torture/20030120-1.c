@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* On H8/300 port, NOTICE_UPDATE_CC had a bug that causes the final
    pass to remove test insns that should be kept.  */
 
@@ -38,13 +39,13 @@ int
 main ()
 {
   if (test1 (1) != 1)
-    abort ();
+    Mymyabort ();
 
   if (test2 (1) != 1)
-    abort ();
+    Mymyabort ();
 
   if (test3 (2) != 1)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/66757 */
 /* Testcase by Zhendong Su <su@cs.ucdavis.edu> */
 
@@ -9,7 +10,7 @@ main (void)
   unsigned int t = (unsigned char) (~b); 
 
   if ((t ^ 1) / 255)
-    __builtin_abort (); 
+    Mymyabort (); 
 
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/44575 */
 
 #include <stdarg.h>
@@ -44,6 +45,6 @@ main ()
   a[2].a[2] = -49026;
   check (1, a[2], a[2]);
   if (fails)
-    abort ();
+    Mymyabort ();
   return 0;
 }

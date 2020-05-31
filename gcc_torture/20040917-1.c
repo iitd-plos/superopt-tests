@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* submitted by kenneth zadeck */
 
 static int test_var;
@@ -27,6 +28,6 @@ main ()
      to not_inlinable().  */
   not_inlinable ();
   if (test_var == 10)
-    abort ();
+    Mymyabort ();
   return 0;
 }

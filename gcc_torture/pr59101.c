@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/59101 */
 
 __attribute__((noinline, noclone)) int
@@ -10,6 +11,6 @@ int
 main ()
 {
   if (foo (0) != 7)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

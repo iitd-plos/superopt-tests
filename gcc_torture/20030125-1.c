@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify whether math functions are simplified.  */
 /* { dg-require-effective-target c99_runtime } */
 /* { dg-require-weak "" } */
@@ -22,11 +23,11 @@ main()
 {
 #ifdef __OPTIMIZE__
 	if (t(0)!=0)
-		abort ();
+		Mymyabort ();
 	if (q(0)!=0)
-		abort ();
+		Mymyabort ();
 	if (q1(0)!=0)
-		abort ();
+		Mymyabort ();
 #endif
 	return 0;
 }
@@ -34,7 +35,7 @@ __attribute__ ((weak))
 double
 floor(double a)
 {
-	abort ();
+	Mymyabort ();
 }
 __attribute__ ((weak))
 float
@@ -52,5 +53,5 @@ __attribute__ ((weak))
 float
 sinf(float a)
 {
-	abort ();
+	Mymyabort ();
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct A
 {
   int one;

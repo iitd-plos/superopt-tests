@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 test_store_ccp (int i)
 {
   int *p, a, b, c;
@@ -42,11 +43,11 @@ main()
   
   x = test_store_ccp (10);
   if (x == 12)
-    abort ();
+    Mymyabort ();
   
   x = test_store_copy_prop (9);
   if (x == 9)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

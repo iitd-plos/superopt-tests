@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/87053 */
 
 const union
@@ -13,5 +14,5 @@ const union
 int main ()
 {
   if (__builtin_strlen (u.z) != 7)
-    __builtin_abort ();
+    Mymyabort ();
 }

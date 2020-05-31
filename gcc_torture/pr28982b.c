@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-stack-size "0x80100" } */
 
 /* Like pr28982a.c, but with the spill slots outside the range of

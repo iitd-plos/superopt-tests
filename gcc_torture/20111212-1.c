@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/50569 */
 /* Reported by Paul Koning <pkoning@gcc.gnu.org> */
 /* Reduced testcase by Mikael Pettersson <mikpe@it.uu.se> */

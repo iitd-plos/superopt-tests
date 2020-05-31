@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR opt/7130 */
 #define TYPE long
 
@@ -30,7 +31,7 @@ main (void)
   scale (&alpha, x, 5);
 
   if (x[9] != 18)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

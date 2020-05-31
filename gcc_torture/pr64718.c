@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int __attribute__ ((noinline, noclone))
 swap (int x)
 {
@@ -11,8 +12,8 @@ main (void)
 {
   int b = 0x1234;
   if (swap (a) != 0x3412)
-    __builtin_abort ();
+    Mymyabort ();
   if (swap (b) != 0x3412)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

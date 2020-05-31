@@ -1,10 +1,11 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 
 void t1 (int x)
 {
   if (x != 4100)
-    abort ();
+    Mymyabort ();
 }
 
 int t2 (void)
@@ -17,7 +18,7 @@ int t2 (void)
 void t3 (long long x)
 {
   if (x != 0x80000fffULL)
-    abort ();
+    Mymyabort ();
 }
 
 long long t4 (void)
@@ -30,8 +31,8 @@ long long t4 (void)
 main ()
 {
   if (t2 () != 4096)
-    abort ();
+    Mymyabort ();
   if (t4 () != 4096)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

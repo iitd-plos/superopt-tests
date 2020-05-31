@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/56866 */
 
 int
@@ -33,13 +34,13 @@ main ()
   asm volatile ("" : : "g" (rq), "g" (ri), "g" (rs), "g" (rc) : "memory");
 
   if (rq[0] != 0xef0123456789abcdULL || rq[1])
-    __builtin_abort ();
+    Mymyabort ();
   if (ri[0] != 0x67012345 || ri[1])
-    __builtin_abort ();
+    Mymyabort ();
   if (rs[0] != 0xb3a2 || rs[1])
-    __builtin_abort ();
+    Mymyabort ();
   if (rc[0] != 0x9b || rc[1])
-    __builtin_abort ();
+    Mymyabort ();
 #endif
   return 0;
 }

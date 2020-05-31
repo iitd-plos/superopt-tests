@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Leaf functions with many arguments.  */
 
 int
@@ -22,7 +23,7 @@ int
 main(void)
 {
   if (add (1,2,3,4,5,6,7,8,9,10,11,12,13) != 91)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

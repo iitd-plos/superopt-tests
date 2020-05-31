@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/81423 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 unsigned long long int ll = 0;
 unsigned long long int ull1 = 1ULL;
@@ -34,6 +35,6 @@ main (void)
 
   ull3 = foo ();
   if (ull3 != 3998784)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/58365 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -30,6 +31,6 @@ main ()
   h = bar ();
   f.b = 1;
   if (h.b != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

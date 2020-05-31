@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int __attribute__((noinline))
 foo (int *__restrict p, int i)
 {
@@ -11,12 +12,12 @@ foo (int *__restrict p, int i)
   w = *r;
   return v + w;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   int i = 0;
   if (foo (&i, 1) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

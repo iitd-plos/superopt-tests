@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static char *
 begfield (int tab, char *ptr, char *lim, int sword, int schar)
 {
@@ -28,6 +29,6 @@ main ()
   char *s = ":ab";
   char *lim = s + 3;
   if (begfield (':', s, lim, 1, 1) != s + 2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

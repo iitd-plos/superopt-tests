@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 char headline[256];
 struct hdr {
   char part1[9];
@@ -27,6 +28,6 @@ int main()
   x = x + c;
   __builtin_memset (x, ' ', 238);
   if (headline[10] != 'S')
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

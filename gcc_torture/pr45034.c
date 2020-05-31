@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 static void fixnum_neg(signed char x, signed char *py, int *pv)
 {
   unsigned char ux, uy;
@@ -12,7 +13,7 @@ static void fixnum_neg(signed char x, signed char *py, int *pv)
 void __attribute__((noinline)) foo(int x, int y, int v)
 {
   if (y < -128 || y > 127)
-    abort();
+    Mymyabort();
 }
 
 int test_neg(void)
@@ -39,7 +40,7 @@ int main(void)
   if (sizeof (char) != 1)
     return 0;
   if (test_neg() != 0)
-    abort();
+    Mymyabort();
   return 0;
 }
 

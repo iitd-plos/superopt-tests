@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86231 */
 
 #define ONE ((void *) 1)
@@ -25,6 +26,6 @@ main ()
       || foo (TWO, 1) != 1
       || foo (&v[7], 0) != 1
       || foo (&v[7], 1) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

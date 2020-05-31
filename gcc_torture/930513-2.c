@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 sub3 (i)
      const int *i;
 {
@@ -7,7 +8,7 @@ eq (a, b)
 {
   static int i = 0;
   if (a != i)
-    abort ();
+    Mymyabort ();
   i++;
 }
 

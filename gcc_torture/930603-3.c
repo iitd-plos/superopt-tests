@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (b, c)
      unsigned char *b;
      int c;
@@ -15,7 +16,7 @@ f (b, c)
       break;
 
     default:
-      abort ();
+      Mymyabort ();
     }
 
   return v;
@@ -25,6 +26,6 @@ main ()
   char buf[4];
   buf[0] = 170; buf[1] = 5;
   if (f (buf, 'd') != 85)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

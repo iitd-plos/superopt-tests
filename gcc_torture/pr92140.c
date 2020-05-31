@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/92140 */
 
 char c;
@@ -30,54 +31,54 @@ main ()
 	c = 37;
       f1 ();
       if (v != 15 + i)
-	__builtin_abort ();
+	Mymyabort ();
       f2 ();
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
       f3 ();
       if (v != 16 - i)
-	__builtin_abort ();
+	Mymyabort ();
       f4 ();
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
       f5 ();
       if (v != 15 + i - 26)
-	__builtin_abort ();
+	Mymyabort ();
       f6 ();
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
       f7 ();
       if (v != 16 - i - 26)
-	__builtin_abort ();
+	Mymyabort ();
       f8 ();
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
       f9 ();
       if (v != 15 + i + 42)
-	__builtin_abort ();
+	Mymyabort ();
       f10 ();
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
       f11 ();
       if (v != 16 - i + 42)
-	__builtin_abort ();
+	Mymyabort ();
       f12 ();
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
       f13 (173);
       if (v != 16 - i + 173)
-	__builtin_abort ();
+	Mymyabort ();
       f14 (173);
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
       f13 (-35);
       if (v != 16 - i - 35)
-	__builtin_abort ();
+	Mymyabort ();
       f14 (-35);
       if (v != 15)
-	__builtin_abort ();
+	Mymyabort ();
     }
   if (f15 (0) != 1 || f15 (1) != 2 || f15 (371) != 2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

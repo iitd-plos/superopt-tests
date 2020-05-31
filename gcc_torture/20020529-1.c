@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/6838 from cato@df.lth.se.
    cris-elf got an ICE with -O2: the insn matching
       (insn 49 48 52 (parallel[ 
@@ -62,7 +63,7 @@ int main (void)
 {
   struct xx s = {0, &s, 23};
   if (foo (&s, 0, 0, 0) != 0 || s.a != 0 || s.b != &s || s.c != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 
@@ -71,12 +72,12 @@ f1 (struct xx *p)
 {
   static int beenhere = 0;
   if (beenhere++ > 1)
-    abort ();
+    Mymyabort ();
   return beenhere > 1;
 }
 
 void
 f2 (void)
 {
-  abort ();
+  Mymyabort ();
 }

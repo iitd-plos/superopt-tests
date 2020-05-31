@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/48809 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (signed char x)
@@ -51,10 +52,10 @@ int
 main ()
 {
   if (foo (98) != 18 || foo (97) != 0 || foo (99) != 0)
-    abort ();
+    Mymyabort ();
   if (foo (-62) != 19 || foo (-63) != 0 || foo (-61) != 0)
-    abort ();
+    Mymyabort ();
   if (foo (28) != 105 || foo (27) != 102 || foo (29) != 111)
-    abort ();
+    Mymyabort ();
   return 0;
 }

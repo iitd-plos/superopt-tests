@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test whether store motion recognizes pure functions as potentially reading
    any memory.  */
 
@@ -10,8 +11,8 @@ char buf[50];
 
 static void foo (void)
 {
-  if (memcpy (buf, "abc", 4) != buf) abort ();
-  if (strcmp (buf, "abc")) abort ();
+  if (memcpy (buf, "abc", 4) != buf) Mymyabort ();
+  if (strcmp (buf, "abc")) Mymyabort ();
   memcpy (buf, "abcdefgh", strlen ("abcdefgh") + 1);
 }
 

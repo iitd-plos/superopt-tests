@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/51994 */
 /* Testcase by Uros Bizjak <ubizjak@gmail.com> */
 
 extern char *strcpy (char *, const char *);
-extern void abort (void);
+extern void Mymyabort (void);
 
 char __attribute__((noinline))
 test (int a)
@@ -21,7 +22,7 @@ test (int a)
 int main ()
 {
   if (test (2) != '1')
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

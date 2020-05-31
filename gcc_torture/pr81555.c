@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/81555 */
 
 unsigned int a = 1, d = 0xfaeU, e = 0xe376U;
@@ -19,6 +20,6 @@ main ()
 {
   foo ();
   if (f || g != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 
 /* PR tree-optimization/78170.
@@ -34,6 +35,6 @@ int main ()
 {
   fn1 ();
   if (c.f7 != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

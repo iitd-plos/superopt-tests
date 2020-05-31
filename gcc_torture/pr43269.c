@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int g_21;
 int g_211;
 int g_261;
@@ -20,12 +21,12 @@ lbl_370:
   }
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main(void)
 {
   func_32(0);
   if (g_261 != -1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

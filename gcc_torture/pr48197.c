@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c/48197 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 static int y = 0x8000;
 
 int
@@ -10,16 +11,16 @@ main ()
   if (sizeof (0LL) == sizeof (0U))
     return 0;
   if (0LL > (0U ^ (short)-0x8000))
-    abort ();
+    Mymyabort ();
   if (0LL > (0U ^ x))
-    abort ();
+    Mymyabort ();
   if (0LL > (0U ^ (short)y))
-    abort ();
+    Mymyabort ();
   if ((0U ^ (short)-0x8000) < 0LL)
-    abort ();
+    Mymyabort ();
   if ((0U ^ x) < 0LL)
-    abort ();
+    Mymyabort ();
   if ((0U ^ (short)y) < 0LL)
-    abort ();
+    Mymyabort ();
   return 0;
 }

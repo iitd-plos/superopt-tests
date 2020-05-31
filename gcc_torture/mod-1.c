@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 f (x, y)
 {
   if (x % y != 0)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

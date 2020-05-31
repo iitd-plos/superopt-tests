@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int v = 3;
 
 f ()
@@ -6,7 +7,7 @@ f ()
   {
     extern int v;
     if (v != 3)
-      abort ();
+      Mymyabort ();
   }
 }
 

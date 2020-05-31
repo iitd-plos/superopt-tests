@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s { char *p; int t; };
 
 extern void bar (void);
@@ -19,6 +20,6 @@ bar (void)
 void foo (struct s *p)
 {
   if (p->t != 1)
-    abort();
+    Mymyabort();
   p->t = 2;
 }

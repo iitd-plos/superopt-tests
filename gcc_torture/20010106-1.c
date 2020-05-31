@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright 2001 Free Software Foundation
    Contributed by Alexandre Oliva <aoliva@redhat.com> */
 
@@ -19,12 +20,12 @@ int f(int i) {
     case 4:
      return 9;
     default:
-      abort ();
+      Mymyabort ();
   }
 }
 
 int main() {
   if (f(-1))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

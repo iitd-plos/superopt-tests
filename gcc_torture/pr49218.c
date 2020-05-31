@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #ifdef __SIZEOF_INT128__
 typedef __int128 L;
 #else

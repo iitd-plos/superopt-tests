@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long val = 0x5e000000;
 
 long
@@ -31,6 +32,6 @@ main ()
 {
   f4 ();
   if (val != 0x5e000132)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

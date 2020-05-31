@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-add-options stack_size } */
 
 struct parsefile
@@ -25,7 +26,7 @@ g2 (a)
      long a;
 {
   if (a != 0xdeadbeefL)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

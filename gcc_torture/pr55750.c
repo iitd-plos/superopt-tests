@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/55750 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -24,6 +25,6 @@ main ()
   foo (0);
   foo (1);
   if (arr[0].m != -1 || arr[0].n != -(1 << 6) || arr[1].m != 0 || arr[1].n != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

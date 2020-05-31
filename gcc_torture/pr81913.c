@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/81913 */
 
 typedef __UINT8_TYPE__ u8;
@@ -21,7 +22,7 @@ main (void)
 {
   u32 x = b (1, -0x378704, ~0xba64fc);
   if (x != 0xd93190d0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* This was failing on Alpha because the comparison (p != -1) was rewritten
    as (p+1 != 0) and p+1 isn't allowed to wrap for pointers.  */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 typedef __SIZE_TYPE__ size_t;
 
@@ -34,7 +35,7 @@ int main(void)
 {
   global = 1;
   if (bar () != 0)
-    abort();
+    Mymyabort();
   
   return 0;
 }

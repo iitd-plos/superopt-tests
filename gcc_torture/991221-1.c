@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main( void )
 {
    unsigned long totalsize = 80;
@@ -8,6 +9,6 @@ int main( void )
    
    if ( totalsize > (2147483647L   * 2UL + 1)  
         || (msize != 0 && ((msize - 1) > (2147483647L   * 2UL + 1) )))
-      abort();
+      Mymyabort();
    exit( 0 );
 }

@@ -1,4 +1,5 @@
-extern void abort();
+#include"eqchecker_helper.h"
+extern void Mymyabort();
 
 #define HOST_WIDE_INT long
 #define HOST_BITS_PER_WIDE_INT (sizeof(long)*8)
@@ -46,6 +47,6 @@ int main()
   struct tree_type t;
   t.precision = 1;
   if (!sign_bit_p (&t, 0, -1))
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test va_arg when the result is ignored and only the pointer increment
    side effect is used.  */
 #include <stdarg.h>
@@ -24,6 +25,6 @@ int
 main (void)
 {
   if (foo (5, 4, 3, 2, 1, 0))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

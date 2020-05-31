@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 foo(int *bar)
 {
   *bar = 8;
@@ -31,6 +32,6 @@ bugger()
 main()
 {
   if (bugger() != 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

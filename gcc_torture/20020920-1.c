@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 
 struct B
@@ -26,6 +27,6 @@ main (void)
 {
   struct A a = f ();
   if (a.z != 2 || a.b.x != 0 || a.b.y != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

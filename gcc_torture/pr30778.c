@@ -1,5 +1,6 @@
-extern void *memset (void *, int, __SIZE_TYPE__);
-extern void abort (void);
+#include"eqchecker_helper.h"
+//extern void *memset (void *, int, __SIZE_TYPE__);
+//extern void Mymyabort (void);
 
 struct reg_stat {
   void *last_death;
@@ -29,6 +30,6 @@ int main (void)
   r.nonzero_bits = -1;
   init_reg_last ();
   if (r.nonzero_bits != -1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

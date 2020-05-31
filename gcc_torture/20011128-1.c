@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main()
 {
   char blah[33] = "01234567890123456789";

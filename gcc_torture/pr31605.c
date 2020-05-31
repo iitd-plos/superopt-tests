@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void put_field (unsigned int start, unsigned int len)
 {
   int cur_bitshift = ((start + len) % 8) - 8;
@@ -9,5 +10,5 @@ int
 main ()
 {
   put_field (0, 1);
-  abort ();
+  Mymyabort ();
 }

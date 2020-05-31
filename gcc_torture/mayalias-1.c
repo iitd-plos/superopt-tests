@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* Tests that the may_alias attribute works as expected.
    Author: Osku Salerma <osku@iki.fi> Apr 2002.  */
  
-extern void abort(void);
+extern void Mymyabort(void);
 extern void exit(int);
 
 typedef short __attribute__((__may_alias__)) short_a;
@@ -15,7 +16,7 @@ main (void)
   b[1] = 0;
 
   if (a == 0x12345678)
-    abort();
+    Mymyabort();
 
   exit(0);
 }

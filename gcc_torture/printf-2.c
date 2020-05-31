@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify that calls to printf don't get eliminated even if their
    result on success can be computed at compile time (they can fail).
    The calls can still be transformed into those of other functions.
@@ -58,7 +59,7 @@ int main (void)
   remove (tmpfname);
 
   if (strcmp (buf, "123456789"))
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

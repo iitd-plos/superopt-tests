@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 double x[50] = { 10, 11, 12, 13, 14, 15, -1, -1, -1, -1,
                  21, 22, 23, 24, 25, 26, -1, -1, -1, -1,
                  32, 33, 34, 35, 36, 37, -1, -1, -1, -1,
@@ -19,7 +20,7 @@ test (void)
       tmp[i*6+5] = x[i*10+5];
     }
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   int i, j;
@@ -27,6 +28,6 @@ int main()
   for (i = 0; i < 5; ++i)
     for (j = 0; j < 6; ++j)
       if (tmp[i*6+j] == -1)
-        abort ();
+        Mymyabort ();
   return 0;
 }

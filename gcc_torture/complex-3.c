@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct complex
 {
   float r;
@@ -20,6 +21,6 @@ main ()
   struct complex z = f (1.0, 0.0);
 
   if (z.r != 1.0 || z.i != 0.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

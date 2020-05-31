@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f1 (unsigned int x, unsigned int y)
 {
   if (x == 0)
@@ -5,7 +6,7 @@ f1 (unsigned int x, unsigned int y)
   x -= y;
   /* 0xfffffff2 < 0x80000000? */
   if (x < ~(~(unsigned int) 0 >> 1))
-    abort ();
+    Mymyabort ();
   return x;
 }
 
@@ -16,7 +17,7 @@ f2 (unsigned long int x, unsigned long int y)
   x -= y;
   /* 0xfffffff2 < 0x80000000? */
   if (x < ~(~(unsigned long int) 0 >> 1))
-    abort ();
+    Mymyabort ();
   return x;
 }
 

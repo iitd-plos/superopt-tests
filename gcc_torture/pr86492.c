@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86492 */
 
 union U
@@ -29,6 +30,6 @@ main ()
     return 0;
   u.r = foo (0x72);
   if (u.f.a != 0 || u.f.b != 0xe || u.f.c != 0x72)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

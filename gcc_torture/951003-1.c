@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int f (i) { return 12; }
 int g () { return 0; }
 
@@ -14,7 +15,7 @@ main ()
       if (i == 0 || s == 12)
 	;
       else
-	abort ();
+	Mymyabort ();
     }
 
   exit (0);

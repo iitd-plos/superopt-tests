@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/57829 */
 
 __attribute__((noinline, noclone))
@@ -26,6 +27,6 @@ int
 main ()
 {
   if (f1 (1) != 2 || f2 (1L) != 2L || f3 (63) != 6 || f3 (1) != 4)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

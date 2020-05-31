@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR optimization/15296.  The delayed-branch scheduler caused code that
    SEGV:d for CRIS; a register was set to -1 in a delay-slot for the
    fall-through code, while that register held a pointer used in code at
@@ -57,7 +58,7 @@ l3:;
 l4:;
 }
 
-void g (void *a, char *b) { abort (); }
+void g (void *a, char *b) { Mymyabort (); }
 
 int
 main ()
@@ -68,6 +69,6 @@ main ()
   if (s.m1[0].i != (W) uv || s.m1[1].i != 0 || s.m1[2].i != 999
       || s.m1[3].i != 777 || uv[0].i != 111 || uv[1].i != 222
       || uv[2].i != 0 || uv[3].i != 444)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

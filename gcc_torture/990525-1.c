@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct blah {
     int m1, m2;
 };
@@ -10,7 +11,7 @@ void die(struct blah arg)
     for (i = 0; i < 1 ; buf[i++] = arg)
         ;
     if (buf[0].m1 != 1) {
-        abort ();
+        Mymyabort ();
     }
 }
 

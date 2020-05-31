@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/9348 */
 
 #define u_l_l unsigned long long
@@ -14,7 +15,7 @@ int main(void)
 {
   mpy_res = mpy(1,-1);
   if (mpy_res != -1LL)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

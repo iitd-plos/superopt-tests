@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test case contributed by Ingo Rohloff <rohloff@in.tum.de>.
    Code distilled from Linux kernel.  */
 
@@ -8,7 +9,7 @@
    ep.skbuff[4] == 5      (it should be 0)
 */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 struct epic_rx_desc 
 {
@@ -52,8 +53,8 @@ int main(void)
   
   for (i=0;i<5;i++)
   {
-    if ( rx_ring[i].next != check_rx_ring[i] ) abort();
-    if ( ep.rx_skbuff[i] != 0 ) abort();
+    if ( rx_ring[i].next != check_rx_ring[i] ) Mymyabort();
+    if ( ep.rx_skbuff[i] != 0 ) Mymyabort();
   }
   return 0;
 }

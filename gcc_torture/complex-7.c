@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test argument passing of complex values.  The MIPS64 compiler had a
    bug when they were split between registers and the stack.  */
 /* Origin: Joseph Myers <joseph@codesourcery.com> */
@@ -18,7 +19,7 @@ volatile _Complex long double ld3 = 5.5L + 6.6iL;
 volatile _Complex long double ld4 = 7.7L + 8.8iL;
 volatile _Complex long double ld5 = 9.9L + 10.1iL;
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 __attribute__((noinline)) void
@@ -26,7 +27,7 @@ check_float (int a, _Complex float a1, _Complex float a2,
 	     _Complex float a3, _Complex float a4, _Complex float a5)
 {
   if (a1 != f1 || a2 != f2 || a3 != f3 || a4 != f4 || a5 != f5)
-    abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline)) void
@@ -34,7 +35,7 @@ check_double (int a, _Complex double a1, _Complex double a2,
 	     _Complex double a3, _Complex double a4, _Complex double a5)
 {
   if (a1 != d1 || a2 != d2 || a3 != d3 || a4 != d4 || a5 != d5)
-    abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline)) void
@@ -43,7 +44,7 @@ check_long_double (int a, _Complex long double a1, _Complex long double a2,
 		   _Complex long double a5)
 {
   if (a1 != ld1 || a2 != ld2 || a3 != ld3 || a4 != ld4 || a5 != ld5)
-    abort ();
+    Mymyabort ();
 }
 
 int

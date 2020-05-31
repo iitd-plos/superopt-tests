@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 typedef __UINTPTR_TYPE__ uintptr_t;
 int n = 0;
@@ -11,6 +12,6 @@ main (void)
   uintptr_t b;
   b = (uintptr_t)(p = &(int []){0, f(), 2}[1]);
   if (*p != 1 || *(int *)b != 1 || n != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/83565 */
 /* Testcase by Sergei Trofimovich <slyfox@inbox.ru> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef __UINT32_TYPE__ u32;
 
@@ -27,6 +28,6 @@ int main(void)
   u32 l;
   u32 off = bug(&l);
   if (off != 0x7fffffff)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 unsigned int f (unsigned int a)
 {
@@ -17,6 +18,6 @@ unsigned int h (unsigned int a)
 int main ()
 {
   if (f (65536) != h (g (65536)))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

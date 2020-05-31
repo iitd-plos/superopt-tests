@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define bool _Bool
 
 bool f(int a, bool c) __attribute__((noinline));
@@ -14,7 +15,7 @@ void checkf(int a, bool b)
   char d;
   __builtin_memcpy (&d, &c, 1);
   if ( d != (a==0)^b)
-    __builtin_abort();
+    Mymyabort();
 }
 
 int main(void)

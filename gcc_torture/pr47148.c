@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/47148 */
 
 static inline unsigned
@@ -27,6 +28,6 @@ main (void)
   foo (1, 1);
   foo (-1, 1);
   if (b && ((unsigned char) -1) == 255)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/45912 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 static void* __attribute__((noinline,noclone))
 get_addr_base_and_unit_offset (void *base, long long *i)
@@ -13,7 +14,7 @@ static void* __attribute__((noinline,noclone))
 build_int_cst (void *base, long long offset)
 {
   if (offset != 4)
-    abort ();
+    Mymyabort ();
 
   return base;
 }
@@ -31,6 +32,6 @@ main (void)
 {
   void *ret = build_ref_for_offset ((void *)0, 32);
   if (ret != (void *)0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

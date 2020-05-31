@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 unsigned char a = 6;
 int b, c;
@@ -14,7 +15,7 @@ fn1 ()
     d = a;
   i = -~(f * d * h) + c && (e || i) ^ f;
   if (i != 1) 
-    __builtin_abort (); 
+    Mymyabort (); 
 }
 
 int

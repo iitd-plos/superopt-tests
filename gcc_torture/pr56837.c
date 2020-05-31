@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 _Complex int a[1024];
 
 __attribute__((noinline, noclone)) void
@@ -16,6 +17,6 @@ main ()
   foo ();
   for (i = 0; i < 1024; i++)
     if (a[i] != -1)
-      abort ();
+      Mymyabort ();
   return 0;
 }

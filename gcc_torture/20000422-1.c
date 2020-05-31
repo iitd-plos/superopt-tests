@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int ops[13] =
 {
   11, 12, 46, 3, 2, 2, 3, 2, 1, 3, 2, 1, 2
@@ -32,7 +33,7 @@ int main()
 
   for (i = 0; i < num; i++)
     if (ops[i] != correct[i])
-      abort ();
+      Mymyabort ();
 
   exit (0);
 }

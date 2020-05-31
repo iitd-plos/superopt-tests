@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (int b, int c)
 {
   if (b != 0 && b != 1 && c != 0)
@@ -8,6 +9,6 @@ f (int b, int c)
 main ()
 {
   if (!f (1, 2))
-    abort();
+    Mymyabort();
   exit(0);
 }

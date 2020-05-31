@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/85925 */
 /* { dg-require-effective-target int32plus } */
 /* Testcase by <sudi@gcc.gnu.org> */
@@ -22,7 +23,7 @@ int main (void)
   }
 
   if (d != u.f1)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

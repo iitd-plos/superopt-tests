@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 extern void exit(int);
 int bar(void);
 int baz(void);
@@ -35,6 +36,6 @@ int main(void)
   b.next = (struct foo *)0;
   c = test(&a);
   if (c)
-    abort();
+    Mymyabort();
   exit (0);
 }

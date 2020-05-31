@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long
 f (long x)
 {
@@ -33,7 +34,7 @@ main ()
        i < sizeof (nums) / sizeof (nums[0]);
        i++)
     if (std_eqn (nums[i], -0x7fffffffL - 1L, f (nums[i]), r (nums[i])) == 0)
-      abort ();
+      Mymyabort ();
 
   exit (0);
 }

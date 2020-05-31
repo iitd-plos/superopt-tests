@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/64260 */
 
 int a = 1, b;
@@ -20,6 +21,6 @@ main ()
 {
   foo (0);
   if (a != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

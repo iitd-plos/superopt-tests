@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR 15262.  Similar to pr15262-1.c but with no obvious addresses
    being taken in function foo().  Without IPA, by only looking inside
    foo() we cannot tell for certain whether 'q' and 'b' alias each
@@ -31,7 +32,7 @@ main()
 
   b.p = &a.t;
   if (foo (b, &a, &X) == 3)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

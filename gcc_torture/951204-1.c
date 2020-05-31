@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (char *x)
 {
   *x = 'x';
@@ -12,7 +13,7 @@ main ()
     {
       f (&x);
       if (*(const char *) &x != 'x')
-	abort ();
+	Mymyabort ();
     }
   exit (0);
 }

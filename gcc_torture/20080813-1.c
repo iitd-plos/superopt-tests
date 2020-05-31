@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/37103 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 foo (unsigned short x)
 {
   signed char y = -1;
   if (x == y)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -15,7 +16,7 @@ bar (unsigned short x)
 {
   unsigned char y = -1;
   if (x == y)
-    abort ();
+    Mymyabort ();
 }
 
 int

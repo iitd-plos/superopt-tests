@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Origin: Aldy Hernandez <aldyh@redhat.com>
 
    Purpose: Test generic SIMD support.  This test should work
@@ -25,7 +26,7 @@ verify (siint a1, siint a2, siint a3, siint a4,
       || a2 != b2
       || a3 != b3
       || a4 != b4)
-    abort ();
+    Mymyabort ();
 }
 
 int

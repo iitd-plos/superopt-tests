@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #if (__SIZEOF_INT__ == 4)
 typedef int int32;
 #elif (__SIZEOF_LONG__ == 4)
@@ -26,6 +27,6 @@ int main()
   int32 b = ref();
   if (b != 0x01020304
       && b != 0x04030201)
-    abort ();
+    Mymyabort ();
   return 0;
 }

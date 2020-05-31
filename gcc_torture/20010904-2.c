@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* If some target has a Max alignment less than 32, please create
    a #ifdef around the alignment and add your alignment.  */
 #ifdef __pdp11__
@@ -14,6 +15,6 @@ Y y[2];
 int main(void)
 {
   if (((char *)&y[1] - (char *)&y[0]) & 31)
-    abort ();
+    Mymyabort ();
   exit (0);
 }                

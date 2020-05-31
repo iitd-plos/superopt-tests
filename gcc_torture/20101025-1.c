@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int g_7;
 static int *volatile g_6 = &g_7;
 int g_3;
@@ -25,6 +26,6 @@ int main ()
 {
   f3 ();
   if (g_3 != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

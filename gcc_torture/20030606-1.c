@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 int * foo (int *x, int b)
 {
@@ -16,12 +17,12 @@ main()
   memset (a, 1, sizeof (a));
 
   if (foo(a, 0) - a != 1 || a[0] != 55 || a[1] != a[4])
-    abort();
+    Mymyabort();
 
   memset (a, 1, sizeof (a));
 
   if (foo(a, 2) - a != 2 || a[0] != 55 || a[1] != 2)
-    abort();
+    Mymyabort();
 
   exit (0);
 }

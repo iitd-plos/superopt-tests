@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires frame pointers" { *-*-* } "-fomit-frame-pointer" "" } */
 /* { dg-require-effective-target return_address } */
 
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 extern void *alloca (__SIZE_TYPE__);
 char *dummy (void);
 
@@ -179,12 +180,12 @@ int main (void)
 
   if (save_ret1[0] != save_ret1[1]
       || save_ret1[1] != save_ret1[2])
-    abort ();
+    Mymyabort ();
   if (save_ret1[3] != save_ret1[4]
       || save_ret1[4] != save_ret1[5])
-    abort ();
+    Mymyabort ();
   if (save_ret1[3] && save_ret1[0] != save_ret1[3])
-    abort ();
+    Mymyabort ();
 
 
   for (i = 0; i < 6; i++) {
@@ -193,12 +194,12 @@ int main (void)
 
   if (save_ret2[0] != save_ret2[1]
       || save_ret2[1] != save_ret2[2])
-    abort ();
+    Mymyabort ();
   if (save_ret2[3] != save_ret2[4]
       || save_ret2[4] != save_ret2[5])
-    abort ();
+    Mymyabort ();
   if (save_ret2[3] && save_ret2[0] != save_ret2[3])
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c/19449 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int y;
 int z = __builtin_choose_expr (!__builtin_constant_p (y), 3, 4);
@@ -15,6 +16,6 @@ int
 main ()
 {
   if (y || z != 3 || foo (4) != 3)
-    abort ();
+    Mymyabort ();
   return 0;
 }

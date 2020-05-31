@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 
 int tab[9];
@@ -25,6 +26,6 @@ main()
     ip[i] = 0;
   execute(ip, ip);
   if (tab[0] != 0 || tab[1] != 1 || tab[2] != 2 || tab[3] != 0)
-    abort();
+    Mymyabort();
   exit(0);
 }

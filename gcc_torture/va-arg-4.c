@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* On the i960 any arg bigger than 16 bytes causes all subsequent args
    to be passed on the stack.  We test this.  */
 
@@ -13,14 +14,14 @@ f (big x, char *s, ...)
   va_list ap;
 
   if (x.a[0] != 'a' || x.a[1] != 'b' || x.a[2] != 'c')
-    abort ();
+    Mymyabort ();
   va_start (ap, s);
   if (va_arg (ap, int) != 42)
-    abort ();
+    Mymyabort ();
   if (va_arg (ap, int) != 'x')
-    abort ();
+    Mymyabort ();
   if (va_arg (ap, int) != 0)
-    abort ();
+    Mymyabort ();
   va_end (ap);
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Mis-aligned packed structures.  */
 
 typedef struct
@@ -32,7 +33,7 @@ main(void)
   a->e.b4 = 'c';
 
   if (a->a != 1 || a->b != 2 || a->c != 3 || a->d != 4 || a->e.b4 != 'c')
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

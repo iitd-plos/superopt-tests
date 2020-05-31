@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/57281 */
 
 int a = 1, b, d, *e = &d;

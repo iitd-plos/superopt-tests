@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/91632 */
 /* { dg-additional-options "-fwrapv" } */
 
@@ -25,6 +26,6 @@ int
 main ()
 {
   if (foo ('h') == 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

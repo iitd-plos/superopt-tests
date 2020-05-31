@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned short Uint16;
 typedef unsigned int Uint;
 
@@ -17,6 +18,6 @@ int
 main ()
 {
   if (f () != 0x93)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

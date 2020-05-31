@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 volatile int i;
 unsigned char *volatile cp;
@@ -32,6 +33,6 @@ main (void)
       || c[4] != 0xff
       || c[25] != 0xfe
       || cp != d + 30)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

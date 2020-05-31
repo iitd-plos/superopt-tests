@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/70429 */
 
 __attribute__((noinline, noclone)) int
@@ -12,6 +13,6 @@ main ()
   if (sizeof (int) != 4 || sizeof (long long) != 8 || __CHAR_BIT__ != 8)
     return 0;
   if (foo (1) != 0x3edae8 || foo (2) != -132158092)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

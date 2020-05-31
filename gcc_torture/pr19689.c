@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct
 {
@@ -15,6 +16,6 @@ int main()
 {
   foo (-55);
   if (f.b != -55)
-    abort ();
+    Mymyabort ();
   return 0;
 }

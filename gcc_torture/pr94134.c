@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/94134 */
 
 static volatile int a = 0;
@@ -9,6 +10,6 @@ main ()
   a++;
   b++;
   if (a != 1 || b != 2)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

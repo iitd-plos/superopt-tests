@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f(d,x,y,n)
 int*d;
 float*x,*y;
@@ -15,6 +16,6 @@ main()
   f(r,a,b,4);
   for(i=0;i<4;i++)
     if((a[i]==b[i])!=r[i])
-      abort();
+      Mymyabort();
   exit(0);
 }

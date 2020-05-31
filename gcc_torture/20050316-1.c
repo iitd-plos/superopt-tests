@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/16104 */
 /* { dg-require-effective-target int32plus } */
 /* { dg-options "-Wno-psabi" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef int V2SI __attribute__ ((vector_size (8)));
 typedef unsigned int V2USI __attribute__ ((vector_size (8)));
@@ -46,26 +47,26 @@ main (void)
     return 0;
 
   if (test1 () != 0)
-    abort ();
+    Mymyabort ();
 
   V2SI x = { 2, 2 };
   if (test2 (x) != 2)
-    abort ();
+    Mymyabort ();
 
   union { V2SI x; int y[2]; V2USI z; long long l; } u;
   u.x = test3 ();
   if (u.y[0] != 0 || u.y[1] != 0)
-    abort ();
+    Mymyabort ();
 
   V2HI y = { 4, 4 };
   union { V2SI x; long long y; } v;
   v.x = test4 (y);
   if (v.y != 0x40004)
-    abort ();
+    Mymyabort ();
 
   V2USI z = { 6, 6 };
   u.x = test5 (z);
   if (u.y[0] != 6 || u.y[1] != 6)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target dfp } */
 
 int main () {
 	_Decimal64 d64 = -0.DD;
 
 	if (d64 != 0.DD)
-		__builtin_abort ();
+		Mymyabort ();
 
 	if (d64 != -0.DD)
-		__builtin_abort ();
+		Mymyabort ();
 
 	return 0;
 }

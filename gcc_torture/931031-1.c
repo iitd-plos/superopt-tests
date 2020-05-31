@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* The bit-field below would have a problem if __INT_MAX__ is too
    small.  */
 #if __INT_MAX__ < 2147483647
@@ -28,7 +29,7 @@ main ()
   struct foo x;
   x.x = -1;
   if (f (x) == 0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 #endif

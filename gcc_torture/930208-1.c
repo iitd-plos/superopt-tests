@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef union {
   long l;
   struct { char b3, b2, b1, b0; } c;
@@ -18,6 +19,6 @@ main ()
   u.c.b0 = ~0;
   u.c.b3 = ~0;
   if (f (u))
-    abort();
+    Mymyabort();
   exit (0);
 }

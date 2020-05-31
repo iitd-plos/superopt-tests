@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/37882 */
 
 struct S
@@ -10,6 +11,6 @@ main ()
 {
   s.b = 4;
   if (s.b > 0 && s.b < 4)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

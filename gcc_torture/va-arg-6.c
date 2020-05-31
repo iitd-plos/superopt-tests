@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 f (int n, ...)
@@ -7,23 +8,23 @@ f (int n, ...)
   va_start (args, n);
 
   if (va_arg (args, int) != 10)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, long long) != 10000000000LL)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, int) != 11)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, long double) != 3.14L)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, int) != 12)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, int) != 13)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, long long) != 20000000000LL)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, int) != 14)
-    abort ();
+    Mymyabort ();
   if (va_arg (args, double) != 2.72)
-    abort ();
+    Mymyabort ();
 
   va_end(args);
 }

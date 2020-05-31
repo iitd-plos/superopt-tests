@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR optimization/8988 */
 /* Contributed by Kevin Easton */
 

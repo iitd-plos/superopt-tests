@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/37931 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (int a, unsigned int b)
@@ -12,12 +13,12 @@ int
 main (void)
 {
   if (foo (6, 0xc6) != 7)
-    abort ();
+    Mymyabort ();
   if (foo (0x80, 0xc1) != 0x81)
-    abort ();
+    Mymyabort ();
   if (foo (4, 4) != 5)
-    abort ();
+    Mymyabort ();
   if (foo (5, 4) != 5)
-    abort ();
+    Mymyabort ();
   return 0;
 }

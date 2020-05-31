@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/53160 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int a, c = 1, d, e, g;
 volatile int b;
@@ -30,6 +31,6 @@ main ()
   h = c == 0 ? 0 : i;
   a = h;
   if (a != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

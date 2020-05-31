@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Test memset with various combinations of pointer alignments and lengths to
@@ -40,56 +41,56 @@ main ()
 	for (i = 0; i < MAX_LENGTH; i++)
 	  u.buf[i] = 'a';
 
-	p = memset (u.buf + off, '\0', len);
+	p = MYmymemset (u.buf + off, '\0', len);
 	if (p != u.buf + off)
-	  abort ();
+	  Mymyabort ();
 
 	q = u.buf;
 	for (i = 0; i < off; i++, q++)
 	  if (*q != 'a')
-	    abort ();
+	    Mymyabort ();
 
 	for (i = 0; i < len; i++, q++)
 	  if (*q != '\0')
-	    abort ();
+	    Mymyabort ();
 
 	for (i = 0; i < MAX_EXTRA; i++, q++)
 	  if (*q != 'a')
-	    abort ();
+	    Mymyabort ();
 
 	p = memset (u.buf + off, A, len);
 	if (p != u.buf + off)
-	  abort ();
+	  Mymyabort ();
 
 	q = u.buf;
 	for (i = 0; i < off; i++, q++)
 	  if (*q != 'a')
-	    abort ();
+	    Mymyabort ();
 
 	for (i = 0; i < len; i++, q++)
 	  if (*q != 'A')
-	    abort ();
+	    Mymyabort ();
 
 	for (i = 0; i < MAX_EXTRA; i++, q++)
 	  if (*q != 'a')
-	    abort ();
+	    Mymyabort ();
 
 	p = memset (u.buf + off, 'B', len);
 	if (p != u.buf + off)
-	  abort ();
+	  Mymyabort ();
 
 	q = u.buf;
 	for (i = 0; i < off; i++, q++)
 	  if (*q != 'a')
-	    abort ();
+	    Mymyabort ();
 
 	for (i = 0; i < len; i++, q++)
 	  if (*q != 'B')
-	    abort ();
+	    Mymyabort ();
 
 	for (i = 0; i < MAX_EXTRA; i++, q++)
 	  if (*q != 'a')
-	    abort ();
+	    Mymyabort ();
       }
 
   exit (0);

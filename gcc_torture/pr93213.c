@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/93213 - wrong code on a multibyte store with
    -Og -foptimize-strlen
    { dg-require-effective-target int128 }
@@ -35,7 +36,7 @@ bar (void)
 
   volatile char *p = a;
   if (p[0] != 2 || p[1] != 0)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int
@@ -43,7 +44,7 @@ main (void)
 {
   u16 x = foo (-1, -1, 0);
   if (x != 0xff)
-    __builtin_abort ();
+    Mymyabort ();
 
   bar ();
   return 0;

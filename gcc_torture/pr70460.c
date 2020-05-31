@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target indirect_jumps } */
 /* { dg-require-effective-target label_values } */
 /* { dg-skip-if "label differences not supported" { avr-*-* } } */
@@ -25,9 +26,9 @@ main ()
 {
   foo (0);
   if (c != 3)
-    __builtin_abort ();
+    Mymyabort ();
   foo (1);
   if (c != 4)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

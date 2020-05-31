@@ -1,15 +1,16 @@
+#include"eqchecker_helper.h"
 /* This testcase failed because - 1 - buf was simplified into ~buf and when
    later expanding it back into - buf + -1, -1 got lost.  */
 /* { dg-options "-fgnu89-inline" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 static void
 bar (int x)
 {
   if (!x)
-    abort ();
+    Mymyabort ();
 }
 
 char buf[10];

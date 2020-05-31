@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR c/58943 */
 
 unsigned int x[1] = { 2 };
@@ -14,6 +15,6 @@ main ()
 {
   x[0] |= foo ();
   if (x[0] != 131)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

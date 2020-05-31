@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/52286 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main ()
@@ -15,6 +16,6 @@ main ()
   b = (~a | 1) & -2038094497L;
 #endif
   if (b >= 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

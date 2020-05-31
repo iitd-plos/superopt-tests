@@ -1,16 +1,17 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 
 int __attribute__((noinline))
 foo(int bits_per_pixel, int depth)
 {
   if ((bits_per_pixel | depth) == 1)
-    abort ();
+    Mymyabort ();
   return bits_per_pixel;
 }
 
 int main()
 {
   if (foo(2, 0) != 2)
-    abort ();
+    Mymyabort ();
   return 0;
 }

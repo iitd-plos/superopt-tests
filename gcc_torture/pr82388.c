@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/82388 */
 
 struct A { int b; int c; int d; } e;

@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target untyped_assembly } */
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct type 
 {
@@ -20,6 +21,6 @@ main (void)
 {
   t.p = 8;
   if (foo (t) != 8)
-    abort ();
+    Mymyabort ();
   return 0;
 }

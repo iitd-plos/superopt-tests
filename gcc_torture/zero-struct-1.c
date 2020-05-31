@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct g{};
 char y[3];
 char *f = &y[0];
@@ -10,14 +11,14 @@ void h(void)
   t = *((struct g*)(ff++));
 }
 
-void abort (void);
+void Mymyabort (void);
 
 int main(void)
 {
   h();
   if (f != &y[2])
-    abort();
+    Mymyabort();
   if (ff != &y[2])
-    abort();
+    Mymyabort();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int loop_1 = 100;
 int loop_2 = 7;
 int flag = 0;
@@ -21,7 +22,7 @@ int test (void)
 int main()
 {
     if (test () != 1)
-      abort ();
+      Mymyabort ();
     
     exit (0);
 }

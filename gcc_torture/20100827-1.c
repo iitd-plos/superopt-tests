@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 int __attribute__((noinline,noclone))
 foo (char *p)
 {
@@ -9,7 +10,7 @@ foo (char *p)
 	break;
       ++h;
       if (p == 0)
-	abort ();
+	Mymyabort ();
       ++p;
     }
   while (1);
@@ -18,6 +19,6 @@ foo (char *p)
 int main()
 {
   if (foo("a") != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

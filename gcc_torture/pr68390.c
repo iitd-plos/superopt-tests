@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-do run }  */
 /* { dg-options "-O2" } */
 
@@ -20,7 +21,7 @@ int main ()
   d1 = broken (direct, i);
   if (d1 != i*i)
     {
-      __builtin_abort ();
+      Mymyabort ();
     }
   return 0;
 }

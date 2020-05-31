@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Test that optimizing ((c>=1) && (c<=127)) into (signed char)c < 0
@@ -7,17 +8,17 @@
 
 #include <limits.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 testc (unsigned char c, int ok)
 {
   if ((c>=1) && (c<=SCHAR_MAX))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 void
@@ -25,10 +26,10 @@ tests (unsigned short s, int ok)
 {
   if ((s>=1) && (s<=SHRT_MAX))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 void
@@ -36,10 +37,10 @@ testi (unsigned int i, int ok)
 {
   if ((i>=1) && (i<=INT_MAX))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 void
@@ -47,10 +48,10 @@ testl (unsigned long l, int ok)
 {
   if ((l>=1) && (l<=LONG_MAX))
     {
-      if (!ok) abort ();
+      if (!ok) Mymyabort ();
     }
   else
-    if (ok) abort ();
+    if (ok) Mymyabort ();
 }
 
 int

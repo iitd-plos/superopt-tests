@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int c = -1;
 
 foo (p)
@@ -19,7 +20,7 @@ int main()
    int a = foo(&b);
 
    if (a != -1 || b != (1 + 5 - 15))
-     abort ();
+     Mymyabort ();
 
    exit (0);
 }

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR target/52129 */
 /* { dg-xfail-if "ptxas crashes" { nvptx-*-* } { "-O1" } { "" } } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 struct S { void *p; unsigned int q; };
 struct T { char a[64]; char b[64]; } t;
 
@@ -9,7 +10,7 @@ __attribute__((noinline, noclone)) int
 foo (void *x, struct S s, void *y, void *z)
 {
   if (x != &t.a[2] || s.p != &t.b[5] || s.q != 27 || y != &t.a[17] || z != &t.b[17])
-    abort ();
+    Mymyabort ();
   return 29;
 }
 
@@ -24,6 +25,6 @@ main ()
 {
   struct S s = { &t.b[5], 27 };
   if (bar (&t.a[2], (void *) 0, (void *) 0, s, 17, &t) != 29)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 
 #include <stdio.h>
@@ -16,7 +17,7 @@ int main()
     {
       exit (0);
     }
-  abort ();
+  Mymyabort ();
 }
 
 typedef unsigned short u16;

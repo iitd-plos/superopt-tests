@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 #define MASK(N) ((1UL << (N)) - 1)
 #define BITS(N) ((1UL << ((N) - 1)) + 2)
 
-#define FUNC(N) void f##N(long j) { if ((j & MASK(N)) >= BITS(N)) abort();}
+#define FUNC(N) void f##N(long j) { if ((j & MASK(N)) >= BITS(N)) Mymyabort();}
 
 FUNC(3)
 FUNC(4)

@@ -1,13 +1,14 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/56962 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 long long v[144];
 
 __attribute__((noinline, noclone)) void
 bar (long long *x)
 {
   if (x != &v[29])
-    abort ();
+    Mymyabort ();
 }
 
 __attribute__((noinline, noclone)) void

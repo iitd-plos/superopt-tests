@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __attribute__((__noinline__))
 void
 dummy ()

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 main()
 {
@@ -5,7 +6,7 @@ main()
   double y = 2.0;
 
   if ((y > x--) != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

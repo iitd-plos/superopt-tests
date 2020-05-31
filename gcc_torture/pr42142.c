@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int __attribute__((noinline,noclone))
 sort(int L)
 {
@@ -16,11 +17,11 @@ sort(int L)
     }
   return i;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (sort (5) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

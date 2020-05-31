@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int ap(int i);
 static void testit(void){
   int ir[4] = {0,1,2,3};
@@ -16,7 +17,7 @@ static int a[4];
 
 static int ap(int i){
   if (t > 3)
-    abort();
+    Mymyabort();
   a[t++] = i;
   return 1;
 }
@@ -25,12 +26,12 @@ int main(void)
 {
   testit();
   if (a[0] != 0)
-    abort();
+    Mymyabort();
   if (a[1] != 3)
-    abort();
+    Mymyabort();
   if (a[2] != 2)
-    abort();
+    Mymyabort();
   if (a[3] != 1)
-    abort();
+    Mymyabort();
   exit(0);
 }

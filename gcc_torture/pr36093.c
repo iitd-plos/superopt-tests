@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "small alignment" { pdp11-*-* } } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef struct Bar {
       char c[129];
@@ -25,6 +26,6 @@ int main()
    }
 
    if (foo[0].bar[3].c[128] != 'd')
-     abort ();
+     Mymyabort ();
    return 0;
 }

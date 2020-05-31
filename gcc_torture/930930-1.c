@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 __extension__ typedef __PTRDIFF_TYPE__ ptr_t;
 ptr_t *wm_TR;
 ptr_t *wm_HB;
@@ -25,7 +26,7 @@ f (mr_TR, mr_SPB, mr_HB, reg1, reg2)
  out:
 
   if (x != mr_TR)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

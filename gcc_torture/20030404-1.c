@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This exposed a bug in tree-ssa-ccp.c.  Since 'j' and 'i' are never
    defined, CCP was not traversing the edges out of the if(), which caused
    the PHI node for 'k' at the top of the while to only be visited once.
@@ -17,7 +18,7 @@ main()
     }
 
   if (k != 10)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

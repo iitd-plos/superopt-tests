@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/78559 */
 
 int g = 20;
@@ -26,7 +27,7 @@ lbl_2582:
           goto lbl_2582;
     }
   if (result != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 

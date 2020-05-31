@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int v;
 
 char *
@@ -17,5 +18,5 @@ main ()
   v = 1;
   if (!strcmp (f (), "abc"))
     exit (0);
-  abort();
+  Mymyabort();
 }

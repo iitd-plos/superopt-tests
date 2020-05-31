@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 static signed char
 foo (signed char si1, signed char si2)
@@ -13,7 +14,7 @@ main (void)
 {
   int b = 0x0332F5C8;
   if (foo (b, a) > 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 static void something();
 
@@ -11,5 +12,5 @@ int main()
 static void something(int i)
 {
   if (i != -1)
-    abort ();
+    Mymyabort ();
 }

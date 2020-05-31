@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 typedef struct st {
     int a;
@@ -25,12 +26,12 @@ foo(ST *s, int c)
   return 0;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main ()
 {
   ST _1[2] = {{2}, {1}};
   if (foo(_1, 2) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

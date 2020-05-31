@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 
 int blah;
@@ -19,6 +20,6 @@ foo()
 main()
 {
   if (foo () != 0xfcc)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

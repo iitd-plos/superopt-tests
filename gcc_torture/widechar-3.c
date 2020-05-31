@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 
 static int f(char *x)
@@ -17,10 +18,10 @@ main()
 {
 #if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
   if (foo () != 0)
-    abort ();
+    Mymyabort ();
 #elif __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
   if (foo () != 1)
-    abort ();
+    Mymyabort ();
 #endif
   exit (0);
 }

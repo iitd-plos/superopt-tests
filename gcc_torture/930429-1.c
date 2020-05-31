@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 char *
 f (char *p)
 {
@@ -9,6 +10,6 @@ main ()
 {
   char *p = "";
   if (f (p) != p + 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

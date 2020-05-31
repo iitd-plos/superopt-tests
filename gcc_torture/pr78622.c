@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/78622 - [7 Regression] -Wformat-overflow/-fprintf-return-value
    incorrect with overflow/wrapping
    { dg-skip-if "Requires %hhd format" { hppa*-*-hpux* } }
@@ -30,7 +31,7 @@ main (void)
       || foo (4095 + 248) != 2
       || foo (4095 + 255) != 2
       || foo (4095 + 256) != 1)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

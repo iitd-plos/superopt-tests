@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Test memset with various combinations of constant pointer alignments and
@@ -43,15 +44,15 @@ void check (int off, int len, int ch)
   q = u.buf;
   for (i = 0; i < off; i++, q++)
     if (*q != 'a')
-      abort ();
+      Mymyabort ();
 
   for (i = 0; i < len; i++, q++)
     if (*q != ch)
-      abort ();
+      Mymyabort ();
 
   for (i = 0; i < MAX_EXTRA; i++, q++)
     if (*q != 'a')
-      abort ();
+      Mymyabort ();
 }
 
 int main ()
@@ -65,15 +66,15 @@ int main ()
       reset ();
 
       p = memset (u.buf, '\0', len);
-      if (p != u.buf) abort ();
+      if (p != u.buf) Mymyabort ();
       check (0, len, '\0');
 
       p = memset (u.buf, A, len);
-      if (p != u.buf) abort ();
+      if (p != u.buf) Mymyabort ();
       check (0, len, 'A');
 
       p = memset (u.buf, 'B', len);
-      if (p != u.buf) abort ();
+      if (p != u.buf) Mymyabort ();
       check (0, len, 'B');
     }
 
@@ -83,15 +84,15 @@ int main ()
       reset ();
 
       p = memset (u.buf+1, '\0', len);
-      if (p != u.buf+1) abort ();
+      if (p != u.buf+1) Mymyabort ();
       check (1, len, '\0');
 
       p = memset (u.buf+1, A, len);
-      if (p != u.buf+1) abort ();
+      if (p != u.buf+1) Mymyabort ();
       check (1, len, 'A');
 
       p = memset (u.buf+1, 'B', len);
-      if (p != u.buf+1) abort ();
+      if (p != u.buf+1) Mymyabort ();
       check (1, len, 'B');
     }
 
@@ -101,15 +102,15 @@ int main ()
       reset ();
 
       p = memset (u.buf+2, '\0', len);
-      if (p != u.buf+2) abort ();
+      if (p != u.buf+2) Mymyabort ();
       check (2, len, '\0');
 
       p = memset (u.buf+2, A, len);
-      if (p != u.buf+2) abort ();
+      if (p != u.buf+2) Mymyabort ();
       check (2, len, 'A');
 
       p = memset (u.buf+2, 'B', len);
-      if (p != u.buf+2) abort ();
+      if (p != u.buf+2) Mymyabort ();
       check (2, len, 'B');
     }
 
@@ -119,15 +120,15 @@ int main ()
       reset ();
 
       p = memset (u.buf+3, '\0', len);
-      if (p != u.buf+3) abort ();
+      if (p != u.buf+3) Mymyabort ();
       check (3, len, '\0');
 
       p = memset (u.buf+3, A, len);
-      if (p != u.buf+3) abort ();
+      if (p != u.buf+3) Mymyabort ();
       check (3, len, 'A');
 
       p = memset (u.buf+3, 'B', len);
-      if (p != u.buf+3) abort ();
+      if (p != u.buf+3) Mymyabort ();
       check (3, len, 'B');
     }
 
@@ -137,15 +138,15 @@ int main ()
       reset ();
 
       p = memset (u.buf+4, '\0', len);
-      if (p != u.buf+4) abort ();
+      if (p != u.buf+4) Mymyabort ();
       check (4, len, '\0');
 
       p = memset (u.buf+4, A, len);
-      if (p != u.buf+4) abort ();
+      if (p != u.buf+4) Mymyabort ();
       check (4, len, 'A');
 
       p = memset (u.buf+4, 'B', len);
-      if (p != u.buf+4) abort ();
+      if (p != u.buf+4) Mymyabort ();
       check (4, len, 'B');
     }
 
@@ -155,15 +156,15 @@ int main ()
       reset ();
 
       p = memset (u.buf+5, '\0', len);
-      if (p != u.buf+5) abort ();
+      if (p != u.buf+5) Mymyabort ();
       check (5, len, '\0');
 
       p = memset (u.buf+5, A, len);
-      if (p != u.buf+5) abort ();
+      if (p != u.buf+5) Mymyabort ();
       check (5, len, 'A');
 
       p = memset (u.buf+5, 'B', len);
-      if (p != u.buf+5) abort ();
+      if (p != u.buf+5) Mymyabort ();
       check (5, len, 'B');
     }
 
@@ -173,15 +174,15 @@ int main ()
       reset ();
 
       p = memset (u.buf+6, '\0', len);
-      if (p != u.buf+6) abort ();
+      if (p != u.buf+6) Mymyabort ();
       check (6, len, '\0');
 
       p = memset (u.buf+6, A, len);
-      if (p != u.buf+6) abort ();
+      if (p != u.buf+6) Mymyabort ();
       check (6, len, 'A');
 
       p = memset (u.buf+6, 'B', len);
-      if (p != u.buf+6) abort ();
+      if (p != u.buf+6) Mymyabort ();
       check (6, len, 'B');
     }
 
@@ -191,15 +192,15 @@ int main ()
       reset ();
 
       p = memset (u.buf+7, '\0', len);
-      if (p != u.buf+7) abort ();
+      if (p != u.buf+7) Mymyabort ();
       check (7, len, '\0');
 
       p = memset (u.buf+7, A, len);
-      if (p != u.buf+7) abort ();
+      if (p != u.buf+7) Mymyabort ();
       check (7, len, 'A');
 
       p = memset (u.buf+7, 'B', len);
-      if (p != u.buf+7) abort ();
+      if (p != u.buf+7) Mymyabort ();
       check (7, len, 'B');
     }
 

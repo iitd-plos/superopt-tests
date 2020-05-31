@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct
 {
   char hours, day, month;
@@ -26,6 +27,6 @@ T f (void)
 main ()
 {
   if (f ().hours != 1 || f ().day != 2 || f ().month != 3 || f ().year != 4)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

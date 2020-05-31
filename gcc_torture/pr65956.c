@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/65956 */
 
 struct A { char *a; int b; long long c; };
@@ -7,7 +8,7 @@ __attribute__((noinline, noclone)) void
 fn1 (char *x, char *y)
 {
   if (x != &v[1] || y != &v[2])
-    __builtin_abort ();
+    Mymyabort ();
   v[1]++;
 }
 
@@ -22,7 +23,7 @@ __attribute__((noinline, noclone)) void
 fn3 (const char *x)
 {
   if (x[0] != 0)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 static struct A
@@ -62,6 +63,6 @@ main ()
   struct A a[3] = { { &v[1], 1, 1LL }, { &v[0], 0, 0LL }, { &v[2], 2, 2LL } };
   bar (220, a + 2);
   if (v[1] != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

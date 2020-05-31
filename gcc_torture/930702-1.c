@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 fp (double a, int b)
 {
   if (a != 33 || b != 11)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

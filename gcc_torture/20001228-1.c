@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int foo1(void)
 {
   union {
@@ -23,6 +24,6 @@ int foo2(void)
 int main(void)
 {
   if (foo1() != foo2())
-    abort ();
+    Mymyabort ();
   exit (0);
 }

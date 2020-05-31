@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 void foo(va_list v)
 {
     unsigned long long x = va_arg (v, unsigned long long);
     if (x != 16LL)
-	abort();
+	Mymyabort();
 }
 
 void bar(char c, char d, ...)

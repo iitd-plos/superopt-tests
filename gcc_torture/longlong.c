@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Source: PR 321 modified for test suite by Neil Booth 14 Jan 2001.  */
 
 typedef unsigned long long uint64;
@@ -32,7 +33,7 @@ main(void)
       alpha_ep_extbl_i_eq_0();
 
       if (b[2] != 0x4d)
-	abort ();
+	Mymyabort ();
     }
 
   exit (0);

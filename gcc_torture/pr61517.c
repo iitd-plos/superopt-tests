@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a, b, *c = &a;
 unsigned short d;
 
@@ -13,7 +14,7 @@ main ()
     }
 
   if (a != 0)
-    __builtin_abort ();
+    Mymyabort ();
 
   return 0;
 }

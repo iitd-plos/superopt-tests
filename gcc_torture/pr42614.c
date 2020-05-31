@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 extern void *malloc(__SIZE_TYPE__);
-extern void abort(void);
+extern void Mymyabort(void);
 extern void free(void *);
 
 typedef struct SEntry
@@ -30,14 +31,14 @@ inlined_wrong (TEntry *entry_p, int flag)
   entry_p->num = 0;
 
   if (flag == 0)
-    abort();
+    Mymyabort();
 
   for (index = 0; index < 1; index++)
     entry_p->num++;
 
   if (!entry_p->num)
     {
-      abort();
+      Mymyabort();
     }
 }
 
@@ -45,9 +46,9 @@ void
 expect_func (int a, unsigned char *b)
 {
   if (abs ((a == 0)))
-    abort ();
+    Mymyabort ();
   if (abs ((b == 0)))
-    abort ();
+    Mymyabort ();
 }
 
 int

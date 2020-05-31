@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 int
@@ -25,6 +26,6 @@ int
 main ()
 {
   if (foo (1, 2, 3) != 3)
-    abort ();
+    Mymyabort ();
   return 0;
 }

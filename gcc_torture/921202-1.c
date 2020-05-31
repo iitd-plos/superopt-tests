@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target untyped_assembly } */
 /* { dg-add-options stack_size } */
 

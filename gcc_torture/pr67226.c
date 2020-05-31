@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct assembly_operand
 {
   int type, value, symtype, symflags, marker;
@@ -9,7 +10,7 @@ void __attribute__ ((__noinline__, __noclone__))
 assemblez_1 (int internal_number, struct assembly_operand o1)
 {
   if (o1.type != from_input.type)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 void __attribute__ ((__noinline__, __noclone__))
@@ -18,7 +19,7 @@ t0 (struct assembly_operand to, struct assembly_operand from)
   if (to.value == 0)
     assemblez_1 (32, from);
   else
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

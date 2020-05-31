@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/89434 */
 
 #if __SIZEOF_INT__ == 4 && __SIZEOF_LONG_LONG__ == 8 && __CHAR_BIT__ == 8
@@ -17,7 +18,7 @@ main ()
 {
   unsigned long long x = foo (0x222222222ULL);
   if (x != 0xfffffffddddddddeULL)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }
 #else

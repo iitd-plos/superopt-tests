@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* This testcase failed at -O2 on powerpc64 due to andsi3 writing
    nonzero bits to the high 32 bits of a 64 bit register.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 unsigned long foo (unsigned long base, unsigned int val)
@@ -12,6 +13,6 @@ unsigned long foo (unsigned long base, unsigned int val)
 int main (void)
 {
   if (foo (0L, 0x0ffffff0) != 0L)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

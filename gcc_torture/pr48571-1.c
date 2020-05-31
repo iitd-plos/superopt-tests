@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define S (sizeof (int))
 
 unsigned int c[624];
@@ -11,7 +12,7 @@ bar (void)
 	= 2 * *(unsigned int *)((void *)c + ((__SIZE_TYPE__)i +
 					     ((__SIZE_TYPE__)-S)/S) * S);
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int
 main()
 {
@@ -23,7 +24,7 @@ main()
   for (i = 0; i < 624; ++i)
     {
       if (c[i] != j)
-	abort ();
+	Mymyabort ();
       j = j * 2;
     }
   return 0;

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define NG   0x100L
 
 unsigned long flg = 0;
@@ -32,7 +33,7 @@ int main (void)
     flg |= NG;
 
   if (flg)
-    abort ();
+    Mymyabort ();
   
   exit (0);
 }

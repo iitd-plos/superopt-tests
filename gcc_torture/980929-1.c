@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 void f(int i)
 {
   if (i != 1000)
-    abort ();
+    Mymyabort ();
 }
 
 

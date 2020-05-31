@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/88904 */
 
 volatile int v;
@@ -6,7 +7,7 @@ __attribute__((noipa)) void
 bar (const char *x, const char *y, int z)
 {
   if (!v)
-    __builtin_abort ();
+    Mymyabort ();
   asm volatile ("" : "+g" (x));
   asm volatile ("" : "+g" (y));
   asm volatile ("" : "+g" (z));

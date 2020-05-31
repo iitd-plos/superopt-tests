@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* PR optimization/8726 */
 /* Originator: Paul Eggert <eggert@twinsun.com> */
 
 /* Verify that GCC doesn't miscompile tail calls on Sparc. */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 int fcntl_lock(int fd, int op, long long offset, long long count, int type);
 
@@ -20,7 +21,7 @@ int fcntl_lock(int fd, int op, long long offset, long long count, int type)
 int main(void)
 {
   if (vfswrap_lock (0, 1, 2, 3, 4, 5) != 5)
-    abort();
+    Mymyabort();
 
   return 0;
 }

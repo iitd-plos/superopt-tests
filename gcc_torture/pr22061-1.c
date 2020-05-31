@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target alloca } */
 int N = 1;
 void foo() {} /* Necessary to trigger the original ICE.  */
@@ -12,6 +13,6 @@ main (void)
   memset (x, 0, 2 * N);
   bar (x);
   if (N[(char *) x] != N)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

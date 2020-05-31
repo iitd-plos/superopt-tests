@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/49390 */
 
 struct S { unsigned int s1; unsigned int s2; };
@@ -8,13 +9,13 @@ struct S a;
 char *b;
 union { char b[64]; struct V v; } u;
 volatile int v;
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__((noinline, noclone)) void
 foo (int x, void *y, unsigned int z, unsigned int w)
 {
   if (x != 4 || y != (void *) &u.v.v2)
-    abort ();
+    Mymyabort ();
   v = z + w;
   v = 16384;
 }
@@ -83,6 +84,6 @@ main ()
   b = u.b;
   test (c);
   if (v != 16384)
-    abort ();
+    Mymyabort ();
   return 0;
 }

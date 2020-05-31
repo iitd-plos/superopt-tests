@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #ifdef __OPTIMIZE__
 extern void undef (void);
 

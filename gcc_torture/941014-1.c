@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int f (int a, int b) { }
 
 main ()
@@ -10,6 +11,6 @@ main ()
   addr2 = 5 + (unsigned long) &f;
 
   if (addr1 != addr2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

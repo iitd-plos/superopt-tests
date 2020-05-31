@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 void f(int);
 int do_layer3(int single)
 {
@@ -12,11 +13,11 @@ int do_layer3(int single)
   return stereo1;
 }
 
-extern void abort ();
+extern void Mymyabort ();
 int main()
 {
   if (do_layer3(-1) != 2)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

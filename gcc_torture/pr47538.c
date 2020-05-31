@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/47538 */
 
 struct S
@@ -53,21 +54,21 @@ main (void)
   __builtin_memcpy (d, e, sizeof d);
   foo (&x, &y);
   if (d[0] != 0 || d[1] != 20 || d[2] != 10 || d[3] != -10)
-    __builtin_abort ();
+    Mymyabort ();
   y.d = 2;
   __builtin_memcpy (d, e, sizeof d);
   foo (&x, &y);
   if (d[0] != 60 || d[1] != 20 || d[2] != -10 || d[3] != 118)
-    __builtin_abort ();
+    Mymyabort ();
   y.d = 1;
   __builtin_memcpy (d, e, sizeof d);
   foo (&x, &y);
   if (d[0] != -20 || d[1] != -10 || d[2] != 118 || d[3] != 118)
-    __builtin_abort ();
+    Mymyabort ();
   y.d = 0;
   __builtin_memcpy (d, e, sizeof d);
   foo (&x, &y);
   if (d[0] != 0 || d[1] != 118 || d[2] != 118 || d[3] != 118)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

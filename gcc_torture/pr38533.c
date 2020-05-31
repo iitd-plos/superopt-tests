@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/38533 */
 
 #define A asm volatile ("" : "=r" (f) : "0" (0)); e |= f;
@@ -16,6 +17,6 @@ int
 main (void)
 {
   if (foo ())
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

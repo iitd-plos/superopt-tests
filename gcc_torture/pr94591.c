@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned __attribute__((__vector_size__(8))) V2SI_u;
 typedef int __attribute__((__vector_size__(8))) V2SI_d;
 
@@ -14,7 +15,7 @@ void id_V2DI(V2DI_d *v)
   *v = __builtin_shuffle(*v, (V2DI_d)(V2DI_u) { 0, 1 });
 }
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 int main(void)
 {
@@ -22,11 +23,11 @@ int main(void)
   id_V2SI(&si);
 
   if (si[0] != 35 || si[1] != 42)
-    abort();
+    Mymyabort();
 
   V2DI_d di = { 63, 38 };
   id_V2DI(&di);
 
   if (di[0] != 63 || di[1] != 38)
-    abort();
+    Mymyabort();
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/28982.  Function foo() does the equivalent of:
 
      float tmp_results[NVARS];

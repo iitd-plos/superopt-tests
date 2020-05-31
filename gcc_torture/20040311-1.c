@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2004 Free Software Foundation.
 
    Check that constant folding and RTL simplification of -(x >> y) doesn't
@@ -5,7 +6,7 @@
 
    Written by Roger Sayle, 11th March 2004.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 #define INT_BITS  (sizeof(int)*8)
 
@@ -36,32 +37,32 @@ int test4(unsigned int x)
 int main()
 {
   if (test1(0) != 0)
-    abort ();
+    Mymyabort ();
   if (test1(1) != 0)
-    abort ();
+    Mymyabort ();
   if (test1(-1) != 1)
-    abort ();
+    Mymyabort ();
 
   if (test2(0) != 0)
-    abort ();
+    Mymyabort ();
   if (test2(1) != 0)
-    abort ();
+    Mymyabort ();
   if (test2((unsigned int)-1) != -1)
-    abort ();
+    Mymyabort ();
 
   if (test3(0) != 0)
-    abort ();
+    Mymyabort ();
   if (test3(1) != 0)
-    abort ();
+    Mymyabort ();
   if (test3(-1) != 1)
-    abort ();
+    Mymyabort ();
 
   if (test4(0) != 0)
-    abort ();
+    Mymyabort ();
   if (test4(1) != 0)
-    abort ();
+    Mymyabort ();
   if (test4((unsigned int)-1) != -1)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

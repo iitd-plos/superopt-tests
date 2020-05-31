@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef enum { POSITION_ASIS, POSITION_UNSPECIFIED } unit_position;
 
 typedef enum { STATUS_UNKNOWN, STATUS_UNSPECIFIED } unit_status;
@@ -8,7 +9,7 @@ typedef struct
   unit_status status;
 } unit_flags;
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 new_unit (unit_flags * flags)
@@ -25,7 +26,7 @@ new_unit (unit_flags * flags)
       break;
 
     default:
-      abort ();
+      Mymyabort ();
     }
 }
 

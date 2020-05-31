@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int foo(int i)
 {
   int a[32];
@@ -6,11 +7,11 @@ int foo(int i)
   a[i] = 2;
   return a[0];
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   if (foo (0) != 2
       || foo (1) != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

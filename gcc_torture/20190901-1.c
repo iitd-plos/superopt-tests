@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/91472 */
 /* Reported by John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de> */
 /* { dg-require-effective-target double64plus } */
@@ -36,6 +37,6 @@ main (void)
 {
   double x = tests_infinity_d ();
   if (x == 0.0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

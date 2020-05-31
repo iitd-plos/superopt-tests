@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/28636 */
 /* Origin: Andreas Schwab <schwab@suse.de> */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 struct input_ty
 {
@@ -30,8 +31,8 @@ int main (void)
   s.buffer_position = b;
   s.buffer_end = b + sizeof b;
   if (!check_header(&s))
-    abort();
+    Mymyabort();
   if (s.buffer_position != s.buffer_end)
-    abort();
+    Mymyabort();
   return 0;
 }

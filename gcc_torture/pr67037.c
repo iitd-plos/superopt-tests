@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long (*extfunc)();
 
 static inline void lstrcpynW( short *d, const short *s, int n )

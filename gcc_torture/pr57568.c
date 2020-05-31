@@ -1,12 +1,13 @@
+#include"eqchecker_helper.h"
 /* PR target/57568 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 int a[6][9] = { }, b = 1, *c = &a[3][5];
 
 int
 main ()
 {
   if (b && (*c = *c + *c))
-    abort ();
+    Mymyabort ();
   return 0;
 }

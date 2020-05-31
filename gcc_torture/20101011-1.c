@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fnon-call-exceptions" } */
 /* With -fnon-call-exceptions 0 / 0 should not be eliminated.  */
 /* { dg-additional-options "-DSIGNAL_SUPPRESS" { target { ! signal } } } */
@@ -107,7 +108,7 @@ __aeabi_idiv0 (int return_value)
 # define DO_TEST 1
 #endif
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 #if DO_TEST
@@ -135,7 +136,7 @@ main ()
 #if DO_TEST
   signal (SIGFPE, sigfpe);
   k = i / j;
-  abort ();
+  Mymyabort ();
 #else
   exit (0);
 #endif

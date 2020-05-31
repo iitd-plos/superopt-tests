@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Originally added to test SH constant pool layout.  t1() failed for
    non-PIC and t2() failed for PIC.  */
 
@@ -24,19 +25,19 @@ int t2 (float *f, int i,
 void f1 (double d)
 {
   if (d != 3.0)
-    abort ();
+    Mymyabort ();
 }
 
 void f2 (float f1, float f2)
 {
   if (f1 != 2.5f || f2 != 3.5f)
-    abort ();
+    Mymyabort ();
 }
 
 void f3 (float f)
 {
   if (f != 6.0f)
-    abort ();
+    Mymyabort ();
 }
 
 int main ()
@@ -45,6 +46,6 @@ int main ()
   t1 (f, 0, f1, f2);
   t2 (f, 1, f1, f2, f3);
   if (f[0] != 3.0f && f[1] != 4.0f)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

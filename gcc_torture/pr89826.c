@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned int u32;
 typedef unsigned long long u64;
 u64 a;
@@ -15,7 +16,7 @@ main (void)
 {
   u64 x = foo (2);
   if (x != 0)
-    __builtin_abort();
+    Mymyabort();
   return 0;
 }
 

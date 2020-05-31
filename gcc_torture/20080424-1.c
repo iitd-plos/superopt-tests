@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/36008 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int g[48][3][3];
 
@@ -9,7 +10,7 @@ bar (int x[3][3], int y[3][3])
 {
   static int i;
   if (x != g[i + 8] || y != g[i++])
-    abort ();
+    Mymyabort ();
 }
 
 static inline void __attribute__ ((always_inline))

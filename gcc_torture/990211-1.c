@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 1999 Free Software Foundation, Inc.
   Contributed by Nathan Sidwell 20 Jan 1999 <nathan@acm.org> */
 
 /* check range combining boolean operations work */
 
-extern void abort();
+extern void Mymyabort();
 
 #define N 77
 
@@ -14,41 +15,41 @@ void func(int i)
   
   /* these must fail, regardless of the value of i */
   if ((i < 0) && (i >= 0))
-    abort();
+    Mymyabort();
   if ((i > 0) && (i <= 0))
-    abort();
+    Mymyabort();
   if ((i >= 0) && (i < 0))
-    abort();
+    Mymyabort();
   if ((i <= 0) && (i > 0))
-    abort();
+    Mymyabort();
 
   if ((i < N) && (i >= N))
-    abort();
+    Mymyabort();
   if ((i > N) && (i <= N))
-    abort();
+    Mymyabort();
   if ((i >= N) && (i < N))
-    abort();
+    Mymyabort();
   if ((i <= N) && (i > N))
-    abort();
+    Mymyabort();
     
   /* these must pass, regardless of the value of i */
   if (! ((i < 0) || (i >= 0)))
-    abort();
+    Mymyabort();
   if (! ((i > 0) || (i <= 0)))
-    abort();
+    Mymyabort();
   if (! ((i >= 0) || (i < 0)))
-    abort();
+    Mymyabort();
   if (! ((i <= 0) || (i > 0)))
-    abort();
+    Mymyabort();
 
   if (! ((i < N) || (i >= N)))
-    abort();
+    Mymyabort();
   if (! ((i > N) || (i <= N)))
-    abort();
+    Mymyabort();
   if (! ((i >= N) || (i < N)))
-    abort();
+    Mymyabort();
   if (! ((i <= N) || (i > N)))
-    abort();
+    Mymyabort();
   
   return;
 }

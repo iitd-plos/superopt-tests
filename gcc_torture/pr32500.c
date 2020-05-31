@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 extern void exit(int);
 void foo(int) __attribute__((noinline));
 void bar(void) __attribute__((noinline));
@@ -21,6 +22,6 @@ main(int argc, char *argv[])
 			bar();
 	}
 
-	abort();
+	Mymyabort();
 }
 

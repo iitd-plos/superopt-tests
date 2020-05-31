@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/23560 */
 
 struct rtattr
@@ -25,7 +26,7 @@ int inet_check_attr (void *r, struct rtattr **rta)
   return 0;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main (void)
@@ -40,23 +41,23 @@ main (void)
   for (i = 0; i < 14; i++)
     rta[i] = &rt[0];
   if (inet_check_attr (0, rta) != 0)
-    abort ();
+    Mymyabort ();
   for (i = 0; i < 14; i++)
     if (rta[i] != &rt[i != 7 && i != 8])
-      abort ();
+      Mymyabort ();
   for (i = 0; i < 14; i++)
     rta[i] = &rt[0];
   rta[1] = 0;
   rt[1].rta_len -= 8;
   rta[5] = &rt[1];
   if (inet_check_attr (0, rta) != -22)
-    abort ();
+    Mymyabort ();
   for (i = 0; i < 14; i++)
     if (i == 1 && rta[i] != 0)
-      abort ();
+      Mymyabort ();
     else if (i != 1 && i <= 5 && rta[i] != &rt[1])
-      abort ();
+      Mymyabort ();
     else if (i > 5 && rta[i] != &rt[0])
-      abort ();
+      Mymyabort ();
   return 0;
 }

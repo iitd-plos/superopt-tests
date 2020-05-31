@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/65170 */
 
 #ifdef __SIZEOF_INT128__
@@ -16,7 +17,7 @@ foo (V b, V c)
   c &= (H) -1;
   a = b * c;
   if (a != 1)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* The non-destructive folder was always emitting >= when folding
    comparisons to signed_max+1.  */
 
@@ -9,7 +10,7 @@ main ()
   unsigned long count = 8;
 
   if (count > INT_MAX)
-    abort ();
+    Mymyabort ();
 
   return (0);
 }

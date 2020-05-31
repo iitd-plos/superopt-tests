@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 /* PR45070 */
-extern void abort(void);
+extern void Mymyabort(void);
 
 struct packed_ushort {
     unsigned short ucs;
@@ -46,7 +47,7 @@ int main(void)
 	struct packed_ushort rv = next(&s);
 	if ((i == 0 && rv.ucs != 0xffff)
 	    || (i > 0 && rv.ucs != 0))
-	    abort();
+	    Mymyabort();
     }
     return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static int f(int) __attribute__((const));
 int main()
 {
@@ -5,7 +6,7 @@ int main()
    x = 1; f1 = f(x);
    x = 2; f2 = f(x);
    if (f1 != 1 || f2 != 2)
-     abort ();
+     Mymyabort ();
    exit (0);
 }
 static int f(int x) { return x; }

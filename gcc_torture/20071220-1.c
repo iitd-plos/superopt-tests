@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/29484 */
 /* { dg-require-effective-target label_values } */
 /* { dg-require-effective-target indirect_jumps } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void *__attribute__((noinline))
 baz (void **lab)
@@ -37,6 +38,6 @@ int
 main (void)
 {
   if (f1 () != 17 || f1 () != 17 || f2 () != 17 || f2 () != 17)
-    abort ();
+    Mymyabort ();
   return 0;
 }

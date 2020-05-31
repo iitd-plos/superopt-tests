@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 struct delay_block {
   struct delay_block *succ;
@@ -17,7 +18,7 @@ int main(void)
 {
   Timer_Queue.succ = &Timer_Queue;
   if (time_enqueue (&Timer_Queue) != (void*)0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

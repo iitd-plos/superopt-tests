@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/30473 */
 
 extern int sprintf (char *, const char *, ...);
-extern void abort (void);
+extern void Mymyabort (void);
 
 char *
 foo (char *buf, char *p)
@@ -15,6 +16,6 @@ main (void)
 {
   char buf[6];
   if (foo (buf, &buf[2]) != &buf[3])
-    abort ();
+    Mymyabort ();
   return 0;
 }

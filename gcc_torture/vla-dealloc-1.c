@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* VLAs should be deallocated on a jump to before their definition,
    including a jump to a label in an inner scope.  PR 19771.  */
 /* { dg-require-effective-target alloca } */

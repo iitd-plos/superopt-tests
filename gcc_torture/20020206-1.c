@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 struct A {
   unsigned int a, b, c;
 };
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 struct A bar (void)
@@ -13,7 +14,7 @@ struct A bar (void)
 void baz (struct A *a)
 {
   if (a->a != 176 || a->b != 52 || a->c != 31)
-    abort ();
+    Mymyabort ();
 }
 
 int main ()

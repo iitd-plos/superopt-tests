@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/56250 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main ()
@@ -8,6 +9,6 @@ main ()
   unsigned int x = 2;
   unsigned int y = (0U - x / 2) / 2;
   if (-1U / x != y)
-    abort ();
+    Mymyabort ();
   return 0;
 }

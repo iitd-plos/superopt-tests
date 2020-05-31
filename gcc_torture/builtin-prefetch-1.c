@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test that __builtin_prefetch does no harm.
 
    Prefetch using all valid combinations of rw and locality values.

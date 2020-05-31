@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <assert.h>
 
 int a, *b, c, d, f, **i, p, q, *r;

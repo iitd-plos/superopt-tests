@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-xfail-if "alias analysis conflicts with instruction scheduling" { m32r-*-* } { "-O2" "-O1" "-O0" "-Os"} { "" } } */
 struct s { int a; int b;};
 struct s s1;
@@ -11,7 +12,7 @@ check (a, b)
   if (a == b)
     exit (0);
   else
-    abort ();
+    Mymyabort ();
 }
 
 int

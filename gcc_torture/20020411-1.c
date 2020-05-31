@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR optimization/6177
    This testcase ICEd because expr.c did not expect to see a CONCAT
    as array rtl.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 __complex__ float foo (void)
@@ -20,6 +21,6 @@ int main (void)
   d[0] = foo ();
   if (__real__ d[0] != 1.0
       || __imag__ d[0] != -1.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

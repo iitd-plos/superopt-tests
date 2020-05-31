@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdlib.h>
 
 union tree_node;
@@ -42,7 +43,7 @@ foo (union tree_node *p, int i)
   return p->vec.a[i];
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void *malloc (__SIZE_TYPE__);
 
 int
@@ -50,7 +51,7 @@ main()
 {
   union tree_node *p = malloc (sizeof (union tree_node));
   if (foo (p, 1) != &global)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

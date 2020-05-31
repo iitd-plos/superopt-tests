@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/64682 */
 
 int a, b = 1;
@@ -6,7 +7,7 @@ __attribute__((noinline, noclone)) void
 foo (int x)
 {
   if (x != 5)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 int

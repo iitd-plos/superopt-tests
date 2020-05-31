@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target alloca } */
 int b;
 int foo (void)
@@ -17,6 +18,6 @@ int main ()
 {
   b = 6;
   if (foo () != 15)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/59138 */
 /* Testcase by John Regehr <regehr@cs.utah.edu> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 #pragma pack(1)
 
@@ -29,6 +30,6 @@ int main (void)
 {
   fn2 ();
   if (a != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/88693 */
 
 __attribute__((noipa)) void
 foo (char *p)
 {
   if (__builtin_strlen (p) != 9)
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__((noipa)) void
@@ -13,7 +14,7 @@ quux (char *p)
   int i;
   for (i = 0; i < 100; i++)
     if (p[i] != 'x')
-      __builtin_abort ();
+      Mymyabort ();
 }
 
 __attribute__((noipa)) void

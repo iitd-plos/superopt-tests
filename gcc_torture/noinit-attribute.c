@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-do run } */
 /* { dg-require-effective-target noinit } */
 /* { dg-options "-O2" } */
@@ -9,7 +10,7 @@
    forever.  */
 
 extern void _start (void) __attribute__ ((noreturn));
-extern void abort (void) __attribute__ ((noreturn));
+extern void Mymyabort (void) __attribute__ ((noreturn));
 extern void exit (int) __attribute__ ((noreturn));
 
 int var_common;
@@ -28,14 +29,14 @@ main (void)
 {
   /* Make sure that the C startup code has correctly initialized the ordinary variables.  */
   if (var_common != 0)
-    abort ();
+    Mymyabort ();
 
   /* Initialized variables are not re-initialized during startup, so
      check their original values only during the first run of this
      test.  */
   if (var_init == 2)
     if (var_zero != 0 || var_one != 1)
-      abort ();
+      Mymyabort ();
 
   switch (var_init)
     {
@@ -47,17 +48,17 @@ main (void)
     case 3:
       /* Second time through - make sure that d has not been reset.  */
       if (var_noinit != 3)
-	abort ();
+	Mymyabort ();
       exit (0);
 
     default:
       /* Any other value for var_init is an error.  */
-      abort ();
+      Mymyabort ();
     }
 
   /* Simulate a processor reset by calling the C startup code.  */
   _start ();
 
   /* Should never reach here.  */
-  abort ();
+  Mymyabort ();
 }

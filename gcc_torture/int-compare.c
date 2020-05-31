@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 gt (a, b)
@@ -24,14 +25,14 @@ void
 true (c)
 {
   if (!c)
-    abort();
+    Mymyabort();
 }
 
 void
 false (c)
 {
   if (c)
-    abort();
+    Mymyabort();
 }
 
 f ()

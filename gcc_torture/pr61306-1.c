@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #ifdef __INT32_TYPE__
 typedef __INT32_TYPE__ int32_t;
 #else
@@ -34,6 +35,6 @@ main(void)
   if (sizeof (uint32_t) * __CHAR_BIT__ != 32)
     return 0;
   if (fake_bswap32 (0x87654321) != 0xffffff87)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

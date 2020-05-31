@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef union i386_operand_type
 {
@@ -72,11 +73,11 @@ int main (int argc, char *argv[])
 
   d = c;
   if (d.bitfield.reg16 != 1)
-    abort();
+    Mymyabort();
   if (d.bitfield.imm16 != 0)
-    abort();
+    Mymyabort();
   if (d.array[1] != 22)
-    abort();
+    Mymyabort();
 
   return 0;
 }

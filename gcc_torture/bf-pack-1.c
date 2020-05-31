@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct foo
 {
   unsigned half:16;
@@ -7,9 +8,9 @@ struct foo
 f (struct foo *q)
 {
   if (q->half != 0x1234)
-    abort ();
+    Mymyabort ();
   if (q->whole != 0x56789abcL)
-    abort ();
+    Mymyabort ();
 }
 
 main ()

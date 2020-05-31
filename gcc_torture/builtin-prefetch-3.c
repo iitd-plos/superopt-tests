@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test that __builtin_prefetch does no harm.
 
    Prefetch data using a variety of storage classes and address

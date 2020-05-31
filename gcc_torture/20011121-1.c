@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s
 {
   int i[18];
@@ -14,6 +15,6 @@ main()
   s2.b[0] = 100;
   __builtin_memcpy(&s2, &s1, ((unsigned int) &((struct s *)0)->b));
   if (s2.b[0] != 100)
-    abort();
+    Mymyabort();
   exit(0);
 }

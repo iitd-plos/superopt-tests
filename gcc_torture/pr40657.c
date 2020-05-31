@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify that that Thumb-1 epilogue size optimization does not clobber the
    return value.  */
 
@@ -18,6 +19,6 @@ __attribute__((noinline)) long long foo()
 int main ()
 {
   if (foo () != v)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 g (unsigned long long int *v, int n, unsigned int a[], int b)
 {
@@ -16,7 +17,7 @@ main ()
 
   res = g (&v, sizeof(ar)/sizeof(ar[0]), ar, 16);
   if (v != 0xabcdeUL)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

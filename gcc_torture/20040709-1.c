@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 
 /* Test arithmetics on bitfields.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 unsigned int
@@ -68,7 +69,7 @@ void test##S (void)				\
   if (x.i != s##S.i || x.j != s##S.j		\
       || x.k != s##S.k || x.l != s##S.l		\
       || ((v + a) & mask) != r)			\
-    abort ();					\
+    Mymyabort ();					\
   v = myrnd ();					\
   a = myrnd ();					\
   s##S.k = v;					\
@@ -77,7 +78,7 @@ void test##S (void)				\
   if (x.i != s##S.i || x.j != s##S.j		\
       || x.k != s##S.k || x.l != s##S.l		\
       || ((((v + a) & mask) % 15) & mask) != r)	\
-    abort ();					\
+    Mymyabort ();					\
   v = myrnd ();					\
   a = myrnd ();					\
   s##S.k = v;					\
@@ -86,7 +87,7 @@ void test##S (void)				\
   if (x.i != s##S.i || x.j != s##S.j		\
       || s##S.k != r || x.l != s##S.l		\
       || ((v + a) & mask) != r)			\
-    abort ();					\
+    Mymyabort ();					\
 }
 
 struct A { unsigned int i : 6, l : 1, j : 10, k : 15; }; T(A)

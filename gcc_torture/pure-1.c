@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 /* Origin: Kaveh Ghazi <ghazi@caip.rutgers.edu> 2002-05-27.  */
 

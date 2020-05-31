@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002  Free Software Foundation.
 
    Test strcpy with various combinations of pointer alignments and lengths to
@@ -49,26 +50,26 @@ main ()
 
 	  p = strcpy (u1.buf + off1, u2.buf + off2);
 	  if (p != u1.buf + off1)
-	    abort ();
+	    Mymyabort ();
 
 	  q = u1.buf;
 	  for (i = 0; i < off1; i++, q++)
 	    if (*q != 'a')
-	      abort ();
+	      Mymyabort ();
 
 	  for (i = 0, c = 'A' + off2; i < len; i++, q++, c++)
 	    {
 	      if (c >= 'A' + SEQUENCE_LENGTH)
 		c = 'A';
 	      if (*q != c)
-		abort ();
+		Mymyabort ();
 	    }
 
 	  if (*q++ != '\0')
-	    abort ();
+	    Mymyabort ();
 	  for (i = 0; i < MAX_EXTRA; i++, q++)
 	    if (*q != 'a')
-	      abort ();
+	      Mymyabort ();
 	}
 
   exit (0);

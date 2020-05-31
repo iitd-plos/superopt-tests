@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This used to fail as we would convert f into just return (unsigned int)usVlanID
    which is wrong. */
 
@@ -14,8 +15,8 @@ int f(unsigned short usVlanID)
 int main(void)
 {
   if (f(1) != 1)
-    __builtin_abort ();
+    Mymyabort ();
   if (f(0xffff) != -1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/94412 */
 
 typedef unsigned V __attribute__ ((__vector_size__ (sizeof (unsigned) * 2)));
@@ -23,6 +24,6 @@ main ()
   foo (&a, &c);
   bar (&b, &d);
   if (c[0] != -1U / 11 || c[1] != 0 || d[0] != 0 || d[1] != -18U / -__INT_MAX__)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

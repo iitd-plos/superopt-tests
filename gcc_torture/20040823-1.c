@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Ensure that we create VUSE operands also for noreturn functions.  */
 
 #include <stdlib.h>
@@ -10,7 +11,7 @@ void bla (void) __attribute__ ((noreturn));
 void bla (void)
 {
   if (!*pwarn)
-    abort ();
+    Mymyabort ();
     
   exit (0);
 }

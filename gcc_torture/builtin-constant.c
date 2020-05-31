@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR optimization/8423.  */
 
 #define btest(x) __builtin_constant_p(x) ? "1" : "0"
@@ -7,7 +8,7 @@ void
 foo (char *i)
 {
   if (*i == '0')
-    abort ();
+    Mymyabort ();
 }
 #else
 void

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* Make sure that we don't free any temp stack slots associated with
    initializing marker before we're finished with them.  */
 
-extern void abort();
+extern void Mymyabort();
 
 typedef struct { short v16; } __attribute__((packed)) jint16_t;
 
@@ -21,8 +22,8 @@ int main()
     .totlen = node_p->totlen
   };
   if (marker.magic.v16 != 0x1985)
-    abort();
+    Mymyabort();
   if (marker.nodetype.v16 != 0x2003)
-    abort();
+    Mymyabort();
   return 0;
 }

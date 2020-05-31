@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 f()
 {
@@ -11,6 +12,6 @@ int
 main ()
 {
   if (f () != 8192)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

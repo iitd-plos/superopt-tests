@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int errflag;
 
 long long
@@ -25,35 +26,35 @@ main ()
 {
   f (0, 0);
   if (errflag)
-    abort ();
+    Mymyabort ();
 
   f (1, -1);
   if (errflag)
-    abort ();
+    Mymyabort ();
 
   f (-1, 1);
   if (errflag)
-    abort ();
+    Mymyabort ();
 
   f (0x8000000000000000LL, 0x8000000000000000LL);
   if (!errflag)
-    abort ();
+    Mymyabort ();
 
   f (0x8000000000000000LL, -1LL);
   if (!errflag)
-    abort ();
+    Mymyabort ();
 
   f (0x7fffffffffffffffLL, 0x7fffffffffffffffLL);
   if (!errflag)
-    abort ();
+    Mymyabort ();
 
   f (0x7fffffffffffffffLL, 1LL);
   if (!errflag)
-    abort ();
+    Mymyabort ();
 
   f (0x7fffffffffffffffLL, 0x8000000000000000LL);
   if (errflag)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

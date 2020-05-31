@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/51581 */
 /* { dg-require-effective-target int32plus } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 #define N 4096
 int a[N], c[N];
@@ -142,33 +143,33 @@ main ()
   f2 ();
   for (i = 0; i < N; i++)
     if (c[i] != a[i] % 3 || d[i] != b[i] % 3)
-      abort ();
+      Mymyabort ();
   f3 ();
   f4 ();
   for (i = 0; i < N; i++)
     if (c[i] != a[i] % 18 || d[i] != b[i] % 18)
-      abort ();
+      Mymyabort ();
   f5 ();
   f6 ();
   for (i = 0; i < N; i++)
     if (c[i] != a[i] % 19 || d[i] != b[i] % 19)
-      abort ();
+      Mymyabort ();
 #if __SIZEOF_INT__ == 4 && __SIZEOF_LONG_LONG__ == 8
   f7 ();
   f8 ();
   for (i = 0; i < N; i++)
     if (c[i] != a[i] % 3 || d[i] != b[i] % 3)
-      abort ();
+      Mymyabort ();
   f9 ();
   f10 ();
   for (i = 0; i < N; i++)
     if (c[i] != a[i] % 18 || d[i] != b[i] % 18)
-      abort ();
+      Mymyabort ();
   f11 ();
   f12 ();
   for (i = 0; i < N; i++)
     if (c[i] != a[i] % 19 || d[i] != b[i] % 19)
-      abort ();
+      Mymyabort ();
 #endif
   return 0;
 }

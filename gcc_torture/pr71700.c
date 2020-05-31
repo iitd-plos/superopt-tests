@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct S
 {
   signed f0 : 16;
@@ -14,6 +15,6 @@ main ()
   struct S e = c[0];
   d = e;
   if (d.f1 != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

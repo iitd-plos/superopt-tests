@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int test1(int x)
 {
@@ -34,58 +35,58 @@ int test6(int x)
 int main()
 {
   if (test1(19) != 0)
-    abort ();
+    Mymyabort ();
   if (test1(20) != 1)
-    abort ();
+    Mymyabort ();
   if (test1(29) != 1)
-    abort ();
+    Mymyabort ();
   if (test1(30) != 0)
-    abort ();
+    Mymyabort ();
 
   if (test2(-10) != 0)
-    abort ();
+    Mymyabort ();
   if (test2(-9) != 1)
-    abort ();
+    Mymyabort ();
   if (test2(9) != 1)
-    abort ();
+    Mymyabort ();
   if (test2(10) != 0)
-    abort ();
+    Mymyabort ();
 
   if (test3(-30) != 0)
-    abort ();
+    Mymyabort ();
   if (test3(-29) != 1)
-    abort ();
+    Mymyabort ();
   if (test3(-20) != 1)
-    abort ();
+    Mymyabort ();
   if (test3(-19) != 0)
-    abort ();
+    Mymyabort ();
 
   if (test4(-30) != 0)
-    abort ();
+    Mymyabort ();
   if (test4(-29) != 1)
-    abort ();
+    Mymyabort ();
   if (test4(-20) != 1)
-    abort ();
+    Mymyabort ();
   if (test4(-19) != 0)
-    abort ();
+    Mymyabort ();
 
   if (test5(-10) != 0)
-    abort ();
+    Mymyabort ();
   if (test5(-9) != 1)
-    abort ();
+    Mymyabort ();
   if (test5(9) != 1)
-    abort ();
+    Mymyabort ();
   if (test5(10) != 0)
-    abort ();
+    Mymyabort ();
 
   if (test6(19) != 0)
-    abort ();
+    Mymyabort ();
   if (test6(20) != 1)
-    abort ();
+    Mymyabort ();
   if (test6(29) != 1)
-    abort ();
+    Mymyabort ();
   if (test6(30) != 0)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

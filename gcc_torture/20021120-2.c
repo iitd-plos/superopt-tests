@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int g1, g2;
 
 void foo (int x)
@@ -16,6 +17,6 @@ int main ()
 {
   foo (793);
   if (g1 != 10 || g2 != 10)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR optimization/13260 */
 
 #include <string.h>
@@ -44,6 +45,6 @@ main()
 {
   static char addr[] = "10.11.12.13:/hello";
   u32 result = root_nfs_parse_addr(addr);
-  if (result != 0x0a0b0c0d) { abort(); }
+  if (result != 0x0a0b0c0d) { Mymyabort(); }
   return 0;
 }

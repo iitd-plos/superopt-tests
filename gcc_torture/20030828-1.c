@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 const int *p;
 
 int bar (void)
@@ -13,6 +14,6 @@ main ()
   const int i = 5;
   p = &i;
   if (bar() != 6)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

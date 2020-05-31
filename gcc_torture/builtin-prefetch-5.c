@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* Test that __builtin_prefetch does no harm.
 
    Use addresses that are unlikely to be word-aligned.  Some targets
    have alignment requirements for prefetch addresses, so make sure the
-   compiler takes care of that.  This fails if it aborts, anything else
+   compiler takes care of that.  This fails if it Mymyaborts, anything else
    is OK.  */
 
 struct S {

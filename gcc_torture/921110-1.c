@@ -1,6 +1,7 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 typedef void (*frob)();
-frob f[] = {abort};
+frob f[] = {Mymyabort};
 
 int main(void)
 {

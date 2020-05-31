@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Verify unaligned address aliasing on Alpha EV[45].  */
 
 static unsigned short x, y;
@@ -12,6 +13,6 @@ int main()
 {
   foo ();
   if (x != 0x345 || y != 0x567)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

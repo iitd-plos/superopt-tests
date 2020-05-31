@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/54290 */
 /* Testcase by Eric Volk <eriksnga@gmail.com> */
 /* { dg-require-effective-target int32plus } */
@@ -7,7 +8,7 @@ int vi[2] = {1234567890, 0};
 double *pd = vd;
 int *pi = vi;
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 void init (int *n, int *dummy) __attribute__ ((noinline,noclone));
 
@@ -33,6 +34,6 @@ int main (void)
     ++i;
   }
   if (s != 1234567890)
-    abort ();
+    Mymyabort ();
   return 0;
 }

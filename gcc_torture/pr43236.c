@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-ftree-loop-distribution" } */
-extern void abort(void);
-extern void *memset(void *s, int c, __SIZE_TYPE__ n);
-extern int memcmp(const void *s1, const void *s2, __SIZE_TYPE__ n);
+//extern void Mymyabort(void);
+//extern void *memset(void *s, int c, __SIZE_TYPE__ n);
+//extern int memcmp(const void *s1, const void *s2, __SIZE_TYPE__ n);
 /*extern int printf(const char *format, ...);*/
 
 int main()
@@ -27,6 +28,6 @@ int main()
     printf("%d %d %d\n", A[i], B[i], C[i]); */
 
   /* compare results */
-  if (memcmp(A, C, 30) || memcmp(B, C, 30)) abort();
+  if (memcmp(A, C, 30) || memcmp(B, C, 30)) Mymyabort();
   return 0;
 }

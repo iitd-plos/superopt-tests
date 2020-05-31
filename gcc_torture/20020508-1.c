@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This tests the rotate patterns that some machines support.  */
 
 #include <limits.h>
@@ -29,76 +30,76 @@ int shift2 = SHIFT2;
 main ()
 {
   if (ROR (uc, shift1) != ROR (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (uc, SHIFT1) != ROR (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (us, shift1) != ROR (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (us, SHIFT1) != ROR (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ui, shift1) != ROR (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ui, SHIFT1) != ROR (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ul, shift1) != ROR (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ul, SHIFT1) != ROR (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ull, shift1) != ROR (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ull, SHIFT1) != ROR (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ull, shift2) != ROR (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   if (ROR (ull, SHIFT2) != ROR (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   if (ROL (uc, shift1) != ROL (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (uc, SHIFT1) != ROL (CHAR_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (us, shift1) != ROL (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (us, SHIFT1) != ROL (SHORT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ui, shift1) != ROL (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ui, SHIFT1) != ROL (INT_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ul, shift1) != ROL (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ul, SHIFT1) != ROL (LONG_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ull, shift1) != ROL (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ull, SHIFT1) != ROL (LL_VALUE, SHIFT1))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ull, shift2) != ROL (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   if (ROL (ull, SHIFT2) != ROL (LL_VALUE, SHIFT2))
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

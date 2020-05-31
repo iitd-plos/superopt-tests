@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* powerpc64-linux gcc miscompiled this due to rs6000.c:expand_block_move
    not setting mem aliasing info correctly for the code implementing the
    structure assignment.  */
@@ -31,13 +32,13 @@ void ini (void)
 
 int main (void)
 {
-  extern void abort (void);
+  extern void Mymyabort (void);
 
   ini ();
   if (pty.t.a != 1
       || pty.t.b != 2
       || pty.t.c != 3
       || pty.t.d != 4)
-    abort ();
+    Mymyabort ();
   return 0;
 }

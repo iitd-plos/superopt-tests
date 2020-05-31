@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/86714 - tree-ssa-forwprop.c confused by too
    long initializer
 
@@ -17,10 +18,10 @@ int main ()
 
    if (b[0] != '1' || b[1] != '2' || b[2] != '3'
        || b[3] != 'x' || b[4] != 'a' || b[5] != 'a')
-     __builtin_abort ();
+     Mymyabort ();
 
    if (__builtin_memcmp (pb, "123xaa", 6))
-     __builtin_abort ();
+     Mymyabort ();
 
    return 0;
 }

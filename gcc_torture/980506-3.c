@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned char lookup_table [257];
 
 static int 
@@ -17,7 +18,7 @@ int main(argc, argv)
      char **argv;
 {
   if (build_lookup ("bind") != 4)
-    abort ();
+    Mymyabort ();
   else
     exit (0);
 }

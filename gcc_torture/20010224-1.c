@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 typedef signed short int16_t;
 typedef unsigned short uint16_t;
@@ -38,7 +39,7 @@ int main (void)
 
   ba_compute_psd (0);
 
-  if (bndpsd[1] != 140) abort ();
+  if (bndpsd[1] != 140) Mymyabort ();
   return 0;
 }
   

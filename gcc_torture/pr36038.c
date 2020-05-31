@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/36038 */
 
 long long list[10];
@@ -38,6 +39,6 @@ main ()
   stack_base = list + 2;
   doit ();
   if (__builtin_memcmp (expect, list, sizeof (list)))
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

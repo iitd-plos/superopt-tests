@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR 6534 */
 /* GCSE unified the two i<0 tests, but if-conversion to ui=abs(i) 
    insertted the code at the wrong place corrupting the i<0 test.  */
 
-void abort (void);
+void Mymyabort (void);
 static char *
 inttostr (long i, char buf[128])
 {
@@ -26,6 +27,6 @@ main ()
 
   p = inttostr (-1, buf);
   if (*p != '-')
-    abort ();
+    Mymyabort ();
   return 0;
 }

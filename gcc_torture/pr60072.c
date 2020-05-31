@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/60072 */
 
 int c = 1;

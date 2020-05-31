@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct {
   char y;
   char x[32];
@@ -18,7 +19,7 @@ int main (void)
 
   val = z ();
   if (val != 0x60)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 long long
 f (long long x)
 {
@@ -7,6 +8,6 @@ f (long long x)
 main ()
 {
   if (f (10000000000LL) != 1 || f (100000000000LL) != 10)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

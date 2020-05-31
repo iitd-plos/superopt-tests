@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires io" { freestanding } }  */
 
 #include <stdio.h>
@@ -9,7 +10,7 @@ main (void)
 #define test(ret, args...) \
   fprintf (stdout, args); 		\
   if (fprintf (stdout, args) != ret)	\
-    abort ();
+    Mymyabort ();
   test (5, "hello");
   test (6, "hello\n");
   test (1, "a");

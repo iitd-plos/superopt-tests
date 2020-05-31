@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Source: Neil Booth, from PR # 115.  */
 
 int false()
@@ -5,7 +6,7 @@ int false()
   return 0;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main (int argc,char *argv[])
 {
@@ -15,7 +16,7 @@ int main (int argc,char *argv[])
     ++count;
 
   if (count)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

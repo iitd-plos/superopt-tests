@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires io" { freestanding } }  */
 
 /* This test tests complex conjugate and passing/returning of
@@ -55,7 +56,7 @@ main (void)
   test_long_int ();
 
   if (e != 0)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

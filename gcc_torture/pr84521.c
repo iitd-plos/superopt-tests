@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target indirect_jumps } */
 /* { dg-additional-options "-fomit-frame-pointer -fno-inline" }  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 broken_longjmp (void *p)
@@ -24,7 +25,7 @@ test (void)
 
   /* Fails if stack pointer corrupted.  */
   if (p != q)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -36,7 +37,7 @@ test2 (void)
 
   /* Fails if frame pointer corrupted.  */
   if (p != q)
-    abort ();
+    Mymyabort ();
 }
 
 int
@@ -47,7 +48,7 @@ main (void)
   test2 ();
   /* Fails if stack pointer corrupted.  */
   if (p != q)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

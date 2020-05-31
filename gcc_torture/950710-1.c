@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct twelve
 {
   int a;
@@ -41,7 +42,7 @@ f ()
 	      if ((((char *) &b - (char *) &a) < 0
 		   ? (-((char *) &b - (char *) &a))
 		   : ((char *) &b - (char *) &a))  < sizeof (a))
-		abort ();
+		Mymyabort ();
 	    }
 	}
     }

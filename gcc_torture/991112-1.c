@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This code was miscompiled at -O3 on x86.
    Reported by Jim Meyering; distilled from bash.  */
 
@@ -12,8 +13,8 @@ int main(void)
 {
   int (*x)(int, int) = rl_character_len;
   if (x('a', 1) != 1)
-    abort();
+    Mymyabort();
   if (x('\002', 1) != 2)
-    abort();
+    Mymyabort();
   return 0;
 }

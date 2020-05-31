@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c/49644 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main ()
@@ -11,6 +12,6 @@ main ()
   for (i = 0; i < 6; i++)
     *c++ = *d++ * s;
   if (c != a + 6 || d != b + 6)
-    abort ();
+    Mymyabort ();
   return 0;
 }

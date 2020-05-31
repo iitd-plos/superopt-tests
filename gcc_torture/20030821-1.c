@@ -1,10 +1,11 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int
 foo (int x)
 {
   if ((int) (x & 0x80ffffff) != (int) (0x8000fffe))
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

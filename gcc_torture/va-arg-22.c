@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 void bar (int n, int c)
@@ -10,13 +11,13 @@ void bar (int n, int c)
   if (lastn != n)
     {
       if (lastc != lastn)
-	abort ();
+	Mymyabort ();
       lastc = 0;
       lastn = n;
     }
 
   if (c != (char) (lastc ^ (n << 3)))
-    abort ();
+    Mymyabort ();
   lastc++;
 }
 
@@ -37,7 +38,7 @@ D(16) D(31) D(32) D(35) D(72)
   int i;
 
   if (size != 21)
-    abort ();
+    Mymyabort ();
   va_start (ap, size);
 #define D(N)					\
   a##N = va_arg (ap, typeof (a##N));		\

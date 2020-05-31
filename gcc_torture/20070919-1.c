@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* PR c/33238 */
 /* { dg-require-effective-target alloca } */
 
 typedef __SIZE_TYPE__ size_t;
 int memcmp (const void *, const void *, size_t);
-void abort (void);
+void Mymyabort (void);
 
 void
 __attribute__((noinline))
@@ -11,15 +12,15 @@ bar (void *x, void *y)
 {
   struct S { char w[8]; } *p = x, *q = y;
   if (memcmp (p->w, "zyxwvut", 8) != 0)
-    abort ();
+    Mymyabort ();
   if (memcmp (q[0].w, "abcdefg", 8) != 0)
-    abort ();
+    Mymyabort ();
   if (memcmp (q[1].w, "ABCDEFG", 8) != 0)
-    abort ();
+    Mymyabort ();
   if (memcmp (q[2].w, "zyxwvut", 8) != 0)
-    abort ();
+    Mymyabort ();
   if (memcmp (q[3].w, "zyxwvut", 8) != 0)
-    abort ();
+    Mymyabort ();
 }
 
 void

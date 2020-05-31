@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR target/36090 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 long double __attribute__ ((noinline)) foo (long double x)
 {
@@ -11,6 +12,6 @@ int
 main (void)
 {
   if (foo (-1.0L) != 3.1415926535897932384626433832795029L)
-    abort ();
+    Mymyabort ();
   return 0;
 }

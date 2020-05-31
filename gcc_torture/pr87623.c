@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/87623 */
 /* Testcase by George Thopas <george.thopas@gmail.com> */
 
@@ -28,7 +29,7 @@ int main (void)
    t_le y = { .a=1, .b=2  };
   
    if (a_or_b_different(&x,&y))
-       __builtin_abort ();
+       Mymyabort ();
 
    return 0;
 }

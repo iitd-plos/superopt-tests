@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/18694
 
    The dominator optimization didn't take the PHI evaluation order
    into account when threading an edge.  */
 
-extern void abort (void) __attribute__((noreturn));
+extern void Mymyabort (void) __attribute__((noreturn));
 extern void exit (int) __attribute__((noreturn));
 
 void __attribute__((noinline))
@@ -20,7 +21,7 @@ foo (int i)
 	next_n++;
 
       if (j != n)
-	abort ();
+	Mymyabort ();
     }
 }
 

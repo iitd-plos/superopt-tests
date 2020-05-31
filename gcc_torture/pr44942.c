@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/44942 */
 
 #include <stdarg.h>
@@ -11,7 +12,7 @@ test1 (int a, int b, int c, int d, int e, int f, int g, long double h, ...)
   va_start (ap, h);
   i = va_arg (ap, int);
   if (i != 1234)
-    __builtin_abort ();
+    Mymyabort ();
   va_end (ap);
 }
 
@@ -25,7 +26,7 @@ test2 (int a, int b, int c, int d, int e, int f, int g, long double h, int i,
   va_start (ap, n);
   o = va_arg (ap, int);
   if (o != 1234)
-    __builtin_abort ();
+    Mymyabort ();
   va_end (ap);
 }
 
@@ -39,7 +40,7 @@ test3 (double a, double b, double c, double d, double e, double f,
   va_start (ap, h);
   i = va_arg (ap, double);
   if (i != 1234.0)
-    __builtin_abort ();
+    Mymyabort ();
   va_end (ap);
 }
 
@@ -54,7 +55,7 @@ test4 (double a, double b, double c, double d, double e, double f, double g,
   va_start (ap, n);
   o = va_arg (ap, double);
   if (o != 1234.0)
-    __builtin_abort ();
+    Mymyabort ();
   va_end (ap);
 }
 

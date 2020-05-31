@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct creal_T {
   double re;
   double im;
@@ -30,7 +31,7 @@ int main() {
 
   for (i = 0; i < 2; ++i)
     if (t2[i].re != !i || t2[i].im != !i)
-      __builtin_abort ();
+      Mymyabort ();
 
   return 0;
 }

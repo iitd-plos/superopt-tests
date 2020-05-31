@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef union
 {
   long align;
@@ -25,7 +26,7 @@ f (x)
 main ()
 {
   if (f (2) != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

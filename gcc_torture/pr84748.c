@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int128 } */
 
 typedef unsigned __int128 u128;
@@ -29,6 +30,6 @@ main (void)
 {
   foo ();
   if (g0 != 0 || g1 != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

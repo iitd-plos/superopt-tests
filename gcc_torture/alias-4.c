@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-alias "" } */
 int a = 1;
 extern int b __attribute__ ((alias ("a")));
@@ -14,6 +15,6 @@ main (int argc)
   *p = 1;
   *q = 2;
   if (*p == 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

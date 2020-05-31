@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 int test(int n)
 {
@@ -10,6 +11,6 @@ int test(int n)
 int main()
 {
   if (test(123) != 123)
-    abort ();
+    Mymyabort ();
   return 0;
 }

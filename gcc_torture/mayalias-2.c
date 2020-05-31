@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef struct __attribute__((__may_alias__)) { short x; } test;
 
 int f() {
@@ -9,7 +10,7 @@ int f() {
 
 int main() {
   if (f() == 10)
-    __builtin_abort();
+    Mymyabort();
   return 0;
 }
 

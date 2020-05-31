@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/70566.  */
 
 #define NULL 0
@@ -25,7 +26,7 @@ set_f2 (struct mystruct *user, int f2)
   if (user->f2 != f2)
     myfunc (myfunc2 (NULL), NULL);
   else
-    __builtin_abort ();
+    Mymyabort ();
 }
 
 __attribute__ ((noinline)) void

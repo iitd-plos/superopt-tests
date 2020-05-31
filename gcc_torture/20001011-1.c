@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 extern int strcmp(const char *, const char *);
 
 int foo(const char *a)
@@ -9,6 +10,6 @@ int foo(const char *a)
 int main(void)
 {
     if(foo(__FUNCTION__))
-        abort();
+        Mymyabort();
     return 0;
 }

@@ -1,8 +1,9 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 
 void do_exit (void) { exit (0); }
-void do_abort (void) { abort (); }
+void do_Mymyabort (void) { Mymyabort (); }
 
 void foo (int x, int a)
 {
@@ -13,11 +14,11 @@ void foo (int x, int a)
     goto doit;
 
   /* else */
-  do_abort ();
+  do_Mymyabort ();
   return;
 
 doit:
-  do_abort ();
+  do_Mymyabort ();
 }
 
 int main()

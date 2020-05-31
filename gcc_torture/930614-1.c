@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (double *ty)
 {
   *ty = -1.0;
@@ -14,6 +15,6 @@ main ()
     ty = -ty;
   d = (tx > ty) ? tx : ty;
   if (ty != d)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

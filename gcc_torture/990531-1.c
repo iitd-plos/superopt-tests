@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
    unsigned long bad(int reg, unsigned long inWord)
    {
        union {
@@ -18,6 +19,6 @@ main()
     exit (0);
 
   if (bad (0, 0xdeadbeef) == 0xdeadbeef)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

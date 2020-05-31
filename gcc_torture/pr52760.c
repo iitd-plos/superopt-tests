@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/52760 */
 
 struct T { unsigned short a, b, c, d; };
@@ -22,6 +23,6 @@ main ()
   struct T t = { 0x0001, 0x0203, 0x0405, 0x0607 };
   foo (1, &t);
   if (t.a != 0x0100 || t.b != 0x0302 || t.c != 0x0504 || t.d != 0x0706)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

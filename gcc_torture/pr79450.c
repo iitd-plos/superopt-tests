@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/79450 */
 
 unsigned int
@@ -17,6 +18,6 @@ main (void)
 {
   unsigned int x = foo (1, 0);
   if (x != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

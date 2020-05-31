@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct foo {
   unsigned : 12;
   unsigned field : 4;
@@ -17,6 +18,6 @@ bar (unsigned k)
 main ()
 {
   if (bar (1U) != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

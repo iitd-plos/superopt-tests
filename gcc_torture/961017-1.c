@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 main ()
 {
   unsigned char z = 0;

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
@@ -21,6 +22,6 @@ int main()
 {
 	unsigned x = foo(1, 1, 1, 1, 1, 1, 1, 1, 1);
 	if (x != 0x7737)
-		__builtin_abort();
+		Mymyabort();
 	return 0;
 }

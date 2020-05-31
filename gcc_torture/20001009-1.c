@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a,b;
 main()
 {
@@ -8,5 +9,5 @@ main()
   if ((char)(c|(e&f)) == (char)d)
     return 0;
   else
-    abort();
+    Mymyabort();
 }

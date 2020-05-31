@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target stdint_types } */
 #include <stdint.h>
 typedef int32_t __attribute__((vector_size(8))) v2si;
@@ -16,6 +17,6 @@ int main()
   int32_t little_endian = endianness_test.i[0];
   s64 = __ev_convert_s64 ((v2si){1,0xffffffff});
   if (s64 != (little_endian ? 0xffffffff00000001LL : 0x1ffffffffLL))
-    abort ();
+    Mymyabort ();
   return 0;
 }

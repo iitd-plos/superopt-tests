@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int main()
 {
   int b = 0;
@@ -19,7 +20,7 @@ int main()
   }
 
   if (b != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-xfail-if "ABI specifies bitfields cannot exceed 32 bits" { mcore-*-* } } */
 struct tmp
 {
@@ -34,8 +35,8 @@ main()
   tmp2 = sub2 (tmp2);
 
   if (tmp.pad != 0x123 || tmp.field != 0xFFFFFF541FFF567FLL)
-    abort ();
+    Mymyabort ();
   if (tmp2.pad != 0x123 || tmp2.field != 0xFFFFFF541FFF567FLL)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

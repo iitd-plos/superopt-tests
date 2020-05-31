@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/19579 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (int i, int j)
@@ -22,20 +23,20 @@ int
 main (void)
 {
   if (foo (-2, 0) != -1)
-    abort ();
+    Mymyabort ();
   if (foo (-1, 0) != 0)
-    abort ();
+    Mymyabort ();
   if (foo (0, 0) != 1)
-    abort ();
+    Mymyabort ();
   if (foo (1, 0) != 2)
-    abort ();
+    Mymyabort ();
   if (foo (-2, 1) != -2)
-    abort ();
+    Mymyabort ();
   if (foo (-1, 1) != 0)
-    abort ();
+    Mymyabort ();
   if (foo (0, 1) != 2)
-    abort ();
+    Mymyabort ();
   if (foo (1, 1) != 3)
-    abort ();
+    Mymyabort ();
   return 0;
 }

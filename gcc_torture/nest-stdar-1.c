@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 main ()
@@ -14,6 +15,6 @@ main ()
     }
 
   if (f (1, (double)1) != 1.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

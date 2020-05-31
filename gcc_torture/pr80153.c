@@ -1,10 +1,11 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/80153 */
 
 void check (int, int, int) __attribute__((noinline));
 void check (int c, int c2, int val)
 {
   if (!val) {
-    __builtin_abort();
+    Mymyabort();
   }
 }
 

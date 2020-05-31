@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f (cp, end)
      char *cp;
      char *end;
@@ -8,6 +9,6 @@ f (cp, end)
 main ()
 {
   if (! f ((char *) 0, (char *) 1))
-    abort();
+    Mymyabort();
   exit (0);
 }

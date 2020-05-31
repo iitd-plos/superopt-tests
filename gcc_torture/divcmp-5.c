@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/26561 */
 
-extern void abort(void);
+extern void Mymyabort(void);
 
 int always_one_1 (int a)
 {
@@ -21,10 +22,10 @@ int always_one_2 (int a)
 int main(void)
 {
   if (always_one_1 (0) != 1)
-    abort ();
+    Mymyabort ();
 
   if (always_one_2 (0) != 1)
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

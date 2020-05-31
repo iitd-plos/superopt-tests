@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 double f (float f1, float f2, float f3, float f4,
@@ -15,6 +16,6 @@ double f (float f1, float f2, float f3, float f4,
 int main ()
 {
   if (f (1, 2, 3, 4, 5, 6, 7.0) != 7.0)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

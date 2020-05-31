@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <limits.h>
 
 int
@@ -15,7 +16,7 @@ int
 main ()
 {
   if (sub () != 0)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

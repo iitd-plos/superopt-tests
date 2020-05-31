@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/79388 */
 /* { dg-additional-options "-fno-tree-coalesce-vars" } */
 
@@ -18,6 +19,6 @@ main (void)
 {
   int x = foo (6);
   if (x != 6)
-    __builtin_abort();
+    Mymyabort();
   return 0;
 }

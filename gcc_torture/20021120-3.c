@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Test whether a partly call-clobbered register will be moved over a call.
    Although the original test case didn't use any GNUisms, it proved
    difficult to reduce without the named register extension.  */
@@ -21,6 +22,6 @@ int main ()
   char c[16];
 
   if (foo (c, ~1U, 4) != (~0U / 5))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

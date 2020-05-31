@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 
-void abort (void);
+void Mymyabort (void);
 
 struct T
 {
@@ -15,6 +16,6 @@ int main (void)
 {
   foo (0x10);
   if (!t.b)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int f(int k, int i1, int j1)
 {
   int *f1;
@@ -9,11 +10,11 @@ int f(int k, int i1, int j1)
   return *f1;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int main()
 {
   if (f(1, 1, 2) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

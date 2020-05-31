@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR c/42721 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 static unsigned long long
 foo (unsigned long long x, unsigned long long y)
@@ -16,6 +17,6 @@ main (void)
   unsigned long long c = 1;
   b ^= c && (foo (a, -1ULL) != 1L);
   if (b != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

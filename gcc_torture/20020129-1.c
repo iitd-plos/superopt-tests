@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This testcase failed at -O2 on IA-64, because scheduling did not take
    into account conditional execution when using cselib for alias
    analysis.  */
@@ -7,7 +8,7 @@ struct C { struct D c1; long c2, c3, c4, c5, c6; };
 struct A { struct A *a1; struct C *a2; };
 struct B { struct C b1; struct A *b2; };
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 void
@@ -24,7 +25,7 @@ foo (struct B *x, struct B *y)
     }
 
   if (y->b2 != 0)
-    abort ();
+    Mymyabort ();
 
   if (x->b1.c3 == -1)
     {
@@ -35,7 +36,7 @@ foo (struct B *x, struct B *y)
     }
 
   if (y->b1.c3 != -1)
-    abort ();
+    Mymyabort ();
 }
 
 struct B x, y;

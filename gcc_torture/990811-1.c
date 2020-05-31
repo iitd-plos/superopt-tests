@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct s {long a; int b;};
 
 int foo(int x, void *y)
@@ -7,7 +8,7 @@ int foo(int x, void *y)
     case 1: return *(signed char*)y;
     case 2: return *(short*)y;
   }
-  abort();
+  Mymyabort();
 }
 
 int main ()
@@ -24,8 +25,8 @@ int main ()
     c[i] = i;
   }
 
-  if (foo(0, &s) != 1) abort();
-  if (foo(1, c+3) != 3) abort();
-  if (foo(2, sh+3) != 3) abort();
+  if (foo(0, &s) != 1) Mymyabort();
+  if (foo(1, c+3) != 3) Mymyabort();
+  if (foo(2, sh+3) != 3) Mymyabort();
   exit(0);
 }

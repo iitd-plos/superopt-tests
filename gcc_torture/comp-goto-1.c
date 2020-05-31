@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target label_values } */
 /* { dg-require-stack-size "4000" } */
 
@@ -53,7 +54,7 @@ enum operations
 host_addr_t
 f ()
 {
-  abort ();
+  Mymyabort ();
 }
 
 reg_t
@@ -159,7 +160,7 @@ main ()
   res = simulator_kernel (2 + 1, &env);
 
   if (res != 88)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 #else

@@ -1,16 +1,17 @@
+#include"eqchecker_helper.h"
 /* { dg-options "-fwrapv" } */
 
 #include <limits.h>
-extern void abort ();
+extern void Mymyabort ();
 extern void exit (int);
 void f(int i)
 {
   if (i>0)
-    abort();
+    Mymyabort();
   i = -i;
   if (i<0)
     return;
-  abort ();
+  Mymyabort ();
 }
 
 int main(int argc, char *argv[])

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Assignments via pointers pointing to global variables were being killed
    by SSA-DCE.  Test contributed by Paul Brook <paul@nowt.org>  */
 
@@ -21,6 +22,6 @@ void test()
 int main() 
 { 
   test(); 
-  if (g != 42) abort();
+  if (g != 42) Mymyabort();
   exit (0); 
 }

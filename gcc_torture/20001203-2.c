@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct obstack
 {
   long chunk_size;
@@ -41,7 +42,7 @@ void * xmalloc (unsigned int z);
 void _obstack_newchunk (struct obstack *o, int i);
 void get_discrete_bounds (long long *lowp, long long *highp);
 
-extern void *memset(void *, int, __SIZE_TYPE__);
+//extern void *memset(void *, int, __SIZE_TYPE__);
 
 struct type *
 create_array_type (struct type *result_type, struct type *element_type)
@@ -91,7 +92,7 @@ create_array_type (struct type *result_type, struct type *element_type)
 struct type *
 alloc_type (void)
 {
-  abort ();
+  Mymyabort ();
 }
 void * xmalloc (unsigned int z)
 {
@@ -99,7 +100,7 @@ void * xmalloc (unsigned int z)
 }
 void _obstack_newchunk (struct obstack *o, int i)
 {
-  abort ();
+  Mymyabort ();
 }
 void
 get_discrete_bounds (long long *lowp, long long *highp)
@@ -118,6 +119,6 @@ int main(void)
   element_type.length = 4;
   create_array_type (&result_type, &element_type);
   if (result_type.length != 12)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

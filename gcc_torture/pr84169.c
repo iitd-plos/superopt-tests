@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/84169 */
 
 #ifdef __SIZEOF_INT128__
@@ -20,6 +21,6 @@ main ()
 {
   T x = foo (0, 0, 0, 0, 0, 4);
   if (x != -64)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

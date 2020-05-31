@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 struct s { int x, y; };
@@ -11,19 +12,19 @@ f (int attr, ...)
   va_start (va, attr);
 
   if (attr != 2)
-    abort ();
+    Mymyabort ();
 
   va_values = va_arg (va, struct s);
   if (va_values.x != 0xaaaa || va_values.y != 0x5555)
-    abort ();
+    Mymyabort ();
 
   attr = va_arg (va, int);
   if (attr != 3)
-    abort ();
+    Mymyabort ();
 
   va_values = va_arg (va, struct s);
   if (va_values.x != 0xffff || va_values.y != 0x1111)
-    abort ();
+    Mymyabort ();
 
   va_end (va);
 }

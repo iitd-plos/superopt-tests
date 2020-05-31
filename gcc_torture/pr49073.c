@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/49073 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 int a[] = { 1, 2, 3, 4, 5, 6, 7 }, c;
 
 int
@@ -21,6 +22,6 @@ main ()
     }
   while (d < 7);
   if (c != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

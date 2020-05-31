@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/84071 */
 /* Reported by Wilco <wilco@gcc.gnu.org> */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 typedef union 
 {
@@ -22,7 +23,7 @@ int main (void)
   U u = { .ss = -1 };
 
   if (f (0, 0, 0, 0, u) != (1 << sizeof (short) * 8))
-    abort ();
+    Mymyabort ();
 
   return 0;
 }

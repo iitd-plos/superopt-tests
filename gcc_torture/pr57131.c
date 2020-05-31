@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/57131 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 main ()
@@ -14,6 +15,6 @@ main ()
   long long t = ((x1 * (x2 << x3)) / (x4 * x5)) + x6;
 
   if (t != 1)
-    abort ();
+    Mymyabort ();
   return 0;
 }

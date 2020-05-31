@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 f ()
 {
   unsigned long x, y = 1;
@@ -9,6 +10,6 @@ f ()
 main ()
 {
   if (f () != 498)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

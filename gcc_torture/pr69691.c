@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/69691 */
 
 char u[] = { 46, 97, 99, 104, 52, 0 };
@@ -11,14 +12,14 @@ fn (int x)
 {
   if (__builtin_strchr (u, x) || x == 96)
     return x;
-  __builtin_abort ();
+  Mymyabort ();
 }
 
 __attribute__((noinline, noclone)) int
 foo (char x)
 {
   if (x == 0)
-    __builtin_abort ();
+    Mymyabort ();
   if (fn (x) >= 96 && fn (x) <= 122)
     return (fn (x) - 96);
   else if (x == 46)
@@ -63,7 +64,7 @@ bar (char **x)
 		    {
 		      s->b[i] = r2++;
 		      if (r2 == &r[7])
-			__builtin_abort ();
+			Mymyabort ();
 		    }
 		  s = s->b[i];
 		  h++;

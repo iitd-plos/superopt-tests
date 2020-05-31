@@ -1,5 +1,6 @@
+#include"eqchecker_helper.h"
 extern void exit (int);
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct { int a; int b[5]; } x;
 int *y;
@@ -13,6 +14,6 @@ int main (void)
 {
   y = x.b;
   if (foo ())
-    abort ();
+    Mymyabort ();
   exit (0);
 }

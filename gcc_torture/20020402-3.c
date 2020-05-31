@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* extracted from gdb sources */
 
 typedef unsigned long long CORE_ADDR;

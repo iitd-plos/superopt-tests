@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* 920730-1.c */
 #include <limits.h>
 f1()
@@ -27,6 +28,6 @@ f4()
 main ()
 {
 	if((f1()&f2()&f3()&f4())!=1)
-		abort();
+		Mymyabort();
 		exit(0);
 }

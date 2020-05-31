@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/64756 */
 
 int a, *tmp, **c = &tmp;
@@ -16,7 +17,7 @@ fn1 (int *p)
 	*c = p;
 
 	if (tmp != &a)
-	  __builtin_abort ();
+	  Mymyabort ();
 
 	*e = 0;
       }

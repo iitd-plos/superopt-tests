@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 short a = -1;
 int b;
 char c;
@@ -8,6 +9,6 @@ main ()
   c = a;
   b = a | c;
   if (b != -1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

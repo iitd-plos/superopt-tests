@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 static char arg0[] = "arg0";
 static char arg1[] = "arg1";
@@ -11,10 +12,10 @@ static void
 attr_rtx (char *varg0, char *varg1)
 {
   if (varg0 != arg0)
-    abort ();
+    Mymyabort ();
 
   if (varg1 != arg1)
-    abort ();
+    Mymyabort ();
 
   return;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 foo(bufp)
 char *bufp;
 {
@@ -10,7 +11,7 @@ main()
   char x;
 
   if (foo (&x) != 'a')
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

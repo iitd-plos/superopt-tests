@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdarg.h>
 
 #define VALUE 0x123456789abcdefLL
@@ -13,14 +14,14 @@ test (int n, ...)
   for (i = 2; i <= n; i++)
     {
       if (va_arg (ap, int) != i)
-	abort ();
+	Mymyabort ();
     }
 
   if (va_arg (ap, long long) != VALUE)
-    abort ();
+    Mymyabort ();
 
   if (va_arg (ap, int) != AFTER)
-    abort ();
+    Mymyabort ();
 
   va_end (ap);
 }

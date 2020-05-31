@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This is a modfied version of va-arg-9.c to test va_copy.  */
 
 #include <stdarg.h>
@@ -14,7 +15,7 @@ to_hex (unsigned int a)
   static char hex[] = "0123456789abcdef";
 
   if (a > 15)
-    abort ();
+    Mymyabort ();
   return hex[a];
 }
 
@@ -28,13 +29,13 @@ fap (int i, char* format, va_list ap)
   formatc = format;
 
   if (strlen (format) != 16 - i)
-    abort ();
+    Mymyabort ();
   while (*format)
     if (*format++ != to_hex (va_arg (ap, int)))
-      abort ();
+      Mymyabort ();
   while (*formatc)
     if (*formatc++ != to_hex (va_arg (apc, int)))
-      abort ();
+      Mymyabort ();
 }
 
 void

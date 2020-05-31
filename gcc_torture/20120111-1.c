@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -13,6 +14,6 @@ int main() {
   uint32_t r1;
   r1 = f0a (12094370573988097329ULL);
   if (r1 != ~0U)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #include <stdlib.h>
 
 struct {
@@ -49,8 +50,8 @@ main()
 {
     load_data();
     if (sizeof (int) == 2 && data_ptr[0].dummy != 0x5555)
-      abort ();
+      Mymyabort ();
     else if (sizeof (int) > 2 && data_ptr[0].dummy != 0x55555555)
-      abort ();
+      Mymyabort ();
     exit (0);
 }

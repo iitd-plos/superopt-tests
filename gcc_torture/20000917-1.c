@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This bug exists in gcc-2.95, egcs-1.1.2, gcc-2.7.2 and probably
    every other version as well.  */
 
@@ -37,6 +38,6 @@ main (void)
 
   *({ ({ one (); &a; }); }) = zero ();
   if (a.a && a.b && a.c)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

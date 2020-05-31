@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 static char id_space[2] [32 +1];
 typedef short COUNT;
 

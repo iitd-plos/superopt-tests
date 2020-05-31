@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int a = 0x101;
 int b = 0x100;
 

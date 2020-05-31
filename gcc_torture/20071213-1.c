@@ -1,8 +1,9 @@
+#include"eqchecker_helper.h"
 /* PR target/34281 */
 
 #include <stdarg.h>
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 void
 h (int x, va_list ap)
@@ -11,14 +12,14 @@ h (int x, va_list ap)
     {
     case 1:
       if (va_arg (ap, int) != 3 || va_arg (ap, int) != 4)
-	abort ();
+	Mymyabort ();
       return;
     case 5:
       if (va_arg (ap, int) != 9 || va_arg (ap, int) != 10)
-	abort ();
+	Mymyabort ();
       return;
     default:
-      abort ();
+      Mymyabort ();
     }
 }
 
@@ -29,7 +30,7 @@ f1 (int i, long long int j, ...)
   va_start (ap, j);
   h (i, ap);
   if (i != 1 || j != 2)
-    abort ();
+    Mymyabort ();
   va_end (ap);
 }
 
@@ -40,7 +41,7 @@ f2 (int i, int j, int k, long long int l, ...)
   va_start (ap, l);
   h (i, ap);
   if (i != 5 || j != 6 || k != 7 || l != 8)
-    abort ();
+    Mymyabort ();
   va_end (ap);
 }
 

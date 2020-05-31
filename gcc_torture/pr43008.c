@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int i;
 struct X {
   int *p;
@@ -9,7 +10,7 @@ my_alloc (void)
   p->p = &i;
   return p;
 }
-extern void abort (void);
+extern void Mymyabort (void);
 int main()
 {
   struct X *p, *q;
@@ -18,6 +19,6 @@ int main()
   *(p->p) = 1;
   *(q->p) = 0;
   if (*(p->p) != 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

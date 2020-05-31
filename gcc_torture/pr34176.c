@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 
 typedef __SIZE_TYPE__ size_t;
 typedef unsigned int index_ty;
@@ -26,13 +27,13 @@ hash_find_entry (size_t *result)
     return 0;
 }
 
-extern void abort (void);
+extern void Mymyabort (void);
 struct mult_index * __attribute__((noinline))
 foo (size_t n)
 {
   static count = 0;
   if (count++ > 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

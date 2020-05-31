@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 #pragma pack(1)
 struct S
@@ -18,6 +19,6 @@ main (void)
       d[i].f1 = 1;
     }
   if (d[0].f1 != 1)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

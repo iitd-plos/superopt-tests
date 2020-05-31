@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* This used to generate unaligned accesses at -O2 because of IVOPTS.  */
 
 struct packed_struct

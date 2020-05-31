@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 
 struct container
 {
@@ -17,6 +18,6 @@ int
 main ()
 {
   if (foo ((struct container *) space) != 5)
-    abort ();
+    Mymyabort ();
   return 0;
 }

@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 long foo(long a, long b, long c)
 {
   if (a != 12 || b != 1 || c != 11)
-    abort();
+    Mymyabort();
   return 0;
 }
 long bar (long a, long b)

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 struct F { int x; int y; };
 
 int main()
@@ -14,5 +15,5 @@ int main()
     }
   return 0;
  die:
-  abort ();
+  Mymyabort ();
 }

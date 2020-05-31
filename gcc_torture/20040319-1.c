@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int
 blah (int zzz)
 {
@@ -11,7 +12,7 @@ blah (int zzz)
 main()
 {
   if (blah (-1) != 1)
-    abort ();
+    Mymyabort ();
   else
     exit (0);
 }

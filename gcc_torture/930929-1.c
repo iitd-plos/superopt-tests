@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 sub1 (i)
      int i;
 {
@@ -25,12 +26,12 @@ sub4 (i)
 main()
 {
   if (sub1 (20) != 35)
-    abort ();
+    Mymyabort ();
   if (sub2 (20) != 45)
-    abort ();
+    Mymyabort ();
   if (sub3 (20) != -5)
-    abort ();
+    Mymyabort ();
   if (sub4 (20) != 5)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

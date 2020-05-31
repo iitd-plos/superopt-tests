@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target trampolines } */
 
 extern long foo (long, long, long (*) (long, long));
@@ -41,7 +42,7 @@ main (void)
     }
 
   if ((sum & 0xffffffff) != 0xbecfcbf5)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* Test that sibling call is not used if there is an argument overlap.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 struct S
 {
@@ -11,9 +12,9 @@ int
 foo2 (struct S x, struct S y)
 {
   if (x.a != 3 || x.b != 4 || x.c != 5)
-    abort ();
+    Mymyabort ();
   if (y.a != 6 || y.b != 7 || y.c != 8)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 
@@ -22,7 +23,7 @@ foo3 (struct S x, struct S y, struct S z)
 {
   foo2 (x, y);
   if (z.a != 9 || z.b != 10 || z.c != 11)
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

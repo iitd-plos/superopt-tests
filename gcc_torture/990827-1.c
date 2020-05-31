@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 unsigned test(unsigned one , unsigned  bit)
 {
     unsigned val=  bit & 1;
@@ -10,11 +11,11 @@ unsigned test(unsigned one , unsigned  bit)
 int main()
 {
   if (test (1,0) != 0)
-    abort ();
+    Mymyabort ();
   if (test (1,1) != 1)
-    abort ();
+    Mymyabort ();
   if (test (1,65535) != 1)
-    abort ();
+    Mymyabort ();
   exit (0);
 
   return 0;

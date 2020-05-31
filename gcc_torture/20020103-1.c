@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* On h8300 port, the following used to be broken with -mh or -ms.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 unsigned long
@@ -19,10 +20,10 @@ int
 main ()
 {
   if (foo (0) != 0x0000ffff)
-    abort ();
+    Mymyabort ();
 
   if (bar (0) != 0xffff0000)
-    abort ();
+    Mymyabort ();
 
   exit (0);
 }

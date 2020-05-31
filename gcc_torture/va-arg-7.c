@@ -1,7 +1,8 @@
+#include"eqchecker_helper.h"
 /* Origin: Franz Sirl <Franz.Sirl-kernel@lauterbach.com> */
 /* { dg-options "-fgnu89-inline" } */
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 #include <stdarg.h>
@@ -16,11 +17,11 @@ debug(int i1, int i2, int i3, int i4, int i5, int i6, int i7,
   va_start (ap, f9);
 
   if (va_arg (ap,int) != 8)
-    abort ();
+    Mymyabort ();
   if (va_arg (ap,int) != 9)
-    abort ();
+    Mymyabort ();
   if (va_arg (ap,int) != 10)
-    abort ();
+    Mymyabort ();
 
   va_end (ap);
 }

@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 #define VALUE 0x123456789abcdefLL
 #define AFTER 0x55
 
@@ -7,7 +8,7 @@ test1 (int a, long long value, int after)
   if (a != 1
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -17,7 +18,7 @@ test2 (int a, int b, long long value, int after)
       || b != 2
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -28,7 +29,7 @@ test3 (int a, int b, int c, long long value, int after)
       || c != 3
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -40,7 +41,7 @@ test4 (int a, int b, int c, int d, long long value, int after)
       || d != 4
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -53,7 +54,7 @@ test5 (int a, int b, int c, int d, int e, long long value, int after)
       || e != 5
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -67,7 +68,7 @@ test6 (int a, int b, int c, int d, int e, int f, long long value, int after)
       || f != 6
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -82,7 +83,7 @@ test7 (int a, int b, int c, int d, int e, int f, int g, long long value, int aft
       || g != 7
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 void
@@ -98,7 +99,7 @@ test8 (int a, int b, int c, int d, int e, int f, int g, int h, long long value, 
       || h != 8
       || value != VALUE
       || after != AFTER)
-    abort ();
+    Mymyabort ();
 }
 
 int

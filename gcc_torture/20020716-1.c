@@ -1,4 +1,5 @@
-extern void abort (void);
+#include"eqchecker_helper.h"
+extern void Mymyabort (void);
 extern void exit (int);
 
 int sub1 (int val)
@@ -31,6 +32,6 @@ int testcond (int val)
 int main (void)
 {
   if (testcond (1))
-    abort ();
+    Mymyabort ();
   exit (0);
 }

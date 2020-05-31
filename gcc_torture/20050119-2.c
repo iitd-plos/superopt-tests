@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR middle-end/19874 */
 typedef enum { A, B, C, D } E;
 
@@ -8,16 +9,16 @@ struct S {
   E __attribute__ ((mode (__byte__))) d;
 };
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 E
 foo (struct S *s)
 {
   if (s->a != s->b)
-    abort ();
+    Mymyabort ();
   if (s->c != C)
-    abort ();
+    Mymyabort ();
   return s->d;
 }
 
@@ -34,7 +35,7 @@ main (void)
   s[1].c = B;
   s[1].d = A;
   if (foo (s) != D)
-    abort ();
+    Mymyabort ();
   exit (0);
 }
 

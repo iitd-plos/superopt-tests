@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR optimization/10312 */
 /* Originator: Peter van Hoof <p dot van-hoof at qub dot ac dot uk> */
 

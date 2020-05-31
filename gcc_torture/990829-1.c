@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 double test (const double le, const double ri)
 {
 	double val = ( ri - le ) / ( ri * ( le + 1.0 ) );
@@ -10,6 +11,6 @@ int main ()
 
 	retval = test(1.0,2.0);
         if (retval < 0.24 || retval > 0.26)
-	  abort ();
+	  Mymyabort ();
 	exit (0);
 }

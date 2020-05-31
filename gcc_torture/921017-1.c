@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-skip-if "requires alloca" { ! alloca } { "-O0" } { "" } } */
 /* { dg-require-effective-target trampolines } */
 
@@ -13,7 +14,7 @@ f(n)
 }
 main()
 {
-  if(f(2)!=4711)abort();
+  if(f(2)!=4711)Mymyabort();
 
   exit(0);
 }

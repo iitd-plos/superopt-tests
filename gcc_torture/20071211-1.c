@@ -1,4 +1,5 @@
-extern void abort() __attribute__ ((noreturn));
+#include"eqchecker_helper.h"
+extern void Mymyabort() __attribute__ ((noreturn));
 
 struct s
 {
@@ -18,6 +19,6 @@ int main()
   ++sv.f2;
   f2 = sv.f2;
   if (f2 != 0)
-    abort();
+    Mymyabort();
   return 0;
 }

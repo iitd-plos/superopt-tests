@@ -706,9 +706,6 @@ PROGS :=  20000112-1 \
           991227-1 \
           991228-1 \
           alias-1 \
-          alias-2 \
-          alias-3 \
-          alias-4 \
           alias-access-path-1 \
           alias-access-path-2 \
           align-1 \
@@ -835,10 +832,6 @@ PROGS :=  20000112-1 \
           memcpy-1 \
           memcpy-2 \
           memcpy-bi \
-          memset-1 \
-          memset-2 \
-          memset-3 \
-          memset-4 \
           mod-1 \
           mode-dependent-address \
           multdi-1 \
@@ -1199,13 +1192,10 @@ PROGS :=  20000112-1 \
           pr70566 \
           pr70586 \
           pr70602 \
-          pr70903 \
           pr71083 \
           pr71335 \
           pr71550 \
           pr71554 \
-          pr71626-1 \
-          pr71626-2 \
           pr71631 \
           pr71700 \
           pr7284-1 \
@@ -1250,7 +1240,6 @@ PROGS :=  20000112-1 \
           pr84169 \
           pr84521 \
           pr85095 \
-          pr85169 \
           pr85529-1 \
           pr85529-2 \
           pr85582-1 \
@@ -1319,7 +1308,6 @@ PROGS :=  20000112-1 \
           stdarg-1 \
           stdarg-2 \
           stdarg-3 \
-          stdarg-4 \
           strcmp-1 \
           strcpy-1 \
           strcpy-2 \
@@ -1331,7 +1319,6 @@ PROGS :=  20000112-1 \
           strct-varg-1 \
           string-opt-17 \
           string-opt-18 \
-          string-opt-5 \
           strlen-1 \
           strlen-2 \
           strlen-3 \
@@ -1559,6 +1546,19 @@ PROGS :=  20000112-1 \
 #          pr94524-2 \
 #          scal-to-vec3 \
 #          20041114-1 \
+#          memset-1 \
+#          memset-2 \
+#          memset-3 \
+#          memset-4 \
+#          string-opt-5 \
+#          alias-2 \
+#          alias-3 \
+#          alias-4 \
+#          pr70903 \
+#          pr71626-1 \
+#          pr71626-2 \
+#          pr85169 \
+#          stdarg-4 \
 
 
 # make them available to gentest.sh and runtest.sh

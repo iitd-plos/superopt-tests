@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/79737 */
 
 #if __SIZEOF_INT__ < 4
@@ -38,6 +39,6 @@ main ()
 {
   foo ();
   if (h.e != 0)
-    __builtin_abort ();
+    Mymyabort ();
   return 0;
 }

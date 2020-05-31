@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR tree-optimization/88739 */
 #if __SIZEOF_SHORT__ == 2 &&  __SIZEOF_INT__ == 4 && __CHAR_BIT__ == 8
 struct A
@@ -22,12 +23,12 @@ bar (int x)
   static int i;
   switch (i++)
     {
-    case 0: if (x != v.f.d) __builtin_abort (); break;
-    case 1: if (x != v.f.e) __builtin_abort (); break;
-    case 2: if (x != v.g[3]) __builtin_abort (); break;
-    case 3: if (x != v.h[6]) __builtin_abort (); break;
-    case 4: if (x != v.h[7]) __builtin_abort (); break;
-    default: __builtin_abort (); break;
+    case 0: if (x != v.f.d) Mymyabort (); break;
+    case 1: if (x != v.f.e) Mymyabort (); break;
+    case 2: if (x != v.g[3]) Mymyabort (); break;
+    case 3: if (x != v.h[6]) Mymyabort (); break;
+    case 4: if (x != v.h[7]) Mymyabort (); break;
+    default: Mymyabort (); break;
     }
 }
 

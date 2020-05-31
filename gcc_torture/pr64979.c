@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/64979 */
 
 #include <stdarg.h>
@@ -10,9 +11,9 @@ bar (int x, va_list *ap)
       int i;
       for (i = 0; i < 10; i++)
 	if (i != va_arg (*ap, int))
-	  __builtin_abort ();
+	  Mymyabort ();
       if (va_arg (*ap, double) != 0.5)
-	__builtin_abort ();
+	Mymyabort ();
     }
 }
 

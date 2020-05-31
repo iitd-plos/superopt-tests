@@ -1,4 +1,5 @@
-typedef unsigned int dev_t;
+#include"eqchecker_helper.h"
+typedef unsigned int mydev_t;
 typedef unsigned int kdev_t;
 
 static inline kdev_t to_kdev_t(int dev)
@@ -18,7 +19,7 @@ void do_mknod(const char * filename, int mode, kdev_t dev)
 	if (dev==0x15800078)
 		exit(0);
 	else
-		abort();
+		Mymyabort();
 }
 
 
@@ -37,7 +38,7 @@ char * getname(const char * filename)
 	return (char *)(a1*a2+a3*a4+a5*a6+a7*a8+a9);
 }
 
-int sys_mknod(const char * filename, int mode, dev_t dev)
+int sys_mknod(const char * filename, int mode, mydev_t dev)
 {
 	int error;
 	char * tmp;

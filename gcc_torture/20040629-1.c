@@ -1,9 +1,10 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 
 /* Test arithmetics on bitfields.  */
 #ifndef T
 
-extern void abort (void);
+extern void Mymyabort (void);
 extern void exit (int);
 
 #ifndef FIELDS1
@@ -41,7 +42,7 @@ void fn9_##n (unsigned int x) { pre d.k post; }
 #include "20040629-1.c"
 #undef T
 
-#define FAIL(n, i) abort ()
+#define FAIL(n, i) Mymyabort ()
 
 int
 main (void)

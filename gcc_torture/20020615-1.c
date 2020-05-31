@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR target/7042.  When reorg.c changed branches into return insns, it
    completely forgot about any current_function_epilogue_delay_list and
    dropped those insns.  Uncovered on cris-axis-elf, where an insn in an
@@ -54,6 +55,6 @@ int main ()
   if (line_hints (fh, gsf, gsf + 1) != 1
       || line_hints (fh + 1, gsf + 2, gsf + 3) != 8
       || line_hints (fh + 2, gsf + 2, gsf + 3) != 4)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

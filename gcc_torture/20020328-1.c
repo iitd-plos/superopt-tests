@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 int b = 0;
 
 func () { }
@@ -6,7 +7,7 @@ void
 testit(int x)
 {
   if (x != 20)
-    abort ();
+    Mymyabort ();
 }
 
 int

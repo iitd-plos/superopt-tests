@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 union u {
   struct { int i1, i2; } t;
   double d;
@@ -16,6 +17,6 @@ main()
   v.t.i2 = 2;
   f (x, v);
   if (x[1].t.i1 != 1 || x[1].t.i2 != 2)
-    abort ();
+    Mymyabort ();
   exit (0);
 }

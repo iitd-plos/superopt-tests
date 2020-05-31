@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* { dg-require-effective-target int32plus } */
 struct X {
     char fill0[800000];
@@ -19,7 +20,7 @@ int main()
     x.a = 1 << 17;
     x.b = 2 << 17;
     if (Avg(&x, 1) != 3)
-	__builtin_abort();
+	Mymyabort();
     return 0;
 }
 

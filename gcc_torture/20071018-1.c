@@ -1,4 +1,5 @@
-extern void abort(void);
+#include"eqchecker_helper.h"
+extern void Mymyabort(void);
 
 struct foo {
   int rank;
@@ -26,6 +27,6 @@ struct foo * __attribute__((noinline, noclone)) foo(int rank)
 int main()
 {
   if (foo(1) == 0)
-    abort ();
+    Mymyabort ();
   return 0;
 }

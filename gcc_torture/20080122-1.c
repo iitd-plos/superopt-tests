@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* PR rtl-optimization/34628 */
 /* Origin: Martin Michlmayr <tbm@cyrius.com> */
 

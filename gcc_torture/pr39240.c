@@ -1,6 +1,7 @@
+#include"eqchecker_helper.h"
 /* PR target/39240 */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 __attribute__ ((noinline))
 static int foo1 (int x)
@@ -90,16 +91,16 @@ int
 main (void)
 {
   if (bar1 (-10) != l1)
-    abort ();
+    Mymyabort ();
   if (bar2 (-10) != l2)
-    abort ();
+    Mymyabort ();
   if (bar3 (-10) != l3)
-    abort ();
+    Mymyabort ();
   if (bar4 (-10) != l4)
-    abort ();
+    Mymyabort ();
   if (bar5 (-10) != l5)
-    abort ();
+    Mymyabort ();
   if (bar6 (-10) != l6)
-    abort ();
+    Mymyabort ();
   return 0;
 }

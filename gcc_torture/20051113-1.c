@@ -1,5 +1,6 @@
-extern void *malloc(__SIZE_TYPE__);
-extern void *memset(void *, int, __SIZE_TYPE__);
+#include"eqchecker_helper.h"
+//extern void *malloc(__SIZE_TYPE__);
+//extern void *memset(void *, int, __SIZE_TYPE__);
 typedef struct
 {
   short a;  
@@ -64,8 +65,8 @@ main() {
   p->List[1].a.Count2 = 999;
   p->List[2].a.Count2 = 0x101010101LL;
   if (Sum(p) != 555 + 999 + 0x101010101ULL)
-    abort();
+    Mymyabort();
   if (Sum2(p) != 555 + 999 + 0x101010101LL)
-    abort();
+    Mymyabort();
   return 0;
 }

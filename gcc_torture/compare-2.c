@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 /* Copyright (C) 2002 Free Software Foundation.
 
    Ensure that the composite comparison optimization doesn't misfire
@@ -5,7 +6,7 @@
 
    Written by Roger Sayle, 3rd June 2002.  */
 
-extern void abort (void);
+extern void Mymyabort (void);
 
 int
 foo (int x, int y)
@@ -18,7 +19,7 @@ int
 main ()
 {
   if (! foo (-1,0))
-    abort ();
+    Mymyabort ();
   return 0;
 }
 

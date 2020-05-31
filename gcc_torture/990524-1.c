@@ -1,3 +1,4 @@
+#include"eqchecker_helper.h"
 char a[] = "12345";
 char b[] = "12345";
 
@@ -16,7 +17,7 @@ void loop (char * pz, char * pzDta)
     } loopDone2:;
 
   if (a - pz != b - pzDta)
-    abort ();
+    Mymyabort ();
 }
 
 main()
