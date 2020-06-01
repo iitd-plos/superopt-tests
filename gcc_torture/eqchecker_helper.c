@@ -8,7 +8,8 @@
 
 void Mymyabort()
 {
-  abort();
+  //abort();
+  return;
 }
 
 void MYmyexit(int ec)
