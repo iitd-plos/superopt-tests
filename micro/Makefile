@@ -90,6 +90,7 @@ gentest:
 	bash $(VPATH)/gentest.sh $(RUN)
 
 runtest:
+	cp $(VPATH)/vla.foo_vla.*lsprel_mapping -t .
 	bash $(VPATH)/runtest.sh $(RUN)
 
 .DEFAULT_GOAL := all
