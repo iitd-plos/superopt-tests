@@ -6,7 +6,8 @@ include $(SRCDIR)/Makefile.common            # build rules
 VPATH = $(SRCDIR)/micro
 
 PROGS := ddec \
-         lerner
+         lerner \
+         vla
 
 PROGS_PREFIX := basedon \
                 #the following programs are non-bisimilar and so do not work currently

@@ -1,4 +1,5 @@
 #pragma once
+#include <stdio.h>
 
 void MYmyexit(int ec);
 void MYmymemset(void *s, int c, size_t n);
