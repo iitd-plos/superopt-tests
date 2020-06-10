@@ -79,10 +79,10 @@ clean:
 	rm -f *.o *.tmp $(ALL_PROGS)
 
 gentest:
-	bash $(VPATH)/gentest.sh
+	bash $(VPATH)/gentest.sh $(RUN)
 
 runtest:
-	bash $(VPATH)/runtest.sh
+	bash $(VPATH)/runtest.sh $(RUN)
 
 .DEFAULT_GOAL := all
 

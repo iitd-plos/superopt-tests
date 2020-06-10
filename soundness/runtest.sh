@@ -28,4 +28,4 @@ do
   gen_for_ll_as ${f} >> chaperon_commands
 done
 
-#parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
+[[ $# -eq 0 ]] && parallel --load "${PARALLEL_LOAD_PERCENT:-30}%" < chaperon_commands || true

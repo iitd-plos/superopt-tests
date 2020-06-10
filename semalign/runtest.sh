@@ -29,4 +29,4 @@ g_eqflags["strlen.strlen"]="--unroll-factor 8 --page_size 2"
 
 gen_for_src_dst "strlen" "safety_fail" >> chaperon_commands
 
-#parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
+[[ $# -eq 0 ]] && parallel --load "${PARALLEL_LOAD_PERCENT:-30}%" < chaperon_commands || true

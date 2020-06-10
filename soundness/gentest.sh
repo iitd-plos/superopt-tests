@@ -19,3 +19,5 @@ for f in ${LL_ASM_PROGS:-}
 do
   gen_for_ll_as ${f}       >> gentest_chaperon_commands
 done
+
+[[ $# -eq 0 ]] && parallel --load "${PARALLEL_LOAD_PERCENT:-30}%" < gentest_chaperon_commands || true

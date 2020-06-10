@@ -25,4 +25,4 @@ gen_commands_from_file eq_funcs_spec2k_bzip2_ext_nv ""                   >> chap
 gen_commands_from_file eq_funcs_spec2k_bzip2_ext_v2 "--unroll-factor 4"  >> chaperon_commands
 gen_commands_from_file eq_funcs_spec2k_bzip2_ext_v8 "--unroll-factor 16" >> chaperon_commands
 
-#parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
+[[ $# -eq 0 ]] && parallel --load "${PARALLEL_LOAD_PERCENT:-30}%" < chaperon_commands || true
