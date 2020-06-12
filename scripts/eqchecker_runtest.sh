@@ -50,7 +50,7 @@ gen_command_all_compilers()
 get_funcs_except_main_and_MYmy_from_etfg()
 {
   file=$1
-  grep '=FunctionName:' "${file}" | grep -v -e 'MYmy' -e 'main$' | cut -f2 -d' '
+  grep '=FunctionName:' "${file}" | grep -v -e 'MYmy' -e 'main$' -e 'Mymy' -e 'toupper' -e 'atoi' | cut -f2 -d' '
 }
 
 gen_for_src_dst()
