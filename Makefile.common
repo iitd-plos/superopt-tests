@@ -125,11 +125,12 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 
 %.c.O0.eqchecker.bc: %.c
 	CLANG_REVERSE_ARGS=1 $(CLANG_I386) $(EQCHECKER_DEFINES) -Xclang -disable-O0-optnone $(INCLUDES) -m32 -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
-	$(LLVM_OPT) -mem2reg -strip-debug -o $@ $@.tmp
+	#$(LLVM_OPT) -mem2reg -strip-debug -o $@ $@.tmp
+	$(LLVM_OPT) -mem2reg -o $@ $@.tmp
 
 %.c.O0.bc: %.c
 	$(CLANG_I386) $(CFLAGS) -Xclang -disable-O0-optnone $(INCLUDES) -m32 -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
-	$(LLVM_OPT) -mem2reg -strip-debug -die -o $@ $@.tmp
+	$(LLVM_OPT) -mem2reg -die -o $@ $@.tmp
 
 %.bc.eqchecker.O0: %.c.O0.bc #eqchecker_helper.c.O0.bc
 	$(LLVM_LINK) $^ -o $@
@@ -204,5 +205,5 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 # LLVM LL
 
 %.ll.bc.eqchecker.O0: %.ll
-	$(LLVM_OPT) -mem2reg -strip-debug $< -o $@
+	$(LLVM_OPT) -mem2reg $< -o $@
 	# no linking
