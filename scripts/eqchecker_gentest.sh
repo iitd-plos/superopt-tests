@@ -23,3 +23,9 @@ gen_for_ll_as()
   infile_pfx="$1"
   echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/${infile_pfx}.ll.${BC_O0_SUFFIX} ${PWD}/${infile_pfx}.as.${O0_SUFFIX}"
 }
+
+gen_for_llc()
+{
+  file_pfx="$1"
+  echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/${file_pfx}.${BC_O0_SUFFIX} ${PWD}/${file_pfx}.${LLC_O3_SUFFIX}"
+}

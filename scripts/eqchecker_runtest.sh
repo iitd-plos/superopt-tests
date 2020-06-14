@@ -28,6 +28,21 @@ gen_command_internal()
   echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${eqlog_path}\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags} --proof ${proof_path} ${etfg_path} ${tfg_path}\""
 }
 
+gen_command_llc()
+{
+  fn=$1
+  etfg_file=$2
+  tfg_comm_pfx=$3
+  file_fn_pfx=$4
+  user_sfx_opt=${5:-}
+
+  eqflags_non_comp=${g_global_eqflags:-}
+  eqflags_non_comp="${eqflags_non_comp} ${g_eqflags[$file_fn_pfx]:-}"
+
+  tfg_pfx=${tfg_comm_pfx}.llc.${O3_SUFFIX}
+  gen_command_internal ${fn} ${etfg_file} ${tfg_pfx} "${eqflags_non_comp}" ".${fn}${user_sfx_opt}"
+}
+
 gen_command_all_compilers()
 {
   fn=$1
@@ -64,6 +79,21 @@ gen_for_src_dst()
   do
     file_fn_pfx="${filename_pfx}.${fn}"
     gen_command_all_compilers ${fn} ${etfg_file} ${tfg_file_pfx} ${file_fn_pfx} "${user_sfx_opt}"
+  done
+}
+
+gen_for_llc()
+{
+  filename_pfx="$1"
+  user_sfx_opt="${2:+.${2}}"
+
+  etfg_file="${filename_pfx}.${ETFG_SUFFIX}"
+  tfg_file_pfx="${filename_pfx}"
+
+  for fn in $(get_funcs_except_main_and_MYmy_from_etfg "${etfg_file}");
+  do
+    file_fn_pfx="${filename_pfx}.${fn}"
+    gen_command_llc ${fn} ${etfg_file} ${tfg_file_pfx} ${file_fn_pfx} "${user_sfx_opt}"
   done
 }
 
