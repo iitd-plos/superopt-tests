@@ -33,11 +33,11 @@ eqchecker_helper.gcc.eqchecker.O3.i386.o: eqchecker_helper.c
 # CLANG
 
 %.clang.eqchecker.O0.i386.o: %.c
-	$(GCC_I386) -c $(CFLAGS) $(GCC_I386_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O0 $< -o $@
 eqchecker_helper.clang.eqchecker.O0.i386.o: eqchecker_helper.c
-	$(GCC_I386) -c $(CFLAGS) $(GCC_I386_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O0 $< -o $@
 %.clang.eqchecker.O0.i386: %.clang.eqchecker.O0.i386.o eqchecker_helper.clang.eqchecker.O0.i386.o
-	$(GCC_I386) $(CFLAGS) $(GCC_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
+	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
 
 %.clang.eqchecker.O2.i386.o: %.c
 	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O2 $< -o $@
