@@ -179,8 +179,8 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 
 %.llc.eqchecker.O3.i386: %.bc.eqchecker.O0
 	$(LLVM_OPT) -load $(SUPEROPT_INSTALL_DIR)/lib/LLVMSuperopt.so -convertLocalLinkageToGlobal -o $@.tmp1 $<
-	$(LLVM_OPT) $(LLVM_OPT_EQCHECKER_FLAGS_O3) -o $@.tmp $@.tmp1
-	$(LLC) -O3 -filetype=obj $@.tmp -o $@.tmp.o
+	$(LLVM_OPT) --dyn_debug=disableSemanticAA $(LLVM_OPT_EQCHECKER_FLAGS_O3) -o $@.tmp $@.tmp1
+	$(LLC) --dyn_debug=disableSemanticAA -O3 -filetype=obj $@.tmp -o $@.tmp.o
 	$(CLANG_I386) -O3 $@.tmp.o eqchecker_helper.clang.eqchecker.O3.i386.o $(LIBS) -o $@
 
 # LLVM BC text
