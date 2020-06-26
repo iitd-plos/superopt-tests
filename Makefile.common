@@ -33,9 +33,9 @@ eqchecker_helper.gcc.eqchecker.O3.i386.o: eqchecker_helper.c
 # CLANG
 
 %.clang.eqchecker.O0.i386.o: %.c
-	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O0 $< -o $@
 eqchecker_helper.clang.eqchecker.O0.i386.o: eqchecker_helper.c
-	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O0 $< -o $@
 %.clang.eqchecker.O0.i386: %.clang.eqchecker.O0.i386.o eqchecker_helper.clang.eqchecker.O0.i386.o
 	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
 
@@ -47,9 +47,9 @@ eqchecker_helper.clang.eqchecker.O2.i386.o: eqchecker_helper.c
 	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
 
 %.clang.eqchecker.O3.i386.o: %.c
-	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O3 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O3 $< -o $@
 eqchecker_helper.clang.eqchecker.O3.i386.o: eqchecker_helper.c
-	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O3 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O3 $< -o $@
 %.clang.eqchecker.O3.i386: %.clang.eqchecker.O3.i386.o eqchecker_helper.clang.eqchecker.O3.i386.o
 	$(CLANG_I386) --verbose -Wl,--verbose $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) $^ -O3 -o $@ $(LIBS)
 

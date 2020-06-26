@@ -10,6 +10,7 @@ PROGS := ddec \
          vla
 
 PROGS_PREFIX := fpext \
+                fptrunc \
                 #basedon \
                 #the following programs are non-bisimilar and so do not work currently
                 #barthe \
