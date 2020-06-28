@@ -139,7 +139,7 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 	$(LLVM_OPT) -O2 -o $@ $<
 
 %.bc.eqchecker.O3: %.bc.eqchecker.O0
-	$(LLVM_OPT) -O3 -o $@ $<
+	$(LLVM_OPT) --dyn_debug=disableSemanticAA -O3 -o $@ $<
 
 #%.bc.O3: %.bc.O0
 #	$(LLVM_OPT) -O3 -o $@ $<

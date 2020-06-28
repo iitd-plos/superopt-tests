@@ -9,8 +9,10 @@ PROGS := ddec \
          lerner \
          vla
 
-PROGS_PREFIX := fpext \
-                fptrunc \
+PROGS_PREFIX := #fpext \
+                #fptrunc \
+                #fpcmp \
+                #fptoui \
                 #basedon \
                 #the following programs are non-bisimilar and so do not work currently
                 #barthe \
