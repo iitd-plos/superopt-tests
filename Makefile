@@ -55,7 +55,7 @@ run_oopsla_test:
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands_oopsla
 
 typecheck_test:
-	$(SUPEROPT_PROJECT_DIR)/superopt/typecheck
+	$(SUPEROPT_PROJECT_DIR)/superopt/build/etfg_i386/typecheck
 
 codegen_test:
 	$(foreach t,$(CODEGEN_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) codegen_test || exit;)
