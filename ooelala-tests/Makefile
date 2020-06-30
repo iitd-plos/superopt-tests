@@ -2,7 +2,7 @@ include ../config.mak                        # paths
 include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common            # build rules
 
-OOELALA = $(CLANG_I386) -Xclang -load -Xclang $(MYLLVM_DIR)/lib/UnsequencedAliasVisitor.so -Xclang -add-plugin -Xclang unseq
+OOELALA = $(CLANG_I386) --dyn_debug=disableSemanticAA -Xclang -load -Xclang $(MYLLVM_DIR)/lib/UnsequencedAliasVisitor.so -Xclang -add-plugin -Xclang unseq
 TIME=/usr/bin/time
 
 # set VPATH path for targets and src files
