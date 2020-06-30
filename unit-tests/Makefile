@@ -9,4 +9,7 @@ runtests: 0.pr 0.upinv
 	$(SUPEROPT_PROJECT_DIR)/superopt/build/etfg_i386/prove_using_local_sprel_expr_guesses $(VPATH)/0.pr
 	$(SUPEROPT_PROJECT_DIR)/superopt/build/etfg_i386/update_invariant_state_over_edge $(VPATH)/0.upinv
 
-.PHONY: all runtests
+clean::
+	true
+
+.PHONY: all runtests clean

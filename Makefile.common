@@ -40,9 +40,9 @@ eqchecker_helper.clang.eqchecker.O0.i386.o: eqchecker_helper.c
 	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
 
 %.clang.eqchecker.O2.i386.o: %.c
-	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O2 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O2 $< -o $@
 eqchecker_helper.clang.eqchecker.O2.i386.o: eqchecker_helper.c
-	$(CLANG_I386) -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O2 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) -O2 $< -o $@
 %.clang.eqchecker.O2.i386: %.clang.eqchecker.O2.i386.o eqchecker_helper.clang.eqchecker.O2.i386.o
 	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
 
@@ -54,11 +54,11 @@ eqchecker_helper.clang.eqchecker.O3.i386.o: eqchecker_helper.c
 	$(CLANG_I386) --verbose -Wl,--verbose $(CFLAGS) $(CLANG_I386_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) $^ -O3 -o $@ $(LIBS)
 
 %.clang.O0.i386: %.c
-	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_FLAGS) -O0 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA $(CFLAGS) $(CLANG_I386_FLAGS) -O0 $< -o $@
 %.clang.O2.i386: %.c
-	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_FLAGS) -O2 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA $(CFLAGS) $(CLANG_I386_FLAGS) -O2 $< -o $@
 %.clang.O3.i386: %.c
-	$(CLANG_I386) $(CFLAGS) $(CLANG_I386_FLAGS) -O3 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA $(CFLAGS) $(CLANG_I386_FLAGS) -O3 $< -o $@
 
 # ICC
 
@@ -158,30 +158,40 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 	$(MYLLVM_AS) $@.ll -o $@
 
 # Executable files generated using LLC (should be identical as clang; here, just to check)
-%.llc.O0.i386: %.bc.O0
-	$(LLC) -O0 -filetype=obj $< -o $@.tmp.o
-	$(CLANG_I386) -O0 $@.tmp.o $(LIBS) -o $@
+%.llc.O0.i386.o: %.bc.O0
+	$(LLC) --dyn_debug=disableSemanticAA -O0 -filetype=obj $< -o $@
 
-%.llc.O2.i386: %.bc.O0
-	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O2) -o $@.tmp $<
-	$(LLC) -O2 -filetype=obj $@.tmp -o $@.tmp.o
-	$(CLANG_I386) -O2 $@.tmp.o $(LIBS) -o $@
+%.llc.O0.i386: %.llc.O0.i386.o
+	$(CLANG_I386) -O0 $< $(LIBS) -o $@
 
-%.llc.O3.i386: %.bc.O0
-	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O3) -o $@.tmp $<
-	$(LLC) -O3 -filetype=obj $@.tmp -o $@.tmp.o
-	$(CLANG_I386) -O3 $@.tmp.o $(LIBS) -o $@
+%.llc.O2.i386.o: %.bc.O0
+	$(LLVM_OPT) --dyn_debug=disableSemanticAA $(LLVM_OPT_FLAGS_O2) -o $@.tmp $<
+	$(LLC)  --dyn_debug=disableSemanticAA -O2 -filetype=obj $@.tmp -o $@
 
-%.llc.eqchecker.O0.i386: %.bc.eqchecker.O0
+%.llc.O2.i386: %.llc.O2.i386.o
+	$(CLANG_I386) -O2 $< $(LIBS) -o $@
+
+%.llc.O3.i386.o: %.bc.O0
+	$(LLVM_OPT) --dyn_debug=disableSemanticAA $(LLVM_OPT_FLAGS_O3) -o $@.tmp $<
+	$(LLC) --dyn_debug=disableSemanticAA -O3 -filetype=obj $@.tmp -o $@
+
+%.llc.O3.i386: %.llc.O3.i386.o
+	$(CLANG_I386) -O3 $< $(LIBS) -o $@
+
+%.llc.eqchecker.O0.i386.o: %.bc.eqchecker.O0
 	$(LLVM_OPT) -load $(SUPEROPT_INSTALL_DIR)/lib/LLVMSuperopt.so -convertLocalLinkageToGlobal -o $@.tmp $<
-	$(LLC) -O0 -filetype=obj $@.tmp -o $@.tmp.o
-	$(CLANG_I386) -O0 $@.tmp.o eqchecker_helper.clang.eqchecker.O0.i386.o $(LIBS) -o $@
+	$(LLC) --dyn_debug=disableSemanticAA -O0 -filetype=obj $@.tmp -o $@
 
-%.llc.eqchecker.O3.i386: %.bc.eqchecker.O0
+%.llc.eqchecker.O0.i386: %.llc.eqchecker.O0.i386.o
+	$(CLANG_I386) -O0 $< eqchecker_helper.clang.eqchecker.O0.i386.o $(LIBS) -o $@
+
+%.llc.eqchecker.O3.i386.o: %.bc.eqchecker.O0
 	$(LLVM_OPT) -load $(SUPEROPT_INSTALL_DIR)/lib/LLVMSuperopt.so -convertLocalLinkageToGlobal -o $@.tmp1 $<
 	$(LLVM_OPT) --dyn_debug=disableSemanticAA $(LLVM_OPT_EQCHECKER_FLAGS_O3) -o $@.tmp $@.tmp1
-	$(LLC) --dyn_debug=disableSemanticAA -O3 -filetype=obj $@.tmp -o $@.tmp.o
-	$(CLANG_I386) -O3 $@.tmp.o eqchecker_helper.clang.eqchecker.O3.i386.o $(LIBS) -o $@
+	$(LLC) --dyn_debug=disableSemanticAA -O3 -filetype=obj $@.tmp -o $@
+
+%.llc.eqchecker.O3.i386: %.llc.eqchecker.O3.i386.o
+	$(CLANG_I386) -O3 $< eqchecker_helper.clang.eqchecker.O3.i386.o $(LIBS) -o $@
 
 # LLVM BC text
 
