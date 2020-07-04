@@ -10,12 +10,14 @@ CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
 TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS) $(UNITTEST_TARGETS)
+MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
+BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
 
 PARALLEL_LOAD_PERCENT ?= 33
 
 # rules
 
-all: $(BUILDDIR) $(TARGETS)
+all: $(TARGETS)
 
 clean:
 	$(foreach t,$(TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) clean;)
@@ -26,9 +28,10 @@ distclean: clean
 $(BUILDDIR):
 	mkdir -p $@
 
-$(TARGETS):
-	mkdir -p $(BUILDDIR)/$@
-	cp $@/Makefile -t $(BUILDDIR)/$@
+$(BUILD_MAKEFILES): $(BUILDDIR)/%/Makefile: %/Makefile $(BUILDDIR)
+	cp $< $@
+
+$(TARGETS): %: $(BUILDDIR)/%/Makefile
 	$(MAKE) -C $(BUILDDIR)/$@
 
 gentest:
