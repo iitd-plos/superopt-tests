@@ -10,12 +10,14 @@ CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
 TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS) $(UNITTEST_TARGETS)
+MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
+BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
 
 PARALLEL_LOAD_PERCENT ?= 33
 
 # rules
 
-all: $(BUILDDIR) $(TARGETS)
+all: $(TARGETS)
 
 clean:
 	$(foreach t,$(TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) clean;)
@@ -26,9 +28,10 @@ distclean: clean
 $(BUILDDIR):
 	mkdir -p $@
 
-$(TARGETS):
-	mkdir -p $(BUILDDIR)/$@
-	cp $@/Makefile -t $(BUILDDIR)/$@
+$(BUILD_MAKEFILES): $(BUILDDIR)/%/Makefile: %/Makefile $(BUILDDIR)
+	cp $< $@
+
+$(TARGETS): %: $(BUILDDIR)/%/Makefile
 	$(MAKE) -C $(BUILDDIR)/$@
 
 gentest:
@@ -55,7 +58,7 @@ run_oopsla_test:
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands_oopsla
 
 typecheck_test:
-	$(SUPEROPT_PROJECT_DIR)/superopt/typecheck
+	$(SUPEROPT_PROJECT_DIR)/superopt/build/etfg_i386/typecheck
 
 codegen_test:
 	$(foreach t,$(CODEGEN_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) codegen_test || exit;)
