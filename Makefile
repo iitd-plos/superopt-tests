@@ -66,4 +66,7 @@ codegen_test:
 ooelala_test:
 	$(foreach t,$(OOELALA_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) ooelala_test || exit;)
 
+semanticaa_test:
+	$(MAKE) -C $(BUILDDIR)/bzip2 semanticaa_test || exit
+
 .PHONY: all clean distclean $(TARGETS) gentest runtest gen_oopsla_test run_oopsla_test unittest
