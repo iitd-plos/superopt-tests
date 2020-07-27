@@ -35,27 +35,27 @@ compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disab
 
 
 ##************* WORST ***************##
-# g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --debug=eqcheck,correlate --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "
-# 
-# ##************* SEMALIGN NONVEC***************##
-# binary=tsvc
-# compiler=gcc    gen_commands_from_file  gcc_tsvc_funcs_nonvec_semalign    " --unroll-factor 2"   "worst"    >> chaperon_commands
-# compiler=clang  gen_commands_from_file  clang_tsvc_funcs_nonvec_semalign  " --unroll-factor 2"   "worst"    >> chaperon_commands
-# binary=tsvc_icc
-# compiler=icc    gen_commands_from_file  icc_tsvc_funcs_nonvec_semalign    " --unroll-factor 2"   "worst"    >> chaperon_commands
-# 
-# ##************* VEC ***************##
-# 
-# binary=tsvc
-# compiler=gcc    gen_commands_from_file  gcc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "worst"    >> chaperon_commands
-# compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec           " --unroll-factor 8"                                                              "worst"    >> chaperon_commands
-# compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec_nolu      " --disable_residual_loop_unroll --unroll-factor 8"                               "worst"    >> chaperon_commands
-# compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec_nolulpr   " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 8"     "worst"    >> chaperon_commands
-# binary=tsvc_icc
-# compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "worst"    >> chaperon_commands
-# compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 4"     "worst"    >> chaperon_commands
+ g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --debug=eqcheck,correlate --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "
+ 
+ ##************* SEMALIGN NONVEC***************##
+ binary=tsvc
+ compiler=gcc    gen_commands_from_file  gcc_tsvc_funcs_nonvec_semalign    " --unroll-factor 2"   "worst"    >> chaperon_commands
+ compiler=clang  gen_commands_from_file  clang_tsvc_funcs_nonvec_semalign  " --unroll-factor 2"   "worst"    >> chaperon_commands
+ binary=tsvc_icc
+ compiler=icc    gen_commands_from_file  icc_tsvc_funcs_nonvec_semalign    " --unroll-factor 2"   "worst"    >> chaperon_commands
+ 
+ ##************* VEC ***************##
+ 
+ binary=tsvc
+ compiler=gcc    gen_commands_from_file  gcc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "worst"    >> chaperon_commands
+ compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec           " --unroll-factor 8"                                                              "worst"    >> chaperon_commands
+ compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec_nolu      " --disable_residual_loop_unroll --unroll-factor 8"                               "worst"    >> chaperon_commands
+ compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec_nolulpr   " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 8"     "worst"    >> chaperon_commands
+ binary=tsvc_icc
+ compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "worst"    >> chaperon_commands
+ compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 4"     "worst"    >> chaperon_commands
 
-###################### EXTRA ################################
+###################### EXTRA NONVEC ################################
 
 # compiler=gcc   gen_commands_from_file gcc_tsvc_funcs_nonvec   "--unroll-factor 2  --global-timeout 10000 --smt-query-timeout 300"                         >> chaperon_commands
 # compiler=clang gen_commands_from_file clang_tsvc_funcs_nonvec "--unroll-factor 2  --global-timeout 10000 --smt-query-timeout 300"                         >> chaperon_commands

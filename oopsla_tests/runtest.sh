@@ -28,17 +28,17 @@ compiler=icc    gen_commands_from_file  icc_oopsla_funcs_vec           " --unrol
 
 
 ##************* WORST ***************##
-# 
-# g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --debug=eqcheck,correlate --disable_residual_loop_unroll --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics"
-# binary=oopsla_tests
-# compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec           " --unroll-factor 4"                                           "worst"   >> chaperon_commands
-# compiler=clang  gen_commands_from_file  clang_oopsla_funcs_vec         " --unroll-factor 8"                                           "worst"   >> chaperon_commands
-# compiler=clang  gen_commands_from_file  clang_oopsla_funcs_vec_nolpr   " --disable_loop_path_exprs --unroll-factor 8"                 "worst"   >> chaperon_commands
-# binary=oopsla_tests_8uf
-# compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec_uf8       " --unroll-factor 8"                                           "worst"   >> chaperon_commands
-# compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec_uf8_nolpr " --disable_loop_path_exprs --unroll-factor 8"                 "worst"   >> chaperon_commands
-# binary=oopsla_tests_icc
-# compiler=icc    gen_commands_from_file  icc_oopsla_funcs_vec           " --unroll-factor 4"                                           "worst"   >> chaperon_commands
+ 
+ g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --debug=eqcheck,correlate --disable_residual_loop_unroll --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics"
+ binary=oopsla_tests
+ compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec           " --unroll-factor 4"                                           "worst"   >> chaperon_commands
+ compiler=clang  gen_commands_from_file  clang_oopsla_funcs_vec         " --unroll-factor 8"                                           "worst"   >> chaperon_commands
+ compiler=clang  gen_commands_from_file  clang_oopsla_funcs_vec_nolpr   " --disable_loop_path_exprs --unroll-factor 8"                 "worst"   >> chaperon_commands
+ binary=oopsla_tests_8uf
+ compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec_uf8       " --unroll-factor 8"                                           "worst"   >> chaperon_commands
+ compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec_uf8_nolpr " --disable_loop_path_exprs --unroll-factor 8"                 "worst"   >> chaperon_commands
+ binary=oopsla_tests_icc
+ compiler=icc    gen_commands_from_file  icc_oopsla_funcs_vec           " --unroll-factor 4"                                           "worst"   >> chaperon_commands
 # 
 # 
 # #parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands

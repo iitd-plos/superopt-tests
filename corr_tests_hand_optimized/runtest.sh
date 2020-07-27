@@ -34,7 +34,7 @@ binary=corr_mutations
 compiler=gcc     gen_commands_from_file_src_dst  gcc_hand       "--debug=eqcheck,correlate --global-timeout 18000 --smt-query-timeout 1800 "        "best"        >> chaperon_commands
 compiler=clang   gen_commands_from_file_src_dst  clang_hand     "--debug=eqcheck,correlate --global-timeout 18000 --smt-query-timeout 1800 "        "best"        >> chaperon_commands
 
-# compiler=gcc     gen_commands_from_file_src_dst  gcc_hand       "--debug=eqcheck,correlate --global-timeout 18000 --smt-query-timeout 1800 --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "          "worst"        >> chaperon_commands
-# compiler=clang   gen_commands_from_file_src_dst  clang_hand     "--debug=eqcheck,correlate --global-timeout 18000 --smt-query-timeout 1800 --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "          "worst"        >> chaperon_commands
+compiler=gcc     gen_commands_from_file_src_dst  gcc_hand       "--debug=eqcheck,correlate --global-timeout 18000 --smt-query-timeout 1800 --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "          "worst"        >> chaperon_commands
+compiler=clang   gen_commands_from_file_src_dst  clang_hand     "--debug=eqcheck,correlate --global-timeout 18000 --smt-query-timeout 1800 --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "          "worst"        >> chaperon_commands
 
 #parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
