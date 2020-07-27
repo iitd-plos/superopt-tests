@@ -422,8 +422,8 @@ int vpvtv()
 	return 0;
 }
 
-
-int vpvts( TYPE s)
+TYPE s;
+int vpvts()
 {
 
 //	control loops

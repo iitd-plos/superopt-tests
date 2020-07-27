@@ -52,7 +52,6 @@ TYPE val = 1;
 
 __attribute__ ((aligned(16))) TYPE X[lll],Y[lll],Z[lll],U[lll],V[lll];
 TYPE array[LEN2*LEN2] __attribute__((aligned(16)));
-TYPE x[LEN] __attribute__((aligned(16)));
 TYPE temp;
 __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
                                    aa[LEN2][LEN2],bb[LEN2][LEN2],cc[LEN2][LEN2],dd[LEN2][LEN2],tmp[LEN2][LEN2], aaa[LEN3][LEN3][LEN3], bbb[LEN3][LEN3][LEN3];
@@ -62,6 +61,7 @@ long sqroot(long);
 TYPE* /*__restrict__*/ xx;
 TYPE* yy;
 TYPE arr[LEN];
+TYPE x,y;
 
 //sum1d
 TYPE ex1(){
@@ -222,7 +222,8 @@ int ex109()
 
 //2-way branch 1D loop
 //MW
-void ex1011 (int x, int y)
+
+void ex1011 ()
 {
   int i;
   for (i = 0; i < LEN; i++)
@@ -231,7 +232,7 @@ void ex1011 (int x, int y)
 
 //2-way branch 1D loop
 //Sum
-int ex11 (int x, int y)
+int ex11 ()
 {
   int i;
   int sum = 0;
