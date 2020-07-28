@@ -22,7 +22,8 @@ gen_command_internal()
 
   etfg_path=${PWD}/${etfg_file}
   tfg_path=${PWD}/${tfg_pfx}.ALL.tfg
-  proof_path=${EQLOGS}/${eqrun_ident}.proof
+  proof_path=${PWD}/${eqrun_ident}.proof
+# proof_path=${EQLOGS}/${eqrun_ident}.proof  USE this if version control for proof files is required
   eqlog_path=${EQLOGS}/${eqrun_ident}.eqlog
 
   echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/chaperon.py --logfile \"${eqlog_path}\" \"${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq -f ${fn} ${eqflags} --proof ${proof_path} ${etfg_path} ${tfg_path}\""
@@ -128,6 +129,27 @@ gen_for_ll_as()
   done
 }
 
+gen_commands_from_file_src_dst()
+{
+  infile="$1"
+  eq_opts="$2"
+  user_sfx_opt="${3:+.${3}}"
+
+  while read line;
+  do
+    [[ "${line}" == "" ]] && continue
+    [[ "${line}" == '#'* ]] && continue
+    arr=(${line})
+    func=${arr[0]} # take out the first space separated word
+    eqflags=${g_eqflags[$func]:-}
+    eqflags_comp=${g_eqflags[${func}.${compiler}]:-${eqflags}}
+    final_eq_opts="${eq_opts} ${g_global_eqflags:-} ${eqflags_comp}"
+
+    etfg_file="${binary}_src.${ETFG_SUFFIX}"
+    tfg_pfx="${binary}_dst.${compiler}.${O3_SUFFIX}"
+    gen_command_internal ${func} ${etfg_file} ${tfg_pfx} "${final_eq_opts}" ".${func}${user_sfx_opt}"
+  done < ${infile}
+}
 gen_commands_from_file()
 {
   infile="$1"

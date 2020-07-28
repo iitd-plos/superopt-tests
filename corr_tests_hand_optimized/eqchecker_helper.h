@@ -29,10 +29,6 @@ void MYmydebug2(int n);
 #define strcmp MYmystrcmp
 #define strncmp MYmystrncmp
 
-long sqroot(long a)
-{
-  return 0;
-}
 
 extern void (*dbgptr)(int);
 extern void (*dbgptr2)(int);

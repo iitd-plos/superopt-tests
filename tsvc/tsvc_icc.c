@@ -1492,6 +1492,7 @@ L20:
 L30:
 			a[i] = b[i] + c[i] * d[i];
 		}
+    return 0;
 }
 
 int s1279()
@@ -2240,10 +2241,11 @@ int s421()
 		for (int i = 0; i < LEN - 1; i++) {
 			arr[i] = yy[i+1] + a[i];
 		}
-	temp = 0;
+	int sum = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += arr[i];
+		sum += arr[i];
 	}
+  temp =sum;
 	return 0;
 }
 
@@ -2257,10 +2259,11 @@ int s1421()
 		for (int i = 0; i < LEN/2; i++) {
 			b[i] = xx[i] + a[i];
 		}
-	temp = 0;
+	int sum = 0;
 	for (int i = 0; i < LEN/2; i++){
-		temp += xx[i];
+		sum += xx[i]; // store sinking in gcc,clang
 	}
+  temp =sum;
 	return 0;
 }
 
@@ -2277,10 +2280,11 @@ int s422()
 		for (int i = 0; i < LEN; i++) {
 			xx[i] = array[i + 8] + a[i];
 		}
-	temp = 0;
+  int sum = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += xx[i];
+		sum += xx[i];
 	}
+  temp =sum;
 	return 0;
 }
 
@@ -2297,10 +2301,11 @@ int s423()
 		for (int i = 0; i < LEN - 1; i++) {
 			array[i+1] = xx[i] + a[i];
 		}
-	temp = 0.;
+  int sum = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += array[i];
+		sum += array[i]; // store sinking in gcc, clang
 	}
+  temp =sum;
 	return 0;
 }
 
@@ -2318,10 +2323,11 @@ int s424()
 		for (int i = 0; i < LEN - 1; i++) {
 			xx[i+1] = array[i] + a[i];
 		}
-	temp = 0.;
+  int sum = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += xx[i];
+		sum += xx[i];
 	}
+  temp =sum;
 	return 0;
 }
 
@@ -2426,11 +2432,11 @@ int s471(){
 			x[i] = b[i] + d[i] * d[i];
 			b[i] = c[i] + d[i] * e[i];
 		}
-	  // icc fuses the following loop into the first one
-	temp = 0.;
+  int sum = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += x[i];
+		sum += x[i]; // store sinking in gcc,clang
 	}
+  temp =sum;
 	return 0;
 }
 
@@ -2741,10 +2747,11 @@ int vbor()
 			d1 = d1 * e1 * f1;
 			x[i] = a1 * b1 * c1 * d1;
 		}
-	temp = 0.;
+  int sum = 0;
 	for (int i = 0; i < LEN; i++){
-		temp += x[i];
+		sum += x[i];
 	}
+	temp = sum;
 	return 0;
 }
 

@@ -3,9 +3,8 @@ SHELL := /bin/bash
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-KFRAMEWORK_TARGETS := gcc_torture
-EQCHECK_TARGETS := bzip2 tsvc semalign reve ctests micro soundness $(KFRAMEWORK_TARGETS) #bzip2_minimal_changes
-OOPSLA_TARGETS := oopsla_tests
+EQCHECK_TARGETS := tsvc bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes
+OOPSLA_TARGETS := oopsla_tests  corr_tests_hand_optimized tsvc
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
@@ -51,6 +50,7 @@ gen_oopsla_test:
 	true > $(BUILDDIR)/all_gentest_chaperon_commands_oopsla
 	$(foreach t,$(OOPSLA_TARGETS), [[ -f $(BUILDDIR)/$(t)/gentest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/gentest_chaperon_commands >> $(BUILDDIR)/all_gentest_chaperon_commands_oopsla || exit;)
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_gentest_chaperon_commands_oopsla
+
 run_oopsla_test:
 	$(foreach t,$(OOPSLA_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
 	true > $(BUILDDIR)/all_chaperon_commands_oopsla
