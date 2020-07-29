@@ -3,7 +3,7 @@ include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/TSVC_prior_work
+VPATH = $(SRCDIR)/TSVC_new
 
 PROGS_EQCHECKER := tsvc
 PROGS_EQCHECKER_ICC := tsvc_icc

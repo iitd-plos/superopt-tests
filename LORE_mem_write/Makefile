@@ -3,10 +3,12 @@ include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/tsvc
+VPATH = $(SRCDIR)/LORE_mem_write
 
-PROGS_EQCHECKER := tsvc
-PROGS_EQCHECKER_ICC := tsvc_icc
+PROGS_PREFIX := corr_mutations
+export PROGS_PREFIX
+PROGS_EQCHECKER := oopsla_tests oopsla_tests_8uf $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
+PROGS_EQCHECKER_ICC := oopsla_tests
 
 # compiler flags
 GCC_I386_EQCHECKER_FLAGS= $(GCC_I386_EQCHECKER_FLAGS_COMMON) $(VEC_FLAGS)
@@ -69,7 +71,7 @@ gentest:
 	bash $(VPATH)/gentest.sh
 
 runtest:
-	cp $(VPATH)/*tsvc_funcs* -t .
+	cp $(VPATH)/*oopsla_funcs* -t .
 	bash $(VPATH)/runtest.sh
 
 .DEFAULT_GOAL := all
