@@ -1,4 +1,8 @@
 
+/* LORE LOOP NESTS -- Functions in which all loop nests have at leat one memory write/update */
+// This file contains the optimized/transformed C source code for functions in corr_mutations_src.c file
+// The optimized/transformed C source code attached in this file is auto-vectorized by GCC and Clang
+
 #define LEN 32000
 #define LEN1 3200
 #define LEN2 256
@@ -32,21 +36,6 @@ int ex1020()
 	}
 	return 0;
 }
-
-// 1d-Sum
-// loop peeling
-int ex20()
-{
-  int sum = 0;
-  sum += 2*b[0];
-  sum += 2*b[1];
-  sum += 2*b[2];
-	for (int j = 3; j < LEN ; j++) {
-		  sum += b[j];
-	}
-	return sum;
-}
-
 
 // 1d-mw
 // loop peeling
@@ -83,58 +72,6 @@ int ex108()
 	return 0;
 }
 
-//loop unswitching, distributiona 1D loop
-//Sum
-int ex8()
-{
-
-//	control flow
-//	if test using loop index
-  int sum = 0;
-  int len = 16384;
-	int mid = (len/2);
-		for (int i = 0; i < mid; i++) {
-				sum += b[2*i];
-    }
-		for (int i = mid; i < len; i++) {
-				sum += c[i];
-		}
-	return sum;
-}
-
-//loop unswitching, distributiona 1D loop
-//Sum
-//8 uf
-int ex8_8()
-{
-
-//	control flow
-//	if test using loop index
-  int sum = 0;
-	int mid = (LEN/2);
-		for (int i = 0; i < mid; i++) {
-				sum += c[a[i]];
-    }
-  #pragma GCC unroll 2
-		for (int i = mid; i < LEN; i++) {
-				sum += b[i];
-		}
-	return sum;
-}
-
-//loop unroll complete 1D
-//Sum
-int ex27()
-{
-
-  int sum1 = 0;
-	sum1 += a[0];
-	sum1 += a[1];
-	sum1 += a[2];
-	for (int j = 3; j < LEN; j++) 
-	  sum1 += b[j];
-	return sum1;
-}
 
 int ex28()
 {
@@ -146,29 +83,6 @@ int ex28()
 	for (int j = 3; j < LEN; j++) 
 	  c[j] += b[j];
 	return 0;
-}
-
-//remainder loop  fusion
-int ex25(int n)
-{
-
-  int sum1 = 0;
-  int sum2 = 0;
-  if( n < 4)
-  {
-    if(n >= 1) {  sum1 += a[0]; sum2 += b[0];}
-    if(n >= 2) {  sum1 += a[1]; sum2 += b[1];}
-    if(n == 3) {  sum1 += a[2]; sum2 += b[2];}
-  }
-  else
-  {
-  	for (int i = 0; i < n; i++) 
-  		sum1 += a[i];
-  	for (int i = 0; i < n; i++) {
-  		sum2 += b[i];
-  	}
-  }
-	return sum1 + sum2;
 }
 
 int main(){

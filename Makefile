@@ -3,17 +3,19 @@ SHELL := /bin/bash
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-EQCHECK_TARGETS := tsvc bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes
+# EQCHECK_TARGETS := tsvc bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes
 TSVC_PRIOR_TARGETS := TSVC_prior_work
 TSVC_NEW_TARGETS := TSVC_new
 LORE_MEM_TARGETS := LORE_mem_write
 LORE_NOMEM_TARGETS := LORE_no_mem_write
 OOPSLA_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS)
-CODEGEN_TARGETS := compcert-tests
-OOELALA_TARGETS := ooelala-tests
-TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS)
+# CODEGEN_TARGETS := compcert-tests
+# OOELALA_TARGETS := ooelala-tests
+# TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS)
+TARGETS := $(OOPSLA_TARGETS)
 
 PARALLEL_LOAD_PERCENT ?= 33
+PARALLEL_LOAD_PERCENT_DFS ?= 20
 
 # rules
 
@@ -61,13 +63,13 @@ run_oopsla_test_dfs:
 	$(foreach t,$(OOPSLA_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
 	true > $(BUILDDIR)/all_chaperon_commands_oopsla
 	$(foreach t,$(OOPSLA_TARGETS), [[ -f $(BUILDDIR)/$(t)/chaperon_commands_dfs ]] && cat $(BUILDDIR)/$(t)/chaperon_commands_dfs >> $(BUILDDIR)/all_chaperon_commands_oopsla || exit;)
-	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands_oopsla
+	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_oopsla
 
 run_oopsla_tsvc_prior_dfs:
 	$(foreach t,$(TSVC_PRIOR_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
 	true > $(BUILDDIR)/all_chaperon_commands_tsvc_prior
 	$(foreach t,$(TSVC_PRIOR_TARGETS), [[ -f $(BUILDDIR)/$(t)/chaperon_commands_dfs ]] && cat $(BUILDDIR)/$(t)/chaperon_commands_dfs >> $(BUILDDIR)/all_chaperon_commands_tsvc_prior || exit;)
-	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands_tsvc_prior
+	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_tsvc_prior
 
 run_oopsla_tsvc_prior_bfs:
 	$(foreach t,$(TSVC_PRIOR_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
@@ -85,7 +87,7 @@ run_oopsla_tsvc_new_dfs:
 	$(foreach t,$(TSVC_NEW_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
 	true > $(BUILDDIR)/all_chaperon_commands_tsvc_new
 	$(foreach t,$(TSVC_NEW_TARGETS), [[ -f $(BUILDDIR)/$(t)/chaperon_commands_dfs ]] && cat $(BUILDDIR)/$(t)/chaperon_commands_dfs >> $(BUILDDIR)/all_chaperon_commands_tsvc_new || exit;)
-	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands_tsvc_new
+	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_tsvc_new
 
 run_oopsla_lore_mem_bfs:
 	$(foreach t,$(LORE_MEM_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
@@ -97,7 +99,7 @@ run_oopsla_lore_mem_dfs:
 	$(foreach t,$(LORE_MEM_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
 	true > $(BUILDDIR)/all_chaperon_commands_lore_mem
 	$(foreach t,$(LORE_MEM_TARGETS), [[ -f $(BUILDDIR)/$(t)/chaperon_commands_dfs ]] && cat $(BUILDDIR)/$(t)/chaperon_commands_dfs >> $(BUILDDIR)/all_chaperon_commands_lore_mem || exit;)
-	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands_lore_mem
+	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_lore_mem
 
 run_oopsla_lore_nomem_bfs:
 	$(foreach t,$(LORE_NOMEM_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
@@ -109,7 +111,7 @@ run_oopsla_lore_nomem_dfs:
 	$(foreach t,$(LORE_NOMEM_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) runtest || exit;)
 	true > $(BUILDDIR)/all_chaperon_commands_lore_nomem
 	$(foreach t,$(LORE_NOMEM_TARGETS), [[ -f $(BUILDDIR)/$(t)/chaperon_commands_dfs ]] && cat $(BUILDDIR)/$(t)/chaperon_commands_dfs >> $(BUILDDIR)/all_chaperon_commands_lore_nomem || exit;)
-	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_chaperon_commands_lore_nomem
+	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_lore_nomem
 
 
 typecheck_test:

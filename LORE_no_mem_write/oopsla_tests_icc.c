@@ -1,3 +1,5 @@
+/* LORE LOOP NESTS -- Functions having atleat one loop nest without Mem write */
+//Functions auto vectorized by ICC
 
 #define LEN 32000
 #define LEN1 3200

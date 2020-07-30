@@ -1,4 +1,8 @@
 
+/* LORE LOOP NESTS -- Functions having atleast one loop nest without Mem write */
+// This file contains the C source code for functions which are either not auto-vectorized or generate non-bismilar assembly auto-vectorization
+// The optimized/transformed C source code for these functions is attached in corr_mutations_dst.c file, which are then auto-vectorized by GCC and Clang
+
 #define LEN 32000
 #define LEN1 3200
 #define LEN2 2048
@@ -19,19 +23,6 @@
 __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
                                    aa[LEN2][LEN2],bb[LEN2][LEN2],cc[LEN2][LEN2],tt[LEN2][LEN2];
 
-// 1D-MW
-// loop peeling
-int ex1020()
-{
-
-	for (int j = 0; j < LEN ; j++) {
-    if(j < 3)
-      b[j] = 0;
-    else 
-		  b[j] = a[j];
-	}
-	return 0;
-}
 
 // 1D-Sum
 // loop peeling
@@ -47,39 +38,7 @@ int ex20()
 	return sum;
 }
 
-// 1D-MW
-// loop peeling
-// 8 uf
-int ex1020_8()
-{
 
-	for (int j = 0; j < LEN ; j++) {
-    if(j < 3)
-      a[j] = 100;
-    else 
-		  a[j] = b[j]+2;
-	}
-	return 0;
-}
-
-
-//loop unswitching, distribution 1D loop
-// MW
-int ex108()
-{
-
-//	control flow
-//	if test using loop index
-
-	int mid = (LEN/2);
-		for (int i = 0; i < LEN; i++) {
-			if (i < mid) 
-				a[i] += b[i];
-			if (i >= mid) 
-				a[i] += c[i];
-		}
-	return 0;
-}
 
 //loop unswitching, distribution 1D loop
 //Sum
@@ -132,19 +91,6 @@ int ex27()
 	for (int j = 3; j < LEN; j++) 
 	  sum1 += b[j];
 	return sum1;
-}
-
-//loop unroll complete 1D
-//MW
-int ex28()
-{
-
-  int sum1 = 0;
-	for (int j = 0; j < 3; j++) 
-	  c[j] += a[j];
-	for (int j = 3; j < LEN; j++) 
-	  c[j] += b[j];
-	return 0;
 }
 
 

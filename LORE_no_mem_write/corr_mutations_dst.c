@@ -1,4 +1,8 @@
 
+/* LORE LOOP NESTS -- Functions having atleast one loop nest without Mem write */
+// This file contains the optimized/transformed C source code for functions in corr_mutations_src.c file
+// The optimized/transformed C source code attached in this file is auto-vectorized by GCC and Clang
+
 #define LEN 32000
 #define LEN1 3200
 #define LEN2 256
@@ -19,20 +23,6 @@
 __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
                                    aa[LEN2][LEN2],bb[LEN2][LEN2],cc[LEN2][LEN2],tt[LEN2][LEN2];
 
-// 1d-MW
-// loop peeling
-int ex1020()
-{
-
-  b[0] = 0;
-  b[1] = 0;
-  b[2] = 0;
-	for (int j = 3; j < LEN ; j++) {
-		  b[j] = a[j];
-	}
-	return 0;
-}
-
 // 1d-Sum
 // loop peeling
 int ex20()
@@ -47,41 +37,6 @@ int ex20()
 	return sum;
 }
 
-
-// 1d-mw
-// loop peeling
-// 8 uf
-int ex1020_8()
-{
-
-  a[0] = 100;
-  a[1] = 100;
-  a[2] = 100;
-  #pragma GCC unroll 2
-	for (int j = 3; j < LEN ; j++) {
-		  a[j] = b[j]+2;
-	}
-	return 0;
-}
-
-
-//loop unswitching, distribution 1D loop
-// MW
-int ex108()
-{
-
-//	control flow
-//	if test using loop index
-
-	int mid = (LEN/2);
-		for (int i = 0; i < mid; i++) {
-				a[i] += b[i];
-    }
-		for (int i = mid; i < LEN; i++) {
-				a[i] += c[i];
-		}
-	return 0;
-}
 
 //loop unswitching, distributiona 1D loop
 //Sum
@@ -134,18 +89,6 @@ int ex27()
 	for (int j = 3; j < LEN; j++) 
 	  sum1 += b[j];
 	return sum1;
-}
-
-int ex28()
-{
-
-  int sum1 = 0;
-	c[0] += a[0];
-	c[1] += a[1];
-	c[2] += a[2];
-	for (int j = 3; j < LEN; j++) 
-	  c[j] += b[j];
-	return 0;
 }
 
 //remainder loop  fusion

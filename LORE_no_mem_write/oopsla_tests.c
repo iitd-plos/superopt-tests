@@ -1,4 +1,6 @@
-
+/* LORE LOOP NESTS -- Functions having atleast one loop nest without Mem write */
+// All functions in this file are auto vectorized by GCC for unroll factor 4
+// Functions auto-vectorized by clang for unroll factor 8 --  ex1, ex11, ex12, ex13, ex14 and ex16
 
 #define LEN 32000
 #define LEN1 3200
@@ -84,108 +86,22 @@ TYPE ex5(){
 	return ret;
 }
 
-//MW-1d
-TYPE ex101(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN; i++)
-		b[i] += a[i];
-	return ret;
-}
-
-//MW-2d
-TYPE ex102(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j++)
-		  bb[i][j] += aa[i][j];
-	return ret;
-}
-
-//MW-3d
-TYPE ex107(){
-	for (int i = 0; i < LEN3; i++)
-	  for (int j = 0; j < LEN3; j++)
-	    for (int k = 0; k < LEN3; k++)
-		    bbb[i][j][k] = aaa[i][j][k];
-	return 0;
-}
-
-//MW-2d-1d
-TYPE ex103(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j++)
-		 bb[i][j] += aa[i][j];
-	for (int i = 0; i < LEN; i++)
-		b[i] += a[i];
-	return ret;
-}
-
-//MW-2d-1d-imperfect
-TYPE ex104(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN2; i++) {
-	  for (int j = 0; j < LEN2; j++)
-		  bb[i][j] += aa[i][j];
-	  b[i] += a[i];
-  }
-	return ret;
-}
-
-//MW-1d-2d
-TYPE ex105(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN; i++)
-		b[i] += a[i];
-	for (int i = 0; i < LEN2; i++)
-	  for (int j = 0; j < LEN2; j++)
-		  bb[i][j] += aa[i][j];
-	return ret;
-}
-
 //3-way branch 1D loop
 //Sum
 int ex9()
 {
 
   int sum = 0;
-	for (int i = 0; i < LEN; i++) {
-		if (d[i] < (TYPE)0.) {
-			sum--;
-		} else if (d[i] == (TYPE)0.) {
-			sum = sum;
-		} else {
-			sum++;
-		}
-	}
-	return sum;
-}
-
-//3-way branch 1D loop
-//MW
-int ex109()
-{
-
-	 for (int i = 0; i < LEN; i++) {
-	 	if (d[i] < (TYPE)0.) {
-	 		a[i] += b[i] * c[i];
-	 	} else if (d[i] == (TYPE)0.) {
-	 		a[i] += b[i] * b[i];
-	 	} else {
-	 		a[i] += c[i] * c[i];
-	 	}
-	 }
-	return 0;
-}
-
-
-//2-way branch 1D loop
-//MW
-void ex1011 ()
-{
-  int i;
-  for (i = 0; i < LEN; i++)
-    b[i] = a[i] < 0 ? x : y;
+  for (int i = 0; i < LEN; i++) {
+    if (d[i] < (TYPE)0.) {
+      sum--;
+    } else if (d[i] == (TYPE)0.) {
+      sum = sum;
+    } else {
+      sum++;
+    }   
+  }
+  return sum;
 }
 
 //2-way branch 1D loop

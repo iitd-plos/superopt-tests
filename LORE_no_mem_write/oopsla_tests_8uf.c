@@ -1,3 +1,5 @@
+/* LORE LOOP NESTS -- Functions having atleast one loop nest without Mem write */
+// Functions auto vectorized by GCC for unroll factor 4; Using pragma to generate unroll factor 8 code
 
 #define LEN 32000
 #define LEN1 3200
@@ -80,33 +82,22 @@ TYPE ex7(){
 	return ret;
 }
 
-//MW-3d
-TYPE ex107(){
-	for (int i = 0; i < LEN3; i++)
-	  for (int j = 0; j < LEN3; j++)
-      #pragma GCC unroll 2
-	    for (int k = 0; k < LEN3; k++)
-		    bbb[i][j][k] = aaa[i][j][k];
-	return 0;
-}
-
-int ex109()
+//loop 3D (2-sum MW) imperfect 
+void ex18()
+//void example14() 
 {
+  int k,j,i=0;
+  int len = LEN2/2;
+  for (k = 0; k < len; k++) {
+    int sum = 0;
+    for (i = 0; i < len; i++)
+      #pragma GCC unroll 2
+      for (j = 0; j < len; j++)
+          sum += aa[i+k][j] * bb[i][j];
 
-//	non-logical if's
-//	arithmetic if
+    a[k] = sum;
+  }
 
-    #pragma GCC unroll 2
-		for (int i = 0; i < LEN; i++) {
-			if (d[i] < (TYPE)0.) {
-				a[i] += b[i] * c[i];
-			} else if (d[i] == (TYPE)0.) {
-				a[i] += b[i] * b[i];
-			} else {
-				a[i] += c[i] * c[i];
-			}
-		}
-	return 0;
 }
 
 int main(){
