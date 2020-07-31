@@ -72,7 +72,7 @@ TYPE ex5(){
 }
 
 //sum3d
-TYPE ex7(){
+TYPE ex6(){
 	TYPE ret = 0.;
 	for (int i = 0; i < LEN3; i++)
 	  for (int j = 0; j < LEN3; j++)
@@ -83,7 +83,7 @@ TYPE ex7(){
 }
 
 //loop 3D (2-sum MW) imperfect 
-void ex18()
+void ex13()
 //void example14() 
 {
   int k,j,i=0;

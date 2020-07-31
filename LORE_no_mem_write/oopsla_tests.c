@@ -43,16 +43,6 @@ TYPE ex2(){
 	return ret;
 }
 
-//sum3d
-TYPE ex7(){
-	TYPE ret = 0.;
-	for (int i = 0; i < LEN3; i++)
-	  for (int j = 0; j < LEN3; j++)
-	    for (int k = 0; k < LEN3; k++)
-		    ret += aaa[i][j][k];
-	return ret;
-}
-
 //sum2d-1d
 TYPE ex3(){
 	TYPE ret = 0.;
@@ -86,9 +76,19 @@ TYPE ex5(){
 	return ret;
 }
 
+//sum3d
+TYPE ex6(){
+	TYPE ret = 0.;
+	for (int i = 0; i < LEN3; i++)
+	  for (int j = 0; j < LEN3; j++)
+	    for (int k = 0; k < LEN3; k++)
+		    ret += aaa[i][j][k];
+	return ret;
+}
+
 //3-way branch 1D loop
 //Sum
-int ex9()
+int ex7()
 {
 
   int sum = 0;
@@ -106,7 +106,7 @@ int ex9()
 
 //2-way branch 1D loop
 //Sum
-int ex11 ()
+int ex8 ()
 {
   int i;
   int sum = 0;
@@ -119,7 +119,7 @@ int ex11 ()
 int alpha, beta;
 //loop 2D (sum-MW-MW) imperfect
 //Store sinking removed
-void ex12()
+void ex9()
 //void kernel_atax()
 {
   int i, j;
@@ -136,7 +136,7 @@ void ex12()
 }
 
 //loop 2D (sum-MW) perfect
-void ex13()
+void ex10()
 //void kernel_atax()
 {
   int i, j;
@@ -153,7 +153,7 @@ void ex13()
 
 //loop 2D (sum-MW) imperfect
 //Store sinking removed
-void ex14()
+void ex11()
 //void kernel_gesummv()
 {
   int i, j;
@@ -173,7 +173,7 @@ void ex14()
 
 //loop 2D (sum-sum MW) imperfect
 //Store sinking removed
-void ex16()
+void ex12()
 //void kernel_mvt()
 {
   int i, j;
@@ -192,7 +192,7 @@ void ex16()
 //test-suite/SingleSource/UnitTests/Vectorizer/  --  GCC test suite
 
 //loop 3D (2-sum MW) imperfect 
-void ex18()
+void ex13()
 //void example14() 
 {
   int k,j,i=0;

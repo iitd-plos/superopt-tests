@@ -6,14 +6,14 @@ set -eu # fail on error
 
 declare -A g_eqflags
 
-g_eqflags["ex1020.gcc"]=" --unroll-factor 4"
-g_eqflags["ex108.gcc"]=" --unroll-factor 4"
-g_eqflags["ex28.gcc"]=" --unroll-factor 4"
+g_eqflags["ex109.gcc"]=" --unroll-factor 4"
+g_eqflags["ex1010.gcc"]=" --unroll-factor 4"
+g_eqflags["ex1011.gcc"]=" --unroll-factor 4"
 
-g_eqflags["ex1020_8.gcc"]=" --unroll-factor 8"
+g_eqflags["ex109_8.gcc"]=" --unroll-factor 8"
 
-g_eqflags["ex108.clang"]=" --unroll-factor 8 --global-timeout 36000"
-g_eqflags["ex28.clang"]=" --unroll-factor 8 --global-timeout 18000"
+g_eqflags["ex1010.clang"]=" --unroll-factor 8 --global-timeout 36000"
+g_eqflags["ex1011.clang"]=" --unroll-factor 8 --global-timeout 18000"
 ################################
 
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh
@@ -58,7 +58,7 @@ compiler=clang   gen_commands_from_file_src_dst  clang_oopsla_funcs_hand     "--
  compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec           " --unroll-factor 4 --disable_residual_loop_unroll"                              "4uf.DFS"  >> chaperon_commands_dfs
 
 binary=corr_mutations
- g_global_eqflags=" --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics"
+ g_global_eqflags=" "
 compiler=gcc     gen_commands_from_file_src_dst  gcc_oopsla_funcs_hand       "--debug=oopsla_log --global-timeout 18000 --smt-query-timeout 300  --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "        "4uf.DFS"  >> chaperon_commands_dfs
 
  ##************* 8 unroll factor ***************##
@@ -71,7 +71,7 @@ compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec_8uf       " --unrol
 compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec_8uf_nolpr " --disable_loop_path_exprs --unroll-factor 8 --disable_residual_loop_unroll"     "8uf.DFS"  >> chaperon_commands_dfs
 
  binary=corr_mutations
- g_global_eqflags=" --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics"
+ g_global_eqflags=" "
 compiler=gcc     gen_commands_from_file_src_dst  gcc_oopsla_funcs_hand_8uf       "--debug=oopsla_log --global-timeout 18000 --smt-query-timeout 300  --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "        "8uf.DFS"  >> chaperon_commands_dfs
 compiler=clang   gen_commands_from_file_src_dst  clang_oopsla_funcs_hand     "--debug=oopsla_log --smt-query-timeout 300  --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "        "8uf.DFS"  >> chaperon_commands_dfs
 

@@ -6,14 +6,14 @@ set -eu # fail on error
 
 declare -A g_eqflags
 
-g_eqflags["ex8.gcc"]=" --unroll-factor 4"
-g_eqflags["ex20.gcc"]=" --unroll-factor 4"
-g_eqflags["ex27.gcc"]=" --unroll-factor 4"
+g_eqflags["ex14.gcc"]=" --unroll-factor 4"
+g_eqflags["ex15.gcc"]=" --unroll-factor 4"
+g_eqflags["ex16.gcc"]=" --unroll-factor 4"
 
-g_eqflags["ex8_8.gcc"]=" --unroll-factor 8"
+g_eqflags["ex15_8.gcc"]=" --unroll-factor 8"
 
-g_eqflags["ex25.clang"]=" --unroll-factor 8"
-g_eqflags["ex27.clang"]=" --unroll-factor 8"
+g_eqflags["ex16.clang"]=" --unroll-factor 8"
+g_eqflags["ex17.clang"]=" --unroll-factor 8"
 ################################
 
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh

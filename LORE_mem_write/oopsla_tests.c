@@ -43,15 +43,6 @@ TYPE ex102(){
 	return ret;
 }
 
-//MW-3d
-TYPE ex107(){
-	for (int i = 0; i < LEN3; i++)
-	  for (int j = 0; j < LEN3; j++)
-	    for (int k = 0; k < LEN3; k++)
-		    bbb[i][j][k] = aaa[i][j][k];
-	return 0;
-}
-
 //MW-2d-1d
 TYPE ex103(){
 	TYPE ret = 0.;
@@ -85,9 +76,18 @@ TYPE ex105(){
 	return ret;
 }
 
+//MW-3d
+TYPE ex106(){
+	for (int i = 0; i < LEN3; i++)
+	  for (int j = 0; j < LEN3; j++)
+	    for (int k = 0; k < LEN3; k++)
+		    bbb[i][j][k] = aaa[i][j][k];
+	return 0;
+}
+
 //3-way branch 1D loop
 //MW
-int ex109()
+int ex107()
 {
 
 	 for (int i = 0; i < LEN; i++) {
@@ -105,7 +105,7 @@ int ex109()
 
 //2-way branch 1D loop
 //MW
-void ex1011 ()
+void ex108 ()
 {
   int i;
   for (i = 0; i < LEN; i++)

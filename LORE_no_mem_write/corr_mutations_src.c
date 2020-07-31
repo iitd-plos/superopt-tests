@@ -26,7 +26,7 @@ __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
 
 // 1D-Sum
 // loop peeling
-int ex20()
+int ex14()
 {
   int sum = 0;
 	for (int j = 0; j < LEN ; j++) {
@@ -42,7 +42,7 @@ int ex20()
 
 //loop unswitching, distribution 1D loop
 //Sum
-int ex8()
+int ex15()
 {
 
 //	control flow
@@ -62,7 +62,7 @@ int ex8()
 //loop unswitching, distribution 1D loop
 //Sum
 ////8 uf
-int ex8_8()
+int ex15_8()
 {
 
 //	control flow
@@ -82,7 +82,7 @@ int ex8_8()
 
 //loop unroll complete 1D
 //Sum
-int ex27()
+int ex16()
 {
 
   int sum1 = 0;
@@ -95,7 +95,8 @@ int ex27()
 
 
 //remainder loop  fusion
-int ex25(int n)
+//Sum
+int ex17(int n)
 {
 
   int sum1 = 0;

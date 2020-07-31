@@ -24,7 +24,7 @@ __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
 
 //3-way branch 1D loop
 //Sum
-int ex9()
+int ex7()
 {
 
   int sum = 0;

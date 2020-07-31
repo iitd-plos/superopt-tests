@@ -26,7 +26,7 @@ __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
 
 // 1D-MW
 // loop peeling
-int ex1020()
+int ex109()
 {
 
 	for (int j = 0; j < LEN ; j++) {
@@ -41,7 +41,7 @@ int ex1020()
 // 1D-MW
 // loop peeling
 // 8 uf
-int ex1020_8()
+int ex109_8()
 {
 
 	for (int j = 0; j < LEN ; j++) {
@@ -56,7 +56,7 @@ int ex1020_8()
 
 //loop unswitching, distribution 1D loop
 // MW
-int ex108()
+int ex1010()
 {
 
 //	control flow
@@ -75,7 +75,7 @@ int ex108()
 
 //loop unroll complete 1D
 //MW
-int ex28()
+int ex1011()
 {
 
   int sum1 = 0;
