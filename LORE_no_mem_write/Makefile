@@ -65,7 +65,8 @@ ALL_PROGS = $(EQCHECKER_I386_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM)
 
 all: $(ALL_PROGS)
 clean:
-	rm -f *.o *.tmp $(ALL_PROGS)
+	# delete all except icc binaries
+	rm -f *.o *.tmp $(EQCHECKER_I386_CLANG_O0_PROGS) $(EQCHECKER_I386_CLANG_O3_PROGS) $(EQCHECKER_I386_GCC_O0_PROGS) $(EQCHECKER_I386_GCC_O3_PROGS) $(LLVM_PROGS) $(LLVM_PROGS_ASM) #$(ALL_PROGS)
 
 gentest:
 	bash $(VPATH)/gentest.sh
