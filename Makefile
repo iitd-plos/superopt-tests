@@ -101,4 +101,4 @@ run_oopsla_lore_nomem_dfs:
 run_dietlibc:
 	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) runtest
 
-.PHONY: all clean distclean $(TARGETS) gentest runtest gen_oopsla_test run_oopsla_test run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc
+.PHONY: all clean distclean $(TARGETS) gentest runtest run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc
