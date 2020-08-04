@@ -8,8 +8,8 @@ TSVC_NEW_TARGETS := TSVC_new
 LORE_MEM_TARGETS := LORE_mem_write
 LORE_NOMEM_TARGETS := LORE_no_mem_write
 DIETLIBC_TARGET := dietlibc
-OOPSLA_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(DIETLIBC_TARGET)
-TARGETS := $(OOPSLA_TARGETS)
+OOPSLA_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS)
+TARGETS := $(OOPSLA_TARGETS) $(DIETLIBC_TARGET)
 
 PARALLEL_LOAD_PERCENT ?= 33
 PARALLEL_LOAD_PERCENT_DFS ?= 20
@@ -99,6 +99,7 @@ run_oopsla_lore_nomem_dfs:
 	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_lore_nomem
 
 run_dietlibc:
+	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) RUN=0 gentest
 	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) runtest
 
 .PHONY: all clean distclean $(TARGETS) gentest runtest run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc
