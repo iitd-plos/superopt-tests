@@ -8,8 +8,8 @@ TSVC_NEW_TARGETS := TSVC_new
 LORE_MEM_TARGETS := LORE_mem_write
 LORE_NOMEM_TARGETS := LORE_no_mem_write
 DIETLIBC_TARGET := dietlibc
-OOPSLA_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(DIETLIBC_TARGET)
-TARGETS := $(OOPSLA_TARGETS)
+OOPSLA_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS)
+TARGETS := $(OOPSLA_TARGETS) $(DIETLIBC_TARGET)
 
 PARALLEL_LOAD_PERCENT ?= 33
 PARALLEL_LOAD_PERCENT_DFS ?= 20
@@ -33,9 +33,9 @@ $(TARGETS):
 	$(MAKE) -C $(BUILDDIR)/$@
 
 gentest:
-	$(foreach t,$(OOPSLA_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 gentest || exit;)
+	$(foreach t,$(TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 gentest || exit;)
 	true > $(BUILDDIR)/all_gentest_chaperon_commands
-	$(foreach t,$(OOPSLA_TARGETS), [[ -f $(BUILDDIR)/$(t)/gentest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/gentest_chaperon_commands >> $(BUILDDIR)/all_gentest_chaperon_commands || exit;)
+	$(foreach t,$(TARGETS), [[ -f $(BUILDDIR)/$(t)/gentest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/gentest_chaperon_commands >> $(BUILDDIR)/all_gentest_chaperon_commands || exit;)
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_gentest_chaperon_commands
 
 run_oopsla_test_bfs:
