@@ -99,6 +99,7 @@ run_oopsla_lore_nomem_dfs:
 	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_lore_nomem
 
 run_dietlibc:
+	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) RUN=0 gentest
 	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) runtest
 
 .PHONY: all clean distclean $(TARGETS) gentest runtest run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc
