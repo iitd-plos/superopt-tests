@@ -32,10 +32,10 @@ $(TARGETS):
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	$(MAKE) -C $(BUILDDIR)/$@
 
-gentest:
-	$(foreach t,$(TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 gentest || exit;)
+gen_oopsla_test:
+	$(foreach t,$(OOPSLA_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 gentest || exit;)
 	true > $(BUILDDIR)/all_gentest_chaperon_commands
-	$(foreach t,$(TARGETS), [[ -f $(BUILDDIR)/$(t)/gentest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/gentest_chaperon_commands >> $(BUILDDIR)/all_gentest_chaperon_commands || exit;)
+	$(foreach t,$(OOPSLA_TARGETS), [[ -f $(BUILDDIR)/$(t)/gentest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/gentest_chaperon_commands >> $(BUILDDIR)/all_gentest_chaperon_commands || exit;)
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_gentest_chaperon_commands
 
 run_oopsla_test_bfs:
@@ -102,4 +102,4 @@ run_dietlibc:
 	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) RUN=0 gentest
 	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) runtest
 
-.PHONY: all clean distclean $(TARGETS) gentest runtest run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc
+.PHONY: all clean distclean $(TARGETS) gen_oopsla_test run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc
