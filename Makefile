@@ -8,8 +8,9 @@ TSVC_NEW_TARGETS := TSVC_new
 LORE_MEM_TARGETS := LORE_mem_write
 LORE_NOMEM_TARGETS := LORE_no_mem_write
 DIETLIBC_TARGET := dietlibc
+PAPER_EX_TARGET := paper_ex
 OOPSLA_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS)
-TARGETS := $(OOPSLA_TARGETS) $(DIETLIBC_TARGET)
+TARGETS := $(OOPSLA_TARGETS) $(DIETLIBC_TARGET) $(PAPER_EX_TARGET)
 
 PARALLEL_LOAD_PERCENT ?= 33
 PARALLEL_LOAD_PERCENT_DFS ?= 20
@@ -102,4 +103,8 @@ run_dietlibc:
 	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) RUN=0 gentest
 	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) runtest
 
-.PHONY: all clean distclean $(TARGETS) gen_oopsla_test run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc
+run_paper_ex:
+	$(MAKE) -C $(BUILDDIR)/$(PAPER_EX_TARGET) RUN=0 gentest
+	$(MAKE) -C $(BUILDDIR)/$(PAPER_EX_TARGET) runtest
+
+.PHONY: all clean distclean $(TARGETS) gen_oopsla_test run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc run_paper_ex
