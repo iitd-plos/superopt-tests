@@ -11,7 +11,7 @@ declare -A g_eqflags
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh
 
 # 5 min smt-timeout, 5 hour global timeout
-g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --debug=oopsla_log"
+g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --dyn_debug=oopsla_log"
 
 ##************* BFS ***************##
 > chaperon_commands_bfs
@@ -28,7 +28,7 @@ compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disab
 
 
 ##************* DFS ***************##
- g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --debug=oopsla_log --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "
+ g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --dyn_debug=oopsla_log --disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics "
  
 
 > chaperon_commands_dfs
