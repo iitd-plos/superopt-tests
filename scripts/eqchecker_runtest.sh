@@ -74,7 +74,8 @@ gen_command_all_compilers()
   eqflags_non_comp=${g_global_eqflags:-}
   eqflags_non_comp="${eqflags_non_comp} ${g_eqflags[$file_fn_pfx]:-}"
 
-  for compiler in clang gcc icc;
+  #for compiler in clang gcc icc;
+  for compiler in clang gcc;
   do
       eqflags_comp=${g_eqflags[${file_fn_pfx}.${compiler}]:-${eqflags_non_comp}}
       tfg_pfx=${tfg_comm_pfx}.${compiler}.${O3_SUFFIX}
