@@ -12,7 +12,7 @@ echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/oopsla_te
 
 echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/oopsla_tests_8uf.${BC_O0_SFX} ${PWD}/oopsla_tests_8uf.${GCC_O3_SUFFIX}" >> gentest_chaperon_commands
 
-echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/oopsla_tests_icc.${BC_O0_SFX} ${PWD}/oopsla_tests_icc.${ICC_O3_SUFFIX}"   >> gentest_chaperon_commands
+#echo "python ${SUPEROPT_PROJECT_DIR}/superopt/utils/eqbin.py -n ${PWD}/oopsla_tests_icc.${BC_O0_SFX} ${PWD}/oopsla_tests_icc.${ICC_O3_SUFFIX}"   >> gentest_chaperon_commands
 
 for f in ${PROGS_PREFIX}
 do

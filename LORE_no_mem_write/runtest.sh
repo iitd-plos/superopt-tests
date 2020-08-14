@@ -28,8 +28,8 @@ g_global_eqflags="--global-timeout 18000 --smt-query-timeout 300 --dyn_debug=oop
 binary=oopsla_tests
 compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec           " --unroll-factor 4 --disable_residual_loop_unroll"                               "4uf.BFS"  >> chaperon_commands_bfs
 
-binary=oopsla_tests_icc
-compiler=icc    gen_commands_from_file  icc_oopsla_funcs_vec           " --unroll-factor 4 --disable_residual_loop_unroll"                               "4uf.BFS"  >> chaperon_commands_bfs
+#binary=oopsla_tests_icc
+#compiler=icc    gen_commands_from_file  icc_oopsla_funcs_vec           " --unroll-factor 4 --disable_residual_loop_unroll"                               "4uf.BFS"  >> chaperon_commands_bfs
 
 binary=corr_mutations
 g_global_eqflags=""
@@ -62,8 +62,8 @@ compiler=clang   gen_commands_from_file_src_dst  clang_oopsla_funcs_hand     "--
 binary=oopsla_tests
 compiler=gcc    gen_commands_from_file  gcc_oopsla_funcs_vec           " --unroll-factor 4 --disable_residual_loop_unroll"                               "4uf.DFS"  >> chaperon_commands_dfs
 
-binary=oopsla_tests_icc
-compiler=icc    gen_commands_from_file  icc_oopsla_funcs_vec           " --unroll-factor 4 --disable_residual_loop_unroll"                               "4uf.DFS"  >> chaperon_commands_dfs
+#binary=oopsla_tests_icc
+#compiler=icc    gen_commands_from_file  icc_oopsla_funcs_vec           " --unroll-factor 4 --disable_residual_loop_unroll"                               "4uf.DFS"  >> chaperon_commands_dfs
 
 binary=corr_mutations
  g_global_eqflags="--disable_dst_bv_rank --disable_src_bv_rank --disable_propagation_based_pruning --disable_all_static_heuristics"

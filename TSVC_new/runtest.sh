@@ -22,8 +22,8 @@ binary=tsvc
 compiler=gcc    gen_commands_from_file  gcc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "BFS"    >> chaperon_commands_bfs
 compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec           " --unroll-factor 8"                                                              "BFS"    >> chaperon_commands_bfs
 compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec_nolulpr   " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 8"     "BFS"    >> chaperon_commands_bfs
-compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "BFS"    >> chaperon_commands_bfs
-compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 4"     "BFS"    >> chaperon_commands_bfs
+#compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "BFS"    >> chaperon_commands_bfs
+#compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 4"     "BFS"    >> chaperon_commands_bfs
 
 
 
@@ -38,8 +38,8 @@ compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disab
  compiler=gcc    gen_commands_from_file  gcc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "DFS"    >> chaperon_commands_dfs
  compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec           " --unroll-factor 8"                                                              "DFS"    >> chaperon_commands_dfs
  compiler=clang  gen_commands_from_file  clang_tsvc_funcs_vec_nolulpr   " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 8"     "DFS"    >> chaperon_commands_dfs
- compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "DFS"    >> chaperon_commands_dfs
- compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 4"     "DFS"    >> chaperon_commands_dfs
+ #compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec             " --unroll-factor 4"                                                              "DFS"    >> chaperon_commands_dfs
+ #compiler=icc    gen_commands_from_file  icc_tsvc_funcs_vec_nolulpr     " --disable_residual_loop_unroll --disable_loop_path_exprs --unroll-factor 4"     "DFS"    >> chaperon_commands_dfs
 
 
 #parallel --load "${PARALLEL_LOAD_PERCENT:-100}%" < chaperon_commands
