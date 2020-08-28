@@ -25,7 +25,7 @@ foreach my $prog (@progs) {
   open my $c_file, "<$filename" or die $!;
   my @c_code_arr = <$c_file>;
   close $c_file;
-  my $c_code = "@c_code_arr";
+  my $c_code = remove_empty_lines(@c_code_arr);
   #my $c_code_encoded = uri_escape($c_code);
   my $c_code_encoded = xml_escape($c_code);
   #print "C file:\n$c_code_encoded\n";
@@ -35,7 +35,7 @@ foreach my $prog (@progs) {
   open my $clang_s_file, "<$prog.$clang_O3_suffix" or die $!;
   my @clang_s_code_arr = <$clang_s_file>;
   close $clang_s_file;
-  my $clang_s_code = "@clang_s_code_arr";
+  my $clang_s_code = asm_cleanup(@clang_s_code_arr);
   #my $clang_s_code_encoded = uri_escape($clang_s_code);
   my $clang_s_code_encoded = xml_escape($clang_s_code);
   $data .= "<destination>$clang_s_code_encoded</destination>";
@@ -91,4 +91,56 @@ sub xml_escape {
   $data =~ s/>/&gt;/sg;
   $data =~ s/"/&quot;/sg;
   return $data;
+}
+
+sub remove_empty_lines {
+  my $ret = '';
+  while (my $line = shift) {
+    if ($line =~ /^\s*$/) {
+      next;
+    }
+    $ret .= $line;
+  }
+  return $ret;
+}
+
+sub asm_cleanup {
+  my $ret = '';
+  while (my $line = shift) {
+    if ($line =~ /^\s*$/) {
+      next;
+    }
+    if ($line =~ /^\s*\.file/) {
+      next;
+    }
+    if ($line =~ /^\s*\.loc/) {
+      next;
+    }
+    if ($line =~ /^\s*\.cfi/) {
+      next;
+    }
+    if ($line =~ /^\s*#/) {
+      next;
+    }
+    if ($line =~ /^\s*\.p2align/) {
+      next;
+    }
+    if ($line =~ /^\s*\.Ltmp/) {
+      next;
+    }
+    if ($line =~ /^\s*\.L.*local:/) {
+      next;
+    }
+    if ($line =~ /^\s*\.Lfunc/) {
+      next;
+    }
+    if ($line =~ /^\s*\.size/) {
+      next;
+    }
+    if ($line =~ /^\s*\.section.*debug/) {
+      last;
+    }
+    $ret .= $line;
+  }
+  return $ret;
 }
