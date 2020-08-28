@@ -20,7 +20,7 @@ for (my $i = 0; $i <= $#ARGV; $i++) {
 
 foreach my $prog (@progs) {
   my $data = "<eqchecker_preload>";
-  $data .= "<source>";
+  $data .= "<source>\n";
   my $filename = add_included_code($src_path, "$prog.c");
   open my $c_file, "<$filename" or die $!;
   my @c_code_arr = <$c_file>;
