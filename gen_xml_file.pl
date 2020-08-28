@@ -34,7 +34,7 @@ close $clang_s_file;
 my $clang_s_code = asm_cleanup(@clang_s_code_arr);
 #my $clang_s_code_encoded = uri_escape($clang_s_code);
 my $clang_s_code_encoded = xml_escape($clang_s_code);
-$data .= "<destination>$clang_s_code_encoded</destination>";
+$data .= "<destination>\n#The assembly program must follow the cdecl calling conventions\n$clang_s_code_encoded</destination>";
 #$data .= "<unroll>8</unroll>";
 $data .= "</eqchecker_preload>";
 #print "Clang O3 file:\n$clang_s_code_encoded\n";
@@ -58,8 +58,9 @@ sub add_included_code {
       my $h_file = $1;
       if (header_file_needs_to_be_expanded($h_file)) {
         open(my $fp, "<$src_path/$h_file");
-        my @h_code_arr = <$fp>;
-	print $ofp "@h_code_arr";
+        while (my $hline = <$fp>) {
+	  print $ofp $hline;
+        }
         close($fp);
 	next;
       }
