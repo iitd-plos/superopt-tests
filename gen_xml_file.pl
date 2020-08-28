@@ -8,55 +8,50 @@ use Cwd qw(cwd);
 
 my $curdir = cwd;
 
-my $clang_O3_suffix = 'clang.eqchecker.O3.i386.s';
-my @progs;
+#my $clang_O3_suffix = 'clang.eqchecker.O3.i386.s';
+my $source_prog = $ARGV[0];
+my $destination_prog = $ARGV[1];
 
 my $src_path = $curdir;
 $src_path =~ s/build\///;
 
-for (my $i = 0; $i <= $#ARGV; $i++) {
-  push(@progs, $ARGV[$i]);
-}
+my $data = "<eqchecker_preload>";
+$data .= "<source>\n";
+my $filename = add_included_code($src_path, $source_prog);
+open my $c_file, "<$filename" or die $!;
+my @c_code_arr = <$c_file>;
+close $c_file;
+my $c_code = remove_empty_lines(@c_code_arr);
+#my $c_code_encoded = uri_escape($c_code);
+my $c_code_encoded = xml_escape($c_code);
+#print "C file:\n$c_code_encoded\n";
+$data .= $c_code_encoded;
+$data .= "</source>";
 
-foreach my $prog (@progs) {
-  my $data = "<eqchecker_preload>";
-  $data .= "<source>\n";
-  my $filename = add_included_code($src_path, "$prog.c");
-  open my $c_file, "<$filename" or die $!;
-  my @c_code_arr = <$c_file>;
-  close $c_file;
-  my $c_code = remove_empty_lines(@c_code_arr);
-  #my $c_code_encoded = uri_escape($c_code);
-  my $c_code_encoded = xml_escape($c_code);
-  #print "C file:\n$c_code_encoded\n";
-  $data .= $c_code_encoded;
-  $data .= "</source>";
-
-  open my $clang_s_file, "<$prog.$clang_O3_suffix" or die $!;
-  my @clang_s_code_arr = <$clang_s_file>;
-  close $clang_s_file;
-  my $clang_s_code = asm_cleanup(@clang_s_code_arr);
-  #my $clang_s_code_encoded = uri_escape($clang_s_code);
-  my $clang_s_code_encoded = xml_escape($clang_s_code);
-  $data .= "<destination>$clang_s_code_encoded</destination>";
-  #$data .= "<unroll>8</unroll>";
-  $data .= "</eqchecker_preload>";
-  #print "Clang O3 file:\n$clang_s_code_encoded\n";
-  #my $cmd = "wget --post-data \'$post_data\' http://jal/eqcheck";
-  #my $url = "http://jal/eqcheck?$post_data";
-  #print "$url\n";
-  #open(my $xml, ">$prog.xml");
-  #print $xml "$data";
-  print "$data";
-  #close($xml);
-}
+open my $clang_s_file, "<$destination_prog" or die $!;
+my @clang_s_code_arr = <$clang_s_file>;
+close $clang_s_file;
+my $clang_s_code = asm_cleanup(@clang_s_code_arr);
+#my $clang_s_code_encoded = uri_escape($clang_s_code);
+my $clang_s_code_encoded = xml_escape($clang_s_code);
+$data .= "<destination>$clang_s_code_encoded</destination>";
+#$data .= "<unroll>8</unroll>";
+$data .= "</eqchecker_preload>";
+#print "Clang O3 file:\n$clang_s_code_encoded\n";
+#my $cmd = "wget --post-data \'$post_data\' http://jal/eqcheck";
+#my $url = "http://jal/eqcheck?$post_data";
+#print "$url\n";
+#open(my $xml, ">$prog.xml");
+#print $xml "$data";
+print "$data";
+#close($xml);
 
 sub add_included_code {
   my $src_path = shift;
   my $c_prog = shift;
   my $ofilename = "$c_prog.expanded";
 
-  open (my $file, "<$src_path/$c_prog") or die $!;
+  open (my $file, "<$c_prog") or die $!;
   open (my $ofp, ">$ofilename") or die $!;
   while (my $line = <$file>) {
     if ($line =~ /^#include\s+[\"<](.*)[\">]\s*$/) {
@@ -123,6 +118,21 @@ sub asm_cleanup {
       next;
     }
     if ($line =~ /^\s*\.p2align/) {
+      next;
+    }
+    if ($line =~ /^\s*\.Ltext/) { #gcc
+      next;
+    }
+    #if ($line =~ /^\s*\.LF/) { #gcc
+    #  next;
+    #}
+    #if ($line =~ /^\s*\.LB/) { #gcc
+    #  next;
+    #}
+    if ($line =~ /^\s*\.LVL/) { #gcc
+      next;
+    }
+    if ($line =~ /^\s*\.Let/) { #gcc
       next;
     }
     if ($line =~ /^\s*\.Ltmp/) {
