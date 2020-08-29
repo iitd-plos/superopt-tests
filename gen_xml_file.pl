@@ -1,8 +1,8 @@
 #!/usr/bin/perl -w
 use warnings;
 use strict;
-use URI::Escape;
-use Compress::LZW;
+#use URI::Escape;
+#use Compress::LZW;
 
 use Cwd qw(cwd);
 
