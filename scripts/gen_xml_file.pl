@@ -3,6 +3,8 @@ use warnings;
 use strict;
 #use URI::Escape;
 #use Compress::LZW;
+use File::Temp qw/ tempfile tempdir /;
+
 
 use Cwd qw(cwd);
 
@@ -49,10 +51,11 @@ print "$data";
 sub add_included_code {
   my $src_path = shift;
   my $c_prog = shift;
-  my $ofilename = "$c_prog.expanded";
+  #my $ofilename = "$c_prog.expanded";
+  my ($ofp, $ofilename) = tempfile();
 
   open (my $file, "<$c_prog") or die $!;
-  open (my $ofp, ">$ofilename") or die $!;
+  #open (my $ofp, ">$ofilename") or die $!;
   while (my $line = <$file>) {
     if ($line =~ /^#include\s+[\"<](.*)[\">]\s*$/) {
       my $h_file = $1;
