@@ -3,7 +3,7 @@ SHELL := /bin/bash
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-EQCHECK_TARGETS := tsvc bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes
+EQCHECK_TARGETS := bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes tsvc
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
