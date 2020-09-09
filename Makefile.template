@@ -12,14 +12,14 @@ GCC_X64_O3_SUFFIX := gcc.eqchecker.O3.x64.s
 CLANG_X64_O3_SUFFIX := clang.eqchecker.O3.x64.s
 ICC_X64_O3_SUFFIX := icc.eqchecker.O3.x64.s
 
-# make available to gentest.sh and runtest.sh
-export BC_O0_SUFFIX
-export GCC_I386_O3_SUFFIX
-export CLANG_I386_O3_SUFFIX
-export ICC_I386_O3_SUFFIX
-export GCC_X64_O3_SUFFIX
-export CLANG_X64_O3_SUFFIX
-export ICC_X64_O3_SUFFIX
+## make available to eqtest.sh
+#export BC_O0_SUFFIX
+#export GCC_I386_O3_SUFFIX
+#export CLANG_I386_O3_SUFFIX
+#export ICC_I386_O3_SUFFIX
+#export GCC_X64_O3_SUFFIX
+#export CLANG_X64_O3_SUFFIX
+#export ICC_X64_O3_SUFFIX
 
 EQCHECKER_BC_O0_PROGS = $(addsuffix .$(BC_O0_SUFFIX), $(PROGS_EQCHECKER))
 EQCHECKER_BC_O2_PROGS = $(addsuffix .bc.eqchecker.O2, $(PROGS_EQCHECKER))
@@ -90,14 +90,20 @@ all: $(ALL_PROGS)
 clean:
 	rm -f *.o *.tmp $(ALL_PROGS)
 
-gentest:
-	bash $(VPATH)/gentest.sh
+eqtest:: $(ALL_PROGS)
+	echo "" > eqtest_chaperon_commands
+	for prog in $(PROGS_EQCHECKER_COMPILER) ; do \
+		echo "python $(SUPEROPT_PROJECT_DIR)/superopt/utils/eqbin.py $(VPATH)/$$prog.c `pwd`/$$prog.$(GCC_I386_O3_SUFFIX) `pwd`/$$prog.$(CLANG_I386_O3_SUFFIX)" >> eqtest_chaperon_commands;\
+	done
+	for prog in $(PROGS_EQCHECKER_SRC_DST) ; do \
+		echo "python $(SUPEROPT_PROJECT_DIR)/superopt/utils/eqbin.py `pwd`/$${prog}_src.c `pwd`/$${prog}_dst.$(GCC_I386_O3_SUFFIX) `pwd`/$${prog}_dst.${CLANG_O3_SUFFIX}" >> eqtest_chaperon_commands;\
+	done
 
-runtest:
-	cp $(VPATH)/*eq_funcs* -t .
-	bash $(VPATH)/runtest.sh
+#runtest:
+#	cp $(VPATH)/*eq_funcs* -t .
+#	bash $(VPATH)/runtest.sh
 
 .DEFAULT_GOAL := all
 
-.PHONY: all clean gentest runtest
+.PHONY: all clean eqtest
 

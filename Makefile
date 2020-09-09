@@ -3,7 +3,7 @@ SHELL := /bin/bash
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-EQCHECK_TARGETS := bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes tsvc
+#EQCHECK_TARGETS := bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes tsvc
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
@@ -13,8 +13,8 @@ LORE_MEM_TARGETS := LORE_mem_write
 LORE_NOMEM_TARGETS := LORE_no_mem_write
 DIETLIBC_TARGET := dietlibc
 PAPER_EX_TARGET := paper_ex
-OOPSLA_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS)
-TARGETS := $(OOPSLA_TARGETS) $(DIETLIBC_TARGET) $(PAPER_EX_TARGET) $(CODEGEN_TARGETS) $(OOELALA_TARGETS)
+EQCHECK_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET)
+TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS)
 #TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS) $(UNITTEST_TARGETS)
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
@@ -43,14 +43,11 @@ $(TARGETS):
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	$(MAKE) -C $(BUILDDIR)/$@
 
-gentest:
-	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 gentest || exit;)
-
-gen_oopsla_test:
-	$(foreach t,$(OOPSLA_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 gentest || exit;)
-	true > $(BUILDDIR)/all_gentest_chaperon_commands
-	$(foreach t,$(OOPSLA_TARGETS), [[ -f $(BUILDDIR)/$(t)/gentest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/gentest_chaperon_commands >> $(BUILDDIR)/all_gentest_chaperon_commands || exit;)
-	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_gentest_chaperon_commands
+eqtest:
+	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 eqtest || exit;)
+	true > $(BUILDDIR)/all_eqtest_chaperon_commands
+	$(foreach t,$(EQCHECK_TARGETS), [[ -f $(BUILDDIR)/$(t)/eqtest_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/eqtest_chaperon_commands >> $(BUILDDIR)/all_eqtest_chaperon_commands || exit;)
+	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_eqtest_chaperon_commands
 
 runtest:
 	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 runtest || exit;)
@@ -132,12 +129,12 @@ run_oopsla_lore_nomem_dfs:
 	parallel --load "$(PARALLEL_LOAD_PERCENT_DFS)%" < $(BUILDDIR)/all_chaperon_commands_lore_nomem
 
 run_dietlibc:
-	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) gentest
-	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) runtest
+	$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) eqtest
+	#$(MAKE) -C $(BUILDDIR)/$(DIETLIBC_TARGET) runtest
 
 run_paper_ex:
-	$(MAKE) -C $(BUILDDIR)/$(PAPER_EX_TARGET) gentest
-	$(MAKE) -C $(BUILDDIR)/$(PAPER_EX_TARGET) runtest
+	$(MAKE) -C $(BUILDDIR)/$(PAPER_EX_TARGET) eqtest
+	#$(MAKE) -C $(BUILDDIR)/$(PAPER_EX_TARGET) runtest
 
 
 .PHONY: gentest runtest unittest
