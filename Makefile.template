@@ -92,16 +92,9 @@ clean:
 
 eqtest:: $(ALL_PROGS)
 	echo "" > eqtest_chaperon_commands
-	for prog in $(PROGS_EQCHECKER_COMPILER) ; do \
-		echo "python $(SUPEROPT_PROJECT_DIR)/superopt/utils/eqbin.py $(VPATH)/$$prog.c `pwd`/$$prog.$(GCC_I386_O3_SUFFIX) `pwd`/$$prog.$(CLANG_I386_O3_SUFFIX)" >> eqtest_chaperon_commands;\
-	done
-	for prog in $(PROGS_EQCHECKER_SRC_DST) ; do \
-		echo "python $(SUPEROPT_PROJECT_DIR)/superopt/utils/eqbin.py `pwd`/$${prog}_src.c `pwd`/$${prog}_dst.$(GCC_I386_O3_SUFFIX) `pwd`/$${prog}_dst.${CLANG_O3_SUFFIX}" >> eqtest_chaperon_commands;\
-	done
-
-#runtest:
-#	cp $(VPATH)/*eq_funcs* -t .
-#	bash $(VPATH)/runtest.sh
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(GCC_I386_O3_SUFFIX) unroll1 $(UNROLL1_GCC) unroll2 $(UNROLL2_GCC) unroll4 $(UNROLL4_GCC) unroll8 $(UNROLL8_GCC) >> eqtest_chaperon_commands
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(CLANG_I386_O3_SUFFIX) unroll1 $(UNROLL1_CLANG) unroll2 $(UNROLL2_CLANG) unroll4 $(UNROLL4_CLANG) unroll8 $(UNROLL8_CLANG) >> eqtest_chaperon_commands
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) SRCDST unroll1 $(UNROLL1_SRCDST) unroll2 $(UNROLL2_SRCDST) unroll4 $(UNROLL4_SRCDST) unroll8 $(UNROLL8_SRCDST) >> eqtest_chaperon_commands
 
 .DEFAULT_GOAL := all
 
