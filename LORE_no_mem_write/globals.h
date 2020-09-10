@@ -1,6 +1,6 @@
-/* LORE LOOP NESTS -- Functions with all loop nests having atleast one Mem write */
-//Functions auto vectorized by GCC for unroll factor 4
-
+/* LORE LOOP NESTS -- Functions having atleast one loop nest without Mem write */
+// All functions in this file are auto vectorized by GCC for unroll factor 4
+// Functions auto-vectorized by clang for unroll factor 8 --  ex1, ex11, ex12, ex13, ex14 and ex16
 
 #define LEN 32000
 #define LEN1 3200

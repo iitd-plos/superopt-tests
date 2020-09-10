@@ -16,7 +16,6 @@
 #include <malloc.h>
 #include <string.h>
 #include <assert.h>
-#include "eqchecker_helper.h"
 
 #define TYPE int
 __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],

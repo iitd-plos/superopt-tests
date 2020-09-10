@@ -2,7 +2,6 @@
 /* TSVC functions vectorized by either of GCC, CLANG or ICC and not demonstrated by any prior work */
 
 #include "globals.h"
-#include "eqchecker_helper.h"
 
 #define TYPE int
 

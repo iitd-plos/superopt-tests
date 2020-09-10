@@ -33,7 +33,7 @@ foreach(my $i = 3; $i <= $#ARGV; $i++) {
 
 foreach my $prog (keys %unroll) {
   my $u = $unroll{$prog};
-  if ($compiler_suffix eq "SRCDST") {
+  if ($compiler_suffix eq "srcdst") {
     print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
   } else {
     print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
