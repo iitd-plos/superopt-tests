@@ -4,7 +4,8 @@ include $(SRCDIR)/Makefile.common  # build rules
 # set VPATH path for targets and src files
 #VPATH = $(SRCDIR)/<dir>
 
-BC_O0_SUFFIX := bc.eqchecker.O0
+BC32_O0_SUFFIX := bc32.eqchecker.O0
+BC64_O0_SUFFIX := bc64.eqchecker.O0
 GCC_I386_O3_SUFFIX := gcc.eqchecker.O3.i386.s
 CLANG_I386_O3_SUFFIX := clang.eqchecker.O3.i386.s
 ICC_I386_O3_SUFFIX := icc.eqchecker.O3.i386.s
@@ -21,10 +22,15 @@ ICC_X64_O3_SUFFIX := icc.eqchecker.O3.x64.s
 #export CLANG_X64_O3_SUFFIX
 #export ICC_X64_O3_SUFFIX
 
-EQCHECKER_BC_O0_PROGS = $(addsuffix .$(BC_O0_SUFFIX), $(PROGS_EQCHECKER))
-EQCHECKER_BC_O2_PROGS = $(addsuffix .bc.eqchecker.O2, $(PROGS_EQCHECKER))
-EQCHECKER_BC_O3_PROGS = $(addsuffix .bc.eqchecker.O3, $(PROGS_EQCHECKER))
-EQCHECKER_BC_O3cg_PROGS = $(addsuffix .bc.eqchecker.O3.cg, $(PROGS_EQCHECKER))
+EQCHECKER_BC32_O0_PROGS = $(addsuffix .$(BC32_O0_SUFFIX), $(PROGS_EQCHECKER))
+EQCHECKER_BC32_O2_PROGS = $(addsuffix .bc32.eqchecker.O2, $(PROGS_EQCHECKER))
+EQCHECKER_BC32_O3_PROGS = $(addsuffix .bc32.eqchecker.O3, $(PROGS_EQCHECKER))
+EQCHECKER_BC32_O3cg_PROGS = $(addsuffix .bc32.eqchecker.O3.cg, $(PROGS_EQCHECKER))
+
+EQCHECKER_BC64_O0_PROGS = $(addsuffix .$(BC64_O0_SUFFIX), $(PROGS_EQCHECKER))
+EQCHECKER_BC64_O2_PROGS = $(addsuffix .bc64.eqchecker.O2, $(PROGS_EQCHECKER))
+EQCHECKER_BC64_O3_PROGS = $(addsuffix .bc64.eqchecker.O3, $(PROGS_EQCHECKER))
+EQCHECKER_BC64_O3cg_PROGS = $(addsuffix .bc64.eqchecker.O3.cg, $(PROGS_EQCHECKER))
 
 EQCHECKER_I386_GCC_O0_PROGS = $(addsuffix .gcc.eqchecker.O0.i386.s, $(PROGS_EQCHECKER))
 EQCHECKER_I386_GCC_O2_PROGS = $(addsuffix .gcc.eqchecker.O2.i386.s, $(PROGS_EQCHECKER))
@@ -57,8 +63,10 @@ EQCHECKER_X64_CLANG_O3_XML_FILES = $(addsuffix .clang.x64.O3.xml, $(PROGS_EQCHEC
 EQCHECKER_X64_ICC_O3_XML_FILES = $(addsuffix .icc.x64.O3.xml, $(PROGS_EQCHECKER))
 
 BC_PROGS = \
-  $(EQCHECKER_BC_O0_PROGS) \
-  $(EQCHECKER_BC_O3_PROGS)
+  $(EQCHECKER_BC32_O0_PROGS) \
+  $(EQCHECKER_BC32_O3_PROGS) \
+  $(EQCHECKER_BC64_O0_PROGS) \
+  $(EQCHECKER_BC64_O3_PROGS)
 BC_PROGS_ASM = $(addsuffix .ll, $(BC_PROGS))
 
 EQCHECKER_PROGS = \

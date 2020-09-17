@@ -161,22 +161,40 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 
 # LLVM BC
 
-%.c.O0.eqchecker.bc: %.c
-	CLANG_REVERSE_ARGS=1 $(CLANG_I386) $(EQCHECKER_DEFINES) -Xclang -disable-O0-optnone $(INCLUDES) -m32 -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
+%.c.O0.eqchecker.bc32: %.c
+	CLANG_REVERSE_ARGS=1 $(CLANG_I386) -Xclang -disable-O0-optnone $(INCLUDES) -m32 -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
 	#$(LLVM_OPT) -mem2reg -strip-debug -o $@ $@.tmp
 	$(LLVM_OPT) -mem2reg -o $@ $@.tmp
 
-%.c.O0.bc: %.c
+%.c.O0.eqchecker.bc64: %.c
+	CLANG_REVERSE_ARGS=1 $(CLANG_X64) -Xclang -disable-O0-optnone $(INCLUDES) -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
+	#$(LLVM_OPT) -mem2reg -strip-debug -o $@ $@.tmp
+	$(LLVM_OPT) -mem2reg -o $@ $@.tmp
+
+%.c.O0.bc32: %.c
 	$(CLANG_I386) $(CFLAGS) -Xclang -disable-O0-optnone $(INCLUDES) -m32 -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
 	$(LLVM_OPT) -mem2reg -die -o $@ $@.tmp
 
-%.bc.eqchecker.O0: %.c.O0.bc #eqchecker_helper.c.O0.bc
+%.c.O0.bc64: %.c
+	$(CLANG_X64) $(CFLAGS) -Xclang -disable-O0-optnone $(INCLUDES) -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
+	$(LLVM_OPT) -mem2reg -die -o $@ $@.tmp
+
+%.bc32.eqchecker.O0: %.c.O0.bc32 #eqchecker_helper.c.O0.bc
 	$(LLVM_LINK) $^ -o $@
 
-%.bc.eqchecker.O2: %.bc.eqchecker.O0
+%.bc64.eqchecker.O0: %.c.O0.bc64 #eqchecker_helper.c.O0.bc
+	$(LLVM_LINK) $^ -o $@
+
+%.bc32.eqchecker.O2: %.bc32.eqchecker.O0
 	$(LLVM_OPT) -O2 -o $@ $<
 
-%.bc.eqchecker.O3: %.bc.eqchecker.O0
+%.bc64.eqchecker.O2: %.bc64.eqchecker.O0
+	$(LLVM_OPT) -O2 -o $@ $<
+
+%.bc32.eqchecker.O3: %.bc32.eqchecker.O0
+	$(LLVM_OPT) --dyn_debug=disableSemanticAA -O3 -o $@ $<
+
+%.bc64.eqchecker.O3: %.bc64.eqchecker.O0
 	$(LLVM_OPT) --dyn_debug=disableSemanticAA -O3 -o $@ $<
 
 #%.bc.O3: %.bc.O0
@@ -185,45 +203,53 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 #see http://lists.llvm.org/pipermail/llvm-dev/2017-April/111989.html for the sequence of commands used to generate bc.O3 below
 %.bc.O0: %.c
 	$(CLANG_I386) $(CFLAGS) -Xclang -disable-llvm-passes $(INCLUDES) -m32 -O3 -emit-llvm $^ -c -o $@ #the O3 flag is for clang-side optimizations; in particular, we want CodeGenTBAA to run.  The disable-llvm-passes ensures that no LLVM optimizations are run
-%.bc.O2: %.bc.O0
+%.bc32.O2: %.bc32.O0
 	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O2) -o $@ $<
-%.bc.O3: %.bc.O0
+%.bc32.O3: %.bc.O0
+	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O3) -o $@ $<
+%.bc64.O2: %.bc32.O0
+	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O2) -o $@ $<
+%.bc64.O3: %.bc.O0
 	$(LLVM_OPT) $(LLVM_OPT_FLAGS_O3) -o $@ $<
 
-%.bc.O3.cg: %.bc.O3
+%.bc32.O3.cg: %.bc32.O3
+	$(MYLLC) -O3 $< -o $<.cg.tmp
+	rm -f $<.cg.tmp
+	$(MYLLVM_AS) $@.ll -o $@
+%.bc64.O3.cg: %.bc64.O3
 	$(MYLLC) -O3 $< -o $<.cg.tmp
 	rm -f $<.cg.tmp
 	$(MYLLVM_AS) $@.ll -o $@
 
 # Executable files generated using LLC (should be identical as clang; here, just to check)
-%.llc.O0.i386.o: %.bc.O0
+%.llc.O0.i386.o: %.bc32.O0
 	$(LLC) --dyn_debug=disableSemanticAA -O0 -filetype=obj $< -o $@
 
 %.llc.O0.i386: %.llc.O0.i386.o
 	$(CLANG_I386) -O0 $< $(LIBS) -o $@
 
-%.llc.O2.i386.o: %.bc.O0
+%.llc.O2.i386.o: %.bc32.O0
 	$(LLVM_OPT) --dyn_debug=disableSemanticAA $(LLVM_OPT_FLAGS_O2) -o $@.tmp $<
 	$(LLC)  --dyn_debug=disableSemanticAA -O2 -filetype=obj $@.tmp -o $@
 
 %.llc.O2.i386: %.llc.O2.i386.o
 	$(CLANG_I386) -O2 $< $(LIBS) -o $@
 
-%.llc.O3.i386.o: %.bc.O0
+%.llc.O3.i386.o: %.bc32.O0
 	$(LLVM_OPT) --dyn_debug=disableSemanticAA $(LLVM_OPT_FLAGS_O3) -o $@.tmp $<
 	$(LLC) --dyn_debug=disableSemanticAA -O3 -filetype=obj $@.tmp -o $@
 
 %.llc.O3.i386: %.llc.O3.i386.o
 	$(CLANG_I386) -O3 $< $(LIBS) -o $@
 
-%.llc.eqchecker.O0.i386.o: %.bc.eqchecker.O0
+%.llc.eqchecker.O0.i386.o: %.bc32.eqchecker.O0
 	$(LLVM_OPT) -load $(SUPEROPT_INSTALL_DIR)/lib/LLVMSuperopt.so -convertLocalLinkageToGlobal -o $@.tmp $<
 	$(LLC) --dyn_debug=disableSemanticAA -O0 -filetype=obj $@.tmp -o $@
 
 %.llc.eqchecker.O0.i386: %.llc.eqchecker.O0.i386.o
 	$(CLANG_I386) -O0 $< eqchecker_helper.clang.eqchecker.O0.i386.o $(LIBS) -o $@
 
-%.llc.eqchecker.O3.i386.o: %.bc.eqchecker.O0
+%.llc.eqchecker.O3.i386.o: %.bc32.eqchecker.O0
 	$(LLVM_OPT) -load $(SUPEROPT_INSTALL_DIR)/lib/LLVMSuperopt.so -convertLocalLinkageToGlobal -o $@.tmp1 $<
 	$(LLVM_OPT) --dyn_debug=disableSemanticAA $(LLVM_OPT_EQCHECKER_FLAGS_O3) -o $@.tmp $@.tmp1
 	$(LLC) --dyn_debug=disableSemanticAA -O3 -filetype=obj $@.tmp -o $@
@@ -252,9 +278,9 @@ eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
 
 # LLVM LL
 
-%.ll.bc.eqchecker.O0: %.ll
-	$(LLVM_OPT) -mem2reg $< -o $@
-	# no linking
+#%.ll.bc.eqchecker.O0: %.ll
+#	$(LLVM_OPT) -mem2reg $< -o $@
+#	# no linking
 
 # XML for compiler-explorer
 %.gcc.i386.O3.xml: %.c %.gcc.eqchecker.O3.i386.s
