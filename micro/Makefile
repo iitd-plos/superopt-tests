@@ -7,7 +7,8 @@ VPATH = $(SRCDIR)/micro
 
 PROGS := ddec \
          lerner \
-         vla
+         vla \
+         arg_passing
 
 PROGS_PREFIX := #fpext \
                 #fptrunc \
@@ -94,7 +95,6 @@ gentest:
 	bash $(VPATH)/gentest.sh $(RUN)
 
 runtest:
-	cp $(VPATH)/vla.foo_vla.*lsprel_mapping -t .
 	bash $(VPATH)/runtest.sh $(RUN)
 
 .DEFAULT_GOAL := all

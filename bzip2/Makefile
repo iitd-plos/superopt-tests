@@ -87,6 +87,9 @@ runtest:
 	cp $(VPATH)/*eq_funcs* -t .
 	bash $(VPATH)/runtest.sh $(RUN)
 
+semanticaa_test:
+	 opt --dyn_debug=checkSemanticAA -scoped-noalias -aa-eval $(EQCHECKER_BC_O0_PROGS) -disable-output
+
 .DEFAULT_GOAL := all
 
 .PHONY: all clean gentest runtest
