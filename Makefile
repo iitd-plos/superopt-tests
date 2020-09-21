@@ -25,10 +25,10 @@ clean:
 distclean: clean
 	rm -rf config-host.mak $(BUILDDIR)
 
-$(BUILDDIR):
+$(BUILDDIR)/%:
 	mkdir -p $@
 
-$(BUILD_MAKEFILES): $(BUILDDIR)/%/Makefile: %/Makefile $(BUILDDIR)
+$(BUILD_MAKEFILES): $(BUILDDIR)/%/Makefile: %/Makefile $(BUILDDIR)/%
 	cp $< $@
 
 $(TARGETS): %: $(BUILDDIR)/%/Makefile
