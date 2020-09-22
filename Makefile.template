@@ -99,7 +99,7 @@ clean:
 	rm -f *.o *.tmp $(ALL_PROGS)
 
 eqtest_%.helper:: $(ALL_PROGS)
-	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z)$(ARCH_OPT_SUFFIX) unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) >> eqtest_$(ARCH)_chaperon_commands;\
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z)$(ARCH_OPT_SUFFIX) unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
 
 eqtest_%_gcc.helper:: CUR_COMPILER=GCC
 
@@ -110,11 +110,11 @@ eqtest_%_srcdst.helper:: ARCH_OPT_SUFFIX=
 
 eqtest_i386:: ARCH=i386
 eqtest_i386:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
-eqtest_i386:: eqtest_i386_gcc.helper eqtest_i386_clang.helper eqtest_i386_srcdst.helper
 
 eqtest_x64:: ARCH=x64
 eqtest_x64:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
-eqtest_x64:: eqtest_x64_gcc.helper eqtest_x64_clang.helper eqtest_x64_srcdst.helper
+eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_gcc.helper eqtest_%_clang.helper eqtest_%_srcdst.helper
+	cat $^ > $@
 
 .DEFAULT_GOAL := all
 

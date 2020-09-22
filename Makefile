@@ -43,11 +43,11 @@ $(TARGETS):
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	$(MAKE) -C $(BUILDDIR)/$@
 
-eqtest_i386::
-	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 eqtest_i386 || exit;)
-	true > $(BUILDDIR)/all_eqtest_i386_chaperon_commands
-	$(foreach t,$(EQCHECK_TARGETS), [[ -f $(BUILDDIR)/$(t)/eqtest_i386_chaperon_commands ]] && cat $(BUILDDIR)/$(t)/eqtest_i386_chaperon_commands >> $(BUILDDIR)/all_eqtest_i386_chaperon_commands || exit;)
-	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/all_eqtest_i386_chaperon_commands
+eqtest_x64 eqtest_i386: eqtest_%:
+	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 $@ || exit;)
+	true > $(BUILDDIR)/$@
+	$(foreach t,$(EQCHECK_TARGETS), [[ -f $(BUILDDIR)/$(t)/$@ ]] && cat $(BUILDDIR)/$(t)/$@ >> $(BUILDDIR)/$@ || exit;)
+	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/$@
 
 runtest:
 	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 runtest || exit;)

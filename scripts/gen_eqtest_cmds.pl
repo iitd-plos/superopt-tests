@@ -6,15 +6,16 @@ use Cwd;
 
 my $SUPEROPT_PROJECT_DIR = $ARGV[0];
 my $VPATH = $ARGV[1];
-my $compiler_suffix = $ARGV[2];
-my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.i386.s";
+my $dst_arch = $ARGV[2];
+my $compiler_suffix = $ARGV[3];
+my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
 
 my $PWD = getcwd;
 
 my %unroll;
 
 my $cur;
-foreach(my $i = 3; $i <= $#ARGV; $i++) {
+foreach(my $i = 4; $i <= $#ARGV; $i++) {
   my $arg = $ARGV[$i];
   if ($arg eq "unroll1") {
     $cur = 1;
@@ -34,8 +35,8 @@ foreach(my $i = 3; $i <= $#ARGV; $i++) {
 foreach my $prog (keys %unroll) {
   my $u = $unroll{$prog};
   if ($compiler_suffix eq "srcdst") {
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
   } else {
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
   }
 }
