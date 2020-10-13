@@ -134,12 +134,12 @@ void baz_vararg(const char* fmt, ...)
     while (*fmt != '\0') {
         if (*fmt == 'd') {
             int i = va_arg(args, int);
-            printf("%d\n", i);
+            MYmyprint_int(i);
         } else if (*fmt == 'c') {
             // A 'char' variable will be promoted to 'int'
             // A character literal in C is already 'int' by itself
             int c = va_arg(args, int);
-            printf("%c\n", c);
+            MYmyprint_int((char)c);
         }
         ++fmt;
     }
