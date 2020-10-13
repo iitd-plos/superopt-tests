@@ -4,7 +4,7 @@ include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
 KFRAMEWORK_TARGETS := gcc_torture
-EQCHECK_TARGETS := bzip2 tsvc semalign reve ctests micro soundness $(KFRAMEWORK_TARGETS) #bzip2_minimal_changes
+EQCHECK_TARGETS := bzip2 tsvc semalign reve ctests micro soundness #$(KFRAMEWORK_TARGETS) #bzip2_minimal_changes
 OOPSLA_TARGETS := oopsla_tests
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
