@@ -32,7 +32,7 @@ done
 if [[ -n ${PARALLEL_JOBS-} ]]
 then
   PARALLEL_OPTS="-j ${PARALLEL_JOBS}"
-elif [[ -n ${PARALLEL_LOAD_PERCENT} ]]
+elif [[ ! -z ${PARALLEL_LOAD_PERCENT+Z} ]]
 then
   PARALLEL_OPTS="--load ${PARALLEL_LOAD_PERCENT:-30}%"
 fi
