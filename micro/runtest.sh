@@ -13,7 +13,7 @@ g_eqflags["loop_unswitching.loop_unswitching"]="--unroll-factor 1"
 #g_eqflags["vla.foo_vla.gcc"]="--local_sprel_assumes vla.foo_vla.gcc.lsprel_mapping"
 g_eqflags["vla.foo_vla.icc"]="--local_sprel_assumes vla.foo_vla.icc.lsprel_mapping" # DWARF data is imprecise
 
-g_global_eqflags="--global-timeout 120" # as the testcases are "micro"
+g_global_eqflags="--global-timeout 120 --dyn_debug=stats" # as the testcases are "micro"
 
 ###########################
 

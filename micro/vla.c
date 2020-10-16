@@ -116,6 +116,7 @@ int variadic_1(unsigned n, ...)
   va_start(args, n);
 #pragma clang loop vectorize(disable)
   for (i = 0; i < n; ++i) {
+    DBG(__LINE__);
     if (i & 1)
       ret -= va_arg(args, int);
     else
@@ -131,21 +132,25 @@ void baz_vararg(const char* fmt, ...)
     va_list args;
     va_start(args, fmt);
  
-    while (*fmt != '\0') {
-        if (*fmt == 'd') {
-            int i = va_arg(args, int);
-            MYmyprint_int(i);
-        } else if (*fmt == 'c') {
-            // A 'char' variable will be promoted to 'int'
-            // A character literal in C is already 'int' by itself
-            int c = va_arg(args, int);
-            MYmyprint_int((char)c);
-        }
-        ++fmt;
+    for ( ; *fmt; ++fmt) {
+      DBG(__LINE__);
+      if (*fmt == 'd') {
+        int i = va_arg(args, int);
+        MYmyprint_int(i);
+        continue;
+      }
+      int c = (char)*fmt;
+      if (*fmt == 'c') {
+        // A 'char' variable will be promoted to 'int'
+        // A character literal in C is already 'int' by itself
+        c = va_arg(args, int);
+      }
+      MYmyprint_char(*fmt);
     }
  
     va_end(args);
 }
+
 int main(int argc, char* argv[])
 {
   return 0;
