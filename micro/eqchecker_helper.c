@@ -120,9 +120,15 @@ MYmyprint_char(char c)
 }
 
 void
-MYmyprint_int(int c)
+MYmyprint_int(int i)
 {
-  printf("%d", c);
+  printf("%d", i);
+}
+
+void
+MYmyprint_float(float f)
+{
+  printf("%f", f);
 }
 
 char *

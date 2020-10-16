@@ -8,7 +8,8 @@ VPATH = $(SRCDIR)/micro
 PROGS := ddec \
          lerner \
          vla \
-         arg_passing
+         arg_passing \
+         minprintf
 
 PROGS_PREFIX := #fpext \
                 #fptrunc \
