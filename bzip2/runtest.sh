@@ -12,7 +12,7 @@ g_eqflags["loadAndRLEsource"]="--smt-query-timeout 600" # timeouts otherwise
 #g_eqflags["hbCreateDecodeTables"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
 g_eqflags["computeMTFforSelectors"]="--disable_dst_bv_rank --disable_src_bv_rank" # timeouts otherwise
 
-g_global_eqflags=" --global-timeout 7200"  # everything above this should be terminated anyway
+g_global_eqflags=" --global-timeout 7200 --dyn_debug=stats"  # everything above this should be terminated anyway
 
 ###########################
 

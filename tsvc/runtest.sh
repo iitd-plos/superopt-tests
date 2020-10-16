@@ -13,6 +13,8 @@ g_eqflags["s2244.clang"]="--unroll-factor 8"
 g_eqflags["s421.clang"]="--unroll-factor 8"
 g_eqflags["s423.clang"]="--unroll-factor 8"
 
+g_global_eqflags="--dyn_debug=stats"
+
 ################################
 
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh
