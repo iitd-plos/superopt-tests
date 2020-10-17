@@ -25,6 +25,8 @@ foreach(my $i = 4; $i <= $#ARGV; $i++) {
     $cur = 4;
   } elsif ($arg eq "unroll8") {
     $cur = 8;
+  } elsif ($arg eq "unroll16") {
+    $cur = 16;
   } elsif (defined $cur) {
     $unroll{$arg} = $cur;
   } else {
