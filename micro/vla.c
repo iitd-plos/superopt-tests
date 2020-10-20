@@ -116,7 +116,7 @@ int variadic_1(unsigned n, ...)
   va_start(args, n);
 #pragma clang loop vectorize(disable)
   for (i = 0; i < n; ++i) {
-    DBG(__LINE__);
+    //DBG(__LINE__);
     if (i & 1)
       ret -= va_arg(args, int);
     else
@@ -127,13 +127,13 @@ int variadic_1(unsigned n, ...)
   return ret;
 }
 
-void baz_vararg(const char* fmt, ...)
+void variadic_2(const char* fmt, ...)
 {
     va_list args;
     va_start(args, fmt);
  
     for ( ; *fmt; ++fmt) {
-      DBG(__LINE__);
+      //DBG(__LINE__);
       if (*fmt == 'd') {
         int i = va_arg(args, int);
         MYmyprint_int(i);
