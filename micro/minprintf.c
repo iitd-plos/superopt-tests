@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include "eqchecker_helper.h"
+//#include "eqchecker_helper.h"
 
 /* minprintf: minimal printf with variable argument list */
 void minprintf(char *fmt, ...)
@@ -37,10 +37,10 @@ void minprintf(char *fmt, ...)
   va_end(ap); /* clean up when done */
 }
 
-int main()
-{
-  char* name = "Mr Robot";
-  int id = 849;
-  minprintf("Hello %s.  Your id is %d\n", name, id);
-  return 0;
-}
+//int main()
+//{
+//  char* name = "Mr Robot";
+//  int id = 849;
+//  minprintf("Hello %s.  Your id is %d\n", name, id);
+//  return 0;
+//}

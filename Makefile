@@ -3,7 +3,7 @@ SHELL := /bin/bash
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-#EQCHECK_TARGETS := bzip2 semalign reve ctests micro soundness #bzip2_minimal_changes tsvc
+#EQCHECK_TARGETS := bzip2 semalign reve ctests soundness #bzip2_minimal_changes tsvc
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
@@ -11,9 +11,10 @@ TSVC_PRIOR_TARGETS := TSVC_prior_work
 TSVC_NEW_TARGETS := TSVC_new
 LORE_MEM_TARGETS := LORE_mem_write
 LORE_NOMEM_TARGETS := LORE_no_mem_write
+MICRO_TARGETS := micro
 DIETLIBC_TARGET := dietlibc
 PAPER_EX_TARGET := paper_ex
-EQCHECK_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET)
+EQCHECK_TARGETS := $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET) $(MICRO_TARGETS)
 TARGETS := $(EQCHECK_TARGETS) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
 #TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS) $(UNITTEST_TARGETS)
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))

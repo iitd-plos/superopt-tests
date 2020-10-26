@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include "eqchecker_helper.h"
+//#include "eqchecker_helper.h"
 
 int vla_0(unsigned n)
 {
@@ -151,7 +151,7 @@ void variadic_2(const char* fmt, ...)
     va_end(args);
 }
 
-int main(int argc, char* argv[])
-{
-  return 0;
-}
+//int main(int argc, char* argv[])
+//{
+//  return 0;
+//}
