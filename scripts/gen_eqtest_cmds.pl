@@ -10,6 +10,10 @@ my $dst_arch = $ARGV[2];
 my $compiler_suffix = $ARGV[3];
 my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
 
+#print "VPATH = $VPATH\n";
+#print "dst_arch = $dst_arch\n";
+#print "compiler_suffix = $compiler_suffix\n";
+
 my $PWD = getcwd;
 
 my %unroll;
@@ -17,6 +21,7 @@ my %unroll;
 my $cur;
 foreach(my $i = 4; $i <= $#ARGV; $i++) {
   my $arg = $ARGV[$i];
+  #print "arg = $arg\n";
   if ($arg eq "unroll1") {
     $cur = 1;
   } elsif ($arg eq "unroll2") {

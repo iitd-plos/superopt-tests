@@ -98,7 +98,7 @@ all: $(ALL_PROGS)
 clean:
 	rm -f *.o *.tmp $(ALL_PROGS)
 
-eqtest_%.helper:: $(ALL_PROGS) $(SRCDIR)/Makefile.template $(SRCDIR)/scripts/gen_eqtest_cmds.pl
+eqtest_%.helper:: $(ALL_PROGS) $(SRCDIR)/Makefile.template $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(VPATH)/Makefile
 	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z)$(ARCH_OPT_SUFFIX) unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) unroll16 $(UNROLL16_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
 
 eqtest_%_gcc.helper:: CUR_COMPILER=GCC
