@@ -6,6 +6,8 @@ set -eu # fail on error
 
 declare -A g_eqflags
 
+g_global_eqflags="--dyn_debug=stats"
+
 ################################
 
 source ${SUPEROPT_PROJECT_DIR}/superopt-tests/scripts/eqchecker_runtest.sh

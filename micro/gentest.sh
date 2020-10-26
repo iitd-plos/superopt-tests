@@ -14,4 +14,11 @@ do
   gen_for_src_dst ${f} >> gentest_chaperon_commands
 done
 
-[[ $# -eq 0 ]] && parallel --load "${PARALLEL_LOAD_PERCENT:-33}%" < gentest_chaperon_commands || true
+if [[ -n ${PARALLEL_JOBS-} ]]
+then
+  PARALLEL_OPTS="-j ${PARALLEL_JOBS}"
+elif [[ ! -z ${PARALLEL_LOAD_PERCENT+Z} ]]
+then
+  PARALLEL_OPTS="--load ${PARALLEL_LOAD_PERCENT:-30}%"
+fi
+[[ $# -eq 0 ]] && parallel ${PARALLEL_OPTS:-} < gentest_chaperon_commands || true

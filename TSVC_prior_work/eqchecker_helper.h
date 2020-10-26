@@ -1,6 +1,9 @@
 #pragma once
 #include <stdio.h>
+#include <stdlib.h>
 
+int MYmyabs(int);
+int MYmyputs(const char*);
 void MYmyexit(int ec);
 void MYmymemset(void *s, int c, size_t n);
 void *MYmymemcpy(void *a, const void *b, size_t sz);
@@ -12,7 +15,9 @@ int MYmyrand();
 char MYmy_char_inc(char *i);
 int MYmyrand_char();
 void MYmyprint_char(char c);
-void MYmyprint_int(int c);
+void MYmyprint_int(int i);
+void MYmyprint_float(float f);
+void MYmyputchar(int c);
 void MYmyfree(void *ptr);
 void *MYmycalloc(size_t nmemb, size_t size);
 char *MYmystrdup(char const *);

@@ -9,11 +9,13 @@ set -eu # fail on error
 declare -A g_eqflags
 #g_eqflags["barthe"]=""
 g_eqflags["loop_unswitching.loop_unswitching"]="--unroll-factor 1"
-g_eqflags["vla.foo_vla.clang"]="--local_sprel_assumes vla.foo_vla.clang.lsprel_mapping"
-g_eqflags["vla.foo_vla.gcc"]="--local_sprel_assumes vla.foo_vla.gcc.lsprel_mapping"
-g_eqflags["vla.foo_vla.icc"]="--local_sprel_assumes vla.foo_vla.icc.lsprel_mapping"
+#g_eqflags["vla.foo_vla.clang"]="--local_sprel_assumes vla.foo_vla.clang.lsprel_mapping"
+#g_eqflags["vla.foo_vla.gcc"]="--local_sprel_assumes vla.foo_vla.gcc.lsprel_mapping"
+g_eqflags["vla.foo_vla.icc"]="--local_sprel_assumes vla.foo_vla.icc.lsprel_mapping" # DWARF data is imprecise
+g_eqflags["minprintf.minprintf"]="--smt-query-timeout 600 --disable_src_bv_rank --disable_dst_bv_rank"
 
-g_global_eqflags="--global-timeout 120" # as the testcases are "micro"
+#g_global_eqflags="--global-timeout 120" # as the testcases are "micro"
+g_global_eqflags="--dyn_debug=stats"
 
 ###########################
 
@@ -29,4 +31,11 @@ do
   gen_for_src_dst ${f} >> chaperon_commands
 done
 
-[[ $# -eq 0 ]] && parallel --load "${PARALLEL_LOAD_PERCENT:-30}%" < chaperon_commands || true
+if [[ -n ${PARALLEL_JOBS-} ]]
+then
+  PARALLEL_OPTS="-j ${PARALLEL_JOBS}"
+elif [[ ! -z ${PARALLEL_LOAD_PERCENT+Z} ]]
+then
+  PARALLEL_OPTS="--load ${PARALLEL_LOAD_PERCENT:-30}%"
+fi
+[[ $# -eq 0 ]] && parallel ${PARALLEL_OPTS:-} < chaperon_commands || true

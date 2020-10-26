@@ -19,6 +19,9 @@ TARGETS := $(EQCHECK_TARGETS) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
 
+export SUPEROPT_PROJECT_DIR
+export SUPEROPT_INSTALL_DIR
+
 PARALLEL_LOAD_PERCENT ?= 33
 PARALLEL_LOAD_PERCENT_DFS ?= 30
 
@@ -32,10 +35,10 @@ clean:
 distclean: clean
 	rm -rf config-host.mak $(BUILDDIR)
 
-$(BUILDDIR):
+$(BUILDDIR)/%:
 	mkdir -p $@
 
-$(BUILD_MAKEFILES): $(BUILDDIR)/%/Makefile: %/Makefile $(BUILDDIR)
+$(BUILD_MAKEFILES): $(BUILDDIR)/%/Makefile: %/Makefile $(BUILDDIR)/%
 	cp $< $@
 
 $(TARGETS):

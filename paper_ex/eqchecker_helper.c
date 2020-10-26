@@ -6,6 +6,16 @@
 
 //const char interp_section[] __attribute__((section(".interp"))) = "/path/to/dynamic/linker";
 
+int MYmyabs(int a)
+{
+  return abs(a);
+}
+
+int MYmyputs(const char* s)
+{
+  return puts(s);
+}
+
 void MYmyexit(int ec)
 {
   _exit(ec);
@@ -110,9 +120,15 @@ MYmyprint_char(char c)
 }
 
 void
-MYmyprint_int(int c)
+MYmyprint_int(int i)
 {
-  printf("%d", c);
+  printf("%d", i);
+}
+
+void
+MYmyprint_float(float f)
+{
+  printf("%f", f);
 }
 
 char *
