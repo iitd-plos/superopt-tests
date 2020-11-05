@@ -9,7 +9,10 @@ PROGS := ddec \
          lerner \
          vla \
          arg_passing \
-         minprintf
+         minprintf \
+         dprintf \
+         addr_taken \
+         alloca
 
 PROGS_PREFIX := #fpext \
                 #fptrunc \
