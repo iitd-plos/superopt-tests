@@ -148,6 +148,12 @@ MYmystrerrorno()
   return strerror(errno);
 }
 
+long int
+MYmystrtol(const char *nptr, char **endptr, int base)
+{
+  return strtol(nptr, endptr, base);
+}
+
 void
 MYmydebug(int n)
 {

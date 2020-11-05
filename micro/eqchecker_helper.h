@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int MYmyabs(int);
 int MYmyputs(const char*);
 void MYmyexit(int ec);
@@ -27,6 +28,8 @@ int MYmytoupper(int c);
 char* MYmystrerrno();
 void MYmydebug(int n);
 void MYmydebug2(int n);
+
+long int MYmystrtol(const char *nptr, char **endptr, int base);
 
 #define atoi MYmy_atoi
 #define memset MYmymemset
