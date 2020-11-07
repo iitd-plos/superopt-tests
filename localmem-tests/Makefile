@@ -3,18 +3,32 @@ include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/ctests
+VPATH = $(SRCDIR)/localmem-tests
 
-PROGS := chomp \
-				 fannkuch \
-				 knucleotide \
-				 nsieve \
-				 qsort \
-				 sha1 \
-				 #nsievebits \ # ext_rotate_left expr is generated which is not supported by solvers
+PROGS := vla \
+         minprintf \
+         dprintf \
+         addr_taken \
+         alloca
+
+PROGS_PREFIX := #fpext \
+                #fptrunc \
+                #fpcmp \
+                #fptoui \
+                #basedon \
+                #the following programs are non-bisimilar and so do not work currently
+                #barthe \
+                #loop_unswitching \
+                #peeling \
+                #soft_pipe \
+                #splitting \
+                #tiling
+                ##lookuptable # reading from RODATA is not supported
+
 
 # make them available to gentest.sh and runtest.sh
 export PROGS
+export PROGS_PREFIX
 
 PROGS_EQCHECKER := $(PROGS) $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
 
@@ -61,7 +75,7 @@ EQCHECKER_I386_PROGS = \
   $(EQCHECKER_I386_GCC_O0_PROGS) \
   $(EQCHECKER_I386_GCC_O3_PROGS) \
   #$(EQCHECKER_I386_ICC_O0_PROGS) \
-  #$(EQCHECKER_I386_ICC_O3_PROGS) \
+  $(EQCHECKER_I386_ICC_O3_PROGS) \
   #$(EQCHECKER_I386_CCOMP_O2_PROGS)
 
 LLVM_PROGS     = $(EQCHECKER_BC_O0_PROGS) $(EQCHECKER_BC_O3_PROGS)

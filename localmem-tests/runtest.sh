@@ -7,10 +7,13 @@ set -eu # fail on error
 # function specific eqflags
 # NOTE: compiler specific version (with .<compiler> suffix) overrides the normal one
 declare -A g_eqflags
-#g_eqflags["barthe"]=""
-g_eqflags["loop_unswitching.loop_unswitching"]="--unroll-factor 1"
+#g_eqflags["vla.foo_vla.clang"]="--local_sprel_assumes vla.foo_vla.clang.lsprel_mapping"
+#g_eqflags["vla.foo_vla.gcc"]="--local_sprel_assumes vla.foo_vla.gcc.lsprel_mapping"
+g_eqflags["vla.foo_vla.icc"]="--local_sprel_assumes vla.foo_vla.icc.lsprel_mapping" # DWARF data is imprecise
+g_eqflags["minprintf.minprintf"]="--smt-query-timeout 600 --disable_src_bv_rank --disable_dst_bv_rank"
 
-g_global_eqflags="--global-timeout 120" # as the testcases are "micro"
+#g_global_eqflags="--global-timeout 120"
+g_global_eqflags="--dyn_debug=stats"
 
 ###########################
 

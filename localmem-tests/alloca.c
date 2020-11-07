@@ -11,7 +11,7 @@ int alloca_0(int n)
   for (int i = 1; i < n; ++i) {
     p[i] = p[i-1] + i*i;
   }
-  return p[n-1];
+  return p[0];
 }
 
 int main()
