@@ -116,7 +116,7 @@ int variadic_1(unsigned n, ...)
   va_start(args, n);
 #pragma clang loop vectorize(disable)
   for (i = 0; i < n; ++i) {
-    //DBG(__LINE__);
+    DBG(__LINE__);
     if (i & 1)
       ret -= va_arg(args, int);
     else
@@ -133,7 +133,7 @@ void variadic_2(const char* fmt, ...)
     va_start(args, fmt);
  
     for ( ; *fmt; ++fmt) {
-      //DBG(__LINE__);
+      DBG(__LINE__);
       if (*fmt == 'd') {
         int i = va_arg(args, int);
         MYmyprint_int(i);
@@ -145,7 +145,7 @@ void variadic_2(const char* fmt, ...)
         // A character literal in C is already 'int' by itself
         c = va_arg(args, int);
       }
-      MYmyprint_char(*fmt);
+      MYmyprint_char(c);
     }
  
     va_end(args);

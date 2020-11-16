@@ -1,17 +1,17 @@
 include ../config.mak                        # paths
+include $(SRCDIR)/Make.conf                  # compiler paths and flags
+include $(SRCDIR)/Makefile.common            # build rules
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/micro
+VPATH = $(SRCDIR)/localmem-tests
 
-PROGS := ddec \
-         lerner \
-         arg_passing
+PROGS := vla \
+         minprintf \
+         dprintf \
+         addr_taken \
+         alloca
 
-UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
-UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
-
-PROGS_EQCHECKER_SRC_DST := \
- 	              #fpext \
+PROGS_PREFIX := #fpext \
                 #fptrunc \
                 #fpcmp \
                 #fptoui \
@@ -24,11 +24,6 @@ PROGS_EQCHECKER_SRC_DST := \
                 #splitting \
                 #tiling
                 ##lookuptable # reading from RODATA is not supported
-PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER) $(addsuffix _src, $(PROGS_EQCHECKER_SRC_DST)) $(addsuffix _dst, $(PROGS_EQCHECKER_SRC_DST))
 
-# compiler flags
-GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
-CLANG_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
-ICC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
 
 include $(SRCDIR)/Makefile.template

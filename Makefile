@@ -3,7 +3,6 @@ SHELL := /bin/bash
 include config-host.mak      # BUILDDIR
 
 # add new dirs' targets here
-#EQCHECK_TARGETS := bzip2 semalign reve ctests soundness #bzip2_minimal_changes tsvc
 CODEGEN_TARGETS := compcert-tests
 OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
@@ -14,7 +13,9 @@ LORE_NOMEM_TARGETS := LORE_no_mem_write
 MICRO_TARGETS := micro
 DIETLIBC_TARGET := dietlibc
 PAPER_EX_TARGET := paper_ex
-EQCHECK_TARGETS := $(MICRO_TARGETS) $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET)
+LOCALMEM_TARGETS := localmem-tests
+OTHER_TARGETS := #bzip2 reve ctests # soundness
+EQCHECK_TARGETS := $(MICRO_TARGETS) $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET) $(LOCALMEM_TARGETS) $(OTHER_TARGETS)
 TARGETS := $(EQCHECK_TARGETS) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
 #TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS) $(UNITTEST_TARGETS)
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
@@ -141,6 +142,6 @@ run_paper_ex:
 	#$(MAKE) -C $(BUILDDIR)/$(PAPER_EX_TARGET) runtest
 
 
-.PHONY: gentest runtest unittest
+.PHONY: runtest unittest
 
 .PHONY: all clean distclean $(TARGETS) gen_oopsla_test run_oopsla_test_bfs run_oopsla_test_dfs run_oopsla_tsvc_prior_dfs run_oopsla_tsvc_prior_bfs run_oopsla_tsvc_new_bfs run_oopsla_tsvc_new_dfs run_oopsla_lore_mem_bfs run_oopsla_lore_mem_dfs run_oopsla_lore_nomem_bfs run_oopsla_lore_nomem_dfs run_dietlibc run_paper_ex
