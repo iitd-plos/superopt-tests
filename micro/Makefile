@@ -10,8 +10,8 @@ PROGS_EQCHECKER_COMPILER := \
          #minprintf
          #lerner \
 
-UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
-UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
+UNROLL32_GCC = $(PROGS_EQCHECKER_COMPILER)
+UNROLL32_CLANG = $(PROGS_EQCHECKER_COMPILER)
 
 PROGS_EQCHECKER_SRC_DST := \
  	              #fpext \
@@ -27,6 +27,7 @@ PROGS_EQCHECKER_SRC_DST := \
                 #splitting \
                 #tiling
                 ##lookuptable # reading from RODATA is not supported
+
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER) $(addsuffix _src, $(PROGS_EQCHECKER_SRC_DST)) $(addsuffix _dst, $(PROGS_EQCHECKER_SRC_DST))
 
 # compiler flags
