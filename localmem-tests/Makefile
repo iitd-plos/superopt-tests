@@ -9,7 +9,15 @@ PROGS := vla \
          minprintf \
          dprintf \
          addr_taken \
-         alloca
+         alloca \
+				 glob \
+				 if_nameindex \
+				 rx \
+				 sha256crypt \
+				 struct_vla \
+				 argp-help \
+				 ifaddrs \
+				 poll
 
 PROGS_PREFIX := #fpext \
                 #fptrunc \
@@ -25,6 +33,8 @@ PROGS_PREFIX := #fpext \
                 #tiling
                 ##lookuptable # reading from RODATA is not supported
 
+
+C_STD = gnu11
 
 # make them available to gentest.sh and runtest.sh
 export PROGS
