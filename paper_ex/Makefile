@@ -4,7 +4,7 @@ include ../config.mak                        # paths
 VPATH = $(SRCDIR)/paper_ex
 
 #PROGS_PREFIX := paper_ex
-SRC_DST := paper_ex
+UNROLL1_SRCDST := paper_ex
 
 #export PROGS_PREFIX
 PROGS_EQCHECKER := $(addsuffix _src, $(SRC_DST)) $(addsuffix _dst, $(SRC_DST))

@@ -5,14 +5,13 @@ use warnings;
 use Cwd;
 
 #constants
-my $SRC_DST_UNROLL_VALUE = -1;
-my $SRC_DST_DEFAULT_UNROLL = 4;
 
 my $SUPEROPT_PROJECT_DIR = $ARGV[0];
 my $VPATH = $ARGV[1];
 my $dst_arch = $ARGV[2];
 my $compiler_suffix = $ARGV[3];
 #my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
+my $srcdst_default_isa = "x64";
 
 #print "VPATH = $VPATH\n";
 #print "dst_arch = $dst_arch\n";
@@ -38,8 +37,6 @@ foreach(my $i = 4; $i <= $#ARGV; $i++) {
     $cur = 16;
   } elsif ($arg eq "unroll32") {
     $cur = 32;
-  } elsif ($arg eq "src_dst") {
-    $cur = $SRC_DST_UNROLL_VALUE;
   } elsif (defined $cur) {
     $unroll{$arg} = $cur;
   } else {
@@ -49,10 +46,9 @@ foreach(my $i = 4; $i <= $#ARGV; $i++) {
 
 foreach my $prog (keys %unroll) {
   my $u = $unroll{$prog};
-  #if ($compiler_suffix eq "srcdst") {
-  #  print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
-  if ($unroll{$prog} == $SRC_DST_UNROLL_VALUE) {
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.c.UNROLL$SRC_DST_DEFAULT_UNROLL\n";
+  if ($compiler_suffix eq "srcdst") {
+    #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
   } else {
     print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
   }
