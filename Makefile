@@ -32,6 +32,13 @@ all: $(TARGETS)
 
 clean:
 	$(foreach t,$(TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) clean;)
+	find . -name *.bc | xargs rm -f
+	find . -name *.cg.ll | xargs rm -f
+	find . -name "*.etfg" | xargs rm -f
+	find . -name *.tmp | xargs rm -f
+	find . -name *.log | xargs rm -f
+	find . -name cscope.out | xargs rm -f
+	find . -name core | xargs rm -f
 
 distclean: clean
 	rm -rf config-host.mak $(BUILDDIR)
