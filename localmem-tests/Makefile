@@ -7,6 +7,7 @@ UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
 
 PROGS_EQCHECKER_COMPILER := vla \
+														variadic \
                             minprintf \
                             dprintf \
                             addr_taken \

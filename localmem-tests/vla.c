@@ -61,6 +61,28 @@ void vla_13(int *a, unsigned n)
   }
 }
 
+// local declaration not on entry edge
+int vla_14(int* a, unsigned n, int* b)
+{
+  if (n == 0)
+    return 0;
+
+  b[0] = a[0];
+  int mx = a[0];
+#pragma clang loop vectorize(disable) unroll(disable)
+  for (unsigned i = 1; i < n; ++i) {
+    b[i] = b[i-1] + a[i];
+    if (a[i] > mx)
+      mx = a[i];
+  }
+  int v[n];
+#pragma clang loop vectorize(disable) unroll(disable)
+  for (unsigned i = 0; i < n; ++i) {
+    v[i] = (mx-a[i])*b[i];
+  }
+  return v[0] > v[n-1] ? v[0] : v[n-1];
+}
+
 int vla_21(int *a, unsigned n)
 {
   if (n == 0)
@@ -97,58 +119,27 @@ end:
   return 0;
 }
 
-int variadic_0(unsigned n, ...)
+int vlax_0(char* s)
 {
-  if (n == 0 || n > 2)
+  if (!s)
     return 0;
-  va_list args;
-  va_start(args, n);
-  unsigned ret = va_arg(args, unsigned);
-  return n == 1 ? ret : ret + va_arg(args, unsigned);
-}
-
-int variadic_1(unsigned n, ...)
-{
-  unsigned i;
-  va_list args;
-  int ret = 0;
-
-  va_start(args, n);
-#pragma clang loop vectorize(disable) unroll(disable)
-  for (i = 0; i < n; ++i) {
-    DBG(__LINE__);
-    if (i & 1)
-      ret -= va_arg(args, int);
-    else
-      ret += va_arg(args, int);
+  int n = strlen(s);
+  char* a;
+  if (n < 4096) {
+    a = alloca(n);
+  } else {
+    a = malloc(n);
   }
-  va_end(args);
-
+  for (int i = 0; i < n; ++i) {
+    a[i] = s[i] ^ 1;
+  }
+  int ret = 0;
+  for (int i = 0; i < n; ++i) {
+    ret += a[i];
+  }
+  if (!(n < 4096))
+    free(a);
   return ret;
-}
-
-void variadic_2(const char* fmt, ...)
-{
-    va_list args;
-    va_start(args, fmt);
- 
-    for ( ; *fmt; ++fmt) {
-      DBG(__LINE__);
-      if (*fmt == 'd') {
-        int i = va_arg(args, int);
-        MYmyprint_int(i);
-        continue;
-      }
-      int c = (char)*fmt;
-      if (*fmt == 'c') {
-        // A 'char' variable will be promoted to 'int'
-        // A character literal in C is already 'int' by itself
-        c = va_arg(args, int);
-      }
-      MYmyprint_char(c);
-    }
- 
-    va_end(args);
 }
 
 //int main(int argc, char* argv[])
