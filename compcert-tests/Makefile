@@ -65,8 +65,8 @@ I386_PROGS = \
   $(I386_CLANG_O3_PROGS) \
   $(I386_LLC_O0_PROGS) \
   $(I386_LLC_O3_PROGS) \
-  $(I386_ICC_O0_PROGS) \
-  $(I386_ICC_O3_PROGS)
+  #$(I386_ICC_O0_PROGS) \
+  #$(I386_ICC_O3_PROGS)
 
 # define target variables
 

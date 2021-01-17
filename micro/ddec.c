@@ -26,13 +26,13 @@ int ddec(int x, int n)
   return y;
 }
 
-#define LOOP_N 10000
+//#define LOOP_N 10000
 
-int main()
-{
-  int ret = 0;
-  for(int i = 0; i < LOOP_N; ++i)
-    ret += ddec(i, i);
-  return ret;
-}
+//int main()
+//{
+//  int ret = 0;
+//  for(int i = 0; i < LOOP_N; ++i)
+//    ret += ddec(i, i);
+//  return ret;
+//}
 

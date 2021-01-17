@@ -15,7 +15,7 @@ ICC_PROGS = $(addsuffix .icc, $(PROGS))
 GCC_PROGS = $(addsuffix .gcc, $(PROGS))
 OOELALA_PROGS = $(addsuffix .ooelala, $(PROGS))
 
-EXECS = $(CLANG_PROGS) $(ICC_PROGS) $(GCC_PROGS) $(OOELALA_PROGS)
+EXECS = $(CLANG_PROGS) $(GCC_PROGS) $(OOELALA_PROGS) #$(ICC_PROGS) 
 
 all: $(EXECS)
 
