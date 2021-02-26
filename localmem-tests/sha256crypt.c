@@ -64,7 +64,7 @@ static const uint32_t K[64] =
 
 /* Process LEN bytes of BUFFER, accumulating context into CTX.
    It is assumed that LEN % 64 == 0.  */
-static void
+void
 sha256_process_block (const void *buffer, size_t len, struct sha256_ctx *ctx)
 {
   const uint32_t *words = buffer;
@@ -166,7 +166,7 @@ sha256_process_block (const void *buffer, size_t len, struct sha256_ctx *ctx)
 
 /* Initialize structure containing state of computation.
    (FIPS 180-2:5.3.2)  */
-static void
+void
 sha256_init_ctx (struct sha256_ctx *ctx)
 {
   ctx->H[0] = 0x6a09e667;
@@ -188,7 +188,7 @@ sha256_init_ctx (struct sha256_ctx *ctx)
 
    IMPORTANT: On some systems it is required that RESBUF is correctly
    aligned for a 32 bits value.  */
-static void *
+void *
 sha256_finish_ctx (struct sha256_ctx *ctx, void *resbuf)
 {
   /* Take yet unprocessed bytes into account.  */
@@ -202,7 +202,7 @@ sha256_finish_ctx (struct sha256_ctx *ctx, void *resbuf)
     ++ctx->total[1];
 
   pad = bytes >= 56 ? 64 + 56 - bytes : 56 - bytes;
-  memcpy (&ctx->buffer[bytes], fillbuf, pad);
+  MYmymemcpy (&ctx->buffer[bytes], fillbuf, pad);
 
   /* Put the 64-bit file length in *bits* at the end of the buffer.  */
   *(uint32_t *) &ctx->buffer[bytes + pad + 4] = SWAP (ctx->total[0] << 3);
@@ -220,7 +220,7 @@ sha256_finish_ctx (struct sha256_ctx *ctx, void *resbuf)
 }
 
 
-static void
+void
 sha256_process_bytes (const void *buffer, size_t len, struct sha256_ctx *ctx)
 {
   /* When we already have some bits in our internal buffer concatenate
@@ -230,7 +230,7 @@ sha256_process_bytes (const void *buffer, size_t len, struct sha256_ctx *ctx)
       size_t left_over = ctx->buflen;
       size_t add = 128 - left_over > len ? len : 128 - left_over;
 
-      memcpy (&ctx->buffer[left_over], buffer, add);
+      MYmymemcpy (&ctx->buffer[left_over], buffer, add);
       ctx->buflen += add;
 
       if (ctx->buflen > 64)
@@ -239,7 +239,7 @@ sha256_process_bytes (const void *buffer, size_t len, struct sha256_ctx *ctx)
 
 	  ctx->buflen &= 63;
 	  /* The regions in the following copy operation cannot overlap.  */
-	  memcpy (ctx->buffer, &ctx->buffer[(left_over + add) & ~63],
+	  MYmymemcpy (ctx->buffer, &ctx->buffer[(left_over + add) & ~63],
 		  ctx->buflen);
 	}
 
@@ -260,7 +260,7 @@ sha256_process_bytes (const void *buffer, size_t len, struct sha256_ctx *ctx)
       if (UNALIGNED_P (buffer))
 	while (len > 64)
 	  {
-	    sha256_process_block (memcpy (ctx->buffer, buffer, 64), 64, ctx);
+	    sha256_process_block (MYmymemcpy (ctx->buffer, buffer, 64), 64, ctx);
 	    buffer = (const char *) buffer + 64;
 	    len -= 64;
 	  }
@@ -277,13 +277,13 @@ sha256_process_bytes (const void *buffer, size_t len, struct sha256_ctx *ctx)
     {
       size_t left_over = ctx->buflen;
 
-      memcpy (&ctx->buffer[left_over], buffer, len);
+      MYmymemcpy (&ctx->buffer[left_over], buffer, len);
       left_over += len;
       if (left_over >= 64)
 	{
 	  sha256_process_block (ctx->buffer, 64, ctx);
 	  left_over -= 64;
-	  memcpy (ctx->buffer, &ctx->buffer[64], left_over);
+	  MYmymemcpy (ctx->buffer, &ctx->buffer[64], left_over);
 	}
       ctx->buflen = left_over;
     }
@@ -311,7 +311,7 @@ static const char b64t[64] =
 "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 
-static char *
+char *
 sha256_crypt_r (const char *key, const char *salt, char *buffer, int buflen)
 {
   unsigned char alt_result[32]
@@ -359,7 +359,7 @@ sha256_crypt_r (const char *key, const char *salt, char *buffer, int buflen)
     {
       char *tmp = (char *) alloca (key_len + __alignof__ (uint32_t));
       key = copied_key =
-	memcpy (tmp + __alignof__ (uint32_t)
+	MYmymemcpy (tmp + __alignof__ (uint32_t)
 		- (tmp - (char *) 0) % __alignof__ (uint32_t),
 		key, key_len);
     }
@@ -368,7 +368,7 @@ sha256_crypt_r (const char *key, const char *salt, char *buffer, int buflen)
     {
       char *tmp = (char *) alloca (salt_len + __alignof__ (uint32_t));
       salt = copied_salt =
-	memcpy (tmp + __alignof__ (uint32_t)
+	MYmymemcpy (tmp + __alignof__ (uint32_t)
 		- (tmp - (char *) 0) % __alignof__ (uint32_t),
 		salt, salt_len);
     }
@@ -431,8 +431,8 @@ sha256_crypt_r (const char *key, const char *salt, char *buffer, int buflen)
   /* Create byte sequence P.  */
   cp = p_bytes = alloca (key_len);
   for (cnt = key_len; cnt >= 32; cnt -= 32)
-    cp = memcpy (cp, temp_result, 32) + 32;
-  memcpy (cp, temp_result, cnt);
+    cp = MYmymemcpy (cp, temp_result, 32) + 32;
+  MYmymemcpy (cp, temp_result, cnt);
 
   /* Start computation of S byte sequence.  */
   sha256_init_ctx (&alt_ctx);
@@ -447,8 +447,8 @@ sha256_crypt_r (const char *key, const char *salt, char *buffer, int buflen)
   /* Create byte sequence S.  */
   cp = s_bytes = alloca (salt_len);
   for (cnt = salt_len; cnt >= 32; cnt -= 32)
-    cp = memcpy (cp, temp_result, 32) + 32;
-  memcpy (cp, temp_result, cnt);
+    cp = MYmymemcpy (cp, temp_result, 32) + 32;
+  MYmymemcpy (cp, temp_result, cnt);
 
   /* Repeatedly run the collected hash value through SHA256 to burn
      CPU cycles.  */
@@ -540,15 +540,15 @@ sha256_crypt_r (const char *key, const char *salt, char *buffer, int buflen)
      inside the SHA256 implementation as well.  */
   sha256_init_ctx (&ctx);
   sha256_finish_ctx (&ctx, alt_result);
-  memset (temp_result, '\0', sizeof (temp_result));
-  memset (p_bytes, '\0', key_len);
-  memset (s_bytes, '\0', salt_len);
-  memset (&ctx, '\0', sizeof (ctx));
-  memset (&alt_ctx, '\0', sizeof (alt_ctx));
+  MYmymemset (temp_result, '\0', sizeof (temp_result));
+  MYmymemset (p_bytes, '\0', key_len);
+  MYmymemset (s_bytes, '\0', salt_len);
+  MYmymemset (&ctx, '\0', sizeof (ctx));
+  MYmymemset (&alt_ctx, '\0', sizeof (alt_ctx));
   if (copied_key != NULL)
-    memset (copied_key, '\0', key_len);
+    MYmymemset (copied_key, '\0', key_len);
   if (copied_salt != NULL)
-    memset (copied_salt, '\0', salt_len);
+    MYmymemset (copied_salt, '\0', salt_len);
 
   return buffer;
 }

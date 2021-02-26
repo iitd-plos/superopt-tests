@@ -1,10 +1,11 @@
 // Compiles only with GCC!
 #if defined(__GNUC__) && !defined(__clang__)
+
 #include<stdarg.h>
 int
 foo(int n, ...)
 {
-  int sum =0;
+  int sum = 0;
   va_list  argptr;
   va_start(argptr, n);
   for (int i = 0; i < n; i++) {
@@ -23,7 +24,9 @@ int main(int argc, char **argv)
   f = (int (*)(int, struct s))foo;
   return foo(argc, x);
 }
+
 #else
+
 int main()
 {
   return 0;

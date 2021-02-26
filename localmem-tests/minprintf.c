@@ -36,11 +36,3 @@ void minprintf(char *fmt, ...)
   }
   va_end(ap); /* clean up when done */
 }
-
-//int main()
-//{
-//  char* name = "Mr Robot";
-//  int id = 849;
-//  minprintf("Hello %s.  Your id is %d\n", name, id);
-//  return 0;
-//}

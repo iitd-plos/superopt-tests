@@ -54,8 +54,3 @@ void variadic_2(const char* fmt, ...)
  
     va_end(args);
 }
-
-//int main(int argc, char* argv[])
-//{
-//  return 0;
-//}

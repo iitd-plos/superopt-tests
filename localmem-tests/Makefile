@@ -6,20 +6,22 @@ VPATH = $(SRCDIR)/localmem-tests
 UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
 
-PROGS_EQCHECKER_COMPILER := vla \
+PROGS_EQCHECKER_COMPILER := vla_1 \
+                            vla_2 \
+                            vlax \
 														variadic \
                             minprintf \
                             dprintf \
                             addr_taken \
                             alloca \
-				                    glob \
-				                    if_nameindex \
-				                    rx \
-				                    sha256crypt \
-				                    struct_vla \
-				                    argp-help \
-				                    ifaddrs \
-				                    poll
+                            rx \
+                            struct_vla \
+                            # sha256crypt # harvest takes forever
+                            # ifaddrs # eqgen takes forever
+                            # poll # eqgen takes forever
+                            # glob \
+                            # if_nameindex \
+                            # argp-help \
 
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
 

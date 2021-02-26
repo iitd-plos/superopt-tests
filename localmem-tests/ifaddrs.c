@@ -98,7 +98,7 @@ struct ifaddrs_storage
 };
 
 void
-__netlink_free_handle (struct netlink_handle *h)
+netlink_free_handle (struct netlink_handle *h)
 {
   struct netlink_res *ptr;
 
@@ -115,7 +115,7 @@ __netlink_free_handle (struct netlink_handle *h)
 
 
 static int
-__netlink_sendreq (struct netlink_handle *h, int type)
+netlink_sendreq (struct netlink_handle *h, int type)
 {
   struct
   {
@@ -144,7 +144,7 @@ __netlink_sendreq (struct netlink_handle *h, int type)
 
 
 int
-__netlink_request (struct netlink_handle *h, int type)
+netlink_request (struct netlink_handle *h, int type)
 {
   struct netlink_res *nlm_next;
   struct netlink_res **new_nlm_list;
@@ -169,7 +169,7 @@ __netlink_request (struct netlink_handle *h, int type)
     buf = alloca (this_buf_size);
   else
     {
-      buf = malloc (this_buf_size);
+      buf = MYmymalloc (this_buf_size);
       if (buf != NULL)
 	use_malloc = true;
       else
@@ -277,7 +277,7 @@ __netlink_request (struct netlink_handle *h, int type)
       if (count == 0)
 	continue;
 
-      nlm_next = (struct netlink_res *) malloc (sizeof (struct netlink_res)
+      nlm_next = (struct netlink_res *) MYmymalloc (sizeof (struct netlink_res)
 						+ read_len);
       if (nlm_next == NULL)
 	goto out_fail;
@@ -304,7 +304,7 @@ out_fail:
 
 
 void
-__netlink_close (struct netlink_handle *h)
+netlink_close (struct netlink_handle *h)
 {
   /* Don't modify errno.  */
   int serrno = errno;
@@ -315,7 +315,7 @@ __netlink_close (struct netlink_handle *h)
 
 /* Open a NETLINK socket.  */
 int
-__netlink_open (struct netlink_handle *h)
+netlink_open (struct netlink_handle *h)
 {
   struct sockaddr_nl nladdr;
 
@@ -578,7 +578,7 @@ try_again:
 		          if ((rta_payload + 1) <= sizeof (ifas[ifa_index].name))
 			        {
 			          ifas[ifa_index].ifa.ifa_name = ifas[ifa_index].name;
-			          *(char *) mempcpy (ifas[ifa_index].name, rta_data,
+			          *(char *) MYmymempcpy (ifas[ifa_index].name, rta_data,
 					          rta_payload) = '\0';
 			        }
 		          break;
@@ -740,7 +740,7 @@ try_again:
 		          if (rta_payload + 1 <= sizeof (ifas[ifa_index].name))
 			        {
 			          ifas[ifa_index].ifa.ifa_name = ifas[ifa_index].name;
-			          *(char *) mempcpy (ifas[ifa_index].name, rta_data,
+			          *(char *) MYmymempcpy (ifas[ifa_index].name, rta_data,
 					          rta_payload) = '\0';
 			        }
 		          else

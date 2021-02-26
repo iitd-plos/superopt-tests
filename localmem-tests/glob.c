@@ -27,7 +27,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
-#include <malloc.h>
 #include <fnmatch.h>
 #include <glob.h>
 
@@ -193,7 +192,7 @@ int __prefix_array (const char *dirname, char **array, size_t n)
   for (i = 0; i < n; ++i)
     {
       size_t eltlen = strlen (array[i]) + 1;
-      char *new = (char *) malloc (dirlen + 1 + eltlen);
+      char *new = (char *) MYmymalloc (dirlen + 1 + eltlen);
       if (new == NULL)
 	{
 	  while (i > 0)
@@ -202,9 +201,9 @@ int __prefix_array (const char *dirname, char **array, size_t n)
 	}
 
       {
-	char *endp = mempcpy (new, dirname, dirlen);
+	char *endp = MYmymempcpy (new, dirname, dirlen);
 	*endp++ = DIRSEP_CHAR;
-	mempcpy (endp, array[i], eltlen);
+	MYmymempcpy (endp, array[i], eltlen);
       }
       free (array[i]);
       array[i] = new;
@@ -250,7 +249,7 @@ link_exists_p (const char *dir, size_t dirlen, const char *fname,
   struct stat st;
   struct_stat64 st64;
 
-  mempcpy (mempcpy (mempcpy (fullname, dir, dirlen), "/", 1),
+  MYmymempcpy (MYmymempcpy (MYmymempcpy (fullname, dir, dirlen), "/", 1),
 	   fname, fnamelen + 1);
 
   return (((flags & GLOB_ALTDIRFUNC)
@@ -297,7 +296,7 @@ static int glob_in_dir (const char *pattern, const char *directory, int flags,
       size_t patlen = strlen (pattern);
       char *fullname = (char *) alloca (dirlen + 1 + patlen + 1);
 
-      mempcpy (mempcpy (mempcpy (fullname, directory, dirlen),
+      MYmymempcpy (MYmymempcpy (MYmymempcpy (fullname, directory, dirlen),
 			"/", 1),
 	       pattern, patlen + 1);
       if (((flags & GLOB_ALTDIRFUNC)
@@ -316,7 +315,7 @@ static int glob_in_dir (const char *pattern, const char *directory, int flags,
 	  /* This is a special case for matching directories like in
 	     "*a/".  */
 	  names = (struct globlink *) alloca (sizeof (struct globlink));
-	  names->name = (char *) malloc (1);
+	  names->name = (char *) MYmymalloc (1);
 	  if (names->name == NULL)
 	    goto memory_error;
 	  names->name[0] = '\0';
@@ -403,10 +402,10 @@ static int glob_in_dir (const char *pattern, const char *directory, int flags,
 			  struct globlink *new = (struct globlink *)
 			    alloca (sizeof (struct globlink));
 			  len = NAMLEN (d);
-			  new->name = (char *) malloc (len + 1);
+			  new->name = (char *) MYmymalloc (len + 1);
 			  if (new->name == NULL)
 			    goto memory_error;
-			  *((char *) mempcpy (new->name, name, len)) = '\0';
+			  *((char *) MYmymempcpy (new->name, name, len)) = '\0';
 			  new->next = names;
 			  names = new;
 			  ++nfound;
@@ -423,10 +422,10 @@ static int glob_in_dir (const char *pattern, const char *directory, int flags,
       nfound = 1;
       names = (struct globlink *) alloca (sizeof (struct globlink));
       names->next = NULL;
-      names->name = (char *) malloc (len + 1);
+      names->name = (char *) MYmymalloc (len + 1);
       if (names->name == NULL)
 	goto memory_error;
-      *((char *) mempcpy (names->name, pattern, len)) = '\0';
+      *((char *) MYmymempcpy (names->name, pattern, len)) = '\0';
     }
 
   if (nfound != 0)
@@ -499,6 +498,9 @@ glob (
   size_t dirlen;
   int status;
   size_t oldcount;
+	size_t i;
+  struct stat st;
+  struct_stat64 st64;
 
   if (pattern == NULL || pglob == NULL || (flags & ~__GLOB_FLAGS) != 0)
     {
@@ -553,7 +555,7 @@ glob (
 /* 	  char onealt[strlen (pattern) - 1]; */
 
 /* 	  /1* We know the prefix for all sub-patterns.  *1/ */
-/* 	  alt_start = mempcpy (onealt, pattern, begin - pattern); */
+/* 	  alt_start = MYmymempcpy (onealt, pattern, begin - pattern); */
 
 /* 	  /1* Find the first sub-pattern and at the same time find the */
 /* 	     rest after the closing brace.  *1/ */
@@ -600,7 +602,7 @@ glob (
 /* 	      int result; */
 
 /* 	      /1* Construct the new glob expression.  *1/ */
-/* 	      mempcpy (mempcpy (alt_start, p, next - p), rest, rest_len); */
+/* 	      MYmymempcpy (MYmymempcpy (alt_start, p, next - p), rest, rest_len); */
 
 /* 	      result = glob (onealt, */
 /* 			     ((flags & ~(GLOB_NOCHECK | GLOB_NOMAGIC)) */
@@ -671,7 +673,7 @@ glob (
       char *newp;
       dirlen = filename - pattern;
       newp = (char *) alloca (dirlen + 1);
-      *((char *) mempcpy (newp, pattern, dirlen)) = '\0';
+      *((char *) MYmymempcpy (newp, pattern, dirlen)) = '\0';
       dirname = newp;
       ++filename;
 
@@ -694,8 +696,7 @@ glob (
         pglob->gl_pathv = NULL;
       else
 	{
-	  size_t i;
-	  pglob->gl_pathv = (char **) malloc ((pglob->gl_offs + 1)
+	  pglob->gl_pathv = (char **) MYmymalloc ((pglob->gl_offs + 1)
 					      * sizeof (char *));
 	  if (pglob->gl_pathv == NULL)
 	    return GLOB_NOSPACE;
@@ -771,7 +772,7 @@ glob (
 	      char *newp;
 	      size_t home_len = strlen (home_dir);
 	      newp = (char *) alloca (home_len + dirlen);
-	      mempcpy (mempcpy (newp, home_dir, home_len),
+	      MYmymempcpy (MYmymempcpy (newp, home_dir, home_len),
 		       &dirname[1], dirlen);
 	      dirname = newp;
 	    }
@@ -788,34 +789,34 @@ glob (
 	    {
 	      char *newp;
 	      newp = (char *) alloca (end_name - dirname);
-	      *((char *) mempcpy (newp, dirname + 1, end_name - dirname))
+	      *((char *) MYmymempcpy (newp, dirname + 1, end_name - dirname))
 		= '\0';
 	      user_name = newp;
 	    }
 
 	  /* Look up specific user's home directory.  */
 	  {
-	    struct passwd *p;
+	    struct passwd *pwd;
 	    long int buflen = GETPW_R_SIZE_MAX ();
 	    char *pwtmpbuf;
-	    struct passwd pwbuf;
+	    struct passwd pwbuf2;
 	    int save = errno;
 
 	    pwtmpbuf = (char *) alloca (buflen);
 
-	    while (getpwnam_r (user_name, &pwbuf, pwtmpbuf, buflen, &p) != 0)
+	    while (getpwnam_r (user_name, &pwbuf2, pwtmpbuf, buflen, &pwd) != 0)
 	      {
 		if (errno != ERANGE)
 		  {
-		    p = NULL;
+		    pwd = NULL;
 		    break;
 		  }
 		pwtmpbuf = extend_alloca (pwtmpbuf, buflen, 2 * buflen);
 		/* __set_errno (save); */
 		errno = save;
 	      }
-	    if (p != NULL)
-	      home_dir = p->pw_dir;
+	    if (pwd != NULL)
+	      home_dir = pwd->pw_dir;
 	    else
 	      home_dir = NULL;
 	  }
@@ -826,7 +827,7 @@ glob (
 	      size_t home_len = strlen (home_dir);
 	      size_t rest_len = end_name == NULL ? 0 : strlen (end_name);
 	      newp = (char *) alloca (home_len + rest_len + 1);
-	      *((char *) mempcpy (mempcpy (newp, home_dir, home_len),
+	      *((char *) MYmymempcpy (MYmymempcpy (newp, home_dir, home_len),
 				  end_name, rest_len)) = '\0';
 	      dirname = newp;
 	    }
@@ -842,8 +843,6 @@ glob (
      can give the answer now.  */
   if (filename == NULL)
     {
-      struct stat st;
-      struct_stat64 st64;
 
       /* Return the directory if we don't check for error or if it exists.  */
       if ((flags & GLOB_NOCHECK)
@@ -1018,9 +1017,6 @@ glob (
   if (flags & GLOB_MARK)
     {
       /* Append slashes to directory names.  */
-      size_t i;
-      struct stat st;
-      struct_stat64 st64;
 
       for (i = oldcount; i < pglob->gl_pathc + pglob->gl_offs; ++i)
 	if (((flags & GLOB_ALTDIRFUNC)

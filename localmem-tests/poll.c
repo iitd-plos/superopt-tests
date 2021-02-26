@@ -57,9 +57,9 @@ int poll(struct pollfd *fds, nfds_t nfds, int timeout)
 
   /* We can't call FD_ZERO, since FD_ZERO only works with sets
      of exactly __FD_SETSIZE size.  */
-  memset (rset, 0, bytes);
-  memset (wset, 0, bytes);
-  memset (xset, 0, bytes);
+  MYmymemset (rset, 0, bytes);
+  MYmymemset (wset, 0, bytes);
+  MYmymemset (xset, 0, bytes);
 
   for (f = fds; f < &fds[nfds]; ++f)
   {
@@ -81,13 +81,13 @@ int poll(struct pollfd *fds, nfds_t nfds, int timeout)
 		    nwset = alloca (nbytes);
 		    nxset = alloca (nbytes);
 
-		    memset ((char *) nrset + bytes, 0, nbytes - bytes);
-		    memset ((char *) nwset + bytes, 0, nbytes - bytes);
-		    memset ((char *) nxset + bytes, 0, nbytes - bytes);
+		    MYmymemset ((char *) nrset + bytes, 0, nbytes - bytes);
+		    MYmymemset ((char *) nwset + bytes, 0, nbytes - bytes);
+		    MYmymemset ((char *) nxset + bytes, 0, nbytes - bytes);
 
-		    rset = memcpy (nrset, rset, bytes);
-		    wset = memcpy (nwset, wset, bytes);
-		    xset = memcpy (nxset, xset, bytes);
+		    rset = MYmymemcpy (nrset, rset, bytes);
+		    wset = MYmymemcpy (nwset, wset, bytes);
+		    xset = MYmymemcpy (nxset, xset, bytes);
 
 		    bytes = nbytes;
 	    }
@@ -121,9 +121,9 @@ int poll(struct pollfd *fds, nfds_t nfds, int timeout)
 	    struct timeval sngl_tv;
 
 	    /* Clear the original set.  */
-	    memset (rset, 0, bytes);
-	    memset (wset, 0, bytes);
-	    memset (xset, 0, bytes);
+	    MYmymemset (rset, 0, bytes);
+	    MYmymemset (wset, 0, bytes);
+	    MYmymemset (xset, 0, bytes);
 
 	    /* This means we don't wait for input.  */
 	    sngl_tv.tv_sec = 0;
@@ -141,9 +141,9 @@ int poll(struct pollfd *fds, nfds_t nfds, int timeout)
 		    {
 		      int n;
 
-		      memset (sngl_rset, 0, bytes);
-		      memset (sngl_wset, 0, bytes);
-		      memset (sngl_xset, 0, bytes);
+		      MYmymemset (sngl_rset, 0, bytes);
+		      MYmymemset (sngl_wset, 0, bytes);
+		      MYmymemset (sngl_xset, 0, bytes);
 
 		      if (f->events & POLLIN)
 			      FD_SET (f->fd, sngl_rset);

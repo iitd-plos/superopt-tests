@@ -83,66 +83,20 @@ int vla_14(int* a, unsigned n, int* b)
   return v[0] > v[n-1] ? v[0] : v[n-1];
 }
 
-int vla_21(int *a, unsigned n)
+// fcall after local declaration
+char vla_15(char* s)
 {
+  unsigned n = MYmystrlen(s);
   if (n == 0)
-    return 0;
-
-  int v[n], w[n];
+    return '\0';
+  char t[n];
+  MYmyputs("Starting...");
 #pragma clang loop vectorize(disable) unroll(disable)
-  for (unsigned i = 0; i < n; ++i) {
-    v[i] = a[i]*a[i];
-    w[i] = a[i]+a[i];
+  for (unsigned i = 0; i < n; ++i)
+    t[i] = i ^ s[i];
+#pragma clang loop vectorize(disable) unroll(disable)
+  for (unsigned i = 4; i < n-4; i+= 4) {
+    t[i] = t[i-1] & t[i-2] + t[i-3] & t[i-4];
   }
-  return MYmyabs(v[0]+v[n-1]+w[0]+w[n-1]);
+  return t[n-1];
 }
-
-int vla_22(int* a, unsigned n)
-{
-  if (n == 0)
-    return 0;
-
-  int v[n], w[n];
-  for (unsigned i = 0; i < n-1; ++i) {
-    unsigned vv[i+1];
-    vv[0] = a[0];
-    for (unsigned j = 1; j <= i; ++j) {
-      if (a[j] < 0)
-        goto end;
-      vv[j] = a[j]+vv[j-1];
-    }
-    v[i] = vv[i];
-    w[i] = a[i]*a[i];
-  }
-  return v[0]*v[n-1]+w[0]*w[n-1];
-end:
-  return 0;
-}
-
-int vlax_0(char* s)
-{
-  if (!s)
-    return 0;
-  int n = strlen(s);
-  char* a;
-  if (n < 4096) {
-    a = alloca(n);
-  } else {
-    a = malloc(n);
-  }
-  for (int i = 0; i < n; ++i) {
-    a[i] = s[i] ^ 1;
-  }
-  int ret = 0;
-  for (int i = 0; i < n; ++i) {
-    ret += a[i];
-  }
-  if (!(n < 4096))
-    free(a);
-  return ret;
-}
-
-//int main(int argc, char* argv[])
-//{
-//  return 0;
-//}

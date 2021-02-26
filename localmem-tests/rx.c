@@ -1,3 +1,4 @@
+#include <alloca.h>
 #include <stddef.h>
 #include <sys/cdefs.h>
 #include <sys/types.h>
@@ -44,7 +45,7 @@ typedef struct __regex_t {
 #include <ctype.h>
 #include <sys/types.h>
 #include <string.h>
-#include <assert.h>
+//#include <assert.h>
 
 #if !defined(__x86_64__)
 #undef WANT_REGEX_JIT
@@ -116,12 +117,13 @@ struct branch {
 };
 
 /* needs to do "greedy" matching, i.e. match as often as possible */
-static int matchpiece(void*__restrict__ x,const char*__restrict__ s,int ofs,struct __regex_t*__restrict__ preg,int plus,int eflags) {
+int matchpiece(void*__restrict__ x, const char*__restrict__ s, int ofs, struct __regex_t*__restrict__ preg, int plus, int eflags)
+{
   register struct piece* a=(struct piece*)x;
   int matchlen=0;
   int tmp=0,num=0;
   unsigned int *offsets;
-  assert(a->max>0 && a->max<1000);
+  //assert(a->max>0 && a->max<1000);
 #ifdef DEBUG
   printf("alloca(%d)\n",sizeof(int)*(a->max+1));
 #endif
@@ -161,10 +163,12 @@ static int matchpiece(void*__restrict__ x,const char*__restrict__ s,int ofs,stru
   return tmp;
 }
 
-int regexec(const regex_t*__restrict__ preg, const char*__restrict__ string, size_t nmatch, regmatch_t pmatch[], int eflags) {
+int regexec(const regex_t*__restrict__ preg, const char*__restrict__ string, size_t nmatch, regmatch_t pmatch[], int eflags)
+{
   int matched;
   const char *orig=string;
-  assert(preg->brackets+1>0 && preg->brackets<1000);
+  //assert(preg->brackets+1>0 && preg->brackets<1000);
+#pragma clang loop vectorize(disable) unroll(disable)
   for (matched=0; (unsigned int)matched<nmatch; ++matched)
     pmatch[matched].rm_so=-1;
 #ifdef DEBUG
@@ -176,19 +180,20 @@ int regexec(const regex_t*__restrict__ preg, const char*__restrict__ string, siz
     int i;
     for (i=0; i<preg->r.num; ++i)
       if (preg->r.b[i].p->a.type!=LINESTART) {
-	earlyabort=0;
-	break;
+	      earlyabort=0;
+	      break;
       }
   }
   while (1) {
     matched=preg->r.m((void*)&preg->r,string,string-orig,(regex_t*)preg,0,eflags);
-//    printf("ebp on stack = %x\n",stack[1]);
+    //    printf("ebp on stack = %x\n",stack[1]);
     /* if (__unlikely(matched>=0)) { */
     if (matched>=0) {
       matched=preg->r.m((void*)&preg->r,string,string-orig,(regex_t*)preg,0,eflags);
       preg->l[0].rm_so=string-orig;
       preg->l[0].rm_eo=string-orig+matched;
-      if ((preg->cflags&REG_NOSUB)==0) memcpy(pmatch,preg->l,nmatch*sizeof(regmatch_t));
+      if ((preg->cflags&REG_NOSUB)==0)
+        MYmymemcpy(pmatch,preg->l,nmatch*sizeof(regmatch_t));
       return 0;
     }
     if (!*string) break;
@@ -200,8 +205,4 @@ int regexec(const regex_t*__restrict__ preg, const char*__restrict__ string, siz
     if (earlyabort) break;
   }
   return REG_NOMATCH;
-}
-
-int main() {
-  return 0;
 }
