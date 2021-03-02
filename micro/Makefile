@@ -3,12 +3,9 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/micro
 
-PROGS_EQCHECKER_COMPILER := \
-         ddec \
-         #vla \
-         #arg_passing \
-         #minprintf
-         #lerner \
+PROGS := ddec \
+         lerner \
+         arg_passing
 
 UNROLL8_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL16_CLANG = $(PROGS_EQCHECKER_COMPILER)

@@ -7,7 +7,7 @@ int vla_0(unsigned n)
     return 0;
 
   int v[n];
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned i = 0; i < n; ++i) {
     v[i] = i*(i+1);
   }
@@ -20,7 +20,7 @@ int vla_11(int* a, unsigned n)
     return 0;
 
   int v[n];
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned i = 0; i < n; ++i) {
     v[i] = a[i]*a[i];
   }
@@ -33,12 +33,12 @@ int vla_12(int *a, unsigned n)
     return 0;
 
   int v[n];
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned i = 0; i < n; ++i) {
     v[i] = a[i]*a[i];
   }
   int ret = 0;
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned j = 0; j < n; ++j) {
     ret += v[j];
   }
@@ -50,12 +50,12 @@ void vla_13(int *a, unsigned n)
   if (n == 0)
     return;
   int v[n];
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned i = 0; i < n; ++i) {
     v[i] = a[i]*a[i];
   }
   MYmyputs("Array:");
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned j = 0; j < n; ++j) {
     MYmyprint_int(v[j]);
   }
@@ -67,7 +67,7 @@ int vla_21(int *a, unsigned n)
     return 0;
 
   int v[n], w[n];
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned i = 0; i < n; ++i) {
     v[i] = a[i]*a[i];
     w[i] = a[i]+a[i];
@@ -114,9 +114,9 @@ int variadic_1(unsigned n, ...)
   int ret = 0;
 
   va_start(args, n);
-#pragma clang loop vectorize(disable)
+#pragma clang loop vectorize(disable) unroll(disable)
   for (i = 0; i < n; ++i) {
-    //DBG(__LINE__);
+    DBG(__LINE__);
     if (i & 1)
       ret -= va_arg(args, int);
     else
@@ -133,7 +133,7 @@ void variadic_2(const char* fmt, ...)
     va_start(args, fmt);
  
     for ( ; *fmt; ++fmt) {
-      //DBG(__LINE__);
+      DBG(__LINE__);
       if (*fmt == 'd') {
         int i = va_arg(args, int);
         MYmyprint_int(i);
@@ -145,7 +145,7 @@ void variadic_2(const char* fmt, ...)
         // A character literal in C is already 'int' by itself
         c = va_arg(args, int);
       }
-      MYmyprint_char(*fmt);
+      MYmyprint_char(c);
     }
  
     va_end(args);
