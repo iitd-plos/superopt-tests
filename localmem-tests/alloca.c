@@ -14,6 +14,32 @@ int alloca_0(int n)
   return p[0];
 }
 
+// both VLA and alloca
+int alloca_1(char* s, int b)
+{
+  int n = MYmystrlen(s);
+  if (n == 0)
+    return 0;
+  char* t = 0;
+  if (b) {
+    int vla[n];
+#pragma clang loop vectorize(disable) unroll(disable)
+    for (int i = 0; i < n; ++i)
+      vla[i] = s[i] ^ 0xff;
+    if (vla[0] == 0xA4) {
+      t = (char*)alloca(n);
+      MYmywormhole(vla, t);
+    } else {
+      t = s;
+    }
+  } else {
+    t = (char*)alloca(n);
+    MYmywormhole(s, t);
+  }
+  MYmyputs("Ending this!");
+  return t[0];
+}
+
 int alloca_linked_list(int* a, int n)
 {
   typedef struct lln {
