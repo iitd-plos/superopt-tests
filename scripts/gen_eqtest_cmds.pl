@@ -20,10 +20,15 @@ my $srcdst_default_isa = "i386";
 
 my $PWD = getcwd;
 
+my $extraflagsarg = $ARGV[4];
+my @extraflags = split('@', $extraflagsarg);
+shift(@extraflags);
+my $extraflagsstr = join('',@extraflags);
+
 my %unroll;
 
 my $cur;
-foreach(my $i = 4; $i <= $#ARGV; $i++) {
+foreach(my $i = 5; $i <= $#ARGV; $i++) {
   my $arg = $ARGV[$i];
   #print "arg = $arg\n";
   if ($arg eq "unroll1") {
@@ -49,8 +54,8 @@ foreach my $prog (keys %unroll) {
   my $u = $unroll{$prog};
   if ($compiler_suffix eq "srcdst") {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa -extra_flags=$extraflagsstr $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
   } else {
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$extraflagsstr $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
   }
 }
