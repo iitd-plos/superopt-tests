@@ -3,9 +3,9 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/demo
 
-UNROLL1_SRCDST := nestedLoop ifswitch
-UNROLL4_SRCDST := loopSplitting
-UNROLL8_SRCDST := strlen
+UNROLL1_SRCDST := nestedLoop ifswitch inequiv_1
+#UNROLL4_SRCDST := strlen loopSplitting 
+#UNROLL8_SRCDST := strlen
 PROGS_EQCHECKER := $(addsuffix _src, $(SRC_DST)) $(addsuffix _dst, $(SRC_DST))
 
 # compiler flags
