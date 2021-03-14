@@ -11,7 +11,8 @@ my $VPATH = $ARGV[1];
 my $dst_arch = $ARGV[2];
 my $compiler_suffix = $ARGV[3];
 #my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
-my $srcdst_default_isa = "x64";
+#my $srcdst_default_isa = "x64";
+my $srcdst_default_isa = "i386";
 
 #print "VPATH = $VPATH\n";
 #print "dst_arch = $dst_arch\n";
