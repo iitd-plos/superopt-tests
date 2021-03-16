@@ -49,6 +49,7 @@ int alloca_linked_list(int* a, int n)
   Node* hd = 0;
 
   int i = 0;
+#pragma clang loop vectorize(disable) unroll(disable)
   for (i = 0; i < n; ++i) {
     Node* tmp = alloca(sizeof(Node));
     if (!tmp) return -1;
