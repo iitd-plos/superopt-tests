@@ -31,8 +31,9 @@ void minprintf(char *fmt, ...)
           MYmyprint_char(*sval);
         break;
       default:
-        return;
+        goto end;
     }
   }
+end:
   va_end(ap); /* clean up when done */
 }
