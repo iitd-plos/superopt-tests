@@ -3,9 +3,11 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/paper_ex
 
-PROGS_PREFIX := paper_ex
-export PROGS_PREFIX
-PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX))
+#PROGS_PREFIX := paper_ex
+UNROLL1_SRCDST := paper_ex
+
+#export PROGS_PREFIX
+PROGS_EQCHECKER := $(addsuffix _src, $(SRC_DST)) $(addsuffix _dst, $(SRC_DST))
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(GCC_EQCHECKER_NOUNROLL_FLAGS)

@@ -99,7 +99,7 @@ clean:
 	rm -f *.o *.tmp $(ALL_PROGS)
 
 eqtest_%.helper:: $(ALL_PROGS) $(SRCDIR)/Makefile.template $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(VPATH)/Makefile
-	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z)$(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS)" unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) unroll16 $(UNROLL16_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z)$(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS)" unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) unroll16 $(UNROLL16_$(CUR_COMPILER)) unroll32 $(UNROLL32_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
 
 eqtest_%_gcc.helper:: CUR_COMPILER=GCC
 
@@ -113,6 +113,7 @@ eqtest_i386:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
 
 eqtest_x64:: ARCH=x64
 eqtest_x64:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
+
 eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_gcc.helper eqtest_%_clang.helper eqtest_%_srcdst.helper
 	cat $^ > $@
 
