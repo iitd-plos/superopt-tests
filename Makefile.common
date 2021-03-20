@@ -100,64 +100,64 @@
 
 # ICC
 
-%.icc.eqchecker.O0.i386.o: %.c
-	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O0 $< -o $@
-eqchecker_helper.icc.eqchecker.O0.i386.o: eqchecker_helper.c
-	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O0 $< -o $@
-%.icc.eqchecker.O0.i386: %.icc.eqchecker.O0.i386.o eqchecker_helper.icc.eqchecker.O0.i386.o
-	$(ICC_I386) $(CFLAGS) $(ICC_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
-
-%.icc.eqchecker.O2.i386.o: %.c
-	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O2 $< -o $@
-eqchecker_helper.icc.eqchecker.O2.i386.o: eqchecker_helper.c
-	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O2 $< -o $@
-%.icc.eqchecker.O2.i386: %.icc.eqchecker.O2.i386.o eqchecker_helper.icc.eqchecker.O2.i386.o
-	$(ICC_I386) $(CFLAGS) $(ICC_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
-
-%.icc.eqchecker.O3.i386.o: %.c
-	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O3 $< -o $@
-eqchecker_helper.icc.eqchecker.O3.i386.o: eqchecker_helper.c
-	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O3 $< -o $@
-%.icc.eqchecker.O3.i386: %.icc.eqchecker.O3.i386.o eqchecker_helper.icc.eqchecker.O3.i386.o
-	$(ICC_I386) $(CFLAGS) $(ICC_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O3 $^ -o $@ $(LIBS)
-
-%.icc.O0.i386: %.c
-	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O0 $< -o $@
-%.icc.O2.i386: %.c
-	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O2 $< -o $@
-%.icc.O3.i386: %.c
-	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O3 $< -o $@
+#%.icc.eqchecker.O0.i386.o: %.c
+#	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O0 $< -o $@
+#eqchecker_helper.icc.eqchecker.O0.i386.o: eqchecker_helper.c
+#	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O0 $< -o $@
+#%.icc.eqchecker.O0.i386: %.icc.eqchecker.O0.i386.o eqchecker_helper.icc.eqchecker.O0.i386.o
+#	$(ICC_I386) $(CFLAGS) $(ICC_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
+#
+#%.icc.eqchecker.O2.i386.o: %.c
+#	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O2 $< -o $@
+#eqchecker_helper.icc.eqchecker.O2.i386.o: eqchecker_helper.c
+#	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O2 $< -o $@
+#%.icc.eqchecker.O2.i386: %.icc.eqchecker.O2.i386.o eqchecker_helper.icc.eqchecker.O2.i386.o
+#	$(ICC_I386) $(CFLAGS) $(ICC_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
+#
+#%.icc.eqchecker.O3.i386.o: %.c
+#	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O3 $< -o $@
+#eqchecker_helper.icc.eqchecker.O3.i386.o: eqchecker_helper.c
+#	$(ICC_I386) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O3 $< -o $@
+#%.icc.eqchecker.O3.i386: %.icc.eqchecker.O3.i386.o eqchecker_helper.icc.eqchecker.O3.i386.o
+#	$(ICC_I386) $(CFLAGS) $(ICC_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O3 $^ -o $@ $(LIBS)
+#
+#%.icc.O0.i386: %.c
+#	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O0 $< -o $@
+#%.icc.O2.i386: %.c
+#	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O2 $< -o $@
+#%.icc.O3.i386: %.c
+#	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O3 $< -o $@
 
 
 # CCOMP
 
-%.ccomp.eqchecker.O2.i386.o: %.c
-	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $< -o $@
-eqchecker_helper.ccomp.eqchecker.O2.i386.o: eqchecker_helper.c
-	$(CCOMP_I386) -c $(CCOMP_CFLAGS) -O2 $< -o $@
-%.ccomp.eqchecker.O2.i386: %.ccomp.eqchecker.O2.i386.o eqchecker_helper.ccomp.eqchecker.O2.i386.o
-	$(CCOMP_I386) $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
-
-%.ccomp.O0.i386.o: %.c
-	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $< -o $@
-eqchecker_helper.ccomp.O0.i386.o: eqchecker_helper.c
-	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $< -o $@
-%.ccomp.O0.i386: %.ccomp.O0.i386.o eqchecker_helper.ccomp.O0.i386.o
-	$(CCOMP_I386) $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
-
-%.ccomp.O2.i386.o: %.c
-	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $< -o $@
-eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
-	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $< -o $@
-%.ccomp.O2.i386: %.ccomp.O2.i386.o eqchecker_helper.ccomp.O2.i386.o
-	$(CCOMP_I386) $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
-
-%.ccomp.O0.i386: %.c
-	$(CCOMP_I386) $(CCOMP_CFLAGS) -O0 $< -o $@
-%.ccomp.O2.i386: %.c
-	$(CCOMP_I386) $(CCOMP_CFLAGS) -O2 $< -o $@
-%.ccomp.O3.i386: %.c
-	$(CCOMP_I386) $(CCOMP_CFLAGS) -O3 $< -o $@
+#%.ccomp.eqchecker.O2.i386.o: %.c
+#	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $< -o $@
+#eqchecker_helper.ccomp.eqchecker.O2.i386.o: eqchecker_helper.c
+#	$(CCOMP_I386) -c $(CCOMP_CFLAGS) -O2 $< -o $@
+#%.ccomp.eqchecker.O2.i386: %.ccomp.eqchecker.O2.i386.o eqchecker_helper.ccomp.eqchecker.O2.i386.o
+#	$(CCOMP_I386) $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
+#
+#%.ccomp.O0.i386.o: %.c
+#	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $< -o $@
+#eqchecker_helper.ccomp.O0.i386.o: eqchecker_helper.c
+#	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $< -o $@
+#%.ccomp.O0.i386: %.ccomp.O0.i386.o eqchecker_helper.ccomp.O0.i386.o
+#	$(CCOMP_I386) $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
+#
+#%.ccomp.O2.i386.o: %.c
+#	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $< -o $@
+#eqchecker_helper.ccomp.O2.i386.o: eqchecker_helper.c
+#	$(CCOMP_I386) -c $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $< -o $@
+#%.ccomp.O2.i386: %.ccomp.O2.i386.o eqchecker_helper.ccomp.O2.i386.o
+#	$(CCOMP_I386) $(CCOMP_CFLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
+#
+#%.ccomp.O0.i386: %.c
+#	$(CCOMP_I386) $(CCOMP_CFLAGS) -O0 $< -o $@
+#%.ccomp.O2.i386: %.c
+#	$(CCOMP_I386) $(CCOMP_CFLAGS) -O2 $< -o $@
+#%.ccomp.O3.i386: %.c
+#	$(CCOMP_I386) $(CCOMP_CFLAGS) -O3 $< -o $@
 
 # LLVM BC
 
