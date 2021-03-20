@@ -1,11 +1,12 @@
 #include <stddef.h>
 
+#define UL_SZ sizeof unsigned long
 size_t strlen(char * str)
 {
   char *ptr ;
   unsigned long *longword_ptr;
   unsigned long longword, himagic, lomagic;
-  for (ptr = str; ((unsigned long)ptr & 7) != 0; ++ptr)
+  for (ptr = str; ((unsigned long)ptr & UL_SZ) != 0; ++ptr)
     if (*ptr == '\0')
       return ptr-str ;
   longword_ptr = (unsigned long*)ptr ;
