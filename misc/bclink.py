@@ -26,7 +26,7 @@ argv.pop(0)
 
 (argv, outputFile) = remove_flags(argv)
 
-cmd = llvm_bin_path + "/llvm-link " + (' '.join(argv));
+cmd = llvm_bin_path + "/llvm-link --only-needed " + (' '.join(argv));
 print(cmd, flush=True)
 os.system(cmd)
 cmd = "chmod +x " + outputFile
