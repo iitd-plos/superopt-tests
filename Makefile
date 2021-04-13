@@ -155,6 +155,9 @@ specmount::
 umount::
 	sudo umount $(SPEC_MOUNT)
 
+specclean::
+	rm -f $(BUILD)/spec17/build_done
+
 
 .PHONY: runtest unittest
 
