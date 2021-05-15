@@ -179,9 +179,6 @@
 	$(CLANG_X64) $(CFLAGS) -Xclang -disable-O0-optnone $(INCLUDES) -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
 	$(LLVM_OPT) -mem2reg -die -o $@ $@.tmp
 
-%.ln.c: %.c
-	ln -s $< $@
-
 %.bc32.eqchecker.O0: %.c.O0.bc32 #eqchecker_helper.c.O0.bc
 	$(LLVM_LINK) $^ -o $@
 
