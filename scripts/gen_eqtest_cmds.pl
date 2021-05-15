@@ -12,7 +12,7 @@ my $dst_arch = $ARGV[2];
 my $compiler_suffix = $ARGV[3];
 #my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
 #my $srcdst_default_isa = "x64";
-my $srcdst_default_isa = "i386";
+#my $srcdst_default_isa = "i386";
 
 #print "VPATH = $VPATH\n";
 #print "dst_arch = $dst_arch\n";
@@ -55,7 +55,7 @@ foreach my $prog (keys %unroll) {
   if ($compiler_suffix eq "srcdst") {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa -extra_flags=$extraflagsstr $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa -extra_flags=$extraflagsstr -tmpdir $PWD $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$extraflagsstr -tmpdir $PWD $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
   } else {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$extraflagsstr $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
     print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$extraflagsstr -tmpdir $PWD $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";

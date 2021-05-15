@@ -3,7 +3,7 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/micro
 
-PROGS_EQCHECKER_COMPILER := ddec arg_passing
+PROGS_EQCHECKER_COMPILER := #ddec arg_passing
 PROGS_EQCHECKER_SRCDST := fpext fptrunc fpcmp fptoui
 
 UNROLL8_GCC := $(PROGS_EQCHECKER_COMPILER)
