@@ -48,6 +48,10 @@ EQCHECKER_X64_CLANG_O0_PROGS = $(addsuffix .clang.eqchecker.O0.x64.s, $(PROGS_EQ
 EQCHECKER_X64_CLANG_O2_PROGS = $(addsuffix .clang.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
 EQCHECKER_X64_CLANG_O3_PROGS = $(addsuffix .$(CLANG_X64_O3_SUFFIX), $(PROGS_EQCHECKER))
 
+EQCHECKER_I386_ICC_O0_PROGS = $(addsuffix .icc.eqchecker.O0.i386.s, $(PROGS_EQCHECKER))
+EQCHECKER_I386_ICC_O2_PROGS = $(addsuffix .icc.eqchecker.O2.i386.s, $(PROGS_EQCHECKER))
+EQCHECKER_I386_ICC_O3_PROGS = $(addsuffix .$(ICC_I386_O3_SUFFIX), $(PROGS_EQCHECKER))
+
 EQCHECKER_X64_ICC_O0_PROGS = $(addsuffix .icc.eqchecker.O0.x64.s, $(PROGS_EQCHECKER))
 EQCHECKER_X64_ICC_O2_PROGS = $(addsuffix .icc.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
 EQCHECKER_X64_ICC_O3_PROGS = $(addsuffix .$(ICC_X64_O3_SUFFIX), $(PROGS_EQCHECKER))
@@ -75,16 +79,22 @@ EQCHECKER_PROGS = \
   $(EQCHECKER_I386_GCC_O3_PROGS) \
   $(EQCHECKER_I386_CLANG_O0_PROGS) \
   $(EQCHECKER_I386_CLANG_O3_PROGS) \
+  $(EQCHECKER_I386_ICC_O0_PROGS) \
+  $(EQCHECKER_I386_ICC_O3_PROGS) \
   $(EQCHECKER_X64_GCC_O0_PROGS) \
   $(EQCHECKER_X64_GCC_O3_PROGS) \
   $(EQCHECKER_X64_CLANG_O0_PROGS) \
   $(EQCHECKER_X64_CLANG_O3_PROGS) \
+  $(EQCHECKER_X64_ICC_O0_PROGS) \
+  $(EQCHECKER_X64_ICC_O3_PROGS) \
 
 XML_FILES = \
   $(EQCHECKER_I386_GCC_O3_XML_FILES) \
   $(EQCHECKER_I386_CLANG_O3_XML_FILES) \
+  $(EQCHECKER_I386_ICC_O3_XML_FILES) \
   $(EQCHECKER_X64_GCC_O3_XML_FILES) \
-  $(EQCHECKER_X64_CLANG_O3_XML_FILES)
+  $(EQCHECKER_X64_CLANG_O3_XML_FILES) \
+  $(EQCHECKER_X64_ICC_O3_XML_FILES) \
 
 ALL_PROGS = $(EQCHECKER_PROGS) $(BC_PROGS_ASM) $(XML_FILES)
 
@@ -104,6 +114,8 @@ eqtest_%_gcc.helper:: CUR_COMPILER=GCC
 
 eqtest_%_clang.helper:: CUR_COMPILER=CLANG
 
+eqtest_%_icc.helper:: CUR_COMPILER=ICC
+
 eqtest_%_srcdst.helper:: CUR_COMPILER=SRCDST
 eqtest_%_srcdst.helper:: ARCH_OPT_SUFFIX=
 
@@ -113,7 +125,7 @@ eqtest_i386:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
 eqtest_x64:: ARCH=x64
 eqtest_x64:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
 
-eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_gcc.helper eqtest_%_clang.helper eqtest_%_srcdst.helper
+eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_gcc.helper eqtest_%_clang.helper eqtest_%_icc.helper eqtest_%_srcdst.helper
 	cat $^ > $@
 
 .DEFAULT_GOAL := all
