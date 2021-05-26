@@ -9,8 +9,7 @@ float fptrunc(double x)
   return (float)x;
 }
 
-
-int main()
+float fptruncl(long double x)
 {
-  return 0;
+  return (float)x;
 }
