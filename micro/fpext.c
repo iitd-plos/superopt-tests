@@ -9,17 +9,17 @@ void foo(double);
 double fpext(float x)
 {
   double ret = (double)x;
-  //ret = ret * 2;
+  ret = ret * 2;
   //foo(ret);
-  //ret = ret / 3;
+  ret = ret / 3;
   return ret;
 }
 
 long double fpextl(float x)
 {
   long double ret = (long double)x;
-  //ret = ret * 2;
+  ret = ret * 2;
   //foo(ret);
-  //ret = ret / 3;
+  ret = ret / 3;
   return ret;
 }
