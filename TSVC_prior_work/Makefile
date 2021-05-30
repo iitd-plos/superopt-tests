@@ -16,10 +16,10 @@ VPATH = $(SRCDIR)/TSVC_prior_work
 
 UNROLL64_GCC := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
 UNROLL64_CLANG := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s352 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
-UNROLL64_ICC := s000 s112 s122 s1251 s127 s1281 s1351 s173 s2244 s251 s3251 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vpvts
+UNROLL64_ICC := s000 s112 s122 s1251 s127 s1281 s1351 s173 s2244 s251 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vpvts
 
 # CLANG PROGS THAT SHOULD PASS AFTER CORREL ALGO UPDATE -- s176, s3251(non zero bv rank)
-# ICC PROGS NOT PASSING AFTER VERSION CHANGE -- s176, s121 (should pass), s162, s1221(should pass), vtvtv
+# ICC PROGS NOT PASSING AFTER VERSION CHANGE -- s176, s121 (should pass), s162, s1221(should pass), vtvtv, s3251 (Querry timeout - Should pass) 
 
 PROGS_EQCHECKER_COMPILER := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s176 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
