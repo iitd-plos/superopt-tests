@@ -43,6 +43,8 @@ foreach(my $i = 5; $i <= $#ARGV; $i++) {
     $cur = 16;
   } elsif ($arg eq "unroll32") {
     $cur = 32;
+  } elsif ($arg eq "unroll64") {
+    $cur = 64;
   } elsif (defined $cur) {
     $unroll{$arg} = $cur;
   } else {

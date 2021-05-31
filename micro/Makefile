@@ -3,7 +3,8 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/micro
 
-PROGS_EQCHECKER_COMPILER := fpext fptrunc fpcmp fptoui #ddec arg_passing
+PROGS_EQCHECKER_COMPILER := fptrunc fpcmp fptoui #ddec arg_passing
+#fpext : TOO SLOW
 PROGS_EQCHECKER_SRCDST :=
 
 UNROLL8_GCC := $(PROGS_EQCHECKER_COMPILER)

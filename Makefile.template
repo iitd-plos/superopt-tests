@@ -48,6 +48,10 @@ EQCHECKER_X64_CLANG_O0_PROGS = $(addsuffix .clang.eqchecker.O0.x64.s, $(PROGS_EQ
 EQCHECKER_X64_CLANG_O2_PROGS = $(addsuffix .clang.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
 EQCHECKER_X64_CLANG_O3_PROGS = $(addsuffix .$(CLANG_X64_O3_SUFFIX), $(PROGS_EQCHECKER))
 
+EQCHECKER_I386_ICC_O0_PROGS = $(addsuffix .icc.eqchecker.O0.i386.s, $(PROGS_EQCHECKER))
+EQCHECKER_I386_ICC_O2_PROGS = $(addsuffix .icc.eqchecker.O2.i386.s, $(PROGS_EQCHECKER))
+EQCHECKER_I386_ICC_O3_PROGS = $(addsuffix .$(ICC_I386_O3_SUFFIX), $(PROGS_EQCHECKER))
+
 EQCHECKER_X64_ICC_O0_PROGS = $(addsuffix .icc.eqchecker.O0.x64.s, $(PROGS_EQCHECKER))
 EQCHECKER_X64_ICC_O2_PROGS = $(addsuffix .icc.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
 EQCHECKER_X64_ICC_O3_PROGS = $(addsuffix .$(ICC_X64_O3_SUFFIX), $(PROGS_EQCHECKER))
@@ -75,16 +79,22 @@ EQCHECKER_PROGS = \
   $(EQCHECKER_I386_GCC_O3_PROGS) \
   $(EQCHECKER_I386_CLANG_O0_PROGS) \
   $(EQCHECKER_I386_CLANG_O3_PROGS) \
+  $(EQCHECKER_I386_ICC_O0_PROGS) \
+  $(EQCHECKER_I386_ICC_O3_PROGS) \
   $(EQCHECKER_X64_GCC_O0_PROGS) \
   $(EQCHECKER_X64_GCC_O3_PROGS) \
   $(EQCHECKER_X64_CLANG_O0_PROGS) \
   $(EQCHECKER_X64_CLANG_O3_PROGS) \
+  $(EQCHECKER_X64_ICC_O0_PROGS) \
+  $(EQCHECKER_X64_ICC_O3_PROGS) \
 
 XML_FILES = \
   $(EQCHECKER_I386_GCC_O3_XML_FILES) \
   $(EQCHECKER_I386_CLANG_O3_XML_FILES) \
+  $(EQCHECKER_I386_ICC_O3_XML_FILES) \
   $(EQCHECKER_X64_GCC_O3_XML_FILES) \
-  $(EQCHECKER_X64_CLANG_O3_XML_FILES)
+  $(EQCHECKER_X64_CLANG_O3_XML_FILES) \
+  $(EQCHECKER_X64_ICC_O3_XML_FILES) \
 
 ALL_PROGS = $(EQCHECKER_PROGS) $(BC_PROGS_ASM) $(XML_FILES)
 
@@ -98,11 +108,13 @@ clean:
 	rm -f *.o *.tmp $(ALL_PROGS)
 
 eqtest_%.helper:: $(ALL_PROGS) $(SRCDIR)/Makefile.template $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(VPATH)/Makefile
-	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z)$(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS)" unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) unroll16 $(UNROLL16_$(CUR_COMPILER)) unroll32 $(UNROLL32_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z)$(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS)" unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) unroll16 $(UNROLL16_$(CUR_COMPILER)) unroll32 $(UNROLL32_$(CUR_COMPILER)) unroll64 $(UNROLL64_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
 
 eqtest_%_gcc.helper:: CUR_COMPILER=GCC
 
 eqtest_%_clang.helper:: CUR_COMPILER=CLANG
+
+eqtest_%_icc.helper:: CUR_COMPILER=ICC
 
 eqtest_%_srcdst.helper:: CUR_COMPILER=SRCDST
 eqtest_%_srcdst.helper:: ARCH_OPT_SUFFIX=
@@ -113,7 +125,7 @@ eqtest_i386:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
 eqtest_x64:: ARCH=x64
 eqtest_x64:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
 
-eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_gcc.helper eqtest_%_clang.helper eqtest_%_srcdst.helper
+eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_gcc.helper eqtest_%_clang.helper eqtest_%_icc.helper eqtest_%_srcdst.helper
 	cat $^ > $@
 
 .DEFAULT_GOAL := all
