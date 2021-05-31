@@ -1,6 +1,6 @@
 #include <alloca.h>
 
-int vlax_0(char* s)
+int vlax_0(char* s, int fd)
 {
   if (!s)
     return 0;
@@ -8,7 +8,6 @@ int vlax_0(char* s)
   char* a;
   if (n < 4096) {
     a = alloca(n);
-    if (!a) return 0;
   } else {
     a = MYmymalloc(n);
     if (!a) return 0;
@@ -17,11 +16,7 @@ int vlax_0(char* s)
   for (int i = 0; i < n; ++i) {
     a[i] = s[i] ^ 1;
   }
-  int ret = 0;
-#pragma clang loop vectorize(disable) unroll(disable)
-  for (int i = 0; i < n; ++i) {
-    ret += a[i];
-  }
+  int ret = write(fd, a, n);
   if (!(n < 4096))
     MYmyfree(a);
   return ret;

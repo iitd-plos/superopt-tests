@@ -111,7 +111,8 @@ int vla_16(const char* s)
   int ret = 0;
   for (int i = 1; i < n; ++i) {
     char t[i];
-    MYmyputs("Starting...");
+    MYmyDBG();
+    //MYmyputs("Starting...");
 #pragma clang loop vectorize(disable) unroll(disable)
     for (int j = 0; j < i; ++j) {
       t[j] = i ^ s[i];
@@ -121,6 +122,24 @@ int vla_16(const char* s)
       t[j] = t[j-1] & t[j-2] + t[j-3] & t[j-4];
     }
     ret += t[i-1];
+  }
+  return ret;
+}
+
+// vla inside for loop -- simplified
+int vla_17(const char* s)
+{
+  int n = MYmystrlen(s);
+  if (n <= 0) {
+    return 0;
+  }
+  int ret = 0;
+  for (int i = 1; i < n; ++i) {
+    char t[i];
+    MYmyDBG();
+    for (int j = 0; j < i; ++j)
+      t[j] = MYmywormhole2();
+    ret += t[0] + t[i-1];
   }
   return ret;
 }

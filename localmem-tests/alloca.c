@@ -1,4 +1,5 @@
 #include <alloca.h>
+#include <stdio.h>
 
 int alloca_0(int n)
 {
@@ -14,32 +15,6 @@ int alloca_0(int n)
   return p[0];
 }
 
-// both VLA and alloca
-int alloca_1(char* s, int b)
-{
-  int n = MYmystrlen(s);
-  if (n == 0)
-    return 0;
-  char* t = 0;
-  if (b) {
-    int vla[n];
-#pragma clang loop vectorize(disable) unroll(disable)
-    for (int i = 0; i < n; ++i)
-      vla[i] = s[i] ^ 0xff;
-    if (vla[0] == 0xA4) {
-      t = (char*)alloca(n);
-      MYmywormhole(vla, t);
-    } else {
-      t = s;
-    }
-  } else {
-    t = (char*)alloca(n);
-    MYmywormhole(s, t);
-  }
-  MYmyputs("Ending this!");
-  return t[0];
-}
-
 int alloca_linked_list(int* a, int n)
 {
   typedef struct lln {
@@ -52,7 +27,7 @@ int alloca_linked_list(int* a, int n)
 #pragma clang loop vectorize(disable) unroll(disable)
   for (i = 0; i < n; ++i) {
     Node* tmp = alloca(sizeof(Node));
-    if (!tmp) return -1;
+    MYmyDBG();
     tmp->data = a[i];
     tmp->next = hd;
     hd = tmp;
@@ -61,12 +36,31 @@ int alloca_linked_list(int* a, int n)
   Node* tmp = hd;
   int ret = 0;
   while (tmp != 0) {
+    MYmyDBG();
     ret += tmp->data;
     tmp = tmp->next;
   }
-
   return ret;
 }
+
+//void alloca_weird3(int n)
+//{
+//  char *arr[n];
+//  for (int i = 0; i < n; ++i) {
+//    int v[2];
+//    scanf("%d %d", &v[0], &v[1]);
+//    int sz = v[0]+v[1]+1;
+//    if (sz <= 0)
+//      continue;
+//    char *va = alloca(sz);
+//    for (int j = 0; j < sz; j++)
+//      va[j] = v[j];
+//    arr[i] = va;
+//  }
+//  for (int i = 0; i < n; ++i) {
+//    printf("%d: %s", i, arr[i]);
+//  }
+//}
 
 int printf(const char*, ...);
 
