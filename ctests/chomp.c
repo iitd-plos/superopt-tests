@@ -137,7 +137,7 @@ void show_data(int *data) /* little display routine to give off results */
   while (counter != ncol)
     {
       MYmyprintf("%d",data[counter ++]);
-      if (counter != ncol) putchar(',');
+      if (counter != ncol) MYmyputchar(',');
     }
 }
 
