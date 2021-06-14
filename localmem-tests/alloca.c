@@ -10,6 +10,7 @@ int alloca_0(int n)
   p[0] = 0;
 #pragma clang loop vectorize(disable) unroll(disable)
   for (int i = 1; i < n; ++i) {
+    MYmyDBG();
     p[i] = p[i-1] + i*i;
   }
   return p[0];

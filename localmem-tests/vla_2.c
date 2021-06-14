@@ -8,6 +8,7 @@ int vla_21(int *a, unsigned n)
   int v[n], w[n];
 #pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned i = 0; i < n; ++i) {
+    MYmyDBG();
     v[i] = a[i]*a[i];
     w[i] = a[i]+a[i];
   }
@@ -21,9 +22,11 @@ int vla_22(int* a, unsigned n)
 
   int v[n], w[n];
   for (unsigned i = 0; i < n-1; ++i) {
+    MYmyDBG();
     unsigned vv[i+1];
     vv[0] = a[0];
     for (unsigned j = 1; j <= i; ++j) {
+      MYmyDBG();
       if (a[j] < 0)
         goto end;
       vv[j] = a[j]+vv[j-1];

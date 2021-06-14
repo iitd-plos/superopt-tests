@@ -14,6 +14,7 @@ int vlax_0(char* s, int fd)
   }
 #pragma clang loop vectorize(disable) unroll(disable)
   for (int i = 0; i < n; ++i) {
+    MYmyDBG();
     a[i] = s[i] ^ 1;
   }
   int ret = write(fd, a, n);
@@ -32,7 +33,9 @@ int lcs(const char *s, const char *t, int m, int n)
   for (int j = 0; j <= n; ++j) dp[0][j] = 0;
 
   for (int i = 1; i <= m; i++) {
+    MYmyDBG();
     for (int j = 1; j <= n; j++) {
+      MYmyDBG();
       if (s[i-1] == t[j-1]) {
         dp[i][j] = dp[i-1][j-1] + 1;
       } else {

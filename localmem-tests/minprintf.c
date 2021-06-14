@@ -11,6 +11,7 @@ void minprintf(char *fmt, ...)
   va_start(ap, fmt);
   /* make ap point to 1st unnamed arg */
   for (p = fmt; *p; p++) {
+    MYmyDBG();
     if (*p != '%') {
       MYmyprint_char(*p);
       continue;
