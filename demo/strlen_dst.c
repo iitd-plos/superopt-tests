@@ -1,16 +1,22 @@
 #include <stddef.h>
+#include <limits.h>
 
 size_t strlen(char * str)
 {
   char *ptr ;
   unsigned long *longword_ptr;
   unsigned long longword, himagic, lomagic;
-  for (ptr = str; ((unsigned long)ptr & 7) != 0; ++ptr)
+  for (ptr = str; ((unsigned long)ptr & sizeof(unsigned long)) != 0; ++ptr)
     if (*ptr == '\0')
       return ptr-str ;
   longword_ptr = (unsigned long*)ptr ;
+#if ULONG_MAX == 0xFFFFFFFFFFFFFFFF
   himagic = 0x8080808080808080L;
   lomagic = 0x0101010101010101L;
+#else
+  himagic = 0x80808080L;
+  lomagic = 0x01010101L;
+#endif
   for (;;)
   {
     longword = *longword_ptr++;
