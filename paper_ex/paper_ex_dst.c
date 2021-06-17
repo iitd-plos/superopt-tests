@@ -1,37 +1,30 @@
-/* The example function shown in Fig 1 of the paper */
+#include "dietstring.h"
+#include <stdint.h>
 
-
-#define LEN 32000
-#define LEN1 3200
-#define LEN2 256
-
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
-#include <sys/param.h>
-#include <sys/times.h>
-#include <sys/types.h>
-#include <time.h>
-#include <malloc.h>
-#include <string.h>
-#include <assert.h>
-#include "eqchecker_helper.h"
-
-int a[100][50];
-int nestedLoop(){
-  int sum = 0;
-  for ( int i =0; i <100; i++) {
-    if(i >= 50)
-      continue;
-    for ( int j = i ; j <50; j++) {
-      sum += a[i][j];
-    }
-  }
-  return sum;
-}
-
-int main()
+char *strcpy (char *dest, const char *src)
 {
-  return 0;
-}
+    char           *res = dest;
+    int             tmp;
+    unsigned long   l;
 
+    if (UNALIGNED(dest, src)) {
+      while ((*dest++ = *src++));
+      return (res);
+    }
+    // STRALIGN output varies from 8 to 0.
+    if ((tmp = STRALIGN(dest))) {
+      while (tmp-- && (*dest++ = *src++));
+      if (tmp != -1) return (res);
+    }
+
+    while (1) {
+      l = *(const unsigned long *) src;
+      if (((l - MKW(0x1ul)) & ~l) & MKW(0x80ul)) {
+          while ((*dest++ = GFC(l))) INCSTR(l);
+          return (res);
+  	}
+    *(unsigned long *) dest = l;
+    src += sizeof(unsigned long);
+    dest += sizeof(unsigned long);
+    }
+}
