@@ -1,5 +1,4 @@
 #include <stdarg.h>
-//#include "eqchecker_helper.h"
 
 /* minprintf: minimal printf with variable argument list */
 void minprintf(char *fmt, ...)
@@ -12,7 +11,6 @@ void minprintf(char *fmt, ...)
   va_start(ap, fmt);
   /* make ap point to 1st unnamed arg */
   for (p = fmt; *p; p++) {
-    //DBG(__LINE__);
     if (*p != '%') {
       MYmyprint_char(*p);
       continue;
@@ -31,16 +29,9 @@ void minprintf(char *fmt, ...)
           MYmyprint_char(*sval);
         break;
       default:
-        return;
+        goto end;
     }
   }
+end:
   va_end(ap); /* clean up when done */
 }
-
-//int main()
-//{
-//  char* name = "Mr Robot";
-//  int id = 849;
-//  minprintf("Hello %s.  Your id is %d\n", name, id);
-//  return 0;
-//}
