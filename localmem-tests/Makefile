@@ -9,15 +9,15 @@ EXTRA_FLAGS := '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 1000
 
 PROGS_EQCHECKER_COMPILER := vla_1 \
                             vla_2 \
-                            vlax \
 														variadic \
                             minprintf \
                             minscanf \
                             dprintf \
                             addr_taken \
                             alloca \
-                            rx \
                             struct_vla \
+                            # vlax # multiple query time outs
+                            # rx # too big
                             # sha256crypt # harvest takes forever
                             # ifaddrs # eqgen takes forever
                             # poll # eqgen takes forever
