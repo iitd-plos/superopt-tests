@@ -14,6 +14,7 @@ int alloca_0(int n)
   return p[0];
 }
 
+/*
 // both VLA and alloca
 int alloca_1(char* s, int b)
 {
@@ -77,3 +78,4 @@ int main()
   printf("d = %d", d);
   return 0;
 }
+*/
