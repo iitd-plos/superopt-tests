@@ -20,23 +20,23 @@
 #define lll LEN
 
 extern TYPE val;
-extern __attribute__ ((aligned(16))) TYPE X[lll],Y[lll],Z[lll],U[lll],V[lll];
+//extern __attribute__ ((aligned(16))) TYPE X[lll],Y[lll],Z[lll],U[lll],V[lll];
 
-extern TYPE array[LEN2*LEN2] __attribute__((aligned(16)));
+//extern TYPE array[LEN2*LEN2] __attribute__((aligned(16)));
 
-extern TYPE x[LEN] __attribute__((aligned(16)));
+//extern TYPE x[LEN] __attribute__((aligned(16)));
 extern TYPE temp, s;
 
-extern __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
-                                   aa[LEN2][LEN2],bb[LEN2][LEN2],cc[LEN2][LEN2],tt[LEN2][LEN2];
+//extern __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN],e[LEN],
+//                                   aa[LEN2][LEN2],bb[LEN2][LEN2],cc[LEN2][LEN2],tt[LEN2][LEN2];
 
 
-extern TYPE indx[LEN] __attribute__((aligned(16)));
+//extern TYPE indx[LEN] __attribute__((aligned(16)));
 
 
 extern TYPE* /*__restrict__*/ xx;
 extern TYPE* yy;
-extern TYPE arr[LEN];
+//extern TYPE arr[LEN];
 extern int val_s;
 
 extern void init_local1(TYPE *val1);
