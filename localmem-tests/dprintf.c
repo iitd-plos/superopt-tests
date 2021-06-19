@@ -83,34 +83,22 @@ void dprintf_(int fd, const char *fmt, ...)
 			switch (*ptr++) {
 				case 's':
 					string = va_arg(args, char *);
-
 					if (!string) {
             string = "(null)";
-						//write(fd, "(null)", 6);
 					}
-					//else
-						//write(fd, string, strlen(string));
 					break;
-
 				case 'i':
 				case 'd':
-					{
-						num = va_arg(args, int);
-						string = simple_ltoa(tmp, num);
-						//write(fd, string, strlen(string));
-						break;
-					}
+					num = va_arg(args, int);
+					string = simple_ltoa(tmp, num);
+					break;
 				case 'x':
 				case 'p':
-					{
-						num = va_arg(args, int);
-						string = simple_ltoahex(tmp, num);
-						//write(fd, string, strlen(string));
-						break;
-					}
+					num = va_arg(args, int);
+					string = simple_ltoahex(tmp, num);
+					break;
 				default:
 					string = "(null)";
-					//write(fd, "(null)", 6);
 					break;
 			}
 			write(fd, string, strlen(string));
@@ -122,10 +110,4 @@ void dprintf_(int fd, const char *fmt, ...)
 	}
 	MYmyfree(buf);
 	return;
-}
-
-int main()
-{
-  dprintf_(1, "%d%d%d", 1, 2, 3);
-  return 0;
 }
