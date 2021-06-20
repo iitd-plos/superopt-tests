@@ -41,3 +41,5 @@ extern int val_s;
 
 extern void init_local1(TYPE *val1);
 extern void print_local1(TYPE *val1);
+extern void init_local2D(int len, TYPE val[len][len]);
+extern void print_local2D(int len, TYPE val[len][len]);

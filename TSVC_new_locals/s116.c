@@ -15,6 +15,6 @@ int s116()
 		local_a[i + 3] = local_a[i + 4] * local_a[i + 3];
 		local_a[i + 4] = local_a[i + 5] * local_a[i + 4];
 	}
-  print_local1(ocal_a);
+  print_local1(local_a);
 	return 0;
 }
