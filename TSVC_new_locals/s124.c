@@ -16,7 +16,7 @@ int s124()
  	int j;
  		j = -1;
  		for (int i = 0; i < LEN; i++) {
- 			if (b[i] > (TYPE)0.) {
+ 			if (local_b[i] > (TYPE)0.) {
  				j++;
  				local_a[j] = local_b[i] + local_d[i] * local_e[i];
  			} else {
