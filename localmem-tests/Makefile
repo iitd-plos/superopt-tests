@@ -16,6 +16,8 @@ PROGS_EQCHECKER_COMPILER := vla_1 \
                             dprintf \
                             addr_taken \
                             alloca \
+                            alloca_linked_list \
+                            alloca_global \
                             rx \
                             struct_vla \
                             unroll \
