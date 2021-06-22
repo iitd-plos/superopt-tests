@@ -7,8 +7,7 @@ int vdotr()
 //	vector dot product reduction
 
   TYPE local_a[LEN], local_b[LEN];
-  init_local1(local_a);
-  init_local1(local_b);
+  init_local2(local_a, local_b);
 	TYPE dot;
 		dot = 0.;
 		for (int i = 0; i < LEN; i++) {

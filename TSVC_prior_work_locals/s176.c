@@ -7,9 +7,7 @@ int s176()
 //	convolution
   TYPE local_a[LEN], local_b[LEN];
   TYPE local_c[LEN];
-  init_local1(local_a);
-  init_local1(local_b);
-  init_local1(local_c);
+  init_local3(local_a, local_b, local_c);
 	int m = LEN/2;
 		for (int j = 0; j < (LEN/2); j++) {
 			for (int i = 0; i < m; i++) {

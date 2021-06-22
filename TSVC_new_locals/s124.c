@@ -8,10 +8,7 @@ int s124()
   TYPE local_a[LEN], local_b[LEN];
   TYPE local_c[LEN], local_d[LEN];
   TYPE local_e[LEN];
-  init_local1(local_b);
-  init_local1(local_c);
-  init_local1(local_d);
-  init_local1(local_e);
+  init_local4(local_b, local_c, local_d, local_e);
  
  	int j;
  		j = -1;

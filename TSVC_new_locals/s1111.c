@@ -7,9 +7,7 @@ int s1111()
 //	jump in data access
   TYPE local_a[LEN], local_b[LEN];
   TYPE local_c[LEN], local_d[LEN];
-  init_local1(local_b);
-  init_local1(local_c);
-  init_local1(local_d);
+  init_local3(local_b, local_c, local_d);
 
 
 		for (int i = 0; i < LEN/2; i++) {

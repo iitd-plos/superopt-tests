@@ -7,8 +7,7 @@ int s452()
 //	seq function
   TYPE local_a[LEN], local_b[LEN];
   TYPE local_c[LEN];
-  init_local1(local_b);
-  init_local1(local_c);
+  init_local2(local_b, local_c);
 
 		for (int i = 0; i < LEN; i++) {
 			local_a[i] = local_b[i] + local_c[i] * (TYPE) (val);
