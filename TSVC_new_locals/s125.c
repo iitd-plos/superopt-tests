@@ -8,9 +8,7 @@ int s125()
 
   TYPE local_aa[LEN2][LEN2], local_bb[LEN2][LEN2];
   TYPE local_cc[LEN2][LEN2];
-  init_local2D(LEN2, local_aa);
-  init_local2D(LEN2, local_bb);
-  init_local2D(LEN2, local_cc);
+  init_local2D3(LEN2, local_aa, local_bb, local_cc);
   TYPE local_array[LEN2*LEN2];
 	int k;
 		k = -1;

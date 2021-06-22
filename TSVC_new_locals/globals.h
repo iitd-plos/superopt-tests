@@ -1,8 +1,8 @@
 #pragma once
 
-#define LEN 32000
+#define LEN 8000
 #define LEN1 3200
-#define LEN2 256
+#define LEN2 128
 
 #include <stdlib.h>
 #include <math.h>
@@ -40,6 +40,25 @@ extern TYPE* yy;
 extern int val_s;
 
 extern void init_local1(TYPE *val1);
+extern void init_local2(TYPE *val1, TYPE *val2);
+extern void init_local3(TYPE *val1, TYPE *val2, TYPE *val3);
+extern void init_local4(TYPE *val1, TYPE *val2, TYPE *val3, TYPE *val4);
+extern void init_local5(TYPE *val1, TYPE *val2, TYPE *val3, TYPE *val4, TYPE *val5);
+
 extern void print_local1(TYPE *val1);
-extern void init_local2D(int len, TYPE val[len][len]);
-extern void print_local2D(int len, TYPE val[len][len]);
+extern void print_local2(TYPE *val1, TYPE *val2);
+extern void print_local3(TYPE *val1, TYPE *val2, TYPE *val3);
+extern void print_local4(TYPE *val1, TYPE *val2, TYPE *val3, TYPE *val4);
+extern void print_local5(TYPE *val1, TYPE *val2, TYPE *val3, TYPE *val4, TYPE *val5);
+
+extern void init_local2D1(int len, TYPE val1[len][len]);
+extern void init_local2D2(int len, TYPE val1[len][len], TYPE val2[len][len]);
+extern void init_local2D3(int len, TYPE val1[len][len], TYPE val2[len][len], TYPE val3[len][len]);
+extern void init_local2D4(int len, TYPE val1[len][len], TYPE val2[len][len], TYPE val3[len][len], TYPE val4[len][len]);
+extern void init_local2D5(int len, TYPE val1[len][len], TYPE val2[len][len], TYPE val3[len][len], TYPE val4[len][len], TYPE val5[len][len]);
+
+extern void print_local2D1(int len, TYPE val1[len][len]);
+extern void print_local2D2(int len, TYPE val1[len][len], TYPE val2[len][len]);
+extern void print_local2D3(int len, TYPE val1[len][len], TYPE val2[len][len], TYPE val3[len][len]);
+extern void print_local2D4(int len, TYPE val1[len][len], TYPE val2[len][len], TYPE val3[len][len], TYPE val4[len][len]);
+extern void print_local2D5(int len, TYPE val1[len][len], TYPE val2[len][len], TYPE val3[len][len], TYPE val4[len][len], TYPE val5[len][len]);

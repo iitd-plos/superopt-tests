@@ -8,9 +8,7 @@ int s251()
 
   TYPE local_a[LEN], local_b[LEN];
   TYPE local_c[LEN], local_d[LEN];
-  init_local1(local_b);
-  init_local1(local_c);
-  init_local1(local_d);
+  init_local3(local_b, local_c, local_d);
 	TYPE s;
 		for (int i = 0; i < LEN; i++) {
 			s = local_b[i] + local_c[i] * local_d[i];

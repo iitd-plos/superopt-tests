@@ -6,8 +6,7 @@ int s173()
 //	expression in loop bounds and subscripts
 
   TYPE local_a[LEN], local_b[LEN];
-  init_local1(local_a);
-  init_local1(local_b);
+  init_local2(local_a, local_b);
 	
   int k = LEN/2;
 		for (int i = 0; i < LEN/2; i++) {
