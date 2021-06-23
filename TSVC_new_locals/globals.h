@@ -44,6 +44,7 @@ extern void init_local2(TYPE *val1, TYPE *val2);
 extern void init_local3(TYPE *val1, TYPE *val2, TYPE *val3);
 extern void init_local4(TYPE *val1, TYPE *val2, TYPE *val3, TYPE *val4);
 extern void init_local5(TYPE *val1, TYPE *val2, TYPE *val3, TYPE *val4, TYPE *val5);
+extern void init_local6(TYPE *val1, TYPE *val2, TYPE *val3, TYPE *val4, TYPE *val5, TYPE *val6);
 
 extern void print_local1(TYPE *val1);
 extern void print_local2(TYPE *val1, TYPE *val2);
