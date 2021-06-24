@@ -20,7 +20,8 @@ PROGS_EQCHECKER_COMPILER := vla_1 \
                             alloca_global \
                             rx \
                             struct_vla \
-                            unroll \
+                            conditional \
+                            # unroll \
                             # sha256crypt # harvest takes forever
                             # ifaddrs # eqgen takes forever
                             # poll # eqgen takes forever
