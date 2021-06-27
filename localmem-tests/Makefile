@@ -18,8 +18,8 @@ PROGS_EQCHECKER_COMPILER := vla_1 \
                             alloca \
                             alloca_linked_list \
                             alloca_global \
-                            struct_vla \
                             conditional \
+                            # struct_vla \
                             # rx \
                             # unroll \
                             # sha256crypt # harvest takes forever
