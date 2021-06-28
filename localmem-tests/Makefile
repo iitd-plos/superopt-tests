@@ -5,29 +5,19 @@ VPATH = $(SRCDIR)/localmem-tests
 
 UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
-EXTRA_FLAGS := '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000 --consider-non-vars-for-dst-ineq'
+EXTRA_FLAGS := '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000'
 
-PROGS_EQCHECKER_COMPILER := vla_1 \
-                            vla_2 \
-                            vlax \
-														variadic \
-                            minprintf \
-                            minscanf \
-                            dprintf \
-                            addr_taken \
-                            alloca \
-                            alloca_linked_list \
-                            alloca_global \
-                            conditional \
-                            # struct_vla \
-                            # rx \
-                            # unroll \
-                            # sha256crypt # harvest takes forever
-                            # ifaddrs # eqgen takes forever
-                            # poll # eqgen takes forever
-                            # glob \
-                            # if_nameindex \
-                            # argp-help \
+PROGS_EQCHECKER_COMPILER := paper_addr_taken             \
+                            paper_alloca                 \
+                            paper_alloca_linked_list     \
+                            paper_alloca_malloc_switch   \
+                            paper_conditional_use        \
+                            paper_minprintf              \
+                            paper_minscanf               \
+                            paper_variadic               \
+                            paper_vla_1                  \
+                            paper_vla_2                  \
+                            paper_vla_2d                 \
 
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
 
