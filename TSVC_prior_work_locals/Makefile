@@ -2,6 +2,7 @@ include ../config.mak                        # paths
 
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/TSVC_prior_work_locals
+EXTRA_FLAGS := '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000'
 
 EXTRA_FLAGS = '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000'
 
