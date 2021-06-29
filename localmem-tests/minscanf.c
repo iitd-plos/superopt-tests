@@ -62,6 +62,7 @@ int minscanf(char* fmt, ...)
 
 	va_start(ap, fmt);
 	for (p = fmt; *p; ++p) {
+    MYmyDBG();
 		if (*p != '%') {
 			if (!MYmy_isblank(*p)) { // blanks are ignored
 			  if (!match_char(*p))

@@ -9,6 +9,7 @@ int lcs(const char *s, const char *t, int m, int n)
     dp[i][0] = 0;
   }
   for (int j = 0; j <= n; ++j) {
+    MYmyDBG();
     dp[0][j] = 0;
   }
 

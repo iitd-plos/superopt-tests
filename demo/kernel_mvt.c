@@ -10,9 +10,9 @@ int aa[LEN][LEN];
 void kernel_mvt()
 {
   int i, j;
-
   for (i = 0; i < LEN; i++) {
-    int sum1 = a[i]; int sum2 = b[i];
+    int sum1 = a[i];
+    int sum2 = b[i];
     for (j = 0; j < LEN; j++)
       sum1 += aa[i][j] * b[j];
     for (j = 0; j < LEN; j++)
