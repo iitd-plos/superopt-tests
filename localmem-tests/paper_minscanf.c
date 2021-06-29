@@ -3,15 +3,15 @@
 
 // rudimentary minscanf
 
-int MYmy_isspace(int);
-int MYmy_isdigit(int);
 int MYmy_isblank(int);
-int MYmy_getchar(void);
-int MYmy_ungetc(int, FILE*);
-
 int read_int();
 void read_string(char* s);
 int match_char(char tc);
+
+//int MYmy_isspace(int);
+//int MYmy_isdigit(int);
+//int MYmy_getchar(void);
+//int MYmy_ungetc(int, FILE*);
 
 //int
 //read_int()

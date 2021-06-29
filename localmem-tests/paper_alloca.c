@@ -6,10 +6,9 @@ int alloca_simple(int n)
     return 0;
   }
   int* p = (int*)alloca(n*sizeof(n));
-  p[0] = 0;
-  for (int i = 1; i < n; ++i) {
+  for (int i = 0; i < n; ++i) {
     MYmyDBG();
-    p[i] = p[i-1] + i*i;
+    p[i] = i*i;
   }
   return p[n-1];
 }
