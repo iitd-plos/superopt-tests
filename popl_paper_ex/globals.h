@@ -12,4 +12,4 @@
 #include <assert.h>
 
 
-extern void bar(int* val);
+extern void baz(int* val);
