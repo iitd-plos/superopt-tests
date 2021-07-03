@@ -7,13 +7,14 @@ int ex15_8()
 
   TYPE local_a[LEN3], local_b[LEN3], local_c[LEN3];
   init_local2(local_a, local_b);
-	int mid = (LEN3/2) + 1;
+	int mid = (LEN3/4) + 1;
+    #pragma GCC unroll 2
 		for (int i = 0; i < mid; i++) {
-				local_c[i] = local_b[local_a[i]];
+				local_c[i] = local_b[2*i];
     }
     #pragma GCC unroll 2
 		for (int i = mid; i < LEN3; i++) {
-				local_c[i] = local_b[i];
+				local_c[i] = local_a[i];
 		}
 	return local_c[LEN3-1];
 }

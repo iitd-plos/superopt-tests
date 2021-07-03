@@ -1,8 +1,9 @@
 #include "globals.h"
 
-int foo() {
+int bar(int *p) {
   int x;
-  bar(&x);
-  return x;
+  if(!p) {
+    p = &x; }
+  baz(p);
+  return *p;
 }
-

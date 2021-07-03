@@ -5,17 +5,17 @@ VPATH = $(SRCDIR)/TSVC_popl
 EXTRA_FLAGS := '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000 '
 
 
-UNROLL8_GCC := s441 ex17 
+UNROLL8_GCC := s441 ex17 # ex12 
 
-UNROLL16_CLANG := s441 ex17 
+UNROLL16_CLANG := s441 ex17 # ex12 
 
 # UNROLL64_ICC := paper_ex s441 ex12 ex15 ex17  
 
-UNROLL4_SRCDST := ex15
-UNROLL8_SRCDST := ex15_8
+UNROLL8_SRCDST := ex15
+UNROLL16_SRCDST := ex15_8
 
 PROGS_EQCHECKER_SRC_DST := ex15 ex15_8 
-PROGS_EQCHECKER_COMPILER := s441 ex17  
+PROGS_EQCHECKER_COMPILER := s441 ex12 ex17  
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER) $(addsuffix _src, $(PROGS_EQCHECKER_SRC_DST)) $(addsuffix _dst, $(PROGS_EQCHECKER_SRC_DST))
 
 # compiler flags
