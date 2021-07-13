@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <sys/mman.h>
-#include "eqchecker_helper.h"
+//#include "eqchecker_helper.h"
 
 const size_t PAGE_SIZE = 4096; 
 
@@ -16,6 +16,7 @@ char* simple_ltoa(char *local, unsigned long i)
 	char *p = &local[22];
 	*--p = '\0';
 	do {
+    MYmyDBG();
 		char temp;
 		do_rem(temp, i, 10);
 		*--p = '0' + temp;
@@ -31,6 +32,7 @@ char* simple_ltoahex(char *local, unsigned long i)
 	char *p = &local[22];
 	*--p = '\0';
 	do {
+    MYmyDBG();
 		char temp = i & 0xf;
 		if (temp <= 0x09)
 			*--p = '0' + temp;
@@ -83,34 +85,22 @@ void dprintf_(int fd, const char *fmt, ...)
 			switch (*ptr++) {
 				case 's':
 					string = va_arg(args, char *);
-
 					if (!string) {
             string = "(null)";
-						//write(fd, "(null)", 6);
 					}
-					//else
-						//write(fd, string, strlen(string));
 					break;
-
 				case 'i':
 				case 'd':
-					{
-						num = va_arg(args, int);
-						string = simple_ltoa(tmp, num);
-						//write(fd, string, strlen(string));
-						break;
-					}
+					num = va_arg(args, int);
+					string = simple_ltoa(tmp, num);
+					break;
 				case 'x':
 				case 'p':
-					{
-						num = va_arg(args, int);
-						string = simple_ltoahex(tmp, num);
-						//write(fd, string, strlen(string));
-						break;
-					}
+					num = va_arg(args, int);
+					string = simple_ltoahex(tmp, num);
+					break;
 				default:
 					string = "(null)";
-					//write(fd, "(null)", 6);
 					break;
 			}
 			write(fd, string, strlen(string));
@@ -122,10 +112,4 @@ void dprintf_(int fd, const char *fmt, ...)
 	}
 	MYmyfree(buf);
 	return;
-}
-
-int main()
-{
-  dprintf_(1, "%d%d%d", 1, 2, 3);
-  return 0;
 }

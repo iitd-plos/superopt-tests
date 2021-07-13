@@ -1,6 +1,6 @@
 #include <inttypes.h>
 
-#define LEN 1000
+#define LEN 4096
 int a[LEN];
 int b[LEN];
 int c[LEN];
