@@ -1,6 +1,6 @@
 #define MAX(x, y) ((x > y) ? (x) : (y))
 
-int lcs(const char *s, const char *t, int m, int n)
+int vla_2d(const char *s, const char *t, int m, int n)
 {
   int dp[m+1][n+1];
 
@@ -9,6 +9,7 @@ int lcs(const char *s, const char *t, int m, int n)
     dp[i][0] = 0;
   }
   for (int j = 0; j <= n; ++j) {
+    MYmyDBG();
     dp[0][j] = 0;
   }
 

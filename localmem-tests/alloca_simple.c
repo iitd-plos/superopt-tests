@@ -10,5 +10,5 @@ int alloca_simple(int n)
     MYmyDBG();
     p[i] = i*i;
   }
-  return p[n-1];
+  return p[0]*p[n-1];
 }

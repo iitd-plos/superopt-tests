@@ -6,7 +6,6 @@ void minprintf(char *fmt, ...)
   va_list ap; /* points to each unnamed arg in turn */
   char *p, *sval;
   int ival;
-  //double dval;
 
   va_start(ap, fmt);
   /* make ap point to 1st unnamed arg */
@@ -21,10 +20,6 @@ void minprintf(char *fmt, ...)
         ival = va_arg(ap, int);
         MYmyprint_int(ival);
         break;
-      //case 'f':
-      //  dval = va_arg(ap, double);
-      //  MYmyprint_float(dval);
-      //  break;
       case 's':
         for (sval = va_arg(ap, char *); *sval; sval++)
           MYmyprint_char(*sval);

@@ -1,26 +1,10 @@
-#include <stdarg.h>
-
-int vla_21(int *a, unsigned n)
+int vla_2_nested_loops(int* a, unsigned n)
 {
   if (n == 0)
     return 0;
 
-  int v[n], w[n];
-#pragma clang loop vectorize(disable) unroll(disable)
-  for (unsigned i = 0; i < n; ++i) {
-    MYmyDBG();
-    v[i] = a[i]*a[i];
-    w[i] = a[i]+a[i];
-  }
-  return MYmyabs(v[0]+v[n-1]+w[0]+w[n-1]);
-}
-
-int vla_22(int* a, unsigned n)
-{
-  if (n == 0)
-    return 0;
-
-  int v[n], w[n];
+  int v[n];
+  int w[n];
   for (unsigned i = 0; i < n-1; ++i) {
     MYmyDBG();
     unsigned vv[i+1];

@@ -1,4 +1,4 @@
-int conditional_use(int n, int k)
+int vla_conditional_use(int n, int k)
 {
    int a[n];
    if (k > 0 && k <= n) {
