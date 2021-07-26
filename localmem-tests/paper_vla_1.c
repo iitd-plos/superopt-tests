@@ -1,3 +1,44 @@
+int fib(int n)
+{
+    int f[n+2];
+    int i;
+    f[0] = 0;
+    f[1] = 1;
+    for(i = 2; i <= n; i++)
+    {
+       f[i] = f[i - 1] + f[i - 2];
+    }
+    return f[n];
+}
+
+
+/*
+int fib(int n)
+{
+    int f[n+1];
+    int i;
+ 
+#pragma clang loop vectorize(disable) unroll(disable)
+    for(i = 0; i <= n; i++)
+    {
+      if(i == 0) f[i] = 0;
+      else if(i == 1) f[i] = 1;
+      else f[i] = f[i - 1] + f[i - 2];
+    }
+    return f[n];
+}*/
+/*
+int foo(unsigned n) {                                             
+ int r = 0;                                                       
+ if (!n) return r;                                                
+ int x[n];                                                        
+ x[0] = 0;                                                        
+ for (int i=0 ; i<n; ++i)                                         
+   x[i] = x[i/2] + i;                                             
+ r = x[n-1];                                                      
+ return r;                                                        
+} 
+
 int vla_simple_loop(unsigned n)
 {
   if (n == 0)
@@ -47,4 +88,4 @@ int vla_in_loop(const char* s)
     ret += t[0] + t[i-1];
   }
   return ret;
-}
+}*/
