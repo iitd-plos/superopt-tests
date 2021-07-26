@@ -22,3 +22,11 @@ void addr_taken_array_in_loop(int n, int fd_in, int fd_out)
     MYmywrite(fd_out, buf, BUFSZ);
   }
 }
+
+int addr_taken_conditional(int* p)
+{
+  int x;
+  if (!p) p = &x;
+  MYmybaz(p);
+  return *p;
+}
