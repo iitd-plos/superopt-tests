@@ -20,6 +20,7 @@ PROGS_EQCHECKER_COMPILER := \
                             #paper_minscanf               \
                             #paper_variadic               \
                             #paper_vla_2                  \
+                            #arg_addr_taken               \
                             ## paper_alloca_malloc_switch   \
                             ## paper_vla_2d                 \
 
