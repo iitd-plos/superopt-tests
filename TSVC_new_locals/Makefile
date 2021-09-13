@@ -2,7 +2,7 @@ include ../config.mak                        # paths
 
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/TSVC_new_locals
-EXTRA_FLAGS = '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000'
+EXTRA_FLAGS = --dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000
 
 UNROLL64_GCC := s111 s1111 s113 s119 s124 s125 s128 s131 s132 s1421 s174 s2233 s311 s3111 s319 s421 s423 s441 s443 s471 va 
 

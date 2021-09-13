@@ -16,7 +16,7 @@ UNROLL4_SRCDST := bitflip \
                   # loopSplitting -- times out
 UNROLL8_SRCDST := strlen
 
-EXTRA_FLAGS := '--smt-query-timeout 600'
+EXTRA_FLAGS := --smt-query-timeout 600
 
 PROGS_EQCHECKER_SRCDST := $(UNROLL1_SRCDST) $(UNROLL4_SRCDST) $(UNROLL8_SRCDST)
 PROGS_EQCHECKER_COMPILER := $(UNROLL1_GCC)

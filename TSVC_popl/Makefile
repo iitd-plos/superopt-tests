@@ -2,7 +2,7 @@ include ../config.mak                        # paths
 
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/TSVC_popl
-EXTRA_FLAGS := '--dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000 '
+EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 1200 --global-timeout 100000
 
 UNROLL8_GCC := s441 ex17 # ex12 
 UNROLL16_CLANG := s441 ex17 # ex12 

@@ -17,7 +17,7 @@ UNROLL1_PROGS := nsieve \
 				         qsort \
 				         #nsievebits \ # ext_rotate_left expr is generated which is not supported by solvers
 
-EXTRA_FLAGS := '--global-timeout 7200'
+EXTRA_FLAGS := --global-timeout 7200
 
 PROGS_EQCHECKER_COMPILER := $(UNROLL1_PROGS) $(UNROLL8_CLANG) $(UNROLL4_GCC)
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER) 
