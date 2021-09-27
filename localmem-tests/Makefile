@@ -5,7 +5,7 @@ VPATH = $(SRCDIR)/localmem-tests
 
 UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
-EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 1200 --global-timeout 9000
+EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 9000 --consider-non-vars-for-dst-ineq
 
 PROGS_EQCHECKER_COMPILER := \
   													addr_taken_simple            \
@@ -20,11 +20,11 @@ PROGS_EQCHECKER_COMPILER := \
   													variadic_acyclic             \
   													variadic_with_loop           \
   													vla_simple_loop              \
-                            vla_in_loop                  \
                             vla_in_loop_simplified       \
   													vla_midway_decl              \
                             vla_conditional_use          \
                             vla_2_single_loop            \
+                            ## vla_in_loop                  \
                             ## vla_2_nested_loops           \
                             ## vla_2d                       \
   													## alloca_malloc_switch         \
