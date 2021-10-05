@@ -23,6 +23,7 @@ PROGS_EQCHECKER_COMPILER := \
                             vla_in_loop_simplified       \
   													vla_midway_decl              \
                             vla_conditional_use          \
+                            vla_in_loop_conditional      \
                             vla_2_single_loop            \
                             ## vla_in_loop                  \
                             ## vla_2_nested_loops           \
