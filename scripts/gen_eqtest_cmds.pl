@@ -4,6 +4,14 @@ use strict;
 use warnings;
 use Cwd;
 
+sub read_file {
+  my $filename = $_[0];
+  open my $fh, '<', $filename or return "";
+  my $data = do { local $/; <$fh> };
+  $data =~ tr{\n}{ };
+  return $data;
+}
+
 #constants
 
 my $SUPEROPT_PROJECT_DIR = $ARGV[0];
@@ -61,6 +69,9 @@ foreach my $prog (keys %unroll) {
   }
   if (-f "$VPATH/$prog.$compiler.correl_hints") {
     $prog_extraflagsstr = $prog_extraflagsstr . " --correl-hints $VPATH/$prog.$compiler.correl_hints";
+  }
+  if (-f "$VPATH/$prog.$compiler.eqflags") {
+    $prog_extraflagsstr = $prog_extraflagsstr . " " . read_file("$VPATH/$prog.$compiler.eqflags");
   }
   if ($compiler eq "srcdst") {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
