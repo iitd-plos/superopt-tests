@@ -5,7 +5,7 @@ VPATH = $(SRCDIR)/localmem-tests
 
 UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
-EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 9000 --consider-non-vars-for-dst-ineq
+EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 9000
 
 PROGS_EQCHECKER_COMPILER := \
                             addr_taken_simple            		 \
