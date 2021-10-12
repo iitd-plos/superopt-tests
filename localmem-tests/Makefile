@@ -8,27 +8,29 @@ UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
 EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 9000 --consider-non-vars-for-dst-ineq
 
 PROGS_EQCHECKER_COMPILER := \
-  													addr_taken_simple            \
-  													addr_taken_array             \
-  													addr_taken_array_in_loop     \
-  													addr_taken_conditional       \
-  													alloca_simple                \
-  													alloca_conditional           \
-  													alloca_linked_list           \
-  													minprintf                    \
-  													minscanf                     \
-  													variadic_acyclic             \
-  													variadic_with_loop           \
-  													vla_simple_loop              \
-                            vla_in_loop_simplified       \
-  													vla_midway_decl              \
-                            vla_conditional_use          \
-                            vla_in_loop_conditional      \
-                            vla_2_single_loop            \
+                            addr_taken_simple            		 \
+                            addr_taken_array             		 \
+                            addr_taken_array_in_loop     		 \
+                            addr_taken_conditional       		 \
+                            alloca_simple                		 \
+                            alloca_conditional           		 \
+                            alloca_linked_list           		 \
+                            minprintf                    		 \
+                            minscanf                     		 \
+                            variadic_acyclic             		 \
+                            variadic_with_loop           		 \
+                            vla_simple_loop              		 \
+                            vla_in_loop_simplified       		 \
+                            vla_midway_decl              		 \
+                            vla_conditional_use          		 \
+                            vla_in_loop_conditional_continue \
+                            vla_in_loop_conditional_exit     \
+                            vla_2_single_loop                \
+                            arg_addr_taken                   \
+                            #alloca_malloc_switch             \
                             ## vla_in_loop                  \
                             ## vla_2_nested_loops           \
                             ## vla_2d                       \
-  													## alloca_malloc_switch         \
 
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
 

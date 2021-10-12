@@ -1,6 +1,5 @@
-int vla_in_loop_conditional(const char* s)
+int vla_in_loop_conditional_exit(const char* s, int n)
 {
-  int n = MYmystrlen(s);
   if (n <= 0) {
     return 0;
   }
@@ -10,7 +9,7 @@ int vla_in_loop_conditional(const char* s)
     char t[i];
     int r = MYmyInit(t, i);
     if (r < 0)
-      continue;
+      break;
     ret += t[i-1];
     ++i;
   }
