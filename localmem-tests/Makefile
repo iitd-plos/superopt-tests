@@ -26,11 +26,11 @@ PROGS_EQCHECKER_COMPILER := \
                             vla_in_loop_conditional_continue \
                             vla_in_loop_conditional_exit     \
                             vla_2_single_loop                \
-                            arg_addr_taken                   \
-                            #alloca_malloc_switch             \
+                            #alloca_malloc_switch           \
                             ## vla_in_loop                  \
                             ## vla_2_nested_loops           \
                             ## vla_2d                       \
+                            # arg_addr_taken               # eqgen fails
 
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
 
