@@ -191,6 +191,11 @@
 	#$(LLVM_OPT) -mem2reg -strip-debug -o $@ $@.tmp
 	$(LLVM_OPT) -mem2reg -o $@ $@.tmp
 
+%.bc: %.ll
+	$(MYLLVM_AS) $< -o $@.tmp
+	$(LLVM_LINK) $@.tmp -o $@
+	rm -f $@.tmp
+
 %.c.O0.bc32: %.c
 	$(CLANG_I386) $(CFLAGS) -Xclang -disable-O0-optnone $(INCLUDES) -m32 -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
 	$(LLVM_OPT) -mem2reg -die -o $@ $@.tmp
@@ -199,10 +204,10 @@
 	$(CLANG_X64) $(CFLAGS) -Xclang -disable-O0-optnone $(INCLUDES) -O3 -Xclang -disable-llvm-passes -emit-llvm $^ -c -o $@.tmp
 	$(LLVM_OPT) -mem2reg -die -o $@ $@.tmp
 
-%.bc32.eqchecker.O0: %.c.O0.bc32 #eqchecker_helper.c.O0.bc
+%.bc32.eqchecker.O0: %.c.O0.bc32
 	$(LLVM_LINK) $^ -o $@
 
-%.bc64.eqchecker.O0: %.c.O0.bc64 #eqchecker_helper.c.O0.bc
+%.bc64.eqchecker.O0: %.c.O0.bc64
 	$(LLVM_LINK) $^ -o $@
 
 %.bc32.eqchecker.O2: %.bc32.eqchecker.O0
@@ -296,8 +301,8 @@
 	cp $< $@
 	# no-op for now as `main' may not be present
 
-%.ln.c: %.c
-	cp -f $< $@
+#%.ln.c: %.c
+#	cp -f $< $@
 
 # LLVM LL
 
