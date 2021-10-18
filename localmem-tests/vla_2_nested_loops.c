@@ -18,7 +18,7 @@ int vla_2_nested_loops(int* a, unsigned n)
     v[i] = vv[i];
     w[i] = a[i]*a[i];
   }
-  return v[0]*v[n-1]+w[0]*w[n-1];
+  return MYmybar(v,w);
 end:
   return 0;
 }

@@ -5,17 +5,14 @@ int vla_midway_decl(int* a, unsigned n, int* b)
     return 0;
 
   b[0] = a[0];
-  int mx = a[0];
   for (unsigned i = 1; i < n; ++i) {
     MYmyDBG();
     b[i] = b[i-1] + a[i];
-    if (a[i] > mx)
-      mx = a[i];
   }
   int v[n];
   for (unsigned i = 0; i < n; ++i) {
     MYmyDBG();
-    v[i] = (mx-a[i])*b[i];
+    v[i] = a[i]*b[i];
   }
-  return v[0] > v[n-1] ? v[0] : v[n-1];
+  return MYmyBaz(v);
 }
