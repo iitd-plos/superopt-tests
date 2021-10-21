@@ -16,11 +16,11 @@ struct Node* head2 = NULL;
 
 void insert(struct Node**h, int d)
 {
-  struct Node* n = (struct Node*)pmem_malloc(sizeof(struct Node));
+  struct Node* n = (struct Node*)malloc(sizeof(struct Node));
   if (!n) {
     return;
   }
-  n->data = (int*)malloc(sizeof(int));
+  n->data = malloc(sizeof(int));
   *n->data = d;
   n->next = *h;
   *h = n;
@@ -29,11 +29,11 @@ void insert(struct Node**h, int d)
 
 void insert2(struct Node**h, int d)
 {
-  struct Node* n = (struct Node*)malloc(sizeof(struct Node));
+  struct Node* n = (struct Node*)pmem_malloc(sizeof(struct Node));
   if (!n) {
     return;
   }
-  n->data = (int*)malloc(sizeof(int));
+  n->data = malloc(sizeof(int));
   *n->data = d;
   n->next = *h;
   *h = n;
