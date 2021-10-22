@@ -14,5 +14,5 @@ int vla_midway_decl(int* a, unsigned n, int* b)
     MYmyDBG();
     v[i] = a[i]*b[i];
   }
-  return MYmyBaz(v);
+  return v[0] > v[n-1] ? v[0] : v[n-1];
 }
