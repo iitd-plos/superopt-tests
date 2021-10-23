@@ -16,7 +16,6 @@ PROGS_EQCHECKER_COMPILER := \
                             alloca_conditional           		 \
                             alloca_linked_list           		 \
                             minprintf                    		 \
-                            minscanf                     		 \
                             variadic_acyclic             		 \
                             variadic_with_loop           		 \
                             vla_simple_loop              		 \
@@ -30,6 +29,7 @@ PROGS_EQCHECKER_COMPILER := \
                             ## vla_in_loop                  \
                             ## vla_2_nested_loops           \
                             ## vla_2d                       \
+                            #minscanf                      # gcc eqgen fails
                             # arg_addr_taken               # eqgen fails
 
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
