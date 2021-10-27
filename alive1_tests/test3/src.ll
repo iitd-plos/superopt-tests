@@ -2,7 +2,7 @@ target datalayout = "e-m:e-p:32:32-p270:32:32-p271:32:32-p272:64:64-f64:32:64-f8
 target triple = "i386-unknown-linux-gnu"
 
 define i32 @main(i32 %x){
-  %temp = sdiv i32 %x, 5
-  %ret = sub i32 0, %temp
+  %temp = xor i32 %x, -1
+  %ret = add i32 %x, 3333
   ret i32 %ret
 }
