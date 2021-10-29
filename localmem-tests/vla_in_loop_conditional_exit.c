@@ -1,17 +1,12 @@
-int vla_in_loop_conditional_exit(const char* s, int n)
+int vla_in_loop_conditional_exit(int n)
 {
-  if (n <= 0) {
-    return 0;
-  }
   int ret = 0;
-  int i = 1;
-  while (i < n) {
+  for (int i = 1; i < n; ++i) {
     char t[i];
     int r = MYmyInit(t, i);
     if (r < 0)
       break;
     ret += t[i-1];
-    ++i;
   }
   return ret;
 }
