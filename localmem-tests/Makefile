@@ -20,13 +20,14 @@ PROGS_EQCHECKER_COMPILER := \
                             variadic_with_loop           		 \
                             vla_simple_loop              		 \
                             vla_in_loop_simplified       		 \
-                            vla_midway_decl              		 \
                             vla_conditional_use          		 \
                             vla_in_loop_conditional_continue \
                             vla_in_loop_conditional_exit     \
+                            vla_fibo                         \
                             vla_2_single_loop                \
                             #alloca_malloc_switch           \
                             ## vla_in_loop                  \
+                            #vla_midway_decl              	\
                             ## vla_2_nested_loops           \
                             ## vla_2d                       \
                             #minscanf                      # gcc eqgen fails
