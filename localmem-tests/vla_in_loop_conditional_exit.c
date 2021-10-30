@@ -1,12 +1,14 @@
 int vla_in_loop_conditional_exit(int n)
 {
   int ret = 0;
-  for (int i = 1; i < n; ++i) {
+  int i = 1;
+  while (i < n) {
     char t[i];
     int r = MYmyInit(t, i);
     if (r < 0)
       break;
     ret += t[i-1];
+    ++i;
   }
   return ret;
 }
