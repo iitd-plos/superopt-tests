@@ -10,7 +10,7 @@ int alloca_conditional(char* s, int fd, char* a)
   }
   for (int i = 0; i < n; ++i) {
     MYmyDBG();
-    a[i] = s[i] ^ 1;
+    a[i] = s[i] ^ 0x20;
   }
   int ret = write(fd, a, n);
   return ret;
