@@ -9,9 +9,7 @@ int alloca_conditional(char* s, int fd, char* a)
     a = alloca(n);
   }
   for (int i = 0; i < n; ++i) {
-    MYmyDBG();
-    a[i] = s[i] ^ 0x20;
+    a[i] = MYmytolower(s[i]);
   }
-  int ret = write(fd, a, n);
-  return ret;
+  return write(fd, a, n);
 }
