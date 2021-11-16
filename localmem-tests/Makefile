@@ -4,7 +4,8 @@ include ../config.mak                        # paths
 VPATH = $(SRCDIR)/localmem-tests
 
 UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
-UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
+UNROLL1_CLANG = alloca_linked_list $(PROGS_EQCHECKER_COMPILER)
+UNROLL2_GCC = alloca_linked_list
 EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 32000 --failset-prune 0
 
 PROGS_EQCHECKER_COMPILER := \
@@ -14,7 +15,6 @@ PROGS_EQCHECKER_COMPILER := \
                             addr_taken_conditional       		 \
                             alloca_simple                		 \
                             alloca_conditional           		 \
-                            alloca_linked_list           		 \
                             minprintf                    		 \
                             variadic_acyclic             		 \
                             variadic_with_loop           		 \
