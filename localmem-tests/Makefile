@@ -23,7 +23,7 @@ PROGS_EQCHECKER_COMPILER := \
                             vla_in_loop                      \
                             vla_in_loop_conditional_continue \
                             vla_in_loop_conditional_exit     \
-                            vla_fibo                         \
+                            fib                              \
                             vla_2_single_loop                \
                             vla_1_inside_loop            		 \
                             vla_2_inside_loop            		 \
