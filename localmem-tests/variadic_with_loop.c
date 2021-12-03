@@ -8,7 +8,6 @@ int variadic_with_loop(unsigned n, ...)
 
   va_start(args, n);
   for (i = 0; i < n; ++i) {
-    MYmyDBG();
     if (i & 1)
       ret -= va_arg(args, int);
     else
