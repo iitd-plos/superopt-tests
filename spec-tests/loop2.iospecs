@@ -1,0 +1,33 @@
+=SpecFuncIOSpecs
+=FunctionName: foo
+=EntryPreconds
+=pred 0
+=Comment
+spec_coupling(n, n)
+=LhsExpr
+1 : input.spec-%var.n-1 : BV:32
+2 : input.src.llvm-%n : BV:32
+3 : SORTDUMMY.keyword : IMPLMAP[BV:32]
+4 : implmap(2, 3) : IMPLMAP[BV:32]
+5 : spec_coupling(1, 4) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+spec_coupling(retreg, retreg)
+=LhsExpr
+1 : input.spec-%tmpvar.24 : BV:32
+2 : input.src.llvm-%r.0 : BV:32
+3 : SORTDUMMY.keyword : IMPLMAP[BV:32]
+4 : implmap(2, 3) : IMPLMAP[BV:32]
+5 : spec_coupling(1, 4) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done
