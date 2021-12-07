@@ -17,8 +17,8 @@ sub read_file {
 my $SUPEROPT_PROJECT_DIR = $ARGV[0];
 my $VPATH = $ARGV[1];
 my $dst_arch = $ARGV[2];
-my $compiler = $ARGV[3];
-my $compiler_suffix = $ARGV[4];
+my $compiler = convert_PP_to_plusplus($ARGV[3]);
+my $compiler_suffix = convert_PP_to_plusplus($ARGV[4]);
 #my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
 #my $srcdst_default_isa = "x64";
 #my $srcdst_default_isa = "i386";
@@ -101,4 +101,11 @@ sub identify_filetype_extension
   }
   print "Neither C file ($cpath) nor LLVM file ($llpath) exists\n";
   exit(1);
+}
+
+sub convert_PP_to_plusplus
+{
+  my $in = shift;
+  $in =~ s/PP/++/g;
+  return $in;
 }
