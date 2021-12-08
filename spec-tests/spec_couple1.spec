@@ -1,0 +1,1 @@
+fn foo (x : Opt<i32>) -> i32 = match x with | None => i32(5) | Some x_val => x_val.

@@ -1,0 +1,54 @@
+=SpecFuncIOSpecs
+=FunctionName: foo
+=EntryPreconds
+=pred 0
+=Comment
+spec_coupling(map-x, x)
+=LhsExpr
+1 : Forall2 : BV:32
+2 : 1 : BOOL
+3 : input.spec-%var.x-0.0 : FUNCTION[BV:32 -> BOOL]
+4 : apply(3, 1) : BOOL
+5 : 0 : BV:32
+6 : bvsle(5, 1) : BOOL
+7 : 10 : BV:32
+8 : bvslt(1, 7) : BOOL
+9 : and(6, 8) : BOOL
+10 : eq(4, 9) : BOOL
+11 : implies(2, 10) : BOOL
+12 : forall(1, 11) : BOOL
+13 : input.spec-%var.x-0.1 : FUNCTION[BV:32 -> BV:32]
+14 : apply(13, 1) : BV:32
+15 : input.src.llvm-mem : ARRAY[BV:32 -> BV:8]
+16 : input.src.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+17 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
+18 : input.src.llvm-%x : BV:32
+19 : 4 : BV:32
+20 : bvmul(1, 19) : BV:32
+21 : bvadd(18, 20) : BV:32
+22 : 4 : INT
+23 : 0 : BOOL
+24 : select(15, 16, 17, 21, 22, 23) : BV:32
+25 : eq(14, 24) : BOOL
+26 : implies(4, 25) : BOOL
+27 : forall(1, 26) : BOOL
+28 : and(12, 27) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+spec_coupling(retreg, retreg)
+=LhsExpr
+1 : input.spec-%tmpvar.9 : BV:32
+2 : input.src.llvm-%add : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done

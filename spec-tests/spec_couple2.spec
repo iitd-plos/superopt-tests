@@ -1,0 +1,1 @@
+fn foo (x : Prod<x y : i32>) -> i32 = bvsub(x['x'], x['y']).
