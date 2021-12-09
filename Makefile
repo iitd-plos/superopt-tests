@@ -49,6 +49,9 @@ eqtest_i386: eqtest_%: $(BUILD_MAKEFILES)
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/$@
 
 run_paper_ex:
+	mkdir -p $(BUILDDIR)/paper_ex
+	cp paper_ex/Makefile -t $(BUILDDIR)/paper_ex
+	$(MAKE) -C $(BUILDDIR)/paper_ex
 	$(MAKE) -C $(BUILDDIR)/paper_ex eqtest_i386
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/paper_ex/eqtest_i386
 
