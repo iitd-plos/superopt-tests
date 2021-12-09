@@ -10,6 +10,7 @@ UNROLL2_CLANG = fib
 EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 32000 --failset-prune 0
 
 PROGS_EQCHECKER_COMPILER := \
+                            rodata                           \
                             addr_taken_simple            		 \
                             addr_taken_array             		 \
                             addr_taken_array_in_loop     		 \
