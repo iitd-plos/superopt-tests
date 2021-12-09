@@ -3,9 +3,10 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/localmem-tests
 
-UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
+UNROLL1_GCC = fib $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = alloca_linked_list $(PROGS_EQCHECKER_COMPILER)
 UNROLL2_GCC = alloca_linked_list
+UNROLL2_CLANG = fib
 EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 32000 --failset-prune 0
 
 PROGS_EQCHECKER_COMPILER := \
@@ -23,7 +24,6 @@ PROGS_EQCHECKER_COMPILER := \
                             vla_in_loop                      \
                             vla_in_loop_conditional_continue \
                             vla_in_loop_conditional_exit     \
-                            fib                              \
                             vla_2_single_loop                \
                             vla_1_inside_loop            		 \
                             vla_2_inside_loop            		 \
