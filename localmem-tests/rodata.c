@@ -2,7 +2,12 @@ const int cts[] = { 0x66, 0x65, 0x67, 0x60 };
 
 int rodata(int n)
 {
+  const char* ini = "ZXZZ";
   int ret = 0;
+  ret += ini[0];
+  ret += ini[1];
+  ret += ini[2];
+  ret += ini[3];
   MYmyprintf("Scanning %d chars", n);
   char t[n];
   const char zz[] = "0123456789";
