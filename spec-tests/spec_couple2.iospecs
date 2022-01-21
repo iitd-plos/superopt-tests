@@ -5,13 +5,11 @@
 =Comment
 spec_coupling(prod-x, x:y)
 =LhsExpr
-1 : input.spec-%var.x-0.0 : BV:32
+1 : input.spec-%var.x-0 : PROD[BV:32, BV:32]
 2 : input.src.llvm-%x : BV:32
-3 : eq(1, 2) : BOOL
-4 : input.spec-%var.x-0.1 : BV:32
-5 : input.src.llvm-%y : BV:32
-6 : eq(4, 5) : BOOL
-7 : and(3, 6) : BOOL
+3 : input.src.llvm-%y : BV:32
+4 : prod(2, 3) : PROD[BV:32, BV:32]
+5 : eq(1, 4) : BOOL
 =RhsExpr
 1 : 1 : BOOL
 =predicate done

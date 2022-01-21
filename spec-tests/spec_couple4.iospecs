@@ -5,50 +5,39 @@
 =Comment
 spec_coupling(x, x)
 =LhsExpr
-1 : Forall4 : BV:32
-2 : 1 : BOOL
-3 : input.spec-%var.x-2.0 : FUNCTION[BV:32 -> BOOL]
-4 : apply(3, 1) : BOOL
-5 : 0 : BV:32                                                                                     
-6 : bvule(5, 1) : BOOL
-7 : input.src.llvm-%n : BV:32
-8 : bvult(1, 7) : BOOL
-9 : and(6, 8) : BOOL
-10 : eq(4, 9) : BOOL
-11 : implies(2, 10) : BOOL
-12 : forall(1, 11) : BOOL
-13 : Forall5 : BV:32
-14 : input.spec-%var.x-2.1.0 : FUNCTION[BV:32,BV:32 -> BOOL]
-15 : apply(14, 1, 13) : BOOL
-16 : bvule(5, 13) : BOOL
-17 : input.src.llvm-%m : BV:32
-18 : bvult(13, 17) : BOOL
-19 : and(16, 18) : BOOL                                                                                   
-20 : eq(15, 19) : BOOL
-21 : implies(4, 20) : BOOL
-22 : implies(2, 21) : BOOL
-23 : forall(1, 13, 22) : BOOL
-24 : input.spec-%var.x-2.1.1 : FUNCTION[BV:32,BV:32 -> BV:32]
-25 : apply(24, 1, 13) : BV:32
-26 : input.src.llvm-mem : ARRAY[BV:32 -> BV:8]
-27 : input.src.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-28 : memlabel-mem-symbol.1.0-heap : MEMLABEL
-29 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
-30 : input.src.llvm-%x : BV:32
-31 : 4 : BV:32
-32 : bvmul(1, 31) : BV:32
-33 : bvadd(30, 32) : BV:32
-34 : 4 : INT
-35 : 0 : BOOL
-36 : select(26, 27, 29, 33, 34, 35) : BV:32
-37 : bvmul(13, 31) : BV:32
-38 : bvadd(36, 37) : BV:32
-39 : select(26, 27, 28, 38, 34, 35) : BV:32
-40 : eq(25, 39) : BOOL
-41 : implies(4, 40) : BOOL
-42 : implies(15, 41) : BOOL
-43 : forall(1, 13, 42) : BOOL
-44 : and(12, 23, 43) : BOOL
+1 : input.spec-%var.x-2 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+2 : Lambda0 : BV:32
+3 : Lambda1 : BV:32
+4 : input.src.llvm-%n : BV:32
+5 : input.src.llvm-%m : BV:32
+6 : 0 : BV:32
+7 : bvule(6, 2) : BOOL
+8 : bvult(2, 4) : BOOL
+9 : and(7, 8) : BOOL
+10 : lambda(2, 9) : FUNCTION[BV:32 -> BOOL]
+11 : bvule(6, 3) : BOOL
+12 : bvult(3, 5) : BOOL
+13 : and(11, 12) : BOOL
+14 : lambda(3, 13) : FUNCTION[BV:32 -> BOOL]
+15 : input.src.llvm-mem : ARRAY[BV:32 -> BV:8]
+16 : input.src.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+17 : memlabel-mem-symbol.1.0-heap : MEMLABEL
+18 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
+19 : input.src.llvm-%x : BV:32
+20 : 4 : BV:32
+21 : bvmul(2, 20) : BV:32
+22 : bvadd(19, 21) : BV:32
+23 : 4 : INT
+24 : 0 : BOOL
+25 : select(15, 16, 18, 22, 23, 24) : BV:32
+26 : bvmul(3, 20) : BV:32
+27 : bvadd(25, 26) : BV:32
+28 : select(15, 16, 17, 27, 23, 24) : BV:32
+29 : lambda(3, 28) : FUNCTION[BV:32 -> BV:32]
+30 : map(14, 29) : MAP[BV:32 -> BV:32]
+31 : lambda(2, 30) : FUNCTION[BV:32 -> MAP[BV:32 -> BV:32]]
+32 : map(10, 31) : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+33 : eq(1, 32) : BOOL
 =RhsExpr
 1 : 1 : BOOL
 =predicate done

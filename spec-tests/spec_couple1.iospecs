@@ -5,22 +5,19 @@
 =Comment
 spec_coupling(opt-x, pointer-x)
 =LhsExpr
-1 : input.spec-%var.x-0.0 : BOOL
+1 : input.spec-%var.x-0 : OPT[BV:32]
 2 : input.src.llvm-%x : BV:32
 3 : 0 : BV:32
 4 : eq(2, 3) : BOOL
 5 : not(4) : BOOL
-6 : eq(1, 5) : BOOL
-7 : input.spec-%var.x-0.1 : BV:32
-8 : input.src.llvm-mem : ARRAY[BV:32 -> BV:8]
-9 : input.src.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-10 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
-11 : 4 : INT
-12 : 0 : BOOL
-13 : select(8, 9, 10, 2, 11, 12) : BV:32
-14 : eq(7, 13) : BOOL
-15 : implies(1, 14) : BOOL
-16 : and(6, 15) : BOOL
+6 : input.src.llvm-mem : ARRAY[BV:32 -> BV:8]
+7 : input.src.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+8 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
+9 : 4 : INT
+10 : 0 : BOOL
+11 : select(6, 7, 8, 2, 9, 10) : BV:32
+12 : opt(5, 11) : OPT[BV:32]
+13: eq(1, 12) : BOOL
 =RhsExpr
 1 : 1 : BOOL
 =predicate done
