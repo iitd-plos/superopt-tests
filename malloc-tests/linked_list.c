@@ -46,7 +46,7 @@ int main()
 {
   insert(&head, 1);
   insert(&head, 2);
-  insert(&head2, 3);
+  //insert(&head2, 3);
 
   insert2(&head2, 4);
 
