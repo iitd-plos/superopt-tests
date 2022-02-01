@@ -66,6 +66,8 @@ EQCHECKER_X64_GCC_O3_XML_FILES = $(addsuffix .gcc.x64.O3.xml, $(PROGS_EQCHECKER)
 EQCHECKER_X64_CLANG_O3_XML_FILES = $(addsuffix .clang.x64.O3.xml, $(PROGS_EQCHECKER))
 EQCHECKER_X64_ICC_O3_XML_FILES = $(addsuffix .icc.x64.O3.xml, $(PROGS_EQCHECKER))
 
+PROGS_LL_BC = $(addsuffix .bc, $(PROGS_LL))
+
 BC_PROGS = \
   $(EQCHECKER_BC32_O0_PROGS) \
   $(EQCHECKER_BC32_O3_PROGS) \
@@ -96,7 +98,7 @@ XML_FILES = \
   $(EQCHECKER_X64_CLANG_O3_XML_FILES) \
   $(EQCHECKER_X64_ICC_O3_XML_FILES)
 
-ALL_PROGS = $(EQCHECKER_PROGS) $(BC_PROGS_ASM) $(XML_FILES) $(SRC_LN_FILES)
+ALL_PROGS = $(EQCHECKER_PROGS) $(BC_PROGS_ASM) $(PROGS_LL_BC) $(XML_FILES) $(SRC_LN_FILES)
 
 # targets
 
@@ -111,13 +113,16 @@ eqtest_%.helper:: $(ALL_PROGS) $(SRCDIR)/Makefile.template $(SRCDIR)/scripts/gen
 	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z) $(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS)" unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) unroll16 $(UNROLL16_$(CUR_COMPILER)) unroll32 $(UNROLL32_$(CUR_COMPILER)) unroll64 $(UNROLL64_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
 
 eqtest_%_gcc.helper:: CUR_COMPILER=GCC
+eqtest_%_gPP.helper:: CUR_COMPILER=GPP
 
 eqtest_%_clang.helper:: CUR_COMPILER=CLANG
+eqtest_%_clangPP.helper:: CUR_COMPILER=CLANGPP
 
 eqtest_%_icc.helper:: CUR_COMPILER=ICC
+eqtest_%_icpc.helper:: CUR_COMPILER=ICPC
 
 eqtest_%_srcdst.helper:: CUR_COMPILER=SRCDST
-eqtest_%_srcdst.helper:: ARCH_OPT_SUFFIX=
+eqtest_%_srcdst.helper:: ARCH_OPT_SUFFIX=notused
 
 eqtest_i386:: ARCH=i386
 eqtest_i386:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
@@ -125,7 +130,10 @@ eqtest_i386:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
 eqtest_x64:: ARCH=x64
 eqtest_x64:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
 
-eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_gcc.helper eqtest_%_clang.helper eqtest_%_icc.helper eqtest_%_srcdst.helper
+eqtest_ll:: ARCH=x64 #we use the x64 build for llvm-to-llvm checks
+eqtest_ll:: ARCH_OPT_SUFFIX=.ll
+
+eqtest_i386 eqtest_x64 eqtest_ll: eqtest_%: eqtest_%_gcc.helper eqtest_%_gPP.helper eqtest_%_clang.helper eqtest_%_clangPP.helper eqtest_%_icc.helper eqtest_%_icpc.helper eqtest_%_srcdst.helper
 	cat $^ > $@
 
 .DEFAULT_GOAL := all

@@ -17,8 +17,8 @@ sub read_file {
 my $SUPEROPT_PROJECT_DIR = $ARGV[0];
 my $VPATH = $ARGV[1];
 my $dst_arch = $ARGV[2];
-my $compiler = $ARGV[3];
-my $compiler_suffix = $ARGV[4];
+my $compiler = convert_PP_to_plusplus($ARGV[3]);
+my $compiler_suffix = convert_PP_to_plusplus($ARGV[4]);
 #my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
 #my $srcdst_default_isa = "x64";
 #my $srcdst_default_isa = "i386";
@@ -30,9 +30,11 @@ my $compiler_suffix = $ARGV[4];
 my $PWD = getcwd;
 
 my $extraflagsarg = $ARGV[5];
+#print "extraflagsarg = $extraflagsarg\n";
 my @extraflags = split('@', $extraflagsarg);
 shift(@extraflags);
 my $extraflagsstr = join('',@extraflags);
+#print "extraflagsstr = $extraflagsstr\n";
 
 my %unroll;
 
@@ -76,9 +78,34 @@ foreach my $prog (keys %unroll) {
   if ($compiler eq "srcdst") {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa -extra_flags=$extraflagsstr $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$prog_extraflagsstr -tmpdir $PWD $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
+    my $src_pathname = identify_filetype_extension("$VPATH/$prog\_src");
+    my $dst_pathname = identify_filetype_extension("$VPATH/$prog\_dst");
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
   } else {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$extraflagsstr $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $VPATH/$prog.c $PWD/$prog.$compiler$compiler_suffix.UNROLL$u\n";
+    my $src_pathname = identify_filetype_extension("$VPATH/$prog");
+    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u\n";
   }
+}
+
+sub identify_filetype_extension
+{
+  my $path = shift;
+  my $cpath = "$path.c";
+  my $llpath = "$path.ll";
+  if (-e $cpath) {
+    return $cpath;
+  }
+  if (-e $llpath) {
+    return $llpath;
+  }
+  print "Neither C file ($cpath) nor LLVM file ($llpath) exists\n";
+  exit(1);
+}
+
+sub convert_PP_to_plusplus
+{
+  my $in = shift;
+  $in =~ s/PP/++/g;
+  return $in;
 }
