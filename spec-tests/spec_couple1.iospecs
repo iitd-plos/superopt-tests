@@ -6,12 +6,12 @@
 spec_coupling(opt-x, pointer-x)
 =LhsExpr
 1 : input.spec-%var-x-0 : OPT[BV:32]
-2 : input.src.llvm-%x : BV:32
+2 : input.dst.llvm-%x : BV:32
 3 : 0 : BV:32
 4 : eq(2, 3) : BOOL
 5 : not(4) : BOOL
-6 : input.src.llvm-mem : ARRAY[BV:32 -> BV:8]
-7 : input.src.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+7 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 8 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
 9 : 4 : INT
 10 : 0 : BOOL
@@ -28,8 +28,8 @@ spec_coupling(opt-x, pointer-x)
 =Comment
 spec_coupling(retreg, retreg)
 =LhsExpr
-1 : input.spec-%tmpvar-2 : BV:32
-2 : input.src.llvm-%retval.0 : BV:32
+1 : input.spec-%tmpvar-2.E0%0%1 : BV:32
+2 : input.dst.llvm-%retval.0.Lreturn%1%0 : BV:32
 3 : eq(1,2) : BOOL
 =RhsExpr
 1 : 1 : BOOL

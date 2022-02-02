@@ -13,10 +13,10 @@ spec_coupling(map-x, x)
 6 : bvslt(2, 4) : BOOL
 7 : and(5, 6) : BOOL
 8 : lambda(2, 7) : FUNCTION[BV:32 -> BOOL]
-9 : input.src.llvm-mem : ARRAY[BV:32 -> BV:8]
-10 : input.src.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+9 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+10 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 11 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
-12 : input.src.llvm-%x : BV:32
+12 : input.dst.llvm-%x : BV:32
 13 : 4 : BV:32
 14 : bvmul(2, 13) : BV:32
 15 : bvadd(12, 14) : BV:32
@@ -36,8 +36,8 @@ spec_coupling(map-x, x)
 =Comment
 spec_coupling(retreg, retreg)
 =LhsExpr
-1 : input.spec-%tmpvar-9 : BV:32
-2 : input.src.llvm-%add : BV:32
+1 : input.spec-%tmpvar-9.E0%0%1 : BV:32
+2 : input.dst.llvm-%add.Lcloned1.0%0%602211 : BV:32
 3 : eq(1, 2) : BOOL
 =RhsExpr
 1 : 1 : BOOL
