@@ -3,16 +3,16 @@
 =EntryPreconds
 =pred 0
 =Comment
-spec_coupling(opt-x, pointer-x)
+pointer-implements-opt
 =LhsExpr
-1 : input.spec-%var-x-0 : OPT[BV:32]
-2 : input.dst.llvm-%x : BV:32
+1 : $spec-arg-0 : OPT[BV:32]
+2 : $llvm-arg-0 : BV:32
 3 : 0 : BV:32
 4 : eq(2, 3) : BOOL
 5 : not(4) : BOOL
-6 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-7 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-8 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
+6 : $llvm-md : ARRAY[BV:32 -> BV:8]
+7 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+8 : memlabel-top : MEMLABEL
 9 : 4 : INT
 10 : 0 : BOOL
 11 : select(6, 7, 8, 2, 9, 10) : BV:32
@@ -26,10 +26,10 @@ spec_coupling(opt-x, pointer-x)
 =ExitAsserts
 =pred 0
 =Comment
-spec_coupling(retreg, retreg)
+equal-ret
 =LhsExpr
-1 : input.spec-%tmpvar-2.E0%0%1 : BV:32
-2 : input.dst.llvm-%retval.0.Lreturn%1%0 : BV:32
+1 : $spec-ret : BV:32
+2 : $llvm-ret: BV:32
 3 : eq(1,2) : BOOL
 =RhsExpr
 1 : 1 : BOOL

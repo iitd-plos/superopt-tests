@@ -3,13 +3,13 @@
 =EntryPreconds
 =pred 0
 =Comment
-spec_coupling(x, x)
+double-pointer-implements-variable-sized-2d-map
 =LhsExpr
-1 : input.spec-%var-x-2 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+1 : $spec-arg-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 2 : Lambda0 : BV:32
 3 : Lambda1 : BV:32
-4 : input.dst.llvm-%n : BV:32
-5 : input.dst.llvm-%m : BV:32
+4 : $llvm-arg-1 : BV:32
+5 : $llvm-arg-2 : BV:32
 6 : 0 : BV:32
 7 : bvule(6, 2) : BOOL
 8 : bvult(2, 4) : BOOL
@@ -19,17 +19,16 @@ spec_coupling(x, x)
 12 : bvult(3, 5) : BOOL
 13 : and(11, 12) : BOOL
 14 : lambda(3, 13) : FUNCTION[BV:32 -> BOOL]
-15 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-16 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-17 : memlabel-mem-symbol.1.0-heap : MEMLABEL
-18 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
-19 : input.dst.llvm-%x : BV:32
+15 : $llvm-md : ARRAY[BV:32 -> BV:8]
+16 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+17 : memlabel-top : MEMLABEL
+19 : $llvm-arg-0 : BV:32
 20 : 4 : BV:32
 21 : bvmul(2, 20) : BV:32
 22 : bvadd(19, 21) : BV:32
 23 : 4 : INT
 24 : 0 : BOOL
-25 : select(15, 16, 18, 22, 23, 24) : BV:32
+25 : select(15, 16, 17, 22, 23, 24) : BV:32
 26 : bvmul(3, 20) : BV:32
 27 : bvadd(25, 26) : BV:32
 28 : select(15, 16, 17, 27, 23, 24) : BV:32
@@ -43,20 +42,20 @@ spec_coupling(x, x)
 =predicate done
 =pred 1
 =Comment
-spec_coupling(n, n)
+equal-arg1
 =LhsExpr
-1 : input.spec-%var-n-2 : BV:32
-2 : input.dst.llvm-%n : BV:32
+1 : $spec-arg-1 : BV:32
+2 : $llvm-arg-1 : BV:32
 3 : eq(1, 2) : BV:32
 =RhsExpr
 1 : 1 : BOOL
 =predicate done
 =pred 2
 =Comment
-spec_coupling(m, m)
+equal-arg2
 =LhsExpr
-1 : input.spec-%var-m-2 : BV:32
-2 : input.dst.llvm-%m : BV:32
+1 : $spec-arg-2 : BV:32
+2 : $llvm-arg-2 : BV:32
 3 : eq(1, 2) : BV:32
 =RhsExpr
 1 : 1 : BOOL
@@ -66,10 +65,10 @@ spec_coupling(m, m)
 =ExitAsserts
 =pred 0
 =Comment
-spec_coupling(retreg, retreg)
+equal-regs
 =LhsExpr
-1 : input.spec-%tmpvar-28.E0%0%1 : BV:32
-2 : input.dst.llvm-%ret.0.Lfor.cond%1%0 : BV:32
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
 3 : eq(1, 2) : BOOL
 =RhsExpr
 1 : 1 : BOOL

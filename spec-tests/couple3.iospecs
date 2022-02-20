@@ -3,9 +3,9 @@
 =EntryPreconds
 =pred 0
 =Comment
-spec_coupling(map-x, x)
+pointer-implements-constant-sized-map
 =LhsExpr
-1 : input.spec-%var-x-0 : MAP[BV:32 -> BV:32]
+1 : $spec-arg-0 : MAP[BV:32 -> BV:32]
 2 : Lambda0 : BV:32
 3 : 0 : BV:32
 4 : 10 : BV:32
@@ -13,10 +13,10 @@ spec_coupling(map-x, x)
 6 : bvslt(2, 4) : BOOL
 7 : and(5, 6) : BOOL
 8 : lambda(2, 7) : FUNCTION[BV:32 -> BOOL]
-9 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-10 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-11 : memlabel-mem-symbol.1.0-heap-arg.0 : MEMLABEL
-12 : input.dst.llvm-%x : BV:32
+9 : $llvm-md : ARRAY[BV:32 -> BV:8]
+10 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+11 : memlabel-top : MEMLABEL
+12 : $llvm-arg-0 : BV:32
 13 : 4 : BV:32
 14 : bvmul(2, 13) : BV:32
 15 : bvadd(12, 14) : BV:32
@@ -34,10 +34,10 @@ spec_coupling(map-x, x)
 =ExitAsserts
 =pred 0
 =Comment
-spec_coupling(retreg, retreg)
+equal-ret
 =LhsExpr
-1 : input.spec-%tmpvar-9.E0%0%1 : BV:32
-2 : input.dst.llvm-%add.Lcloned1.0%0%602211 : BV:32
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
 3 : eq(1, 2) : BOOL
 =RhsExpr
 1 : 1 : BOOL
