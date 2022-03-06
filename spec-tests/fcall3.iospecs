@@ -1,0 +1,123 @@
+=SpecFuncIOSpecs
+=FunctionName: foo
+=EntryPreconds
+=pred 0
+=Comment
+pointer-implements-map-arg0
+=LhsExpr
+1 : $spec-arg-0 : MAP[BV:32 -> BV:32]
+2 : $llvm-arg-0 : BV:32
+3 : 0 : BV:32
+4 : 100 : BV:32
+5 : $llvm-md : ARRAY[BV:32 -> BV:8]
+6 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+7 : Lambda0 : BV:32
+8 : bvule(3, 7) : BOOL
+9 : bvult(7, 4) : BOOL
+10 : and(8, 9) : BOOL
+11 : lambda(7, 10) : FUNCTION[BV:32 -> BOOL]
+12 : memlabel-top : MEMLABEL
+13 : 4 : INT
+14 : 0 : BOOL
+15 : Lambda1 : BV:32
+16 : 4 : BV:32
+17 : bvmul(15, 16) : BV:32
+18 : bvadd(2, 17) : BV:32
+19 : select(5, 6, 12, 18, 13, 14) : BV:32
+20 : lambda(15, 19) : FUNCTION[BV:32 -> BV:32]
+21 : map(11, 20) : MAP[BV:32 -> BV:32]
+22 : eq(1, 21) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+equal-ret
+=LhsExpr
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=FunctionName: bar
+=EntryPreconds
+=pred 0
+=Comment
+pointer-implements-map-arg0
+=LhsExpr
+1 : $spec-arg-0 : MAP[BV:32 -> BV:32]
+2 : $llvm-arg-0 : BV:32
+3 : 0 : BV:32
+4 : 100 : BV:32
+5 : $llvm-md : ARRAY[BV:32 -> BV:8]
+6 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+7 : Lambda0 : BV:32
+8 : bvule(3, 7) : BOOL
+9 : bvult(7, 4) : BOOL
+10 : and(8, 9) : BOOL
+11 : lambda(7, 10) : FUNCTION[BV:32 -> BOOL]
+12 : memlabel-top : MEMLABEL
+13 : 4 : INT
+14 : 0 : BOOL
+15 : Lambda1 : BV:32
+16 : 4 : BV:32
+17 : bvmul(15, 16) : BV:32
+18 : bvadd(2, 17) : BV:32
+19 : select(5, 6, 12, 18, 13, 14) : BV:32
+20 : lambda(15, 19) : FUNCTION[BV:32 -> BV:32]
+21 : map(11, 20) : MAP[BV:32 -> BV:32]
+22 : eq(1, 21) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=pred 1
+=Comment
+pointer-implements-map-arg1
+=LhsExpr
+1 : $spec-arg-1 : MAP[BV:32 -> BV:32]
+2 : $llvm-arg-1 : BV:32
+3 : 0 : BV:32
+4 : 100 : BV:32
+5 : $llvm-md : ARRAY[BV:32 -> BV:8]
+6 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+7 : Lambda0 : BV:32
+8 : bvule(3, 7) : BOOL
+9 : bvult(7, 4) : BOOL
+10 : and(8, 9) : BOOL
+11 : lambda(7, 10) : FUNCTION[BV:32 -> BOOL]
+12 : memlabel-top : MEMLABEL
+13 : 4 : INT
+14 : 0 : BOOL
+15 : Lambda1 : BV:32
+16 : 4 : BV:32
+17 : bvmul(15, 16) : BV:32
+18 : bvadd(2, 17) : BV:32
+19 : select(5, 6, 12, 18, 13, 14) : BV:32
+20 : lambda(15, 19) : FUNCTION[BV:32 -> BV:32]
+21 : map(11, 20) : MAP[BV:32 -> BV:32]
+22 : eq(1, 21) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+equal-ret
+=LhsExpr
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done
