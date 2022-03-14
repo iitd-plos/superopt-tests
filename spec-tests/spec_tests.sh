@@ -9,12 +9,12 @@ spec_tests_save_eq_proof() {
 }
 
 spec_tests_run() {
-    ${SUPEROPT_INSTALL_DIR}/bin/eq32 --tmpdir-path=${spec_tests_tmpdir} --spec-iospecs="$1".iospecs "$1".spec "$1".c | tee -a ${spec_tests_out}
+    ${SUPEROPT_INSTALL_DIR}/bin/eq32 --disable_SSA --tmpdir-path=${spec_tests_tmpdir} --spec-iospecs="$1".iospecs "$1".spec "$1".c | tee -a ${spec_tests_out}
     spec_tests_save_eq_proof
 }
 
 spec_tests_run_enabled_spec_eqclass() {
-    ${SUPEROPT_INSTALL_DIR}/bin/eq32 --tmpdir-path=${spec_tests_tmpdir} --enable-manual-spec-eqclass=true --spec-iospecs="$1".iospecs "$1".spec "$1".c | tee -a ${spec_tests_out}
+    ${SUPEROPT_INSTALL_DIR}/bin/eq32 --disable_SSA --tmpdir-path=${spec_tests_tmpdir} --enable-manual-spec-eqclass=true --spec-iospecs="$1".iospecs "$1".spec "$1".c | tee -a ${spec_tests_out}
     spec_tests_save_eq_proof
 }
 
