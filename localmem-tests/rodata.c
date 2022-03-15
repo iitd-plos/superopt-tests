@@ -10,7 +10,7 @@ int rodata(int n)
   for (int i = 0, j = 0; i < n; ++i) {
     MYmyprintf("Round #...\n", i);
     zz[j] ^= t[i];
-    if (++j > sizeof zz) j = 0;
+    if (++j >= sizeof zz) j = 0;
   }
   ret += zz[0] + cts[n%((sizeof cts)/sizeof(cts[0]))];
   MYmyprintf("Returning %d", ret);
