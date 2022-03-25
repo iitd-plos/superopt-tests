@@ -27,9 +27,3 @@ int nestedLoop(){
   }
   return sum;
 }
-
-int main()
-{
-  return 0;
-}
-

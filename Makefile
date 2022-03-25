@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
 include config-host.mak      # BUILDDIR
+include $(SRCDIR)/Make.conf                  # compiler paths and flags
 
 # add new dirs' targets here
 CODEGEN_TARGETS := compcert-tests
@@ -17,12 +18,16 @@ MICRO_TARGETS := micro
 DIETLIBC_TARGET := dietlibc
 PAPER_EX_TARGET := paper_ex
 LOCALMEM_TARGETS := localmem-tests
+MALLOC_TARGETS := malloc-tests cpp
 OTHER_TARGETS := bzip2 demo ctests # soundness # reve 
 TSVC_POPL_TARGETS := TSVC_popl
+SPEC_TARGETS := spec17
 #EQCHECK_TARGETS :=  $(LOCALMEM_TARGETS)
-EQCHECK_TARGETS :=  $(MICRO_TARGETS) $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET) $(OTHER_TARGETS) $(SPEC17_TARGETS) $(TSVC_PRIOR_LOCALS_TARGETS) $(TSVC_NEW_LOCALS_TARGETS) $(POPL_PAPER_EX_TARGETS) $(TSVC_POPL_TARGETS) $(LOCALMEM_TARGETS)
-TARGETS := $(EQCHECK_TARGETS) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
-#TARGETS := $(EQCHECK_TARGETS) $(CODEGEN_TARGETS) $(OOELALA_TARGETS) $(OOPSLA_TARGETS) $(UNITTEST_TARGETS)
+EQCHECK_TARGETS :=  $(MICRO_TARGETS) $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET) $(OTHER_TARGETS) $(TSVC_PRIOR_LOCALS_TARGETS) $(TSVC_NEW_LOCALS_TARGETS) $(POPL_PAPER_EX_TARGETS) $(TSVC_POPL_TARGETS) $(LOCALMEM_TARGETS) $(MALLOC_TARGETS)
+EQCHECK_TARGETS_i386 := $(EQCHECK_TARGETS)
+EQCHECK_TARGETS_x64 := $(EQCHECK_TARGETS)
+EQCHECK_TARGETS_ll := llvm-tests
+TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_x64) $(EQCHECK_TARGETS_ll) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
 
@@ -55,15 +60,19 @@ $(BUILDDIR)/%:
 $(BUILD_MAKEFILES): $(BUILDDIR)/%/Makefile: %/Makefile $(BUILDDIR)/%
 	cp $< $@
 
-$(TARGETS):
+$(TARGETS) $(SPEC_TARGETS)::
 	mkdir -p $(BUILDDIR)/$@
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	$(MAKE) -C $(BUILDDIR)/$@
 
-eqtest_x64 eqtest_i386: eqtest_%: $(BUILD_MAKEFILES)
-	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 $@ || exit;)
+eqtest_x64: ARCH=x64
+eqtest_i386: ARCH=i386
+eqtest_ll: ARCH=ll
+
+eqtest_x64 eqtest_i386 eqtest_ll: eqtest_%: $(BUILD_MAKEFILES)
+	$(foreach t,$(EQCHECK_TARGETS_$(ARCH)),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 $@ || exit;)
 	true > $(BUILDDIR)/$@
-	$(foreach t,$(EQCHECK_TARGETS), [[ -f $(BUILDDIR)/$(t)/$@ ]] && cat $(BUILDDIR)/$(t)/$@ >> $(BUILDDIR)/$@ || exit;)
+	$(foreach t,$(EQCHECK_TARGETS_$(ARCH)), [[ -f $(BUILDDIR)/$(t)/$@ ]] && cat $(BUILDDIR)/$(t)/$@ >> $(BUILDDIR)/$@ || exit;)
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/$@
 
 #runtest:
@@ -155,6 +164,8 @@ run_paper_ex:
 
 specmount::
 	-sudo mount -t iso9660 -o ro,exec,loop $(HOME)/tars/cpu2017-1_0_5.iso $(SPEC_MOUNT)
+
+specbuild: $(SPEC_TARGETS)
 
 umount::
 	sudo umount $(SPEC_MOUNT)
