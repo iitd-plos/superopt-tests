@@ -1188,5 +1188,5 @@ main(void)
     struct node* n = (struct node*)malloc(sizeof(struct node));
     mylist_push_front(&pmem_ls, &n->mylist_elem);
   }
-
+  return 0;
 }

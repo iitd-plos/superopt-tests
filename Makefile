@@ -31,7 +31,7 @@ TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_x64) $(EQCHECK_TARGETS_ll) 
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
 
-IDENTIFY_DURABLES_FILES := cpp/linked_list.cpp cpp/binary_search_tree.cpp cpp/binary_search_tree_iter.cpp malloc-tests/linked_list.c malloc-tests/mylist.c
+IDENTIFY_DURABLES_FILES := cpp/linked_list.cpp cpp/binary_search_tree.cpp cpp/binary_search_tree_iter.cpp malloc-tests/linked_list.c malloc-tests/mylist.c malloc-tests/rbtree.c
 
 
 export SUPEROPT_PROJECT_DIR
