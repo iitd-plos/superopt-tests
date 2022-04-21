@@ -31,6 +31,9 @@ TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_x64) $(EQCHECK_TARGETS_ll) 
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
 
+IDENTIFY_DURABLES_FILES := cpp/linked_list.cpp cpp/binary_search_tree.cpp cpp/binary_search_tree_iter.cpp malloc-tests/linked_list.c malloc-tests/mylist.c
+
+
 export SUPEROPT_PROJECT_DIR
 export SUPEROPT_INSTALL_DIR
 
@@ -172,7 +175,6 @@ umount::
 
 specclean::
 	rm -f $(BUILD)/spec17/build_done
-
 
 .PHONY: runtest unittest
 
