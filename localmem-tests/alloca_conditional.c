@@ -2,9 +2,9 @@
 
 int alloca_conditional(char* s, int fd, char* a)
 {
-  if (!s)
+  int n;
+  if (!s || (n = MYmystrlen(s)) <= 0)
     return 0;
-  int n = MYmystrlen(s);
   if (!a) {
     a = alloca(n);
   }

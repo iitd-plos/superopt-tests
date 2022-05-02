@@ -1,4 +1,4 @@
-int vla_2_single_loop(int *a, unsigned n)
+int vla_3_single_loop(int *a, unsigned n)
 {
   if (n == 0)
     return 0;
