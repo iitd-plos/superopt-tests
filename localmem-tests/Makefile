@@ -7,7 +7,7 @@ UNROLL1_GCC = fib $(UNROLL1_PROGS)
 UNROLL1_CLANG = alloca_linked_list $(UNROLL1_PROGS)
 UNROLL2_GCC = alloca_linked_list
 UNROLL2_CLANG = fib
-EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 32000
+EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 600 --global-timeout 32000 --disable-ssa-cloning
 
 UNROLL1_PROGS := \
                  rodata                           \
