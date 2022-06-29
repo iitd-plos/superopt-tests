@@ -14,6 +14,8 @@ VPATH = $(SRCDIR)/TSVC_prior_work
 # UNROLL16_CLANG := s122 s112 s000 s1112 s121 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 vpvpv vpvts vpvtv vtv vtvtv sum1d vdotr
 # UNROLL8_ICC := s122 s112
 
+EXTRA_FLAGS := #--dyn-debug=bvsolve_cache_debug=2
+
 UNROLL64_GCC := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
 UNROLL64_CLANG := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
 UNROLL64_ICC := s000 s112 s122 s1251 s127 s1281 s1351 s173 s2244 s251 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vpvts

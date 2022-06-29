@@ -7,6 +7,8 @@ PROGS_EQCHECKER_COMPILER := fptrunc fpbinary fptoui fbinary flbinary fcall10 fca
 #fpext : TOO SLOW
 PROGS_EQCHECKER_SRCDST :=
 
+EXTRA_FLAGS := #--dyn-debug=bvsolve_cache_debug=2
+
 UNROLL8_GCC := $(PROGS_EQCHECKER_COMPILER)
 UNROLL16_CLANG := $(PROGS_EQCHECKER_COMPILER)
 
