@@ -5,7 +5,7 @@ VPATH = $(SRCDIR)/cpp
 
 UNROLL1_GPP = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANGPP = $(PROGS_EQCHECKER_COMPILER)
-EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 1200 --global-timeout 9000
+EXTRA_FLAGS := --dyn-debug=dump_final_invariants --smt-query-timeout 1200 --global-timeout 9000
 
 PROGS_EQCHECKER_COMPILER :=
 
