@@ -3,6 +3,8 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/TSVC_new
 
+EXTRA_FLAGS := #--dyn-debug=bvsolve_cache_debug=2
+
 # UNROLL4_GCC := s111 s1111 s113 s119 s124 s125 s128 s131 s132 s1421 s174 s2233 s311 s3111 s319 s421 s423 s441 s443 s471 va vbor #s1119 non-bisimilar, s2275 loop interchange, s231 loop interchange, s235 loop interchange, s317 non-linear invariant required, s331 non-linear invariant required, vbor SMT query timeout
 
 # UNROLL16_CLANG := s1119 s116 s119 s131 s132 s1421 s171 s174 s252 s254 s271 s2711 s2712 s273 s311 s319 s352 s421 s423 s471 va vif # s1115 non-bisimilar, s2233 loop interchange, s317 non-linear invariant required, vbor SMT query timeout
