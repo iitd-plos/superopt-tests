@@ -4,9 +4,9 @@ include ../config.mak                        # paths
 VPATH = $(SRCDIR)/micro
 
 EXTRA_FLAGS := --dyn-debug=dump_final_invariants --disable-ssa-cloning
-PROGS_EQCHECKER_COMPILER := fptrunc fpbinary fptoui fbinary flbinary fcall10 fcall100 fcall10_with_memaccess fcall100_with_memaccess \
+PROGS_EQCHECKER_COMPILER := fptrunc fpbinary fptoui fbinary flbinary
 	                          rodata_simple \
-	                          fcall_taking_locals #ddec arg_passing fpadd
+	                          fcall_taking_locals #ddec arg_passing fpadd  fcall10 fcall100 fcall10_with_memaccess fcall100_with_memaccess
 #fpext : TOO SLOW
 PROGS_EQCHECKER_SRCDST :=
 
