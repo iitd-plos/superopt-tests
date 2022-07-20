@@ -1,6 +1,9 @@
-fn update_val (val : i32) -> i32 = bvsub(val, i32(10)).
+type i32 = BV32.
+type opt_t = Sum<Unit, i32>.
 
-fn opt_map (opt : Opt<i32>) -> Opt<i32> =
+fn update_val (val : i32) : i32 = sub(val, i32(10)).
+
+fn opt_map (opt : opt_t) : opt_t =
   match opt with
-  | None => opt
-  | Some val => Opt<i32>(update_val(val)).
+  | u => opt
+  | val => opt_t(1, update_val(val)).

@@ -1,1 +1,7 @@
-fn foo (x : Opt<i32>) -> i32 = match x with | None => i32(5) | Some x_val => x_val.
+type i32 = BV32.
+type opt = Sum<Unit, i32>.
+
+fn foo (x : opt) : i32 =
+  match x with
+  | u => i32(5)
+  | x_val => x_val.

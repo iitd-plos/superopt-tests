@@ -1,6 +1,8 @@
- fn foo (x : Map<i32, i32>) -> i32 =
-   match x[i32(0)] with
-   | None => i32(45)
-   | Some x0 => match x[i32(1)] with
-                          | None => i32(12)
-                          | Some x1 => bvadd(x0, x1).
+type i32, arr = BV32, Map<i32, i32>.
+
+fn foo (x : arr) : i32 =
+  match get(x, i32(0)) with
+  | u => i32(45)
+  | x0 => match get(x, i32(1)) with
+                | u2 => i32(12)
+                | x1 => add(x0, x1).

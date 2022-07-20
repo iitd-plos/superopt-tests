@@ -1,3 +1,7 @@
-fn foo (x : i32) -> i32 =
-  let t1 = if bvsgt(x, i32(0)) then Opt<i32>(i32(1)) else Opt<i32>(i32(2)) in
-    match t1 with | None => i32(0) | Some y => y.
+type i32 = BV32.
+type opt = Sum<Unit, i32>.
+
+fn foo (x : i32) : i32 =
+  match if sgt(x, i32(0)) then opt(1, i32(1)) else opt(1, i32(2)) with
+  | u => i32(0)
+  | y => y.

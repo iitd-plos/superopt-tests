@@ -1,1 +1,4 @@
-fn foo (x : Prod<x y : i32>) -> i32 = bvsub(x['x'], x['y']).
+type i32 = BV32.
+
+fn foo (x : Prod<i32, i32>) : i32 =
+  match x with | f, s => sub(f, s).

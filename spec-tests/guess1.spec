@@ -1,5 +1,9 @@
-inline fn foo_impl (i n : i32) (m : Map<i32, i32>) -> Map<i32, i32> =
-  if bvuge(i, n) then m
-                      else foo_impl(bvadd(i, i32(1)), n, m[i <- i]).
+type i32, arr = BV32, Map<i32, i32>.
 
-fn foo (n : i32) -> Map<i32, i32> = foo_impl(i32(0), n, Map<i32, i32>()).
+inline-fn foo_impl (i : i32) (n : i32) (m : arr) : arr =
+  if uge(i, n) then
+    m
+  else
+    foo_impl(add(i, i32(1)), n, set(m, i, i)).
+
+fn foo (n : i32) : arr = foo_impl(i32(0), n, arr()).
