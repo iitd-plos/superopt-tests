@@ -8,7 +8,9 @@ clean:
 
 clean_all:	clean
 	@rm -rf logs/*.proof
+	@rm -rf stats/*.log
 
 run:
 	mkdir -p logs
-	python3 -u benchmarking.py $(TEST_FILE) > out.log
+	mkdir -p stats
+	python3 -u benchmarking.py $(TEST_FILE)
