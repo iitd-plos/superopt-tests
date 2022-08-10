@@ -16,8 +16,9 @@ FAILSET_PRUNE=-1
 FAILSET_SORT="next-cross"
 FAILSET_MU=2
 UNROLL_FACTOR=8
+CE_BOUND=18
 SCRIPT_NAME = "benchmarking.sh"
-TIMEOUT=60*360 # 6 hours
+TIMEOUT=60*60*2 # 2 hours
 NJOBS=25
 
 STAT_FILE = "stat.log"
@@ -102,7 +103,7 @@ def gen_script():
         for pair in itertools.permutations(libraries, 2):
             l1, l2 = pair
             # command = f'/usr/bin/time -ao logs/timing.log -f "{fname}\t{l1}\t{l2}\t%e" eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
-            command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={UNROLL_FACTOR} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
+            command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={UNROLL_FACTOR} --ce_bound={CE_BOUND} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
             script.write(command + "\n")
     script.close()
     file.close()
@@ -120,7 +121,7 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
             return False
     RETRY = False
     out_file = open(f'logs/{fname}_{src_lib}_{dst_lib}.proof', 'w')
-    command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={UNROLL_FACTOR} benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
+    command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={UNROLL_FACTOR} --ce_bound={CE_BOUND} benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
     tokens = shlex.split(command)
     try:
         log_file.write(f'\tRunning the tool for benchmark {fname} with src={src_lib}, dst={dst_lib}\n')
