@@ -53,4 +53,3 @@ float sqradd(float a, float b)
 
   return r;
 }
-
