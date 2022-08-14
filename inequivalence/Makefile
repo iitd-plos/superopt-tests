@@ -13,4 +13,5 @@ clean_all:	clean
 run:
 	mkdir -p logs
 	mkdir -p stats
-	python3 -u benchmarking.py $(TEST_FILE)
+	mkdir -p eq_classes
+	python3 benchmarking.py --run_exp --input_file $(TEST_FILE)

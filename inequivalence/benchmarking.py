@@ -5,23 +5,29 @@ import shlex
 import itertools
 import time
 from joblib import Parallel, delayed
+import pickle
+import argparse
+import glob
 
 # Contains benchmarking information
 # FORMAT: each line represents one function
 ## {fname} {lib_1} {lib_2} . . .
-input_file = sys.argv[1]
+# input_file = sys.argv[1]
 
 FLAGS="correctness_covers,correlate"
 FAILSET_PRUNE=-1
 FAILSET_SORT="next-cross"
-FAILSET_MU=2
+FAILSET_MU=4
 UNROLL_FACTOR=8
-CE_BOUND=18
+CE_BOUND=20
 SCRIPT_NAME = "benchmarking.sh"
 TIMEOUT=60*60*2 # 2 hours
-NJOBS=25
+NJOBS=16
 
 STAT_FILE = "stat.log"
+
+def set_to_string(s: set):
+    return ','.join(s)
 
 # Maintains equivalence classes for a benchmark
 # Also maintains Inequivalence classes -- helps in pruning the benchmarking space
@@ -87,9 +93,42 @@ class equivalence_classes:
         log_file.write(f'Inequivalence Classes:\n')
         for lib in self.inequivalent_sets:
             log_file.write(f'\t{lib} inequivalent with the classes {self.inequivalent_sets[lib]}\n')
+    
+    def dot_dump(self):
+        node_string = f'\tnodesep=0.5;\n\tranksep=0.35;\n'
+        classes = self.get_classes()
+        for leader in classes:
+            elems = classes[leader]
+            node_string = node_string + '\t"' + set_to_string(elems) + '";\n'
+        leaders = list(classes.keys())
+        all_edges = list(itertools.combinations(leaders, 2))
+        inequivalent_edges = []
+
+        for lib in self.inequivalent_sets:
+            lib_leader = self.get_leader(lib)
+            for ineq_libs in self.inequivalent_sets[lib]:
+                if (lib_leader, ineq_libs) in all_edges:
+                    if (lib_leader, ineq_libs) not in inequivalent_edges:
+                        inequivalent_edges.append((lib_leader, ineq_libs))
+                else:
+                    if (ineq_libs, lib_leader) not in inequivalent_edges:
+                        inequivalent_edges.append((ineq_libs, lib_leader))
+
+        all_edges = set(all_edges)
+        inequivalent_edges = set(inequivalent_edges)
+        assert(inequivalent_edges.issubset(all_edges))
+        fail_edges = all_edges.difference(inequivalent_edges)
+        inequivalent_edges = [f'\t\t"{set_to_string(classes[n1])}" -- "{set_to_string(classes[n2])}"\n' for (n1, n2) in inequivalent_edges]
+        fail_edges = [f'\t\t"{set_to_string(classes[n1])}" -- "{set_to_string(classes[n2])}"\n' for (n1, n2) in fail_edges]
+
+        ineq_string = f'\tsubgraph inequivalence\n\t{{\n\t\tedge [dir=none, color=blue]\n{"".join(inequivalent_edges)}\t}}\n'
+        fail_string = f'\tsubgraph fail\n\t{{\n\t\tedge [dir=none, color=red, style=dashed]\n{"".join(fail_edges)}\t}}\n'
+
+        s = f'graph {{\n{node_string}{ineq_string}{fail_string}}}'
+        return s
 
 # generates a bash script containing all the pairs of benchmarks to run
-def gen_script():
+def gen_script(input_file):
     script = open(SCRIPT_NAME, 'w')
     script.write('#!/bin/bash\n')
     script.write('set -x\n')
@@ -165,17 +204,39 @@ def run(line, i):
     classes.print(log_file)
     stat_file.close()
     log_file.close()
+    with open(f'eq_classes/{fname}_{i}_classes.pkl', 'wb') as f:
+        pickle.dump(classes, f)
 
-def run_experiments():
+def run_experiments(input_file):
     file = open(input_file, 'r')
     lines = file.readlines()
     lines = [line.strip() for line in lines]
+    file.close()
 
     Parallel(n_jobs=NJOBS)(delayed(run)(line, i) for i, line in enumerate(lines))
 
-    file.close()
-
+def analysis(input_file):
+    pickled_files = glob.glob('eq_classes/*_classes.pkl')
+    for file in pickled_files:
+        with open(file, 'rb') as f:
+            classes = pickle.load(f)
+            dot_dump = classes.dot_dump()
+            dot_file = open(f'{file[:-12]}_classes.dot', 'w')
+            dot_file.write(f'{dot_dump}\n')
+            dot_file.close()
 
 if __name__ == "__main__":
-    # gen_script()
-    run_experiments()
+    parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
+    parser.add_argument('--gen_script', action='store_true', help='Generates a brute force script for benchmarking')
+    parser.add_argument('--run_exp', action='store_true', help='Runs the experiments while keeping track of equivalence classes')
+    parser.add_argument('--analysis', action='store_true', help='Takes the computed classes and generates eq_classes')
+    parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
+    args = parser.parse_args()
+    assert(args.input_file != '')
+    assert(args.gen_script ^ args.run_exp ^ args.analysis) and not (args.gen_script and args.run_exp and args.analysis), f'Exactly one of the modes should be enabled'
+    if args.gen_script:
+        gen_script(args.input_file)
+    elif args.run_exp:
+        run_experiments(args.input_file)
+    else:
+        analysis(args.input_file)
