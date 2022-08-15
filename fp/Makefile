@@ -1,10 +1,9 @@
 include ../config.mak                        # paths
 
 # set VPATH path for targets and src files
-VPATH = $(SRCDIR)/micro
+VPATH = $(SRCDIR)/fp
 
-PROGS_EQCHECKER_COMPILER := fptrunc fpbinary fptoui fbinary flbinary fcall10 #fcall100 fcall10_with_memaccess fcall100_with_memaccess #ddec arg_passing fpadd
-#fpext : TOO SLOW
+PROGS_EQCHECKER_COMPILER := fp1 soundness
 PROGS_EQCHECKER_SRCDST :=
 
 EXTRA_FLAGS := #--dyn-debug=bvsolve_cache_debug=2
