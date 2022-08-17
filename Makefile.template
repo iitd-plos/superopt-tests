@@ -133,7 +133,7 @@ eqtest_x64:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
 eqtest_ll:: ARCH=x64 #we use the x64 build for llvm-to-llvm checks
 eqtest_ll:: ARCH_OPT_SUFFIX=.ll
 
-eqtest_i386 eqtest_x64 eqtest_ll: eqtest_%: eqtest_%_gcc.helper eqtest_%_gPP.helper eqtest_%_clang.helper eqtest_%_clangPP.helper eqtest_%_icc.helper eqtest_%_icpc.helper eqtest_%_srcdst.helper
+eqtest_i386 eqtest_x64 eqtest_ll: eqtest_%: eqtest_%_gcc.helper eqtest_%_gPP.helper eqtest_%_clang.helper eqtest_%_clangPP.helper eqtest_%_srcdst.helper #eqtest_%_icc.helper eqtest_%_icpc.helper
 	cat $^ > $@
 
 .DEFAULT_GOAL := all
