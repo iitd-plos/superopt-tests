@@ -1,4 +1,4 @@
-#include "globals2.h"
+#include "globals.h"
 
 int s441()
  {

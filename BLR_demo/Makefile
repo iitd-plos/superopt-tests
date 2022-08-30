@@ -28,6 +28,6 @@ ICC_COMPILER_DEFINE := -Dicc_compiler
 GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
 CLANG_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
 ICC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
-EXTRA_FLAGS := --dyn-debug=stats --disable_loop_iter_vars  --disable-ssa-cloning
+EXTRA_FLAGS := --dyn-debug=stats
 
 include $(SRCDIR)/Makefile.template

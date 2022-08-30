@@ -1,4 +1,4 @@
-#include "globals1.h"
+#include "globals.h"
 
 //loop 2D (sum-MW) perfect
 void ex10()
