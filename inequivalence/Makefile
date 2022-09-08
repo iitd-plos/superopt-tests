@@ -1,6 +1,7 @@
-TEST_FILE=tests_v1.csv
+TEST_FILE=tests_v3.csv
+SPEC_TEST=calib_test.csv
 
-.PHONY: clean	clean_all	run
+.PHONY: clean	clean_all	run	run_spec
 
 clean:
 	@rm -f *.o *.harvest *.tmp *.bc *.etfg *.tfg *.s
@@ -17,4 +18,9 @@ run:
 	mkdir -p stats
 	mkdir -p eq_classes
 	mkdir -p graphviz
-	python3 benchmarking.py --run_exp --input_file $(TEST_FILE)
+	python3 benchmarking.py --mode run_all --input_file $(TEST_FILE)
+	python3 benchmarking.py --mode analysis --input_file $(TEST_FILE)
+
+run_spec:
+	mkdir -p logs_spec
+	python3 benchmarking.py --mode run_spec --input_file $(SPEC_TEST)

@@ -18,16 +18,16 @@ from equiv_classes import equivalence_classes
 FLAGS="correctness_covers,correlate"
 FAILSET_PRUNE=-1
 FAILSET_SORT="next-cross"
-FAILSET_MU=4
-UNROLL_FACTOR=4
+FAILSET_MU=8
+UNROLL_FACTOR=8
 CE_BOUND=20
 SCRIPT_NAME = "benchmarking.sh"
-TIMEOUT=60*60*2 # 2 hours
-NJOBS=20
+TIMEOUT=60*60*1.5 # 1.5 hour
+NJOBS=5
 
 STAT_FILE = "stat.log"
 
-# generates a bash script containing all the pairs of benchmarks to run
+# Generates a brute force script for benchmarking
 def gen_script(input_file):
     script = open(SCRIPT_NAME, 'w')
     script.write('#!/bin/bash\n')
@@ -88,7 +88,7 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
     return RETRY
 
 def run(line, i):
-    strings = line.split()
+    strings = line.split(',')
     fname = strings[0]
     libraries = strings[1:]
     classes = equivalence_classes(fname, libraries)
@@ -107,14 +107,16 @@ def run(line, i):
     with open(f'eq_classes/{fname}_{i}_classes.pkl', 'wb') as f:
         pickle.dump(classes, f)
 
+# Runs the experiments while keeping track of equivalence classes
 def run_experiments(input_file):
     file = open(input_file, 'r')
     lines = file.readlines()
     lines = [line.strip() for line in lines]
     file.close()
 
-    Parallel(n_jobs=NJOBS)(delayed(run)(line, i) for i, line in enumerate(lines))
+    Parallel(n_jobs=min(NJOBS, len(lines)))(delayed(run)(line, i) for i, line in enumerate(lines))
 
+# Takes the computed classes and generates eq_classes
 def analysis(input_file):
     pickled_files = glob.glob('eq_classes/*_classes.pkl')
     for file in pickled_files:
@@ -125,18 +127,37 @@ def analysis(input_file):
             dot_file.write(f'{dot_dump}\n')
             dot_file.close()
 
+def run_specific_helper(line: str):
+    params = line.split(',')
+    fname, src_lib, dst_lib, unroll_factor, failset_mu = params
+    out_file = open(f'logs_spec/{fname}_{src_lib}_{dst_lib}_{unroll_factor}_{failset_mu}.proof', 'w')
+    command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={failset_mu} --unroll-factor={unroll_factor} --ce_bound={CE_BOUND} benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
+    tokens = shlex.split(command)
+    p = subprocess.run(tokens, stdout=out_file, stderr=out_file, timeout=TIMEOUT)
+    out_file.close()
+
+def run_specific(input_file):
+    file = open(input_file, 'r')
+    lines = file.readlines()
+    lines = lines[1:]
+    lines = [line.strip() for line in lines]
+    file.close()
+
+    Parallel(n_jobs=5)(delayed(run_specific_helper)(line) for line in lines)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
-    parser.add_argument('--gen_script', action='store_true', help='Generates a brute force script for benchmarking')
-    parser.add_argument('--run_exp', action='store_true', help='Runs the experiments while keeping track of equivalence classes')
-    parser.add_argument('--analysis', action='store_true', help='Takes the computed classes and generates eq_classes')
+    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|run_spec]', default='')
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
     args = parser.parse_args()
     assert(args.input_file != '')
-    assert(args.gen_script ^ args.run_exp ^ args.analysis) and not (args.gen_script and args.run_exp and args.analysis), f'Exactly one of the modes should be enabled'
-    if args.gen_script:
+    assert(args.mode != '')
+    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'run_spec', f'Invalid Mode'
+    if args.mode == 'gen_script':
         gen_script(args.input_file)
-    elif args.run_exp:
+    elif args.mode == 'run_all':
         run_experiments(args.input_file)
-    else:
+    elif args.mode == 'analysis':
         analysis(args.input_file)
+    elif args.mode == 'run_spec':
+        run_specific(args.input_file)
