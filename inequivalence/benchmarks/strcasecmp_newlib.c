@@ -34,6 +34,7 @@ QUICKREF
 
 #include <strings.h>
 #include <ctype.h>
+#include "globals.h"
 
 int
 strcasecmp (const char *s1,
