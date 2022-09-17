@@ -39,14 +39,19 @@
  */
 
 int
-strcasecmp(const char *s1, const char *s2)
+strncasecmp(const char *s1, const char *s2, size_t n)
 {
-	const u_char *cm = charmap;
-	const u_char *us1 = (const u_char *)s1;
-	const u_char *us2 = (const u_char *)s2;
+	if (n != 0) {
+		const u_char *cm = charmap;
+		const u_char *us1 = (const u_char *)s1;
+		const u_char *us2 = (const u_char *)s2;
 
-	while (cm[*us1] == cm[*us2++])
-		if (*us1++ == '\0')
-			return (0);
-	return (cm[*us1] - cm[*--us2]);
+		do {
+			if (cm[*us1] != cm[*us2++])
+				return (cm[*us1] - cm[*--us2]);
+			if (*us1++ == '\0')
+				break;
+		} while (--n != 0);
+	}
+	return (0);
 }

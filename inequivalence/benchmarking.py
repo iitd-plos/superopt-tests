@@ -24,6 +24,7 @@ CE_BOUND=20
 SCRIPT_NAME = "benchmarking.sh"
 TIMEOUT=60*60*1.5 # 1.5 hour
 NJOBS=5
+NJOBS_SPEC=20
 
 STAT_FILE = "stat.log"
 
@@ -127,32 +128,57 @@ def analysis(input_file):
             dot_file.write(f'{dot_dump}\n')
             dot_file.close()
 
-def run_specific_helper(line: str):
-    params = line.split(',')
-    fname, src_lib, dst_lib, unroll_factor, failset_mu = params
+def func(fname: str, src_lib: str, dst_lib: str, unroll_factor: int, failset_mu: int):
     out_file = open(f'logs_spec/{fname}_{src_lib}_{dst_lib}_{unroll_factor}_{failset_mu}.proof', 'w')
     command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={failset_mu} --unroll-factor={unroll_factor} --ce_bound={CE_BOUND} benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
     tokens = shlex.split(command)
-    p = subprocess.run(tokens, stdout=out_file, stderr=out_file, timeout=TIMEOUT)
-    out_file.close()
+    try:
+        p = subprocess.run(tokens, stdout=out_file, stderr=out_file, timeout=TIMEOUT)
+        out_file.close()
+        return p.returncode == 0 or p.returncode == 2
+    except subprocess.TimeoutExpired:
+        out_file.close()
+        return False
+
+def run_specific_helper(line: str):
+    params = line.split(',')
+    fname, src_lib, dst_lib, unroll_factor, failset_mu = params
+    unroll_factor = int(unroll_factor)
+    failset_mu = int(failset_mu)
+    unroll = min(16, unroll_factor)
+    while unroll <= unroll_factor:
+        b = func(fname, src_lib, dst_lib, unroll, failset_mu)
+        if not b:
+            b = func(fname, dst_lib, src_lib, unroll, failset_mu)
+            if b:
+                return
+        else:
+            return
+        unroll *= 2
 
 def run_specific(input_file):
+    global TIMEOUT
+    TIMEOUT = 60*60*2.5
     file = open(input_file, 'r')
     lines = file.readlines()
     lines = lines[1:]
     lines = [line.strip() for line in lines]
     file.close()
 
-    Parallel(n_jobs=5)(delayed(run_specific_helper)(line) for line in lines)
+    Parallel(n_jobs=NJOBS_SPEC)(delayed(run_specific_helper)(line) for line in lines)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
     parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|run_spec]', default='')
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
+    parser.add_argument('--failset_mu', action='store', type=int, help='Denotes the mu to be used in inequivalence checking', default=FAILSET_MU)
+    parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR)
     args = parser.parse_args()
     assert(args.input_file != '')
     assert(args.mode != '')
     assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'run_spec', f'Invalid Mode'
+    FAILSET_MU = args.failset_mu
+    UNROLL_FACTOR = args.unroll_factor
     if args.mode == 'gen_script':
         gen_script(args.input_file)
     elif args.mode == 'run_all':
