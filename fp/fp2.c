@@ -1,8 +1,10 @@
+//clang O0 timesout, others pass
 int quadruple_lt(float a[], float b[])
 {
   return (a[0] < b[0]) && (a[1] < b[1]) && (a[2] < b[2]) && (a[3] < b[3]);
 }
 
+//all pass
 float diff1(float a, float b)
 {
   float d;
@@ -15,6 +17,20 @@ float diff1(float a, float b)
   return d;
 }
 
+//all pass
+float diff1a(float a[], float b[])
+{
+  float d1;
+
+  d1 = a[0] - b[0];
+
+  if(d1 < 0)
+    d1 = -d1;
+
+  return d1;
+}
+
+//clang O3 timeout (others pass)
 float diff2(float a[], float b[])
 {
   float d1, d2;
@@ -31,6 +47,8 @@ float diff2(float a[], float b[])
   return d1 + d2;
 }
 
+//gcc/clang O3 are passing. gcc/clang O0 both timing out for a memeq expr file
+//all cases were passing earlier but these recently started to timeout
 void sort3(float a[])
 {
 #define SWAP(i, j)     \
