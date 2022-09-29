@@ -7,18 +7,16 @@ int s1161()
 //	tests for recognition of loop independent dependences
 //	between statements in mutually exclusive regions.
   TYPE local_a[LEN], local_b[LEN];
-  TYPE local_c[LEN], local_d[LEN];
-  TYPE local_e[LEN];
-  init_local5(local_a, local_b, local_c, local_d, local_e);
+  init_local1(local_a);
 
 		for (int i = 0; i < LEN-1; ++i) {
-			if (local_c[i] < (TYPE)0.) {
+			if (c[i] < (TYPE)0.) {
 				goto L20;
 			}
-			local_a[i] = local_c[i] + local_d[i] * local_e[i];
+			local_a[i] = c[i] + d[i] * e[i];
 			goto L10;
 L20:
-			local_b[i] = local_a[i] + local_d[i] * local_d[i];
+			local_b[i] = local_a[i] + d[i] * d[i];
 L10:
 			;
 		}
