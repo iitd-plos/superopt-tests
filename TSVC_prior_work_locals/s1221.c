@@ -2,10 +2,9 @@
 
 int s1221()
 {
-
 //	run-time symbolic resolution
-
   TYPE local_b[LEN];
+  init_local1(local_b);
 		for (int i = 4; i < LEN; i++) {
 			local_b[i] = local_b[i - 4] + a[i];
 		}
