@@ -1,4 +1,4 @@
-TEST_FILE=tests_v3.csv
+TEST_FILE=tests_v4.csv
 SPEC_TEST=calib_test.csv
 
 .PHONY: clean	clean_all	run	run_spec
@@ -12,12 +12,15 @@ clean_all:	clean
 	@rm -rf stats/*.log
 	@rm -rf eq_classes/*.pkl
 	@rm -rf graphviz/*.dot
+	@rm *.ALL *.record *.src-tfg *.dst-tfg
 
 run:
 	mkdir -p logs
 	mkdir -p stats
 	mkdir -p eq_classes
 	mkdir -p graphviz
+	mkdir -p counterexamples
+	mkdir -p plots
 	python3 benchmarking.py --mode run_all --input_file $(TEST_FILE)
 	python3 benchmarking.py --mode analysis --input_file $(TEST_FILE)
 
