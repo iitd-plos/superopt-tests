@@ -25,6 +25,15 @@
 #%.gpp.eqchecker.O0.x64.o: %.cpp
 #	$(GPP_X64) -c $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O0 $< -o $@
 
+%.gcc.eqchecker.O1.i386.s: %.c
+	$(GCC_I386) -S $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.gcc.eqchecker.O1.i386.s: %.cpp
+	$(GPP_I386) -S $(CFLAGS) $(GPP_EQCHECKER_FLAGS) -O1 $< -o $@
+%.gcc.eqchecker.O1.x64.s: %.c
+	$(GCC_X64) -S $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.gcc.eqchecker.O1.x64.s: %.cpp
+	$(GPP_X64) -S $(CFLAGS) $(GPP_EQCHECKER_FLAGS) -O1 $< -o $@
+
 %.gcc.eqchecker.O2.i386.s: %.c
 	$(GCC_I386) -S $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O2 $< -o $@
 #%.gcc.eqchecker.O2.i386.o: %.c
@@ -85,6 +94,15 @@
 #	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O0 $< -o $@
 #%.clang.eqchecker.O0.i386: %.clang.eqchecker.O0.i386.o eqchecker_helper.clang.eqchecker.O0.i386.o
 #	$(CLANG_I386) $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
+
+%.clang.eqchecker.O1.i386.s: %.c
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
+%.clang.eqchecker.O1.i386.s: %.cpp
+	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
+%.clang.eqchecker.O1.x64.s: %.c
+	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
+%.clang.eqchecker.O1.x64.s: %.cpp
+	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
 
 %.clang.eqchecker.O2.i386.s: %.c
 	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O2 $< -o $@
@@ -147,6 +165,14 @@
 #%.icc.eqchecker.O0.i386.o: %.c
 #	$(ICC_X64) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O0 $< -o $@
 
+%.icc.eqchecker.O1.i386.s: %.c
+	$(ICC_I386) -S $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icc.eqchecker.O1.i386.s: %.cpp
+	$(ICPC_I386) -S $(CFLAGS) $(ICPC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icc.eqchecker.O1.x64.s: %.c
+	$(ICC_X64) -S $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icc.eqchecker.O1.x64.s: %.cpp
+	$(ICPC_X64) -S $(CFLAGS) $(ICPC_EQCHECKER_FLAGS) -O1 $< -o $@
 
 %.icc.eqchecker.O2.i386.s: %.c
 	$(ICC_I386) -S $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O2 $< -o $@
