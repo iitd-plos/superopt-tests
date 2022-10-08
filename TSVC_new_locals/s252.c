@@ -6,13 +6,11 @@ int s252()
 //	scalar and array expansion
 //	loop with ambiguous scalar temporary
 
-  TYPE local_a[LEN], local_b[LEN];
-  TYPE local_c[LEN];
-  init_local2(local_b, local_c);
+  TYPE local_a[LEN];
 	TYPE t, s;
 		t = (TYPE) 0.;
 		for (int i = 0; i < LEN; i++) {
-			s = local_b[i] * local_c[i];
+			s = b[i] * c[i];
 			local_a[i] = s + t;
 			t = s;
 		}

@@ -5,13 +5,11 @@ int s176()
 
 //	symbolics
 //	convolution
-  TYPE local_a[LEN], local_b[LEN];
-  TYPE local_c[LEN];
-  init_local3(local_a, local_b, local_c);
+  TYPE local_a[LEN];
 	int m = LEN/2;
 		for (int j = 0; j < (LEN/2); j++) {
 			for (int i = 0; i < m; i++) {
-				local_a[i] += local_b[i+m-j-1] * local_c[j];
+				local_a[i] += b[i+m-j-1] * c[j];
 			}
 //			DBG(__LINE__);
 		}

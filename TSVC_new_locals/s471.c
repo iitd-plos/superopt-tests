@@ -3,13 +3,11 @@
 int s471(){
 
   TYPE local_x[LEN], local_b[LEN];
-  TYPE local_c[LEN], local_d[LEN];
-  TYPE local_e[LEN];
-  init_local5(local_x, local_b, local_c, local_d, local_e);
+  init_local1(local_b);
 	int m = LEN;
 		for (int i = 0; i < m; i++) {
-			local_x[i] = local_b[i] + local_d[i] * local_d[i];
-			local_b[i] = local_c[i] + local_d[i] * local_e[i];
+			local_x[i] = local_b[i] + d[i] * d[i];
+			local_b[i] = c[i] + d[i] * e[i];
 		}
   int sum = 0;
 	for (int i = 0; i < LEN; i++){
