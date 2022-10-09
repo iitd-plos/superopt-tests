@@ -150,13 +150,30 @@ def run_experiments(input_file):
 # Takes the computed classes and generates eq_classes
 def analysis(input_file):
     pickled_files = glob.glob('eq_classes/*_classes.pkl')
+    pickled_files.sort()
+    groups = dict()
     for file in pickled_files:
-        with open(file, 'rb') as f:
-            classes = pickle.load(f)
-            dot_dump = classes.dot_dump(file[11:-12])
-            dot_file = open(f'graphviz/{file[11:-12]}_classes.dot', 'w')
-            dot_file.write(f'{dot_dump}\n')
-            dot_file.close()
+        fname = file.split('_')[1].split('/')[1]
+        if fname not in groups:
+            groups[fname] = []
+        groups[fname].append(file)
+    
+    for fname, files in groups.items():
+        node_str, ineq_str, fail_str = '', '', ''
+        for file in files:
+            with open(file, 'rb') as f:
+                classes = pickle.load(f)
+                dot_dump = classes.dot_dump(file[11:-12])
+                node_str += dot_dump[0]
+                ineq_str += dot_dump[1]
+                fail_str += dot_dump[2]
+        node_str = f'\tnodesep=0.5;\n\tranksep=0.35;\n\tlabelloc="t"\n\tlabel="{fname}"\n{node_str}'
+        ineq_str = f'\tsubgraph inequivalence\n\t{{\n\t\tedge [dir=none, color=blue]\n{ineq_str}\t}}\n'
+        fail_str = f'\tsubgraph fail\n\t{{\n\t\tedge [dir=none, color=red, style=dashed]\n{fail_str}\t}}\n'
+        dot_dump = f'graph {{\n{node_str}{ineq_str}{fail_str}}}'
+        dot_file = open(f'graphviz/{fname}_classes.dot', 'w')
+        dot_file.write(f'{dot_dump}\n')
+        dot_file.close()
 
 def func(fname: str, src_lib: str, dst_lib: str, unroll_factor: int, failset_mu: int):
     out_file = open(f'logs_spec/{fname}_{src_lib}_{dst_lib}_{unroll_factor}_{failset_mu}.proof', 'w')

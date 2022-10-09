@@ -70,7 +70,8 @@ class equivalence_classes:
             log_file.write(f'\t{lib} inequivalent with the classes {self.inequivalent_sets[lib]}\n')
     
     def dot_dump(self, name):
-        node_string = f'\tnodesep=0.5;\n\tranksep=0.35;\n\tlabelloc="t"\n\tlabel="{name}"\n'
+        # node_string = f'\tnodesep=0.5;\n\tranksep=0.35;\n\tlabelloc="t"\n\tlabel="{name}"\n'
+        node_string = ''
         classes = self.get_classes()
         for leader in classes:
             elems = classes[leader]
@@ -96,8 +97,11 @@ class equivalence_classes:
         inequivalent_edges = [f'\t\t"{set_to_string(classes[n1])}" -- "{set_to_string(classes[n2])}"\n' for (n1, n2) in inequivalent_edges]
         fail_edges = [f'\t\t"{set_to_string(classes[n1])}" -- "{set_to_string(classes[n2])}"\n' for (n1, n2) in fail_edges]
 
-        ineq_string = f'\tsubgraph inequivalence\n\t{{\n\t\tedge [dir=none, color=blue]\n{"".join(inequivalent_edges)}\t}}\n'
-        fail_string = f'\tsubgraph fail\n\t{{\n\t\tedge [dir=none, color=red, style=dashed]\n{"".join(fail_edges)}\t}}\n'
+        # ineq_string = f'\tsubgraph inequivalence\n\t{{\n\t\tedge [dir=none, color=blue]\n{"".join(inequivalent_edges)}\t}}\n'
+        # fail_string = f'\tsubgraph fail\n\t{{\n\t\tedge [dir=none, color=red, style=dashed]\n{"".join(fail_edges)}\t}}\n'
 
-        s = f'graph {{\n{node_string}{ineq_string}{fail_string}}}'
-        return s
+        ineq_string = "".join(inequivalent_edges)
+        fail_string = "".join(fail_edges)
+
+        # s = f'graph {{\n{node_string}{ineq_string}{fail_string}}}'
+        return node_string, ineq_string, fail_string
