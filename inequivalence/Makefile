@@ -12,7 +12,7 @@ clean_all:	clean
 	@rm -rf stats/*.log
 	@rm -rf eq_classes/*.pkl
 	@rm -rf graphviz/*.dot
-	@rm *.ALL *.record *.src-tfg *.dst-tfg
+	@rm -f *.ALL *.record *.src-tfg *.dst-tfg
 
 run:
 	mkdir -p logs
