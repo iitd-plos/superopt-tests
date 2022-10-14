@@ -3,12 +3,16 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/bzip2_locals
 
-PROGS_EQCHECKER_COMPILER := bzip2_locals
+PROGS_EQCHECKER_COMPILER := bzip2_locals \
+                            generateMTFValues \
+                            undoReversibleTransformation_fast \
+                            undoReversibleTransformation_small \
+                            qSort3 \
 
 UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
 
-UNROLL2_CLANG = recvDecodingTables
+UNROLL2_CLANG = recvDecodingTables \
 
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER) \
 	                 $(UNROLL2_CLANG)
