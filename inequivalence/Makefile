@@ -13,6 +13,7 @@ clean_all:	clean
 	@rm -rf eq_classes/*.pkl
 	@rm -rf graphviz/*.dot
 	@rm -f *.ALL *.record *.src-tfg *.dst-tfg
+	@rm -f counterexamples/*
 
 run:
 	mkdir -p logs
@@ -23,7 +24,11 @@ run:
 	mkdir -p plots
 	python3 benchmarking.py --mode run_all --input_file $(TEST_FILE)
 	python3 benchmarking.py --mode analysis --input_file $(TEST_FILE)
+	python3 benchmarking.py --mode graph_gen --input_file $(TEST_FILE)
 
 run_spec:
 	mkdir -p logs_spec
 	python3 benchmarking.py --mode run_spec --input_file $(SPEC_TEST)
+
+gen_assumes:
+	mkdir -p assumes

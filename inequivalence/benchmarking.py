@@ -11,6 +11,7 @@ import glob
 from equiv_classes import equivalence_classes
 import glob
 import matplotlib.pyplot as plt
+import xml.etree.ElementTree as ET
 
 # Contains benchmarking information
 # FORMAT: each line represents one function
@@ -59,8 +60,11 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     with open(f'benchmarks/{fname}_{dst_lib}.c', 'r') as fp:
         dst_data = fp.read()
     
-    with open(f'counterexamples/{fname}_{src_lib}_{dst_lib}.xml') as fp:
-        xml_data = fp.read()
+    xml_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}.xml'
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    for neighbor in root.iter('inequivalence_cond_counterexample'):
+        xml_data = neighbor.text
 
     merge_data = src_data + '\n\n' + dst_data + '\n\n' + xml_data
     
@@ -72,12 +76,13 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
     v = classes.get_leader(dst_lib)
     if u == v:
         # They already lie in the same equivalence class, no need to run the tool
-        return False
+        return False, False
     else:
         if v in classes.inequivalent_sets[u] or u in classes.inequivalent_sets[v]:
             # They are already inequivalent, no need to run the tool
-            return False
+            return False, False
     RETRY = False
+    TIMEOUT_OCCURED = False
     out_file = open(f'logs/{fname}_{src_lib}_{dst_lib}.proof', 'w')
     command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}_{src_lib}_{dst_lib}.xml benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
     # tokens = shlex.split(command)
@@ -103,12 +108,13 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
         os.killpg(os.getpgid(p.pid), signal.SIGTERM)
         log_file.write(f'\t\tTimeout for benchmark {fname} with src={src_lib}, dst={dst_lib}\n')
         RETRY = True
+        TIMEOUT_OCCURED = True
         stat_file.write(f'{fname}\t{src_lib}\t{dst_lib}\t{unroll}\tTIMEOUT\n')
     finally:
         out_file.close()
         stat_file.flush()
         log_file.flush()
-    return RETRY
+    return RETRY, TIMEOUT_OCCURED
 
 def run(line, i):
     strings = line.split(',')
@@ -121,15 +127,23 @@ def run(line, i):
     for pair in itertools.combinations(libraries, 2):
         l1, l2 = pair
         unroll = min(8, UNROLL_FACTOR)
-        while unroll <= UNROLL_FACTOR:
-            if run_ineq_checker(fname, l1, l2, log_file, stat_file, classes, unroll):
-                # run the tool by switching the src and dst
-                if run_ineq_checker(fname, l2, l1, log_file, stat_file, classes, unroll):
-                    pass
+        found = False
+        run_fwd, run_bwd = True, True
+        while unroll <= UNROLL_FACTOR and not found and (run_fwd or run_bwd):
+            if run_fwd and not found:
+                retry, timeout_fwd = run_ineq_checker(fname, l1, l2, log_file, stat_file, classes, unroll)
+                if timeout_fwd:
+                    run_fwd = False
                 else:
-                    break
-            else:
-                break
+                    if not retry:
+                        break
+            if run_bwd and not found:
+                retry, timeout_bwd = run_ineq_checker(fname, l2, l1, log_file, stat_file, classes, unroll)
+                if timeout_bwd:
+                    run_bwd = False
+                else:
+                    if not retry:
+                        break
             unroll *= 2
     log_file.write(f'Ran all experiments for {fname}\n')
     classes.print(log_file)

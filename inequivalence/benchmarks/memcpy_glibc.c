@@ -58,4 +58,3 @@ MEMCPY (void *dstpp, const void *srcpp, size_t len)
 
   return dstpp;
 }
-libc_hidden_builtin_def (MEMCPY)
