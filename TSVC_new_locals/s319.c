@@ -15,6 +15,7 @@ int s319()
 			local_b[i] = c[i] + e[i];
 			sum += local_b[i];
 		}
+    print_local2(local_a, local_b);
 	  temp = sum;
 	return 0;
 }
