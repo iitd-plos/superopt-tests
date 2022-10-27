@@ -30,6 +30,8 @@ NJOBS=30
 NJOBS_SPEC=20
 VMEM_LIMIT=40*1024*1024 # 40GB
 
+USE_ASSUMES = False
+
 STAT_FILE = "stat.log"
 
 # Generates a brute force script for benchmarking
@@ -60,7 +62,10 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     with open(f'benchmarks/{fname}_{dst_lib}.c', 'r') as fp:
         dst_data = fp.read()
     
-    xml_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}.xml'
+    if not USE_ASSUMES:
+        xml_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}.xml'
+    else:
+        xml_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}_assumes.xml'
     tree = ET.parse(xml_file)
     root = tree.getroot()
     for neighbor in root.iter('inequivalence_cond_counterexample'):
@@ -68,7 +73,11 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
 
     merge_data = src_data + '\n\n' + dst_data + '\n\n' + xml_data
     
-    with open(f'counterexamples/{fname}_{src_lib}_{dst_lib}.ce', 'w') as fp:
+    if not USE_ASSUMES:
+        ce_out_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}.ce'
+    else:
+        ce_out_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}_assumes.ce'
+    with open(ce_out_file, 'w') as fp:
         fp.write(merge_data)
 
 def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, stat_file: TextIOWrapper, classes: equivalence_classes, unroll=UNROLL_FACTOR):
@@ -83,8 +92,14 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
             return False, False
     RETRY = False
     TIMEOUT_OCCURED = False
-    out_file = open(f'logs/{fname}_{src_lib}_{dst_lib}.proof', 'w')
-    command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}_{src_lib}_{dst_lib}.xml benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
+    if not USE_ASSUMES:
+        out_file = open(f'logs/{fname}_{src_lib}_{dst_lib}.proof', 'w')
+    else:
+        out_file = open(f'logs/{fname}_{src_lib}_{dst_lib}_assumes.proof', 'w')
+    if not USE_ASSUMES:
+        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}_{src_lib}_{dst_lib}.xml benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
+    else:
+        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}_{src_lib}_{dst_lib}_assumes.xml --assume=assumes/{fname}_{src_lib}.assumes benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
     # tokens = shlex.split(command)
     p = None
     try:
@@ -121,8 +136,15 @@ def run(line, i):
     fname = strings[0]
     libraries = strings[1:]
     classes = equivalence_classes(fname, libraries)
-    stat_file = open(f'stats/{fname}_{i}_{STAT_FILE}', 'w')
-    log_file = open(f'stats/{fname}_{i}.log', 'w')
+    stat_file_name, log_file_name = '', ''
+    if not USE_ASSUMES:
+        stat_file_name = f'stats/{fname}_{i}_{STAT_FILE}'
+        log_file_name = f'stats/{fname}_{i}.log'
+    else:
+        stat_file_name = f'stats/{fname}_{i}_assumes_{STAT_FILE}'
+        log_file_name = f'stats/{fname}_{i}_assumes.log'
+    stat_file = open(stat_file_name, 'w')
+    log_file = open(log_file_name, 'w')
     log_file.write(f'Running benchmarks for {fname}\n')
     for pair in itertools.combinations(libraries, 2):
         l1, l2 = pair
@@ -149,7 +171,12 @@ def run(line, i):
     classes.print(log_file)
     stat_file.close()
     log_file.close()
-    with open(f'eq_classes/{fname}_{i}_classes.pkl', 'wb') as f:
+    eq_class_file = ''
+    if not USE_ASSUMES:
+        eq_class_file = f'eq_classes/{fname}_{i}_classes.pkl'
+    else:
+        eq_class_file = f'eq_classes/{fname}_{i}_assumes_classes.pkl'
+    with open(eq_class_file, 'wb') as f:
         pickle.dump(classes, f)
 
 # Runs the experiments while keeping track of equivalence classes
@@ -304,12 +331,20 @@ if __name__ == "__main__":
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
     parser.add_argument('--failset_mu', action='store', type=int, help='Denotes the mu to be used in inequivalence checking', default=FAILSET_MU)
     parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR)
+    parser.add_argument('--ce_bound', action='store', type=int, help='Sets a bound on the counter examples to be generated', default=CE_BOUND)
+    parser.add_argument('--timeout', action='store', type=int, help='Timeout for each run (in seconds)', default=TIMEOUT)
+    parser.add_argument('--njobs', action='store', type=int, default=NJOBS)
+    parser.add_argument('--assumes', action='store_true')
     args = parser.parse_args()
     assert(args.input_file != '')
     assert(args.mode != '')
     assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'run_spec' or args.mode == 'graph_gen', f'Invalid Mode'
     FAILSET_MU = args.failset_mu
     UNROLL_FACTOR = args.unroll_factor
+    CE_BOUND = args.ce_bound
+    TIMEOUT = args.timeout
+    NJOBS = args.njobs
+    USE_ASSUMES = args.assumes
     if args.mode == 'gen_script':
         gen_script(args.input_file)
     elif args.mode == 'run_all':

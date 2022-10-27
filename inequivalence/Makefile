@@ -1,7 +1,8 @@
 TEST_FILE=tests_v4.csv
 SPEC_TEST=calib_test.csv
+ASSUME_TESTS=tests_assumes.csv
 
-.PHONY: clean	clean_all	run	run_spec
+.PHONY: clean	clean_all	run	run_spec gen_assumes
 
 clean:
 	@rm -f *.o *.harvest *.tmp *.bc *.etfg *.tfg *.s
@@ -32,3 +33,9 @@ run_spec:
 
 gen_assumes:
 	mkdir -p assumes
+	python3 benchmarking.py --mode gen_assumes --input_file $(ASSUME_TESTS)
+
+run_assumes:
+	python3 benchmarking.py --mode run_all --input_file $(ASSUME_TESTS) --assumes
+	python3 benchmarking.py --mode analysis --input_file $(ASSUME_TESTS)
+

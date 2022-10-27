@@ -25,11 +25,12 @@
 #include <sys/cdefs.h>
 
 #include <string.h>
+#include "funcdecl.h"
 
 char *
 strchr(const char *s, int c)
 {
-	char *r = __strchrnul(s, c);
+	char *r = strchrnul(s, c);
 	return *(unsigned char *)r == (unsigned char)c ? r : NULL;
 }
 
