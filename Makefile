@@ -73,6 +73,9 @@ $(TARGETS) $(SPEC_TARGETS)::
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	$(MAKE) -C $(BUILDDIR)/$@
 
+ack-progs::
+	$(MAKE) -C $(BUILDDIR)/localmem-tests $@
+
 eqtest_x64: ARCH=x64
 eqtest_i386: ARCH=i386
 eqtest_ll: ARCH=ll
@@ -82,6 +85,12 @@ eqtest_x64 eqtest_i386 eqtest_ll: eqtest_%: $(BUILD_MAKEFILES)
 	true > $(BUILDDIR)/$@
 	$(foreach t,$(EQCHECK_TARGETS_$(ARCH)), [[ -f $(BUILDDIR)/$(t)/$@ ]] && cat $(BUILDDIR)/$(t)/$@ >> $(BUILDDIR)/$@ || exit;)
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/$@
+
+ack-compiler::
+	rm -rf $(BUILDDIR)/ack-compiler
+	git clone https://github.com/compilerai/ack-compiler $(BUILDDIR)/ack-compiler
+	make -C $(BUILDDIR)/ack-compiler PREFIX=$(BUILDDIR)/ack-compiler-install
+	make -C $(BUILDDIR)/ack-compiler install
 
 #runtest:
 #	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 runtest || exit;)

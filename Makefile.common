@@ -327,6 +327,18 @@
 	rm -f $<.cg.tmp
 	$(MYLLVM_AS) $@.ll -o $@
 
+# ACK (Amsterdam Compiler Kit) Compiler
+%.ack.O0.i386.s: %.c
+	-$(ACK_I386) -c.s $(CFLAGS) -O0 $< -o $@
+%.ack.O1.i386.s: %.c
+	-$(ACK_I386) -c.s $(CFLAGS) -O1 $< -o $@
+%.ack.O2.i386.s: %.c
+	-$(ACK_I386) -c.s $(CFLAGS) -O2 $< -o $@
+%.ack.O3.i386.s: %.c
+	-$(ACK_I386) -c.s $(CFLAGS) -O3 $< -o $@
+%.ack.O6.i386.s: %.c
+	-$(ACK_I386) -c.s $(CFLAGS) -O6 $< -o $@
+
 # Executable files generated using LLC (should be identical as clang; here, just to check)
 %.llc.O0.i386.o: %.bc32.O0
 	$(LLC) --dyn_debug=disableSemanticAA -O0 -filetype=obj $< -o $@
