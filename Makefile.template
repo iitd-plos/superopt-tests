@@ -126,6 +126,9 @@ eqtest_%_clangPP.helper:: CUR_COMPILER=CLANGPP
 eqtest_%_icc.helper:: CUR_COMPILER=ICC
 eqtest_%_icpc.helper:: CUR_COMPILER=ICPC
 
+eqtest_%_ack.helper:: CUR_COMPILER=ACK
+eqtest_%_ack.helper:: ARCH_OPT_SUFFIX=.O2.i386
+
 eqtest_%_srcdst.helper:: CUR_COMPILER=SRCDST
 eqtest_%_srcdst.helper:: ARCH_OPT_SUFFIX=notused
 
@@ -141,7 +144,7 @@ eqtest_ll:: ARCH_OPT_SUFFIX=.ll
 eqtest_i386_O1:: ARCH=i386
 eqtest_i386_O1:: ARCH_OPT_SUFFIX=.eqchecker.O1.i386.s
 
-eqtest_i386 eqtest_x64 eqtest_ll eqtest_i386_O1: eqtest_%: eqtest_%_gcc.helper eqtest_%_gPP.helper eqtest_%_clang.helper eqtest_%_clangPP.helper eqtest_%_srcdst.helper #eqtest_%_icc.helper eqtest_%_icpc.helper
+eqtest_i386 eqtest_x64 eqtest_ll eqtest_i386_O1: eqtest_%: eqtest_%_gcc.helper eqtest_%_gPP.helper eqtest_%_clang.helper eqtest_%_clangPP.helper eqtest_%_srcdst.helper eqtest_%_ack.helper #eqtest_%_icc.helper eqtest_%_icpc.helper
 	cat $^ > $@
 
 .DEFAULT_GOAL := all

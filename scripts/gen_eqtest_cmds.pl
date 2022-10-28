@@ -87,8 +87,13 @@ foreach my $prog (keys %unroll) {
     if ($compiler =~ /^clang/) {
       $compile_log_str = "-compile_log $PWD/$prog.$compiler$compiler_suffix.log"
     }
+    #print "compiler = $compiler\n";
     my $src_pathname = identify_filetype_extension("$VPATH/$prog");
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
+    if ($compiler ne "ack" || -f "$PWD/$prog.$compiler$compiler_suffix") {
+      print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
+    } else {
+      #print "Ignoring $PWD/$prog.$compiler$compiler_suffix\n";
+    }
   }
 }
 
