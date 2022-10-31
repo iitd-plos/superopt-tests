@@ -194,7 +194,10 @@ def analysis(input_file):
     pickled_files.sort()
     groups = dict()
     for file in pickled_files:
-        fname = file.split('_')[1].split('/')[1]
+        toks = file.split('_')
+        fname = toks[1].split('/')[1]
+        if toks[-2] == 'assumes':
+            fname += '_assumes'
         if fname not in groups:
             groups[fname] = []
         groups[fname].append(file)
