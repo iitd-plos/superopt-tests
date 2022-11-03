@@ -13,6 +13,8 @@ EXTRA_FLAGS := --dyn-debug=dump_final_invariants --smt-query-timeout 300 --globa
 UNROLL1_PROGS := \
                  rodata                            \
                  addr_taken_simple            		 \
+                 local_used_on_unreachable_branch  \
+                 local_used_in_unreachable_loop    \
                  addr_taken_array             		 \
                  addr_taken_array_in_loop     		 \
                  addr_taken_conditional       		 \
