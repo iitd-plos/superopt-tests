@@ -10,10 +10,12 @@ PROGS_EQCHECKER_COMPILER := bzip2_locals \
                             undoReversibleTransformation_small \
                             hbMakeCodeLengths \
                             getAndMoveToFrontDecode \
+                            qSort3 \
 
-UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
+#UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
-UNROLL2_CLANG := qSort3
+
+EXTRA_FLAGS := --enumerate-src-bbl-ends
 
 PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
 
