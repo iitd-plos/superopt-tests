@@ -3,7 +3,7 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/fp
 
-PROGS_EQCHECKER_COMPILER := fp1 fp2 fpconst fpedge soundness
+PROGS_EQCHECKER_COMPILER := fp1 fp1_d fp1_l fp2 fp2_d fp3 fp4 fpconst fpconst_d fpedge fpedge_d soundness
 PROGS_EQCHECKER_SRCDST :=
 
 EXTRA_FLAGS := #--dyn-debug=bvsolve_cache_debug=2
