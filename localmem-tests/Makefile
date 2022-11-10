@@ -13,7 +13,7 @@ UNROLL2_ICC = alloca_linked_list
 #UNROLL1_ICX = alloca_linked_list $(UNROLL1_PROGS)
 #UNROLL2_ICX = fib
 
-EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 16000
+EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 7200
 
 UNROLL1_PROGS := \
                  rodata                            \
