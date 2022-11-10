@@ -8,7 +8,12 @@ UNROLL1_CLANG = alloca_linked_list $(UNROLL1_PROGS)
 UNROLL2_GCC = alloca_linked_list
 UNROLL2_CLANG = fib
 UNROLL2_ACK = fib alloca_linked_list $(UNROLL1_PROGS)
-EXTRA_FLAGS := --dyn-debug=dump_final_invariants --smt-query-timeout 300 --global-timeout 16000 --disable-ssa-cloning
+UNROLL1_ICC = fib $(UNROLL1_PROGS)
+UNROLL2_ICC = alloca_linked_list
+#UNROLL1_ICX = alloca_linked_list $(UNROLL1_PROGS)
+#UNROLL2_ICX = fib
+
+EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 7200
 
 UNROLL1_PROGS := \
                  rodata                            \
@@ -43,6 +48,9 @@ UNROLL1_PROGS := \
                  #arg_addr_taken               # eqgen fails
 
 PROGS_EQCHECKER := $(UNROLL1_GCC) $(UNROLL1_CLANG) $(UNROLL2_GCC) $(UNROLL2_CLANG) $(UNROLL2_ACK)
+
+# flags
+ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
 
 C_STD = gnu11
 include $(SRCDIR)/Makefile.template
