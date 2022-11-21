@@ -35,6 +35,7 @@ UNROLL1_PROGS := \
                  vla_3_single_loop                 \
                  vla_1_inside_loop            		 \
                  vla_2_inside_loop            		 \
+                 vla_3_inside_loop            		 \
                  alloca_malloc_switch              \
                  #vla_midway_decl              	\
                  ## vla_2_nested_loops           \
