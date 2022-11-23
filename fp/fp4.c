@@ -59,3 +59,8 @@ void array_neg(float a[])
   a[2] = -a[2];
 }
 
+void array_mult(float a[])
+{
+  a[0] = a[0]*4;
+}
+
