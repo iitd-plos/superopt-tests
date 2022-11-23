@@ -1,12 +1,13 @@
 TEST_FILE=tests_v4.csv
-SPEC_TEST=calib_test.csv
 ASSUME_TESTS=tests_assumes.csv
 
 .PHONY: clean	clean_all	run	run_spec gen_assumes
 
 clean:
 	@rm -f *.o *.harvest *.tmp *.bc *.etfg *.tfg *.s
-	@cd benchmarks/ && rm -f *.log *.o *.harvest *.tmp *.bc *.etfg *.tfg *.s
+	rm -f benchmarks/C/*/*.bc
+	rm -f benchmarks/C/*/*.tmp
+	rm -f benchmarks/C/*/*.etfg
 
 clean_all:	clean
 	@rm -rf logs/*.proof
@@ -26,10 +27,6 @@ run:
 	python3 benchmarking.py --mode run_all --input_file $(TEST_FILE)
 	python3 benchmarking.py --mode analysis --input_file $(TEST_FILE)
 	python3 benchmarking.py --mode graph_gen --input_file $(TEST_FILE)
-
-run_spec:
-	mkdir -p logs_spec
-	python3 benchmarking.py --mode run_spec --input_file $(SPEC_TEST)
 
 gen_assumes:
 	mkdir -p assumes

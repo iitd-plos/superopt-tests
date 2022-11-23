@@ -13,52 +13,77 @@ PREDICATE_DONE = "=predicate done"
 memccpy_args = {
     'dietlibc': ['dst', 'src', 'c', 'count'],
     'freebsd': ['t', 'f', 'c', 'n'],
+    'glibc': ['dst', 'src', 'c', 'n'],
     'klibc': ['dst', 'src', 'c', 'n'],
     'musl': ['dest', 'src', 'c', 'n'],
     'netbsd': ['t', 'f', 'c', 'n'],
-    'newlib_v1': ['dst0', 'src0', 'endchar0', 'len0'],
-    'newlib_v2': ['dst0', 'src0', 'endchar0', 'len0'],
+    'newlib_small': ['dst0', 'src0', 'endchar0', 'len0'],
+    'newlib_fast': ['dst0', 'src0', 'endchar0', 'len0'],
     'openbsd': ['t', 'f', 'c', 'n'],
     'uClibc': ['s1', 's2', 'c', 'n'],
 }
 
 memcpy_args = {
-    'dietlibc_v1': ['dst', 'src', 'n'],
-    'dietlibc_v2': ['dst', 'src', 'n'],
+    'dietlibc_small': ['dst', 'src', 'n'],
+    'dietlibc_fast': ['dst', 'src', 'n'],
     'freebsd': ['dst0', 'src0', 'length'],
-    'klibc_v1': ['dst', 'src', 'n'],
+    'klibc': ['dst', 'src', 'n'],
     'musl': ['dest', 'src', 'n'],
-    'newlib_v1': ['dst0', 'src0', 'len0'],
-    'newlib_v2': ['dst0', 'src0', 'len0'],
+    'netbsd_small': ['s1', 's2', 'n'],
+    'netbsd_fast': ['dst0', 'src0', 'length'],
+    'netbsd_or1k': ['a', 'b', 'len'],
+    'newlib_small': ['dst0', 'src0', 'len0'],
+    'newlib_fast': ['dst0', 'src0', 'len0'],
     'openbsd': ['dst0', 'src0', 'length'],
+    'openbsd_m88k': ['s1', 's2', 'n'],
     'uClibc': ['s1', 's2', 'n'],
+    'uClibc_powerpc': ['to', 'from', 'len']
 }
 
 strlen_args = {
+    'dietlibc_small': ['s'],
     'dietlibc': ['s'],
     'freebsd': ['str'],
     'glibc': ['str'],
     'klibc': ['s'],
     'musl': ['s'],
+    'netbsd': ['str'],
     'newlib': ['str'],
     'openbsd': ['str'],
     'uClibc': ['s'],
 }
 
+strnlen_args = {
+    'freebsd': ['s', 'maxlen'],
+    'freebsd_heimdal': ['s', 'len'],
+    'freebsd_openssh': ['str', 'maxlen'],
+    'glibc': ['str', 'maxlen'],
+    'klibc': ['s', 'maxlen'],
+    'netbsd': ['s', 'maxlen'],
+    'netbsd_heimdal': ['s', 'len'],
+    'newlib': ['str', 'n'],
+    'openbsd': ['str', 'maxlen'],
+    'uClibc': ['s', 'max']
+}
+
 swab_args = {
     'dietlibc': ['src', 'dest', 'nbytes'],
     'freebsd': ['from', 'to', 'len'],
+    'freebsd_heimdal': ['from', 'to', 'nbytes'],
     'glibc': ['bfrom', 'bto', 'n'],
     'musl': ['_src', '_dest', 'n'],
     'netbsd': ['from', 'to', 'len'],
+    'netbsd_heimdal': ['from', 'to', 'nbytes'],
     'newlib': ['b1', 'b2', 'length'],
     'openbsd': ['from', 'to', 'len'],
+    'uClibc': ['source', 'dest', 'count']
 }
 
 UB_MAP = {
     'memccpy': ([UB.MEMORY_OVERLAP], memccpy_args),
     'memcpy': ([UB.MEMORY_OVERLAP], memcpy_args),
     'strlen': ([UB.VALID_POINTER_VAL], strlen_args),
+    'strnlen': ([UB.VALID_POINTER_VAL], strnlen_args),
     'swab': ([UB.EVEN_ARG], swab_args)
 }
 
@@ -109,7 +134,7 @@ def gen_assumes():
     for fname in UB_MAP:
         ub_list, libargs = UB_MAP[fname]
         for lib in libargs:
-            with open(f'assumes/{fname}_{lib}.assumes', 'w') as fp:
+            with open(f'assumes/{fname}-{lib}.assumes', 'w') as fp:
                 s = ''
                 for ub in ub_list:
                     s += get_assume_string(ub, libargs[lib])

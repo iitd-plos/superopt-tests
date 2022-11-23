@@ -8,7 +8,7 @@ from joblib import Parallel, delayed
 import pickle
 import argparse
 import glob
-from equiv_classes import equivalence_classes
+from equiv_classes import equivalence_classes, merge_all_classes
 import glob
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
@@ -27,8 +27,7 @@ CE_BOUND=20
 SCRIPT_NAME = "benchmarking.sh"
 TIMEOUT=60*60*1 # 1 hour
 NJOBS=30
-NJOBS_SPEC=20
-VMEM_LIMIT=40*1024*1024 # 40GB
+VMEM_LIMIT=33*1024*1024 # 33GB
 
 USE_ASSUMES = False
 
@@ -54,18 +53,19 @@ def gen_script(input_file):
     script.close()
     file.close()
 
+# Generates a combined file consisting of both the src, dst programs and the generated counterexample
 def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     src_data, dst_data, xml_data = '', '', ''
-    with open(f'benchmarks/{fname}_{src_lib}.c', 'r') as fp:
+    with open(f'benchmarks/C/{fname}/{fname}_{src_lib}.c', 'r') as fp:
         src_data = fp.read()
     
-    with open(f'benchmarks/{fname}_{dst_lib}.c', 'r') as fp:
+    with open(f'benchmarks/C/{fname}/{fname}_{dst_lib}.c', 'r') as fp:
         dst_data = fp.read()
     
     if not USE_ASSUMES:
-        xml_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}.xml'
+        xml_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}.xml'
     else:
-        xml_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}_assumes.xml'
+        xml_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml'
     tree = ET.parse(xml_file)
     root = tree.getroot()
     for neighbor in root.iter('inequivalence_cond_counterexample'):
@@ -74,9 +74,9 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     merge_data = src_data + '\n\n' + dst_data + '\n\n' + xml_data
     
     if not USE_ASSUMES:
-        ce_out_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}.ce'
+        ce_out_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}.ce'
     else:
-        ce_out_file = f'counterexamples/{fname}_{src_lib}_{dst_lib}_assumes.ce'
+        ce_out_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.ce'
     with open(ce_out_file, 'w') as fp:
         fp.write(merge_data)
 
@@ -93,13 +93,13 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
     RETRY = False
     TIMEOUT_OCCURED = False
     if not USE_ASSUMES:
-        out_file = open(f'logs/{fname}_{src_lib}_{dst_lib}.proof', 'w')
+        out_file = open(f'logs/{fname}-{src_lib}-{dst_lib}.proof', 'w')
     else:
-        out_file = open(f'logs/{fname}_{src_lib}_{dst_lib}_assumes.proof', 'w')
+        out_file = open(f'logs/{fname}-{src_lib}-{dst_lib}-assumes.proof', 'w')
     if not USE_ASSUMES:
-        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}_{src_lib}_{dst_lib}.xml benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
+        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}.xml benchmarks/C/{fname}/{fname}_{src_lib}.c benchmarks/C/{fname}/{fname}_{dst_lib}.c'
     else:
-        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}_{src_lib}_{dst_lib}_assumes.xml --assume=assumes/{fname}_{src_lib}.assumes benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
+        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml --assume=assumes/{fname}-{src_lib}.assumes benchmarks/C/{fname}/{fname}_{src_lib}.c benchmarks/C/{fname}/{fname}_{dst_lib}.c'
     # tokens = shlex.split(command)
     p = None
     try:
@@ -131,23 +131,25 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
         log_file.flush()
     return RETRY, TIMEOUT_OCCURED
 
-def run(line, i):
-    strings = line.split(',')
+def run_benchmark(strings: str, tag: str, classes: equivalence_classes):
+    # strings = [s.strip() for s in line.split(',')]
     fname = strings[0]
     libraries = strings[1:]
-    classes = equivalence_classes(fname, libraries)
+    # classes = equivalence_classes(fname, libraries)
     stat_file_name, log_file_name = '', ''
     if not USE_ASSUMES:
-        stat_file_name = f'stats/{fname}_{i}_{STAT_FILE}'
-        log_file_name = f'stats/{fname}_{i}.log'
+        stat_file_name = f'stats/{fname}-{tag}-{STAT_FILE}'
+        log_file_name = f'stats/{fname}-{tag}.log'
     else:
-        stat_file_name = f'stats/{fname}_{i}_assumes_{STAT_FILE}'
-        log_file_name = f'stats/{fname}_{i}_assumes.log'
+        stat_file_name = f'stats/{fname}-{tag}-assumes-{STAT_FILE}'
+        log_file_name = f'stats/{fname}-{tag}-assumes.log'
     stat_file = open(stat_file_name, 'w')
     log_file = open(log_file_name, 'w')
     log_file.write(f'Running benchmarks for {fname}\n')
     for pair in itertools.combinations(libraries, 2):
         l1, l2 = pair
+        if (l1, l2) in classes.cache:
+            continue
         unroll = min(8, UNROLL_FACTOR)
         found = False
         run_fwd, run_bwd = True, True
@@ -167,15 +169,46 @@ def run(line, i):
                     if not retry:
                         break
             unroll *= 2
+        classes.add_cache(l1, l2)
     log_file.write(f'Ran all experiments for {fname}\n')
     classes.print(log_file)
     stat_file.close()
     log_file.close()
+    
+    return classes
+
+def split(a, n):
+    k, m = divmod(len(a), n)
+    return (a[i*k+min(i, m):(i+1)*k+min(i+1, m)] for i in range(n))
+
+def divide_conquer(line: str, tag: str, num_chunks=3):
+    strings = [s.strip() for s in line.split(',')]
+    fname = strings[0]
+    libraries = strings[1:]
+
     eq_class_file = ''
     if not USE_ASSUMES:
-        eq_class_file = f'eq_classes/{fname}_{i}_classes.pkl'
+        eq_class_file = f'eq_classes/{fname}-{tag}-classes.pkl'
     else:
-        eq_class_file = f'eq_classes/{fname}_{i}_assumes_classes.pkl'
+        eq_class_file = f'eq_classes/{fname}-{tag}-assumes-classes.pkl'
+
+    if os.path.isfile(eq_class_file):
+        # The experiment has been run already, no need to run again
+        return
+
+    if len(libraries) > 2:
+        # Split Libraries into parts
+        num_chunks = min(num_chunks, len(libraries))
+        chunks = split(libraries, num_chunks)
+        # for each chunk in chunks, run the eq_checker, get the classes, merge them, and rerun the eq_checker
+        all_classes = Parallel(n_jobs=num_chunks)(delayed(run_benchmark)([fname]+chunk, tag+'-'+str(i), equivalence_classes(fname, chunk)) for i, chunk in enumerate(chunks))
+
+        classes = merge_all_classes(all_classes)
+    else:
+        classes = equivalence_classes(fname, libraries)
+    
+    classes = run_benchmark(strings, tag, classes)
+
     with open(eq_class_file, 'wb') as f:
         pickle.dump(classes, f)
 
@@ -186,18 +219,18 @@ def run_experiments(input_file):
     lines = [line.strip() for line in lines]
     file.close()
 
-    Parallel(n_jobs=min(NJOBS, len(lines)))(delayed(run)(line, i) for i, line in enumerate(lines))
+    Parallel(n_jobs=min(NJOBS, len(lines)))(delayed(divide_conquer)(line, str(i)) for i, line in enumerate(lines))
 
-# Takes the computed classes and generates eq_classes
-def analysis(input_file):
-    pickled_files = glob.glob('eq_classes/*_classes.pkl')
+# Takes the computed classes and generates the classes in dot format
+def analysis():
+    pickled_files = glob.glob('eq_classes/*-classes.pkl')
     pickled_files.sort()
     groups = dict()
     for file in pickled_files:
-        toks = file.split('_')
-        fname = toks[1].split('/')[1]
+        toks = file.split('-')
+        fname = toks[0].split('/')[1]
         if toks[-2] == 'assumes':
-            fname += '_assumes'
+            fname += '-assumes'
         if fname not in groups:
             groups[fname] = []
         groups[fname].append(file)
@@ -219,45 +252,6 @@ def analysis(input_file):
         dot_file.write(f'{dot_dump}\n')
         dot_file.close()
 
-def func(fname: str, src_lib: str, dst_lib: str, unroll_factor: int, failset_mu: int):
-    out_file = open(f'logs_spec/{fname}_{src_lib}_{dst_lib}_{unroll_factor}_{failset_mu}.proof', 'w')
-    command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={failset_mu} --unroll-factor={unroll_factor} --ce_bound={CE_BOUND} benchmarks/{fname}_{src_lib}.c benchmarks/{fname}_{dst_lib}.c'
-    tokens = shlex.split(command)
-    try:
-        p = subprocess.run(tokens, stdout=out_file, stderr=out_file, timeout=TIMEOUT)
-        out_file.close()
-        return p.returncode == 0 or p.returncode == 2
-    except subprocess.TimeoutExpired:
-        out_file.close()
-        return False
-
-def run_specific_helper(line: str):
-    params = line.split(',')
-    fname, src_lib, dst_lib, unroll_factor, failset_mu = params
-    unroll_factor = int(unroll_factor)
-    failset_mu = int(failset_mu)
-    unroll = min(16, unroll_factor)
-    while unroll <= unroll_factor:
-        b = func(fname, src_lib, dst_lib, unroll, failset_mu)
-        if not b:
-            b = func(fname, dst_lib, src_lib, unroll, failset_mu)
-            if b:
-                return
-        else:
-            return
-        unroll *= 2
-
-def run_specific(input_file):
-    global TIMEOUT
-    TIMEOUT = 60*60*2.5
-    file = open(input_file, 'r')
-    lines = file.readlines()
-    lines = lines[1:]
-    lines = [line.strip() for line in lines]
-    file.close()
-
-    Parallel(n_jobs=NJOBS_SPEC)(delayed(run_specific_helper)(line) for line in lines)
-
 def plot_hist(times, title, xlabel='Time (in seconds)'):
     plt.rcParams.update({'figure.figsize':(7,5), 'figure.dpi':100})
 
@@ -266,8 +260,9 @@ def plot_hist(times, title, xlabel='Time (in seconds)'):
     plt.savefig(f'plots/{title}.png')
     plt.clf()
 
+# Analyses the logs to generate statistics
 def graph_gen():
-    stats = glob.glob('stats/*_stat.log')
+    stats = glob.glob('stats/*-stat.log')
     stats.sort()
     NTIMEOUTS = 0
     completion_times = []
@@ -294,7 +289,7 @@ def graph_gen():
                     elif toks[-1] == '2':
                         completion_times.append(float(toks[3]))
                         ineq_times.append(float(toks[3]))
-                        with open(f'logs/{toks[0]}_{toks[1]}_{toks[2]}.proof', 'r') as ld:
+                        with open(f'logs/{toks[0]}-{toks[1]}-{toks[2]}.proof', 'r') as ld:
                             logs = ld.readlines()
                             N_FAILED_CGS = 0
                             FINAL_MU = 0
@@ -306,7 +301,7 @@ def graph_gen():
                                     FINAL_MU = int(log_line.split()[-1])
                                 elif 'computing correctness cover' in log_line:
                                     INEQ_CG = int(log_line.split()[-1])
-                            print(f'Number of Failed CGs for {toks[0]}_{toks[1]}_{toks[2]}_{toks[4]} = {N_FAILED_CGS}')
+                            print(f'Number of Failed CGs for {toks[0]}-{toks[1]}-{toks[2]}-{toks[4]} = {N_FAILED_CGS}')
                             print(f'Inequivalence found at mu = {FINAL_MU} at CG {INEQ_CG}')
                             ranking_ratio = INEQ_CG / N_FAILED_CGS
                             ranking_ratios.append(ranking_ratio)
@@ -330,7 +325,7 @@ def graph_gen():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
-    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|run_spec|graph_gen]', default='')
+    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|graph_gen]', default='')
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
     parser.add_argument('--failset_mu', action='store', type=int, help='Denotes the mu to be used in inequivalence checking', default=FAILSET_MU)
     parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR)
@@ -339,22 +334,22 @@ if __name__ == "__main__":
     parser.add_argument('--njobs', action='store', type=int, default=NJOBS)
     parser.add_argument('--assumes', action='store_true')
     args = parser.parse_args()
-    assert(args.input_file != '')
     assert(args.mode != '')
-    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'run_spec' or args.mode == 'graph_gen', f'Invalid Mode'
+    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen', f'Invalid Mode'
     FAILSET_MU = args.failset_mu
     UNROLL_FACTOR = args.unroll_factor
     CE_BOUND = args.ce_bound
     TIMEOUT = args.timeout
     NJOBS = args.njobs
     USE_ASSUMES = args.assumes
+    print(f'My pid is {os.getpid()}, pgid is {os.getpgid(0)}')
     if args.mode == 'gen_script':
+        assert(args.input_file != '')
         gen_script(args.input_file)
     elif args.mode == 'run_all':
+        assert(args.input_file != '')
         run_experiments(args.input_file)
     elif args.mode == 'analysis':
-        analysis(args.input_file)
-    elif args.mode == 'run_spec':
-        run_specific(args.input_file)
+        analysis()
     elif args.mode == 'graph_gen':
         graph_gen()

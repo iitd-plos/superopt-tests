@@ -14,7 +14,11 @@ class equivalence_classes:
         self.parent = {lib: lib for lib in libraries}
         # dictionary from string to a set of leaders, denoting the classes which are inequivalent
         self.inequivalent_sets = {lib: set() for lib in libraries}
+        self.cache = set()
 
+    def add_cache(self, src: str, dst: str):
+        self.cache.add((src, dst))
+    
     def get_leader(self, lib: str) -> str:
         parent = lib
         while parent != self.parent[parent]:
@@ -105,3 +109,18 @@ class equivalence_classes:
 
         # s = f'graph {{\n{node_string}{ineq_string}{fail_string}}}'
         return node_string, ineq_string, fail_string
+
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            self.libraries = self.libraries.union(other.libraries)
+            self.parent = {**self.parent, **other.parent}
+            self.inequivalent_sets = {**self.inequivalent_sets, **other.inequivalent_sets}
+            self.cache = self.cache.union(other.cache)
+        return self
+
+def merge_all_classes(class_list: "list[equivalence_classes]") -> equivalence_classes:
+    assert len(class_list) > 0
+    c = class_list[0]
+    for i in range(1, len(class_list)):
+        c = c + class_list[i]
+    return c
