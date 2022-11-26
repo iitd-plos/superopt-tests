@@ -1,3 +1,6 @@
+void MYmyDBG();
+int MYmybar(int*,int*,int*,int*);
+
 int vla_4_single_loop(int *a, unsigned n)
 {
   if (n == 0)
