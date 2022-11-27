@@ -1,3 +1,6 @@
+
+int MYmyInit(char* t, int i);
+
 int vla_in_loop_conditional_continue(int n)
 {
   int ret = 0;

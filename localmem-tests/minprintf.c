@@ -1,5 +1,9 @@
 #include <stdarg.h>
 
+void MYmyDBG(char* p);
+void MYmyprint_char(char* p);
+void MYmyprint_int(char* p);
+
 /* minprintf: minimal printf with variable argument list */
 void minprintf(char *fmt, ...)
 {

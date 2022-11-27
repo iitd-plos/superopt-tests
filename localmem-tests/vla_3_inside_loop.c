@@ -1,3 +1,6 @@
+void MYmyDBG();
+int MYmyfoo(int*, int*, int*, unsigned);
+
 int vla_3_inside_loop(int *a, unsigned n)
 {
   int ret = 0;
