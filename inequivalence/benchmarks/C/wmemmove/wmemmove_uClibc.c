@@ -20,7 +20,6 @@
 
 # include <wchar.h>
 # include <wctype.h>
-# include <bits/uClibc_uwchar.h>
 
 wchar_t *wmemmove(wchar_t *s1, const wchar_t *s2, size_t n)
 {

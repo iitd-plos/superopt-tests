@@ -41,8 +41,10 @@ wcsncmp(const wchar_t *s1, const wchar_t *s2, size_t n)
 	do {
 		if (*s1 != *s2++) {
 			/* XXX assumes wchar_t = int */
-			return (*(const int *)s1 -
-			    *(const int *)--s2);
+			int c1 = *(const int *)s1, c2 = *(const int *)--s2;
+			// return (*(const int *)s1 -
+			//    *(const int *)--s2);
+			return c1 - c2 < 0 ? -1 : (c1 - c2 > 0 ? 1 : 0);
 		}
 		if (*s1++ == 0)
 			break;

@@ -20,10 +20,6 @@
    License along with the GNU C Library; if not, see
    <https://www.gnu.org/licenses/>.  */
 
-#ifndef _LIBC
-# include <config.h>
-#endif
-
 #include <string.h>
 
 #include <stddef.h>

@@ -51,5 +51,7 @@ wcscmp(const wchar_t *s1, const wchar_t *s2)
 		if (*s1++ == 0)
 			return (0);
 	/* XXX assumes wchar_t = int */
-	return (*(const int *)s1 - *(const int *)--s2);
+	int c1 = *(const int *)s1, c2 = *(const int *)--s2;
+	// return (*(const int *)s1 - *(const int *)--s2);
+	return c1 - c2 < 0 ? -1 : (c1 - c2 > 0 ? 1 : 0);
 }

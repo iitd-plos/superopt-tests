@@ -30,7 +30,8 @@ int wcsncmp(register const wchar_t *s1, register const wchar_t *s2, size_t n)
 		++s2;
 		--n;
 	}
-
-	return (n == 0) ? 0 : (*((unsigned int *)s1) - *((unsigned int *)s2));
+	unsigned int c1 = *((unsigned int *)s1), c2 = *((unsigned int *)s2);
+	// return (n == 0) ? 0 : (*((unsigned int *)s1) - *((unsigned int *)s2));
+	return (n == 0) ? 0 : (c1 - c2 < 0 ? -1 : (c1 - c2 > 0 ? 1 : 0));
 }
 
