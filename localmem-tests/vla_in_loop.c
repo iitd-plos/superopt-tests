@@ -1,4 +1,6 @@
 // vla inside for loop -- simplified
+
+void MYmyscanf(char* fmt, ...);
 int vla_in_loop(int n)
 {
   int ret = 0;

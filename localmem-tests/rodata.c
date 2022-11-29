@@ -1,5 +1,8 @@
 const int cts[] = { 0x66, 0x65, 0x67, 0x60 };
 
+void MYmyprintf(char const* fmt, ...);
+void MYmyscanf(char const* fmt, ...);
+
 int rodata(int n)
 {
   char zz[] = "0123456789";

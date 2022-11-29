@@ -1,5 +1,8 @@
 #include <alloca.h>
 
+int MYmystrlen(char* s);
+int write(int, int* a, int n);
+
 int alloca_conditional(char* s, int fd, int* a)
 {
   int n;

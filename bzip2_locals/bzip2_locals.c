@@ -8,6 +8,7 @@
 #endif
 #include <string.h>
 
+void* MYmymalloc(size_t);
 
 #define SPEC_CPU2000
 
