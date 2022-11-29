@@ -1,5 +1,8 @@
 #include <alloca.h>
 #define MAX 4096
+
+int MYmynext_data();
+
 int n;
 int alloca_linked_list()
 {

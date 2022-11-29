@@ -18,6 +18,8 @@ EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 7200
 UNROLL1_PROGS := \
                  rodata                            \
                  addr_taken_simple            		 \
+                 local_used_on_unreachable_branch  \
+                 local_used_in_unreachable_loop    \
                  addr_taken_array             		 \
                  addr_taken_array_in_loop     		 \
                  addr_taken_conditional       		 \
@@ -33,9 +35,11 @@ UNROLL1_PROGS := \
                  vla_in_loop_conditional_exit      \
                  vla_2_single_loop                 \
                  vla_3_single_loop                 \
+                 vla_4_single_loop                 \
                  vla_1_inside_loop            		 \
                  vla_2_inside_loop            		 \
                  vla_3_inside_loop            		 \
+                 vla_4_inside_loop            		 \
                  alloca_malloc_switch              \
                  #vla_midway_decl              	\
                  ## vla_2_nested_loops           \
