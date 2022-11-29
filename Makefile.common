@@ -79,15 +79,15 @@
 # CLANG
 
 %.clang.eqchecker.O0.i386.s: %.c
-	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O0 $< -o $@ |& tee $@.log
 %.clang.eqchecker.O0.i386.s: %.cpp
-	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O0 $< -o $@ |& tee $@.log
 #%.clang.eqchecker.O0.i386.o: %.c
 #	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O0 $< -o $@
 %.clang.eqchecker.O0.x64.s: %.c
-	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O0 $< -o $@ |& tee $@.log
 %.clang.eqchecker.O0.x64.s: %.cpp
-	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O0 $< -o $@
+	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O0 $< -o $@ |& tee $@.log
 #%.clang.eqchecker.O0.x64.o: %.c
 #	$(CLANG_X64) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O0 $< -o $@
 #eqchecker_helper.clang.eqchecker.O0.i386.o: eqchecker_helper.c
