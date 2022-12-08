@@ -15,7 +15,7 @@ PROGS_EQCHECKER_COMPILER := bzip2_locals \
 #UNROLL1_GCC = $(PROGS_EQCHECKER_COMPILER)
 UNROLL1_CLANG = $(PROGS_EQCHECKER_COMPILER)
 
-EXTRA_FLAGS := --enumerate-src-bbl-ends --smt-query-timeout 300 --global-timeout 36000
+EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 36000
 
 PROGS_EQCHECKER := $(UNROLL1_CLANG)
 
