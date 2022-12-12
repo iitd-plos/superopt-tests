@@ -1,4 +1,9 @@
-#include "globals.h"
+//#include "globals.h"
+#define LEN 32000
+#define TYPE int
+extern __attribute__((aligned(16))) TYPE a[LEN],b[LEN],c[LEN],d[LEN];
+
+
 
  int s443()
  {

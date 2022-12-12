@@ -3,7 +3,8 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/bzip2_locals
 
-PROGS_EQCHECKER_COMPILER := bzip2_locals \
+PROGS_EQCHECKER_COMPILER := \
+                            bzip2_locals \
   													recvDecodingTables \
                             generateMTFValues \
                             undoReversibleTransformation_fast \
