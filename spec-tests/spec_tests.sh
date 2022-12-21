@@ -58,4 +58,4 @@ spec_tests_run ind2
 spec_tests_run ind3
 spec_tests_run_enabled_spec_eqclass ind4
 spec_tests_run_ind5
-
+spec_tests_run ind6
