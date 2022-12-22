@@ -3,9 +3,12 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/micro
 
-EXTRA_FLAGS := --dyn-debug=dump_final_invariants --disable-ssa-cloning
+EXTRA_FLAGS :=
 PROGS_EQCHECKER_COMPILER := fptrunc fpbinary fptoui fbinary flbinary fcall10 fcall10_with_memaccess \
 	                          rodata_simple \
+	                          load_store_elim_simple \
+	                          load_store_elim_cmove \
+	                          load_store_elim_conditional \
 	                          fcall_taking_locals #ddec arg_passing fpadd  fcall100 fcall100_with_memaccess
 #fpext : TOO SLOW
 PROGS_EQCHECKER_SRCDST :=
