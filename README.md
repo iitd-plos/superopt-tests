@@ -71,3 +71,4 @@ In addition, some environment variables are used for some paths.  The exhaustive
 
 4. `COMPCERT_INSTALL_LIB`: Search path for CompCert libs.
 
+5. `ICX_INSTALL_DIR`: Directory where ICX (intel's LLVM based compiler, AKA oneAPI compiler) is installed.  `icx` is then located to `${ICX_INSTALL_DIR}/compiler/latest/linux/bin/icc`.

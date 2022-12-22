@@ -25,6 +25,15 @@
 #%.gpp.eqchecker.O0.x64.o: %.cpp
 #	$(GPP_X64) -c $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O0 $< -o $@
 
+%.gcc.eqchecker.O1.i386.s: %.c
+	$(GCC_I386) -S $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.gcc.eqchecker.O1.i386.s: %.cpp
+	$(GPP_I386) -S $(CFLAGS) $(GPP_EQCHECKER_FLAGS) -O1 $< -o $@
+%.gcc.eqchecker.O1.x64.s: %.c
+	$(GCC_X64) -S $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.gcc.eqchecker.O1.x64.s: %.cpp
+	$(GPP_X64) -S $(CFLAGS) $(GPP_EQCHECKER_FLAGS) -O1 $< -o $@
+
 %.gcc.eqchecker.O2.i386.s: %.c
 	$(GCC_I386) -S $(CFLAGS) $(GCC_EQCHECKER_FLAGS) -O2 $< -o $@
 #%.gcc.eqchecker.O2.i386.o: %.c
@@ -86,16 +95,25 @@
 #%.clang.eqchecker.O0.i386: %.clang.eqchecker.O0.i386.o eqchecker_helper.clang.eqchecker.O0.i386.o
 #	$(CLANG_I386) $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
 
+%.clang.eqchecker.O1.i386.s: %.c
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
+%.clang.eqchecker.O1.i386.s: %.cpp
+	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
+%.clang.eqchecker.O1.x64.s: %.c
+	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
+%.clang.eqchecker.O1.x64.s: %.cpp
+	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O1 $< -o $@ |& tee $@.log
+
 %.clang.eqchecker.O2.i386.s: %.c
-	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O2 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O2 $< -o $@ |& tee $@.log
 %.clang.eqchecker.O2.i386.s: %.cpp
-	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O2 $< -o $@
+	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O2 $< -o $@ |& tee $@.log
 #%.clang.eqchecker.O2.i386.o: %.c
 #	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O2 $< -o $@
 %.clang.eqchecker.O2.x64.s: %.c
-	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O2 $< -o $@
+	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O2 $< -o $@ |& tee $@.log
 %.clang.eqchecker.O2.x64.s: %.cpp
-	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O2 $< -o $@
+	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O2 $< -o $@ |& tee $@.log
 #%.clang.eqchecker.O2.x64.o: %.c
 #	$(CLANG_X64) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O2 $< -o $@
 #eqchecker_helper.clang.eqchecker.O2.i386.o: eqchecker_helper.c
@@ -104,15 +122,15 @@
 #	$(CLANG_I386) $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
 
 %.clang.eqchecker.O3.i386.s: %.c
-	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O3 $< -o $@
+	$(CLANG_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O3 $< -o $@ |& tee $@.log
 %.clang.eqchecker.O3.i386.s: %.cpp
-	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O3 $< -o $@
+	$(CLANGPP_I386) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O3 $< -o $@ |& tee $@.log
 #%.clang.eqchecker.O3.i386.o: %.c
 #	$(CLANG_I386) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O3 $< -o $@
 %.clang.eqchecker.O3.x64.s: %.c
-	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O3 $< -o $@
+	$(CLANG_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O3 $< -o $@ |& tee $@.log
 %.clang.eqchecker.O3.x64.s: %.cpp
-	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O3 $< -o $@
+	$(CLANGPP_X64) --dyn_debug=disableSemanticAA -S -no-integrated-as $(CFLAGS) $(CLANGPP_EQCHECKER_FLAGS) -O3 $< -o $@ |& tee $@.log
 #%.clang.eqchecker.O3.x64.o: %.c
 #	$(CLANG_X64) --dyn_debug=disableSemanticAA -c $(CFLAGS) $(CLANG_EQCHECKER_FLAGS) -O3 $< -o $@
 #eqchecker_helper.clang.eqchecker.O3.i386.o: eqchecker_helper.c
@@ -147,6 +165,14 @@
 #%.icc.eqchecker.O0.i386.o: %.c
 #	$(ICC_X64) -c $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O0 $< -o $@
 
+%.icc.eqchecker.O1.i386.s: %.c
+	$(ICC_I386) -S $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icc.eqchecker.O1.i386.s: %.cpp
+	$(ICPC_I386) -S $(CFLAGS) $(ICPC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icc.eqchecker.O1.x64.s: %.c
+	$(ICC_X64) -S $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icc.eqchecker.O1.x64.s: %.cpp
+	$(ICPC_X64) -S $(CFLAGS) $(ICPC_EQCHECKER_FLAGS) -O1 $< -o $@
 
 %.icc.eqchecker.O2.i386.s: %.c
 	$(ICC_I386) -S $(CFLAGS) $(ICC_EQCHECKER_FLAGS) -O2 $< -o $@
@@ -189,6 +215,75 @@
 #%.icc.O3.i386: %.c
 #	$(ICC_I386) $(CFLAGS) $(ICC_I386_FLAGS) -O3 $< -o $@
 
+# ICX
+
+%.icx.eqchecker.O0.i386.s: %.c
+	$(ICX_I386) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O0 $< -o $@
+%.icx.eqchecker.O0.i386.s: %.cpp
+	$(ICPX_I386) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O0 $< -o $@
+#%.icx.eqchecker.O0.i386.o: %.c
+#	$(ICX_I386) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O0 $< -o $@
+#eqchecker_helper.icx.eqchecker.O0.i386.o: eqchecker_helper.c
+#	$(ICX_I386) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O0 $< -o $@
+#%.icx.eqchecker.O0.i386: %.icx.eqchecker.O0.i386.o eqchecker_helper.icx.eqchecker.O0.i386.o
+#	$(ICX_I386) $(CFLAGS) $(ICX_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O0 $^ -o $@ $(LIBS)
+
+%.icx.eqchecker.O0.x64.s: %.c
+	$(ICX_X64) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O0 $< -o $@
+%.icx.eqchecker.O0.x64.s: %.cpp
+	$(ICPX_X64) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O0 $< -o $@
+#%.icx.eqchecker.O0.i386.o: %.c
+#	$(ICX_X64) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O0 $< -o $@
+
+%.icx.eqchecker.O1.i386.s: %.c
+	$(ICX_I386) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icx.eqchecker.O1.i386.s: %.cpp
+	$(ICPX_I386) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icx.eqchecker.O1.x64.s: %.c
+	$(ICX_X64) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O1 $< -o $@
+%.icx.eqchecker.O1.x64.s: %.cpp
+	$(ICPX_X64) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O1 $< -o $@
+
+%.icx.eqchecker.O2.i386.s: %.c
+	$(ICX_I386) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O2 $< -o $@
+%.icx.eqchecker.O2.i386.s: %.cpp
+	$(ICPX_I386) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O2 $< -o $@
+#%.icx.eqchecker.O2.i386.o: %.c
+#	$(ICX_I386) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O2 $< -o $@
+%.icx.eqchecker.O2.x64.s: %.c
+	$(ICX_X64) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O2 $< -o $@
+%.icx.eqchecker.O2.x64.s: %.cpp
+	$(ICPX_X64) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O2 $< -o $@
+#%.icx.eqchecker.O2.i386.o: %.c
+#	$(ICX_X64) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O2 $< -o $@
+#eqchecker_helper.icx.eqchecker.O2.i386.o: eqchecker_helper.c
+#	$(ICX_I386) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O2 $< -o $@
+#%.icx.eqchecker.O2.i386: %.icx.eqchecker.O2.i386.o eqchecker_helper.icx.eqchecker.O2.i386.o
+#	$(ICX_I386) $(CFLAGS) $(ICX_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O2 $^ -o $@ $(LIBS)
+
+%.icx.eqchecker.O3.i386.s: %.c
+	$(ICX_I386) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O3 $< -o $@
+%.icx.eqchecker.O3.i386.s: %.cpp
+	$(ICPX_I386) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O3 $< -o $@
+#%.icx.eqchecker.O3.i386.o: %.c
+#	$(ICX_I386) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O3 $< -o $@
+%.icx.eqchecker.O3.x64.s: %.c
+	$(ICX_X64) -S $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O3 $< -o $@
+%.icx.eqchecker.O3.x64.s: %.cpp
+	$(ICPX_X64) -S $(CFLAGS) $(ICPX_EQCHECKER_FLAGS) -O3 $< -o $@
+#%.icx.eqchecker.O3.i386.o: %.c
+#	$(ICX_X64) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O3 $< -o $@
+#eqchecker_helper.icx.eqchecker.O3.i386.o: eqchecker_helper.c
+#	$(ICX_I386) -c $(CFLAGS) $(ICX_EQCHECKER_FLAGS) -O3 $< -o $@
+#%.icx.eqchecker.O3.i386: %.icx.eqchecker.O3.i386.o eqchecker_helper.icx.eqchecker.O3.i386.o
+#	$(ICX_I386) $(CFLAGS) $(ICX_EQCHECKER_FLAGS) $(LINKER_SCRIPT_I386_FLAG) -O3 $^ -o $@ $(LIBS)
+
+#%.icx.O0.i386: %.c
+#	$(ICX_I386) $(CFLAGS) $(ICX_I386_FLAGS) -O0 $< -o $@
+#%.icx.O2.i386: %.c
+#	$(ICX_I386) $(CFLAGS) $(ICX_I386_FLAGS) -O2 $< -o $@
+#%.icx.O3.i386: %.c
+#	$(ICX_I386) $(CFLAGS) $(ICX_I386_FLAGS) -O3 $< -o $@
 
 # CCOMP
 
@@ -301,6 +396,20 @@
 	rm -f $<.cg.tmp
 	$(MYLLVM_AS) $@.ll -o $@
 
+ack_helper.o: %.o: %.c
+	$(ACK_I386) -c -O0 $< -o $@
+
+# ACK (Amsterdam Compiler Kit) Compiler
+%.ack.O1.i386.o: %.c
+	-$(ACK_I386) -c $< -o $@ #no -O option disables optimizations
+%.ack.O2.i386.o: %.c
+	-$(ACK_I386) -c -O6 $< -o $@
+
+%.ack.O1.i386: %.ack.O1.i386.o ack_helper.o
+	-$(ACK_I386) -.c $^ -o $@
+%.ack.O2.i386: %.ack.O2.i386.o ack_helper.o
+	-$(ACK_I386) -.c $^ -o $@
+
 # Executable files generated using LLC (should be identical as clang; here, just to check)
 %.llc.O0.i386.o: %.bc32.O0
 	$(LLC) --dyn_debug=disableSemanticAA -O0 -filetype=obj $< -o $@
@@ -394,4 +503,14 @@
 %.icc.x64.O3.xml: %.c %.icc.eqchecker.O3.x64.s
 	perl -I $(SRCDIR) $(SRCDIR)/scripts/gen_xml_file.pl $^ > $@
 %.icc.x64.O3.xml: %.cpp %.icc.eqchecker.O3.x64.s
+	perl -I $(SRCDIR) $(SRCDIR)/scripts/gen_xml_file.pl $^ > $@
+
+%.icx.i386.O3.xml: %.c %.icx.eqchecker.O3.i386.s
+	perl -I $(SRCDIR) $(SRCDIR)/scripts/gen_xml_file.pl $^ > $@
+%.icx.i386.O3.xml: %.cpp %.icx.eqchecker.O3.i386.s
+	perl -I $(SRCDIR) $(SRCDIR)/scripts/gen_xml_file.pl $^ > $@
+
+%.icx.x64.O3.xml: %.c %.icx.eqchecker.O3.x64.s
+	perl -I $(SRCDIR) $(SRCDIR)/scripts/gen_xml_file.pl $^ > $@
+%.icx.x64.O3.xml: %.cpp %.icx.eqchecker.O3.x64.s
 	perl -I $(SRCDIR) $(SRCDIR)/scripts/gen_xml_file.pl $^ > $@

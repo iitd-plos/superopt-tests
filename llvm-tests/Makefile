@@ -3,7 +3,7 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/llvm-tests
 
-EXTRA_FLAGS := --dyn-debug=stats --smt-query-timeout 1200 --global-timeout 9000 --relocatable-memlabels-and-safety --llvm-semantics
+EXTRA_FLAGS := --dyn-debug=dump_final_invariants --smt-query-timeout 1200 --global-timeout 9000 --relocatable-memlabels-and-safety --llvm-semantics
 
 PROGS_EQCHECK_LL := \
                     prog1

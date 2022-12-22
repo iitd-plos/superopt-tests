@@ -1,3 +1,5 @@
+void MYmyDBG();
+int MYmybar(int*,int*);
 int vla_2_single_loop(int *a, unsigned n)
 {
   if (n == 0)
@@ -10,5 +12,5 @@ int vla_2_single_loop(int *a, unsigned n)
     v[i] = a[i]*a[i];
     w[i] = a[i]+a[i];
   }
-  return MYmyabs(v[0]+v[n-1]+w[0]+w[n-1]);
+  return MYmybar(v,w);
 }

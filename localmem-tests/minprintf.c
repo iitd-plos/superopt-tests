@@ -1,5 +1,9 @@
 #include <stdarg.h>
 
+void MYmyDBG(char* p);
+void MYmyprint_char(char* p);
+void MYmyprint_int(char* p);
+
 /* minprintf: minimal printf with variable argument list */
 void minprintf(char *fmt, ...)
 {
@@ -10,7 +14,7 @@ void minprintf(char *fmt, ...)
   va_start(ap, fmt);
   /* make ap point to 1st unnamed arg */
   for (p = fmt; *p; p++) {
-    MYmyDBG();
+    MYmyDBG(p); // required
     if (*p != '%') {
       MYmyprint_char(*p);
       continue;
@@ -25,9 +29,8 @@ void minprintf(char *fmt, ...)
           MYmyprint_char(*sval);
         break;
       default:
-        goto end;
+        break;
     }
   }
-end:
   va_end(ap); /* clean up when done */
 }
