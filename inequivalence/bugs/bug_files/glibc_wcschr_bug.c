@@ -14,7 +14,7 @@
 
 #include <wchar.h>
 #include <stdio.h>
-#include "loop_unroll.h"
+#include "../loop_unroll.h"
 
 #ifndef WCSCHR
 # define WCSCHR wcschr

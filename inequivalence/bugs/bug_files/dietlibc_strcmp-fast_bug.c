@@ -2,9 +2,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdio.h>
-#include "dietstring.h"
-
-#define WANT_SMALL_STRING_ROUTINES
+#include "../dietstring.h"
 
 int
 strcmp (const char *s1, const char *s2)

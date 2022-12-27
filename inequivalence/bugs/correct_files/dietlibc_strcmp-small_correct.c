@@ -4,13 +4,15 @@
 #include <stdio.h>
 #include "dietstring.h"
 
+#define WANT_SMALL_STRING_ROUTINES
+
 int
 strcmp (const char *s1, const char *s2)
 {
 #ifdef WANT_SMALL_STRING_ROUTINES
     while (*s1 && *s1 == *s2)
         s1++, s2++;
-    return (*s1 - *s2);
+    return (*(unsigned char*)s1 - *(unsigned char*)s2);
 #else
     const unsigned long *lx1, *lx2;
     unsigned long   l1, l2;

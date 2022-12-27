@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdio.h>
-#include "dietstring.h"
+#include "../dietstring.h"
 
 void* memchr(const void *s, int c, size_t n) {
   const unsigned char *pc = (unsigned char *) s;

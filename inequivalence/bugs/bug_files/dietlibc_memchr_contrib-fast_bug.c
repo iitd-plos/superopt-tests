@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdio.h>
-#include "dietstring.h"
+#include "../dietstring.h"
 
 #if __WORDSIZE == 64
 # define MB 0x7efefefefefefeff
