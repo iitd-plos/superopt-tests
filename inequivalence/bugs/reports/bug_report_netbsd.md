@@ -13,9 +13,9 @@ An example input is:
 		printf("BUG!\n");
 	}
 
-0: https://man7.org/linux/man-pages/man3/swab.3.html
+A patch that applies the necesaary fix is available [here](https://github.com/iitd-plos/superopt-tests/blob/inequivalence_checking/inequivalence/bugs/patch/netbsd_swab.patch).
 
-<Attach_Patches>
+0: https://man7.org/linux/man-pages/man3/swab.3.html
 
 Thanks,
 

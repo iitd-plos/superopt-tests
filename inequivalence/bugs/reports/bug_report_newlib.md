@@ -20,9 +20,9 @@ An example input is:
         printf("BUG!\n");
     }
 
-0: https://man.openbsd.org/memccpy
+A patch that applies the necessary fix is available [here](https://github.com/iitd-plos/superopt-tests/blob/inequivalence_checking/inequivalence/bugs/patch/newlib_memccpy.patch)
 
-<Attach_Patches>
+0: https://man.openbsd.org/memccpy
 
 Thanks,
 

@@ -43,6 +43,8 @@ An example input is:
         printf("BUG!\n");
     }
 
+A patch that applies the necessary fix is available here for the [small string routine](https://github.com/iitd-plos/superopt-tests/blob/inequivalence_checking/inequivalence/bugs/patch/dietlibc_strcmp-small.patch) and the [fast string routine](https://github.com/iitd-plos/superopt-tests/blob/inequivalence_checking/inequivalence/bugs/patch/dietlibc_strcmp-fast.patch).
+
 swab():
 This is in reference to the implementation present in the lib/ directory of the dietlibc repository.
 Linux[3] manpage for swab() specifies that the function copies n bytes from the array pointed to by from to the array pointed to by to, exchanging adjacent even and odd bytes. This should also work for coinciding memories and dietlibc's implementation does not take that into account.
@@ -53,6 +55,8 @@ An example input is:
     if (src[0] != 64 || src[1] != 65) {
 		printf("BUG!\n");
 	}
+
+A patch that applies the necesaary fix is available [here](https://github.com/iitd-plos/superopt-tests/blob/inequivalence_checking/inequivalence/bugs/patch/dietlibc_swab.patch).
 
 wcschr() and wcsrchr():
 This is in reference to the implementation present in the lib/ directory of the dietlibc repository.
@@ -76,8 +80,6 @@ An example input is:
 3: https://man7.org/linux/man-pages/man3/swab.3.html
 4: https://man.openbsd.org/wcschr.3
 5: https://man.openbsd.org/wcsrchr.3
-
-<Attach_Patches>
 
 Thanks,
 

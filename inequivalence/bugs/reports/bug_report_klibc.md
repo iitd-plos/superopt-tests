@@ -15,8 +15,6 @@ An example input is:
 
 0: https://man7.org/linux/man-pages/man3/strchr.3.html
 
-<Attach_Patches>
-
 Thanks,
 
 Jai Arora, Abhishek Rose, Shubhani Gupta, Sorav Bansal
