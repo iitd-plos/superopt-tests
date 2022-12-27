@@ -23,10 +23,10 @@
 
 wchar_t *wmemset(wchar_t *s, wchar_t c, size_t n)
 {
-	register unsigned char *p = (unsigned char *) s;
+	register unsigned int *p = (unsigned int *) s;
 
 	while (n) {
-		*p++ = (unsigned char) c;
+		*p++ = (unsigned int) c;
 		--n;
 	}
 
