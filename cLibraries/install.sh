@@ -40,7 +40,7 @@ wget https://sourceware.org/pub/newlib/newlib-4.2.0.20211231.tar.gz -O newlib.ta
 wget https://downloads.uclibc-ng.org/releases/1.0.42/uClibc-ng-1.0.42.tar.gz -O uClibc.tar.gz
 
 # klibc does not have an updated git repository
-KLIBC_LATEST="2.0.10"
+KLIBC_LATEST="2.0.11"
 wget https://mirrors.edge.kernel.org/pub/linux/libs/klibc/2.0/klibc-"${KLIBC_LATEST}".tar.gz -O klibc.tar.gz
 
 mkdir glibc && tar -zxf glibc.tar.gz -C glibc --strip-components=1
