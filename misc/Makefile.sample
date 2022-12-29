@@ -1,0 +1,32 @@
+include ../config.mak                        # paths
+
+# set VPATH path for targets and src files
+VPATH = $(SRCDIR)/YOUR_SUITE_DIRNAME_HERE
+
+EXTRA_FLAGS := # FLAGS_TO_BE_PASSED_TO_EQ_HERE
+
+UNROLL1_GCC    := # UNROLL FACTOR 1 GCC PROGRAMS HERE
+UNROLL1_CLANG  := # UNROLL FACTOR 1 CLANG PROGRAMS HERE
+UNROLL1_ICC    := # UNROLL FACTOR 1 ICC PROGRAMS HERE
+
+UNROLL8_GCC    := # UNROLL FACTOR 8 GCC PROGRAMS HERE
+UNROLL16_CLANG := # UNROLL FACTOR 8 CLANG PROGRAMS HERE
+
+# src-dst programs: write the name without {_src,_dst} suffix
+# example: for program pair: nestedLoop_src.c , nestedLoop_dst.c
+#          write:            UNROLL1_SRCDST := nestedLoop
+UNROLL1_SRCDST := # UNROLL FACTOR 1 SRC-DST PROGRAMS HERE
+
+# compiler flags
+
+# # for disabling unrolling
+# GCC_EQCHECKER_FLAGS_EXTRA= $(GCC_EQCHECKER_NOUNROLL_FLAGS)
+# CLANG_EQCHECKER_FLAGS_EXTRA= $(CLANG_EQCHECKER_NOUNROLL_FLAGS)
+# ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
+
+# # for enabling vectorization
+# GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
+# CLANG_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
+# ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_VEC_FLAGS)
+
+include $(SRCDIR)/Makefile.template
