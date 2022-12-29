@@ -47,8 +47,6 @@ UNROLL1_PROGS := \
                  #minscanf                      # gcc eqgen fails
                  #arg_addr_taken               # eqgen fails
 
-PROGS_EQCHECKER := $(UNROLL1_GCC) $(UNROLL1_CLANG) $(UNROLL2_GCC) $(UNROLL2_CLANG) $(UNROLL2_ACK)
-
 # flags
 ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
 

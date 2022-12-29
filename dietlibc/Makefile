@@ -3,15 +3,11 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/dietlibc
 
-PROGS :=
-PROGS_PREFIX := memccpy      \
-                memchr       \
-                memrchr      \
+UNROLL1 := memccpy  \
+           memchr   \
+           memrchr
 
-export PROGS
-export PROGS_PREFIX
-
-PROGS_EQCHECKER := $(addsuffix _src, $(PROGS_PREFIX)) $(addsuffix _dst, $(PROGS_PREFIX)) $(PROGS)
+UNROLL1_SRCDST := $(UNROLL1)
 
 # flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS) $(GCC_EQCHECKER_NOUNROLL_FLAGS)
