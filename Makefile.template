@@ -87,7 +87,7 @@ all: $(ALL_PROGS)
 ack-progs: $(ACK_EQCHECKER_PROGS)
 
 eqtest_%.helper:: $(ALL_PROGS) $(SRCDIR)/Makefile.template $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(VPATH)/Makefile
-	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $@ $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z) $(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS)" $(PROGS_UNROLL_CUR_COMPILER)
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $@ $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z) $(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS) $(EXTRA_FLAGS_$(CUR_COMPILER))" $(PROGS_UNROLL_CUR_COMPILER)
 
 eqtest_%_gcc.helper:: CUR_COMPILER=GCC
 eqtest_%_gPP.helper:: CUR_COMPILER=GPP
