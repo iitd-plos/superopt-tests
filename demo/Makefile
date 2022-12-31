@@ -19,7 +19,7 @@ UNROLL4_SRCDST := bitflip \
 
 UNROLL8_SRCDST := strlen
 
-EXTRA_FLAGS := --smt-query-timeout 600
+EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 7200
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(GCC_EQCHECKER_NOUNROLL_FLAGS)

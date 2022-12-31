@@ -11,7 +11,7 @@ VPATH = $(SRCDIR)/TSVC_prior_work
 # UNROLL16_CLANG := s122 s112 s000 s1112 s121 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 vpvpv vpvts vpvtv vtv vtvtv sum1d vdotr
 # UNROLL8_ICC := s122 s112
 
-EXTRA_FLAGS :=
+EXTRA_FLAGS := --global-timeout 7200
 
 UNROLL8_GCC := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvts vpvtv vtv vtvtv # s176 is non-bisimilar (outer looop and inner loop collapse twice)
 UNROLL64_CLANG := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s176 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvts vpvtv vtv vtvtv # probably not passing XXX s176, s3251(non zero bv rank)
