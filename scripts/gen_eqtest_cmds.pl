@@ -89,7 +89,7 @@ foreach my $prog (keys %unroll) {
     }
     #print "compiler = $compiler\n";
     my $src_pathname = identify_filetype_extension("$VPATH/$prog");
-    if ($compiler ne "ack" || -f "$PWD/$prog.$compiler$compiler_suffix") {
+    if ($compiler ne "ack" || -f "$PWD/$prog.$compiler$compiler_suffix") { # skip missing binaries for 'ack' which does not support VLA/alloca()
       print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
     } else {
       #print "Ignoring $PWD/$prog.$compiler$compiler_suffix\n";

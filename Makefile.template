@@ -35,8 +35,8 @@ EQCHECKER_X64_ICC_PROGS    := $(foreach opt,$(OPTS),$(addsuffix .icc.eqchecker.$
 EQCHECKER_I386_ICX_PROGS   := $(foreach opt,$(OPTS),$(addsuffix .icx.eqchecker.$(opt).i386.s,   $(PROGS_EQCHECKER_ICX)))
 EQCHECKER_X64_ICX_PROGS    := $(foreach opt,$(OPTS),$(addsuffix .icx.eqchecker.$(opt).x64.s,    $(PROGS_EQCHECKER_ICX)))
 
-EQCHECKER_I386_ACK_PROGS = $(foreach opt,O0 O2,$(addsuffix .ack.eqchecker.$(opt).i386.s,$(PROGS_EQCHECKER_ACK)))
-EQCHECKER_I386_CCOMP_PROGS = $(foreach opt,O0 O2,$(addsuffix .ccomp.eqchecker.$(opt).i386.s,$(PROGS_EQCHECKER_CCOMP)))
+EQCHECKER_I386_ACK_PROGS   := $(foreach opt,O1 O2,$(addsuffix .ack.$(opt).i386,   $(PROGS_EQCHECKER_ACK)))
+EQCHECKER_I386_CCOMP_PROGS := $(foreach opt,O0 O2,$(addsuffix .ccomp.eqchecker.$(opt).i386, $(PROGS_EQCHECKER_CCOMP)))
 
 EQCHECKER_I386_GCC_O3_XML_FILES = $(addsuffix .gcc.i386.O3.xml, $(PROGS_EQCHECKER_GCC))
 EQCHECKER_I386_CLANG_O3_XML_FILES = $(addsuffix .clang.i386.O3.xml, $(PROGS_EQCHECKER_CLANG))
@@ -66,8 +66,7 @@ EQCHECKER_PROGS = \
   $(EQCHECKER_X64_ICX_PROGS) \
 
 ACK_EQCHECKER_PROGS = \
-  $(EQCHECKER_I386_ACK_O1_PROGS) \
-  $(EQCHECKER_I386_ACK_O2_PROGS)
+  $(EQCHECKER_I386_ACK_PROGS) \
 
 XML_FILES = \
   $(EQCHECKER_I386_GCC_O3_XML_FILES) \
