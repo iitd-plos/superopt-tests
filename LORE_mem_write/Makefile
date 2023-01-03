@@ -3,12 +3,15 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/LORE_mem_write
 
-UNROLL4_GCC := ex101 ex102 ex103 ex104 ex105 ex106 ex107 ex108
-UNROLL8_GCC := ex106u ex107u
+EXTRA_FLAGS := --global-timeout 7200
 
-UNROLL8_CLANG := ex101 ex102 ex103 ex104 ex105 ex108 # not tested: ex106 ex107
+UNROLL4_GCC := ex101 ex102 ex103 ex104 ex105 ex106 ex107 ex108 # should pass: ex103 (???), ex107 (query-timeout)
+UNROLL8_GCC := ex106u ex107u # should pass: ex107u (query-timeout)
 
-UNROLL8_SRCDST := ex109 ex109_8 ex1010 ex1011
+UNROLL16_CLANG := ex101 ex102 ex103 ex104 ex105 ex108 # should pass: ex103 (???), ex108 (query-timeout)
+                  # not tested: ex106 ex107
+
+UNROLL8_SRCDST := ex109 ex109_8 ex1010 ex1011 # should pass: ex1011 (???)
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
