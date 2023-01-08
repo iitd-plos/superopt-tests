@@ -11,8 +11,8 @@
 . par_script.sh loop3
 . par_script.sh loop4
 . par_script.sh loop5
-. par_script.sh loop6 enable_manual_eqclass
-. par_script.sh loop7 enable_manual_eqclass
+. par_script.sh loop6
+. par_script.sh loop7
 
 . par_script.sh couple1
 . par_script.sh couple2
@@ -23,7 +23,7 @@
 . par_script.sh ind1
 . par_script.sh ind2
 . par_script.sh ind3
-. par_script.sh ind4 enable_manual_eqclass
+. par_script.sh ind4
 . par_script.sh ind5
 . par_script.sh ind6
 
