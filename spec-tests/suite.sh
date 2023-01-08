@@ -19,6 +19,7 @@
 . par_script.sh couple3
 . par_script.sh couple4
 . par_script.sh couple5
+. par_script.sh couple8
 
 . par_script.sh ind1
 . par_script.sh ind2
