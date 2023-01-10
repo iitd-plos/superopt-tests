@@ -742,10 +742,10 @@ Memlabel map for call-context {*;foo}
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.local_alloc_count.Lfor.cond%1%bbentry
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -828,8 +828,8 @@ tfg_edge_comment end
 1 : input.dst.llvm-%r.0.Lfor.cond%1%bbentry : BV:32
 2 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%add.Lfor.cond%1%bbentry
@@ -965,8 +965,8 @@ dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
 =Loc 100034 in dst.llvm.foo.
 REGMEM
-src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 =Loc 100035 in dst.llvm.foo.
 REGMEM
 dst.llvm-%add.Lfor.cond%1%bbentry
@@ -1054,7 +1054,7 @@ memlabel-mem-may-straddle-symbol.1-heap
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100033 {input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100034 {input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100034 {input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100039 {input.dst.local_alloc_count.Lfor.cond%1%bbentry }
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
@@ -1070,9 +1070,9 @@ memlabel-mem-may-straddle-symbol.1-heap
 1 : 1 { 0x1 +1.11e129 } : BV:32
 2 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at Lfor.body%1%d=>Lfor.cond%1%bbentry for loc_id 100034 {input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at Lfor.body%1%d=>Lfor.cond%1%bbentry for loc_id 100034 {input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =graph_with_edge_structures.loc_to_expr_map at Lfor.body%1%d=>Lfor.cond%1%bbentry for loc_id 100035 {input.dst.llvm-%add.Lfor.cond%1%bbentry }
 1 : input.dst.llvm-%r.0.Lfor.cond%1%bbentry : BV:32
@@ -1358,10 +1358,10 @@ lr_status_linearly_related(; )
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.local_alloc_count.Lfor.cond%1%bbentry
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lfor.body%1%d=>Lfor.cond%1%bbentry
 =dst.llvm-%i.0.Lfor.cond%1%bbentry
@@ -1372,9 +1372,9 @@ lr_status_linearly_related(; )
 1 : input.dst.llvm-%r.0.Lfor.cond%1%bbentry : BV:32
 2 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%add.Lfor.cond%1%bbentry
 1 : input.dst.llvm-%r.0.Lfor.cond%1%bbentry : BV:32
@@ -1854,7 +1854,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.body%1%d=>Lfor.cond%1%bbentry
@@ -1938,7 +1938,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.body%1%d=>Lfor.cond%1%bbentry
@@ -2022,7 +2022,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.body%1%d=>Lfor.cond%1%bbentry
@@ -2106,7 +2106,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.body%1%d=>Lfor.cond%1%bbentry
@@ -2190,7 +2190,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.body%1%d=>Lfor.cond%1%bbentry
@@ -2267,7 +2267,7 @@ lr_status_top
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
-=LR status for var input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=LR status for var input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%cmp.Lfor.cond%2%d
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
@@ -2523,7 +2523,7 @@ discontiguous mls:
 =global nodece 0 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin cvc4.ce3 5b3760be18a951686f7a79fb2967792e
+=counter_example_begin cvc4.ce3 9056cc364d68f49ad436d5c5149d3f
 =input.spec-%var-n-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -2556,7 +2556,7 @@ discontiguous mls:
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -2650,7 +2650,7 @@ L0%0%d_L0%0%d
 =global nodece 3 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 3 nodece_cached_counterexample
-=counter_example_begin cvc4.ce39 755375a1284b68ac8733beca8d9704a
+=counter_example_begin cvc4.ce39 6c438b71f5ea12c5b4f6bd8090b0a540
 =input.spec-%var-n-1
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -2683,7 +2683,7 @@ L0%0%d_L0%0%d
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -2707,7 +2707,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 4 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 4 nodece_cached_counterexample
-=counter_example_begin z3v487.ce40 d47a1a1992824b393087c952f69dd457
+=counter_example_begin z3v487.ce40 5f94b6ee664981f70ea87de42a08768
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -2740,7 +2740,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -2764,7 +2764,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 5 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 5 nodece_cached_counterexample
-=counter_example_begin yices.ce41 e194ef61fe53678f4a53b94182a28a3
+=counter_example_begin yices.ce41 d6c83132d22347f9f9be57eaea6926a
 =input.spec-%var-n-1
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -2797,7 +2797,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -2944,7 +2944,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 9 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 9 nodece_cached_counterexample
-=counter_example_begin cvc4.ce131 2714449f7885b265b88b1b8199dc35
+=counter_example_begin cvc4.ce131 ae40243c95ab25977daeaede288d9b8f
 =input.spec-%var-n-1
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -2973,7 +2973,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -2997,7 +2997,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 10 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 10 nodece_cached_counterexample
-=counter_example_begin z3v487.ce121 fead2975fabca7f64bf516feb225c
+=counter_example_begin z3v487.ce121 14538a3cd8d24fb8cff7a0fe27f3ba
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -3026,7 +3026,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -3050,7 +3050,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 11 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 11 nodece_cached_counterexample
-=counter_example_begin z3v487.ce155 ee7e6806be66c42cb5b7a214edd5a0
+=counter_example_begin z3v487.ce155 c23cb542a578227bb8e14d93a5e2b55
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -3079,7 +3079,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -3103,7 +3103,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 12 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 12 nodece_cached_counterexample
-=counter_example_begin z3v487.ce176 a97c5939e334036b59adfc422b694ad
+=counter_example_begin z3v487.ce176 3032c6f610a7bbff6957b568011fa5c
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
@@ -3132,7 +3132,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 6 { 0x6 +1.71e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -3156,7 +3156,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 13 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 13 nodece_cached_counterexample
-=counter_example_begin cvc4.ce107 51bb37817b3ca9e141cbd7cee70eb3a
+=counter_example_begin cvc4.ce107 f784193afcededf42c745da252674773
 =input.spec-%var-n-1
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
@@ -3181,7 +3181,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 2011334925 { 0x77e2890d +1.76980745e112 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
 1 : 40960 { 0xa000 +1.488281e129 } : BV:32
@@ -3199,7 +3199,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 14 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 14 nodece_cached_counterexample
-=counter_example_begin cvc4.ce200 7c5bc0523c1aa4e04e3f7ca8fffc7f3c
+=counter_example_begin cvc4.ce200 82e0e9763d522cb14528cd2e72ff919
 =input.spec-%var-n-1
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
@@ -3224,7 +3224,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 2011334926 { 0x77e2890e +1.76980757e112 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
 1 : 40960 { 0xa000 +1.488281e129 } : BV:32
@@ -3242,7 +3242,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 15 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 15 nodece_cached_counterexample
-=counter_example_begin z3.ce226 87fea5f11c92b53796b107c58b9aadc
+=counter_example_begin z3.ce226 87916cd1f4b6a43a528421ecee10f0b5
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
@@ -3277,7 +3277,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 896629329 { 0x35717a51 +1.88654530e235 } : BV:32
 =input.dst.llvm-%cmp.Lfor.cond%2%d
 1 : 1 { 0x1 } : BOOL
@@ -3303,7 +3303,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 16 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 16 nodece_cached_counterexample
-=counter_example_begin z3.ce258 2590878d757f61b255e2def73ded1bc
+=counter_example_begin z3.ce258 3e5bc1381a1ee6b827c1ded4cc3df61
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
@@ -3328,7 +3328,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 2147483649 { 0x80000001 -2147483647 -1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 896629330 { 0x35717a52 +1.88654541e235 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -3346,7 +3346,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 17 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 17 nodece_cached_counterexample
-=counter_example_begin z3.ce302 1d04789b0dabbfac5518193bf15b1f1
+=counter_example_begin z3.ce302 2b73a237d419dde9b3844792f23b3
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
@@ -3381,7 +3381,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 900439795 { 0x35ab9ef3 +1.34078824e236 } : BV:32
 =input.dst.llvm-%cmp.Lfor.cond%2%d
 1 : 1 { 0x1 } : BOOL
@@ -3407,7 +3407,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 18 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 18 nodece_cached_counterexample
-=counter_example_begin z3.ce334 645619f9f9f474cb3e8bb2e5a4599
+=counter_example_begin z3.ce334 40e44c158cefae76269b27725b38894
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
@@ -3432,7 +3432,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 900439796 { 0x35ab9ef4 +1.34078836e236 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -3573,7 +3573,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 22 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 22 nodece_cached_counterexample
-=counter_example_begin cvc4.ce593 1292312c5030c9c3b8c472b5f448388a
+=counter_example_begin cvc4.ce593 c595fade7d88ab6195a3d3382aa2bfa
 =retaddr_const
 1 : 1458985843 { 0x56f65b73 +1.92466580e46 } : BV:32
 =input.spec-%var-n-1
@@ -3614,7 +3614,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%cmp.Lfor.cond%2%d
 1 : 0 { 0x0 } : BOOL
@@ -3646,7 +3646,7 @@ E0%0%d_E0%0%d
 =global nodece 23 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 23 nodece_cached_counterexample
-=counter_example_begin yices.ce563 c35f8845e719656e37f37aaf5933b9
+=counter_example_begin yices.ce563 37884b1e7125494fd9825e62a9a47c7
 =retaddr_const
 1 : 14228075 { 0xd91a6b +1.69611871e130 } : BV:32
 =input.spec-%var-n-1
@@ -3687,7 +3687,7 @@ E0%0%d_E0%0%d
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%cmp.Lfor.cond%2%d
 1 : 0 { 0x0 } : BOOL

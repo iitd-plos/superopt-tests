@@ -753,10 +753,10 @@ mlvar.dst.llvm.foo.1 : memlabel-mem-no-straddle-symbol.1-heap-arg.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.local_alloc_count.Lwhile.cond%1%bbentry
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-=src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
 =EdgeAssume.0
@@ -867,8 +867,8 @@ tfg_edge_comment end
 13 : 0 { 0x0 } : BOOL
 14 : select(2, 3, 4, 11, 12, 13) : BV:32
 15 : bvadd(1, 14) : BV:32
-=src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+=dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%0.Lwhile.cond%1%bbentry
@@ -1200,8 +1200,8 @@ dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
 1 : input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry : BV:32
 =Loc 100047 in dst.llvm.foo.
 REGMEM
-src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 =Loc 100048 in dst.llvm.foo.
 REGMEM
 dst.llvm-%0.Lwhile.cond%1%bbentry
@@ -1341,7 +1341,7 @@ memlabel-mem-may-straddle-symbol.1-heap
 1 : input.dst.llvm-%l : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lwhile.cond%1%bbentry for loc_id 100046 {input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lwhile.cond%1%bbentry for loc_id 100047 {input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lwhile.cond%1%bbentry for loc_id 100047 {input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lwhile.cond%1%bbentry for loc_id 100065 {input.dst.local_alloc_count.Lwhile.cond%1%bbentry }
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
@@ -1369,9 +1369,9 @@ memlabel-mem-may-straddle-symbol.1-heap
 7 : 4 { 0x4 +1.0e1025 } : INT
 8 : 0 { 0x0 } : BOOL
 9 : select(1, 2, 3, 6, 7, 8) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at Lwhile.body%1%d=>Lwhile.cond%1%bbentry for loc_id 100047 {input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at Lwhile.body%1%d=>Lwhile.cond%1%bbentry for loc_id 100047 {input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry }
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =graph_with_edge_structures.loc_to_expr_map at Lwhile.body%1%d=>Lwhile.cond%1%bbentry for loc_id 100048 {input.dst.llvm-%0.Lwhile.cond%1%bbentry }
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1927,10 +1927,10 @@ lr_status_linearly_related(; )
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.local_alloc_count.Lwhile.cond%1%bbentry
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-=src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
@@ -1953,9 +1953,9 @@ lr_status_linearly_related(; )
 7 : 0 { 0x0 } : BOOL
 8 : select(2, 3, 4, 5, 6, 7) : BV:32
 9 : bvadd(1, 8) : BV:32
-=src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+=dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%0.Lwhile.cond%1%bbentry
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -2708,7 +2708,7 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
@@ -2857,7 +2857,7 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
@@ -3006,7 +3006,7 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
@@ -3155,7 +3155,7 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
@@ -3304,7 +3304,7 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 7 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
@@ -3448,7 +3448,7 @@ lr_status_linearly_related(; )
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+=LR status for var input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%tobool.Lwhile.cond%2%d
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
@@ -3772,21 +3772,20 @@ discontiguous mls:
 =global nodece 0 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%6%bbentry_Lwhile.cond%1%bbentry)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin cvc4.ce6 c9616bfdc64fbb15e57e2a204dae951f
+=counter_example_begin cvc4.ce6 f8b2df665e685286a915c7286050116
 =input.spec-%var-l-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar15 : BV:32
-4 : Lambda78Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda79Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar15 : BV:32
+3 : Lambda50Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda51Var : BV:32
+6 : unit : UNIT
+7 : 1808360963 { 0x6bc96603 +1.57342565e88 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-sum-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%6%bbentry
@@ -3803,25 +3802,24 @@ discontiguous mls:
 1 : 238820493 { 0xe3c1c8d +1.46962130e157 } : COUNT
 =input.spec-%var-l-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar15 : BV:32
-4 : Lambda78Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda79Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar15 : BV:32
+3 : Lambda50Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda51Var : BV:32
+6 : unit : UNIT
+7 : 1808360963 { 0x6bc96603 +1.57342565e88 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-5.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -3836,12 +3834,6 @@ discontiguous mls:
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.spec-%var-l-1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 2626523777
@@ -3855,21 +3847,20 @@ L0%0%d_L0%0%d -> L2%6%bbentry_Lwhile.cond%1%bbentry
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin z3v487.ce7 e82526211d366e57a6ce36ee4a6e87
+=counter_example_begin z3v487.ce7 432c337fc9d96a15c6f6ef846afb96a4
 =input.spec-%var-l-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar19 : BV:32
-4 : Lambda88Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda89Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar19 : BV:32
+3 : Lambda60Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda61Var : BV:32
+6 : unit : UNIT
+7 : 1623928431 { 0x60cb2e6f +1.58735454e66 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
@@ -3885,12 +3876,6 @@ L0%0%d_L0%0%d -> L2%6%bbentry_Lwhile.cond%1%bbentry
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.spec-%var-l-1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 2853900668
@@ -3904,21 +3889,20 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce8 58e42ee1f36dbab79e616b6f9e4b8c7b
+=counter_example_begin yices.ce8 4fbe3251822759f68592e1c0ac7aa
 =input.spec-%var-l-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar23 : BV:32
-4 : Lambda98Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda99Var : BV:32
-7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar23 : BV:32
+3 : Lambda70Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda71Var : BV:32
+6 : unit : UNIT
+7 : 1573078159 { 0x5dc3448f +1.52552974e60 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
@@ -3934,10 +3918,6 @@ L0%0%d_L0%0%d
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.spec-%var-l-1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 52945785
@@ -3946,750 +3926,170 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_visted_pcs: 
 L0%0%d_L0%0%d
 =global nodece 3
-=global nodece 3 nodece cvc4.ce33.num_edges_traversed1
+=global nodece 3 nodece z3v487.ce193.num_edges_traversed1
 =global nodece 3 nodece_path
 =global nodece 3 nodece_path.graph_edge_composition
-(L0%0%d_L0%0%d=>L2%6%bbentry_Lwhile.cond%1%bbentry)
+(L2%6%bbentry_Lwhile.cond%1%bbentry=>L2%6%bbentry_Lwhile.cond%1%bbentry)
 =global nodece 3 nodece_cached_counterexample
-=counter_example_begin cvc4.ce33 d795964eee84a48210dc79fa3d4d6b
+=counter_example_begin z3v487.ce193 6e365b9edf370d6ce29af26b052bdc9
 =input.spec-%var-l-1
-1 : 2 { 0x2 +1.23e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 2 : unit : UNIT
 3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar39 : BV:32
-5 : Lambda198Var : BV:32
+4 : Indvar509 : BV:32
+5 : Lambda1977Var : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda199Var : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+7 : Lambda1978Var : BV:32
+8 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+9 : sum(3, 2, 4) : SUM[UNIT,BV:32]
+10 : prod(8, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+12 : ind(3, 4, 6, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.dst.llvm-%l.addr.0.phi.tmpvar.while.body.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
+1 : 4 { 0x4 +1.47e129 } : BV:32
 =input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 926599724 { 0x373aca2c +1.45929479e239 } : BV:32
 =input.dst.llvm-mem
-1 : ([ 0; 1073741825 ] -> 0, [ 1073741826; 1073741826 ] -> 32, [ 1073741827; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+1 : ([ 0; 1017 ] -> 38, [ 1018; 1018 ] -> 0, [ 1019; 1019 ] -> 0, [ 1020; 1021 ] -> 38, [ 1022; 1022 ] -> 0, [ 1023; 1023 ] -> 0, [ 1024; 1024 ] -> 0, [ 1025; 1025 ] -> 0, [ 1026; 1027 ] -> 38, [ 1028; 1028 ] -> 0, [ 1029; 1029 ] -> 0, [ 1030; 1030 ] -> 0, [ 1031; 1031 ] -> 0, [ 1032; 4294967295 ] -> 38, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 234881019 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 234881020; 234881023 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 234881024; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+1 : 234881020 { 0xdfffffc +1.99999952e156 } : BV:32
 =input.dst.llvm-%l
-1 : 2097152 { 0x200000 +1.25000000e129 } : BV:32
-=input.dst.local_alloc_count.=L0%0%d=
-1 : 391356995 { 0x1753a243 +1.65338933e175 } : COUNT
+1 : 1018 { 0x3fa +1.12135e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry
-1 : 2 { 0x2 +1.23e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar39 : BV:32
-5 : Lambda198Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda199Var : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar530 : BV:32
+3 : Lambda2034Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda2035Var : BV:32
+6 : unit : UNIT
+7 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%var-l2-0.L2%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar532 : BV:32
+3 : Lambda2040Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda2041Var : BV:32
+6 : unit : UNIT
+7 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-5.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.L2%6%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.spec-%var-n-0.L2%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar534 : BV:32
+3 : Lambda2047Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda2048Var : BV:32
+6 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+7 : unit : UNIT
+8 : sum(1, 7, 2) : SUM[UNIT,BV:32]
+9 : prod(6, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=input.spec-%var-val-0.L2%6%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 2097152 { 0x200000 +1.25000000e129 } : BV:32
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : 1816429950 { 0x6c44857e +1.53532385e89 } : BV:32
+=input.dst.llvm-%tobool.Lwhile.cond%2%d
+1 : 1 { 0x1 } : BOOL
+=input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry
+1 : 1024 { 0x400 +1.12207e129 } : BV:32
+=input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+=input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 2097152 { 0x200000 +1.25000000e129 } : BV:32
-=input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
+=input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.1.total_offset.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.local_alloc_count.Lwhile.cond%1%bbentry
-1 : 391356995 { 0x1753a243 +1.65338933e175 } : COUNT
-=input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry
-1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+=input.dst.llvm-%add.Lwhile.cond%1%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.1.total_offset.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%0.Lwhile.cond%1%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.2.total_offset.Lwhile.cond%1%bbentry
+1 : 4 { 0x4 +1.47e129 } : BV:32
+=input.dst.llvm-%1.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.3.total_offset.Lwhile.cond%1%bbentry
+1 : 1028 { 0x404 +1.12254e129 } : BV:32
+=input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%sum.0.phi.tmpvar.while.body.Lwhile.cond%1%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-%next.Lwhile.cond%1%bbentry
+1 : 1028 { 0x404 +1.12254e129 } : BV:32
+=input.dst.llvm-%val.Lwhile.cond%1%bbentry
+1 : 1024 { 0x400 +1.12207e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+1 : 234881020 { 0xdfffffc +1.99999952e156 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
+1 : 234881023 { 0xdffffff +1.99999988e156 } : BV:32
 =input.spec-%var-l-1.0
-1 : 2 { 0x2 +1.23e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.spec-%var-l-0.L2%6%bbentry.0
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-l-1.2.0
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.spec-%var-l-0.L2%6%bbentry.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.L2%6%bbentry.2.0
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
 =counter_example.random_seed
-3460543625
+3830988011
 =counter_example_end
 =global nodece 3 num_edges_traversed 1
 =global nodece 3 nodece_visted_pcs: 
 L2%6%bbentry_Lwhile.cond%1%bbentry
 =global nodece 4
-=global nodece 4 nodece z3v487.ce34.num_edges_traversed1
+=global nodece 4 nodece cvc4.ce194.num_edges_traversed1
 =global nodece 4 nodece_path
 =global nodece 4 nodece_path.graph_edge_composition
-(L0%0%d_L0%0%d=>L2%6%bbentry_Lwhile.cond%1%bbentry)
-=global nodece 4 nodece_cached_counterexample
-=counter_example_begin z3v487.ce34 995e4f4df302fcd911331e91cef588
-=input.spec-%var-l-1
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 134744072 { 0x8080808 +1.6274509e145 } : BV:32
-4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar43 : BV:32
-6 : Lambda208Var : BV:32
-7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda209Var : BV:32
-9 : prod(4, 5) : PROD[BV:32,BV:32]
-10 : sum(4, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
-11 : lambda(8, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-12 : ind(4, 5, 7, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(3, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 11 ] -> 8, [ 12; 12 ] -> 0, [ 13; 13 ] -> 0, [ 14; 14 ] -> 0, [ 15; 15 ] -> 0, [ 16; 32776 ] -> 8, [ 32777; 32777 ] -> 0, [ 32778; 32778 ] -> 0, [ 32779; 32779 ] -> 0, [ 32780; 4294967295 ] -> 8, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 32775 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 32776; 32779 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 32780; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 32776 { 0x8008 +1.390720e129 } : BV:32
-=input.dst.llvm-%l
-1 : 8 { 0x8 +1.95e129 } : BV:32
-=input.dst.local_alloc_count.=L0%0%d=
-1 : 645315908 { 0x2676bd44 +1.92765092e205 } : COUNT
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 134744072 { 0x8080808 +1.6274509e145 } : BV:32
-4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar43 : BV:32
-6 : Lambda208Var : BV:32
-7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda209Var : BV:32
-9 : prod(4, 5) : PROD[BV:32,BV:32]
-10 : sum(4, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
-11 : lambda(8, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-12 : ind(4, 5, 7, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(3, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 8 { 0x8 +1.95e129 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 8 { 0x8 +1.95e129 } : BV:32
-=input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.local_alloc_count.Lwhile.cond%1%bbentry
-1 : 645315908 { 0x2676bd44 +1.92765092e205 } : COUNT
-=input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry
-1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 32776 { 0x8008 +1.390720e129 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 32779 { 0x800b +1.390756e129 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 134744072 { 0x8080808 +1.6274509e145 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-3645159584
-=counter_example_end
-=global nodece 4 num_edges_traversed 1
-=global nodece 4 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 5
-=global nodece 5 nodece yices.ce35.num_edges_traversed1
-=global nodece 5 nodece_path
-=global nodece 5 nodece_path.graph_edge_composition
-(L0%0%d_L0%0%d=>L2%6%bbentry_Lwhile.cond%1%bbentry)
-=global nodece 5 nodece_cached_counterexample
-=counter_example_begin yices.ce35 683d91a557d1a78bf43764acc8555916
-=input.spec-%var-l-1
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar47 : BV:32
-5 : Lambda218Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda219Var : BV:32
-8 : sum(3, 2, 4) : SUM[UNIT,BV:32]
-9 : prod(3, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 2 ] -> 0, [ 3; 3 ] -> 128, [ 4; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.dst.local_alloc_count.=L0%0%d=
-1 : 718433215 { 0x2ad26bbf +1.64391314e214 } : COUNT
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar47 : BV:32
-5 : Lambda218Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda219Var : BV:32
-8 : sum(3, 2, 4) : SUM[UNIT,BV:32]
-9 : prod(3, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.local_alloc_count.Lwhile.cond%1%bbentry
-1 : 718433215 { 0x2ad26bbf +1.64391314e214 } : COUNT
-=input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry
-1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-197094738
-=counter_example_end
-=global nodece 5 num_edges_traversed 1
-=global nodece 5 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 6
-=global nodece 6 nodece z3v487.ce195.num_edges_traversed0
-=global nodece 6 nodece_path
-=global nodece 6 nodece_path.graph_edge_composition
-(epsilon)
-=global nodece 6 nodece_cached_counterexample
-=counter_example_begin z3v487.ce195 edd077f2523cfc57bca1cafb4aa54f
-=input.spec-%var-l-1
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar257 : BV:32
-5 : Lambda1737Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda1738Var : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 4294705151 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 4294705152; 4294705155 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4294705156; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 4294705152 { 0xfffc0000 -262144 -1.96875000e128 } : BV:32
-=input.dst.llvm-%l
-1 : 7 { 0x7 +1.83e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar259 : BV:32
-5 : Lambda1742Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda1743Var : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 8 { 0x8 +1.95e129 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 4294705152 { 0xfffc0000 -262144 -1.96875000e128 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 4294705155 { 0xfffc0003 -262141 -1.96875035e128 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-3093649797
-=counter_example_end
-=global nodece 6 num_edges_traversed 0
-=global nodece 6 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 7
-=global nodece 7 nodece cvc4.ce196.num_edges_traversed0
-=global nodece 7 nodece_path
-=global nodece 7 nodece_path.graph_edge_composition
-(epsilon)
-=global nodece 7 nodece_cached_counterexample
-=counter_example_begin cvc4.ce196 d8937f40704928158b98876861dad27
-=input.spec-%var-l-1
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar265 : BV:32
-5 : Lambda1757Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda1758Var : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 2614715135 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2614715136; 2614715139 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2614715140; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 2614715136 { 0x9bd96300 -1680252160 -1.69833374e184 } : BV:32
-=input.dst.llvm-%l
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar267 : BV:32
-5 : Lambda1762Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda1763Var : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 446186672 { 0x1a9844b0 +1.18959617e182 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 2614715136 { 0x9bd96300 -1680252160 -1.69833374e184 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 2614715139 { 0x9bd96303 -1680252157 -1.69833409e184 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-2474942954
-=counter_example_end
-=global nodece 7 num_edges_traversed 0
-=global nodece 7 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 8
-=global nodece 8 nodece yices.ce197.num_edges_traversed0
-=global nodece 8 nodece_path
-=global nodece 8 nodece_path.graph_edge_composition
-(epsilon)
-=global nodece 8 nodece_cached_counterexample
-=counter_example_begin yices.ce197 b2fee8e11a3b70dbd03180381e3011ae
-=input.spec-%var-l-1
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar273 : BV:32
-5 : Lambda1777Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda1778Var : BV:32
-8 : sum(3, 2, 4) : SUM[UNIT,BV:32]
-9 : prod(3, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3719299043 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 3719299044; 3719299047 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 3719299048; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 3719299044 { 0xddafffe4 -575668252 -1.37499666e60 } : BV:32
-=input.dst.llvm-%l
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar275 : BV:32
-5 : Lambda1782Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda1783Var : BV:32
-8 : sum(3, 2, 4) : SUM[UNIT,BV:32]
-9 : prod(3, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 967835616 { 0x39afffe0 +1.37499618e244 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 3719299044 { 0xddafffe4 -575668252 -1.37499666e60 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3719299047 { 0xddafffe7 -575668249 -1.37499701e60 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-338419627
-=counter_example_end
-=global nodece 8 num_edges_traversed 0
-=global nodece 8 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 9
-=global nodece 9 nodece cvc4.ce257.num_edges_traversed2
-=global nodece 9 nodece_path
-=global nodece 9 nodece_path.graph_edge_composition
-(epsilon)
-=global nodece 9 nodece_cached_counterexample
-=counter_example_begin cvc4.ce257 a52cd3b95a95af8cafc931c2672c9199
-=input.spec-%var-l-1
-1 : 2 { 0x2 +1.23e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar39 : BV:32
-5 : Lambda198Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda199Var : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 1073741825 ] -> 0, [ 1073741826; 1073741826 ] -> 32, [ 1073741827; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
-=input.dst.llvm-%l
-1 : 2097152 { 0x200000 +1.25000000e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar318 : BV:32
-3 : Lambda1939Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda1940Var : BV:32
-6 : unit : UNIT
-7 : prod(1, 2) : PROD[BV:32,BV:32]
-8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : sym_const(10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 2097152 { 0x200000 +1.25000000e129 } : BV:32
-=input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.local_alloc_count.Lwhile.cond%1%bbentry
-1 : 391356995 { 0x1753a243 +1.65338933e175 } : COUNT
-=input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry
-1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2 { 0x2 +1.23e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-3460543625
-=counter_example_end
-=global nodece 9 num_edges_traversed 2
-=global nodece 9 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 10
-=global nodece 10 nodece z3v487.ce247.num_edges_traversed2
-=global nodece 10 nodece_path
-=global nodece 10 nodece_path.graph_edge_composition
-(epsilon)
-=global nodece 10 nodece_cached_counterexample
-=counter_example_begin z3v487.ce247 4f833264725757432696737fc9c776
-=input.spec-%var-l-1
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 134744072 { 0x8080808 +1.6274509e145 } : BV:32
-4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar43 : BV:32
-6 : Lambda208Var : BV:32
-7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda209Var : BV:32
-9 : prod(4, 5) : PROD[BV:32,BV:32]
-10 : sum(4, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
-11 : lambda(8, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-12 : ind(4, 5, 7, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(3, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 134744072 { 0x8080808 +1.6274509e145 } : BV:32
-=input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 11 ] -> 8, [ 12; 12 ] -> 0, [ 13; 13 ] -> 0, [ 14; 14 ] -> 0, [ 15; 15 ] -> 0, [ 16; 32776 ] -> 8, [ 32777; 32777 ] -> 0, [ 32778; 32778 ] -> 0, [ 32779; 32779 ] -> 0, [ 32780; 4294967295 ] -> 8, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 32775 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 32776; 32779 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 32780; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 32776 { 0x8008 +1.390720e129 } : BV:32
-=input.dst.llvm-%l
-1 : 8 { 0x8 +1.95e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar310 : BV:32
-3 : Lambda1910Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda1911Var : BV:32
-6 : unit : UNIT
-7 : prod(1, 2) : PROD[BV:32,BV:32]
-8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : sym_const(10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 134744072 { 0x8080808 +1.6274509e145 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 8 { 0x8 +1.95e129 } : BV:32
-=input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.local_alloc_count.Lwhile.cond%1%bbentry
-1 : 645315908 { 0x2676bd44 +1.92765092e205 } : COUNT
-=input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry
-1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 32776 { 0x8008 +1.390720e129 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 32779 { 0x800b +1.390756e129 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 134744072 { 0x8080808 +1.6274509e145 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-3645159584
-=counter_example_end
-=global nodece 10 num_edges_traversed 2
-=global nodece 10 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 11
-=global nodece 11 nodece yices.ce237.num_edges_traversed2
-=global nodece 11 nodece_path
-=global nodece 11 nodece_path.graph_edge_composition
-(epsilon)
-=global nodece 11 nodece_cached_counterexample
-=counter_example_begin yices.ce237 904dd12dd9626d9e4b2b66e0a9955542
-=input.spec-%var-l-1
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
-4 : Indvar47 : BV:32
-5 : Lambda218Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda219Var : BV:32
-8 : sum(3, 2, 4) : SUM[UNIT,BV:32]
-9 : prod(3, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-sum-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 2 ] -> 0, [ 3; 3 ] -> 128, [ 4; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar302 : BV:32
-3 : Lambda1881Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda1882Var : BV:32
-6 : unit : UNIT
-7 : prod(1, 2) : PROD[BV:32,BV:32]
-8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : sym_const(10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%tmpvar-5.L2%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.local_alloc_count.Lwhile.cond%1%bbentry
-1 : 718433215 { 0x2ad26bbf +1.64391314e214 } : COUNT
-=input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry
-1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.spec-%var-l-1.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=counter_example.random_seed
-197094738
-=counter_example_end
-=global nodece 11 num_edges_traversed 2
-=global nodece 11 nodece_visted_pcs: 
-L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 12
-=global nodece 12 nodece cvc4.ce307.num_edges_traversed1
-=global nodece 12 nodece_path
-=global nodece 12 nodece_path.graph_edge_composition
 (L2%6%bbentry_Lwhile.cond%1%bbentry=>L2%6%bbentry_Lwhile.cond%1%bbentry)
-=global nodece 12 nodece_cached_counterexample
-=counter_example_begin cvc4.ce307 754aa978e62a1e3062fbad3e3aedee6
+=global nodece 4 nodece_cached_counterexample
+=counter_example_begin cvc4.ce194 7c5562d0d5787c9b51a3323d8f95f
 =input.spec-%var-l-1
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 2 : unit : UNIT
-3 : 1 { 0x1 +1.11e129 } : BV:32
-4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar353 : BV:32
-6 : Lambda2201Var : BV:32
-7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda2202Var : BV:32
-9 : prod(4, 5) : PROD[BV:32,BV:32]
-10 : sum(4, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
-11 : lambda(8, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-12 : ind(4, 5, 7, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(3, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+3 : 0 { 0x0 +1.0e129 } : BV:32
+4 : Indvar517 : BV:32
+5 : Lambda1997Var : BV:32
+6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
+7 : Lambda1998Var : BV:32
+8 : 1 { 0x1 +1.11e129 } : BV:32
+9 : sum(3, 2, 4) : SUM[UNIT,BV:32]
+10 : prod(8, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+12 : ind(3, 4, 6, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.dst.llvm-%l.addr.0.phi.tmpvar.while.body.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
@@ -4697,7 +4097,7 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 =input.spec-%var-sum-0.L2%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 985485894 { 0x3abd5246 +1.47907328e246 } : BV:32
+1 : 156409428 { 0x9529e54 +1.64545679e147 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 0 ] -> 0, [ 1; 1 ] -> 1, [ 2; 163407 ] -> 0, [ 163408; 163408 ] -> 1, [ 163409; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
@@ -4708,46 +4108,47 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar374 : BV:32
-3 : Lambda2258Var : BV:32
+2 : Indvar538 : BV:32
+3 : Lambda2065Var : BV:32
 4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda2259Var : BV:32
+5 : Lambda2066Var : BV:32
 6 : unit : UNIT
-7 : prod(1, 2) : PROD[BV:32,BV:32]
-8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : sym_const(10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+7 : 1 { 0x1 +1.11e129 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-l2-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar376 : BV:32
-3 : Lambda2264Var : BV:32
+2 : Indvar540 : BV:32
+3 : Lambda2071Var : BV:32
 4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda2265Var : BV:32
+5 : Lambda2072Var : BV:32
 6 : unit : UNIT
-7 : prod(1, 2) : PROD[BV:32,BV:32]
-8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : sym_const(10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+7 : 1 { 0x1 +1.11e129 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-5.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-0.L2%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-n-0.L2%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : Indvar378 : BV:32
-4 : Lambda2271Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda2272Var : BV:32
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar542 : BV:32
+3 : Lambda2078Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda2079Var : BV:32
+6 : 1 { 0x1 +1.11e129 } : BV:32
 7 : unit : UNIT
-8 : prod(2, 3) : PROD[BV:32,BV:32]
-9 : sum(2, 7, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(2, 3, 5, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+8 : sum(1, 7, 2) : SUM[UNIT,BV:32]
+9 : prod(6, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =input.spec-%var-val-0.L2%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry
@@ -4756,8 +4157,8 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 2110160614 { 0x7dc67ee6 +1.55074763e124 } : BV:32
+=input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : 1533214422 { 0x5b62fed6 +1.77340197e55 } : BV:32
 =input.dst.llvm-%tobool.Lwhile.cond%2%d
 1 : 1 { 0x1 } : BOOL
 =input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry
@@ -4794,71 +4195,63 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 270091 { 0x41f0b +1.3219735e129 } : BV:32
 =input.spec-%var-l-1.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-1.2.0
+1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.2.0
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =counter_example.random_seed
-4057730940
+2255311032
 =counter_example_end
-=global nodece 12 num_edges_traversed 1
-=global nodece 12 nodece_visted_pcs: 
+=global nodece 4 num_edges_traversed 1
+=global nodece 4 nodece_visted_pcs: 
 L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 13
-=global nodece 13 nodece cvc4.ce530.num_edges_traversed0
-=global nodece 13 nodece_path
-=global nodece 13 nodece_path.graph_edge_composition
+=global nodece 5
+=global nodece 5 nodece cvc4.ce487.num_edges_traversed0
+=global nodece 5 nodece_path
+=global nodece 5 nodece_path.graph_edge_composition
 (epsilon)
-=global nodece 13 nodece_cached_counterexample
-=counter_example_begin cvc4.ce530 bf9033a92ed59521e8b2885f4eab7
+=global nodece 5 nodece_cached_counterexample
+=counter_example_begin cvc4.ce487 600857a792713d0a92a2ea8285e5058
 =input.spec-%var-l-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar969 : BV:32
-4 : Lambda6262Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda6263Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar1629 : BV:32
+3 : Lambda6605Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda6606Var : BV:32
+6 : unit : UNIT
+7 : 1336501811 { 0x4fa96633 +1.32343137e32 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-sum-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 8191 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 8192; 8195 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 8196; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 786431 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 786432; 786435 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 786436; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 8192 { 0x2000 +1.97656e129 } : BV:32
+1 : 786432 { 0xc0000 +1.9375000e129 } : BV:32
 =input.dst.llvm-%l
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar971 : BV:32
-4 : Lambda6267Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda6268Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar1631 : BV:32
+3 : Lambda6610Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda6611Var : BV:32
+6 : unit : UNIT
+7 : 1636374649 { 0x61891879 +1.7105934e68 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-5.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
@@ -4866,56 +4259,41 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 =input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 8192 { 0x2000 +1.97656e129 } : BV:32
+1 : 786432 { 0xc0000 +1.9375000e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 8195 { 0x2003 +1.97692e129 } : BV:32
+1 : 786435 { 0xc0003 +1.9375035e129 } : BV:32
 =input.spec-%var-l-1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
-1035705244
+3042816199
 =counter_example_end
-=global nodece 13 num_edges_traversed 0
-=global nodece 13 nodece_visted_pcs: 
+=global nodece 5 num_edges_traversed 0
+=global nodece 5 nodece_visted_pcs: 
 L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 14
-=global nodece 14 nodece z3v487.ce531.num_edges_traversed0
-=global nodece 14 nodece_path
-=global nodece 14 nodece_path.graph_edge_composition
+=global nodece 6
+=global nodece 6 nodece z3v487.ce488.num_edges_traversed0
+=global nodece 6 nodece_path
+=global nodece 6 nodece_path.graph_edge_composition
 (epsilon)
-=global nodece 14 nodece_cached_counterexample
-=counter_example_begin z3v487.ce531 731b54f293a296f164b3d97224487fd
+=global nodece 6 nodece_cached_counterexample
+=counter_example_begin z3v487.ce488 ee2c14319ce03bacf9a1ce9d39df5215
 =input.spec-%var-l-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar977 : BV:32
-4 : Lambda6282Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda6283Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar1637 : BV:32
+3 : Lambda6625Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda6626Var : BV:32
+6 : unit : UNIT
+7 : 34003292 { 0x206d95c +1.5350828e133 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-sum-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
 1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
@@ -4924,18 +4302,17 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar979 : BV:32
-4 : Lambda6287Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda6288Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar1639 : BV:32
+3 : Lambda6630Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda6631Var : BV:32
+6 : unit : UNIT
+7 : 2120635541 { 0x7e665495 +1.79945623e125 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-5.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
@@ -4948,51 +4325,36 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.spec-%var-l-1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
-4268026459
+2804027190
 =counter_example_end
-=global nodece 14 num_edges_traversed 0
-=global nodece 14 nodece_visted_pcs: 
+=global nodece 6 num_edges_traversed 0
+=global nodece 6 nodece_visted_pcs: 
 L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 15
-=global nodece 15 nodece yices.ce532.num_edges_traversed0
-=global nodece 15 nodece_path
-=global nodece 15 nodece_path.graph_edge_composition
+=global nodece 7
+=global nodece 7 nodece yices.ce489.num_edges_traversed0
+=global nodece 7 nodece_path
+=global nodece 7 nodece_path.graph_edge_composition
 (epsilon)
-=global nodece 15 nodece_cached_counterexample
-=counter_example_begin yices.ce532 e09c176b93137129c7497c93b30ab58
+=global nodece 7 nodece_cached_counterexample
+=counter_example_begin yices.ce489 221feb7c314adad67edf470ddfb7a56
 =input.spec-%var-l-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar985 : BV:32
-4 : Lambda6302Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda6303Var : BV:32
-7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar1645 : BV:32
+3 : Lambda6645Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda6646Var : BV:32
+6 : unit : UNIT
+7 : 1532384685 { 0x5b5655ad +1.67448961e55 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-sum-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
 1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
@@ -5001,18 +4363,17 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar987 : BV:32
-4 : Lambda6307Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda6308Var : BV:32
-7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar1647 : BV:32
+3 : Lambda6650Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda6651Var : BV:32
+6 : unit : UNIT
+7 : 640222326 { 0x26290476 +1.32044863e205 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-5.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
@@ -5025,45 +4386,36 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.spec-%var-l-1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =counter_example.random_seed
-3954868802
+2095832883
 =counter_example_end
-=global nodece 15 num_edges_traversed 0
-=global nodece 15 nodece_visted_pcs: 
+=global nodece 7 num_edges_traversed 0
+=global nodece 7 nodece_visted_pcs: 
 L2%6%bbentry_Lwhile.cond%1%bbentry
-=global nodece 16
-=global nodece 16 nodece cvc4.ce733.num_edges_traversed2
-=global nodece 16 nodece_path
-=global nodece 16 nodece_path.graph_edge_composition
+=global nodece 8
+=global nodece 8 nodece cvc4.ce618.num_edges_traversed2
+=global nodece 8 nodece_path
+=global nodece 8 nodece_path.graph_edge_composition
 (epsilon)
-=global nodece 16 nodece_cached_counterexample
-=counter_example_begin cvc4.ce733 9a4726649f611c61f498cb50f042a1c0
+=global nodece 8 nodece_cached_counterexample
+=counter_example_begin cvc4.ce618 414a8c9946f3e5b57d6e59c914a056
 =retaddr_const
 1 : 990823344 { 0x3b0ec3b0 +1.11534690e247 } : BV:32
 =input.spec-%var-l-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar15 : BV:32
-4 : Lambda78Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda79Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar15 : BV:32
+3 : Lambda50Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda51Var : BV:32
+6 : unit : UNIT
+7 : 1808360963 { 0x6bc96603 +1.57342565e88 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-sum-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%6%bbentry
@@ -5078,18 +4430,17 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar15 : BV:32
-4 : Lambda78Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda79Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar15 : BV:32
+3 : Lambda50Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda51Var : BV:32
+6 : unit : UNIT
+7 : 1808360963 { 0x6bc96603 +1.57342565e88 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-4.E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-6.E0%0%d
@@ -5106,7 +4457,7 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+=input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%tobool.Lwhile.cond%2%d
 1 : 0 { 0x0 } : BOOL
@@ -5130,47 +4481,137 @@ L2%6%bbentry_Lwhile.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.spec-%var-l-1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 4251623033
 =counter_example_end
-=global nodece 16 num_edges_traversed 2
-=global nodece 16 nodece_visted_pcs: 
+=global nodece 8 num_edges_traversed 2
+=global nodece 8 nodece_visted_pcs: 
 E0%0%d_E0%0%d
-=global nodece 17
-=global nodece 17 nodece cvc4.ce625.num_edges_traversed2
-=global nodece 17 nodece_path
-=global nodece 17 nodece_path.graph_edge_composition
+=global nodece 9
+=global nodece 9 nodece z3v487.ce600.num_edges_traversed2
+=global nodece 9 nodece_path
+=global nodece 9 nodece_path.graph_edge_composition
 (epsilon)
-=global nodece 17 nodece_cached_counterexample
-=counter_example_begin cvc4.ce625 3a2d5e29368ca261bb9d553f395c9bf6
+=global nodece 9 nodece_cached_counterexample
+=counter_example_begin z3v487.ce600 5cae935a3920ba72cb8a6ec86dada1a
 =retaddr_const
-1 : 1428397702 { 0x55239e86 +1.27827525e43 } : BV:32
+1 : 1312661730 { 0x4e3da0e2 +1.48147225e29 } : BV:32
 =input.spec-%var-l-1
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 2 : unit : UNIT
-3 : 1 { 0x1 +1.11e129 } : BV:32
-4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar353 : BV:32
-6 : Lambda2201Var : BV:32
-7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda2202Var : BV:32
-9 : prod(4, 5) : PROD[BV:32,BV:32]
-10 : sum(4, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
-11 : lambda(8, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-12 : ind(4, 5, 7, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(3, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+3 : 0 { 0x0 +1.0e129 } : BV:32
+4 : Indvar509 : BV:32
+5 : Lambda1977Var : BV:32
+6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
+7 : Lambda1978Var : BV:32
+8 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+9 : sum(3, 2, 4) : SUM[UNIT,BV:32]
+10 : prod(8, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+12 : ind(3, 4, 6, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%var-sum-0.L2%6%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L2%6%bbentry
+1 : 926599724 { 0x373aca2c +1.45929479e239 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 1017 ] -> 38, [ 1018; 1018 ] -> 0, [ 1019; 1019 ] -> 0, [ 1020; 1021 ] -> 38, [ 1022; 1022 ] -> 0, [ 1023; 1023 ] -> 0, [ 1024; 1024 ] -> 0, [ 1025; 1025 ] -> 0, [ 1026; 1027 ] -> 38, [ 1028; 1028 ] -> 0, [ 1029; 1029 ] -> 0, [ 1030; 1030 ] -> 0, [ 1031; 1031 ] -> 0, [ 1032; 4294967295 ] -> 38, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 234881019 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 234881020; 234881023 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 234881024; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 234881020 { 0xdfffffc +1.99999952e156 } : BV:32
+=input.dst.llvm-%l
+1 : 1018 { 0x3fa +1.12135e129 } : BV:32
+=input.spec-%var-l-0.L2%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar530 : BV:32
+3 : Lambda2034Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda2035Var : BV:32
+6 : unit : UNIT
+7 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%tmpvar-4.E0%0%d
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.spec-%tmpvar-6.E0%0%d
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.spec-%tmpvar-3.E0%0%d
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.spec-%var-u-0.E0%0%d
+1 : unit : UNIT
+=input.spec-%tmpvar-5.L2%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-7.E0%0%d
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : 1816429950 { 0x6c44857e +1.53532385e89 } : BV:32
+=input.dst.llvm-%tobool.Lwhile.cond%2%d
+1 : 0 { 0x0 } : BOOL
+=input.dst.llvm-%ret-reg.E0%0%d
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.dst.llvm-indir_tgt.E0%0%d
+1 : 1312661730 { 0x4e3da0e2 +1.48147225e29 } : BV:32
+=input.dst.llvm-%hidden-reg.E0%0%d
+1 : 1214589807 { 0x48652b6f +1.79038798e17 } : BV:32
+=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
+1 : 234881020 { 0xdfffffc +1.99999952e156 } : BV:32
+=input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
+1 : 234881023 { 0xdffffff +1.99999988e156 } : BV:32
+=input.spec-%var-l-1.0
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.spec-%var-l-0.L2%6%bbentry.0
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.spec-%var-l-1.2.0
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=input.spec-%var-l-0.L2%6%bbentry.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-1.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.L2%6%bbentry.2.0
+1 : 640024576 { 0x26260000 +1.29687500e205 } : BV:32
+=counter_example.random_seed
+1280943651
+=counter_example_end
+=global nodece 9 num_edges_traversed 2
+=global nodece 9 nodece_visted_pcs: 
+E0%0%d_E0%0%d
+=global nodece 10
+=global nodece 10 nodece cvc4.ce582.num_edges_traversed2
+=global nodece 10 nodece_path
+=global nodece 10 nodece_path.graph_edge_composition
+(epsilon)
+=global nodece 10 nodece_cached_counterexample
+=counter_example_begin cvc4.ce582 c72631517be6b2d55e79bdc030c15ec
+=retaddr_const
+1 : 389464941 { 0x1736c36d +1.42783892e175 } : BV:32
+=input.spec-%var-l-1
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+2 : unit : UNIT
+3 : 0 { 0x0 +1.0e129 } : BV:32
+4 : Indvar517 : BV:32
+5 : Lambda1997Var : BV:32
+6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
+7 : Lambda1998Var : BV:32
+8 : 1 { 0x1 +1.11e129 } : BV:32
+9 : sum(3, 2, 4) : SUM[UNIT,BV:32]
+10 : prod(8, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+12 : ind(3, 4, 6, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-sum-0.L2%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%6%bbentry
-1 : 985485894 { 0x3abd5246 +1.47907328e246 } : BV:32
+1 : 156409428 { 0x9529e54 +1.64545679e147 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 0 ] -> 0, [ 1; 1 ] -> 1, [ 2; 163407 ] -> 0, [ 163408; 163408 ] -> 1, [ 163409; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
@@ -5181,16 +4622,17 @@ E0%0%d_E0%0%d
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar374 : BV:32
-3 : Lambda2258Var : BV:32
+2 : Indvar538 : BV:32
+3 : Lambda2065Var : BV:32
 4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda2259Var : BV:32
+5 : Lambda2066Var : BV:32
 6 : unit : UNIT
-7 : prod(1, 2) : PROD[BV:32,BV:32]
-8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : sym_const(10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+7 : 1 { 0x1 +1.11e129 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-4.E0%0%d
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-6.E0%0%d
@@ -5207,41 +4649,37 @@ E0%0%d_E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.src.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
-1 : 2110160614 { 0x7dc67ee6 +1.55074763e124 } : BV:32
+=input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+1 : 1533214422 { 0x5b62fed6 +1.77340197e55 } : BV:32
 =input.dst.llvm-%tobool.Lwhile.cond%2%d
 1 : 0 { 0x0 } : BOOL
 =input.dst.llvm-%ret-reg.E0%0%d
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-indir_tgt.E0%0%d
-1 : 1428397702 { 0x55239e86 +1.27827525e43 } : BV:32
+1 : 389464941 { 0x1736c36d +1.42783892e175 } : BV:32
 =input.dst.llvm-%hidden-reg.E0%0%d
-1 : 446510658 { 0x1a9d3642 +1.22821831e182 } : BV:32
+1 : 1680376273 { 0x642881d1 +1.31646168e73 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
 1 : 270088 { 0x41f08 +1.3219699e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
 1 : 270091 { 0x41f0b +1.3219735e129 } : BV:32
 =input.spec-%var-l-1.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-1.2.0
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.spec-%var-l-1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.L2%6%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-1.2.0
+1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.L2%6%bbentry.2.0
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =counter_example.random_seed
-2573513428
+597064592
 =counter_example_end
-=global nodece 17 num_edges_traversed 2
-=global nodece 17 nodece_visted_pcs: 
+=global nodece 10 num_edges_traversed 2
+=global nodece 10 nodece_visted_pcs: 
 E0%0%d_E0%0%d
 =graph_with_ce done
 =point_set for reason inductive-invariants
@@ -5409,138 +4847,391 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point yices.ce8 expr point yices.ce8 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
 0
 =inductive-invariants point_set point yices.ce8 expr point yices.ce8 done
-=inductive-invariants point_set point yices.ce125
-=inductive-invariants point_set point yices.ce125 expr point yices.ce125
-=inductive-invariants point_set point yices.ce125 expr point yices.ce125 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
 1
-=inductive-invariants point_set point yices.ce125 expr point yices.ce125 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
 0
-=inductive-invariants point_set point yices.ce125 expr point yices.ce125 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 0
-=inductive-invariants point_set point yices.ce125 expr point yices.ce125 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point yices.ce125 expr point yices.ce125 done
-=inductive-invariants point_set point z3v487.ce124
-=inductive-invariants point_set point z3v487.ce124 expr point z3v487.ce124
-=inductive-invariants point_set point z3v487.ce124 expr point z3v487.ce124 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+2147483648
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
 1
-=inductive-invariants point_set point z3v487.ce124 expr point z3v487.ce124 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
 0
-=inductive-invariants point_set point z3v487.ce124 expr point z3v487.ce124 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 0
-=inductive-invariants point_set point z3v487.ce124 expr point z3v487.ce124 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point z3v487.ce124 expr point z3v487.ce124 done
-=inductive-invariants point_set point cvc4.ce33
-=inductive-invariants point_set point cvc4.ce33 expr point cvc4.ce33
-=inductive-invariants point_set point cvc4.ce33 expr point cvc4.ce33 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+1073741824
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
 1
-=inductive-invariants point_set point cvc4.ce33 expr point cvc4.ce33 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
 0
-=inductive-invariants point_set point cvc4.ce33 expr point cvc4.ce33 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 0
-=inductive-invariants point_set point cvc4.ce33 expr point cvc4.ce33 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+32768
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+16384
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+8192
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+4096
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+536870912
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+268435456
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+134217728
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+67108864
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+33554432
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+16777216
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+8388608
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+4194304
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
 2097152
-=inductive-invariants point_set point cvc4.ce33 expr point cvc4.ce33 done
-=inductive-invariants point_set point z3v487.ce34
-=inductive-invariants point_set point z3v487.ce34 expr point z3v487.ce34
-=inductive-invariants point_set point z3v487.ce34 expr point z3v487.ce34 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
 1
-=inductive-invariants point_set point z3v487.ce34 expr point z3v487.ce34 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
 0
-=inductive-invariants point_set point z3v487.ce34 expr point z3v487.ce34 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 0
-=inductive-invariants point_set point z3v487.ce34 expr point z3v487.ce34 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+1048576
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+524288
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+262144
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+131072
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+65536
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+2048
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+1024
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+512
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+256
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+128
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+64
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+32
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+16
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
 8
-=inductive-invariants point_set point z3v487.ce34 expr point z3v487.ce34 done
-=inductive-invariants point_set point yices.ce35
-=inductive-invariants point_set point yices.ce35 expr point yices.ce35
-=inductive-invariants point_set point yices.ce35 expr point yices.ce35 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 expr point bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1 done
+=inductive-invariants point_set point yices.ce143
+=inductive-invariants point_set point yices.ce143 expr point yices.ce143
+=inductive-invariants point_set point yices.ce143 expr point yices.ce143 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
 1
-=inductive-invariants point_set point yices.ce35 expr point yices.ce35 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+=inductive-invariants point_set point yices.ce143 expr point yices.ce143 val 2 for input.spec-%var-sum-0.L2%6%bbentry
 0
-=inductive-invariants point_set point yices.ce35 expr point yices.ce35 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point yices.ce143 expr point yices.ce143 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 0
-=inductive-invariants point_set point yices.ce35 expr point yices.ce35 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point yices.ce143 expr point yices.ce143 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point yices.ce143 expr point yices.ce143 done
+=inductive-invariants point_set point z3v487.ce142
+=inductive-invariants point_set point z3v487.ce142 expr point z3v487.ce142
+=inductive-invariants point_set point z3v487.ce142 expr point z3v487.ce142 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point z3v487.ce142 expr point z3v487.ce142 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point z3v487.ce142 expr point z3v487.ce142 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point z3v487.ce142 expr point z3v487.ce142 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point z3v487.ce142 expr point z3v487.ce142 done
+=inductive-invariants point_set point cvc4.ce141
+=inductive-invariants point_set point cvc4.ce141 expr point cvc4.ce141
+=inductive-invariants point_set point cvc4.ce141 expr point cvc4.ce141 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point cvc4.ce141 expr point cvc4.ce141 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+0
+=inductive-invariants point_set point cvc4.ce141 expr point cvc4.ce141 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point cvc4.ce141 expr point cvc4.ce141 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point cvc4.ce141 expr point cvc4.ce141 done
+=inductive-invariants point_set point z3v487.ce193
+=inductive-invariants point_set point z3v487.ce193 expr point z3v487.ce193
+=inductive-invariants point_set point z3v487.ce193 expr point z3v487.ce193 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point z3v487.ce193 expr point z3v487.ce193 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+640024576
+=inductive-invariants point_set point z3v487.ce193 expr point z3v487.ce193 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+640024576
+=inductive-invariants point_set point z3v487.ce193 expr point z3v487.ce193 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point z3v487.ce193 expr point z3v487.ce193 done
+=inductive-invariants point_set point cvc4.ce194
+=inductive-invariants point_set point cvc4.ce194 expr point cvc4.ce194
+=inductive-invariants point_set point cvc4.ce194 expr point cvc4.ce194 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point cvc4.ce194 expr point cvc4.ce194 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+1
+=inductive-invariants point_set point cvc4.ce194 expr point cvc4.ce194 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+1
+=inductive-invariants point_set point cvc4.ce194 expr point cvc4.ce194 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+0
+=inductive-invariants point_set point cvc4.ce194 expr point cvc4.ce194 done
+=inductive-invariants point_set point yices.ce195
+=inductive-invariants point_set point yices.ce195 expr point yices.ce195
+=inductive-invariants point_set point yices.ce195 expr point yices.ce195 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+1
+=inductive-invariants point_set point yices.ce195 expr point yices.ce195 val 2 for input.spec-%var-sum-0.L2%6%bbentry
 2147483648
-=inductive-invariants point_set point yices.ce35 expr point yices.ce35 done
-=inductive-invariants point_set point cvc4.ce123
-=inductive-invariants point_set point cvc4.ce123 expr point cvc4.ce123
-=inductive-invariants point_set point cvc4.ce123 expr point cvc4.ce123 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point cvc4.ce123 expr point cvc4.ce123 val 2 for input.spec-%var-sum-0.L2%6%bbentry
-0
-=inductive-invariants point_set point cvc4.ce123 expr point cvc4.ce123 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point cvc4.ce123 expr point cvc4.ce123 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point cvc4.ce123 expr point cvc4.ce123 done
-=inductive-invariants point_set point z3v487.ce227
-=inductive-invariants point_set point z3v487.ce227 expr point z3v487.ce227
-=inductive-invariants point_set point z3v487.ce227 expr point z3v487.ce227 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point z3v487.ce227 expr point z3v487.ce227 val 2 for input.spec-%var-sum-0.L2%6%bbentry
-0
-=inductive-invariants point_set point z3v487.ce227 expr point z3v487.ce227 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point z3v487.ce227 expr point z3v487.ce227 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point z3v487.ce227 expr point z3v487.ce227 done
-=inductive-invariants point_set point yices.ce207
-=inductive-invariants point_set point yices.ce207 expr point yices.ce207
-=inductive-invariants point_set point yices.ce207 expr point yices.ce207 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point yices.ce207 expr point yices.ce207 val 2 for input.spec-%var-sum-0.L2%6%bbentry
-0
-=inductive-invariants point_set point yices.ce207 expr point yices.ce207 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point yices.ce207 expr point yices.ce207 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point yices.ce207 expr point yices.ce207 done
-=inductive-invariants point_set point cvc4.ce217
-=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217
-=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 2 for input.spec-%var-sum-0.L2%6%bbentry
-0
-=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 done
-=inductive-invariants point_set point cvc4.ce307
-=inductive-invariants point_set point cvc4.ce307 expr point cvc4.ce307
-=inductive-invariants point_set point cvc4.ce307 expr point cvc4.ce307 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point cvc4.ce307 expr point cvc4.ce307 val 2 for input.spec-%var-sum-0.L2%6%bbentry
-1
-=inductive-invariants point_set point cvc4.ce307 expr point cvc4.ce307 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-1
-=inductive-invariants point_set point cvc4.ce307 expr point cvc4.ce307 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point cvc4.ce307 expr point cvc4.ce307 done
-=inductive-invariants point_set point z3v487.ce308
-=inductive-invariants point_set point z3v487.ce308 expr point z3v487.ce308
-=inductive-invariants point_set point z3v487.ce308 expr point z3v487.ce308 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point z3v487.ce308 expr point z3v487.ce308 val 2 for input.spec-%var-sum-0.L2%6%bbentry
-976894522
-=inductive-invariants point_set point z3v487.ce308 expr point z3v487.ce308 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-976894522
-=inductive-invariants point_set point z3v487.ce308 expr point z3v487.ce308 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-0
-=inductive-invariants point_set point z3v487.ce308 expr point z3v487.ce308 done
-=inductive-invariants point_set point yices.ce309
-=inductive-invariants point_set point yices.ce309 expr point yices.ce309
-=inductive-invariants point_set point yices.ce309 expr point yices.ce309 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point yices.ce309 expr point yices.ce309 val 2 for input.spec-%var-sum-0.L2%6%bbentry
+=inductive-invariants point_set point yices.ce195 expr point yices.ce195 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 2147483648
-=inductive-invariants point_set point yices.ce309 expr point yices.ce309 val 3 for input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-2147483648
-=inductive-invariants point_set point yices.ce309 expr point yices.ce309 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+=inductive-invariants point_set point yices.ce195 expr point yices.ce195 val 4 for input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
 0
-=inductive-invariants point_set point yices.ce309 expr point yices.ce309 done
+=inductive-invariants point_set point yices.ce195 expr point yices.ce195 done
 =inductive-invariants point_set points done
 =out-of-bound-exprs for reason inductive-invariants
 =out-of-bound-exprs for reason inductive-invariants at L0%0%d_L0%0%d
@@ -5655,11 +5346,39 @@ expr-group-bvs.linear2-32-free_var_idx.3
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv predicate_set done
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv is assumed eqclass : 0
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 0: cvc4.ce6
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 1: cvc4.ce33
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 2: z3v487.ce34
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 3: cvc4.ce307
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 1: bvcover-weakening-point.fast.expr_idx4.coeff_rank1.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 2: bvcover-weakening-point.fast.expr_idx4.coeff_rank2.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 3: bvcover-weakening-point.fast.expr_idx4.coeff_rank17.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 4: bvcover-weakening-point.fast.expr_idx4.coeff_rank18.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 5: bvcover-weakening-point.fast.expr_idx4.coeff_rank19.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 6: bvcover-weakening-point.fast.expr_idx4.coeff_rank20.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 7: bvcover-weakening-point.fast.expr_idx4.coeff_rank3.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 8: bvcover-weakening-point.fast.expr_idx4.coeff_rank4.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 9: bvcover-weakening-point.fast.expr_idx4.coeff_rank5.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 10: bvcover-weakening-point.fast.expr_idx4.coeff_rank6.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 11: bvcover-weakening-point.fast.expr_idx4.coeff_rank7.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 12: bvcover-weakening-point.fast.expr_idx4.coeff_rank8.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 13: bvcover-weakening-point.fast.expr_idx4.coeff_rank9.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 14: bvcover-weakening-point.fast.expr_idx4.coeff_rank10.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 15: bvcover-weakening-point.fast.expr_idx4.coeff_rank11.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 16: bvcover-weakening-point.fast.expr_idx4.coeff_rank12.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 17: bvcover-weakening-point.fast.expr_idx4.coeff_rank13.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 18: bvcover-weakening-point.fast.expr_idx4.coeff_rank14.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 19: bvcover-weakening-point.fast.expr_idx4.coeff_rank15.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 20: bvcover-weakening-point.fast.expr_idx4.coeff_rank16.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 21: bvcover-weakening-point.fast.expr_idx4.coeff_rank21.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 22: bvcover-weakening-point.fast.expr_idx4.coeff_rank22.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 23: bvcover-weakening-point.fast.expr_idx4.coeff_rank23.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 24: bvcover-weakening-point.fast.expr_idx4.coeff_rank24.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 25: bvcover-weakening-point.fast.expr_idx4.coeff_rank25.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 26: bvcover-weakening-point.fast.expr_idx4.coeff_rank26.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 27: bvcover-weakening-point.fast.expr_idx4.coeff_rank27.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 28: bvcover-weakening-point.fast.expr_idx4.coeff_rank28.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 29: bvcover-weakening-point.fast.expr_idx4.coeff_rank29.bvlen32.orig_ce.cvc4.ce6.1
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 30: z3v487.ce193
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 31: cvc4.ce194
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ces set done
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv summary: number of exprs=3; number of visited CEs=4; number of preds=2
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv summary: number of exprs=3; number of visited CEs=32; number of preds=2
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv output matrix
 matrix:
 3
@@ -5675,31 +5394,19 @@ matrix done
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const point_expr 4
 1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const done
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const pred 0
-=Comment
-dst-branches-const-ineq.input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry.ub-unsigned
-=LhsExpr
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
-2 : 4294967294 { 0xfffffffe -2 -1.99999976e128 } : BV:32
-3 : bvule(1, 2) : BOOL
-=RhsExpr
-1 : 1 { 0x1 } : BOOL
-=predicate done
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const predicate_set done
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const is assumed eqclass : 0
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 0: cvc4.ce6
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 1: cvc4.ce33
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 2: yices.ce35
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ces set done
-=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const summary: number of exprs=1; number of visited CEs=3; number of preds=1
-=m_lower_bound_signed_cur -2147483648
-=m_upper_bound_signed_cur 2147483647
+=pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const summary: number of exprs=1; number of visited CEs=1; number of preds=0
+=m_lower_bound_signed_cur 0
+=m_upper_bound_signed_cur 0
 =m_lower_bound_unsigned_cur 0
-=m_upper_bound_unsigned_cur 4294967294
+=m_upper_bound_unsigned_cur 0
 =m_lower_bound_signed_known -2147483648
 =m_upper_bound_signed_known 2147483647
 =m_lower_bound_unsigned_known 0
-=m_upper_bound_unsigned_known 4294967294
+=m_upper_bound_unsigned_known 4294967295
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const const_bound_expr 0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =pc L2%6%bbentry_Lwhile.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const const_bound_expr 1
@@ -6169,9 +5876,9 @@ merged-predicate
 140586 : islangaligned(140557, 140347) : BOOL
 140589 : and(140584, 140586) : BOOL
 140594 : and(140578, 140580, 140584, 140589) : BOOL
-142910 : and(140603, 140594) : BOOL
-142921 : eq(142910, 140275) : BOOL
-142945 : implies(140548, 142921) : BOOL
+143249 : and(140603, 140594) : BOOL
+143258 : eq(143249, 140275) : BOOL
+143263 : implies(140548, 143258) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

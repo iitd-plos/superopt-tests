@@ -2574,23 +2574,22 @@ discontiguous mls:
 =global nodece 0 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin z3v487.ce6 e46898e94632faf49e4d5b2eccd6e0
+=counter_example_begin z3v487.ce6 bbadce49a07186d653895732da49c6d
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indvar57 : BV:32
-4 : Lambda253Var : BV:32
+4 : Lambda231Var : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda254Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(1, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+6 : Lambda232Var : BV:32
+7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
+8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
@@ -2603,44 +2602,41 @@ discontiguous mls:
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indvar59 : BV:32
-4 : Lambda258Var : BV:32
+4 : Lambda236Var : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda259Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-node-0.L1%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar61 : BV:32
-4 : Lambda263Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda264Var : BV:32
+6 : Lambda237Var : BV:32
 7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
 8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
 9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
 10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%var-node-0.L1%9%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar61 : BV:32
+3 : Lambda241Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda242Var : BV:32
+6 : unit : UNIT
+7 : prod(1, 2) : PROD[BV:32,BV:32]
+8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
+9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =input.spec-%var-node_next-0.L1%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indvar63 : BV:32
-4 : Lambda268Var : BV:32
+4 : Lambda246Var : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda269Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+6 : Lambda247Var : BV:32
+7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
+8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-node_val-0.L1%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
@@ -2649,39 +2645,31 @@ discontiguous mls:
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.spec-%tmpvar-0.L1%9%bbentry.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node_next-0.L1%9%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node_next-0.L1%9%bbentry.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.2.0
+=input.spec-%var-node-0.L1%9%bbentry.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.L1%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L1%9%bbentry.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.L1%9%bbentry.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L1%9%bbentry.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L1%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 202303626
@@ -2695,23 +2683,22 @@ L0%0%d_L0%0%d
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin cvc4.ce7 c11fd15aaa4a63ba2357d16fb9e344
+=counter_example_begin cvc4.ce7 d37dc3d6c0519860b1ab46c194cc9ae
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indvar73 : BV:32
-4 : Lambda293Var : BV:32
+4 : Lambda271Var : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda294Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(1, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+6 : Lambda272Var : BV:32
+7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
+8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
@@ -2724,44 +2711,41 @@ L0%0%d_L0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indvar75 : BV:32
-4 : Lambda298Var : BV:32
+4 : Lambda276Var : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda299Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-node-0.L1%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar77 : BV:32
-4 : Lambda303Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda304Var : BV:32
+6 : Lambda277Var : BV:32
 7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
 8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
 9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
 10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%var-node-0.L1%9%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar77 : BV:32
+3 : Lambda281Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda282Var : BV:32
+6 : unit : UNIT
+7 : prod(1, 2) : PROD[BV:32,BV:32]
+8 : sum(1, 6, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
+9 : lambda(5, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+10 : ind(1, 2, 4, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =input.spec-%var-node_next-0.L1%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indvar79 : BV:32
-4 : Lambda308Var : BV:32
+4 : Lambda286Var : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda309Var : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+6 : Lambda287Var : BV:32
+7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
+8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-node_val-0.L1%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
@@ -2770,39 +2754,31 @@ L0%0%d_L0%0%d
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.spec-%tmpvar-0.L1%9%bbentry.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node_next-0.L1%9%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node_next-0.L1%9%bbentry.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.2.0
+=input.spec-%var-node-0.L1%9%bbentry.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.L1%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L1%9%bbentry.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.L1%9%bbentry.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L1%9%bbentry.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L1%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 2109014828
@@ -2816,23 +2792,21 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce8 5d2d2c846f0f2bc20c3c137d350d22b
+=counter_example_begin yices.ce8 872c1a7c78cc5b5962a7015734678df
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-4 : Indvar89 : BV:32
-5 : Lambda333Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda334Var : BV:32
-8 : sum(1, 2, 4) : SUM[UNIT,BV:32]
-9 : prod(1, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+3 : Indvar89 : BV:32
+4 : Lambda311Var : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda312Var : BV:32
+7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
+9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
+10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(3, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
@@ -2843,83 +2817,63 @@ L0%0%d_L0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-0.L1%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar91 : BV:32
-4 : Lambda338Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda339Var : BV:32
-7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar91 : BV:32
+3 : Lambda316Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda317Var : BV:32
+6 : unit : UNIT
+7 : 355659295 { 0x1532ee1f +1.39789187e171 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-node-0.L1%9%bbentry
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : unit : UNIT
-4 : Indvar93 : BV:32
-5 : Lambda343Var : BV:32
-6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda344Var : BV:32
-8 : sum(2, 3, 4) : SUM[UNIT,BV:32]
-9 : prod(1, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(2, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(2, 3, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(1, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : Indvar93 : BV:32
+3 : Lambda321Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda322Var : BV:32
+6 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+7 : unit : UNIT
+8 : sum(1, 7, 2) : SUM[UNIT,BV:32]
+9 : prod(6, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =input.spec-%var-node_next-0.L1%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indvar95 : BV:32
-4 : Lambda348Var : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda349Var : BV:32
-7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : Indvar95 : BV:32
+3 : Lambda326Var : BV:32
+4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
+5 : Lambda327Var : BV:32
+6 : unit : UNIT
+7 : 1300315126 { 0x4d813bf6 +1.964236e28 } : BV:32
+8 : prod(7, 2) : PROD[BV:32,BV:32]
+9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-node_val-0.L1%9%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
 1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.2.1.0
+=input.spec-%var-node_next-0.L1%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L1%9%bbentry.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-0.L1%9%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry.2.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node-0.L1%9%bbentry.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.0
+=input.spec-%var-l-0.2.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 84007017
 =counter_example_end
@@ -3218,9 +3172,9 @@ merged-predicate
 140407 : isgepoffset(140334, 140290) : BOOL
 140462 : and(140275, 140407) : BOOL
 140466 : and(140430, 140462) : BOOL
-140681 : and(140478, 140466) : BOOL
-140682 : eq(140681, 140275) : BOOL
-140683 : implies(140405, 140682) : BOOL
+140673 : and(140478, 140466) : BOOL
+140674 : eq(140673, 140275) : BOOL
+140716 : implies(140405, 140674) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

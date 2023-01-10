@@ -1,8 +1,7 @@
 #!/bin/sh
 
 spec_par_tmpdir="par_tmpdir"
-axpred_solver_max_depth=4
-cmd_name="${SUPEROPT_INSTALL_DIR}/bin/eq32 --axpred-solver-max-depth=${axpred_solver_max_depth} --disable-dst-to-src-submap --smt-query-timeout=5"
+cmd_name="${SUPEROPT_INSTALL_DIR}/bin/eq32 --disable-dst-to-src-submap --smt-query-timeout=5"
 
 par_run() {
   ${cmd_name} --tmpdir-path=${spec_par_tmpdir} --proof="$1".proof --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out

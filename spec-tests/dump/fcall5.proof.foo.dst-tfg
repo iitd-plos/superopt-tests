@@ -146,10 +146,10 @@ mlvar.dst.llvm.foo.1 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y__
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.local_alloc_count.Lfor.cond%1%bbentry
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
 =EdgeAssume.0
@@ -211,7 +211,7 @@ tfg_edge_comment end
 1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry
 1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
-=src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+=dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -288,8 +288,8 @@ tfg_edge_comment end
 19 : bvadd(15, 18) : BV:32
 20 : select(2, 3, 4, 19, 13, 14) : BV:32
 21 : bvadd(1, 20) : BV:32
-=src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%0.Lfor.cond1%1%bbentry
@@ -534,8 +534,8 @@ tfg_edge_comment end
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%x.0.Lfor.cond%1%bbentry
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry
@@ -774,8 +774,8 @@ dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
 =Loc 100063 in dst.llvm.foo.
 REGMEM
-src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 =Loc 100064 in dst.llvm.foo.
 REGMEM
 dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry
@@ -802,8 +802,8 @@ dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry
 1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
 =Loc 100070 in dst.llvm.foo.
 REGMEM
-src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =Loc 100071 in dst.llvm.foo.
 REGMEM
 dst.llvm-%0.Lfor.cond1%1%bbentry
@@ -959,7 +959,7 @@ memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100062 {input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100063 {input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100063 {input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lfor.cond%1%bbentry for loc_id 100085 {input.dst.local_alloc_count.Lfor.cond%1%bbentry }
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
@@ -975,7 +975,7 @@ memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry for loc_id 100069 {input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry }
 1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
-=graph_with_edge_structures.loc_to_expr_map at Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry for loc_id 100070 {input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry for loc_id 100070 {input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry done
 =graph_with_edge_structures.loc_to_expr_map at Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -1002,9 +1002,9 @@ memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0
 16 : bvadd(13, 15) : BV:32
 17 : select(2, 3, 4, 16, 11, 12) : BV:32
 18 : bvadd(1, 17) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at Lfor.body3%1%d=>Lfor.cond1%1%bbentry for loc_id 100070 {input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at Lfor.body3%1%d=>Lfor.cond1%1%bbentry for loc_id 100070 {input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry }
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =graph_with_edge_structures.loc_to_expr_map at Lfor.body3%1%d=>Lfor.cond1%1%bbentry for loc_id 100071 {input.dst.llvm-%0.Lfor.cond1%1%bbentry }
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1183,9 +1183,9 @@ memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0
 1 : 1 { 0x1 +1.11e129 } : BV:32
 2 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at Lfor.inc5%1%d=>Lfor.cond%1%bbentry for loc_id 100063 {input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at Lfor.inc5%1%d=>Lfor.cond%1%bbentry for loc_id 100063 {input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry }
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =graph_with_edge_structures.loc_to_expr_map at Lfor.inc5%1%d=>Lfor.cond%1%bbentry for loc_id 100064 {input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry }
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -1552,10 +1552,10 @@ lr_status_linearly_related(; )
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =dst.local_alloc_count.Lfor.cond%1%bbentry
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
 =dst.llvm-%j.0.Lfor.cond1%1%bbentry
@@ -1566,7 +1566,7 @@ lr_status_linearly_related(; )
 1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry
 1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
-=src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+=dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -1593,9 +1593,9 @@ lr_status_linearly_related(; )
 16 : bvadd(13, 15) : BV:32
 17 : select(2, 3, 4, 16, 11, 12) : BV:32
 18 : bvadd(1, 17) : BV:32
-=src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+=dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%0.Lfor.cond1%1%bbentry
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1774,9 +1774,9 @@ lr_status_linearly_related(; )
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%x.0.Lfor.cond%1%bbentry
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
-=src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+2 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
 =dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -1959,26 +1959,26 @@ undef-behavioursome.edge.Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 140993 : bvmul(140381, 140743) : BV:32
 140996 : bvadd(140490, 140993) : BV:32
 141092 : isgepoffset(140996, 140993) : BOOL
-141096 : islangaligned(140996, 140368) : BOOL
+141097 : islangaligned(140996, 140368) : BOOL
 140417 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 141000 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap-arg.0 : MEMLABEL
 140369 : 0 { 0x0 } : BOOL
 141011 : select(140417, 140418, 141000, 140996, 140368, 140369) : BV:32
-141098 : islangaligned(141011, 140368) : BOOL
-141101 : and(141096, 141098) : BOOL
+141099 : islangaligned(141011, 140368) : BOOL
+141102 : and(141097, 141099) : BOOL
 140745 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 140942 : bvsign_ext(140745, 140553) : BV:64
-141114 : bvmul(140631, 140942) : BV:64
-141115 : bvextract(141114, 140557, 140553) : BV:32
+141115 : bvmul(140631, 140942) : BV:64
+141117 : bvextract(141115, 140557, 140553) : BV:32
 140941 : bvslt(140745, 140286) : BOOL
-141128 : ite(140941, 140559, 140286) : BV:32
-141130 : eq(141115, 141128) : BOOL
-141132 : isindexforsize(141130, 140368) : BOOL
+141130 : ite(140941, 140559, 140286) : BV:32
+141132 : eq(141117, 141130) : BOOL
+141134 : isindexforsize(141132, 140368) : BOOL
 141014 : bvmul(140381, 140745) : BV:32
 141016 : bvadd(141011, 141014) : BV:32
-141134 : isgepoffset(141016, 141014) : BOOL
-141139 : and(141090, 141092, 141096, 141101, 141132, 141134) : BOOL
+141136 : isgepoffset(141016, 141014) : BOOL
+141141 : and(141090, 141092, 141097, 141102, 141134, 141136) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2746,2033 +2746,2033 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.body%1%intermediateVal0
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at Lfor.body3%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at Lfor.cond%1%bbentry
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at Lfor.cond%2%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at Lfor.cond1%1%bbentry
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at Lfor.cond1%2%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at Lfor.end7%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at Lfor.inc5%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 18 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 19 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 20 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns done
 =Reaching Definitions at E0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 0 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 1 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 2 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 3 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 4 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 4 edges done
-=reaching defns for expr 5
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 5 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 6 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 6 edges done
-=reaching defns for expr 7
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 7 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 7 edges done
-=reaching defns for expr 8
-1 : input.dst.llvm-%n : BV:32
-=reaching defns for expr 8 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 8 edges done
-=reaching defns for expr 9
-1 : input.dst.llvm-%m : BV:32
-=reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 9 edges done
-=reaching defns for expr 10
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 10 edges
+=reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 11 edges
+=reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 11 edges done
-=reaching defns for expr 12
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 12 edges
+=reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-%arr : BV:32
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+=reaching defns for expr 8 edges
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 9 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 10 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 11 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 12 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%arr : BV:32
-=reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
-=reaching defns for expr 13 edges done
-=reaching defns for expr 14
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 14 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 14 edges done
-=reaching defns for expr 15
-1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 15 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 15 edges done
-=reaching defns for expr 16
-1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 16 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 16 edges done
-=reaching defns for expr 17
-1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 17 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 17 edges done
-=reaching defns for expr 18
-1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 18 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 18 edges done
-=reaching defns for expr 19
-1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 19 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 19 edges done
-=reaching defns for expr 20
-1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 20 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 20 edges done
-=reaching defns for expr 21
-1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 21 edges
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 21 edges done
-=reaching defns for expr 22
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 22 edges
+=reaching defns for expr 13 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 22 edges done
-=reaching defns for expr 23
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 23 edges
+=reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 23 edges done
-=reaching defns for expr 24
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 24 edges
+=reaching defns for expr 15 edges
   L0%0%d=>L0%0%d
-=reaching defns for expr 24 edges done
-=reaching defns for expr 25
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=reaching defns for expr 25 edges
+=reaching defns for expr 16 edges
   L0%0%d=>L0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+=reaching defns for expr 17 edges
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+=reaching defns for expr 18 edges
+  Lfor.end7%1%d=>E0%0%d
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+=reaching defns for expr 19 edges
+  Lfor.end7%1%d=>E0%0%d
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+=reaching defns for expr 20 edges
+  Lfor.end7%1%d=>E0%0%d
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 21 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 22 edges
+  L0%0%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 23 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 24 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 24 edges done
+=reaching defns for expr 25
+1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+=reaching defns for expr 25 edges
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 26 edges
-  Lfor.end7%1%d=>E0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
 =reaching defns for expr 26 edges done
 =reaching defns for expr 27
-1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 27 edges
-  Lfor.end7%1%d=>E0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
 =reaching defns for expr 27 edges done
 =reaching defns for expr 28
-1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 28 edges
-  Lfor.end7%1%d=>E0%0%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 28 edges done
 =reaching defns for expr 29
-1 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 29 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 29 edges done
 =reaching defns for expr 30
-1 : input.dst.llvm-%inc6.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 30 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 30 edges done
 =reaching defns for expr 31
-1 : input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 31 edges
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 31 edges done
 =reaching defns for expr 32
-1 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%20826e1fdcb34925b896cf05f2e68c9.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 32 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 32 edges done
 =reaching defns for expr 33
-1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 33 edges
-  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 33 edges done
 =reaching defns for expr 34
-1 : input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 34 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 34 edges done
 =reaching defns for expr 35
-1 : input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%289705b5b10ef8e46579c979a515b48.intermediate.gepoffset.1.offset.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 35 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 35 edges done
 =reaching defns for expr 36
-1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 36 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 36 edges done
 =reaching defns for expr 37
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 37 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 37 edges done
 =reaching defns for expr 38
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%arrayidx4.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 38 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 38 edges done
 =reaching defns for expr 39
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-%inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 39 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 39 edges done
 =reaching defns for expr 40
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%j.0.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 40 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 40 edges done
 =reaching defns for expr 41
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%x.1.phi.tmpvar.for.inc.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 41 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 41 edges done
 =reaching defns done
 =ReachingDefinitionsForLocs done
@@ -4817,7 +4817,7 @@ lr_status_linearly_related(; )
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%x.0.Lfor.cond%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap, )
-=LR status for var input.src.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+=LR status for var input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%cmp.Lfor.cond%2%d
 lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap, )
@@ -4829,7 +4829,7 @@ lr_status_linearly_related(; )
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%x.1.Lfor.cond1%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap, )
-=LR status for var input.src.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+=LR status for var input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%cmp2.Lfor.cond1%2%d
 lr_status_bottom(; memlabel-mem--arg.2, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap, )

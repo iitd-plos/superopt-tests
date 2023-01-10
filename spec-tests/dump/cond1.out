@@ -1,0 +1,748 @@
+argv[0] = /home/indrajit/scratch/repos/superopt-project/usr/local/bin/eq32
+argv[1] = --disable-dst-to-src-submap
+argv[2] = --smt-query-timeout=5
+argv[3] = --tmpdir-path=par_tmpdir
+argv[4] = --proof=cond1.proof
+argv[5] = --spec-iospecs=cond1.iospecs
+argv[6] = cond1.spec
+argv[7] = cond1.c
+Query dir: /tmp/smt-solver-tmp-files/indrajit.2707921
+argv[0] = /home/indrajit/scratch/repos/superopt-project/usr/local/bin/clang
+argv[1] = -Xclang
+argv[2] = -disable-llvm-passes
+argv[3] = -Xclang
+argv[4] = -disable-O0-optnone
+argv[5] = -c
+argv[6] = -g
+argv[7] = -emit-llvm
+argv[8] = -O0
+argv[9] = /home/indrajit/scratch/repos/superopt-project/superopt-tests/spec-tests/cond1.c
+argv[10] = -o
+argv[11] = par_tmpdir/cond1.c.bc.tmp
+argv[12] = -m32
+
+argv[0] = /home/indrajit/scratch/repos/superopt-project/usr/local/bin/llvm2tfg
+argv[1] = --xml-output-format
+argv[2] = text-color
+argv[3] = -f
+argv[4] = ALL
+argv[5] = --call-context-depth
+argv[6] = 0
+argv[7] = --always-use-call-context-any
+argv[8] = --src-etfg
+argv[9] = par_tmpdir/cond1.spec.etfg
+argv[10] = par_tmpdir/cond1.c.bc
+argv[11] = -o
+argv[12] = par_tmpdir/cond1.c.dst.etfg
+<MSG>0:00 : Converting LLVM IR bitcode to Transfer Function Graph (TFG) for function foo</MSG>
+
+tfg_get_simplified_edge_cond_for_edge: num_starts 44 time spent: 0:0:0 [0.000067s total; 0.000002 per start]
+tfg_get_simplified_assumes_for_edge: num_starts 59 time spent: 0:0:0 [0.000084s total; 0.000001 per start]
+expr_label_memlabels_using_memlabel_map: num_starts 321 time spent: 0:0:0 [0.001242s total; 0.000004 per start]
+expr_simplify_solver: num_starts 33 time spent: 0:0:0 [0.005713s total; 0.000173 per start]
+expr_simplify_syntactic: num_starts 33 time spent: 0:0:0 [0.001900s total; 0.000058 per start]
+expr_simplify_using_lhs_set_helper: num_starts 35 time spent: 0:0:0 [0.008500s total; 0.000243 per start]
+expr_simplify_using_lhs_set_visit_function: num_starts 84 time spent: 0:0:0 [0.008414s total; 0.000100 per start]
+expr_simplify_sort_args_to_canonicalize: num_starts 45 time spent: 0:0:0 [0.000201s total; 0.000004 per start]
+expr_simplify_not: num_starts 2 time spent: 0:0:0 [0.000007s total; 0.000003 per start]
+canonicalize_expr_tree: num_starts 23 time spent: 0:0:0 [0.000386s total; 0.000017 per start]
+expr_simplify_memalloc_using_memlabel: num_starts 1 time spent: 0:0:0 [0.000003s total; 0.000003 per start]
+get_arithmetic_addsub_atoms: num_starts 39 time spent: 0:0:0 [0.000033s total; 0.000001 per start]
+expr_linear_relation_holds_visit: num_starts 40 time spent: 0:0:0 [0.000530s total; 0.000013 per start]
+expr_is_consts_struct_constant: num_starts 175 time spent: 0:0:0 [0.000132s total; 0.000001 per start]
+expr_do_simplify_helper: num_starts 710 time spent: 0:0:0 [0.009136s total; 0.000013 per start]
+expr_do_simplify_helper_cache: num_starts 710 time spent: 0:0:0 [0.000417s total; 0.000001 per start]
+array_constant_equals: num_starts 3 time spent: 0:0:0 [0.000013s total; 0.000004 per start]
+combo_dfa_xfer_and_meet: num_starts 24 time spent: 0:0:0 [0.019861s total; 0.000828 per start]
+alias_val_xfer_and_meet: num_starts 24 time spent: 0:0:0 [0.008224s total; 0.000343 per start]
+get_sprel_map_from_avail_exprs: num_starts 34 time spent: 0:0:0 [0.001829s total; 0.000054 per start]
+update_memlabels_for_memslot_locs: num_starts 9 time spent: 0:0:0 [0.000039s total; 0.000004 per start]
+populate_gen_and_kill_sets_for_edge: num_starts 48 time spent: 0:0:0 [0.001575s total; 0.000033 per start]
+compute_simplified_loc_exprs_for_edge: num_starts 175 time spent: 0:0:0 [0.007315s total; 0.000042 per start]
+compute_locs_definitely_written_on_edge: num_starts 48 time spent: 0:0:0 [0.000024s total; 0.000000 per start]
+get_locs_potentially_read_in_expr_using_locs_map: num_starts 22 time spent: 0:0:0 [0.004954s total; 0.000225 per start]
+edge_update_memlabel_map_for_mlvars: num_starts 24 time spent: 0:0:0 [0.000163s total; 0.000007 per start]
+add_new_locs_based_on_edge: num_starts 24 time spent: 0:0:0 [0.006028s total; 0.000251 per start]
+expand_locset_to_include_slots_for_memmask: num_starts 32 time spent: 0:0:0 [0.000062s total; 0.000002 per start]
+num_syntactic_match_tests = 0.
+num_execution_tests = 0.
+num_boolean_tests = 0.
+fingerprinting rate: -nan per second (total), -nan per second (itable_enumerate_timer), -nan per second (excluding execution/boolean tests).
+
+timers:
+graph_with_execution_constructor.src.spec.foo.: 0s (num_starts 1; 0.0000s/start)
+alias_val_t::constructor_with_map_arg.: 1e-06s (num_starts 1; 0.0000s/start)
+graph_with_ce_constructor.src.spec.foo.: 1e-06s (num_starts 1; 0.0000s/start)
+graph_with_paths_constructor.src.spec.foo.: 1e-06s (num_starts 1; 0.0000s/start)
+graph_with_proofs_constructor.src.spec.foo.: 1e-06s (num_starts 1; 0.0000s/start)
+tfg_llvm_interpret_intrinsic_fcalls.: 1e-06s (num_starts 1; 0.0000s/start)
+graph_with_points_constructor.src.spec.foo.: 2e-06s (num_starts 1; 0.0000s/start)
+remove_function_name_from_symbols.: 2e-06s (num_starts 1; 0.0000s/start)
+set_string_contents_for_touched_symbols_at_zero_offset.: 2e-06s (num_starts 1; 0.0000s/start)
+tfg_constructor.src.spec.foo.after_populate_assumes_around_edge.: 2e-06s (num_starts 1; 0.0000s/start)
+context_constructor.init.: 3e-06s (num_starts 1; 0.0000s/start)
+graph_with_guessing_constructor.src.spec.foo.: 7e-06s (num_starts 1; 0.0000s/start)
+lr_status_meet.: 9e-06s (num_starts 15; 0.0000s/start)
+expr_is_hidden_reg.: 1.2e-05s (num_starts 13; 0.0000s/start)
+get_intersected_lr_status.: 1.3e-05s (num_starts 1; 0.0000s/start)
+add_assumes_to_start_edge.: 1.6e-05s (num_starts 1; 0.0000s/start)
+expr_is_callee_save_const.: 2.1e-05s (num_starts 21; 0.0000s/start)
+add_extra_node_at_start_pc.: 2.6e-05s (num_starts 1; 0.0000s/start)
+tfg::populate_loc_definedness.set_loc_definedness().: 3.1e-05s (num_starts 2; 0.0000s/start)
+context_constructor.solver.: 3.3e-05s (num_starts 1; 0.0000s/start)
+context_constructor.: 4e-05s (num_starts 1; 0.0000s/start)
+graph_locs_add_all_specvars.: 5.7e-05s (num_starts 1; 0.0001s/start)
+determinize_value_expr_map.: 7.1e-05s (num_starts 93; 0.0000s/start)
+main.3.: 7.2e-05s (num_starts 1; 0.0001s/start)
+populate_lr_status_for_sprel_locs_map.calling.compute_lr_status_for_expr.: 7.5e-05s (num_starts 3; 0.0000s/start)
+graph_locs_add_exvregs_for_edge.: 7.8e-05s (num_starts 22; 0.0000s/start)
+compute_sprel_relations.: 8.6e-05s (num_starts 1; 0.0001s/start)
+propagate_sprels.: 9.1e-05s (num_starts 1; 0.0001s/start)
+sp_version_relations_val_t::compute_transitive_closure.: 9.2e-05s (num_starts 10; 0.0000s/start)
+graph_locs_add_all_exvregs.: 9.4e-05s (num_starts 1; 0.0001s/start)
+tfg::populate_loc_definedness.post_dfa.: 9.7e-05s (num_starts 2; 0.0000s/start)
+graph_locs_add_local_vars_for_edge.: 0.000105s (num_starts 22; 0.0000s/start)
+graph_locs_add_all_local_vars.: 0.000121s (num_starts 1; 0.0001s/start)
+edge_update_memlabel_map_for_mlvars.populate_memlabel_map.: 0.000137s (num_starts 24; 0.0000s/start)
+expr_represents_llvm_undef.: 0.000148s (num_starts 24; 0.0000s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.post_dfa.: 0.000153s (num_starts 1; 0.0002s/start)
+expr_substitute_using_available_exprs_submap.: 0.000156s (num_starts 15; 0.0000s/start)
+sp_version_relations_val_t::meet.: 0.000162s (num_starts 288; 0.0000s/start)
+populate_locid2expr_map.: 0.000172s (num_starts 2; 0.0001s/start)
+tfg_llvm_t::tfg_llvm_populate_varname_lr_status.: 0.000207s (num_starts 1; 0.0002s/start)
+graph_add_location_slots_using_state_mem_acc_map.: 0.000221s (num_starts 24; 0.0000s/start)
+canonicalize_llvm_nextpcs.: 0.000236s (num_starts 1; 0.0002s/start)
+sp_version_relations_val_t::generate_vals_from_gen_set.: 0.00025s (num_starts 24; 0.0000s/start)
+def_analysis::xfer_and_meet.: 0.000253s (num_starts 48; 0.0000s/start)
+graph_locs_add_all_llvmvars.: 0.000276s (num_starts 1; 0.0003s/start)
+rdefs_locs_ssa_analysis::xfer_and_meet.: 0.000348s (num_starts 24; 0.0000s/start)
+populate_transitive_closure.: 0.000356s (num_starts 1; 0.0004s/start)
+populate_simplified_to_state.: 0.0004s (num_starts 3; 0.0001s/start)
+expr_linear_relation_holds::visit.var.: 0.000433s (num_starts 24; 0.0000s/start)
+create_closure_matrix.: 0.00053s (num_starts 33; 0.0000s/start)
+tfg_llvm_t::tfg_llvm_fill_remaining_llvm_to_source_mappings_using_avail_exprs.: 0.00053s (num_starts 1; 0.0005s/start)
+expr_contains_only_constants_or_sp_versions_or_count_sort_vars.: 0.000561s (num_starts 188; 0.0000s/start)
+populate_exit_return_values_for_llvm_method.: 0.000635s (num_starts 1; 0.0006s/start)
+graph_with_edge_structures_constructor.src.spec.foo.: 0.000723s (num_starts 1; 0.0007s/start)
+tfg_llvm_t::tfg_llvm_compute_pc_to_llvm_to_source_varname_map.: 0.000732s (num_starts 1; 0.0007s/start)
+tfg::collect_assumes_around_edge.: 0.000771s (num_starts 59; 0.0000s/start)
+graph_with_locs_constructor.src.spec.foo.: 0.000845s (num_starts 1; 0.0008s/start)
+graph_visit_exprs.: 0.000917s (num_starts 4; 0.0002s/start)
+graph_with_aliasing_constructor.src.spec.foo.: 0.000935s (num_starts 1; 0.0009s/start)
+compute_lr_status_for_expr.: 0.000969s (num_starts 18; 0.0001s/start)
+compute_new_lr_status_on_locs.calling.compute_lr_status_for_expr.: 0.000973s (num_starts 15; 0.0001s/start)
+compute_new_lr_status_on_locs.loc_lr_status.simplify_and_compute_lr_status.: 0.001001s (num_starts 15; 0.0001s/start)
+graph_with_simplified_assets_constructor.src.spec.foo.: 0.001269s (num_starts 1; 0.0013s/start)
+compute_z3_expr.: 0.001274s (num_starts 23; 0.0001s/start)
+query:convert_from_z3.: 0.001286s (num_starts 23; 0.0001s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.before_solve.: 0.001294s (num_starts 1; 0.0013s/start)
+populate_dominator_and_postdominator_relations.: 0.001353s (num_starts 2; 0.0007s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.before_initialize.: 0.001418s (num_starts 1; 0.0014s/start)
+avail_exprs_val_t::generate_vals_from_gen_set.: 0.001468s (num_starts 24; 0.0001s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.: 0.001517s (num_starts 1; 0.0015s/start)
+eqspace::graph_per_loc_dfa_val_t<eqspace::sp_version_relations_val_t>::ftmap_xfer_and_meet_flow_insensitive.: 0.001665s (num_starts 24; 0.0001s/start)
+compute_new_lr_status_on_locs.: 0.001822s (num_starts 24; 0.0001s/start)
+graph_with_predicates_constructor.src.spec.foo.: 0.00184s (num_starts 1; 0.0018s/start)
+tfg::populate_loc_definedness.before_solve.: 0.001841s (num_starts 2; 0.0009s/start)
+tfg::populate_loc_definedness.before_initialize.: 0.002057s (num_starts 2; 0.0010s/start)
+populate_simplified_assets.: 0.002184s (num_starts 6; 0.0004s/start)
+tfg::populate_loc_definedness.: 0.002186s (num_starts 2; 0.0011s/start)
+graph_identify_back_edges.: 0.0022s (num_starts 5; 0.0004s/start)
+graph_identify_natural_loops.: 0.002218s (num_starts 5; 0.0004s/start)
+liveness_analysis_conservative::xfer_and_meet.: 0.002246s (num_starts 44; 0.0001s/start)
+query:convert_to_z3.: 0.002338s (num_starts 23; 0.0001s/start)
+graph_per_loc_dfa_val_t<avail_exprs_val_t>::meet.: 0.00238s (num_starts 24; 0.0001s/start)
+expr_simplify_using_sprel_pair_and_memlabel_maps.sprel.: 0.002391s (num_starts 321; 0.0000s/start)
+populate_branch_affecting_locs.: 0.002421s (num_starts 2; 0.0012s/start)
+create_sp_version_relations_lattice_at_pc.: 0.002752s (num_starts 33; 0.0001s/start)
+graph_to_stream.: 0.002861s (num_starts 1; 0.0029s/start)
+find_dominators.: 0.003294s (num_starts 9; 0.0004s/start)
+avail_exprs_create_submap.: 0.003405s (num_starts 72; 0.0000s/start)
+tfg_constructor.src.spec.foo.after_transitive_closure.: 0.003792s (num_starts 1; 0.0038s/start)
+tfg_constructor.src.spec.foo.post_parsing.: 0.003796s (num_starts 1; 0.0038s/start)
+tfg_constructor.src.spec.foo.after_string_contents.: 0.003799s (num_starts 1; 0.0038s/start)
+tfg_constructor.src.spec.foo.after_compute_max_memlabel_varnum.: 0.003804s (num_starts 1; 0.0038s/start)
+tfg_constructor.src.spec.foo.: 0.003808s (num_starts 1; 0.0038s/start)
+compute_regions.: 0.003947s (num_starts 5; 0.0008s/start)
+populate_locs_potentially_modified_on_edge.: 0.004497s (num_starts 3; 0.0015s/start)
+query:simplify-z3.: 0.004548s (num_starts 46; 0.0001s/start)
+eqspace::graph_per_loc_dfa_val_t<eqspace::avail_exprs_val_t>::ftmap_xfer_and_meet_flow_insensitive.: 0.004907s (num_starts 24; 0.0002s/start)
+tfg_preprocess.dst.llvm.foo.: 0.00556s (num_starts 1; 0.0056s/start)
+tfg::tfg_preprocess.: 0.005563s (num_starts 1; 0.0056s/start)
+main.2.: 0.006463s (num_starts 1; 0.0065s/start)
+populate_auxilliary_structures_dependent_on_locs.: 0.006697s (num_starts 3; 0.0022s/start)
+ftmap_pointsto_analysis_combo_dfa_t.alias_val_xfer_and_meet.: 0.008265s (num_starts 24; 0.0003s/start)
+populate_loc_liveness.: 0.008476s (num_starts 2; 0.0042s/start)
+expr_do_simplify_using_lhs_set_and_precond.: 0.008531s (num_starts 35; 0.0002s/start)
+get_tfg.: 0.009033s (num_starts 1; 0.0090s/start)
+get_function_tfg_map.foo.: 0.009059s (num_starts 1; 0.0091s/start)
+get_function_tfg_map.: 0.009061s (num_starts 1; 0.0091s/start)
+expr_label_memlabels_using_memlabel_map_visitor.simplify.: 0.00917s (num_starts 321; 0.0000s/start)
+expr_simplify_using_sprel_pair_and_memlabel_maps.model.: 0.009551s (num_starts 321; 0.0000s/start)
+expr_simplify_using_sprel_pair_and_memlabel_maps.: 0.011229s (num_starts 321; 0.0000s/start)
+tfg_postprocess_after_pointsto_analysis.: 0.019506s (num_starts 1; 0.0195s/start)
+ftmap_pointsto_analysis_combo_dfa_t.ftmap_dfa_flow_insensitive_xfer_and_meet.: 0.01989s (num_starts 24; 0.0008s/start)
+tfg_llvm_t::tfg_postprocess_after_pointsto_analysis.: 0.02334s (num_starts 1; 0.0233s/start)
+ftmap_run_pointsto_analysis.: 0.048243s (num_starts 1; 0.0482s/start)
+parse_consts_db.: 6.66179s (num_starts 1; 6.6618s/start)
+main.: 6.74159s (num_starts 1; 6.7416s/start)
+
+counters:
+
+flags:
+
+info:
+
+
+<MSG>0:00 : Converting Spec to Transfer Function Graph (TFG)...</MSG>
+<MSG>0:07 : Converting C source code to LLVM IR bitcode...</MSG>
+<MSG>0:14 : Converting LLVM IR bitcode to Transfer Function Graph (TFG)...</MSG>
+<MSG>0:21 : Searching for equivalence at unroll factor 1</MSG>
+<MSG>0:21 : Reading in SPEC-LLVM I/O specification from file cond1.iospecs...</MSG>
+<MSG>0:21 : Computing equivalence for function: foo...</MSG>
+<MSG>0:21 : Constructing SSA for SPEC TFG...</MSG>
+<MSG>0:21 : Constructing SSA for LLVM TFG...</MSG>
+<MSG>0:21 : Finished SSA construction for both TFGs...</MSG>
+<MSG>0:21 : Computing equivalence of the two TFGs ( SPEC and LLVM )...</MSG>
+<MSG>0:21 : Chose (after CE propagation) product-TFG foo (d:0, s:0, sp: 0) from a frontier of size 1...</MSG>
+<cg>
+  Nodes[1]: L0%0%d_L0%0%d (C L0%0%d, A L0%0%d)
+                L0%0%d_L0%0%d [inductive-invariants] contains 0 counterexamples (for correlating 0 bv exprs)
+  DST PC -> [Local <-> SP version] mappings for alloca:
+
+  DST PC -> [Local <-> SP version] mappings for dealloca:
+
+</cg>
+  dst-full-pathset: nullptr
+  src-full-pathset: nullptr
+<MSG>0:21 : product-TFG foo: Enumerating correlations for L0%0%d=>E0%0%d[mu 1, delta {1,0}] starting at L0%0%d_L0%0%d
+</MSG>
+<MSG>0:21 : Considering 1 paths to src pc E0%0%d as correlation candidates for L0%0%d=>E0%0%d[mu 1, delta {1,0}] at L0%0%d_L0%0%d
+</MSG>
+<MSG>0:21 : Attempting correlation of src pathset L0%0%d=>E0%0%d[mu 1, delta {1,0}] as correlation candidate for L0%0%d=>E0%0%d[mu 1, delta {1,0}] at L0%0%d_L0%0%d
+</MSG>
+<MSG>0:21 : Found 1 feasible correlations for paths to src pc E0%0%d as correlation candidates for L0%0%d=>E0%0%d[mu 1, delta {1,0}] at L0%0%d_L0%0%d
+</MSG>
+<MSG>0:21 : product-TFG foo: Found 1 correlations for L0%0%d=>E0%0%d[mu 1, delta {1,0}] starting at L0%0%d_L0%0%d
+</MSG>
+<MSG>0:21 : product-TFG foo created 1 possibilities in group foo.A...</MSG>
+<MSG>0:21 : Chose (for CE propagation) product-TFG foo.A1 (d:0, s:0, sp: 0) from a frontier of size 1...</MSG>
+<cg>
+  Nodes[1]: L0%0%d_L0%0%d (C L0%0%d, A L0%0%d)
+                L0%0%d_L0%0%d [inductive-invariants] contains 3 counterexamples (for correlating 0 bv exprs)
+  DST PC -> [Local <-> SP version] mappings for alloca:
+
+  DST PC -> [Local <-> SP version] mappings for dealloca:
+
+</cg>
+  dst-full-pathset: L0%0%d=>E0%0%d[mu 1, delta {1,0}]
+  src-full-pathset: L0%0%d=>E0%0%d[mu 1, delta {1,0}]
+  DST PC -> [Local <-> SP version] mappings for alloca:
+
+  DST PC -> [Local <-> SP version] mappings for dealloc:
+
+<MSG>0:21 : Finished adding lsprel-assumes for allocation to the product-TFG foo.A1...</MSG>
+<MSG>0:21 : Finished adding lsprel-assumes for deallocation to the product-TFG foo.A1...</MSG>
+<MSG>0:21 : Creating ssa-path for the src-tfg path L0%0%d --> E0%0%d ending at E0%0%d_E0%0%d
+</MSG>
+<MSG>0:21 : Adding a CG edge composition using the src path L0%0%d --> E0%0%d and dst path L0%0%d --> E0%0%d</MSG>
+<MSG>0:21 : Identifying common alloc-deallocs in the src path L0%0%d --> E0%0%d and dst path L0%0%d --> E0%0%d
+</MSG>
+<MSG>0:21 : Identified no common alloc-deallocs in the src path L0%0%d --> E0%0%d and dst path L0%0%d --> E0%0%d</MSG>
+<MSG>0:21 : Adding new edge to the product-TFG foo.A1 for fromPC L0%0%d_L0%0%d and toPC E0%0%d_E0%0%d, src path L0%0%d --> E0%0%d and dst path L0%0%d --> E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: Computing loop hoisting select expressions at toPC E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: Computing loop hoisting non-linear expressions at toPC E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: Adding node E0%0%d_E0%0%d to the product-TFG...</MSG>
+<MSG>0:21 : foo.A1: Getting alloca-ptrs on edge L0%0%d_L0%0%d=>E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: Found no alloca-ptrs on edge L0%0%d_L0%0%d=>E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: Adding edge L0%0%d_L0%0%d=>E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: CG's add edge function (corr_graph::add_edge) called...</MSG>
+<MSG>0:21 : foo.A1: graph with counterexample's add edge function (graph_with_ce::add_edge) called...</MSG>
+<MSG>0:21 : foo.A1: Propagating counter-examples across the newly added edge...</MSG>
+<MSG>0:21 : foo.A1: Propagated 3 out of 3 counter-examples across edge L0%0%d_L0%0%d=>E0%0%d_E0%0%d</MSG>
+<MSG>0:21 : foo.A1: Added the 3 propagated CEs at PC E0%0%d_E0%0%d and propagated further.
+</MSG>
+<MSG>0:21 : foo.A1: finished executing graph with counterexample's add edge function (graph_with_ce::add_edge)...</MSG>
+<MSG>0:21 : foo.A1: Finished executing CG's add edge function...</MSG>
+<MSG>0:21 : foo.A1: Computing CG regions after the addition of the edge L0%0%d_L0%0%d=>E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: Done computing CG regions after the addition of the edge L0%0%d_L0%0%d=>E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : Done adding new edge to the product-TFG foo.A1 for fromPC L0%0%d_L0%0%d and toPC E0%0%d_E0%0%d, src path L0%0%d --> E0%0%d and dst path L0%0%d --> E0%0%d...</MSG>
+<MSG>0:21 : Done adding a CG edge composition using the src path L0%0%d --> E0%0%d and dst path L0%0%d --> E0%0%d</MSG>
+<MSG>0:21 : Added correlation to the product-TFG foo.A1 (d:0, s:0, sp: 0) and created a correlation entry...</MSG>
+<MSG>0:21 : Chose (after CE propagation) product-TFG foo.A1 (d:0, s:0, sp: 0) from a frontier of size 1...</MSG>
+<cg>
+  Edges[1]: L0%0%d_L0%0%d=>E0%0%d_E0%0%d (C L0%0%d => C E0%0%d at mu 1 delta {1,0}, A L0%0%d => A E0%0%d at mu 1 delta {1,0})
+  Nodes[2]: L0%0%d_L0%0%d (C L0%0%d, A L0%0%d)
+                L0%0%d_L0%0%d [inductive-invariants] contains 3 counterexamples (for correlating 0 bv exprs)
+            E0%0%d_E0%0%d (C E0%0%d, A E0%0%d)
+                E0%0%d_E0%0%d [inductive-invariants] contains 0 counterexamples (for correlating 0 bv exprs)
+  DST PC -> [Local <-> SP version] mappings for alloca:
+
+  DST PC -> [Local <-> SP version] mappings for dealloca:
+
+</cg>
+  dst-full-pathset: L0%0%d=>E0%0%d[mu 1, delta {1,0}]
+  src-full-pathset: L0%0%d=>E0%0%d[mu 1, delta {1,0}]
+<MSG>0:21 : foo.A1: Updating invariants over the newly added edges in edge composition L0%0%d_L0%0%d=>E0%0%d_E0%0%d and other downstream edges that change due to it...</MSG>
+<MSG>0:21 : Constructed infer_invariants_dfa with initial worklist L0%0%d_L0%0%d=>E0%0%d_E0%0%d...</MSG>
+<MSG>0:21 : foo.A1: Relaxing dst graph's memlabels for edge composition (L0%0%d_L0%0%d=>E0%0%d_E0%0%d) ...</MSG>
+<MSG>0:21 : foo.A1: Done relaxing dst graph's memlabels for edge composition (L0%0%d_L0%0%d=>E0%0%d_E0%0%d), result: unchanged</MSG>
+<MSG>0:21 : foo.A1: Checking well-formedness assertions on outgoing edges from L0%0%d_L0%0%d ...</MSG>
+<MSG>0:21 : foo.A1: Done relaxing memlabels and invariants across the edge composition (L0%0%d_L0%0%d=>E0%0%d_E0%0%d), result: unchanged( 0, 0 ) ...</MSG>
+<MSG>0:21 : foo.A1 (d:0, s:0, sp: 0): checked newly added edge and inferred invariants...</MSG>
+<MSG>0:21 : foo.A1 (d:0, s:0, sp: 0): Chosen CG is still the most promising correlation entry; proceeding with it...</MSG>
+<MSG>0:21 : Chosen product-TFG represents our required correlation graph...</MSG>
+<MSG>0:21 : Checking equivalence proof...</MSG>
+<MSG>0:21 : Equivalence check passed: product CFG has strong enough inductive invariants...</MSG>
+CG invariants =
+L0%0%d_L0%0%d: (d:0, s:0, sp: 0)
+  Invariant state (0 classes):
+
+E0%0%d_E0%0%d: (d:0, s:0, sp: 0)
+  Invariant state (0 classes):
+
+
+Found equivalence proof. Final CG:
+<cg>
+  Edges[1]: L0%0%d_L0%0%d=>E0%0%d_E0%0%d (C L0%0%d => C E0%0%d at mu 1 delta {1,0}, A L0%0%d => A E0%0%d at mu 1 delta {1,0})
+  Nodes[2]: L0%0%d_L0%0%d (C L0%0%d, A L0%0%d)
+                L0%0%d_L0%0%d [inductive-invariants] contains 3 counterexamples (for correlating 0 bv exprs)
+            E0%0%d_E0%0%d (C E0%0%d, A E0%0%d)
+                E0%0%d_E0%0%d [inductive-invariants] contains 0 counterexamples (for correlating 0 bv exprs)
+  DST PC -> [Local <-> SP version] mappings for alloca:
+
+  DST PC -> [Local <-> SP version] mappings for dealloca:
+
+</cg>
+EQUIV equivalence check for function foo. 0.32s, query:smt.: 0.078123s (num_starts 8; 0.0098s/start), decide_hoare_triple.ce.: 0s (num_starts 0; -nans/start), decide_hoare_triple_helper.: 0.171696s (num_starts 6; 0.0286s/start)ftmap_run_pointsto_analysis.: 0.036633s (num_starts 2; 0.0183s/start)
+
+Printing statistics:
+
+timers:
+decide_hoare_triple.ce.: 0s (num_starts 0; -nans/start)
+aliasing_constraints.get_region_agrees_with_memlabel_exprs.: 1e-06s (num_starts 1; 0.0000s/start)
+compute_loop_hoisting_non_linear_exprs_at_pcpair.: 1e-06s (num_starts 1; 0.0000s/start)
+compute_loop_hoisting_select_exprs_at_pcpair.: 1e-06s (num_starts 1; 0.0000s/start)
+update_dst_edge_for_local_allocations_and_deallocations.: 1e-06s (num_starts 1; 0.0000s/start)
+cg_compute_well_formedness_conditions_for_stack_pointer.: 2e-06s (num_starts 1; 0.0000s/start)
+get_paths_with_matching_to_pc.: 3e-06s (num_starts 1; 0.0000s/start)
+ce_perform_memory_fuzzing.: 4e-06s (num_starts 3; 0.0000s/start)
+aliasing_constraints.get_region_agrees_with_memlabel_preds.: 5e-06s (num_starts 1; 0.0000s/start)
+collect_aliasing_constaints_starting_at_pc_till_maximal_bbs.: 9e-06s (num_starts 3; 0.0000s/start)
+collect_dst_to_src_submap_preds.: 9e-06s (num_starts 6; 0.0000s/start)
+alias_val_t::constructor_with_map_arg.: 1e-05s (num_starts 14; 0.0000s/start)
+pred_lhs_rhs_convert_memmask_to_select_for_symbols_and_locals.: 1.6e-05s (num_starts 12; 0.0000s/start)
+get_intersected_lr_status.: 2e-05s (num_starts 2; 0.0000s/start)
+tfg::populate_loc_definedness.set_loc_definedness().: 2.3e-05s (num_starts 3; 0.0000s/start)
+corr_graph_add_correlation_and_create_new_correl_entry.after_corr_graph_add_correlation.: 2.5e-05s (num_starts 1; 0.0000s/start)
+lr_status_meet.: 3e-05s (num_starts 49; 0.0000s/start)
+determinize_value_expr_map.: 3.2e-05s (num_starts 18; 0.0000s/start)
+expr_is_hidden_reg.: 3.2e-05s (num_starts 34; 0.0000s/start)
+is_expr_equal_using_lhs_set_and_precond_helper_miss_after_expr_is_provable.: 3.4e-05s (num_starts 12; 0.0000s/start)
+get_maximal_basic_block_edge_list_ending_at_pc.: 3.6e-05s (num_starts 19; 0.0000s/start)
+get_uapprox_predicate_list_from_guarded_preds_and_graph_ec.: 3.7e-05s (num_starts 12; 0.0000s/start)
+proof_query_is_trivial_helper.: 3.8e-05s (num_starts 18; 0.0000s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.post_dfa.: 3.8e-05s (num_starts 1; 0.0000s/start)
+graph_with_guessing_sync_preds.: 4e-05s (num_starts 6; 0.0000s/start)
+expr_simplify_using_sprel_and_memlabel_maps.model.: 4.7e-05s (num_starts 18; 0.0000s/start)
+expr_is_callee_save_const.: 4.8e-05s (num_starts 50; 0.0000s/start)
+sp_version_relations_val_t::meet.: 4.9e-05s (num_starts 111; 0.0000s/start)
+corr_graph_generate_local_sprel_expr_guesses_for_locals.: 5.3e-05s (num_starts 1; 0.0001s/start)
+aliasing_constraints.convert_to_expr.: 6e-05s (num_starts 12; 0.0000s/start)
+tfg::populate_loc_definedness.post_dfa.: 6.6e-05s (num_starts 3; 0.0000s/start)
+graph_locs_add_exvregs_for_edge.: 7.8e-05s (num_starts 12; 0.0000s/start)
+removeMostPromising.: 7.9e-05s (num_starts 4; 0.0000s/start)
+set_result_and_counter_example.: 8.6e-05s (num_starts 8; 0.0000s/start)
+get_maximal_basic_block_edge_list_starting_at_pc.: 8.9e-05s (num_starts 19; 0.0000s/start)
+graph_locs_add_all_exvregs.: 9e-05s (num_starts 2; 0.0000s/start)
+expr_simplify_using_sprel_and_memlabel_maps.sprel.: 0.000104s (num_starts 18; 0.0000s/start)
+populate_lr_status_for_sprel_locs_map.calling.compute_lr_status_for_expr.: 0.000111s (num_starts 6; 0.0000s/start)
+graph_locs_add_local_vars_for_edge.: 0.000115s (num_starts 12; 0.0000s/start)
+populate_locid2expr_map.: 0.000122s (num_starts 2; 0.0001s/start)
+rdefs_locs_ssa_analysis::xfer_and_meet.: 0.000125s (num_starts 7; 0.0000s/start)
+graph_locs_add_all_local_vars.: 0.000128s (num_starts 2; 0.0001s/start)
+graph_add_location_slots_using_state_mem_acc_map.: 0.000133s (num_starts 14; 0.0000s/start)
+collect_inductive_preds_around_path.: 0.000136s (num_starts 6; 0.0000s/start)
+graph_with_guessing_add_node_invariants_top_or_boundary.: 0.00014s (num_starts 2; 0.0001s/start)
+corr_graph::get_simplified_non_mem_assumes_helper.: 0.000143s (num_starts 3; 0.0000s/start)
+proof_query_is_trivial.: 0.000147s (num_starts 12; 0.0000s/start)
+collect_assumes_around_edge.: 0.000153s (num_starts 1; 0.0002s/start)
+corr_graph::get_simplified_non_mem_assumes.: 0.000153s (num_starts 3; 0.0001s/start)
+compute_sprel_relations.: 0.000157s (num_starts 2; 0.0001s/start)
+propagate_sprels.: 0.000169s (num_starts 2; 0.0001s/start)
+check_node_stability_after_CE_addition.: 0.000172s (num_starts 6; 0.0000s/start)
+def_analysis::xfer_and_meet.: 0.000182s (num_starts 21; 0.0000s/start)
+tfg_llvm_t::tfg_llvm_populate_varname_lr_status.: 0.000212s (num_starts 1; 0.0002s/start)
+corr_graph_enumerate_correlations.: 0.000215s (num_starts 1; 0.0002s/start)
+graph_get_reduced_graph_with_anchor_nodes_only.: 0.000233s (num_starts 1; 0.0002s/start)
+create_closure_matrix.: 0.000254s (num_starts 34; 0.0000s/start)
+pth_collect_preds_using_atom_func.: 0.000269s (num_starts 25; 0.0000s/start)
+sp_version_relations_val_t::compute_transitive_closure.: 0.000276s (num_starts 32; 0.0000s/start)
+expr_simplify_using_sprel_and_memlabel_maps.: 0.000282s (num_starts 18; 0.0000s/start)
+populate_dominator_and_postdominator_relations.: 0.0003s (num_starts 2; 0.0001s/start)
+segment_memory_and_perform_commonMEM_optimization.: 0.000303s (num_starts 12; 0.0000s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.before_solve.: 0.000308s (num_starts 1; 0.0003s/start)
+tfg_edge_composition_get_assumes.: 0.000311s (num_starts 25; 0.0000s/start)
+add_fresh_counterexample_at_pc_and_propagate.L0%0%d_L0%0%d.inductive-invariants.: 0.000315s (num_starts 3; 0.0001s/start)
+add_fresh_counterexample_at_pc_and_propagate.: 0.000332s (num_starts 3; 0.0001s/start)
+pth_collect_preds_using_atom_func_and_wp_fn.operator().: 0.000335s (num_starts 88; 0.0000s/start)
+graph_locs_add_all_llvmvars.: 0.000341s (num_starts 2; 0.0002s/start)
+decide_hoare_triple_with_alias_cons.ce.: 0.000342s (num_starts 1; 0.0003s/start)
+tfg::collect_assumes_around_edge.: 0.000345s (num_starts 30; 0.0000s/start)
+identify_address_taken_local_variables.: 0.000347s (num_starts 1; 0.0003s/start)
+populate_simplified_to_state.: 0.000365s (num_starts 3; 0.0001s/start)
+expr_represents_llvm_undef.: 0.000368s (num_starts 55; 0.0000s/start)
+get_sprel_map_pair_at_pc.: 0.000369s (num_starts 12; 0.0000s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.before_initialize.: 0.000389s (num_starts 1; 0.0004s/start)
+ssa_vars_renaming_analysis::xfer_and_meet.: 0.000403s (num_starts 14; 0.0000s/start)
+expr_contains_only_constants_or_sp_versions_or_count_sort_vars.: 0.000412s (num_starts 122; 0.0000s/start)
+tfg_llvm_t::tfg_llvm_populate_reaching_definitions.: 0.000412s (num_starts 1; 0.0004s/start)
+generate_aliasing_constraints_from_expr.: 0.000421s (num_starts 216; 0.0000s/start)
+pth_collect_simplified_preds_using_atom_func.: 0.000447s (num_starts 8; 0.0001s/start)
+edge_update_memlabel_map_for_mlvars.populate_memlabel_map.: 0.000455s (num_starts 26; 0.0000s/start)
+graph_locs_add_all_specvars.: 0.00048s (num_starts 2; 0.0002s/start)
+tfg_llvm_t::tfg_llvm_fill_remaining_llvm_to_source_mappings_using_avail_exprs.: 0.000535s (num_starts 1; 0.0005s/start)
+pth_collect_preds_using_atom_func_and_wp_fn.: 0.000626s (num_starts 33; 0.0000s/start)
+counter_example_falsifies_preds.: 0.000639s (num_starts 6; 0.0001s/start)
+sp_version_relations_val_t::generate_vals_from_gen_set.: 0.000654s (num_starts 26; 0.0000s/start)
+rdefs_vars_ssa_analysis::xfer_and_meet.: 0.000668s (num_starts 14; 0.0000s/start)
+tfg::populate_loc_definedness.before_solve.: 0.000697s (num_starts 3; 0.0002s/start)
+create_new_corr_graph_edge.new_node.: 0.000704s (num_starts 1; 0.0007s/start)
+graph_visit_exprs.: 0.000711s (num_starts 3; 0.0002s/start)
+graph_visit_exprs_and_keys.: 0.00075s (num_starts 2; 0.0004s/start)
+create_new_corr_graph_edge.: 0.000763s (num_starts 1; 0.0008s/start)
+cg_add_node.: 0.000767s (num_starts 2; 0.0004s/start)
+compute_ssa_vars_renaming_map.: 0.00087s (num_starts 2; 0.0004s/start)
+populate_transitive_closure.: 0.000901s (num_starts 11; 0.0001s/start)
+expr_try_breaking_bvextracts_to_fresh_vars.: 0.000903s (num_starts 12; 0.0001s/start)
+populate_simplified_assets.: 0.000921s (num_starts 6; 0.0002s/start)
+tfg::populate_loc_definedness.before_initialize.: 0.000932s (num_starts 3; 0.0003s/start)
+tfg::populate_loc_definedness.: 0.001009s (num_starts 3; 0.0003s/start)
+tfg_llvm_t::tfg_llvm_compute_pc_to_llvm_to_source_varname_map.: 0.001009s (num_starts 2; 0.0005s/start)
+get_next_potential_correlations.: 0.001042s (num_starts 1; 0.0010s/start)
+tfg_edge_composition_get_edge_cond_using_econd_fn.: 0.001051s (num_starts 25; 0.0000s/start)
+collect_assumes_around_path_helper.: 0.001053s (num_starts 19; 0.0001s/start)
+expr_substitute_using_available_exprs_submap.: 0.001054s (num_starts 53; 0.0000s/start)
+expr_linear_relation_holds::visit.var.: 0.001096s (num_starts 55; 0.0000s/start)
+graph_with_paths::collect_assumes_around_path.: 0.001098s (num_starts 19; 0.0001s/start)
+expr_try_converting_unaliased_memslots_to_fresh_vars.: 0.001153s (num_starts 12; 0.0001s/start)
+compute_vars_reaching_definitions.: 0.001164s (num_starts 2; 0.0006s/start)
+populate_branch_affecting_locs.: 0.001271s (num_starts 3; 0.0004s/start)
+populate_locs_potentially_modified_on_edge.: 0.001328s (num_starts 3; 0.0004s/start)
+src_dst_cg_path_tuple_apply_trans_funs_on_pred.src_tfg.computeWP_for_pred_across_ec.: 0.001334s (num_starts 10; 0.0001s/start)
+counter_example_satisfies_preds.: 0.001339s (num_starts 54; 0.0000s/start)
+tfg_suffixpath_get_expr_helper.: 0.001405s (num_starts 12; 0.0001s/start)
+graph_identify_back_edges.: 0.001464s (num_starts 17; 0.0001s/start)
+tfg::get_aliasing_constraints_for_edge.: 0.001474s (num_starts 78; 0.0000s/start)
+graph_identify_natural_loops.: 0.001494s (num_starts 17; 0.0001s/start)
+find_dominators.: 0.001531s (num_starts 21; 0.0001s/start)
+lhs_set_sort.: 0.001556s (num_starts 12; 0.0001s/start)
+corr_graph::get_aliasing_constraints_for_edge_helper.: 0.001766s (num_starts 6; 0.0003s/start)
+corr_graph::get_aliasing_constraints_for_edge.: 0.001786s (num_starts 6; 0.0003s/start)
+counter_example_evaluate_preds.: 0.001843s (num_starts 60; 0.0000s/start)
+liveness_analysis_conservative::xfer_and_meet.: 0.00205s (num_starts 18; 0.0001s/start)
+decide_hoare_triple_helper_get_aliasing_cons.: 0.002124s (num_starts 7; 0.0003s/start)
+create_sp_version_relations_lattice_at_pc.: 0.002155s (num_starts 34; 0.0001s/start)
+collect_aliasing_constraints_around_path_helper.: 0.002196s (num_starts 32; 0.0001s/start)
+populate_auxilliary_structures_dependent_on_locs.: 0.002261s (num_starts 3; 0.0008s/start)
+collect_aliasing_constraints_around_path.: 0.002268s (num_starts 20; 0.0001s/start)
+expr_simplify_using_sprel_pair_and_memlabel_maps.sprel.: 0.002355s (num_starts 329; 0.0000s/start)
+src_dst_cg_path_tuple_apply_trans_funs_on_pred.dst_tfg.computeWP_for_pred_across_ec.: 0.002485s (num_starts 12; 0.0002s/start)
+graph_edge_composition_get_to_state_using_to_state_fn.: 0.002721s (num_starts 37; 0.0001s/start)
+eqspace::graph_per_loc_dfa_val_t<eqspace::sp_version_relations_val_t>::ftmap_xfer_and_meet_flow_insensitive.: 0.002949s (num_starts 26; 0.0001s/start)
+compute_lr_status_for_expr.: 0.002973s (num_starts 55; 0.0001s/start)
+src_tfg_counter_example_translate_on_edge_composition.delta{1,0}.: 0.003119s (num_starts 6; 0.0005s/start)
+compute_new_lr_status_on_locs.calling.compute_lr_status_for_expr.: 0.003147s (num_starts 49; 0.0001s/start)
+src_tfg_counter_example_translate_on_edge_composition.: 0.003152s (num_starts 6; 0.0005s/start)
+decide_hoare_triple_helper;per-path;L0%0%d_L0%0%d;(epsilon);-trivial.: 0.003173s (num_starts 1; 0.0032s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(epsilon);-dst-edgecond-implies-src-edgecond;-trivial.: 0.003176s (num_starts 1; 0.0032s/start)
+decide_hoare_triple_helper;per-query-type;-dst-edgecond-implies-src-edgecond;-trivial.: 0.003179s (num_starts 1; 0.0032s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;-dst-edgecond-implies-src-edgecond;-trivial.: 0.003181s (num_starts 1; 0.0032s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(epsilon);-dst-edgecond-implies-src-edgecond;-trivial.: 0.003184s (num_starts 1; 0.0032s/start)
+compute_new_lr_status_on_locs.loc_lr_status.simplify_and_compute_lr_status.: 0.003219s (num_starts 49; 0.0001s/start)
+graph_ec_apply_trans_funs_helper.0.: 0.003537s (num_starts 22; 0.0002s/start)
+graph_ec_apply_trans_funs_helper.: 0.003602s (num_starts 22; 0.0002s/start)
+graph_ec_apply_trans_funs_using_wp_fn.: 0.003653s (num_starts 22; 0.0002s/start)
+computeWP_for_pred_across_ec.graph_ec_apply_trans_funs_using_wp_fn.: 0.003706s (num_starts 22; 0.0002s/start)
+compute_regions.: 0.003707s (num_starts 17; 0.0002s/start)
+computeWP_for_pred_across_ec.: 0.003766s (num_starts 22; 0.0002s/start)
+put_smtlib_string_in_file.: 0.003847s (num_starts 16; 0.0002s/start)
+get_unrolled_paths_from.: 0.003879s (num_starts 6; 0.0006s/start)
+apply_mask_and_overlay_array_constant.mk_array_constant.: 0.003977s (num_starts 3; 0.0013s/start)
+avail_exprs_val_t::generate_vals_from_gen_set.: 0.004066s (num_starts 26; 0.0002s/start)
+apply_mask_and_overlay_array_constant.: 0.004152s (num_starts 3; 0.0014s/start)
+do_ssa_transformation.: 0.004252s (num_starts 2; 0.0021s/start)
+parse_z3_model.: 0.004743s (num_starts 2; 0.0024s/start)
+query:convert_from_z3.: 0.004751s (num_starts 61; 0.0001s/start)
+dst_tfg_counter_example_translate_on_edge_composition.: 0.005048s (num_starts 6; 0.0008s/start)
+parse_cvc4_model.: 0.005099s (num_starts 2; 0.0025s/start)
+parse_yices_model.: 0.005152s (num_starts 2; 0.0026s/start)
+edge_composition_apply_trans_funs_on_pred.: 0.005219s (num_starts 6; 0.0009s/start)
+compute_new_lr_status_on_locs.: 0.005243s (num_starts 26; 0.0002s/start)
+src_dst_cg_path_tuple_apply_trans_funs_on_pred.: 0.005524s (num_starts 10; 0.0006s/start)
+graph_per_loc_dfa_val_t<avail_exprs_val_t>::meet.: 0.00569s (num_starts 26; 0.0002s/start)
+graph_with_guessing_relax_dst_memlabels_on_ec_for_corr_graph.: 0.006374s (num_starts 1; 0.0064s/start)
+query:convert_to_z3.: 0.007071s (num_starts 61; 0.0001s/start)
+graph_edge_composition_get_simplified_edge_cond.: 0.007134s (num_starts 101; 0.0001s/start)
+populate_loc_liveness.: 0.007296s (num_starts 3; 0.0024s/start)
+expr_label_memlabels_using_memlabel_map_visitor.simplify.: 0.007869s (num_starts 347; 0.0000s/start)
+avail_exprs_create_submap.: 0.008055s (num_starts 78; 0.0001s/start)
+expr_simplify_using_sprel_pair_and_memlabel_maps.model.: 0.008324s (num_starts 329; 0.0000s/start)
+counter_example_translate_on_edge_composition_helper.: 0.008392s (num_starts 30; 0.0003s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(epsilon);outgoing_edges_cover_all_possibilities.;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009266s (num_starts 1; 0.0093s/start)
+decide_hoare_triple_helper;per-query-type;outgoing_edges_cover_all_possibilities.;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009268s (num_starts 1; 0.0093s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;outgoing_edges_cover_all_possibilities.;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009269s (num_starts 1; 0.0093s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(epsilon);outgoing_edges_cover_all_possibilities.;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009273s (num_starts 1; 0.0093s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(epsilon);outgoing_edges_cover_all_possibilities..: 0.009275s (num_starts 1; 0.0093s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;outgoing_edges_cover_all_possibilities..: 0.009278s (num_starts 1; 0.0093s/start)
+decide_hoare_triple_helper;per-query-type;outgoing_edges_cover_all_possibilities..: 0.009282s (num_starts 1; 0.0093s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(epsilon);outgoing_edges_cover_all_possibilities..: 0.009286s (num_starts 1; 0.0093s/start)
+ftmap_pointsto_analysis_combo_dfa_t.alias_val_xfer_and_meet.: 0.009518s (num_starts 14; 0.0007s/start)
+graph_to_stream.: 0.009613s (num_starts 4; 0.0024s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(epsilon);-dst-edgecond-implies-src-edgecond;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009769s (num_starts 1; 0.0098s/start)
+decide_hoare_triple_helper;per-query-type;-dst-edgecond-implies-src-edgecond;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009771s (num_starts 1; 0.0098s/start)
+compute_z3_expr.: 0.009772s (num_starts 69; 0.0001s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;-dst-edgecond-implies-src-edgecond;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009775s (num_starts 1; 0.0098s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(epsilon);-dst-edgecond-implies-src-edgecond;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.009778s (num_starts 1; 0.0098s/start)
+expr_simplify_using_sprel_pair_and_memlabel_maps.: 0.010981s (num_starts 329; 0.0000s/start)
+eqspace::graph_per_loc_dfa_val_t<eqspace::avail_exprs_val_t>::ftmap_xfer_and_meet_flow_insensitive.: 0.012189s (num_starts 26; 0.0005s/start)
+corr_graph::add_edge().: 0.012392s (num_starts 1; 0.0124s/start)
+tfg_llvm_t::tfg_postprocess_after_pointsto_analysis.: 0.012585s (num_starts 1; 0.0126s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(epsilon);-dst-edgecond-implies-src-edgecond.: 0.012967s (num_starts 2; 0.0065s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;-dst-edgecond-implies-src-edgecond.: 0.012972s (num_starts 2; 0.0065s/start)
+decide_hoare_triple_helper;per-query-type;-dst-edgecond-implies-src-edgecond.: 0.012977s (num_starts 2; 0.0065s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(epsilon);-dst-edgecond-implies-src-edgecond.: 0.012983s (num_starts 2; 0.0065s/start)
+tfg_postprocess_after_pointsto_analysis.: 0.01321s (num_starts 2; 0.0066s/start)
+corr_graph_create_and_add_cg_edge_composition_using_src_and_dst_fp.: 0.013407s (num_starts 1; 0.0134s/start)
+corr_graph_add_correlation.: 0.013442s (num_starts 1; 0.0134s/start)
+corr_graph_add_correlation_and_create_new_correl_entry.: 0.013478s (num_starts 1; 0.0135s/start)
+tfg_relax_pointsto_vals_on_edge.: 0.014107s (num_starts 12; 0.0012s/start)
+guarded_predicate_set_and.: 0.015202s (num_starts 12; 0.0013s/start)
+read_counter_examples_from_channel.: 0.015387s (num_starts 2; 0.0077s/start)
+decide_hoare_triple_helper;per-path;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);-trivial.: 0.016027s (num_starts 1; 0.0160s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);pred-type-unknown;-trivial.: 0.016029s (num_starts 1; 0.0160s/start)
+decide_hoare_triple_helper;per-query-type;pred-type-unknown;-trivial.: 0.016031s (num_starts 1; 0.0160s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;pred-type-unknown;-trivial.: 0.016032s (num_starts 1; 0.0160s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);pred-type-unknown;-trivial.: 0.016034s (num_starts 1; 0.0160s/start)
+query:simplify-z3.: 0.016413s (num_starts 122; 0.0001s/start)
+lhs_set_eliminate_constructs_that_the_solver_cannot_handle.: 0.017664s (num_starts 12; 0.0015s/start)
+ftmap_pointsto_analysis_combo_dfa_t.ftmap_dfa_flow_insensitive_xfer_and_meet.: 0.01814s (num_starts 14; 0.0013s/start)
+prove_spawn_and_join.eliminate_constructs_that_the_solver_cannot_handle1.: 0.018419s (num_starts 12; 0.0015s/start)
+decide_hoare_triple_helper;-trivial.: 0.01927s (num_starts 2; 0.0096s/start)
+ce_reconcile_sorts.: 0.021147s (num_starts 6; 0.0035s/start)
+check_equivalence_proof.: 0.031309s (num_starts 1; 0.0313s/start)
+ftmap_run_pointsto_analysis.: 0.036633s (num_starts 2; 0.0183s/start)
+tfg_run_pointsto_analysis.: 0.036814s (num_starts 2; 0.0184s/start)
+tfg_populate_structs_after_ssa_construction.: 0.042379s (num_starts 2; 0.0212s/start)
+expr_do_simplify_using_lhs_set_and_precond.: 0.042909s (num_starts 83; 0.0005s/start)
+tfg_ssa_construct_from_non_ssa_tfg.: 0.048093s (num_starts 2; 0.0240s/start)
+decide_hoare_triple_helper;per-path;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.060707s (num_starts 1; 0.0607s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);pred-type-unknown;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.060713s (num_starts 1; 0.0607s/start)
+decide_hoare_triple_helper;per-query-type;pred-type-unknown;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.060716s (num_starts 1; 0.0607s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;pred-type-unknown;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.060719s (num_starts 1; 0.0607s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);pred-type-unknown;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.060722s (num_starts 1; 0.0607s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(epsilon);dst_edge_composition_proves_false;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.072367s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-query-type;dst_edge_composition_proves_false;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.072369s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo;dst_edge_composition_proves_false;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.07237s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo;L0%0%d_L0%0%d;(epsilon);dst_edge_composition_proves_false;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.072371s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo;L0%0%d_L0%0%d;(epsilon);dst_edge_composition_proves_false.: 0.072378s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo;dst_edge_composition_proves_false.: 0.072381s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-query-type;dst_edge_composition_proves_false.: 0.072384s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(epsilon);dst_edge_composition_proves_false.: 0.072387s (num_starts 1; 0.0724s/start)
+decide_hoare_triple_helper;per-graph-per-path-per-query-type;foo.A1;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);pred-type-unknown.: 0.076764s (num_starts 2; 0.0384s/start)
+decide_hoare_triple_helper;per-graph-per-query-type;foo.A1;pred-type-unknown.: 0.076769s (num_starts 2; 0.0384s/start)
+decide_hoare_triple_helper;per-query-type;pred-type-unknown.: 0.076774s (num_starts 2; 0.0384s/start)
+decide_hoare_triple_helper;per-path-and-query-type;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d);pred-type-unknown.: 0.076779s (num_starts 2; 0.0384s/start)
+decide_hoare_triple_helper;per-path;L0%0%d_L0%0%d;(L0%0%d_L0%0%d=>E0%0%d_E0%0%d).: 0.076786s (num_starts 2; 0.0384s/start)
+query:smt.: 0.078123s (num_starts 8; 0.0098s/start)
+update_invariant_state_for_edges.: 0.078844s (num_starts 1; 0.0788s/start)
+cg_check_new_cg_ec.: 0.078863s (num_starts 1; 0.0789s/start)
+correl_entry_apply.: 0.078883s (num_starts 1; 0.0789s/start)
+dst_edge_composition_proves_false.: 0.081714s (num_starts 1; 0.0817s/start)
+decide_hoare_triple.: 0.082592s (num_starts 2; 0.0413s/start)
+get_next_dst_edge_composition_to_correlate.: 0.084224s (num_starts 2; 0.0421s/start)
+check_preds_on_edge_compositions.dhd_with_ce_propagation.: 0.090169s (num_starts 4; 0.0225s/start)
+decide_hoare_triple_helper;per-path;L0%0%d_L0%0%d;(epsilon);-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.091395s (num_starts 3; 0.0305s/start)
+check_wfconds_on_edge.L0%0%d_L0%0%d=>E0%0%d_E0%0%d.: 0.092657s (num_starts 2; 0.0463s/start)
+check_wfconds_on_edge.: 0.092675s (num_starts 2; 0.0463s/start)
+check_preds_on_edge_compositions.: 0.093055s (num_starts 3; 0.0310s/start)
+spawn_smt_query.: 0.093606s (num_starts 8; 0.0117s/start)
+solver_provable.: 0.094324s (num_starts 12; 0.0079s/start)
+decide_hoare_triple_helper;per-path;L0%0%d_L0%0%d;(epsilon).: 0.094671s (num_starts 4; 0.0237s/start)
+expr_is_provable.: 0.096503s (num_starts 12; 0.0080s/start)
+is_expr_equal_using_lhs_set_and_precond_helper_miss_after_commonMEM_optimization.: 0.096621s (num_starts 12; 0.0081s/start)
+is_expr_equal_using_lhs_set_and_precond_helper_miss_after_aliasing_constraints_generation.: 0.097258s (num_starts 12; 0.0081s/start)
+is_expr_equal_using_lhs_set_and_precond_helper_miss_after_simplify_and_add_auxiliary_structures.: 0.097557s (num_starts 12; 0.0081s/start)
+is_expr_equal_using_lhs_set_and_precond_helper_miss_after_precond_is_false.: 0.114007s (num_starts 12; 0.0095s/start)
+is_expr_equal_using_lhs_set_and_precond_helper.syntactic_check_failed.: 0.115632s (num_starts 12; 0.0096s/start)
+is_expr_equal_using_lhs_set_and_precond_helper.: 0.115831s (num_starts 12; 0.0097s/start)
+solver_satisfiable-cache-miss.: 0.127614s (num_starts 8; 0.0160s/start)
+solver_satisfiable.: 0.127678s (num_starts 13; 0.0098s/start)
+is_expr_equal_using_lhs_set_and_precond.: 0.138531s (num_starts 12; 0.0115s/start)
+prove.: 0.138589s (num_starts 12; 0.0115s/start)
+prove_spawn_and_join_helper.: 0.138639s (num_starts 12; 0.0116s/start)
+decide_hoare_triple_helper;-stack-not-modeled-as-separate-mem-nonstack-not-modeled-as-common-mem.: 0.152237s (num_starts 4; 0.0381s/start)
+prove_spawn_and_join.: 0.160445s (num_starts 12; 0.0134s/start)
+prove_wrapper.proof_query_not_trivial.: 0.161328s (num_starts 12; 0.0134s/start)
+prove_wrapper.: 0.164227s (num_starts 12; 0.0137s/start)
+expandProductCFG.: 0.164257s (num_starts 2; 0.0821s/start)
+decide_hoare_triple_check_ub.: 0.170158s (num_starts 6; 0.0284s/start)
+decide_hoare_triple_helper.: 0.171696s (num_starts 6; 0.0286s/start)
+decide_hoare_triple_with_alias_cons.: 0.172074s (num_starts 6; 0.0287s/start)
+bestFirstSearch.: 0.215706s (num_starts 1; 0.2157s/start)
+Time taken for equivalence check.: 0.247409s (num_starts 1; 0.2474s/start)
+
+counters:
+# of paths enumerated.: 1
+# of paths expanded.: 1
+# of smt-solver-queries.: 8
+L0%0%d=>E0%0%d-src_ecs.: 1
+L0%0%d=>E0%0%d-src_to_pcs.: 1
+smt-queries-cache-hits.: 5
+smt-queries-cvc4-sat.: 2
+smt-queries-yices-sat.: 2
+smt-queries-z3-sat.: 2
+total-correlation-possibilities.: 2
+total-correlation-possibilities-mod-lsprels.: 2
+total-correlations-explored.: 2
+
+flags:
+dst-aloc.: 0
+dst-edges.: 6
+dst-nodes.: 6
+dst-sp-updates.: 0
+final-CG-alloc-correlations.: 0
+final-CG-dealloc-correlations.: 0
+final-CG-dht-queries.: 1
+final-CG-edges.: 1
+final-CG-nodes.: 2
+final-CG-num-invariants.: 0
+final-CG-super-edges.: 0
+src-edges.: 6
+src-nodes.: 6
+timeout-occured.: 0
+
+info:
+eq-state.: find_correlation
+final-CG-time-secs.: 0.09
+final-CG-time-to-total-time-ratio.: 0.43
+query-time-to-total-time-ratio.: 0.34
+
+Context stats:
+exprs: count: 140646
+sorts: count: 146
+num_proof_queries: 12
+num_proof_queries_answered_by_syntactic_check: 0
+cache_stats:
+m_simplify:
+	----------- total:	1379
+	        hit ratio:	0.957215
+m_simplify_solver:
+	----------- total:	213
+	        hit ratio:	0.713615
+m_z3_solver_substitution:
+	----------- total:	61
+	        hit ratio:	0
+m_replace_donotsimplify_using_solver_expressions_by_free_vars:
+	----------- total:	61
+	        hit ratio:	0
+m_expr_size:
+	----------- total:	735
+	        hit ratio:	0.872109
+m_expr_evaluates_to_constant_visitor:
+	----------- total:	682
+	        hit ratio:	0.608504
+
+z3_solver expr_query_cache entry size: 8
+	----------- total:	13
+	             hits:	5
+	        hit ratio:	0.384615
+histogram (time taken by solver in ms):
+[ 4.6000,  5.5664) (avg.  4.9267)        : 6
+[ 5.5664,  6.7358) (avg.  0.0000)        : 0
+[ 6.7358,  8.1508) (avg.  0.0000)        : 0
+[ 8.1508,  9.8631) (avg.  0.0000)        : 0
+[ 9.8631, 11.9352) (avg.  0.0000)        : 0
+[11.9352, 14.4425) (avg.  0.0000)        : 0
+[14.4425, 17.4766) (avg.  0.0000)        : 0
+[17.4766, 21.1481) (avg. 18.5380)        : 1
+[21.1481, 25.5909) (avg.  0.0000)        : 0
+[25.5909, 30.9670) (avg. 29.9670)        : 1
+min number of quantifiers in query: 0
+max number of quantifiers in query: 0
+histogram (number of nodes in z3 ast)
+[17, 25) (avg. 17)                       : 1
+[25, 32) (avg.  0)                       : 0
+[32, 39) (avg.  0)                       : 0
+[39, 46) (avg.  0)                       : 0
+[46, 53) (avg.  0)                       : 0
+[53, 61) (avg.  0)                       : 0
+[61, 68) (avg.  0)                       : 0
+[68, 75) (avg. 74)                       : 2
+[75, 82) (avg. 78)                       : 5
+[82, 89) (avg.  0)                       : 0
+
+<MSG>0:21 : Successfully computed equivalence for function: foo.</MSG>
+
+tfg_edge_expr_wp_fn: num_starts 50 time spent: 0:0:0 [0.000782s total; 0.000016 per start]
+tfg_computeWP: num_starts 42 time spent: 0:0:0 [0.002929s total; 0.000070 per start]
+tfg_get_simplified_to_state_for_edge: num_starts 332 time spent: 0:0:0 [0.000463s total; 0.000001 per start]
+tfg_get_simplified_edge_cond_for_edge: num_starts 456 time spent: 0:0:0 [0.000602s total; 0.000001 per start]
+tfg_get_simplified_assumes_for_edge: num_starts 251 time spent: 0:0:0 [0.000340s total; 0.000001 per start]
+add_nodeces_at_pc_and_propagate: num_starts 4 time spent: 0:0:0 [0.000289s total; 0.000072 per start]
+graph_with_ce_propagate_CEs_across_new_edge_for_reason: num_starts 2 time spent: 0:0:0 [0.010161s total; 0.005080 per start]
+tfg_counter_example_translate_on_edge_helper: num_starts 54 time spent: 0:0:0 [0.006697s total; 0.000124 per start]
+corr_graph_edge_well_formedness_conditions_falsified_by_counter_example: num_starts 3 time spent: 0:0:0 [0.005495s total; 0.001832 per start]
+counter_example_translate_using_to_state_mapping_assigning_random_consts_as_needed: num_starts 48 time spent: 0:0:0 [0.003910s total; 0.000081 per start]
+ce_evaluate_expr_assigning_random_consts_as_needed: num_starts 162 time spent: 0:0:0 [0.003797s total; 0.000023 per start]
+tfg_edge_assumes_satisfied_by_counter_example: num_starts 48 time spent: 0:0:0 [0.001314s total; 0.000027 per start]
+tfg_graph_get_vars_written_on_edge: num_starts 48 time spent: 0:0:0 [0.000825s total; 0.000017 per start]
+cg_with_rank_add_CE_at_pc: num_starts 6 time spent: 0:0:0 [0.000276s total; 0.000046 per start]
+graph_with_ce_add_CE_at_pc: num_starts 3 time spent: 0:0:0 [0.000063s total; 0.000021 per start]
+graph_with_guessing_add_CE_at_pc: num_starts 6 time spent: 0:0:0 [0.000265s total; 0.000044 per start]
+graph_with_guessing_add_point_using_CE_at_pc: num_starts 3 time spent: 0:0:0 [0.000005s total; 0.000002 per start]
+invariant_state_add_point_using_CE_at_pc: num_starts 3 time spent: 0:0:0 [0.000001s total; 0.000000 per start]
+expr_label_memlabels_using_memlabel_map: num_starts 451 time spent: 0:0:0 [0.002697s total; 0.000006 per start]
+expr_simplify_solver: num_starts 236 time spent: 0:0:0 [0.026474s total; 0.000112 per start]
+expr_simplify_syntactic: num_starts 236 time spent: 0:0:0 [0.016381s total; 0.000069 per start]
+expr_simplify_select_on_store: num_starts 4 time spent: 0:0:0 [0.010933s total; 0.002733 per start]
+expr_simplify_using_lhs_set_helper: num_starts 113 time spent: 0:0:0 [0.048025s total; 0.000425 per start]
+expr_simplify_using_lhs_set_visit_function: num_starts 458 time spent: 0:0:0 [0.047515s total; 0.000104 per start]
+expr_simplify_sort_args_to_canonicalize: num_starts 349 time spent: 0:0:0 [0.001372s total; 0.000004 per start]
+expr_simplify_eq: num_starts 70 time spent: 0:0:0 [0.001324s total; 0.000019 per start]
+expr_simplify_or: num_starts 20 time spent: 0:0:0 [0.000028s total; 0.000001 per start]
+expr_simplify_and: num_starts 19 time spent: 0:0:0 [0.000116s total; 0.000006 per start]
+expr_simplify_not: num_starts 25 time spent: 0:0:0 [0.000091s total; 0.000004 per start]
+canonicalize_expr_tree: num_starts 78 time spent: 0:0:0 [0.002137s total; 0.000027 per start]
+expr_simplify_memalloc_using_memlabel: num_starts 1 time spent: 0:0:0 [0.000003s total; 0.000003 per start]
+expr_simplify_select_on_store_visit_function: num_starts 4 time spent: 0:0:0 [0.010837s total; 0.002709 per start]
+get_arithmetic_addsub_atoms: num_starts 455 time spent: 0:0:0 [0.000295s total; 0.000001 per start]
+expr_linear_relation_holds_visit: num_starts 121 time spent: 0:0:0 [0.001431s total; 0.000012 per start]
+expr_is_consts_struct_constant: num_starts 168 time spent: 0:0:0 [0.000127s total; 0.000001 per start]
+expr_do_simplify_helper: num_starts 1532 time spent: 0:0:0 [0.048242s total; 0.000031 per start]
+expr_do_simplify_helper_cache: num_starts 1532 time spent: 0:0:0 [0.001122s total; 0.000001 per start]
+evaluate_expr_and_check_bounds: num_starts 96 time spent: 0:0:0 [0.003780s total; 0.000039 per start]
+array_constant_equals: num_starts 50 time spent: 0:0:0 [0.000098s total; 0.000002 per start]
+combo_dfa_xfer_and_meet: num_starts 14 time spent: 0:0:0 [0.018125s total; 0.001295 per start]
+alias_val_xfer_and_meet: num_starts 14 time spent: 0:0:0 [0.009491s total; 0.000678 per start]
+get_sprel_map_from_avail_exprs: num_starts 24 time spent: 0:0:0 [0.001181s total; 0.000049 per start]
+update_memlabels_for_memslot_locs: num_starts 8 time spent: 0:0:0 [0.000028s total; 0.000003 per start]
+populate_gen_and_kill_sets_for_edge: num_starts 52 time spent: 0:0:0 [0.003900s total; 0.000075 per start]
+compute_simplified_loc_exprs_for_edge: num_starts 151 time spent: 0:0:0 [0.013671s total; 0.000091 per start]
+compute_locs_definitely_written_on_edge: num_starts 52 time spent: 0:0:0 [0.000061s total; 0.000001 per start]
+get_locs_potentially_read_in_expr_using_locs_map: num_starts 23 time spent: 0:0:0 [0.005160s total; 0.000224 per start]
+edge_update_memlabel_map_for_mlvars: num_starts 26 time spent: 0:0:0 [0.000494s total; 0.000019 per start]
+add_new_locs_based_on_edge: num_starts 14 time spent: 0:0:0 [0.006729s total; 0.000481 per start]
+expand_locset_to_include_slots_for_memmask: num_starts 38 time spent: 0:0:0 [0.000070s total; 0.000002 per start]
+total: num_starts 1 time spent: 0:0:28 [28.081299s total; 28.081299 per start]
+num_syntactic_match_tests = 0.
+num_execution_tests = 0.
+num_boolean_tests = 0.
+fingerprinting rate: 0.00 per second (total), -nan per second (itable_enumerate_timer), -nan per second (excluding execution/boolean tests).
+
+Time taken for equivalence check: 0.32s.
+ftmap_run_pointsto_analysis.: 0.036633s (num_starts 2; 0.0183s/start)s.
+EQ Time after pointsto analysis: 0.284334s.
+EQ Time after pointsto analysis and smt_query: 0.120107s.
+EQ Time after pointsto analysis and smt_query and bv-solve: 0.120107s.
+Equivalence proof found. The programs are equivalent.
