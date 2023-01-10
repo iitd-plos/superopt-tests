@@ -8,14 +8,17 @@ PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          fcall_taking_locals \
          rodata_simple \
          load_store_elim_simple \
+         loop_hoisting \
          # load_store_elim_cmove # needs "anticipated-cmove expressions"
          #ddec arg_passing fpadd  fcall100 fcall100_with_memaccess \
          #fpext : TOO SLOW
 
 EXTRA_FLAGS :=
 
-UNROLL8_GCC := $(PROGS) # load_store_elim_conditional  not passing in GCC!
-UNROLL16_CLANG := $(PROGS) load_store_elim_conditional
+UNROLL8_GCC := $(PROGS) \
+               # load_store_elim_conditional not passing in GCC!
+UNROLL16_CLANG := $(PROGS) \
+                  load_store_elim_conditional
 
 # compiler flags
 ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
