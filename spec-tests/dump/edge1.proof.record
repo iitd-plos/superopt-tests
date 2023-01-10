@@ -1,0 +1,377 @@
+==query_number: 0
+==CVC4_FILE_START==
+; benchmark
+(set-info :status unknown)
+(set-logic QF_BV)
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32))
+(declare-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32))
+(assert
+ (let (($x20 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let ((?x16 (bvand input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32))))
+ (let (($x18 (= ?x16 (_ bv0 32))))
+ (let ((?x13 (bvadd (_ bv4 32) (_ bv4294967295 32))))
+ (let ((?x11 (bvadd input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin ?x13)))
+ (let (($x12 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x11)))
+ (let (($x7 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x10 (and $x7 $x12)))
+ (let (($x19 (and $x10 $x18)))
+ (and $x19 $x20)))))))))))
+(check-sat)
+(get-model)
+==CVC4_FILE_END==
+==SMT2_FILE_START==
+; benchmark
+(set-info :status unknown)
+(set-logic QF_BV)
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32))
+(declare-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32))
+(assert
+ (let (($x20 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let ((?x16 (bvand input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32))))
+ (let (($x18 (= ?x16 (_ bv0 32))))
+ (let ((?x13 (bvadd (_ bv4 32) (_ bv4294967295 32))))
+ (let ((?x11 (bvadd input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin ?x13)))
+ (let (($x12 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x11)))
+ (let (($x7 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x10 (and $x7 $x12)))
+ (let (($x19 (and $x10 $x18)))
+ (and $x19 $x20)))))))))))
+(check-sat)
+(get-model)
+==SMT2_FILE_END==
+==ret: 0
+==result_count: 3
+==index: 0
+==solver_id: 2
+==recvd_data
+==DATA_START==
+sat
+(= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin #b00000000000000000000000000000000)
+(= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ #b00000000000000000000000000000000)
+(= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end #b00000000000000000000000000000011)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
+==index: 4
+==solver_id: 1
+==recvd_data
+==DATA_START==
+sat
+(model 
+  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32)
+    #x00000003)
+)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
+==index: 2
+==solver_id: 3
+==recvd_data
+==DATA_START==
+sat
+(model
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32) (_ bv3 32))
+)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2285718/query
+==query_number: 1
+==CVC4_FILE_START==
+; benchmark
+(set-info :status unknown)
+(set-logic QF_ABV)
+(declare-fun input.dst.llvm-%x () (_ BitVec 32))
+(declare-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32))
+(declare-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8)))
+(declare-fun input.spec-%var-x-0 () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32))
+(assert
+ (let (($x58 (= true false)))
+ (let (($x59 (= $x58 true)))
+ (let ((?x13 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let ((?x34 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
+ (let ((?x46 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
+ (let ((?x49 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
+ (let ((?x50 (concat ?x49 (concat ?x46 (concat ?x34 ?x13)))))
+ (let (($x51 (= ?x50 input.dst.llvm-%x)))
+ (let (($x52 (= $x51 true)))
+ (let (($x53 (= $x52 true)))
+ (let (($x16 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x17 (= $x16 true)))
+ (let (($x6 (= $x17 true)))
+ (let (($x36 (= $x6 true)))
+ (let ((?x42 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let (($x43 (= (_ bv0 32) ?x42)))
+ (let ((?x5 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x44 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x5)))
+ (let (($x14 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x19 (and $x14 $x44)))
+ (let (($x15 (and $x19 $x43)))
+ (let (($x45 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x8 (and $x45 $x15)))
+ (let (($x31 (= $x8 true)))
+ (let (($x11 (= $x31 true)))
+ (let (($x38 (= $x11 true)))
+ (let (($x30 (and $x38 $x36)))
+ (let (($x54 (and $x30 $x53)))
+ (let (($x27 (= (_ bv3 32) input.spec-%tmpvar-0.E0%0%d)))
+ (let (($x55 (and $x27 $x54)))
+ (let ((?x25 (bvadd input.spec-%var-x-0 (_ bv3 32))))
+ (let (($x32 (= ?x25 input.spec-%tmpvar-1.E0%0%d)))
+ (let (($x56 (and $x32 $x55)))
+ (let (($x21 (= ?x25 input.spec-%tmpvar-2.E0%0%d)))
+ (let (($x57 (and $x21 $x56)))
+ (let (($x60 (=> $x57 $x59)))
+ (not $x60))))))))))))))))))))))))))))))))))))))
+(check-sat)
+(get-model)
+==CVC4_FILE_END==
+==SMT2_FILE_START==
+; benchmark
+(set-info :status unknown)
+(set-logic QF_ABV)
+(declare-fun input.dst.llvm-%x () (_ BitVec 32))
+(declare-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32))
+(declare-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8)))
+(declare-fun input.spec-%var-x-0 () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32))
+(assert
+ (let (($x58 (= true false)))
+ (let (($x59 (= $x58 true)))
+ (let ((?x13 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let ((?x34 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
+ (let ((?x46 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
+ (let ((?x49 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
+ (let ((?x50 (concat ?x49 (concat ?x46 (concat ?x34 ?x13)))))
+ (let (($x51 (= ?x50 input.dst.llvm-%x)))
+ (let (($x52 (= $x51 true)))
+ (let (($x53 (= $x52 true)))
+ (let (($x16 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x17 (= $x16 true)))
+ (let (($x6 (= $x17 true)))
+ (let (($x36 (= $x6 true)))
+ (let ((?x42 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let (($x43 (= (_ bv0 32) ?x42)))
+ (let ((?x5 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x44 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x5)))
+ (let (($x14 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x19 (and $x14 $x44)))
+ (let (($x15 (and $x19 $x43)))
+ (let (($x45 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x8 (and $x45 $x15)))
+ (let (($x31 (= $x8 true)))
+ (let (($x11 (= $x31 true)))
+ (let (($x38 (= $x11 true)))
+ (let (($x30 (and $x38 $x36)))
+ (let (($x54 (and $x30 $x53)))
+ (let (($x27 (= (_ bv3 32) input.spec-%tmpvar-0.E0%0%d)))
+ (let (($x55 (and $x27 $x54)))
+ (let ((?x25 (bvadd input.spec-%var-x-0 (_ bv3 32))))
+ (let (($x32 (= ?x25 input.spec-%tmpvar-1.E0%0%d)))
+ (let (($x56 (and $x32 $x55)))
+ (let (($x21 (= ?x25 input.spec-%tmpvar-2.E0%0%d)))
+ (let (($x57 (and $x21 $x56)))
+ (let (($x60 (=> $x57 $x59)))
+ (not $x60))))))))))))))))))))))))))))))))))))))
+(check-sat)
+(get-model)
+==SMT2_FILE_END==
+==ret: 0
+==result_count: 3
+==index: 0
+==solver_id: 2
+==recvd_data
+==DATA_START==
+sat
+(= input.dst.llvm-%x #b00000000000000000000000000000000)
+(= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ #b00000000000000000000000000000000)
+(= input.spec-%var-x-0 #b00000000000000000000000000000000)
+(= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin #b00000000000000000000000000000000)
+(= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end #b00000000000000000000000000000011)
+(= input.spec-%tmpvar-0.E0%0%d #b00000000000000000000000000000011)
+(= input.spec-%tmpvar-1.E0%0%d #b00000000000000000000000000000011)
+(= input.spec-%tmpvar-2.E0%0%d #b00000000000000000000000000000011)
+(= input.dst.llvm-mem @fun_4)
+(function @fun_4
+ (type (Array (_ BitVec 32) (_ BitVec 8)))
+ (default #b00000000))
+==DATA_END==
+==solver_result_code: SOLVER_SAT
+==index: 4
+==solver_id: 1
+==recvd_data
+==DATA_START==
+sat
+(model 
+  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8))
+    ((as const (Array (_ BitVec 32) (_ BitVec 8))) #x00))
+  (define-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32)
+    #x00000003)
+  (define-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32)
+    #x00000003)
+  (define-fun input.dst.llvm-%x () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32)
+    #x00000003)
+  (define-fun input.spec-%var-x-0 () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32)
+    #x00000003)
+  (define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32)
+    #x00000000)
+)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
+==index: 2
+==solver_id: 3
+==recvd_data
+==DATA_START==
+sat
+(model
+(define-fun input.dst.llvm-%x () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8)) ((as const (Array (_ BitVec 32) (_ BitVec 8))) (_ bv0 8)))
+(define-fun input.spec-%var-x-0 () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32) (_ bv3 32))
+(define-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32) (_ bv3 32))
+(define-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32) (_ bv3 32))
+(define-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32) (_ bv3 32))
+)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2285718/query
+==query_number: 2
+==CVC4_FILE_START==
+; benchmark
+(set-info :status unknown)
+(set-logic QF_ABV)
+(declare-fun input.dst.llvm-%x () (_ BitVec 32))
+(declare-fun input.spec-%var-x-0 () (_ BitVec 32))
+(declare-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32))
+(declare-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8)))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32))
+(assert
+ (let ((?x59 (bvadd (_ bv3 32) input.dst.llvm-%x)))
+ (let ((?x29 (bvadd input.spec-%var-x-0 (_ bv3 32))))
+ (let (($x60 (= ?x29 ?x59)))
+ (let (($x61 (= $x60 true)))
+ (let (($x20 (= $x61 true)))
+ (let ((?x27 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let ((?x39 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
+ (let ((?x48 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
+ (let ((?x46 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
+ (let ((?x17 (concat ?x46 (concat ?x48 (concat ?x39 ?x27)))))
+ (let (($x5 (= ?x17 input.dst.llvm-%x)))
+ (let (($x19 (= $x5 true)))
+ (let (($x31 (= $x19 true)))
+ (let (($x35 (= input.dst.llvm-%x ?x17)))
+ (let ((?x15 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let (($x38 (= (_ bv0 32) ?x15)))
+ (let ((?x54 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x41 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x54)))
+ (let (($x14 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x13 (and $x14 $x41)))
+ (let (($x24 (and $x13 $x38)))
+ (let (($x18 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x30 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x47 (and (and (and $x30 $x18) $x24) $x35)))
+ (let (($x44 (= $x47 true)))
+ (let (($x49 (= $x44 true)))
+ (let (($x40 (= $x49 true)))
+ (let (($x55 (and $x40 $x31)))
+ (let (($x10 (= (_ bv3 32) input.spec-%tmpvar-0.E0%0%d)))
+ (let (($x56 (and $x10 $x55)))
+ (let (($x23 (= ?x29 input.spec-%tmpvar-1.E0%0%d)))
+ (let (($x57 (and $x23 $x56)))
+ (let (($x25 (= ?x29 input.spec-%tmpvar-2.E0%0%d)))
+ (let (($x58 (and $x25 $x57)))
+ (let (($x12 (=> $x58 $x20)))
+ (not $x12)))))))))))))))))))))))))))))))))))))
+(check-sat)
+(get-model)
+==CVC4_FILE_END==
+==SMT2_FILE_START==
+; benchmark
+(set-info :status unknown)
+(set-logic QF_ABV)
+(declare-fun input.dst.llvm-%x () (_ BitVec 32))
+(declare-fun input.spec-%var-x-0 () (_ BitVec 32))
+(declare-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32))
+(declare-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8)))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32))
+(declare-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32))
+(declare-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32))
+(assert
+ (let ((?x59 (bvadd (_ bv3 32) input.dst.llvm-%x)))
+ (let ((?x29 (bvadd input.spec-%var-x-0 (_ bv3 32))))
+ (let (($x60 (= ?x29 ?x59)))
+ (let (($x61 (= $x60 true)))
+ (let (($x20 (= $x61 true)))
+ (let ((?x27 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let ((?x39 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
+ (let ((?x48 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
+ (let ((?x46 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
+ (let ((?x17 (concat ?x46 (concat ?x48 (concat ?x39 ?x27)))))
+ (let (($x5 (= ?x17 input.dst.llvm-%x)))
+ (let (($x19 (= $x5 true)))
+ (let (($x31 (= $x19 true)))
+ (let (($x35 (= input.dst.llvm-%x ?x17)))
+ (let ((?x15 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let (($x38 (= (_ bv0 32) ?x15)))
+ (let ((?x54 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x41 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x54)))
+ (let (($x14 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x13 (and $x14 $x41)))
+ (let (($x24 (and $x13 $x38)))
+ (let (($x18 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x30 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x47 (and (and (and $x30 $x18) $x24) $x35)))
+ (let (($x44 (= $x47 true)))
+ (let (($x49 (= $x44 true)))
+ (let (($x40 (= $x49 true)))
+ (let (($x55 (and $x40 $x31)))
+ (let (($x10 (= (_ bv3 32) input.spec-%tmpvar-0.E0%0%d)))
+ (let (($x56 (and $x10 $x55)))
+ (let (($x23 (= ?x29 input.spec-%tmpvar-1.E0%0%d)))
+ (let (($x57 (and $x23 $x56)))
+ (let (($x25 (= ?x29 input.spec-%tmpvar-2.E0%0%d)))
+ (let (($x58 (and $x25 $x57)))
+ (let (($x12 (=> $x58 $x20)))
+ (not $x12)))))))))))))))))))))))))))))))))))))
+(check-sat)
+(get-model)
+==SMT2_FILE_END==
+==ret: 1
+==result_count: 1
+==index: 0
+==solver_id: 2
+==recvd_data
+==DATA_START==
+unsat
+(error "the context is unsatisfiable")
+==DATA_END==
+==solver_result_code: SOLVER_UNSAT
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2285718/query

@@ -1,0 +1,1114 @@
+=TFG_SSA:
+=TFG_SPEC src.spec.foo:
+=TFG:
+=Nodes: L0%0%d L3%7%bbentry L3%8%d L3%9%bbentry L3%11%bbentry L3%19%bbentry L3%20%d L3%21%bbentry L3%23%bbentry E0%0%d
+=Edges:
+L0%0%d => L3%7%bbentry
+L3%7%bbentry => L3%8%d
+L3%8%d => L3%11%bbentry
+L3%8%d => L3%9%bbentry
+L3%9%bbentry => E0%0%d
+L3%11%bbentry => L3%19%bbentry
+L3%19%bbentry => L3%20%d
+L3%20%d => L3%23%bbentry
+L3%20%d => L3%21%bbentry
+L3%21%bbentry => L3%7%bbentry (backedge) 
+L3%23%bbentry => L3%19%bbentry (backedge) 
+=graph done
+=is_ssa_graph:
+1
+=StartState:
+=spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=state_end
+=PC to var-version map at L0%0%d
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%7%bbentry
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%8%d
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%9%bbentry
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%11%bbentry
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%19%bbentry
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%20%d
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%21%bbentry
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at L3%23%bbentry
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=PC to var-version map at E0%0%d
+=version for spec-mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=version for spec-mem.alloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=var-version done
+=graph_with_var_versions done
+=FunctionName: foo
+=Input: spec-method-arg.0
+=arg addr
+1 : (undefined) : UNDEFINED
+=arg val
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=arg end
+=Node outputs: E0%0%d
+=Output: spec-%ret-reg
+1 : input.spec-%tmpvar-18.E0%0%d : BV:32
+=Node outputs done for E0%0%d
+=input_outputs done
+=Symbol-map:
+=Touched symbols:
+=Symbol-map done
+=Locals-map:
+=Locals-map done
+=Global assumes
+=global assume predicate_set done
+Memlabel map for call-context {*;foo}
+=Edge: L0%0%d => L3%7%bbentry
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=spec-%var-x-1.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-16.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-a-0.L3%7%bbentry
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=spec-%tmpvar-15.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=src.spec-ghostvar.itervar.1.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-i-0.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:2:((((func_head*ctor_bv)*ctor_bv)*(inline_entry*func_head))*(ghost_var.itervar.firstedge*ghost_var.itervar.secondedge))
+tfg_edge_comment end
+
+=Edge: L3%7%bbentry => L3%8%d
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=spec-%tmpvar-7.L3%8%d
+1 : input.spec-%var-a-0.L3%7%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+2 : input.spec-%var-i-0.L3%7%bbentry : BV:32
+3 : map_get(1, 2) : SUM[UNIT,MAP[BV:32 -> BV:32]]
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(bb_entry*intrinsic_app_map_get)
+tfg_edge_comment end
+
+=Edge: L3%8%d => L3%11%bbentry
+=Edge.EdgeCond: 
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=Edge.StateTo: 
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:6:match_sum_cond_1
+tfg_edge_comment end
+
+=Edge: L3%8%d => L3%9%bbentry
+=Edge.EdgeCond: 
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=Edge.StateTo: 
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:4:match_sum_cond_0
+tfg_edge_comment end
+
+=Edge: L3%9%bbentry => E0%0%d
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=spec-%tmpvar-13.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=spec-%tmpvar-18.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=spec-%tmpvar-14.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=spec-%var-u-1.E0%0%d
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_get(1, 2) : UNIT
+=spec-%tmpvar-17.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:((((bb_entry*match_sum_val_0)*match_sum_merge_0)*func_ret)*(inline_exit*func_ret))
+tfg_edge_comment end
+
+=Edge: L3%11%bbentry => L3%19%bbentry
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=spec-%tmpvar-9.L3%19%bbentry
+1 : input.spec-%var-i-0.L3%7%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-a_i-0.L3%19%bbentry
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : MAP[BV:32 -> BV:32]
+=spec-%var-a_i-1.L3%19%bbentry
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : MAP[BV:32 -> BV:32]
+=spec-%var-j-0.L3%19%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-x-0.L3%19%bbentry
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=src.spec-ghostvar.itervar.2.L3%19%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-10.L3%19%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-8.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(((bb_entry*match_sum_val_1)*ctor_bv)*(((intrinsic_app_bvadd*ctor_bv)*(inline_entry*func_head))*(ghost_var.itervar.firstedge*ghost_var.itervar.secondedge)))
+tfg_edge_comment end
+
+=Edge: L3%19%bbentry => L3%20%d
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=spec-%tmpvar-0.L3%20%d
+1 : input.spec-%var-a_i-0.L3%19%bbentry : MAP[BV:32 -> BV:32]
+2 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+3 : map_get(1, 2) : SUM[UNIT,BV:32]
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(bb_entry*intrinsic_app_map_get)
+tfg_edge_comment end
+
+=Edge: L3%20%d => L3%23%bbentry
+=Edge.EdgeCond: 
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=Edge.StateTo: 
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:6:match_sum_cond_1
+tfg_edge_comment end
+
+=Edge: L3%20%d => L3%21%bbentry
+=Edge.EdgeCond: 
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=Edge.StateTo: 
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:4:match_sum_cond_0
+tfg_edge_comment end
+
+=Edge: L3%21%bbentry => L3%7%bbentry
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=spec-%var-x-1.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=spec-%var-a-0.L3%7%bbentry
+1 : input.spec-%var-a-0.L3%7%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=spec-%tmpvar-5.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=src.spec-ghostvar.itervar.1.L3%7%bbentry
+1 : input.src.spec-ghostvar.itervar.1.L3%7%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-i-0.L3%7%bbentry
+1 : input.spec-%tmpvar-9.L3%19%bbentry : BV:32
+=spec-%tmpvar-6.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=spec-%tmpvar-11.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=spec-%var-u-0.L3%7%bbentry
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_get(1, 2) : UNIT
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:((((bb_entry*match_sum_val_0)*match_sum_merge_0)*func_ret)*((inline_exit*tailrec_backedge)*(ghost_var.itervar.firstedge*ghost_var.itervar.secondedge)))
+tfg_edge_comment end
+
+=Edge: L3%23%bbentry => L3%19%bbentry
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=spec-%var-a_i-0.L3%19%bbentry
+1 : input.spec-%var-a_i-0.L3%19%bbentry : MAP[BV:32 -> BV:32]
+=spec-%var-j-0.L3%19%bbentry
+1 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-x-0.L3%19%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=src.spec-ghostvar.itervar.2.L3%19%bbentry
+1 : input.src.spec-ghostvar.itervar.2.L3%19%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%tmpvar-1.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=spec-%tmpvar-2.L3%19%bbentry
+1 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%tmpvar-3.L3%19%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=spec-%var-a_ij-0.L3%19%bbentry
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : BV:32
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(((((bb_entry*match_sum_val_1)*ctor_bv)*intrinsic_app_bvadd)*(intrinsic_app_bvadd*tailrec_backedge))*(ghost_var.itervar.firstedge*ghost_var.itervar.secondedge))
+tfg_edge_comment end
+
+=graph_with_predicates_done
+
+=start_pc_preconditions
+=graph_with_precondition_done
+
+=Locs in src.spec.foo
+=Loc 1 in src.spec.foo.
+REGMEM
+spec-%var-a-1
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=Loc 31 in src.spec.foo.
+MASKED
+=mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=memalloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=memlabel
+memlabel-mem--heap
+=Loc 32 in src.spec.foo.
+MASKED
+=mem
+1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+=memalloc
+1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.0
+=Loc 33 in src.spec.foo.
+REGMEM
+spec-%tmpvar-7.L3%8%d
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+=Loc 34 in src.spec.foo.
+REGMEM
+spec-%tmpvar-0.L3%20%d
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+=Loc 35 in src.spec.foo.
+REGMEM
+spec-%var-a-0.L3%7%bbentry
+1 : input.spec-%var-a-0.L3%7%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=Loc 36 in src.spec.foo.
+REGMEM
+spec-%var-i-0.L3%7%bbentry
+1 : input.spec-%var-i-0.L3%7%bbentry : BV:32
+=Loc 37 in src.spec.foo.
+REGMEM
+spec-%var-a_i-0.L3%19%bbentry
+1 : input.spec-%var-a_i-0.L3%19%bbentry : MAP[BV:32 -> BV:32]
+=Loc 38 in src.spec.foo.
+REGMEM
+spec-%var-j-0.L3%19%bbentry
+1 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+=Loc 39 in src.spec.foo.
+REGMEM
+spec-%tmpvar-13.E0%0%d
+1 : input.spec-%tmpvar-13.E0%0%d : BV:32
+=Loc 40 in src.spec.foo.
+REGMEM
+spec-%tmpvar-14.E0%0%d
+1 : input.spec-%tmpvar-14.E0%0%d : BV:32
+=Loc 41 in src.spec.foo.
+REGMEM
+spec-%tmpvar-17.E0%0%d
+1 : input.spec-%tmpvar-17.E0%0%d : BV:32
+=Loc 42 in src.spec.foo.
+REGMEM
+spec-%tmpvar-18.E0%0%d
+1 : input.spec-%tmpvar-18.E0%0%d : BV:32
+=Loc 43 in src.spec.foo.
+REGMEM
+spec-%var-u-1.E0%0%d
+1 : input.spec-%var-u-1.E0%0%d : UNIT
+=Loc 44 in src.spec.foo.
+REGMEM
+spec-%var-x-1.L3%7%bbentry
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=Loc 45 in src.spec.foo.
+REGMEM
+spec-%tmpvar-15.L3%7%bbentry
+1 : input.spec-%tmpvar-15.L3%7%bbentry : BV:32
+=Loc 46 in src.spec.foo.
+REGMEM
+spec-%tmpvar-16.L3%7%bbentry
+1 : input.spec-%tmpvar-16.L3%7%bbentry : BV:32
+=Loc 47 in src.spec.foo.
+REGMEM
+src.spec-ghostvar.itervar.1.L3%7%bbentry
+1 : input.src.spec-ghostvar.itervar.1.L3%7%bbentry : BV:32
+=Loc 48 in src.spec.foo.
+REGMEM
+spec-%tmpvar-11.L3%7%bbentry
+1 : input.spec-%tmpvar-11.L3%7%bbentry : BV:32
+=Loc 49 in src.spec.foo.
+REGMEM
+spec-%tmpvar-5.L3%7%bbentry
+1 : input.spec-%tmpvar-5.L3%7%bbentry : BV:32
+=Loc 50 in src.spec.foo.
+REGMEM
+spec-%tmpvar-6.L3%7%bbentry
+1 : input.spec-%tmpvar-6.L3%7%bbentry : BV:32
+=Loc 51 in src.spec.foo.
+REGMEM
+spec-%tmpvar-9.L3%19%bbentry
+1 : input.spec-%tmpvar-9.L3%19%bbentry : BV:32
+=Loc 52 in src.spec.foo.
+REGMEM
+spec-%var-u-0.L3%7%bbentry
+1 : input.spec-%var-u-0.L3%7%bbentry : UNIT
+=Loc 53 in src.spec.foo.
+REGMEM
+spec-%var-x-0.L3%19%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=Loc 54 in src.spec.foo.
+REGMEM
+spec-%tmpvar-10.L3%19%bbentry
+1 : input.spec-%tmpvar-10.L3%19%bbentry : BV:32
+=Loc 55 in src.spec.foo.
+REGMEM
+spec-%tmpvar-8.L3%19%bbentry
+1 : input.spec-%tmpvar-8.L3%19%bbentry : BV:32
+=Loc 56 in src.spec.foo.
+REGMEM
+spec-%var-a_i-1.L3%19%bbentry
+1 : input.spec-%var-a_i-1.L3%19%bbentry : MAP[BV:32 -> BV:32]
+=Loc 57 in src.spec.foo.
+REGMEM
+src.spec-ghostvar.itervar.2.L3%19%bbentry
+1 : input.src.spec-ghostvar.itervar.2.L3%19%bbentry : BV:32
+=Loc 58 in src.spec.foo.
+REGMEM
+spec-%tmpvar-1.L3%19%bbentry
+1 : input.spec-%tmpvar-1.L3%19%bbentry : BV:32
+=Loc 59 in src.spec.foo.
+REGMEM
+spec-%tmpvar-2.L3%19%bbentry
+1 : input.spec-%tmpvar-2.L3%19%bbentry : BV:32
+=Loc 60 in src.spec.foo.
+REGMEM
+spec-%tmpvar-3.L3%19%bbentry
+1 : input.spec-%tmpvar-3.L3%19%bbentry : BV:32
+=Loc 61 in src.spec.foo.
+REGMEM
+spec-%var-a_ij-0.L3%19%bbentry
+1 : input.spec-%var-a_ij-0.L3%19%bbentry : BV:32
+=Locs end
+=Liveness in src.spec.foo
+=live locs at L0%0%d
+1, 
+=live locs at L3%7%bbentry
+35, 36, 44, 
+=live locs at L3%8%d
+33, 35, 36, 44, 
+=live locs at L3%9%bbentry
+44, 
+=live locs at L3%11%bbentry
+33, 35, 36, 44, 
+=live locs at L3%19%bbentry
+35, 37, 38, 51, 53, 
+=live locs at L3%20%d
+34, 35, 37, 38, 51, 53, 
+=live locs at L3%21%bbentry
+35, 51, 53, 
+=live locs at L3%23%bbentry
+34, 35, 37, 38, 51, 53, 
+=live locs at E0%0%d
+42[f], 
+
+=Definedness in src.spec.foo
+=loc definedness at L0%0%d
+1, 31, 32
+=loc definedness at L3%7%bbentry
+1, 31, 32, 35, 36, 44, 45, 46, 47
+=loc definedness at L3%8%d
+1, 31, 32, 33, 35, 36, 44, 45, 46, 47
+=loc definedness at L3%9%bbentry
+1, 31, 32, 33, 35, 36, 44, 45, 46, 47
+=loc definedness at L3%11%bbentry
+1, 31, 32, 33, 35, 36, 44, 45, 46, 47
+=loc definedness at L3%19%bbentry
+1, 31, 32, 33, 35, 36, 37, 38, 44, 45, 46, 47, 51, 53, 54, 55, 56, 57
+=loc definedness at L3%20%d
+1, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 51, 53, 54, 55, 56, 57
+=loc definedness at L3%21%bbentry
+1, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 51, 53, 54, 55, 56, 57
+=loc definedness at L3%23%bbentry
+1, 31, 32, 33, 34, 35, 36, 37, 38, 44, 45, 46, 47, 51, 53, 54, 55, 56, 57
+=loc definedness at E0%0%d
+1, 31, 32, 33, 35, 36, 39, 40, 41, 42, 43, 44, 45, 46, 47
+
+=Branch affecting variable locs in src.spec.foo
+=branch affecting variable locs at L0%0%d
+1
+=branch affecting variable locs at L3%7%bbentry
+35, 36
+=branch affecting variable locs at L3%8%d
+33, 35, 36
+=branch affecting variable locs at L3%9%bbentry
+
+=branch affecting variable locs at L3%11%bbentry
+33, 35, 36
+=branch affecting variable locs at L3%19%bbentry
+35, 37, 38, 51
+=branch affecting variable locs at L3%20%d
+34, 35, 37, 38, 51
+=branch affecting variable locs at L3%21%bbentry
+35, 51
+=branch affecting variable locs at L3%23%bbentry
+35, 37, 38, 51
+=branch affecting variable locs at E0%0%d
+
+
+=Relevant Memlabels in src.spec.foo
+=relevant memlabels
+=function: foo
+memlabel-mem--heap
+memlabel-mem--arg.0
+=touched symbol ids
+
+=relevant memlabels done
+=graph_with_locs_done
+=graph_with_edge_structures
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry for loc_id 35 {input.spec-%var-a-0.L3%7%bbentry }
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry for loc_id 36 {input.spec-%var-i-0.L3%7%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry for loc_id 44 {input.spec-%var-x-1.L3%7%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry for loc_id 45 {input.spec-%tmpvar-15.L3%7%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry for loc_id 46 {input.spec-%tmpvar-16.L3%7%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry for loc_id 47 {input.src.spec-ghostvar.itervar.1.L3%7%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%7%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L3%7%bbentry=>L3%8%d
+=graph_with_edge_structures.loc_to_expr_map at L3%7%bbentry=>L3%8%d for loc_id 33 {input.spec-%tmpvar-7.L3%8%d }
+1 : input.spec-%var-a-0.L3%7%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+2 : input.spec-%var-i-0.L3%7%bbentry : BV:32
+3 : map_get(1, 2) : SUM[UNIT,MAP[BV:32 -> BV:32]]
+=graph_with_edge_structures.loc_to_expr_map at L3%7%bbentry=>L3%8%d done
+=graph_with_edge_structures.loc_to_expr_map at L3%8%d=>L3%9%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L3%8%d=>L3%9%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L3%8%d=>L3%11%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L3%8%d=>L3%11%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L3%9%bbentry=>E0%0%d
+=graph_with_edge_structures.loc_to_expr_map at L3%9%bbentry=>E0%0%d for loc_id 39 {input.spec-%tmpvar-13.E0%0%d }
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%9%bbentry=>E0%0%d for loc_id 40 {input.spec-%tmpvar-14.E0%0%d }
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%9%bbentry=>E0%0%d for loc_id 41 {input.spec-%tmpvar-17.E0%0%d }
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%9%bbentry=>E0%0%d for loc_id 42 {input.spec-%tmpvar-18.E0%0%d }
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%9%bbentry=>E0%0%d for loc_id 43 {input.spec-%var-u-1.E0%0%d }
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_get(1, 2) : UNIT
+=graph_with_edge_structures.loc_to_expr_map at L3%9%bbentry=>E0%0%d done
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 37 {input.spec-%var-a_i-0.L3%19%bbentry }
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : MAP[BV:32 -> BV:32]
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 38 {input.spec-%var-j-0.L3%19%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 51 {input.spec-%tmpvar-9.L3%19%bbentry }
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-i-0.L3%7%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 53 {input.spec-%var-x-0.L3%19%bbentry }
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 54 {input.spec-%tmpvar-10.L3%19%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 55 {input.spec-%tmpvar-8.L3%19%bbentry }
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 56 {input.spec-%var-a_i-1.L3%19%bbentry }
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : MAP[BV:32 -> BV:32]
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry for loc_id 57 {input.src.spec-ghostvar.itervar.2.L3%19%bbentry }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%11%bbentry=>L3%19%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L3%19%bbentry=>L3%20%d
+=graph_with_edge_structures.loc_to_expr_map at L3%19%bbentry=>L3%20%d for loc_id 34 {input.spec-%tmpvar-0.L3%20%d }
+1 : input.spec-%var-a_i-0.L3%19%bbentry : MAP[BV:32 -> BV:32]
+2 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+3 : map_get(1, 2) : SUM[UNIT,BV:32]
+=graph_with_edge_structures.loc_to_expr_map at L3%19%bbentry=>L3%20%d done
+=graph_with_edge_structures.loc_to_expr_map at L3%20%d=>L3%21%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L3%20%d=>L3%21%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L3%20%d=>L3%23%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L3%20%d=>L3%23%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry for loc_id 36 {input.spec-%var-i-0.L3%7%bbentry }
+1 : input.spec-%tmpvar-9.L3%19%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry for loc_id 44 {input.spec-%var-x-1.L3%7%bbentry }
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry for loc_id 47 {input.src.spec-ghostvar.itervar.1.L3%7%bbentry }
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.src.spec-ghostvar.itervar.1.L3%7%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry for loc_id 48 {input.spec-%tmpvar-11.L3%7%bbentry }
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry for loc_id 49 {input.spec-%tmpvar-5.L3%7%bbentry }
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry for loc_id 50 {input.spec-%tmpvar-6.L3%7%bbentry }
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry for loc_id 52 {input.spec-%var-u-0.L3%7%bbentry }
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_get(1, 2) : UNIT
+=graph_with_edge_structures.loc_to_expr_map at L3%21%bbentry=>L3%7%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry for loc_id 38 {input.spec-%var-j-0.L3%19%bbentry }
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry for loc_id 53 {input.spec-%var-x-0.L3%19%bbentry }
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry for loc_id 57 {input.src.spec-ghostvar.itervar.2.L3%19%bbentry }
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.src.spec-ghostvar.itervar.2.L3%19%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry for loc_id 58 {input.spec-%tmpvar-1.L3%19%bbentry }
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry for loc_id 59 {input.spec-%tmpvar-2.L3%19%bbentry }
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry for loc_id 60 {input.spec-%tmpvar-3.L3%19%bbentry }
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry for loc_id 61 {input.spec-%var-a_ij-0.L3%19%bbentry }
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%23%bbentry=>L3%19%bbentry done
+=graph_with_edge_structures.loc_to_expr_map done
+=graph_with_edge_structures done
+=graph_with_ml_contiguity_info vacuous mls
+vacuous mls at L0%0%d:
+vacuous mls at L3%7%bbentry:
+vacuous mls at L3%8%d:
+vacuous mls at L3%9%bbentry:
+vacuous mls at L3%11%bbentry:
+vacuous mls at L3%19%bbentry:
+vacuous mls at L3%20%d:
+vacuous mls at L3%21%bbentry:
+vacuous mls at L3%23%bbentry:
+vacuous mls at E0%0%d:
+=graph_with_ml_contiguity_info non-vacuous mls
+non-vacuous mls at L0%0%d:
+non-vacuous mls at L3%7%bbentry:
+non-vacuous mls at L3%8%d:
+non-vacuous mls at L3%9%bbentry:
+non-vacuous mls at L3%11%bbentry:
+non-vacuous mls at L3%19%bbentry:
+non-vacuous mls at L3%20%d:
+non-vacuous mls at L3%21%bbentry:
+non-vacuous mls at L3%23%bbentry:
+non-vacuous mls at E0%0%d:
+=graph_with_ml_contiguity_info discontiguous mls
+discontiguous mls:
+=graph_with_ml_contiguity_info done
+=Available expressions in src.spec.foo
+=avail_exprs begin
+=loc 1
+=loc_expr
+140295 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 35
+=loc_expr
+140655 : input.spec-%var-a-0.L3%7%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=avail_exprs_val.end
+=loc 45
+=loc_expr
+140682 : input.spec-%tmpvar-15.L3%7%bbentry : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=avail_exprs_val.end
+=loc 46
+=loc_expr
+140683 : input.spec-%tmpvar-16.L3%7%bbentry : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=avail_exprs_val.end
+=loc 54
+=loc_expr
+140689 : input.spec-%tmpvar-10.L3%19%bbentry : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=avail_exprs_val.end
+=loc 55
+=loc_expr
+140690 : input.spec-%tmpvar-8.L3%19%bbentry : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=avail_exprs_val.end
+=loc 58
+=loc_expr
+140692 : input.spec-%tmpvar-1.L3%19%bbentry : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=avail_exprs_val.end
+=avail_exprs end
+=sprel_map in src.spec.foo
+=loc 45 expr
+1 : input.spec-%tmpvar-15.L3%7%bbentry : BV:32
+=loc 45 spreled-expr
+140286 : 0 { 0x0 +1.0e129 } : BV:32
+=loc 46 expr
+1 : input.spec-%tmpvar-16.L3%7%bbentry : BV:32
+=loc 46 spreled-expr
+140286 : 0 { 0x0 +1.0e129 } : BV:32
+=loc 54 expr
+1 : input.spec-%tmpvar-10.L3%19%bbentry : BV:32
+=loc 54 spreled-expr
+140286 : 0 { 0x0 +1.0e129 } : BV:32
+=loc 55 expr
+1 : input.spec-%tmpvar-8.L3%19%bbentry : BV:32
+=loc 55 spreled-expr
+140308 : 1 { 0x1 +1.11e129 } : BV:32
+=loc 58 expr
+1 : input.spec-%tmpvar-1.L3%19%bbentry : BV:32
+=loc 58 spreled-expr
+140308 : 1 { 0x1 +1.11e129 } : BV:32
+=sprel_map done
+=lr-status-map
+=lr-status-map at call-context {*;foo}
+=loc_id 1 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 31 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 32 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 33 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 34 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 35 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 36 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 37 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 38 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 39 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 40 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 41 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 42 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 43 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 44 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 45 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 46 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 47 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 48 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 49 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 50 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 51 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 52 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 53 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 54 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 55 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 56 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 57 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 58 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 59 lr-status in lr-status-map at call-context {*;foo}
+lr_status_linearly_related(; )
+=loc_id 60 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=loc_id 61 lr-status in lr-status-map at call-context {*;foo}
+lr_status_bottom(; memlabel-mem--heap, )
+=lr-status-map done
+=lr-status-for-sprel-locs-map
+=loc_id 45 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=loc_id 46 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=loc_id 54 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=loc_id 55 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=loc_id 58 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=lr-status-for-sprel-locs-map done
+=graph_with_aliasing_done
+=Memlabel assertions empty
+=Memlabel assertions done
+=graph_with_proofs done
+=graph_with_ce done
+=graph_with_points done
+=graph_with_guessing done
+=graph_with_simplified_assets
+=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L3%7%bbentry
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%7%bbentry=>L3%8%d
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%8%d=>L3%9%bbentry
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%8%d=>L3%11%bbentry
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%9%bbentry=>E0%0%d
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%11%bbentry=>L3%19%bbentry
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%19%bbentry=>L3%20%d
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%20%d=>L3%21%bbentry
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%20%d=>L3%23%bbentry
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_is(1, 2) : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%21%bbentry=>L3%7%bbentry
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at L3%23%bbentry=>L3%19%bbentry
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond done
+=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L3%7%bbentry
+=spec-%var-x-1.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-16.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-a-0.L3%7%bbentry
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=spec-%tmpvar-15.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=src.spec-ghostvar.itervar.1.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-i-0.L3%7%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%7%bbentry=>L3%8%d
+=spec-%tmpvar-7.L3%8%d
+1 : input.spec-%var-a-0.L3%7%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+2 : input.spec-%var-i-0.L3%7%bbentry : BV:32
+3 : map_get(1, 2) : SUM[UNIT,MAP[BV:32 -> BV:32]]
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%8%d=>L3%9%bbentry
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%8%d=>L3%11%bbentry
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%9%bbentry=>E0%0%d
+=spec-%tmpvar-13.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=spec-%tmpvar-18.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=spec-%tmpvar-14.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=spec-%var-u-1.E0%0%d
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_get(1, 2) : UNIT
+=spec-%tmpvar-17.E0%0%d
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%11%bbentry=>L3%19%bbentry
+=spec-%tmpvar-9.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-i-0.L3%7%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-a_i-0.L3%19%bbentry
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : MAP[BV:32 -> BV:32]
+=spec-%var-a_i-1.L3%19%bbentry
+1 : input.spec-%tmpvar-7.L3%8%d : SUM[UNIT,MAP[BV:32 -> BV:32]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : MAP[BV:32 -> BV:32]
+=spec-%var-j-0.L3%19%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-x-0.L3%19%bbentry
+1 : input.spec-%var-x-1.L3%7%bbentry : BV:32
+=src.spec-ghostvar.itervar.2.L3%19%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-10.L3%19%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-8.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%19%bbentry=>L3%20%d
+=spec-%tmpvar-0.L3%20%d
+1 : input.spec-%var-a_i-0.L3%19%bbentry : MAP[BV:32 -> BV:32]
+2 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+3 : map_get(1, 2) : SUM[UNIT,BV:32]
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%20%d=>L3%21%bbentry
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%20%d=>L3%23%bbentry
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%21%bbentry=>L3%7%bbentry
+=spec-%var-x-1.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=spec-%tmpvar-5.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=src.spec-ghostvar.itervar.1.L3%7%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.src.spec-ghostvar.itervar.1.L3%7%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-i-0.L3%7%bbentry
+1 : input.spec-%tmpvar-9.L3%19%bbentry : BV:32
+=spec-%tmpvar-6.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=spec-%tmpvar-11.L3%7%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+=spec-%var-u-0.L3%7%bbentry
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 0 { 0x0 +1.0e1025 } : INT
+3 : sum_get(1, 2) : UNIT
+=state_end
+=graph_with_simplified_assets.simplified_to_state at L3%23%bbentry=>L3%19%bbentry
+=spec-%var-j-0.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-x-0.L3%19%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=src.spec-ghostvar.itervar.2.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.src.spec-ghostvar.itervar.2.L3%19%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%tmpvar-1.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=spec-%tmpvar-2.L3%19%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-j-0.L3%19%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%tmpvar-3.L3%19%bbentry
+1 : input.spec-%var-x-0.L3%19%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=spec-%var-a_ij-0.L3%19%bbentry
+1 : input.spec-%tmpvar-0.L3%20%d : SUM[UNIT,BV:32]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : BV:32
+=state_end
+=graph_with_simplified_assets.simplified_to_state done
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L3%7%bbentry
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L3%7%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L3%7%bbentry=>L3%8%d
+=graph_with_simplified_assets.simplified_assumes at L3%7%bbentry=>L3%8%d done
+=graph_with_simplified_assets.simplified_assumes at L3%8%d=>L3%9%bbentry
+=graph_with_simplified_assets.simplified_assumes at L3%8%d=>L3%9%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L3%8%d=>L3%11%bbentry
+=graph_with_simplified_assets.simplified_assumes at L3%8%d=>L3%11%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L3%9%bbentry=>E0%0%d
+=graph_with_simplified_assets.simplified_assumes at L3%9%bbentry=>E0%0%d done
+=graph_with_simplified_assets.simplified_assumes at L3%11%bbentry=>L3%19%bbentry
+=graph_with_simplified_assets.simplified_assumes at L3%11%bbentry=>L3%19%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L3%19%bbentry=>L3%20%d
+=graph_with_simplified_assets.simplified_assumes at L3%19%bbentry=>L3%20%d done
+=graph_with_simplified_assets.simplified_assumes at L3%20%d=>L3%21%bbentry
+=graph_with_simplified_assets.simplified_assumes at L3%20%d=>L3%21%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L3%20%d=>L3%23%bbentry
+=graph_with_simplified_assets.simplified_assumes at L3%20%d=>L3%23%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L3%21%bbentry=>L3%7%bbentry
+=graph_with_simplified_assets.simplified_assumes at L3%21%bbentry=>L3%7%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L3%23%bbentry=>L3%19%bbentry
+=graph_with_simplified_assets.simplified_assumes at L3%23%bbentry=>L3%19%bbentry done
+=graph_with_simplified_assets.simplified_assumes done
+=graph_with_simplified_assets done
+=max-memlabel-varnum
+0
+=String-contents:
+=Nextpc-map:
+=Nextpc-map done
+=suffixpaths for src.spec.foo
+=suffixpath_at_L0%0%d for src.spec.foo
+=suffixpath_at_L0%0%d.graph_edge_composition
+(epsilon)
+=suffixpath_at_L3%7%bbentry for src.spec.foo
+=suffixpath_at_L3%7%bbentry.graph_edge_composition
+(L0%0%d=>L3%7%bbentry)
+=suffixpath_at_L3%8%d for src.spec.foo
+=suffixpath_at_L3%8%d.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*(L3%7%bbentry=>L3%8%d))
+=suffixpath_at_L3%9%bbentry for src.spec.foo
+=suffixpath_at_L3%9%bbentry.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*((L3%7%bbentry=>L3%8%d)*(L3%8%d=>L3%9%bbentry)))
+=suffixpath_at_L3%11%bbentry for src.spec.foo
+=suffixpath_at_L3%11%bbentry.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*((L3%7%bbentry=>L3%8%d)*(L3%8%d=>L3%11%bbentry)))
+=suffixpath_at_L3%19%bbentry for src.spec.foo
+=suffixpath_at_L3%19%bbentry.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*((L3%7%bbentry=>L3%8%d)*((L3%8%d=>L3%11%bbentry)*(L3%11%bbentry=>L3%19%bbentry))))
+=suffixpath_at_L3%20%d for src.spec.foo
+=suffixpath_at_L3%20%d.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*((L3%7%bbentry=>L3%8%d)*((L3%8%d=>L3%11%bbentry)*((L3%11%bbentry=>L3%19%bbentry)*(L3%19%bbentry=>L3%20%d)))))
+=suffixpath_at_L3%21%bbentry for src.spec.foo
+=suffixpath_at_L3%21%bbentry.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*((L3%7%bbentry=>L3%8%d)*((L3%8%d=>L3%11%bbentry)*((L3%11%bbentry=>L3%19%bbentry)*((L3%19%bbentry=>L3%20%d)*(L3%20%d=>L3%21%bbentry))))))
+=suffixpath_at_L3%23%bbentry for src.spec.foo
+=suffixpath_at_L3%23%bbentry.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*((L3%7%bbentry=>L3%8%d)*((L3%8%d=>L3%11%bbentry)*((L3%11%bbentry=>L3%19%bbentry)*((L3%19%bbentry=>L3%20%d)*(L3%20%d=>L3%23%bbentry))))))
+=suffixpath_at_E0%0%d for src.spec.foo
+=suffixpath_at_E0%0%d.graph_edge_composition
+((L0%0%d=>L3%7%bbentry)*((L3%7%bbentry=>L3%8%d)*((L3%8%d=>L3%9%bbentry)*(L3%9%bbentry=>E0%0%d))))
+=suffixpaths for src.spec.foo done
+=tfg.assumes_around_edge
+tfg.assumes_around_edge at L0%0%d=>L3%7%bbentry
+tfg.assumes_around_edge at L0%0%d=>L3%7%bbentry done
+tfg.assumes_around_edge at L3%7%bbentry=>L3%8%d
+tfg.assumes_around_edge at L3%7%bbentry=>L3%8%d done
+tfg.assumes_around_edge at L3%8%d=>L3%9%bbentry
+tfg.assumes_around_edge at L3%8%d=>L3%9%bbentry done
+tfg.assumes_around_edge at L3%8%d=>L3%11%bbentry
+tfg.assumes_around_edge at L3%8%d=>L3%11%bbentry done
+tfg.assumes_around_edge at L3%9%bbentry=>E0%0%d
+tfg.assumes_around_edge at L3%9%bbentry=>E0%0%d done
+tfg.assumes_around_edge at L3%11%bbentry=>L3%19%bbentry
+tfg.assumes_around_edge at L3%11%bbentry=>L3%19%bbentry done
+tfg.assumes_around_edge at L3%19%bbentry=>L3%20%d
+tfg.assumes_around_edge at L3%19%bbentry=>L3%20%d done
+tfg.assumes_around_edge at L3%20%d=>L3%21%bbentry
+tfg.assumes_around_edge at L3%20%d=>L3%21%bbentry done
+tfg.assumes_around_edge at L3%20%d=>L3%23%bbentry
+tfg.assumes_around_edge at L3%20%d=>L3%23%bbentry done
+tfg.assumes_around_edge at L3%21%bbentry=>L3%7%bbentry
+tfg.assumes_around_edge at L3%21%bbentry=>L3%7%bbentry done
+tfg.assumes_around_edge at L3%23%bbentry=>L3%19%bbentry
+tfg.assumes_around_edge at L3%23%bbentry=>L3%19%bbentry done
+tfg.assumes_around_edge done
+=TFGdone
+=TFG_SPEC_done
+=TFG_SSA_done
