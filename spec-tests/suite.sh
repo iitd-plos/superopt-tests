@@ -19,6 +19,8 @@
 . par_script.sh couple3
 . par_script.sh couple4
 . par_script.sh couple5
+. par_script.sh couple6
+. par_script.sh couple7
 . par_script.sh couple8
 
 . par_script.sh ind1
@@ -27,8 +29,12 @@
 . par_script.sh ind4
 . par_script.sh ind5
 . par_script.sh ind6
+# . par_script.sh ind7
+# . par_script.sh ind8
+# . par_script.sh ind9
 
 . par_script.sh fcall1
 . par_script.sh fcall2
 . par_script.sh fcall3
 . par_script.sh fcall4
+. par_script.sh fcall5
