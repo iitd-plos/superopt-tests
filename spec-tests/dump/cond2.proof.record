@@ -53,18 +53,6 @@ sat
 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end #b00000000000000000000000000000011)
 ==DATA_END==
 ==solver_result_code: SOLVER_SAT
-==index: 2
-==solver_id: 3
-==recvd_data
-==DATA_START==
-sat
-(model
-(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32) (_ bv0 32))
-(define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32) (_ bv0 32))
-(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32) (_ bv3 32))
-)
-==DATA_END==
-==solver_result_code: SOLVER_SAT
 ==index: 4
 ==solver_id: 1
 ==recvd_data
@@ -80,7 +68,19 @@ sat
 )
 ==DATA_END==
 ==solver_result_code: SOLVER_SAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==index: 2
+==solver_id: 3
+==recvd_data
+==DATA_START==
+sat
+(model
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32) (_ bv3 32))
+)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 1
 ==CVC4_FILE_START==
 ; benchmark
@@ -572,6 +572,113 @@ sat
 ==SMT2_FILE_END==
 ==ret: 0
 ==result_count: 2
+==index: 4
+==solver_id: 1
+==recvd_data
+==DATA_START==
+sat
+(model 
+  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32)
+    #x53160004)
+  (define-fun input.spec-%tmpvar-16.L1%25%d.0 () (_ BitVec 32)
+    #x80000000)
+  (define-fun input.spec-%tmpvar-12.L1%17%d.0 () (_ BitVec 32)
+    #x00000008)
+  (define-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8))
+    (_ as-array k!51))
+  (define-fun input.spec-%tmpvar-3.L1%13%d () (_ BitVec 32)
+    #x00000004)
+  (define-fun input.spec-%tmpvar-7.L1%13%d () (_ BitVec 32)
+    #x00000015)
+  (define-fun input.dst.llvm-%x () (_ BitVec 32)
+    #x00000009)
+  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32)
+    #x53160007)
+  (define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32)
+    #x53160004)
+  (define-fun input.spec-%tmpvar-10.L1%13%d () Bool
+    false)
+  (define-fun input.spec-%tmpvar-16.L1%25%d.2 () (_ BitVec 32)
+    #x00000015)
+  (define-fun input.spec-%tmpvar-12.L1%17%d.2 () (_ BitVec 32)
+    #x00000004)
+  (define-fun input.spec-%tmpvar-11.L1%17%d () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.spec-%tmpvar-15.L1%25%d () (_ BitVec 32)
+    #x00000001)
+  (define-fun input.spec-%tmpvar-1.L1%13%d () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.spec-%tmpvar-2.L1%13%d () (_ BitVec 32)
+    #x00000005)
+  (define-fun input.spec-%tmpvar-5.L1%13%d () (_ BitVec 32)
+    #x00000001)
+  (define-fun input.spec-%tmpvar-6.L1%13%d () (_ BitVec 32)
+    #x0000000c)
+  (define-fun input.spec-%tmpvar-9.L1%13%d () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.spec-%tmpvar-13.L1%23%bbentry () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.spec-%var-y-0.L1%23%bbentry () (_ BitVec 32)
+    #x00000004)
+  (define-fun input.spec-%tmpvar-17.L1%31%bbentry () (_ BitVec 32)
+    #x00000000)
+  (define-fun input.spec-%var-y-1.L1%31%bbentry () (_ BitVec 32)
+    #x00000015)
+  (define-fun input.spec-%var-x-0 () (_ BitVec 32)
+    #x00000009)
+  (define-fun input.spec-%tmpvar-8.L1%13%d.1.1!60 ((x!0 (_ BitVec 32))) (_ BitVec
+     32)
+    (ite (= x!0 #x00000000) #x00000004
+    (ite (= x!0 #x00000001) #x00000015
+      #x00000007)))
+  (define-fun input.spec-%tmpvar-8.L1%13%d.0.1!57 ((x!0 (_ BitVec 32))) Bool
+    (or (= x!0 #x00000000) (= x!0 #x00000001)))
+  (define-fun k!52 ((x!0 (_ BitVec 32))) (_ BitVec 32)
+    (ite (= x!0 #x00000000) #x00000000
+    (ite (= x!0 #x00000001) #x00000001
+      #x00000004)))
+  (define-fun input.spec-%tmpvar-8.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
+    (input.spec-%tmpvar-8.L1%13%d.0.1!57 (k!52 x!0)))
+  (define-fun k!53 ((x!0 (_ BitVec 32))) (_ BitVec 32)
+    (ite (= x!0 #x00000000) #x00000000
+      #x00000004))
+  (define-fun input.spec-%tmpvar-0.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
+    #x00000000)
+  (define-fun k!55 ((x!0 (_ BitVec 32))) (_ BitVec 32)
+    (ite (= x!0 #x00000000) #x00000000
+    (ite (= x!0 #x00000001) #x00000001
+      #x00000004)))
+  (define-fun input.spec-%var-t1-0.L1%13%d.0.1!59 ((x!0 (_ BitVec 32))) Bool
+    (or (= x!0 #x00000000) (= x!0 #x00000001)))
+  (define-fun input.spec-%var-t1-0.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
+    (input.spec-%var-t1-0.L1%13%d.0.1!59 (k!55 x!0)))
+  (define-fun input.spec-%var-t1-0.L1%13%d.1.1!56 ((x!0 (_ BitVec 32))) (_ BitVec
+     32)
+    (ite (= x!0 #x00000000) #x00000004
+    (ite (= x!0 #x00000001) #x00000015
+      #x00000006)))
+  (define-fun input.spec-%var-t1-0.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
+    (input.spec-%var-t1-0.L1%13%d.1.1!56 (k!55 x!0)))
+  (define-fun input.spec-%tmpvar-4.L1%13%d.1.1!61 ((x!0 (_ BitVec 32))) (_ BitVec
+     32)
+    (ite (= x!0 #x00000000) #x00000004
+      #x0000000a))
+  (define-fun input.spec-%tmpvar-8.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
+    (input.spec-%tmpvar-8.L1%13%d.1.1!60 (k!52 x!0)))
+  (define-fun k!51 ((x!0 (_ BitVec 32))) (_ BitVec 8)
+    (ite (= x!0 #x53160004) #x09
+      #x00))
+  (define-fun input.spec-%tmpvar-0.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
+    false)
+  (define-fun input.spec-%tmpvar-4.L1%13%d.0.1!58 ((x!0 (_ BitVec 32))) Bool
+    (= x!0 #x00000000))
+  (define-fun input.spec-%tmpvar-4.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
+    (input.spec-%tmpvar-4.L1%13%d.0.1!58 (k!53 x!0)))
+  (define-fun input.spec-%tmpvar-4.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
+    (input.spec-%tmpvar-4.L1%13%d.1.1!61 (k!53 x!0)))
+)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
 ==index: 1
 ==solver_id: 0
 ==recvd_data
@@ -685,114 +792,7 @@ sat
 )
 ==DATA_END==
 ==solver_result_code: SOLVER_SAT
-==index: 4
-==solver_id: 1
-==recvd_data
-==DATA_START==
-sat
-(model 
-  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32)
-    #x53160004)
-  (define-fun input.spec-%tmpvar-16.L1%25%d.0 () (_ BitVec 32)
-    #x80000000)
-  (define-fun input.spec-%tmpvar-12.L1%17%d.0 () (_ BitVec 32)
-    #x00000008)
-  (define-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8))
-    (_ as-array k!51))
-  (define-fun input.spec-%tmpvar-3.L1%13%d () (_ BitVec 32)
-    #x00000004)
-  (define-fun input.spec-%tmpvar-7.L1%13%d () (_ BitVec 32)
-    #x00000015)
-  (define-fun input.dst.llvm-%x () (_ BitVec 32)
-    #x00000009)
-  (define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32)
-    #x53160007)
-  (define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32)
-    #x53160004)
-  (define-fun input.spec-%tmpvar-10.L1%13%d () Bool
-    false)
-  (define-fun input.spec-%tmpvar-16.L1%25%d.2 () (_ BitVec 32)
-    #x00000015)
-  (define-fun input.spec-%tmpvar-12.L1%17%d.2 () (_ BitVec 32)
-    #x00000004)
-  (define-fun input.spec-%tmpvar-11.L1%17%d () (_ BitVec 32)
-    #x00000000)
-  (define-fun input.spec-%tmpvar-15.L1%25%d () (_ BitVec 32)
-    #x00000001)
-  (define-fun input.spec-%tmpvar-1.L1%13%d () (_ BitVec 32)
-    #x00000000)
-  (define-fun input.spec-%tmpvar-2.L1%13%d () (_ BitVec 32)
-    #x00000005)
-  (define-fun input.spec-%tmpvar-5.L1%13%d () (_ BitVec 32)
-    #x00000001)
-  (define-fun input.spec-%tmpvar-6.L1%13%d () (_ BitVec 32)
-    #x0000000c)
-  (define-fun input.spec-%tmpvar-9.L1%13%d () (_ BitVec 32)
-    #x00000000)
-  (define-fun input.spec-%tmpvar-13.L1%23%bbentry () (_ BitVec 32)
-    #x00000000)
-  (define-fun input.spec-%var-y-0.L1%23%bbentry () (_ BitVec 32)
-    #x00000004)
-  (define-fun input.spec-%tmpvar-17.L1%31%bbentry () (_ BitVec 32)
-    #x00000000)
-  (define-fun input.spec-%var-y-1.L1%31%bbentry () (_ BitVec 32)
-    #x00000015)
-  (define-fun input.spec-%var-x-0 () (_ BitVec 32)
-    #x00000009)
-  (define-fun input.spec-%tmpvar-8.L1%13%d.1.1!60 ((x!0 (_ BitVec 32))) (_ BitVec
-     32)
-    (ite (= x!0 #x00000000) #x00000004
-    (ite (= x!0 #x00000001) #x00000015
-      #x00000007)))
-  (define-fun input.spec-%tmpvar-8.L1%13%d.0.1!57 ((x!0 (_ BitVec 32))) Bool
-    (or (= x!0 #x00000000) (= x!0 #x00000001)))
-  (define-fun k!52 ((x!0 (_ BitVec 32))) (_ BitVec 32)
-    (ite (= x!0 #x00000000) #x00000000
-    (ite (= x!0 #x00000001) #x00000001
-      #x00000004)))
-  (define-fun input.spec-%tmpvar-8.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
-    (input.spec-%tmpvar-8.L1%13%d.0.1!57 (k!52 x!0)))
-  (define-fun k!53 ((x!0 (_ BitVec 32))) (_ BitVec 32)
-    (ite (= x!0 #x00000000) #x00000000
-      #x00000004))
-  (define-fun input.spec-%tmpvar-0.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
-    #x00000000)
-  (define-fun k!55 ((x!0 (_ BitVec 32))) (_ BitVec 32)
-    (ite (= x!0 #x00000000) #x00000000
-    (ite (= x!0 #x00000001) #x00000001
-      #x00000004)))
-  (define-fun input.spec-%var-t1-0.L1%13%d.0.1!59 ((x!0 (_ BitVec 32))) Bool
-    (or (= x!0 #x00000000) (= x!0 #x00000001)))
-  (define-fun input.spec-%var-t1-0.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
-    (input.spec-%var-t1-0.L1%13%d.0.1!59 (k!55 x!0)))
-  (define-fun input.spec-%var-t1-0.L1%13%d.1.1!56 ((x!0 (_ BitVec 32))) (_ BitVec
-     32)
-    (ite (= x!0 #x00000000) #x00000004
-    (ite (= x!0 #x00000001) #x00000015
-      #x00000006)))
-  (define-fun input.spec-%var-t1-0.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
-    (input.spec-%var-t1-0.L1%13%d.1.1!56 (k!55 x!0)))
-  (define-fun input.spec-%tmpvar-4.L1%13%d.1.1!61 ((x!0 (_ BitVec 32))) (_ BitVec
-     32)
-    (ite (= x!0 #x00000000) #x00000004
-      #x0000000a))
-  (define-fun input.spec-%tmpvar-8.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
-    (input.spec-%tmpvar-8.L1%13%d.1.1!60 (k!52 x!0)))
-  (define-fun k!51 ((x!0 (_ BitVec 32))) (_ BitVec 8)
-    (ite (= x!0 #x53160004) #x09
-      #x00))
-  (define-fun input.spec-%tmpvar-0.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
-    false)
-  (define-fun input.spec-%tmpvar-4.L1%13%d.0.1!58 ((x!0 (_ BitVec 32))) Bool
-    (= x!0 #x00000000))
-  (define-fun input.spec-%tmpvar-4.L1%13%d.0.1 ((x!0 (_ BitVec 32))) Bool
-    (input.spec-%tmpvar-4.L1%13%d.0.1!58 (k!53 x!0)))
-  (define-fun input.spec-%tmpvar-4.L1%13%d.1.1 ((x!0 (_ BitVec 32))) (_ BitVec 32)
-    (input.spec-%tmpvar-4.L1%13%d.1.1!61 (k!53 x!0)))
-)
-==DATA_END==
-==solver_result_code: SOLVER_SAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 2
 ==CVC4_FILE_START==
 ; benchmark
@@ -1318,7 +1318,7 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 3
 ==CVC4_FILE_START==
 ; benchmark
@@ -1836,7 +1836,7 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 4
 ==CVC4_FILE_START==
 ; benchmark
@@ -2348,7 +2348,7 @@ unsat
 ==SMT2_FILE_END==
 ==ret: 1
 ==result_count: 1
-==index: 3
+==index: 2
 ==solver_id: 3
 ==recvd_data
 ==DATA_START==
@@ -2356,7 +2356,7 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 5
 ==CVC4_FILE_START==
 ; benchmark
@@ -2858,7 +2858,7 @@ unsat
 ==SMT2_FILE_END==
 ==ret: 1
 ==result_count: 1
-==index: 3
+==index: 2
 ==solver_id: 3
 ==recvd_data
 ==DATA_START==
@@ -2866,7 +2866,7 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 6
 ==CVC4_FILE_START==
 ; benchmark
@@ -3378,7 +3378,7 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 7
 ==CVC4_FILE_START==
 ; benchmark
@@ -3888,7 +3888,7 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 8
 ==CVC4_FILE_START==
 ; benchmark
@@ -4392,7 +4392,7 @@ unsat
 ==SMT2_FILE_END==
 ==ret: 1
 ==result_count: 1
-==index: 3
+==index: 2
 ==solver_id: 3
 ==recvd_data
 ==DATA_START==
@@ -4400,7 +4400,7 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
 ==query_number: 9
 ==CVC4_FILE_START==
 ; benchmark
@@ -4900,4 +4900,4 @@ unsat
 (error "Cannot get the current model unless immediately preceded by SAT/INVALID or UNKNOWN response.")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2707930/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2888364/query
