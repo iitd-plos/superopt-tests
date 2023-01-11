@@ -30,8 +30,7 @@ UNROLL1_PROGS := \
                  #vla_2d                            \
                  #minscanf                     # gcc eqgen fails
                  #arg_addr_taken               # eqgen fails
-								 # vla_{3,4}_single_loop.{gcc,clang}: query-timeout 
-								 # vla_3_inside_loop.icc query-timeout
+								 # should pass: vla_{3,4}_single_loop.{gcc,clang} (query-timeout), vla_3_inside_loop.icc (query-timeout)
 
 UNROLL1_GCC = fib                               \
               alloca_malloc_switch              \
