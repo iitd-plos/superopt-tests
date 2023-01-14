@@ -19,30 +19,17 @@ make <dirname>
 make bzip2
 ```
 
-## Generating testcases .etfg and .tfg files
-
-```sh
-# for all
-make gentest
-
-# Or, for a particular test suite
-make -C build/<dirname> gentest
-
-# For example, for generating bzip2 test files
-make -C build/bzip2 gentest
-```
-
 ## Running tests
 
 ```sh
 # for all
-make runtest
+make eqtest
 
 # Or, for a particular test suite
-make -C build/<dirname> runtest
+make -C build/<dirname> eqtest
 
 # For example, for running bzip2 test
-make -C build/bzip2 runtest
+make -C build/bzip2 eqtest
 ```
 
 ## Cleaning-up
@@ -72,3 +59,10 @@ In addition, some environment variables are used for some paths.  The exhaustive
 4. `COMPCERT_INSTALL_LIB`: Search path for CompCert libs.
 
 5. `ICX_INSTALL_DIR`: Directory where ICX (intel's LLVM based compiler, AKA oneAPI compiler) is installed.  `icx` is then located to `${ICX_INSTALL_DIR}/compiler/latest/linux/bin/icc`.
+
+## Adding a new eqcheck test suite
+
+1. Create a new top-level directory: the name of directory will be your testsuite name
+2. Add your C/C++ sources to the newly created directory
+3. Copy `misc/Makefile.sample` as `Makefile` into your testsuite directory and edit per your requirements
+4. Append the suite name to `EQCHECK_TARGETS` in top-level `Makefile`

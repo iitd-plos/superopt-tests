@@ -1,107 +1,72 @@
 include $(SRCDIR)/Make.conf                  # compiler paths and flags
 include $(SRCDIR)/Makefile.common  # build rules
 
-# set VPATH path for targets and src files
-#VPATH = $(SRCDIR)/<dir>
 
-EQCHECKER_BC32_O0_PROGS = $(addsuffix .bc32.eqchecker.O0, $(PROGS_EQCHECKER))
-EQCHECKER_BC32_O2_PROGS = $(addsuffix .bc32.eqchecker.O2, $(PROGS_EQCHECKER))
-EQCHECKER_BC32_O3_PROGS = $(addsuffix .bc32.eqchecker.O3, $(PROGS_EQCHECKER))
-EQCHECKER_BC32_O3cg_PROGS = $(addsuffix .bc32.eqchecker.O3.cg, $(PROGS_EQCHECKER))
+# enumerate files to be compiled from user declared UNROLL1_GCC, UNROLL2_CLANG, .... variables
+UNROLL_FACTORS := 1 2 4 8 16 32 64
+COMPILERS := GCC CLANG ICC ICX ACK GPP CLANGPP ICPC ICPX
+templ_unroll_compiler = UNROLL$(u)_$(compiler)
+PROGS_EQCHECKER_GCC     := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,GCC,         $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_CLANG   := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,CLANG,       $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_ICC     := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,ICC,         $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_ICX     := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,ICX,         $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_ACK     := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,ACK,         $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_GPP     := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,GPP,         $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_CLANGPP := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,CLANGPP,     $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_ICPC    := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,ICPC,        $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_ICPX    := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,ICPX,        $($(templ_unroll_compiler))))
+PROGS_EQCHECKER_ALL     := $(foreach u,$(UNROLL_FACTORS),$(foreach compiler,$(COMPILERS),$($(templ_unroll_compiler))))
+# PROGS_UNROLL_CUR_COMPILER specifies command line for gen_eqtest_cmds.pl in the form "unroll1 <unroll1_progs> unroll2 <unroll1_progs> ..."
+# specific to CUR_COMPILER and evaluated on demand (note = vs :=)
+PROGS_UNROLL_CUR_COMPILER = $(foreach u,$(UNROLL_FACTORS),unroll$(u) $(UNROLL$(u)_$(CUR_COMPILER)))
 
-EQCHECKER_BC64_O0_PROGS = $(addsuffix .bc64.eqchecker.O0, $(PROGS_EQCHECKER))
-EQCHECKER_BC64_O2_PROGS = $(addsuffix .bc64.eqchecker.O2, $(PROGS_EQCHECKER))
-EQCHECKER_BC64_O3_PROGS = $(addsuffix .bc64.eqchecker.O3, $(PROGS_EQCHECKER))
-EQCHECKER_BC64_O3cg_PROGS = $(addsuffix .bc64.eqchecker.O3.cg, $(PROGS_EQCHECKER))
+EQCHECKER_BC32_PROGS := $(foreach opt,O0 O3,$(addsuffix .bc32.eqchecker.$(opt), $(PROGS_EQCHECKER_ALL)))
+EQCHECKER_BC64_PROGS := $(foreach opt,O0 O3,$(addsuffix .bc64.eqchecker.$(opt), $(PROGS_EQCHECKER_ALL)))
+EQCHECKER_BC32_O3cg_PROGS = $(addsuffix .bc32.eqchecker.O3.cg, $(PROGS_EQCHECKER_ALL))
+EQCHECKER_BC64_O3cg_PROGS = $(addsuffix .bc64.eqchecker.O3.cg, $(PROGS_EQCHECKER_ALL))
 
-EQCHECKER_I386_GCC_O0_PROGS = $(addsuffix .gcc.eqchecker.O0.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_GCC_O1_PROGS = $(addsuffix .gcc.eqchecker.O1.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_GCC_O2_PROGS = $(addsuffix .gcc.eqchecker.O2.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_GCC_O3_PROGS = $(addsuffix .gcc.eqchecker.O3.i386.s, $(PROGS_EQCHECKER))
+OPTS := O0 O1 O2 O3
+EQCHECKER_I386_GCC_PROGS   := $(foreach opt,$(OPTS),$(addsuffix .gcc.eqchecker.$(opt).i386.s,   $(PROGS_EQCHECKER_GCC)))
+EQCHECKER_X64_GCC_PROGS    := $(foreach opt,$(OPTS),$(addsuffix .gcc.eqchecker.$(opt).x64.s,    $(PROGS_EQCHECKER_GCC)))
+EQCHECKER_I386_CLANG_PROGS := $(foreach opt,$(OPTS),$(addsuffix .clang.eqchecker.$(opt).i386.s, $(PROGS_EQCHECKER_CLANG)))
+EQCHECKER_X64_CLANG_PROGS  := $(foreach opt,$(OPTS),$(addsuffix .clang.eqchecker.$(opt).x64.s,  $(PROGS_EQCHECKER_CLANG)))
+EQCHECKER_I386_ICC_PROGS   := $(foreach opt,$(OPTS),$(addsuffix .icc.eqchecker.$(opt).i386.s,   $(PROGS_EQCHECKER_ICC)))
+EQCHECKER_X64_ICC_PROGS    := $(foreach opt,$(OPTS),$(addsuffix .icc.eqchecker.$(opt).x64.s,    $(PROGS_EQCHECKER_ICC)))
+EQCHECKER_I386_ICX_PROGS   := $(foreach opt,$(OPTS),$(addsuffix .icx.eqchecker.$(opt).i386.s,   $(PROGS_EQCHECKER_ICX)))
+EQCHECKER_X64_ICX_PROGS    := $(foreach opt,$(OPTS),$(addsuffix .icx.eqchecker.$(opt).x64.s,    $(PROGS_EQCHECKER_ICX)))
 
-EQCHECKER_X64_GCC_O0_PROGS = $(addsuffix .gcc.eqchecker.O0.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_GCC_O1_PROGS = $(addsuffix .gcc.eqchecker.O1.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_GCC_O2_PROGS = $(addsuffix .gcc.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_GCC_O3_PROGS = $(addsuffix .gcc.eqchecker.O3.x64.s, $(PROGS_EQCHECKER))
+EQCHECKER_I386_ACK_PROGS   := $(foreach opt,O1 O2,$(addsuffix .ack.$(opt).i386,   $(PROGS_EQCHECKER_ACK)))
+EQCHECKER_I386_CCOMP_PROGS := $(foreach opt,O0 O2,$(addsuffix .ccomp.eqchecker.$(opt).i386, $(PROGS_EQCHECKER_CCOMP)))
 
-EQCHECKER_I386_CLANG_O0_PROGS = $(addsuffix .clang.eqchecker.O0.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_CLANG_O1_PROGS = $(addsuffix .clang.eqchecker.O1.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_CLANG_O2_PROGS = $(addsuffix .clang.eqchecker.O2.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_CLANG_O3_PROGS = $(addsuffix .clang.eqchecker.O3.i386.s, $(PROGS_EQCHECKER))
+EQCHECKER_I386_GCC_O3_XML_FILES = $(addsuffix .gcc.i386.O3.xml, $(PROGS_EQCHECKER_GCC))
+EQCHECKER_I386_CLANG_O3_XML_FILES = $(addsuffix .clang.i386.O3.xml, $(PROGS_EQCHECKER_CLANG))
+EQCHECKER_I386_ICC_O3_XML_FILES = $(addsuffix .icc.i386.O3.xml, $(PROGS_EQCHECKER_ICC))
+EQCHECKER_I386_ICX_O3_XML_FILES = $(addsuffix .icx.i386.O3.xml, $(PROGS_EQCHECKER_ICX))
 
-EQCHECKER_I386_ACK_O1_PROGS = $(addsuffix .ack.O1.i386, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ACK_O2_PROGS = $(addsuffix .ack.O2.i386, $(PROGS_EQCHECKER))
-
-EQCHECKER_X64_CLANG_O0_PROGS = $(addsuffix .clang.eqchecker.O0.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_CLANG_O1_PROGS = $(addsuffix .clang.eqchecker.O1.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_CLANG_O2_PROGS = $(addsuffix .clang.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_CLANG_O3_PROGS = $(addsuffix .clang.eqchecker.O3.x64.s, $(PROGS_EQCHECKER))
-
-EQCHECKER_I386_ICC_O0_PROGS = $(addsuffix .icc.eqchecker.O0.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICC_O1_PROGS = $(addsuffix .icc.eqchecker.O1.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICC_O2_PROGS = $(addsuffix .icc.eqchecker.O2.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICC_O3_PROGS = $(addsuffix .icc.eqchecker.O3.i386.s, $(PROGS_EQCHECKER))
-
-EQCHECKER_X64_ICC_O0_PROGS = $(addsuffix .icc.eqchecker.O0.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_ICC_O1_PROGS = $(addsuffix .icc.eqchecker.O1.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_ICC_O2_PROGS = $(addsuffix .icc.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_ICC_O3_PROGS = $(addsuffix .icc.eqchecker.O3.x64.s, $(PROGS_EQCHECKER))
-
-EQCHECKER_I386_ICX_O0_PROGS = $(addsuffix .icx.eqchecker.O0.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICX_O1_PROGS = $(addsuffix .icx.eqchecker.O1.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICX_O2_PROGS = $(addsuffix .icx.eqchecker.O2.i386.s, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICX_O3_PROGS = $(addsuffix .icx.eqchecker.O3.i386.s, $(PROGS_EQCHECKER))
-
-EQCHECKER_X64_ICX_O0_PROGS = $(addsuffix .icx.eqchecker.O0.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_ICX_O1_PROGS = $(addsuffix .icx.eqchecker.O1.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_ICX_O2_PROGS = $(addsuffix .icx.eqchecker.O2.x64.s, $(PROGS_EQCHECKER))
-EQCHECKER_X64_ICX_O3_PROGS = $(addsuffix .icx.eqchecker.O3.x64.s, $(PROGS_EQCHECKER))
-
-EQCHECKER_I386_CCOMP_O2_PROGS = $(addsuffix .ccomp.eqchecker.O2.i386, $(PROGS_EQCHECKER))
-
-EQCHECKER_I386_GCC_O3_XML_FILES = $(addsuffix .gcc.i386.O3.xml, $(PROGS_EQCHECKER))
-EQCHECKER_I386_CLANG_O3_XML_FILES = $(addsuffix .clang.i386.O3.xml, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICC_O3_XML_FILES = $(addsuffix .icc.i386.O3.xml, $(PROGS_EQCHECKER))
-EQCHECKER_I386_ICX_O3_XML_FILES = $(addsuffix .icx.i386.O3.xml, $(PROGS_EQCHECKER))
-
-EQCHECKER_X64_GCC_O3_XML_FILES = $(addsuffix .gcc.x64.O3.xml, $(PROGS_EQCHECKER))
-EQCHECKER_X64_CLANG_O3_XML_FILES = $(addsuffix .clang.x64.O3.xml, $(PROGS_EQCHECKER))
-EQCHECKER_X64_ICX_O3_XML_FILES = $(addsuffix .icx.x64.O3.xml, $(PROGS_EQCHECKER))
+EQCHECKER_X64_GCC_O3_XML_FILES = $(addsuffix .gcc.x64.O3.xml, $(PROGS_EQCHECKER_GCC))
+EQCHECKER_X64_CLANG_O3_XML_FILES = $(addsuffix .clang.x64.O3.xml, $(PROGS_EQCHECKER_CLANG))
+EQCHECKER_X64_ICX_O3_XML_FILES = $(addsuffix .icx.x64.O3.xml, $(PROGS_EQCHECKER_ICX))
 
 PROGS_LL_BC = $(addsuffix .bc, $(PROGS_LL))
 
 BC_PROGS = \
-  $(EQCHECKER_BC32_O0_PROGS) \
-  $(EQCHECKER_BC32_O3_PROGS) \
-  $(EQCHECKER_BC64_O0_PROGS) \
-  $(EQCHECKER_BC64_O3_PROGS)
+  $(EQCHECKER_BC32_PROGS) \
+  $(EQCHECKER_BC64_PROGS)
 BC_PROGS_ASM = $(addsuffix .ll, $(BC_PROGS))
 
 EQCHECKER_PROGS = \
   $(BC_PROGS) \
-  $(EQCHECKER_I386_GCC_O0_PROGS) \
-  $(EQCHECKER_I386_GCC_O1_PROGS) \
-  $(EQCHECKER_I386_GCC_O3_PROGS) \
-  $(EQCHECKER_I386_CLANG_O0_PROGS) \
-  $(EQCHECKER_I386_CLANG_O1_PROGS) \
-  $(EQCHECKER_I386_CLANG_O2_PROGS) \
-  $(EQCHECKER_I386_CLANG_O3_PROGS) \
-  $(EQCHECKER_I386_ICC_O0_PROGS) \
-  $(EQCHECKER_I386_ICC_O3_PROGS) \
-  $(EQCHECKER_I386_ICX_O0_PROGS) \
-  $(EQCHECKER_I386_ICX_O3_PROGS) \
-  $(EQCHECKER_X64_GCC_O0_PROGS) \
-  $(EQCHECKER_X64_GCC_O3_PROGS) \
-  $(EQCHECKER_X64_CLANG_O0_PROGS) \
-  $(EQCHECKER_X64_CLANG_O3_PROGS) \
-  $(EQCHECKER_X64_ICC_O0_PROGS) \
-  $(EQCHECKER_X64_ICC_O3_PROGS) \
-  $(EQCHECKER_X64_ICX_O0_PROGS) \
-  $(EQCHECKER_X64_ICX_O3_PROGS) \
+  $(EQCHECKER_I386_GCC_PROGS) \
+  $(EQCHECKER_I386_CLANG_PROGS) \
+  $(EQCHECKER_I386_ICC_PROGS) \
+  $(EQCHECKER_I386_ICX_PROGS) \
+  $(EQCHECKER_X64_GCC_PROGS) \
+  $(EQCHECKER_X64_CLANG_PROGS) \
+  $(EQCHECKER_X64_ICC_PROGS) \
+  $(EQCHECKER_X64_ICX_PROGS) \
 
 ACK_EQCHECKER_PROGS = \
-  $(EQCHECKER_I386_ACK_O1_PROGS) \
-  $(EQCHECKER_I386_ACK_O2_PROGS)
+  $(EQCHECKER_I386_ACK_PROGS) \
 
 XML_FILES = \
   $(EQCHECKER_I386_GCC_O3_XML_FILES) \
@@ -118,16 +83,11 @@ ALL_PROGS = $(EQCHECKER_PROGS) $(BC_PROGS_ASM) $(PROGS_LL_BC) $(XML_FILES) $(SRC
 # targets
 
 all: $(ALL_PROGS)
-	# HACK for current build
-	$(foreach t,$(BC_O0_PROGS),sed -i 's/immarg//g' $(t).s;)
 
 ack-progs: $(ACK_EQCHECKER_PROGS)
 
-clean:
-	rm -f *.o *.tmp $(ALL_PROGS)
-
 eqtest_%.helper:: $(ALL_PROGS) $(SRCDIR)/Makefile.template $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(VPATH)/Makefile
-	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z) $(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS)" unroll1 $(UNROLL1_$(CUR_COMPILER)) unroll2 $(UNROLL2_$(CUR_COMPILER)) unroll4 $(UNROLL4_$(CUR_COMPILER)) unroll8 $(UNROLL8_$(CUR_COMPILER)) unroll16 $(UNROLL16_$(CUR_COMPILER)) unroll32 $(UNROLL32_$(CUR_COMPILER)) unroll64 $(UNROLL64_$(CUR_COMPILER)) > $@ #eqtest_$(ARCH)_chaperon_commands
+	perl $(SRCDIR)/scripts/gen_eqtest_cmds.pl $@ $(SUPEROPT_PROJECT_DIR) $(VPATH) $(ARCH) $(shell echo $(CUR_COMPILER) | tr A-Z a-z) $(ARCH_OPT_SUFFIX) "extraflags@$(EXTRA_FLAGS) $(EXTRA_FLAGS_$(CUR_COMPILER))" $(PROGS_UNROLL_CUR_COMPILER)
 
 eqtest_%_gcc.helper:: CUR_COMPILER=GCC
 eqtest_%_gPP.helper:: CUR_COMPILER=GPP
@@ -147,18 +107,6 @@ eqtest_%_ack.helper:: ARCH_OPT_SUFFIX=.O2.i386
 eqtest_%_ack.O1.helper:: CUR_COMPILER=ACK
 eqtest_%_ack.O1.helper:: ARCH_OPT_SUFFIX=.O1.i386
 
-eqtest_%_srcdst.helper:: CUR_COMPILER=SRCDST
-eqtest_%_srcdst.helper:: ARCH_OPT_SUFFIX=notused
-
-eqtest_i386:: ARCH=i386
-eqtest_i386:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
-
-eqtest_x64:: ARCH=x64
-eqtest_x64:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
-
-eqtest_ll:: ARCH=x64 #we use the x64 build for llvm-to-llvm checks
-eqtest_ll:: ARCH_OPT_SUFFIX=.ll
-
 eqtest_i386_O0:: ARCH=i386
 eqtest_i386_O0:: ARCH_OPT_SUFFIX=.eqchecker.O0.i386.s
 
@@ -168,9 +116,46 @@ eqtest_i386_O1:: ARCH_OPT_SUFFIX=.eqchecker.O1.i386.s
 eqtest_i386_O2:: ARCH=i386
 eqtest_i386_O2:: ARCH_OPT_SUFFIX=.eqchecker.O2.i386.s
 
-eqtest_i386 eqtest_x64 eqtest_ll eqtest_i386_O0 eqtest_i386_O1 eqtest_i386_O2: eqtest_%: eqtest_%_gcc.helper eqtest_%_gPP.helper eqtest_%_clang.helper eqtest_%_clangPP.helper eqtest_%_srcdst.helper eqtest_%_ack.helper eqtest_%_ack.O1.helper eqtest_%_icx.helper eqtest_%_icpx.helper eqtest_%_icc.helper eqtest_%_icpc.helper
+eqtest_i386_O3:: ARCH=i386
+eqtest_i386_O3:: ARCH_OPT_SUFFIX=.eqchecker.O3.i386.s
+
+eqtest_x64_O0:: ARCH=x64
+eqtest_x64_O0:: ARCH_OPT_SUFFIX=.eqchecker.O0.x64.s
+
+eqtest_x64_O1:: ARCH=x64
+eqtest_x64_O1:: ARCH_OPT_SUFFIX=.eqchecker.O1.x64.s
+
+eqtest_x64_O2:: ARCH=x64
+eqtest_x64_O2:: ARCH_OPT_SUFFIX=.eqchecker.O2.x64.s
+
+eqtest_x64_O3:: ARCH=x64
+eqtest_x64_O3:: ARCH_OPT_SUFFIX=.eqchecker.O3.x64.s
+
+# use .c/.ll files directly
+eqtest_srcdst.helper:: CUR_COMPILER=SRCDST
+eqtest_srcdst.helper:: ARCH=i386 #use i386 build for src-dst checks
+eqtest_srcdst.helper:: ARCH_OPT_SUFFIX=notused
+
+# XXX not required?
+eqtest_ll.helper:: CUR_COMPILER=LL
+eqtest_ll.helper:: ARCH=x64 #we use the x64 build for llvm-to-llvm checks
+eqtest_ll.helper:: ARCH_OPT_SUFFIX=.ll
+
+eqtest_i386_O0 eqtest_i386_O1 eqtest_i386_O2 eqtest_i386_O3 eqtest_x64_O0 eqtest_x64_O1 eqtest_x64_O2 eqtest_x64_O3: eqtest_%: eqtest_%_gcc.helper eqtest_%_gPP.helper eqtest_%_clang.helper eqtest_%_clangPP.helper eqtest_%_ack.helper eqtest_%_ack.O1.helper eqtest_%_icx.helper eqtest_%_icpx.helper eqtest_%_icc.helper eqtest_%_icpc.helper
+	cat $^ > $@
+
+eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_O0 eqtest_%_O1 eqtest_%_O2 eqtest_%_O3
+	cat $^ > $@
+
+eqtest_ll eqtest_srcdst: eqtest_%: eqtest_%.helper
+	cat $^ > $@
+
+eqtest: eqtest_i386 eqtest_x64 eqtest_srcdst eqtest_ll
 	cat $^ > $@
 
 .DEFAULT_GOAL := all
 
-.PHONY: all clean eqtest_i386 eqtest_x64 eqtest_i386_O1
+clean:
+	rm -f *.o *.tmp eqtest*
+
+.PHONY: all clean eqtest
