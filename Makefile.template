@@ -136,6 +136,11 @@ eqtest_srcdst.helper:: CUR_COMPILER=SRCDST
 eqtest_srcdst.helper:: ARCH=i386 #use i386 build for src-dst checks
 eqtest_srcdst.helper:: ARCH_OPT_SUFFIX=notused
 
+# use .spec/.c/.ll files directly
+eqtest_spec.helper:: CUR_COMPILER=SPEC
+eqtest_spec.helper:: ARCH=i386 #use i386 build for src-dst checks
+eqtest_spec.helper:: ARCH_OPT_SUFFIX=notused
+
 # XXX not required?
 eqtest_ll.helper:: CUR_COMPILER=LL
 eqtest_ll.helper:: ARCH=x64 #we use the x64 build for llvm-to-llvm checks
@@ -147,7 +152,7 @@ eqtest_i386_O0 eqtest_i386_O1 eqtest_i386_O2 eqtest_i386_O3 eqtest_x64_O0 eqtest
 eqtest_i386 eqtest_x64: eqtest_%: eqtest_%_O0 eqtest_%_O1 eqtest_%_O2 eqtest_%_O3
 	cat $^ > $@
 
-eqtest_ll eqtest_srcdst: eqtest_%: eqtest_%.helper
+eqtest_ll eqtest_srcdst eqtest_spec: eqtest_%: eqtest_%.helper
 	cat $^ > $@
 
 eqtest: eqtest_i386 eqtest_x64 eqtest_srcdst eqtest_ll

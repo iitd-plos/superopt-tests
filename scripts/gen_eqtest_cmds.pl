@@ -82,6 +82,11 @@ foreach my $prog (keys %unroll) {
     my $src_pathname = identify_filetype_extension("$VPATH/$prog\_src");
     my $dst_pathname = identify_filetype_extension("$VPATH/$prog\_dst");
     print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
+  } elsif ($compiler eq "spec") {
+    my $spec_pathname = "$VPATH/$prog.spec";
+    my $c_pathname = identify_filetype_extension("$VPATH/$prog");
+    my $iospecs_pathname = "$VPATH/$prog.iospecs";
+    print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='--spec-iospecs=$iospecs_pathname $prog_extraflagsstr' -tmpdir $PWD $spec_pathname $c_pathname.UNROLL$u\n";
   } else {
     my $compile_log_str = "";
     if ($compiler =~ /^clang/) {
