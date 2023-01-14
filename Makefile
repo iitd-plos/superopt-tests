@@ -20,8 +20,9 @@ EQCHECK_TARGETS_i386 := $(EQCHECK_TARGETS)
 EQCHECK_TARGETS_x64 := $(EQCHECK_TARGETS)
 EQCHECK_TARGETS_ll := llvm-tests
 EQCHECK_TARGETS_srcdst :=
+EQCHECK_TARGETS_spec := spec-tests
 #TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_x64) $(EQCHECK_TARGETS_ll) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
-TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_ll)
+TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_ll) $(EQCHECK_TARGETS_spec)
 
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
@@ -53,12 +54,13 @@ eqtest_x64: ARCH=x64
 eqtest_i386: ARCH=i386
 eqtest_ll: ARCH=ll
 eqtest_srcdst: ARCH=srcdst
+eqtest_spec: ARCH=spec
 
-eqtest_x64 eqtest_i386 eqtest_ll eqtest_srcdst: eqtest_%: $(BUILD_MAKEFILES)
+eqtest_x64 eqtest_i386 eqtest_ll eqtest_srcdst eqtest_spec: eqtest_%: $(BUILD_MAKEFILES)
 	$(foreach t,$(EQCHECK_TARGETS_$(ARCH)),$(MAKE) -C $(BUILDDIR)/$(t) $@ || exit;)
 	true > $(BUILDDIR)/$@
 	$(foreach t,$(EQCHECK_TARGETS_$(ARCH)), [[ -f $(BUILDDIR)/$(t)/$@ ]] && cat $(BUILDDIR)/$(t)/$@ >> $(BUILDDIR)/$@ || exit;)
-	parallel --load "33%" < $(BUILDDIR)/$@
+	pushd $(BUILDDIR) >/dev/null && parallel --load "33%" :::: $@ && popd >/dev/null
 
 ack-compiler::
 	rm -rf $(BUILDDIR)/ack-compiler
