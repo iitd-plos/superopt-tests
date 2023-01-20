@@ -11,6 +11,7 @@ UNROLL1_PROGS := \
                  addr_taken_conditional       		 \
                  addr_taken_simple            		 \
                  variadic_with_loop           		 \
+                 variadic_acyclic                  \
                  alloca_conditional           		 \
                  alloca_simple                		 \
                  local_used_in_unreachable_loop    \
@@ -38,12 +39,10 @@ UNROLL1_GCC = fib                               \
               vla_in_loop_conditional_continue  \
               vla_in_loop_conditional_exit      \
               $(UNROLL1_PROGS)
-              # variadic_acyclic does not pass because there is no spver PC to place heap-alloc local
 							# minprintf requires select(local.addr) which is missing from bv-eqclass exprs
 UNROLL2_GCC = alloca_linked_list
 
-UNROLL1_CLANG = variadic_acyclic                  \
-                minprintf                         \
+UNROLL1_CLANG = minprintf                         \
                 alloca_linked_list                \
                 alloca_malloc_switch              \
                 vla_in_loop                       \
@@ -63,8 +62,7 @@ UNROLL2_ACK = \
 							# minprintf -- harvested assembly is incorrect; looks like switch is implemented using jump table
 EXTRA_FLAGS_ACK := --disable-fcall-wfconds
 
-UNROLL1_ICC = variadic_acyclic         \
-              minprintf                \
+UNROLL1_ICC = minprintf                \
               fib                      \
               $(UNROLL1_PROGS)
               # vla_in_loop{,conditional_continue,conditional_exit} require non-linear invariants
