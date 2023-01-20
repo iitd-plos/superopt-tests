@@ -9,6 +9,7 @@
 #include <string.h>
 
 void* MYmymalloc(size_t);
+void MYmyexit(int);
 
 #define SPEC_CPU2000
 
@@ -3293,7 +3294,8 @@ void cleanUpAndFail ( Int32 ec )
                 progName, numFileNames, 
                           numFileNames - numFilesProcessed );
    }
-   exit ( ec );
+   //exit ( ec );
+   MYmyexit ( ec );
 }
 
 
