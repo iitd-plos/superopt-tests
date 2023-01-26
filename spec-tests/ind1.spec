@@ -4,4 +4,4 @@ fn head_or (l : list) (val : i32) : i32 =
   match l with
   | empty => val
   | node => match node with
-                     | node_val, node_next => node_val.
+            | node_val, node_next => node_val.

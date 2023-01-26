@@ -1,6 +1,6 @@
 type i32, arr, mat = BV32, Map<i32, i32>, Map<i32, arr>.
 
-inline-fn foo_loop2 (x : mat) (i : i32) (j : i32) (n : i32) (m : i32) (ret : i32) : i32 =
+loopify inline fn foo_loop2 (x : mat) (i : i32) (j : i32) (n : i32) (m : i32) (ret : i32) : i32 =
   if uge(j, m)
     then ret
   else let val = match get(x, i) with
@@ -10,7 +10,7 @@ inline-fn foo_loop2 (x : mat) (i : i32) (j : i32) (n : i32) (m : i32) (ret : i32
                                            | x_ij => x_ij in
            foo_loop2(x, i, add(j, i32(1)), n, m, if ugt(i, j) then add(ret, val) else sub(ret, val)).
 
-inline-fn foo_loop1 (x : mat) (i : i32) (n : i32) (m : i32) (ret : i32) : i32 =
+loopify inline fn foo_loop1 (x : mat) (i : i32) (n : i32) (m : i32) (ret : i32) : i32 =
   if uge(i, n)
     then ret
   else

@@ -1,6 +1,6 @@
 type i32, arr_t, mat_t = BV32, Map<i32, i32>, Map<i32, arr_t>.
 
-inline-fn foo_impl2 (mat : mat_t) (n : i32) (m : i32) (i : i32) (j : i32) (x : i32) : i32 =
+loopify inline fn foo_impl2 (mat : mat_t) (n : i32) (m : i32) (i : i32) (j : i32) (x : i32) : i32 =
   if uge(j, m) then
     x
   else
@@ -11,7 +11,7 @@ inline-fn foo_impl2 (mat : mat_t) (n : i32) (m : i32) (i : i32) (j : i32) (x : i
                                          | mat_ij => mat_ij in
             foo_impl2(mat, n, m, i, add(j, i32(1)), add(x, val)).
 
-inline-fn foo_impl (mat : mat_t) (n : i32) (m : i32) (i : i32) (x : i32) : i32 =
+loopify inline fn foo_impl (mat : mat_t) (n : i32) (m : i32) (i : i32) (x : i32) : i32 =
   if uge(i, n) then
     x
   else

@@ -1,6 +1,6 @@
 type i32, arr = BV32, Map<i32, i32>.
 
-inline-fn foo_impl (i : i32) (n : i32) (r : i32) : i32 =
+loopify inline fn foo_impl (i : i32) (n : i32) (r : i32) : i32 =
   if sgt(i, n) then
     r
   else

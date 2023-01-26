@@ -80,11 +80,20 @@ foreach my $prog (keys %unroll) {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa -extra_flags=$extraflagsstr $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
     my $src_pathname = identify_filetype_extension("$VPATH/$prog\_src");
     my $dst_pathname = identify_filetype_extension("$VPATH/$prog\_dst");
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
+    print "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
   } else {
     #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$extraflagsstr $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
+    my $compile_log_str = "";
+    if ($compiler =~ /^clang/) {
+      $compile_log_str = "-compile_log $PWD/$prog.$compiler$compiler_suffix.log"
+    }
+    #print "compiler = $compiler\n";
     my $src_pathname = identify_filetype_extension("$VPATH/$prog");
-    print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u\n";
+    if ($compiler ne "ack" || -f "$PWD/$prog.$compiler$compiler_suffix") {
+      print "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
+    } else {
+      #print "Ignoring $PWD/$prog.$compiler$compiler_suffix\n";
+    }
   }
 }
 

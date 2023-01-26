@@ -9,6 +9,7 @@ OOELALA_TARGETS := ooelala-tests
 UNITTEST_TARGETS := unit-tests
 TSVC_PRIOR_TARGETS := TSVC_prior_work
 TSVC_NEW_TARGETS := TSVC_new
+BLR_DEMO_TARGETS := BLR_demo
 TSVC_PRIOR_LOCALS_TARGETS := TSVC_prior_work_locals
 TSVC_NEW_LOCALS_TARGETS := TSVC_new_locals
 POPL_PAPER_EX_TARGETS := popl_paper_ex
@@ -22,14 +23,21 @@ MALLOC_TARGETS := malloc-tests cpp
 OTHER_TARGETS := bzip2 demo ctests # soundness # reve 
 TSVC_POPL_TARGETS := TSVC_popl
 SPEC_TARGETS := spec17
-#EQCHECK_TARGETS :=  $(LOCALMEM_TARGETS)
-EQCHECK_TARGETS :=  $(MICRO_TARGETS) $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET) $(OTHER_TARGETS) $(TSVC_PRIOR_LOCALS_TARGETS) $(TSVC_NEW_LOCALS_TARGETS) $(POPL_PAPER_EX_TARGETS) $(TSVC_POPL_TARGETS) $(LOCALMEM_TARGETS) $(MALLOC_TARGETS)
+FP_TARGETS := fp
+#EQCHECK_TARGETS :=  $(BLR_DEMO_TARGETS) $(MICRO_TARGETS) $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET) $(OTHER_TARGETS) $(TSVC_PRIOR_LOCALS_TARGETS) $(TSVC_NEW_LOCALS_TARGETS) $(POPL_PAPER_EX_TARGETS) $(TSVC_POPL_TARGETS) $(LOCALMEM_TARGETS) $(MALLOC_TARGETS) $(FP_TARGETS)
+LOCALS_TARGETS := localmem-tests TSVC_prior_work_locals TSVC_prior_work_globals bzip2_locals
+EQCHECK_TARGETS :=  $(TSVC_PRIOR_TARGETS) $(LOCALS_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(MICRO_TARGETS) # $(LORE_NOMEM_TARGETS) $(PAPER_EX_TARGET) $(DIETLIBC_TARGET) $(OTHER_TARGETS) $(TSVC_PRIOR_LOCALS_TARGETS) $(TSVC_NEW_LOCALS_TARGETS) $(POPL_PAPER_EX_TARGETS) $(TSVC_POPL_TARGETS) $(LOCALMEM_TARGETS) $(MALLOC_TARGETS) $(FP_TARGETS)
+#EQCHECK_TARGETS :=  $(TSVC_PRIOR_TARGETS) $(TSVC_NEW_TARGETS) $(LORE_MEM_TARGETS) $(MICRO_TARGETS)
 EQCHECK_TARGETS_i386 := $(EQCHECK_TARGETS)
 EQCHECK_TARGETS_x64 := $(EQCHECK_TARGETS)
 EQCHECK_TARGETS_ll := llvm-tests
-TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_x64) $(EQCHECK_TARGETS_ll) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
+#TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_x64) $(EQCHECK_TARGETS_ll) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
+TARGETS := $(EQCHECK_TARGETS_i386)
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
+
+IDENTIFY_DURABLES_FILES := cpp/linked_list.cpp cpp/binary_search_tree.cpp cpp/binary_search_tree_iter.cpp malloc-tests/linked_list.c malloc-tests/binary_search_tree.c malloc-tests/binary_search_tree_iter.c malloc-tests/mylist.c malloc-tests/rbtree.c malloc-tests/hash.c
+
 
 export SUPEROPT_PROJECT_DIR
 export SUPEROPT_INSTALL_DIR
@@ -65,6 +73,9 @@ $(TARGETS) $(SPEC_TARGETS)::
 	cp $@/Makefile -t $(BUILDDIR)/$@
 	$(MAKE) -C $(BUILDDIR)/$@
 
+ack-progs::
+	$(MAKE) -C $(BUILDDIR)/localmem-tests $@
+
 eqtest_x64: ARCH=x64
 eqtest_i386: ARCH=i386
 eqtest_ll: ARCH=ll
@@ -74,6 +85,12 @@ eqtest_x64 eqtest_i386 eqtest_ll: eqtest_%: $(BUILD_MAKEFILES)
 	true > $(BUILDDIR)/$@
 	$(foreach t,$(EQCHECK_TARGETS_$(ARCH)), [[ -f $(BUILDDIR)/$(t)/$@ ]] && cat $(BUILDDIR)/$(t)/$@ >> $(BUILDDIR)/$@ || exit;)
 	parallel --load "$(PARALLEL_LOAD_PERCENT)%" < $(BUILDDIR)/$@
+
+ack-compiler::
+	rm -rf $(BUILDDIR)/ack-compiler
+	git clone https://github.com/compilerai/ack-compiler $(BUILDDIR)/ack-compiler
+	make -C $(BUILDDIR)/ack-compiler PREFIX=$(BUILDDIR)/ack-compiler-install
+	make -C $(BUILDDIR)/ack-compiler install
 
 #runtest:
 #	$(foreach t,$(EQCHECK_TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) RUN=0 runtest || exit;)
@@ -173,6 +190,8 @@ umount::
 specclean::
 	rm -f $(BUILD)/spec17/build_done
 
+identify_durables::
+	python $(SUPEROPT_PROJECT_DIR)/superopt/utils/identify_durables.py --max-call-context-depth 4 $(IDENTIFY_DURABLES_FILES)
 
 .PHONY: runtest unittest
 

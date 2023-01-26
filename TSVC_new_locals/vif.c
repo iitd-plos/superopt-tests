@@ -6,11 +6,10 @@ int vif()
 //	control loops
 //	vector if
 
-  TYPE local_a[LEN], local_b[LEN];
-  init_local1(local_b);
+  TYPE local_a[LEN];
 		for (int i = 0; i < LEN; i++) {
-			if (local_b[i] > (TYPE)0.) {
-				local_a[i] = local_b[i];
+			if (b[i] > (TYPE)0.) {
+				local_a[i] = b[i];
 			}
 		}
     print_local1(local_a);

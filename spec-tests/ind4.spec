@@ -1,6 +1,6 @@
 type i32, list = BV32, Sum<Unit, Prod<i32, list>>.
 
-inline-fn foo_impl (l : list) (sum : i32) : i32 =
+loopify inline fn foo_impl (l : list) (sum : i32) : i32 =
   match l with
   | u => sum
   | n => match n with

@@ -4,8 +4,8 @@ int vla_simple_loop(unsigned n)
     return 0;
 
   int v[n];
+#pragma clang loop vectorize(disable) unroll(disable)
   for (unsigned i = 0; i < n; ++i) {
-    MYmyDBG();
     v[i] = i*(i+1);
   }
   return v[0]+v[n-1];

@@ -7,9 +7,9 @@ int variadic_with_loop(unsigned n, ...)
   int ret = 0;
 
   va_start(args, n);
+#pragma clang loop vectorize(disable) unroll(disable)
   for (i = 0; i < n; ++i) {
-    MYmyDBG();
-    if (i & 1)
+    if (i % 2 == 0)
       ret -= va_arg(args, int);
     else
       ret += va_arg(args, int);

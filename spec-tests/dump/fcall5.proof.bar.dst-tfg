@@ -1,0 +1,2538 @@
+=TFG_SSA:
+=TFG_LLVM dst.llvm.bar:
+=TFG:
+=Nodes: L0%0%d Lentry%1%fcallStart Lentry%1%fcallEnd Lentry%2%fcallStart Lentry%2%fcallEnd E0%0%d
+=Edges:
+L0%0%d => Lentry%1%fcallStart
+Lentry%1%fcallStart => Lentry%1%fcallEnd
+Lentry%1%fcallEnd => Lentry%2%fcallStart
+Lentry%2%fcallStart => Lentry%2%fcallEnd
+Lentry%2%fcallEnd => E0%0%d
+=graph done
+=is_ssa_graph:
+1
+=StartState:
+=dst.llvm-mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=state_end
+=PC to var-version map at L0%0%d
+=version for dst.llvm-mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=PC to var-version map at Lentry%1%fcallStart
+=version for dst.llvm-mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=PC to var-version map at Lentry%1%fcallEnd
+=version for dst.llvm-mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=PC to var-version map at Lentry%2%fcallStart
+=version for dst.llvm-mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=PC to var-version map at Lentry%2%fcallEnd
+=version for dst.llvm-mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=PC to var-version map at E0%0%d
+=version for dst.llvm-mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=graph_with_var_versions done
+=FunctionName: bar
+=Input: llvm-method-arg.0
+=arg addr
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
+=arg val
+1 : input.dst.llvm-%arr1 : BV:32
+=arg end
+=Input: llvm-method-arg.2
+=arg addr
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum2=/ : BV:32
+=arg val
+1 : input.dst.llvm-%n : BV:32
+=arg end
+=Input: llvm-method-arg.1
+=arg addr
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : BV:32
+=arg val
+1 : input.dst.llvm-%arr2 : BV:32
+=arg end
+=Input: llvm-method-arg.3
+=arg addr
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum3=/ : BV:32
+=arg val
+1 : input.dst.llvm-%m : BV:32
+=arg end
+=Node outputs: E0%0%d
+=Output: heap
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=Output: llvm-indir_tgt
+1 : retaddr_const : BV:32
+=Output: llvm-%ret-reg
+1 : input.dst.llvm-%add.E0%0%d : BV:32
+=Node outputs done for E0%0%d
+=input_outputs done
+=Symbol-map:
+C_SYMBOL1 : bar : 8 : 1 : 0
+C_SYMBOL2 : foo : 35 : 1 : 0
+=Touched symbols:
+=Symbol-map done
+=Locals-map:
+C_LOCAL=L0%0%argnum0= : dst.llvm-%arr1 : 4 : 4 : 0
+C_LOCAL=L0%0%argnum1= : dst.llvm-%arr2 : 4 : 4 : 0
+C_LOCAL=L0%0%argnum2= : dst.llvm-%n : 4 : 4 : 0
+C_LOCAL=L0%0%argnum3= : dst.llvm-%m : 4 : 4 : 0
+=Locals-map done
+=Global assumes
+=global assume predicate_set done
+Memlabel map for call-context {*;bar}
+=memlabel_map.0 for call-context {*;bar}
+mlcall.dst.llvm.bar.0 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap
+=memlabel_map.1 for call-context {*;bar}
+mlcall.dst.llvm.bar.1 : memlabel-mem-
+=memlabel_map.2 for call-context {*;bar}
+mlcall.dst.llvm.bar.2 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap
+=memlabel_map.3 for call-context {*;bar}
+mlcall.dst.llvm.bar.3 : memlabel-mem-
+=Edge: L0%0%d => Lentry%1%fcallStart
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=dst.cur_rounding_mode.Lentry%1%fcallStart
+1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+=dst.local_alloc_count.Lentry%1%fcallStart
+1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+=state_end
+=Edge.Assumes.begin:
+=EdgeAssume.0
+1 : input.dst.llvm-%arr2 : BV:32
+2 : 4 { 0x4 +1.0e1025 } : INT
+3 : islangaligned(1, 2) : BOOL
+4 : input.dst.llvm-%arr1 : BV:32
+5 : islangaligned(4, 2) : BOOL
+6 : and(3, 5) : BOOL
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(start_pc_edge*fcall_edge_start)
+tfg_edge_comment end
+
+=Edge: Lentry%1%fcallStart => Lentry%1%fcallEnd
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=dst.llvm-%call.Lentry%1%fcallEnd
+1 : func.callb1b12eafc3ffcbc2f1d1b4516f57033.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> BV:32]
+2 : mlcall.dst.llvm.bar.0 : MEMLABEL
+3 : mlcall.dst.llvm.bar.1 : MEMLABEL
+4 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 1000 { 0x3e8 +1.11920e129 } : REGID
+8 : input.dst.llvm-%arr1 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : BV:32
+=dst.llvm-mem.Lentry%1%fcallEnd
+1 : func.callfc2eee58dab22fa9b1c1e73fb6e07d47.mem : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> ARRAY[BV:32 -> BV:8]]
+2 : mlcall.dst.llvm.bar.0 : MEMLABEL
+3 : mlcall.dst.llvm.bar.1 : MEMLABEL
+4 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 0 { 0x0 +1.0e129 } : REGID
+8 : input.dst.llvm-%arr1 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : ARRAY[BV:32 -> BV:8]
+=llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd
+1 : input.dst.llvm-%arr1 : BV:32
+=llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd
+1 : input.dst.llvm-%n : BV:32
+=llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd
+1 : input.dst.llvm-%m : BV:32
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(((fcall_edge_arg*fcall_edge_arg)*fcall_edge_arg)*  %call = call i32 @foo(i32** %arr1, i32 %n, i32 %m), !dbg !20)
+tfg_edge_comment end
+
+=Edge: Lentry%1%fcallEnd => Lentry%2%fcallStart
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(fcall_edge_end*fcall_edge_start)
+tfg_edge_comment end
+
+=Edge: Lentry%2%fcallStart => Lentry%2%fcallEnd
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd
+1 : input.dst.llvm-%n : BV:32
+=dst.llvm-mem.Lentry%2%fcallEnd
+1 : func.callfc2eee58dab22fa9b1c1e73fb6e07d47.mem : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> ARRAY[BV:32 -> BV:8]]
+2 : mlcall.dst.llvm.bar.2 : MEMLABEL
+3 : mlcall.dst.llvm.bar.3 : MEMLABEL
+4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 0 { 0x0 +1.0e129 } : REGID
+8 : input.dst.llvm-%arr2 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : ARRAY[BV:32 -> BV:8]
+=llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd
+1 : input.dst.llvm-%arr2 : BV:32
+=llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd
+1 : input.dst.llvm-%m : BV:32
+=dst.llvm-%call1.Lentry%2%fcallEnd
+1 : func.callb1b12eafc3ffcbc2f1d1b4516f57033.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> BV:32]
+2 : mlcall.dst.llvm.bar.2 : MEMLABEL
+3 : mlcall.dst.llvm.bar.3 : MEMLABEL
+4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 1000 { 0x3e8 +1.11920e129 } : REGID
+8 : input.dst.llvm-%arr2 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : BV:32
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:(((fcall_edge_arg*fcall_edge_arg)*fcall_edge_arg)*  %call1 = call i32 @foo(i32** %arr2, i32 %n, i32 %m), !dbg !21)
+tfg_edge_comment end
+
+=Edge: Lentry%2%fcallEnd => E0%0%d
+=Edge.EdgeCond: 
+1 : 1 { 0x1 } : BOOL
+=Edge.StateTo: 
+=dst.llvm-%hidden-reg.E0%0%d
+1 : input.dst.llvm-%hidden-reg : BV:32
+2 : input.dst.llvm-callee-save.0 : BV:32
+3 : bvxor(1, 2) : BV:32
+4 : input.dst.llvm-callee-save.1 : BV:32
+5 : bvxor(3, 4) : BV:32
+6 : input.dst.llvm-callee-save.2 : BV:32
+7 : bvxor(5, 6) : BV:32
+8 : input.dst.llvm-callee-save.3 : BV:32
+9 : bvxor(7, 8) : BV:32
+=dst.llvm-%add.E0%0%d
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=dst.llvm-%ret-reg.E0%0%d
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=dst.llvm-indir_tgt.E0%0%d
+1 : retaddr_const : BV:32
+=state_end
+=Edge.Assumes.begin:
+=Edge.Assumes.end
+=Edge.te_comment
+0:-1:((fcall_edge_end*  %add = add i32 %call, %call1, !dbg !22)*  ret i32 %add, !dbg !23)
+tfg_edge_comment end
+
+=graph_with_predicates_done
+
+=start_pc_preconditions
+=start_pc_precondition.0
+=Comment
+arg-location-contents-are-consistent-with-arg-value
+=LhsExpr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
+5 : 4 { 0x4 +1.0e1025 } : INT
+6 : 0 { 0x0 } : BOOL
+7 : select(1, 2, 3, 4, 5, 6) : BV:32
+=RhsExpr
+1 : input.dst.llvm-%arr1 : BV:32
+=predicate done
+=start_pc_precondition.1
+=Comment
+arg-location-contents-are-consistent-with-arg-value
+=LhsExpr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : BV:32
+5 : 4 { 0x4 +1.0e1025 } : INT
+6 : 0 { 0x0 } : BOOL
+7 : select(1, 2, 3, 4, 5, 6) : BV:32
+=RhsExpr
+1 : input.dst.llvm-%arr2 : BV:32
+=predicate done
+=start_pc_precondition.2
+=Comment
+arg-location-contents-are-consistent-with-arg-value
+=LhsExpr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : input.dst.local./*___y___bar__x__=L0%0%argnum2=/ : BV:32
+5 : 4 { 0x4 +1.0e1025 } : INT
+6 : 0 { 0x0 } : BOOL
+7 : select(1, 2, 3, 4, 5, 6) : BV:32
+=RhsExpr
+1 : input.dst.llvm-%n : BV:32
+=predicate done
+=start_pc_precondition.3
+=Comment
+arg-location-contents-are-consistent-with-arg-value
+=LhsExpr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : input.dst.local./*___y___bar__x__=L0%0%argnum3=/ : BV:32
+5 : 4 { 0x4 +1.0e1025 } : INT
+6 : 0 { 0x0 } : BOOL
+7 : select(1, 2, 3, 4, 5, 6) : BV:32
+=RhsExpr
+1 : input.dst.llvm-%m : BV:32
+=predicate done
+=graph_with_precondition_done
+
+=Locs in dst.llvm.bar
+=Loc 100004 in dst.llvm.bar.
+REGMEM
+dst.llvm-%hidden-reg
+1 : input.dst.llvm-%hidden-reg : BV:32
+=Loc 100006 in dst.llvm.bar.
+REGMEM
+dst.llvm-callee-save.0
+1 : input.dst.llvm-callee-save.0 : BV:32
+=Loc 100007 in dst.llvm.bar.
+REGMEM
+dst.llvm-callee-save.1
+1 : input.dst.llvm-callee-save.1 : BV:32
+=Loc 100008 in dst.llvm.bar.
+REGMEM
+dst.llvm-callee-save.2
+1 : input.dst.llvm-callee-save.2 : BV:32
+=Loc 100009 in dst.llvm.bar.
+REGMEM
+dst.llvm-callee-save.3
+1 : input.dst.llvm-callee-save.3 : BV:32
+=Loc 100011 in dst.llvm.bar.
+REGMEM
+dst.llvm-%arr1
+1 : input.dst.llvm-%arr1 : BV:32
+=Loc 100012 in dst.llvm.bar.
+REGMEM
+dst.llvm-%arr2
+1 : input.dst.llvm-%arr2 : BV:32
+=Loc 100014 in dst.llvm.bar.
+REGMEM
+dst.llvm-%n
+1 : input.dst.llvm-%n : BV:32
+=Loc 100016 in dst.llvm.bar.
+REGMEM
+dst.llvm-%m
+1 : input.dst.llvm-%m : BV:32
+=Loc 100020 in dst.llvm.bar.
+REGMEM
+dst.local_alloc_count.=L0%0%d=
+1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+=Loc 100021 in dst.llvm.bar.
+REGMEM
+dst.local./*___y___bar__x__=L0%0%argnum0=/
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
+=Loc 100022 in dst.llvm.bar.
+REGMEM
+dst.local./*___y___bar__x__=L0%0%argnum2=/
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum2=/ : BV:32
+=Loc 100023 in dst.llvm.bar.
+REGMEM
+dst.local./*___y___bar__x__=L0%0%argnum1=/
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : BV:32
+=Loc 100024 in dst.llvm.bar.
+REGMEM
+dst.local./*___y___bar__x__=L0%0%argnum3=/
+1 : input.dst.local./*___y___bar__x__=L0%0%argnum3=/ : BV:32
+=Loc 100026 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.0
+=Loc 100027 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.1
+=Loc 100028 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/
+=Loc 100029 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/
+=Loc 100030 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/
+=Loc 100031 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/
+=Loc 100032 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.3
+=Loc 100033 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap
+=Loc 100034 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.2
+=Loc 100035 in dst.llvm.bar.
+REGMEM
+dst.llvm-%call.Lentry%1%fcallEnd
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+=Loc 100036 in dst.llvm.bar.
+REGMEM
+llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd : BV:32
+=Loc 100037 in dst.llvm.bar.
+REGMEM
+llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd : BV:32
+=Loc 100038 in dst.llvm.bar.
+REGMEM
+llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd : BV:32
+=Loc 100039 in dst.llvm.bar.
+REGMEM
+dst.llvm-%call1.Lentry%2%fcallEnd
+1 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+=Loc 100040 in dst.llvm.bar.
+REGMEM
+llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd : BV:32
+=Loc 100041 in dst.llvm.bar.
+REGMEM
+llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd : BV:32
+=Loc 100042 in dst.llvm.bar.
+REGMEM
+llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd : BV:32
+=Loc 100043 in dst.llvm.bar.
+REGMEM
+dst.llvm-%add.E0%0%d
+1 : input.dst.llvm-%add.E0%0%d : BV:32
+=Loc 100044 in dst.llvm.bar.
+REGMEM
+dst.llvm-%hidden-reg.E0%0%d
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+=Loc 100045 in dst.llvm.bar.
+REGMEM
+dst.llvm-%ret-reg.E0%0%d
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+=Loc 100046 in dst.llvm.bar.
+REGMEM
+dst.llvm-indir_tgt.E0%0%d
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+=Loc 100047 in dst.llvm.bar.
+REGMEM
+dst.local_alloc_count.Lentry%1%fcallStart
+1 : input.dst.local_alloc_count.Lentry%1%fcallStart : COUNT
+=Loc 100048 in dst.llvm.bar.
+REGMEM
+dst.cur_rounding_mode.Lentry%1%fcallStart
+1 : input.dst.cur_rounding_mode.Lentry%1%fcallStart : ROUNDING_MODE
+=Loc 100049 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.0
+=Loc 100050 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.1
+=Loc 100051 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap
+=Loc 100052 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/
+=Loc 100053 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/
+=Loc 100054 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/
+=Loc 100055 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/
+=Loc 100056 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.3
+=Loc 100057 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.2
+=Loc 100058 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.0
+=Loc 100059 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.1
+=Loc 100060 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap
+=Loc 100061 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/
+=Loc 100062 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/
+=Loc 100063 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/
+=Loc 100064 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/
+=Loc 100065 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.3
+=Loc 100066 in dst.llvm.bar.
+MASKED
+=mem
+1 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+=memalloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=memlabel
+memlabel-mem--arg.2
+=Locs end
+=Liveness in dst.llvm.bar
+=live locs at L0%0%d
+100011, 100012, 100014, 100016, 100028, 100029, 100030, 100031, 100033, 
+=live locs at Lentry%1%fcallStart
+100011, 100012, 100014, 100016, 100028, 100029, 100030, 100031, 100033, 
+=live locs at Lentry%1%fcallEnd
+100012, 100014, 100016, 100035, 100051, 100052, 100053, 100054, 100055, 
+=live locs at Lentry%2%fcallStart
+100012, 100014, 100016, 100035, 100051, 100052, 100053, 100054, 100055, 
+=live locs at Lentry%2%fcallEnd
+100035, 100039, 100060, 
+=live locs at E0%0%d
+100043[f], 100060, 
+
+=Definedness in dst.llvm.bar
+=loc definedness at L0%0%d
+100011, 100012, 100014, 100016, 100021, 100022, 100023, 100024, 100026, 100027, 100028, 100029, 100030, 100031, 100032, 100033, 100034
+=loc definedness at Lentry%1%fcallStart
+100011, 100012, 100014, 100016, 100021, 100022, 100023, 100024, 100026, 100027, 100028, 100029, 100030, 100031, 100032, 100033, 100034, 100047, 100048
+=loc definedness at Lentry%1%fcallEnd
+100011, 100012, 100014, 100016, 100021, 100022, 100023, 100024, 100026, 100027, 100028, 100029, 100030, 100031, 100032, 100033, 100034, 100035, 100036, 100037, 100038, 100047, 100048, 100049, 100050, 100051, 100052, 100053, 100054, 100055, 100056, 100057
+=loc definedness at Lentry%2%fcallStart
+100011, 100012, 100014, 100016, 100021, 100022, 100023, 100024, 100026, 100027, 100028, 100029, 100030, 100031, 100032, 100033, 100034, 100035, 100036, 100037, 100038, 100047, 100048, 100049, 100050, 100051, 100052, 100053, 100054, 100055, 100056, 100057
+=loc definedness at Lentry%2%fcallEnd
+100011, 100012, 100014, 100016, 100021, 100022, 100023, 100024, 100026, 100027, 100028, 100029, 100030, 100031, 100032, 100033, 100034, 100035, 100036, 100037, 100038, 100039, 100040, 100041, 100042, 100047, 100048, 100049, 100050, 100051, 100052, 100053, 100054, 100055, 100056, 100057, 100058, 100059, 100060, 100061, 100062, 100063, 100064, 100065, 100066
+=loc definedness at E0%0%d
+100011, 100012, 100014, 100016, 100021, 100022, 100023, 100024, 100026, 100027, 100028, 100029, 100030, 100031, 100032, 100033, 100034, 100035, 100036, 100037, 100038, 100039, 100040, 100041, 100042, 100043, 100044, 100045, 100046, 100047, 100048, 100049, 100050, 100051, 100052, 100053, 100054, 100055, 100056, 100057, 100058, 100059, 100060, 100061, 100062, 100063, 100064, 100065, 100066
+
+=Branch affecting variable locs in dst.llvm.bar
+=branch affecting variable locs at L0%0%d
+
+=branch affecting variable locs at Lentry%1%fcallStart
+
+=branch affecting variable locs at Lentry%1%fcallEnd
+
+=branch affecting variable locs at Lentry%2%fcallStart
+
+=branch affecting variable locs at Lentry%2%fcallEnd
+
+=branch affecting variable locs at E0%0%d
+
+
+=Relevant Memlabels in dst.llvm.bar
+=relevant memlabels
+=function: bar
+memlabel-mem--arg.0
+memlabel-mem--arg.1
+memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/
+memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/
+memlabel-mem--arg.3
+memlabel-mem--arg.2
+=touched symbol ids
+
+=relevant memlabels done
+=graph_with_locs_done
+=graph_with_edge_structures
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lentry%1%fcallStart
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lentry%1%fcallStart for loc_id 100047 {input.dst.local_alloc_count.Lentry%1%fcallStart }
+1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lentry%1%fcallStart for loc_id 100048 {input.dst.cur_rounding_mode.Lentry%1%fcallStart }
+1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>Lentry%1%fcallStart done
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100035 {input.dst.llvm-%call.Lentry%1%fcallEnd }
+1 : func.callb1b12eafc3ffcbc2f1d1b4516f57033.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> BV:32]
+2 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+3 : memlabel-mem- : MEMLABEL
+4 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 1000 { 0x3e8 +1.11920e129 } : REGID
+8 : input.dst.llvm-%arr1 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100036 {input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd }
+1 : input.dst.llvm-%arr1 : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100037 {input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd }
+1 : input.dst.llvm-%n : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100038 {input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd }
+1 : input.dst.llvm-%m : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100049 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.0) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100050 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.1) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100051 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100052 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100053 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100054 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100055 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100056 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.3) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100057 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.2) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd done
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallEnd=>Lentry%2%fcallStart
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallEnd=>Lentry%2%fcallStart done
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100039 {input.dst.llvm-%call1.Lentry%2%fcallEnd }
+1 : func.callb1b12eafc3ffcbc2f1d1b4516f57033.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> BV:32]
+2 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+3 : memlabel-mem- : MEMLABEL
+4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 1000 { 0x3e8 +1.11920e129 } : REGID
+8 : input.dst.llvm-%arr2 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100040 {input.llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd }
+1 : input.dst.llvm-%arr2 : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100041 {input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd }
+1 : input.dst.llvm-%n : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100042 {input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd }
+1 : input.dst.llvm-%m : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100058 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.0) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100059 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.1) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100060 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100061 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100062 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100063 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100064 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100065 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.3) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd for loc_id 100066 {memmask(input.dst.llvm-mem.Lentry%2%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--arg.2) }
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallStart=>Lentry%2%fcallEnd done
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallEnd=>E0%0%d
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallEnd=>E0%0%d for loc_id 100043 {input.dst.llvm-%add.E0%0%d }
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallEnd=>E0%0%d for loc_id 100044 {input.dst.llvm-%hidden-reg.E0%0%d }
+1 : input.dst.llvm-%hidden-reg : BV:32
+2 : input.dst.llvm-callee-save.0 : BV:32
+3 : bvxor(1, 2) : BV:32
+4 : input.dst.llvm-callee-save.1 : BV:32
+5 : bvxor(3, 4) : BV:32
+6 : input.dst.llvm-callee-save.2 : BV:32
+7 : bvxor(5, 6) : BV:32
+8 : input.dst.llvm-callee-save.3 : BV:32
+9 : bvxor(7, 8) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallEnd=>E0%0%d for loc_id 100045 {input.dst.llvm-%ret-reg.E0%0%d }
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallEnd=>E0%0%d for loc_id 100046 {input.dst.llvm-indir_tgt.E0%0%d }
+1 : retaddr_const : BV:32
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%fcallEnd=>E0%0%d done
+=graph_with_edge_structures.loc_to_expr_map done
+=graph_with_edge_structures done
+=graph_with_ml_contiguity_info vacuous mls
+vacuous mls at L0%0%d:
+vacuous mls at Lentry%1%fcallStart:
+vacuous mls at Lentry%1%fcallEnd:
+vacuous mls at Lentry%2%fcallStart:
+vacuous mls at Lentry%2%fcallEnd:
+vacuous mls at E0%0%d:
+=graph_with_ml_contiguity_info non-vacuous mls
+non-vacuous mls at L0%0%d:
+non-vacuous mls at Lentry%1%fcallStart:
+non-vacuous mls at Lentry%1%fcallEnd:
+non-vacuous mls at Lentry%2%fcallStart:
+non-vacuous mls at Lentry%2%fcallEnd:
+non-vacuous mls at E0%0%d:
+=graph_with_ml_contiguity_info discontiguous mls
+discontiguous mls:
+=graph_with_ml_contiguity_info done
+=Available expressions in dst.llvm.bar
+=avail_exprs begin
+=loc 100004
+=loc_expr
+140449 : input.dst.llvm-%hidden-reg : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100006
+=loc_expr
+140450 : input.dst.llvm-callee-save.0 : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100007
+=loc_expr
+140452 : input.dst.llvm-callee-save.1 : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100008
+=loc_expr
+140454 : input.dst.llvm-callee-save.2 : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100009
+=loc_expr
+140456 : input.dst.llvm-callee-save.3 : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100011
+=loc_expr
+140420 : input.dst.llvm-%arr1 : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100012
+=loc_expr
+140424 : input.dst.llvm-%arr2 : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100014
+=loc_expr
+140422 : input.dst.llvm-%n : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100016
+=loc_expr
+140426 : input.dst.llvm-%m : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100020
+=loc_expr
+140431 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100021
+=loc_expr
+140419 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100022
+=loc_expr
+140421 : input.dst.local./*___y___bar__x__=L0%0%argnum2=/ : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100023
+=loc_expr
+140423 : input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100024
+=loc_expr
+140425 : input.dst.local./*___y___bar__x__=L0%0%argnum3=/ : BV:32
+=avail_exprs_val.m_is_top 1
+=avail_exprs_val.end
+=loc 100036
+=loc_expr
+140495 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%arr1 : BV:32
+=avail_exprs_val.end
+=loc 100037
+=loc_expr
+140496 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%n : BV:32
+=avail_exprs_val.end
+=loc 100038
+=loc_expr
+140497 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%m : BV:32
+=avail_exprs_val.end
+=loc 100040
+=loc_expr
+140498 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%arr2 : BV:32
+=avail_exprs_val.end
+=loc 100041
+=loc_expr
+140499 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%n : BV:32
+=avail_exprs_val.end
+=loc 100042
+=loc_expr
+140500 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%m : BV:32
+=avail_exprs_val.end
+=loc 100043
+=loc_expr
+140494 : input.dst.llvm-%add.E0%0%d : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=avail_exprs_val.end
+=loc 100044
+=loc_expr
+140501 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%hidden-reg : BV:32
+2 : input.dst.llvm-callee-save.0 : BV:32
+3 : bvxor(1, 2) : BV:32
+4 : input.dst.llvm-callee-save.1 : BV:32
+5 : bvxor(3, 4) : BV:32
+6 : input.dst.llvm-callee-save.2 : BV:32
+7 : bvxor(5, 6) : BV:32
+8 : input.dst.llvm-callee-save.3 : BV:32
+9 : bvxor(7, 8) : BV:32
+=avail_exprs_val.end
+=loc 100045
+=loc_expr
+140502 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=avail_exprs_val.end
+=loc 100046
+=loc_expr
+140503 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : retaddr_const : BV:32
+=avail_exprs_val.end
+=loc 100047
+=loc_expr
+140504 : input.dst.local_alloc_count.Lentry%1%fcallStart : COUNT
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+=avail_exprs_val.end
+=loc 100048
+=loc_expr
+140505 : input.dst.cur_rounding_mode.Lentry%1%fcallStart : ROUNDING_MODE
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+=avail_exprs_val.end
+=loc 100049
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140289 : memlabel-mem--arg.0 : MEMLABEL
+140506 : memmask(140357, 140418, 140289) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100050
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140291 : memlabel-mem--arg.1 : MEMLABEL
+140507 : memmask(140357, 140418, 140291) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100051
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140427 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+140508 : memmask(140357, 140418, 140427) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100052
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140462 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+140509 : memmask(140357, 140418, 140462) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100053
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140458 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+140510 : memmask(140357, 140418, 140458) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100054
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140460 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+140511 : memmask(140357, 140418, 140460) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100055
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140464 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+140512 : memmask(140357, 140418, 140464) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100056
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140480 : memlabel-mem--arg.3 : MEMLABEL
+140513 : memmask(140357, 140418, 140480) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100057
+=loc_expr
+140357 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140482 : memlabel-mem--arg.2 : MEMLABEL
+140514 : memmask(140357, 140418, 140482) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100058
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140289 : memlabel-mem--arg.0 : MEMLABEL
+140515 : memmask(140492, 140418, 140289) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100059
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140291 : memlabel-mem--arg.1 : MEMLABEL
+140516 : memmask(140492, 140418, 140291) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100060
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140427 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+140493 : memmask(140492, 140418, 140427) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100061
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140462 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+140517 : memmask(140492, 140418, 140462) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100062
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140458 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+140518 : memmask(140492, 140418, 140458) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100063
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140460 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+140519 : memmask(140492, 140418, 140460) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100064
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140464 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+140520 : memmask(140492, 140418, 140464) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100065
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140480 : memlabel-mem--arg.3 : MEMLABEL
+140521 : memmask(140492, 140418, 140480) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100066
+=loc_expr
+140492 : input.dst.llvm-mem.Lentry%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140418 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140482 : memlabel-mem--arg.2 : MEMLABEL
+140522 : memmask(140492, 140418, 140482) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=avail_exprs end
+=sprel_map in dst.llvm.bar
+=loc 100046 expr
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+=loc 100046 spreled-expr
+140267 : retaddr_const : BV:32
+=loc 100047 expr
+1 : input.dst.local_alloc_count.Lentry%1%fcallStart : COUNT
+=loc 100047 spreled-expr
+140431 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+=loc 100048 expr
+1 : input.dst.cur_rounding_mode.Lentry%1%fcallStart : ROUNDING_MODE
+=loc 100048 spreled-expr
+140430 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+=sprel_map done
+=lr-status-map
+=lr-status-map at call-context {*;bar}
+=loc_id 100004 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100006 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100007 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100008 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100009 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100011 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100012 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100014 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.2, )
+=loc_id 100016 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, )
+=loc_id 100020 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100021 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100022 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100023 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100024 lr-status in lr-status-map at call-context {*;bar}
+lr_status_top
+=loc_id 100026 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100027 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100028 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100029 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100030 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100031 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100032 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100033 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100034 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100035 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=loc_id 100036 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100037 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.2, )
+=loc_id 100038 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, )
+=loc_id 100039 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=loc_id 100040 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100041 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.2, )
+=loc_id 100042 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, )
+=loc_id 100043 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=loc_id 100044 lr-status in lr-status-map at call-context {*;bar}
+lr_status_linearly_related(; )
+=loc_id 100045 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=loc_id 100046 lr-status in lr-status-map at call-context {*;bar}
+lr_status_linearly_related(; )
+=loc_id 100047 lr-status in lr-status-map at call-context {*;bar}
+lr_status_linearly_related(; )
+=loc_id 100048 lr-status in lr-status-map at call-context {*;bar}
+lr_status_linearly_related(; )
+=loc_id 100049 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100050 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100051 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100052 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100053 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100054 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100055 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100056 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100057 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100058 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100059 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100060 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100061 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100062 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100063 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100064 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100065 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=loc_id 100066 lr-status in lr-status-map at call-context {*;bar}
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=lr-status-map done
+=lr-status-for-sprel-locs-map
+=loc_id 100046 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=loc_id 100047 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=loc_id 100048 lr-status in lr-status-for-sprel-locs-map
+lr_status_linearly_related(; )
+=lr-status-for-sprel-locs-map done
+=graph_with_aliasing_done
+=Memlabel assertions empty
+=Memlabel assertions done
+=graph_with_proofs done
+=graph_with_ce done
+=graph_with_points done
+=graph_with_guessing done
+=graph_with_simplified_assets
+=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>Lentry%1%fcallStart
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at Lentry%1%fcallStart=>Lentry%1%fcallEnd
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at Lentry%1%fcallEnd=>Lentry%2%fcallStart
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at Lentry%2%fcallStart=>Lentry%2%fcallEnd
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond at Lentry%2%fcallEnd=>E0%0%d
+1 : 1 { 0x1 } : BOOL
+=graph_with_simplified_assets.simplified_edgecond done
+=graph_with_simplified_assets.simplified_to_state at L0%0%d=>Lentry%1%fcallStart
+=dst.cur_rounding_mode.Lentry%1%fcallStart
+1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+=dst.local_alloc_count.Lentry%1%fcallStart
+1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+=state_end
+=graph_with_simplified_assets.simplified_to_state at Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=dst.llvm-%call.Lentry%1%fcallEnd
+1 : func.callb1b12eafc3ffcbc2f1d1b4516f57033.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> BV:32]
+2 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+3 : memlabel-mem- : MEMLABEL
+4 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 1000 { 0x3e8 +1.11920e129 } : REGID
+8 : input.dst.llvm-%arr1 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : BV:32
+=dst.llvm-mem.Lentry%1%fcallEnd
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd
+1 : input.dst.llvm-%arr1 : BV:32
+=llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd
+1 : input.dst.llvm-%n : BV:32
+=llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd
+1 : input.dst.llvm-%m : BV:32
+=state_end
+=graph_with_simplified_assets.simplified_to_state at Lentry%1%fcallEnd=>Lentry%2%fcallStart
+=state_end
+=graph_with_simplified_assets.simplified_to_state at Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd
+1 : input.dst.llvm-%n : BV:32
+=dst.llvm-mem.Lentry%2%fcallEnd
+1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd
+1 : input.dst.llvm-%arr2 : BV:32
+=llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd
+1 : input.dst.llvm-%m : BV:32
+=dst.llvm-%call1.Lentry%2%fcallEnd
+1 : func.callb1b12eafc3ffcbc2f1d1b4516f57033.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32,BV:32,BV:32 -> BV:32]
+2 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+3 : memlabel-mem- : MEMLABEL
+4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 1000 { 0x3e8 +1.11920e129 } : REGID
+8 : input.dst.llvm-%arr2 : BV:32
+9 : input.dst.llvm-%n : BV:32
+10 : input.dst.llvm-%m : BV:32
+11 : function_call(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) : BV:32
+=state_end
+=graph_with_simplified_assets.simplified_to_state at Lentry%2%fcallEnd=>E0%0%d
+=dst.llvm-%hidden-reg.E0%0%d
+1 : input.dst.llvm-%hidden-reg : BV:32
+2 : input.dst.llvm-callee-save.0 : BV:32
+3 : bvxor(1, 2) : BV:32
+4 : input.dst.llvm-callee-save.1 : BV:32
+5 : bvxor(3, 4) : BV:32
+6 : input.dst.llvm-callee-save.2 : BV:32
+7 : bvxor(5, 6) : BV:32
+8 : input.dst.llvm-callee-save.3 : BV:32
+9 : bvxor(7, 8) : BV:32
+=dst.llvm-%add.E0%0%d
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=dst.llvm-%ret-reg.E0%0%d
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvadd(1, 2) : BV:32
+=dst.llvm-indir_tgt.E0%0%d
+1 : retaddr_const : BV:32
+=state_end
+=graph_with_simplified_assets.simplified_to_state done
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>Lentry%1%fcallStart
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>Lentry%1%fcallStart assume# 0
+1 : input.dst.llvm-%arr1 : BV:32
+2 : 4 { 0x4 +1.0e1025 } : INT
+3 : islangaligned(1, 2) : BOOL
+4 : input.dst.llvm-%arr2 : BV:32
+5 : islangaligned(4, 2) : BOOL
+6 : and(3, 5) : BOOL
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>Lentry%1%fcallStart done
+=graph_with_simplified_assets.simplified_assumes at Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=graph_with_simplified_assets.simplified_assumes at Lentry%1%fcallStart=>Lentry%1%fcallEnd done
+=graph_with_simplified_assets.simplified_assumes at Lentry%1%fcallEnd=>Lentry%2%fcallStart
+=graph_with_simplified_assets.simplified_assumes at Lentry%1%fcallEnd=>Lentry%2%fcallStart done
+=graph_with_simplified_assets.simplified_assumes at Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=graph_with_simplified_assets.simplified_assumes at Lentry%2%fcallStart=>Lentry%2%fcallEnd done
+=graph_with_simplified_assets.simplified_assumes at Lentry%2%fcallEnd=>E0%0%d
+=graph_with_simplified_assets.simplified_assumes at Lentry%2%fcallEnd=>E0%0%d done
+=graph_with_simplified_assets.simplified_assumes done
+=graph_with_simplified_assets done
+=max-memlabel-varnum
+4
+=String-contents:
+=Nextpc-map:
+C_NEXTPC1 : foo
+=Nextpc-map done
+=suffixpaths for dst.llvm.bar
+=suffixpath_at_L0%0%d for dst.llvm.bar
+=suffixpath_at_L0%0%d.graph_edge_composition
+(epsilon)
+=suffixpath_at_Lentry%1%fcallStart for dst.llvm.bar
+=suffixpath_at_Lentry%1%fcallStart.graph_edge_composition
+(L0%0%d=>Lentry%1%fcallStart)
+=suffixpath_at_Lentry%1%fcallEnd for dst.llvm.bar
+=suffixpath_at_Lentry%1%fcallEnd.graph_edge_composition
+((L0%0%d=>Lentry%1%fcallStart)*(Lentry%1%fcallStart=>Lentry%1%fcallEnd))
+=suffixpath_at_Lentry%2%fcallStart for dst.llvm.bar
+=suffixpath_at_Lentry%2%fcallStart.graph_edge_composition
+((L0%0%d=>Lentry%1%fcallStart)*((Lentry%1%fcallStart=>Lentry%1%fcallEnd)*(Lentry%1%fcallEnd=>Lentry%2%fcallStart)))
+=suffixpath_at_Lentry%2%fcallEnd for dst.llvm.bar
+=suffixpath_at_Lentry%2%fcallEnd.graph_edge_composition
+((L0%0%d=>Lentry%1%fcallStart)*((Lentry%1%fcallStart=>Lentry%1%fcallEnd)*((Lentry%1%fcallEnd=>Lentry%2%fcallStart)*(Lentry%2%fcallStart=>Lentry%2%fcallEnd))))
+=suffixpath_at_E0%0%d for dst.llvm.bar
+=suffixpath_at_E0%0%d.graph_edge_composition
+((L0%0%d=>Lentry%1%fcallStart)*((Lentry%1%fcallStart=>Lentry%1%fcallEnd)*((Lentry%1%fcallEnd=>Lentry%2%fcallStart)*((Lentry%2%fcallStart=>Lentry%2%fcallEnd)*(Lentry%2%fcallEnd=>E0%0%d)))))
+=suffixpaths for dst.llvm.bar done
+=tfg.assumes_around_edge
+tfg.assumes_around_edge at L0%0%d=>Lentry%1%fcallStart
+tfg.assumes_around_edge at L0%0%d=>Lentry%1%fcallStart assume #0
+tfg.assumes_around_edge at L0%0%d=>Lentry%1%fcallStart assume #0.ec
+tfg.assumes_around_edge at L0%0%d=>Lentry%1%fcallStart assume #0.ec.graph_edge_composition
+(epsilon)
+tfg.assumes_around_edge at L0%0%d=>Lentry%1%fcallStart assume #0.pred
+=Comment
+undef-behavioursome.edge.L0%0%d=>Lentry%1%fcallStart
+=LhsExpr
+140420 : input.dst.llvm-%arr1 : BV:32
+140368 : 4 { 0x4 +1.0e1025 } : INT
+140432 : islangaligned(140420, 140368) : BOOL
+140424 : input.dst.llvm-%arr2 : BV:32
+140433 : islangaligned(140424, 140368) : BOOL
+140637 : and(140432, 140433) : BOOL
+=RhsExpr
+140276 : 1 { 0x1 } : BOOL
+=predicate done
+
+tfg.assumes_around_edge at L0%0%d=>Lentry%1%fcallStart done
+tfg.assumes_around_edge at Lentry%1%fcallStart=>Lentry%1%fcallEnd
+tfg.assumes_around_edge at Lentry%1%fcallStart=>Lentry%1%fcallEnd done
+tfg.assumes_around_edge at Lentry%1%fcallEnd=>Lentry%2%fcallStart
+tfg.assumes_around_edge at Lentry%1%fcallEnd=>Lentry%2%fcallStart done
+tfg.assumes_around_edge at Lentry%2%fcallStart=>Lentry%2%fcallEnd
+tfg.assumes_around_edge at Lentry%2%fcallStart=>Lentry%2%fcallEnd done
+tfg.assumes_around_edge at Lentry%2%fcallEnd=>E0%0%d
+tfg.assumes_around_edge at Lentry%2%fcallEnd=>E0%0%d done
+tfg.assumes_around_edge done
+=TFGdone
+=PC_to_linename:
+=pc
+Lentry%1%d
+=linename
+line 12
+=pc
+Lentry%2%d
+=linename
+line 12
+=pc
+Lentry%3%d
+=linename
+line 12
+=pc
+Lentry%4%d
+=linename
+line 12
+=PC_to_linename done
+=PC_to_column_name:
+=pc
+Lentry%1%d
+=column_name
+ at column 10
+=pc
+Lentry%2%d
+=column_name
+ at column 28
+=pc
+Lentry%3%d
+=column_name
+ at column 26
+=pc
+Lentry%4%d
+=column_name
+ at column 3
+=PC_to_column_name done
+=PC_to_line_and_column:
+=pc
+Lentry%1%d
+=line_and_column
+(line 12 at column 10)
+=pc
+Lentry%2%d
+=line_and_column
+(line 12 at column 28)
+=pc
+Lentry%3%d
+=line_and_column
+(line 12 at column 26)
+=pc
+Lentry%4%d
+=line_and_column
+(line 12 at column 3)
+=PC_to_line_and_column done
+=SourceToLLVMVarnames:
+=SourceToLLVMVarnames done
+=InputLLVMToSourceVarnames:
+input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum0=/
+input.dst.llvm-%arr1 : L0%0%d : arr1'
+input.dst.local./*___y___bar__x__=L0%0%argnum2=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum2=/
+input.dst.llvm-%n : L0%0%d : n'
+input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum1=/
+input.dst.llvm-%arr2 : L0%0%d : arr2'
+input.dst.local./*___y___bar__x__=L0%0%argnum3=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum3=/
+input.dst.llvm-%m : L0%0%d : m'
+input.dst.llvm-%add : L0%0%d : (input.dst.llvm-%call + input.dst.llvm-%call1)
+input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
+input.dst.llvm-%hidden-reg : L0%0%d : input.dst.llvm-%hidden-reg
+input.dst.llvm-callee-save.0 : L0%0%d : input.dst.llvm-callee-save.0
+input.dst.llvm-callee-save.1 : L0%0%d : input.dst.llvm-callee-save.1
+input.dst.llvm-callee-save.2 : L0%0%d : input.dst.llvm-callee-save.2
+input.dst.llvm-callee-save.3 : L0%0%d : input.dst.llvm-callee-save.3
+input.dst.llvm-%ret-reg : L0%0%d : input.dst.llvm-%add
+input.dst.llvm-indir_tgt : L0%0%d : return-address
+input.llvm-fcall_arg_copy.0.dst.llvm-%arr1 : L0%0%d : arr1'
+input.llvm-fcall_arg_copy.1.dst.llvm-%n : L0%0%d : n'
+input.llvm-fcall_arg_copy.2.dst.llvm-%m : L0%0%d : m'
+input.llvm-fcall_arg_copy.0.dst.llvm-%arr2 : L0%0%d : arr2'
+input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
+input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
+input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd : L0%0%d : n'
+input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd : L0%0%d : m'
+input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd : L0%0%d : arr1'
+input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd : L0%0%d : n'
+input.llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd : L0%0%d : arr2'
+input.dst.llvm-%add.E0%0%d : L0%0%d : (input.dst.llvm-%call.Lentry%1%fcallEnd + input.dst.llvm-%call1.Lentry%2%fcallEnd)
+input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd : L0%0%d : m'
+input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : (input.dst.llvm-%call.Lentry%1%fcallEnd + input.dst.llvm-%call1.Lentry%2%fcallEnd)
+input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
+input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
+input.dst.local_alloc_count.Lentry%1%fcallStart : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
+input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties_to_even
+=InputLLVMToSourceVarnames done
+=PotentialSCEVRelations:
+=dst.llvm-%call
+=dst.llvm-%call loop pc: L0%0%d
+=dst.llvm-%call val_scevb
+=dst.llvm-%call val_scevb scev
+=dst.llvm-%call val_scevb scev loop: L0%0%d
+=dst.llvm-%call val_scevb scev scev_overflow_flag: 
+=dst.llvm-%call val_scevb scev scev_expr
+1 : input.dst.llvm-%call : BV32
+=dst.llvm-%call val_scevb scev scev_expr done
+=dst.llvm-%call val_scevb unsigned lower bound: 32:4294967295
+=dst.llvm-%call val_scevb unsigned upper bound: 32:4294967295
+=dst.llvm-%call val_scevb signed lower bound: 32:4294967295
+=dst.llvm-%call val_scevb signed upper bound: 32:4294967295
+=dst.llvm-%call atuse_scevb
+=dst.llvm-%call atuse_scevb scev
+=dst.llvm-%call atuse_scevb scev loop: L0%0%d
+=dst.llvm-%call atuse_scevb scev scev_overflow_flag: 
+=dst.llvm-%call atuse_scevb scev scev_expr
+1 : input.dst.llvm-%call : BV32
+=dst.llvm-%call atuse_scevb scev scev_expr done
+=dst.llvm-%call atuse_scevb unsigned lower bound: 32:4294967295
+=dst.llvm-%call atuse_scevb unsigned upper bound: 32:4294967295
+=dst.llvm-%call atuse_scevb signed lower bound: 32:4294967295
+=dst.llvm-%call atuse_scevb signed upper bound: 32:4294967295
+=dst.llvm-%call atexit_scev nullptr
+=dst.llvm-%call1
+=dst.llvm-%call1 loop pc: L0%0%d
+=dst.llvm-%call1 val_scevb
+=dst.llvm-%call1 val_scevb scev
+=dst.llvm-%call1 val_scevb scev loop: L0%0%d
+=dst.llvm-%call1 val_scevb scev scev_overflow_flag: 
+=dst.llvm-%call1 val_scevb scev scev_expr
+2 : input.dst.llvm-%call1 : BV32
+=dst.llvm-%call1 val_scevb scev scev_expr done
+=dst.llvm-%call1 val_scevb unsigned lower bound: 32:4294967295
+=dst.llvm-%call1 val_scevb unsigned upper bound: 32:4294967295
+=dst.llvm-%call1 val_scevb signed lower bound: 32:4294967295
+=dst.llvm-%call1 val_scevb signed upper bound: 32:4294967295
+=dst.llvm-%call1 atuse_scevb
+=dst.llvm-%call1 atuse_scevb scev
+=dst.llvm-%call1 atuse_scevb scev loop: L0%0%d
+=dst.llvm-%call1 atuse_scevb scev scev_overflow_flag: 
+=dst.llvm-%call1 atuse_scevb scev scev_expr
+2 : input.dst.llvm-%call1 : BV32
+=dst.llvm-%call1 atuse_scevb scev scev_expr done
+=dst.llvm-%call1 atuse_scevb unsigned lower bound: 32:4294967295
+=dst.llvm-%call1 atuse_scevb unsigned upper bound: 32:4294967295
+=dst.llvm-%call1 atuse_scevb signed lower bound: 32:4294967295
+=dst.llvm-%call1 atuse_scevb signed upper bound: 32:4294967295
+=dst.llvm-%call1 atexit_scev nullptr
+=dst.llvm-%add
+=dst.llvm-%add loop pc: L0%0%d
+=dst.llvm-%add val_scevb
+=dst.llvm-%add val_scevb scev
+=dst.llvm-%add val_scevb scev loop: L0%0%d
+=dst.llvm-%add val_scevb scev scev_overflow_flag: 
+=dst.llvm-%add val_scevb scev scev_expr
+1 : input.dst.llvm-%call : BV32
+2 : input.dst.llvm-%call1 : BV32
+3 : scev_op_add(1, 2) : loop L0%0%d : 
+=dst.llvm-%add val_scevb scev scev_expr done
+=dst.llvm-%add val_scevb unsigned lower bound: 32:4294967295
+=dst.llvm-%add val_scevb unsigned upper bound: 32:4294967295
+=dst.llvm-%add val_scevb signed lower bound: 32:4294967295
+=dst.llvm-%add val_scevb signed upper bound: 32:4294967295
+=dst.llvm-%add atuse_scevb
+=dst.llvm-%add atuse_scevb scev
+=dst.llvm-%add atuse_scevb scev loop: L0%0%d
+=dst.llvm-%add atuse_scevb scev scev_overflow_flag: 
+=dst.llvm-%add atuse_scevb scev scev_expr
+1 : input.dst.llvm-%call : BV32
+2 : input.dst.llvm-%call1 : BV32
+3 : scev_op_add(1, 2) : loop L0%0%d : 
+=dst.llvm-%add atuse_scevb scev scev_expr done
+=dst.llvm-%add atuse_scevb unsigned lower bound: 32:4294967295
+=dst.llvm-%add atuse_scevb unsigned upper bound: 32:4294967295
+=dst.llvm-%add atuse_scevb signed lower bound: 32:4294967295
+=dst.llvm-%add atuse_scevb signed upper bound: 32:4294967295
+=dst.llvm-%add atexit_scev nullptr
+=PotentialSCEVRelations done
+=ReachingDefinitionsForLocs:
+=Reaching Definitions at L0%0%d
+=reaching defns for expr 0
+1 : input.dst.llvm-%arr1 : BV:32
+=reaching defns for expr 0 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 0 edges done
+=reaching defns for expr 1
+1 : input.dst.llvm-%n : BV:32
+=reaching defns for expr 1 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 1 edges done
+=reaching defns for expr 2
+1 : input.dst.llvm-%arr2 : BV:32
+=reaching defns for expr 2 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 2 edges done
+=reaching defns for expr 3
+1 : input.dst.llvm-%m : BV:32
+=reaching defns for expr 3 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 3 edges done
+=reaching defns for expr 4
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 4 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 5 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 6 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 8 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 9 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 10 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 11 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 12 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 12 edges done
+=reaching defns done
+=Reaching Definitions at Lentry%1%fcallStart
+=reaching defns for expr 0
+1 : input.dst.llvm-%arr1 : BV:32
+=reaching defns for expr 0 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 0 edges done
+=reaching defns for expr 1
+1 : input.dst.llvm-%n : BV:32
+=reaching defns for expr 1 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 1 edges done
+=reaching defns for expr 2
+1 : input.dst.llvm-%arr2 : BV:32
+=reaching defns for expr 2 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 2 edges done
+=reaching defns for expr 3
+1 : input.dst.llvm-%m : BV:32
+=reaching defns for expr 3 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 3 edges done
+=reaching defns for expr 4
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 4 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 5 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 6 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 8 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 9 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 10 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 11 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 12 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 12 edges done
+=reaching defns done
+=Reaching Definitions at Lentry%1%fcallEnd
+=reaching defns for expr 0
+1 : input.dst.llvm-%arr1 : BV:32
+=reaching defns for expr 0 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 0 edges done
+=reaching defns for expr 1
+1 : input.dst.llvm-%n : BV:32
+=reaching defns for expr 1 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 1 edges done
+=reaching defns for expr 2
+1 : input.dst.llvm-%arr2 : BV:32
+=reaching defns for expr 2 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 2 edges done
+=reaching defns for expr 3
+1 : input.dst.llvm-%m : BV:32
+=reaching defns for expr 3 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 3 edges done
+=reaching defns for expr 4
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 4 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 5 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 6 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 8 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 9 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 10 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 11 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 12 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 12 edges done
+=reaching defns for expr 13
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 13 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 14 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 15 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 16 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 16 edges done
+=reaching defns done
+=Reaching Definitions at Lentry%2%fcallStart
+=reaching defns for expr 0
+1 : input.dst.llvm-%arr1 : BV:32
+=reaching defns for expr 0 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 0 edges done
+=reaching defns for expr 1
+1 : input.dst.llvm-%n : BV:32
+=reaching defns for expr 1 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 1 edges done
+=reaching defns for expr 2
+1 : input.dst.llvm-%arr2 : BV:32
+=reaching defns for expr 2 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 2 edges done
+=reaching defns for expr 3
+1 : input.dst.llvm-%m : BV:32
+=reaching defns for expr 3 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 3 edges done
+=reaching defns for expr 4
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 4 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 5 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 6 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 8 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 9 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 10 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 11 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 12 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 12 edges done
+=reaching defns for expr 13
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 13 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 14 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 15 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 16 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 16 edges done
+=reaching defns done
+=Reaching Definitions at Lentry%2%fcallEnd
+=reaching defns for expr 0
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 0 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 0 edges done
+=reaching defns for expr 1
+1 : input.dst.llvm-%arr1 : BV:32
+=reaching defns for expr 1 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 1 edges done
+=reaching defns for expr 2
+1 : input.dst.llvm-%n : BV:32
+=reaching defns for expr 2 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 2 edges done
+=reaching defns for expr 3
+1 : input.dst.llvm-%arr2 : BV:32
+=reaching defns for expr 3 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 3 edges done
+=reaching defns for expr 4
+1 : input.dst.llvm-%m : BV:32
+=reaching defns for expr 4 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 5 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 6 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 8 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 9 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 10 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 11 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 12 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 12 edges done
+=reaching defns for expr 13
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 13 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 14 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
+1 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 15 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 16 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 17 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 18 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 19 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 20 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 20 edges done
+=reaching defns done
+=Reaching Definitions at E0%0%d
+=reaching defns for expr 0
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 0 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 0 edges done
+=reaching defns for expr 1
+1 : input.dst.llvm-%arr1 : BV:32
+=reaching defns for expr 1 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 1 edges done
+=reaching defns for expr 2
+1 : input.dst.llvm-%n : BV:32
+=reaching defns for expr 2 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 2 edges done
+=reaching defns for expr 3
+1 : input.dst.llvm-%arr2 : BV:32
+=reaching defns for expr 3 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 3 edges done
+=reaching defns for expr 4
+1 : input.dst.llvm-%m : BV:32
+=reaching defns for expr 4 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 4 edges done
+=reaching defns for expr 5
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 5 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 6 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 6 edges done
+=reaching defns for expr 7
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.1 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 7 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 7 edges done
+=reaching defns for expr 8
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 8 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 8 edges done
+=reaching defns for expr 9
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum3=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 9 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 9 edges done
+=reaching defns for expr 10
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 10 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 11 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 11 edges done
+=reaching defns for expr 12
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.3 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 12 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 12 edges done
+=reaching defns for expr 13
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.2 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=reaching defns for expr 13 edges
+  L0%0%d=>L0%0%d
+=reaching defns for expr 13 edges done
+=reaching defns for expr 14
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 14 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 14 edges done
+=reaching defns for expr 15
+1 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 15 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 15 edges done
+=reaching defns for expr 16
+1 : input.dst.llvm-%add.E0%0%d : BV:32
+=reaching defns for expr 16 edges
+  Lentry%2%fcallEnd=>E0%0%d
+=reaching defns for expr 16 edges done
+=reaching defns for expr 17
+1 : input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 17 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 17 edges done
+=reaching defns for expr 18
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 18 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 18 edges done
+=reaching defns for expr 19
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd : BV:32
+=reaching defns for expr 19 edges
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=reaching defns for expr 19 edges done
+=reaching defns for expr 20
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 20 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 20 edges done
+=reaching defns for expr 21
+1 : input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd : BV:32
+=reaching defns for expr 21 edges
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+=reaching defns for expr 21 edges done
+=reaching defns for expr 22
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+=reaching defns for expr 22 edges
+  Lentry%2%fcallEnd=>E0%0%d
+=reaching defns for expr 22 edges done
+=reaching defns for expr 23
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+=reaching defns for expr 23 edges
+  Lentry%2%fcallEnd=>E0%0%d
+=reaching defns for expr 23 edges done
+=reaching defns for expr 24
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+=reaching defns for expr 24 edges
+  Lentry%2%fcallEnd=>E0%0%d
+=reaching defns for expr 24 edges done
+=reaching defns done
+=ReachingDefinitionsForLocs done
+=VarnameToLRStatus Begin:
+=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum0=/
+lr_status_top
+=LR status for var input.dst.llvm-%arr1
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum2=/
+lr_status_top
+=LR status for var input.dst.llvm-%n
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.2, )
+=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum1=/
+lr_status_top
+=LR status for var input.dst.llvm-%arr2
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum3=/
+lr_status_top
+=LR status for var input.dst.llvm-%m
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, )
+=LR status for var input.dst.local_alloc_count.=L0%0%d=
+lr_status_top
+=LR status for var input.dst.llvm-%hidden-reg
+lr_status_top
+=LR status for var input.dst.llvm-callee-save.0
+lr_status_top
+=LR status for var input.dst.llvm-callee-save.1
+lr_status_top
+=LR status for var input.dst.llvm-callee-save.2
+lr_status_top
+=LR status for var input.dst.llvm-callee-save.3
+lr_status_top
+=LR status for var input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%1%fcallEnd
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.2, )
+=LR status for var input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%1%fcallEnd
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, )
+=LR status for var input.llvm-fcall_arg_copy.0.dst.llvm-%arr1.Lentry%1%fcallEnd
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=LR status for var input.dst.llvm-%call.Lentry%1%fcallEnd
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=LR status for var input.llvm-fcall_arg_copy.1.dst.llvm-%n.Lentry%2%fcallEnd
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.2, )
+=LR status for var input.llvm-fcall_arg_copy.0.dst.llvm-%arr2.Lentry%2%fcallEnd
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, )
+=LR status for var input.dst.llvm-%add.E0%0%d
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=LR status for var input.llvm-fcall_arg_copy.2.dst.llvm-%m.Lentry%2%fcallEnd
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, )
+=LR status for var input.dst.llvm-%call1.Lentry%2%fcallEnd
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=LR status for var input.dst.llvm-%ret-reg.E0%0%d
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-local./*___y___foo__x__=L0%0%argnum1=/-local./*___y___foo__x__=L0%0%argnum2=/-heap, memlabel-mem--arg.3, memlabel-mem--arg.2, memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/, memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/, memlabel-mem--symbol.2, memlabel-mem--symbol.1, )
+=LR status for var input.dst.llvm-%hidden-reg.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-indir_tgt.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.local_alloc_count.Lentry%1%fcallStart
+lr_status_linearly_related(; )
+=LR status for var input.dst.cur_rounding_mode.Lentry%1%fcallStart
+lr_status_linearly_related(; )
+=VarnameToLRStatus End
+=TFG_LLVM_done
+=TFG_SSA_done

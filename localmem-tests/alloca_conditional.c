@@ -1,17 +1,19 @@
 #include <alloca.h>
 
-int alloca_conditional(char* s, int fd, char* a)
+int MYmystrlen(char* s);
+int write(int, int* a, int n);
+
+int alloca_conditional(char* s, int fd, int* a)
 {
-  if (!s)
+  int n;
+  if (!s || (n = MYmystrlen(s)) <= 0)
     return 0;
-  int n = MYmystrlen(s);
   if (!a) {
-    a = alloca(n);
+    a = alloca(sizeof(int)*n);
   }
+#pragma clang loop vectorize(disable) unroll(disable)
   for (int i = 0; i < n; ++i) {
-    MYmyDBG();
-    a[i] = s[i] ^ 1;
+    a[i] = s[i] + 32;
   }
-  int ret = write(fd, a, n);
-  return ret;
+  return write(fd, a, n);
 }

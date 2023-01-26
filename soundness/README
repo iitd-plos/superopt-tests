@@ -1,0 +1,7 @@
+The following command should pass
+$ eq32 --check-safety --unroll-factor 3 emi1.c emi1.fixed.s # fails for unroll-factor <= 2
+$ eq32 --unroll-factor 3 emi9f.c emi9f.fixed.s # fails for unroll-factor <= 2
+
+The following commands should fail
+$ eq32 --check-safety --unroll-factor 3 emi1.c emi1.s
+$ eq32 --unroll-factor 3 emi9f.c emi9f.s
