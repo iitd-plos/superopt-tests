@@ -13,6 +13,10 @@ Lfor.body%1%d => Lfor.cond%1%bbentry (backedge)
 =is_ssa_graph:
 1
 =StartState:
+=dst.llvm-%x
+1 : input.dst.llvm-%x : BV:32
+=dst.llvm-%n
+1 : input.dst.llvm-%n : BV:32
 =dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
@@ -92,6 +96,8 @@ C_LOCAL=L0%0%argnum1= : dst.llvm-%n : 4 : 4 : 0
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
 =memlabel_map.0 for call-context {*;foo}
+mlheap.dst.llvm.foo : memlabel-mem-may-straddle-symbol.1-heap
+=memlabel_map.1 for call-context {*;foo}
 mlvar.dst.llvm.foo.0 : memlabel-mem-no-straddle-symbol.1-heap-arg.0
 =Edge: L0%0%d => Lfor.cond%1%bbentry
 =Edge.EdgeCond: 
@@ -574,9 +580,9 @@ dst.cur_rounding_mode.Lfor.cond%1%bbentry
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
+memlabel-mem-may-straddle-symbol.1-heap
 memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/
 memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
-memlabel-mem-may-straddle-symbol.1-heap
 memlabel-mem--arg.1
 =touched symbol ids
 
@@ -740,12 +746,12 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100006
 =loc_expr
-140343 : input.dst.llvm-%n : BV:32
+140341 : input.dst.llvm-%n : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100009
 =loc_expr
-140345 : input.dst.llvm-%x : BV:32
+140340 : input.dst.llvm-%x : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100017
@@ -780,12 +786,12 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100027
 =loc_expr
-140342 : input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : BV:32
+140344 : input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100028
 =loc_expr
-140344 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140345 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100035
@@ -909,7 +915,7 @@ lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100038 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 100039 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, memlabel-mem--arg.1, )
+lr_status_linearly_related(; )
 =loc_id 100040 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 100041 lr-status in lr-status-map at call-context {*;foo}
@@ -1192,9 +1198,9 @@ tfg.assumes_around_edge at L0%0%d=>Lfor.cond%1%bbentry assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>Lfor.cond%1%bbentry
 =LhsExpr
-140345 : input.dst.llvm-%x : BV:32
+140340 : input.dst.llvm-%x : BV:32
 140331 : 4 { 0x4 +1.0e1025 } : INT
-140351 : islangaligned(140345, 140331) : BOOL
+140351 : islangaligned(140340, 140331) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1223,10 +1229,10 @@ undef-behavioursome.edge.Lfor.body%1%d=>Lfor.cond%1%bbentry
 140565 : eq(140550, 140563) : BOOL
 140331 : 4 { 0x4 +1.0e1025 } : INT
 140567 : isindexforsize(140565, 140331) : BOOL
-140345 : input.dst.llvm-%x : BV:32
+140340 : input.dst.llvm-%x : BV:32
 140328 : 4 { 0x4 +1.47e129 } : BV:32
 140519 : bvmul(140328, 140473) : BV:32
-140522 : bvadd(140345, 140519) : BV:32
+140522 : bvadd(140340, 140519) : BV:32
 140569 : isgepoffset(140522, 140519) : BOOL
 140571 : and(140567, 140569) : BOOL
 =RhsExpr
@@ -1241,11 +1247,11 @@ tfg.assumes_around_edge at Lfor.body%1%d=>Lfor.cond%1%bbentry assume #1.pred
 =Comment
 undef-behaviour-align-assume.edge.Lfor.body%1%d=>Lfor.cond%1%bbentry
 =LhsExpr
-140345 : input.dst.llvm-%x : BV:32
+140340 : input.dst.llvm-%x : BV:32
 140328 : 4 { 0x4 +1.47e129 } : BV:32
 140473 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 140519 : bvmul(140328, 140473) : BV:32
-140522 : bvadd(140345, 140519) : BV:32
+140522 : bvadd(140340, 140519) : BV:32
 140331 : 4 { 0x4 +1.0e1025 } : INT
 140540 : islangaligned(140522, 140331) : BOOL
 =RhsExpr
@@ -1392,10 +1398,10 @@ Lfor.inc%2%d
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
-input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum1=/
-input.dst.llvm-%n : L0%0%d : n'
-input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%x : L0%0%d : x'
+input.dst.llvm-%n : L0%0%d : n'
+input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum1=/
+input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%ret.0 : Lfor.cond%1%bbentry : ret'
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%i.0.phi.tmpvar.entry : L0%0%d : 0
@@ -1630,12 +1636,12 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =ReachingDefinitionsForLocs:
 =Reaching Definitions at L0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%x : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -1682,12 +1688,12 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.body%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%x : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -1732,15 +1738,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 7 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.body%1%d=>Lfor.cond%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 8 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
 1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
@@ -1812,12 +1818,12 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.cond%1%bbentry
 =reaching defns for expr 0
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%x : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -1862,15 +1868,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 7 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.body%1%d=>Lfor.cond%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 8 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
 1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
@@ -1942,12 +1948,12 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.cond%2%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%x : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -1992,15 +1998,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 7 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.body%1%d=>Lfor.cond%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 8 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
 1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
@@ -2072,12 +2078,12 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.end%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%x : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -2122,15 +2128,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 7 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.body%1%d=>Lfor.cond%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 8 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
 1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
@@ -2202,12 +2208,12 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at E0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%x : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%x : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -2252,15 +2258,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
 =reaching defns for expr 7 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.body%1%d=>Lfor.cond%1%bbentry
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 8 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
 1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
@@ -2349,14 +2355,14 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =VarnameToLRStatus Begin:
 =LR status for var input.dst.llvm-%f9857086f688cad98a3e07acb716d2f.gepoffset.2.total_offset.Lfor.cond%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum1=/
-lr_status_top
-=LR status for var input.dst.llvm-%n
-lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, memlabel-mem--arg.1, )
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%x
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%n
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, memlabel-mem--arg.1, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum1=/
+lr_status_top
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%f9857086f688cad98a3e07acb716d2f.intermediate.gepoffset.1.offset.Lfor.cond%1%bbentry
@@ -2378,7 +2384,7 @@ lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%cmp.Lfor.cond%2%d
-lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, memlabel-mem--arg.1, )
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%0.Lfor.cond%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-indir_tgt.E0%0%d

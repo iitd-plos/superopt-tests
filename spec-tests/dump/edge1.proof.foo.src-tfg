@@ -9,21 +9,21 @@ L0%0%d => E0%0%d
 1
 =StartState:
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
@@ -46,6 +46,8 @@ L0%0%d => E0%0%d
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.src.spec.foo : memlabel-mem--heap
 =Edge: L0%0%d => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -80,17 +82,17 @@ spec-%var-x-0
 =Loc 5 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 6 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.0
 =Loc 7 in src.spec.foo.

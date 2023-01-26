@@ -14,45 +14,45 @@ L2%10%bbentry => L2%7%bbentry (backedge)
 1
 =StartState:
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%7%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%8%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%9%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%10%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
@@ -75,6 +75,8 @@ L2%10%bbentry => L2%7%bbentry (backedge)
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.src.spec.foo : memlabel-mem--heap
 =Edge: L0%0%d => L2%7%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -203,17 +205,17 @@ spec-%var-n-1
 =Loc 16 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 17 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.0
 =Loc 18 in src.spec.foo.
@@ -461,7 +463,7 @@ lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 17 lr-status in lr-status-map at call-context {*;foo}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 18 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_linearly_related(; )
 =loc_id 19 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 20 lr-status in lr-status-map at call-context {*;foo}

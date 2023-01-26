@@ -9,21 +9,21 @@ L0%0%d => E0%0%d
 1
 =StartState:
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
@@ -40,6 +40,8 @@ L0%0%d => E0%0%d
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.src.spec.foo : memlabel-mem--heap
 =Edge: L0%0%d => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -95,9 +97,9 @@ tfg_edge_comment end
 =Loc 6 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 7 in src.spec.foo.
@@ -154,10 +156,10 @@ memlabel-mem--heap
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>E0%0%d for loc_id 8 {input.spec-%tmpvar-1.E0%0%d }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : Indvar19 : BV:32
-4 : Lambda56Var : BV:32
+3 : Indxform23 : BV:32
+4 : Lambda46 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda57Var : BV:32
+6 : Lambda47 : BV:32
 7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
 8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
 9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -168,10 +170,10 @@ memlabel-mem--heap
 1 : 42 { 0x2a +1.500e129 } : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : unit : UNIT
-4 : Indvar20 : BV:32
-5 : Lambda59Var : BV:32
+4 : Indxform25 : BV:32
+5 : Lambda50 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda60Var : BV:32
+7 : Lambda51 : BV:32
 8 : sum(2, 3, 4) : SUM[UNIT,BV:32]
 9 : prod(2, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
 10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -184,10 +186,10 @@ memlabel-mem--heap
 2 : unit : UNIT
 3 : 42 { 0x2a +1.500e129 } : BV:32
 4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar21 : BV:32
-6 : Lambda62Var : BV:32
+5 : Indxform27 : BV:32
+6 : Lambda54 : BV:32
 7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda63Var : BV:32
+8 : Lambda55 : BV:32
 9 : sum(4, 2, 5) : SUM[UNIT,BV:32]
 10 : prod(4, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
 11 : lambda(8, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -201,10 +203,10 @@ memlabel-mem--heap
 2 : unit : UNIT
 3 : 42 { 0x2a +1.500e129 } : BV:32
 4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar21 : BV:32
-6 : Lambda62Var : BV:32
+5 : Indxform27 : BV:32
+6 : Lambda54 : BV:32
 7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda63Var : BV:32
+8 : Lambda55 : BV:32
 9 : sum(4, 2, 5) : SUM[UNIT,BV:32]
 10 : prod(4, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
 11 : lambda(8, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -241,10 +243,10 @@ discontiguous mls:
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : Indvar19 : BV:32
-4 : Lambda56Var : BV:32
+3 : Indxform23 : BV:32
+4 : Lambda46 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda57Var : BV:32
+6 : Lambda47 : BV:32
 7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
 8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
 9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -260,10 +262,10 @@ discontiguous mls:
 1 : 42 { 0x2a +1.500e129 } : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : unit : UNIT
-4 : Indvar20 : BV:32
-5 : Lambda59Var : BV:32
+4 : Indxform25 : BV:32
+5 : Lambda50 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda60Var : BV:32
+7 : Lambda51 : BV:32
 8 : sum(2, 3, 4) : SUM[UNIT,BV:32]
 9 : prod(2, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
 10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -281,10 +283,10 @@ discontiguous mls:
 2 : unit : UNIT
 3 : 42 { 0x2a +1.500e129 } : BV:32
 4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar21 : BV:32
-6 : Lambda62Var : BV:32
+5 : Indxform27 : BV:32
+6 : Lambda54 : BV:32
 7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda63Var : BV:32
+8 : Lambda55 : BV:32
 9 : sum(4, 2, 5) : SUM[UNIT,BV:32]
 10 : prod(4, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
 11 : lambda(8, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -303,10 +305,10 @@ discontiguous mls:
 2 : unit : UNIT
 3 : 42 { 0x2a +1.500e129 } : BV:32
 4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar21 : BV:32
-6 : Lambda62Var : BV:32
+5 : Indxform27 : BV:32
+6 : Lambda54 : BV:32
 7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda63Var : BV:32
+8 : Lambda55 : BV:32
 9 : sum(4, 2, 5) : SUM[UNIT,BV:32]
 10 : prod(4, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
 11 : lambda(8, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -327,33 +329,33 @@ discontiguous mls:
 =loc 8 spreled-expr
 140287 : 0 { 0x0 +1.0e129 } : BV:32
 140277 : unit : UNIT
-140544 : Indvar19 : BV:32
-140547 : Lambda56Var : BV:32
-140548 : lambda(140547, 140547) : FUNCTION[BV:32 -> BV:32]
-140549 : Lambda57Var : BV:32
-140545 : sum(140287, 140277, 140544) : SUM[UNIT,BV:32]
-140546 : prod(140287, 140545) : PROD[BV:32,SUM[UNIT,BV:32]]
-140550 : lambda(140549, 140546) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-140551 : ind(140287, 140544, 140548, 140550) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-140552 : sum(140287, 140277, 140551) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140553 : sym_const(140552) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140553 : Indxform23 : BV:32
+140556 : Lambda46 : BV:32
+140557 : lambda(140556, 140556) : FUNCTION[BV:32 -> BV:32]
+140558 : Lambda47 : BV:32
+140554 : sum(140287, 140277, 140553) : SUM[UNIT,BV:32]
+140555 : prod(140287, 140554) : PROD[BV:32,SUM[UNIT,BV:32]]
+140559 : lambda(140558, 140555) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+140560 : ind(140287, 140553, 140557, 140559) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140561 : sum(140287, 140277, 140560) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140562 : sym_const(140561) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =loc 9 expr
 1 : input.spec-%tmpvar-2.E0%0%d : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =loc 9 spreled-expr
 140274 : 42 { 0x2a +1.500e129 } : BV:32
 140287 : 0 { 0x0 +1.0e129 } : BV:32
 140277 : unit : UNIT
-140555 : Indvar20 : BV:32
-140558 : Lambda59Var : BV:32
-140559 : lambda(140558, 140558) : FUNCTION[BV:32 -> BV:32]
-140560 : Lambda60Var : BV:32
-140556 : sum(140287, 140277, 140555) : SUM[UNIT,BV:32]
-140557 : prod(140287, 140556) : PROD[BV:32,SUM[UNIT,BV:32]]
-140561 : lambda(140560, 140557) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-140562 : ind(140287, 140555, 140559, 140561) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-140563 : sum(140287, 140277, 140562) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140564 : prod(140274, 140563) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-140565 : sym_const(140564) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140565 : Indxform25 : BV:32
+140569 : Lambda50 : BV:32
+140570 : lambda(140569, 140569) : FUNCTION[BV:32 -> BV:32]
+140571 : Lambda51 : BV:32
+140566 : sum(140287, 140277, 140565) : SUM[UNIT,BV:32]
+140568 : prod(140287, 140566) : PROD[BV:32,SUM[UNIT,BV:32]]
+140572 : lambda(140571, 140568) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+140573 : ind(140287, 140565, 140570, 140572) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140574 : sum(140287, 140277, 140573) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140575 : prod(140274, 140574) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140576 : sym_const(140575) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =loc 10 expr
 1 : input.spec-%tmpvar-3.E0%0%d : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =loc 10 spreled-expr
@@ -361,18 +363,18 @@ discontiguous mls:
 140277 : unit : UNIT
 140274 : 42 { 0x2a +1.500e129 } : BV:32
 140287 : 0 { 0x0 +1.0e129 } : BV:32
-140568 : Indvar21 : BV:32
-140571 : Lambda62Var : BV:32
-140572 : lambda(140571, 140571) : FUNCTION[BV:32 -> BV:32]
-140573 : Lambda63Var : BV:32
-140569 : sum(140287, 140277, 140568) : SUM[UNIT,BV:32]
-140570 : prod(140287, 140569) : PROD[BV:32,SUM[UNIT,BV:32]]
-140574 : lambda(140573, 140570) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-140575 : ind(140287, 140568, 140572, 140574) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-140576 : sum(140287, 140277, 140575) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140577 : prod(140274, 140576) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-140578 : sum(140290, 140277, 140577) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140579 : sym_const(140578) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140579 : Indxform27 : BV:32
+140582 : Lambda54 : BV:32
+140583 : lambda(140582, 140582) : FUNCTION[BV:32 -> BV:32]
+140584 : Lambda55 : BV:32
+140580 : sum(140287, 140277, 140579) : SUM[UNIT,BV:32]
+140581 : prod(140287, 140580) : PROD[BV:32,SUM[UNIT,BV:32]]
+140585 : lambda(140584, 140581) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+140586 : ind(140287, 140579, 140583, 140585) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140587 : sum(140287, 140277, 140586) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140588 : prod(140274, 140587) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140589 : sum(140290, 140277, 140588) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140590 : sym_const(140589) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =loc 11 expr
 1 : input.spec-%tmpvar-4.E0%0%d : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =loc 11 spreled-expr
@@ -380,18 +382,18 @@ discontiguous mls:
 140277 : unit : UNIT
 140274 : 42 { 0x2a +1.500e129 } : BV:32
 140287 : 0 { 0x0 +1.0e129 } : BV:32
-140568 : Indvar21 : BV:32
-140571 : Lambda62Var : BV:32
-140572 : lambda(140571, 140571) : FUNCTION[BV:32 -> BV:32]
-140573 : Lambda63Var : BV:32
-140569 : sum(140287, 140277, 140568) : SUM[UNIT,BV:32]
-140570 : prod(140287, 140569) : PROD[BV:32,SUM[UNIT,BV:32]]
-140574 : lambda(140573, 140570) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-140575 : ind(140287, 140568, 140572, 140574) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-140576 : sum(140287, 140277, 140575) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140577 : prod(140274, 140576) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-140578 : sum(140290, 140277, 140577) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140579 : sym_const(140578) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140579 : Indxform27 : BV:32
+140582 : Lambda54 : BV:32
+140583 : lambda(140582, 140582) : FUNCTION[BV:32 -> BV:32]
+140584 : Lambda55 : BV:32
+140580 : sum(140287, 140277, 140579) : SUM[UNIT,BV:32]
+140581 : prod(140287, 140580) : PROD[BV:32,SUM[UNIT,BV:32]]
+140585 : lambda(140584, 140581) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+140586 : ind(140287, 140579, 140583, 140585) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140587 : sum(140287, 140277, 140586) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140588 : prod(140274, 140587) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140589 : sum(140290, 140277, 140588) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140590 : sym_const(140589) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;foo}
@@ -437,10 +439,10 @@ lr_status_linearly_related(; )
 =spec-%tmpvar-1.E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : Indvar19 : BV:32
-4 : Lambda56Var : BV:32
+3 : Indxform23 : BV:32
+4 : Lambda46 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda57Var : BV:32
+6 : Lambda47 : BV:32
 7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
 8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
 9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -451,10 +453,10 @@ lr_status_linearly_related(; )
 1 : 42 { 0x2a +1.500e129 } : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : unit : UNIT
-4 : Indvar20 : BV:32
-5 : Lambda59Var : BV:32
+4 : Indxform25 : BV:32
+5 : Lambda50 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda60Var : BV:32
+7 : Lambda51 : BV:32
 8 : sum(2, 3, 4) : SUM[UNIT,BV:32]
 9 : prod(2, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
 10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -467,10 +469,10 @@ lr_status_linearly_related(; )
 2 : unit : UNIT
 3 : 42 { 0x2a +1.500e129 } : BV:32
 4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar21 : BV:32
-6 : Lambda62Var : BV:32
+5 : Indxform27 : BV:32
+6 : Lambda54 : BV:32
 7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda63Var : BV:32
+8 : Lambda55 : BV:32
 9 : sum(4, 2, 5) : SUM[UNIT,BV:32]
 10 : prod(4, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
 11 : lambda(8, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
@@ -484,10 +486,10 @@ lr_status_linearly_related(; )
 2 : unit : UNIT
 3 : 42 { 0x2a +1.500e129 } : BV:32
 4 : 0 { 0x0 +1.0e129 } : BV:32
-5 : Indvar21 : BV:32
-6 : Lambda62Var : BV:32
+5 : Indxform27 : BV:32
+6 : Lambda54 : BV:32
 7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
-8 : Lambda63Var : BV:32
+8 : Lambda55 : BV:32
 9 : sum(4, 2, 5) : SUM[UNIT,BV:32]
 10 : prod(4, 9) : PROD[BV:32,SUM[UNIT,BV:32]]
 11 : lambda(8, 10) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]

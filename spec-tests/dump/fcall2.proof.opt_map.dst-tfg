@@ -18,6 +18,8 @@ Lif.end%1%bbentry => E0%0%d
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=dst.llvm-%opt
+1 : input.dst.llvm-%opt : BV:32
 =state_end
 =PC to var-version map at L0%0%d
 =version for dst.llvm-mem
@@ -97,8 +99,10 @@ mlcall.dst.llvm.opt_map.2 : memlabel-mem-
 =memlabel_map.1 for call-context {*;opt_map}
 mlcall.dst.llvm.opt_map.3 : memlabel-mem-
 =memlabel_map.2 for call-context {*;opt_map}
-mlvar.dst.llvm.opt_map.0 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap-arg.0
+mlheap.dst.llvm.opt_map : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap
 =memlabel_map.3 for call-context {*;opt_map}
+mlvar.dst.llvm.opt_map.0 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap-arg.0
+=memlabel_map.4 for call-context {*;opt_map}
 mlvar.dst.llvm.opt_map.1 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap-arg.0
 =Edge: L0%0%d => Lentry%2%d
 =Edge.EdgeCond: 
@@ -612,7 +616,7 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100001
 =loc_expr
-140348 : input.dst.llvm-%opt : BV:32
+140347 : input.dst.llvm-%opt : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100005
@@ -647,7 +651,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100015
 =loc_expr
-140347 : input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/ : BV:32
+140348 : input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100020
@@ -763,7 +767,7 @@ lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___up
 =loc_id 100019 lr-status in lr-status-map at call-context {*;opt_map}
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, )
 =loc_id 100020 lr-status in lr-status-map at call-context {*;opt_map}
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, )
+lr_status_linearly_related(; )
 =loc_id 100021 lr-status in lr-status-map at call-context {*;opt_map}
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, )
 =loc_id 100022 lr-status in lr-status-map at call-context {*;opt_map}
@@ -962,9 +966,9 @@ tfg.assumes_around_edge at L0%0%d=>Lentry%2%d assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>Lentry%2%d
 =LhsExpr
-140348 : input.dst.llvm-%opt : BV:32
-140331 : 4 { 0x4 +1.0e1025 } : INT
-140353 : islangaligned(140348, 140331) : BOOL
+140347 : input.dst.llvm-%opt : BV:32
+140333 : 4 { 0x4 +1.0e1025 } : INT
+140353 : islangaligned(140347, 140333) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -985,9 +989,9 @@ tfg.assumes_around_edge at Lif.then%1%d=>Lif.then%2%fcallStart assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.Lif.then%1%d=>Lif.then%2%fcallStart
 =LhsExpr
-140348 : input.dst.llvm-%opt : BV:32
-140331 : 4 { 0x4 +1.0e1025 } : INT
-140353 : islangaligned(140348, 140331) : BOOL
+140347 : input.dst.llvm-%opt : BV:32
+140333 : 4 { 0x4 +1.0e1025 } : INT
+140353 : islangaligned(140347, 140333) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1004,9 +1008,9 @@ tfg.assumes_around_edge at Lif.then%2%fcallEnd=>Lif.end%1%bbentry assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.Lif.then%2%fcallEnd=>Lif.end%1%bbentry
 =LhsExpr
-140348 : input.dst.llvm-%opt : BV:32
-140331 : 4 { 0x4 +1.0e1025 } : INT
-140353 : islangaligned(140348, 140331) : BOOL
+140347 : input.dst.llvm-%opt : BV:32
+140333 : 4 { 0x4 +1.0e1025 } : INT
+140353 : islangaligned(140347, 140333) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1107,8 +1111,8 @@ line 8
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
-input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/
 input.dst.llvm-%opt : L0%0%d : opt'
+input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%tobool : L0%0%d : not(opt' = 0)
 input.dst.llvm-%0 : L0%0%d : DSTMEM[opt']_4
@@ -1498,10 +1502,10 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =ReachingDefinitionsForLocs done
 =VarnameToLRStatus Begin:
-=LR status for var input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%opt
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, )
+=LR status for var input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%hidden-reg
@@ -1515,7 +1519,7 @@ lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
 =LR status for var input.dst.llvm-%tobool.Lentry%2%d
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, )
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%0.Lif.then%2%fcallStart
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, )
 =LR status for var input.dst.llvm-%ret-reg.E0%0%d

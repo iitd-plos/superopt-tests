@@ -21,45 +21,45 @@ L1%11%bbentry => E0%0%d
 1
 =StartState:
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L1%3%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L1%4%bbentry
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L1%7%bbentry
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L1%11%bbentry
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
@@ -82,6 +82,8 @@ L1%11%bbentry => E0%0%d
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.src.spec.foo : memlabel-mem--heap
 =Edge: L0%0%d => L1%3%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -205,17 +207,17 @@ spec-%var-x-0
 =Loc 12 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 13 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.0
 =Loc 14 in src.spec.foo.
@@ -594,6 +596,8 @@ L0%0%d => E0%0%d
 =is_ssa_graph:
 1
 =StartState:
+=dst.llvm-%x
+1 : input.dst.llvm-%x : BV:32
 =dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
@@ -641,6 +645,8 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%x : 4 : 4 : 0
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.dst.llvm.foo : memlabel-mem-may-straddle-symbol.1-heap
 =Edge: L0%0%d => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -799,8 +805,8 @@ dst.cur_rounding_mode.E0%0%d
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -847,47 +853,47 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100002
 =loc_expr
-140317 : input.dst.llvm-%x : BV:32
+140316 : input.dst.llvm-%x : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100003
 =loc_expr
-140324 : input.dst.llvm-%hidden-reg : BV:32
+140326 : input.dst.llvm-%hidden-reg : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100005
 =loc_expr
-140325 : input.dst.llvm-callee-save.0 : BV:32
+140327 : input.dst.llvm-callee-save.0 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100006
 =loc_expr
-140327 : input.dst.llvm-callee-save.1 : BV:32
+140329 : input.dst.llvm-callee-save.1 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100007
 =loc_expr
-140329 : input.dst.llvm-callee-save.2 : BV:32
+140331 : input.dst.llvm-callee-save.2 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100008
 =loc_expr
-140331 : input.dst.llvm-callee-save.3 : BV:32
+140333 : input.dst.llvm-callee-save.3 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100011
 =loc_expr
-140322 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140324 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100012
 =loc_expr
-140316 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140319 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100017
 =loc_expr
-140363 : input.dst.llvm-%add.E0%0%d : BV:32
+140365 : input.dst.llvm-%add.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 3 { 0x3 +1.35e129 } : BV:32
@@ -896,7 +902,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100018
 =loc_expr
-140364 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+140366 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%hidden-reg : BV:32
@@ -911,7 +917,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100019
 =loc_expr
-140365 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140367 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 3 { 0x3 +1.35e129 } : BV:32
@@ -920,21 +926,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100020
 =loc_expr
-140366 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140368 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100021
 =loc_expr
-140367 : input.dst.local_alloc_count.E0%0%d : COUNT
+140369 : input.dst.local_alloc_count.E0%0%d : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100022
 =loc_expr
-140368 : input.dst.cur_rounding_mode.E0%0%d : ROUNDING_MODE
+140370 : input.dst.cur_rounding_mode.E0%0%d : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
@@ -948,11 +954,11 @@ discontiguous mls:
 =loc 100021 expr
 1 : input.dst.local_alloc_count.E0%0%d : COUNT
 =loc 100021 spreled-expr
-140322 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140324 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =loc 100022 expr
 1 : input.dst.cur_rounding_mode.E0%0%d : ROUNDING_MODE
 =loc 100022 spreled-expr
-140321 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+140323 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;foo}
@@ -1093,8 +1099,8 @@ Lentry%2%d
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
 input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
-input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%x : L0%0%d : x'
+input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%add : L0%0%d : (3 + x')
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%hidden-reg : L0%0%d : input.dst.llvm-%hidden-reg
@@ -1230,10 +1236,10 @@ input.dst.cur_rounding_mode.E0%0%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =VarnameToLRStatus Begin:
 =LR status for var input.dst.llvm-indir_tgt.E0%0%d
 lr_status_linearly_related(; )
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%x
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%hidden-reg
@@ -1389,6 +1395,11 @@ precond-mlasserts
 15 : and(9, 14) : BOOL
 16 : eq(10, 1) : BOOL
 17 : and(15, 16) : BOOL
+18 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+19 : 1 { 0x1 +1.11e129 } : BV:32
+20 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
+22 : and(17, 21) : BOOL
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1424,8 +1435,8 @@ arg-location-contents-are-consistent-with-arg-value
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -1458,25 +1469,25 @@ discontiguous mls:
 =global nodece 0 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin cvc4.ce3 9d6e60df8b8fce6fd30cfb7f981ace
+=counter_example_begin cvc4.ce3 4cb6844e6f293d562cb5c5c927a44fd9
 =input.spec-%var-x-0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%x
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%x
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%tmpvar-1.L1%11%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-2.L1%11%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
 1714636915
 =counter_example_end
@@ -1489,25 +1500,25 @@ L0%0%d_L0%0%d
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin z3v487.ce4 881ee0e377b930599bc4a2bfd8818dbf
+=counter_example_begin z3v487.ce4 6e838966e3b139d64a2280d3a9a178c7
 =input.spec-%var-x-0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%x
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%x
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%tmpvar-1.L1%11%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-2.L1%11%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
 1957747793
 =counter_example_end
@@ -1520,25 +1531,25 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce5 8026593aa52ab4b5117f298bd7696146
+=counter_example_begin yices.ce5 20d6d733a47ad137d6a65e612ac16fa5
 =input.spec-%var-x-0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%x
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%x
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%tmpvar-1.L1%11%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-2.L1%11%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
 424238335
 =counter_example_end
@@ -1609,33 +1620,6 @@ equal-ret
 =well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge well-formedness condition
 =well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond cg_path
 =well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond cg_path.graph_edge_composition
-(epsilon)
-=well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond src_path
-=well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond src_path.graph_edge_composition
-(epsilon)
-=well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond dst_path
-=well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond dst_path.graph_edge_composition
-(epsilon)
-=well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond pred.0
-=Comment
-wfcond.from_pcL0%0%d_L0%0%d.to_pcE0%0%d_E0%0%d-dst-edgecond-implies-src-edgecond
-=LhsExpr
-1 : 1 { 0x1 } : BOOL
-2 : not(1) : BOOL
-3 : SORT2EXPR.VAR : SUM[UNIT,BV:32]
-4 : 1 { 0x1 +1.0e1025 } : INT
-5 : input.spec-%var-x-0 : BV:32
-6 : sum_init(3, 4, 5) : SUM[UNIT,BV:32]
-7 : sum_is(6, 4) : BOOL
-8 : 0 { 0x0 +1.0e1025 } : INT
-9 : sum_is(6, 8) : BOOL
-10 : or(7, 9) : BOOL
-11 : or(2, 10) : BOOL
-=RhsExpr
-1 : 1 { 0x1 } : BOOL
-=predicate done
-=well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond cg_path
-=well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond cg_path.graph_edge_composition
 (L0%0%d_L0%0%d=>E0%0%d_E0%0%d)
 =well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond src_path
 =well-formedness-conditions for L0%0%d_L0%0%d=>E0%0%d_E0%0%d edge-wf-cond src_path.graph_edge_composition
@@ -1669,15 +1653,15 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #0.pred
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
-140314 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140315 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140333 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-140316 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
-140334 : 4 { 0x4 +1.0e1025 } : INT
-140335 : 0 { 0x0 } : BOOL
-140336 : select(140314, 140315, 140333, 140316, 140334, 140335) : BV:32
+140317 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140318 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140335 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+140319 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140336 : 4 { 0x4 +1.0e1025 } : INT
+140337 : 0 { 0x0 } : BOOL
+140338 : select(140317, 140318, 140335, 140319, 140336, 140337) : BV:32
 =RhsExpr
-140317 : input.dst.llvm-%x : BV:32
+140316 : input.dst.llvm-%x : BV:32
 =predicate done
 
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1
@@ -1689,8 +1673,8 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1.pred
 equal-arg0
 =LhsExpr
 140273 : input.spec-%var-x-0 : BV:32
-140317 : input.dst.llvm-%x : BV:32
-140390 : eq(140273, 140317) : BOOL
+140316 : input.dst.llvm-%x : BV:32
+140394 : eq(140273, 140316) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1703,23 +1687,28 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.pred
 =Comment
 precond-mlasserts
 =LhsExpr
-140375 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin : BV:32
-140376 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end : BV:32
-140377 : bvule(140375, 140376) : BOOL
-140369 : 4 { 0x4 +1.47e129 } : BV:32
-140378 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-140379 : bvadd(140369, 140378) : BV:32
-140380 : bvadd(140375, 140379) : BV:32
-140381 : eq(140376, 140380) : BOOL
-140382 : and(140377, 140381) : BOOL
-140316 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140377 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin : BV:32
+140378 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end : BV:32
+140379 : bvule(140377, 140378) : BOOL
+140371 : 4 { 0x4 +1.47e129 } : BV:32
+140380 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+140381 : bvadd(140371, 140380) : BV:32
+140382 : bvadd(140377, 140381) : BV:32
+140383 : eq(140378, 140382) : BOOL
+140384 : and(140379, 140383) : BOOL
+140319 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 140285 : 3 { 0x3 +1.35e129 } : BV:32
-140383 : bvand(140316, 140285) : BV:32
+140385 : bvand(140319, 140285) : BV:32
 140291 : 0 { 0x0 +1.0e129 } : BV:32
-140384 : eq(140383, 140291) : BOOL
-140385 : and(140382, 140384) : BOOL
-140386 : eq(140316, 140375) : BOOL
-140387 : and(140385, 140386) : BOOL
+140386 : eq(140385, 140291) : BOOL
+140387 : and(140384, 140386) : BOOL
+140388 : eq(140319, 140377) : BOOL
+140389 : and(140387, 140388) : BOOL
+140318 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140355 : 1 { 0x1 +1.11e129 } : BV:32
+140320 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140390 : region_agrees_with_memlabel(140318, 140291, 140355, 140320) : BOOL
+140391 : and(140389, 140390) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

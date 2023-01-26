@@ -16,21 +16,21 @@ L0%0%d => E0%0%d
 1
 =StartState:
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
@@ -53,6 +53,8 @@ L0%0%d => E0%0%d
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.src.spec.foo : memlabel-mem--heap
 =Edge: L0%0%d => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -79,17 +81,17 @@ spec-%var-l-0
 =Loc 3 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 4 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.0
 =Loc 5 in src.spec.foo.
@@ -221,6 +223,8 @@ L0%0%d => E0%0%d
 =is_ssa_graph:
 1
 =StartState:
+=dst.llvm-%l
+1 : input.dst.llvm-%l : BV:32
 =dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
@@ -268,6 +272,8 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%l : 4 : 4 : 0
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.dst.llvm.foo : memlabel-mem-may-straddle-symbol.1-heap
 =Edge: L0%0%d => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -420,8 +426,8 @@ dst.cur_rounding_mode.E0%0%d
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -467,7 +473,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100002
 =loc_expr
-140312 : input.dst.llvm-%l : BV:32
+140309 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100004
@@ -497,7 +503,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100011
 =loc_expr
-140311 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140312 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100016
@@ -664,9 +670,9 @@ tfg.assumes_around_edge at L0%0%d=>E0%0%d assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>E0%0%d
 =LhsExpr
-140312 : input.dst.llvm-%l : BV:32
+140309 : input.dst.llvm-%l : BV:32
 140317 : 8 { 0x8 +1.0e1025 } : INT
-140318 : islangaligned(140312, 140317) : BOOL
+140318 : islangaligned(140309, 140317) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -695,8 +701,8 @@ line 7
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
-input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%l : L0%0%d : l'
+input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%hidden-reg : L0%0%d : input.dst.llvm-%hidden-reg
 input.dst.llvm-callee-save.0 : L0%0%d : input.dst.llvm-callee-save.0
@@ -795,10 +801,10 @@ input.dst.cur_rounding_mode.E0%0%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =ReachingDefinitionsForLocs done
 =VarnameToLRStatus Begin:
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%l
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%hidden-reg
@@ -856,8 +862,8 @@ arg0-implements-inductive-list
 =LhsExpr
 1 : $spec-arg-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : $llvm-arg-0 : BV:32
-3 : Indvar0 : BV:32
-4 : Lambda1Var : BV:32
+3 : Indxform0 : BV:32
+4 : Lambda1 : BV:32
 5 : $llvm-md : ARRAY[BV:32 -> BV:8]
 6 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
 7 : memlabel-top : MEMLABEL
@@ -867,7 +873,7 @@ arg0-implements-inductive-list
 11 : 0 { 0x0 } : BOOL
 12 : select(5, 6, 7, 9, 10, 11) : BV:32
 13 : lambda(4, 12) : FUNCTION[BV:32 -> BV:32]
-14 : Lambda0Var : BV:32
+14 : Lambda0 : BV:32
 15 : 0 { 0x0 +1.0e129 } : BV:32
 16 : eq(14, 15) : BOOL
 17 : 1 { 0x1 +1.11e129 } : BV:32
@@ -891,8 +897,8 @@ ret-implements-inductive-list
 =LhsExpr
 1 : $spec-ret : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : $llvm-ret : BV:32
-3 : Indvar0 : BV:32
-4 : Lambda1Var : BV:32
+3 : Indxform0 : BV:32
+4 : Lambda1 : BV:32
 5 : $llvm-md : ARRAY[BV:32 -> BV:8]
 6 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
 7 : memlabel-top : MEMLABEL
@@ -902,7 +908,7 @@ ret-implements-inductive-list
 11 : 0 { 0x0 } : BOOL
 12 : select(5, 6, 7, 9, 10, 11) : BV:32
 13 : lambda(4, 12) : FUNCTION[BV:32 -> BV:32]
-14 : Lambda0Var : BV:32
+14 : Lambda0 : BV:32
 15 : 0 { 0x0 +1.0e129 } : BV:32
 16 : eq(14, 15) : BOOL
 17 : 1 { 0x1 +1.11e129 } : BV:32
@@ -973,8 +979,8 @@ arg0-implements-inductive-list
 =LhsExpr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : input.dst.llvm-%l : BV:32
-3 : Indvar0 : BV:32
-4 : Lambda1Var : BV:32
+3 : Indxform0 : BV:32
+4 : Lambda1 : BV:32
 5 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 6 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 7 : memlabel-mem-may-straddle-symbol.1-local./*___y___foo__x__=L0%0%argnum0=/-heap : MEMLABEL
@@ -984,7 +990,7 @@ arg0-implements-inductive-list
 11 : 0 { 0x0 } : BOOL
 12 : select(5, 6, 7, 9, 10, 11) : BV:32
 13 : lambda(4, 12) : FUNCTION[BV:32 -> BV:32]
-14 : Lambda0Var : BV:32
+14 : Lambda0 : BV:32
 15 : 0 { 0x0 +1.0e129 } : BV:32
 16 : eq(15, 14) : BOOL
 17 : 1 { 0x1 +1.11e129 } : BV:32
@@ -1020,6 +1026,11 @@ precond-mlasserts
 15 : and(9, 14) : BOOL
 16 : eq(10, 1) : BOOL
 17 : and(15, 16) : BOOL
+18 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+19 : 1 { 0x1 +1.11e129 } : BV:32
+20 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
+22 : and(17, 21) : BOOL
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1055,8 +1066,8 @@ arg-location-contents-are-consistent-with-arg-value
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -1084,53 +1095,67 @@ discontiguous mls:
 =graph_with_proofs done
 =global counterexamples for reason inductive-invariants
 =global nodece 0
-=global nodece 0 nodece cvc4.ce6.num_edges_traversed0
+=global nodece 0 nodece z3v487.ce6.num_edges_traversed0
 =global nodece 0 nodece_path
 =global nodece 0 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin cvc4.ce6 646a627a1bc86659f36370bb2614fa61
+=counter_example_begin z3v487.ce6 702aa45ac1daadb23f71692a814b348
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar29 : BV:32
-3 : Lambda91Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda92Var : BV:32
-6 : unit : UNIT
-7 : 408578032 { 0x185a67f0 +1.70629692e177 } : BV:32
-8 : prod(7, 2) : PROD[BV:32,BV:32]
-9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : unit : UNIT
+3 : Indxform14 : BV:32
+4 : Lambda28 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda29 : BV:32
+7 : prod(1, 3) : PROD[BV:32,BV:32]
+8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-0.E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar31 : BV:32
-3 : Lambda96Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda97Var : BV:32
-6 : unit : UNIT
-7 : 359438398 { 0x156c983e +1.84839606e171 } : BV:32
-8 : prod(7, 2) : PROD[BV:32,BV:32]
-9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : unit : UNIT
+3 : Indxform15 : BV:32
+4 : Lambda30 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda31 : BV:32
+7 : prod(1, 3) : PROD[BV:32,BV:32]
+8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.dst.llvm-%l
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 6 ] -> 0, [ 7; 7 ] -> 192, [ 8; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 212957195 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 212957196; 212957199 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 212957200; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 212957196 { 0xcb1780c +1.38647603e154 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 212957196 { 0xcb1780c +1.38647603e154 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 212957199 { 0xcb1780f +1.38647639e154 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-0.E0%0%d.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.0
+=input.spec-%var-l-0.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 3075630698
@@ -1139,53 +1164,67 @@ discontiguous mls:
 =global nodece 0 nodece_visted_pcs: 
 L0%0%d_L0%0%d
 =global nodece 1
-=global nodece 1 nodece z3v487.ce7.num_edges_traversed0
+=global nodece 1 nodece cvc4.ce7.num_edges_traversed0
 =global nodece 1 nodece_path
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin z3v487.ce7 f2b78cba5103d0bed11d385d4b44e6
+=counter_example_begin cvc4.ce7 6a4742df9428ed696912ca6c305d2b7d
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar37 : BV:32
-3 : Lambda111Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda112Var : BV:32
-6 : unit : UNIT
-7 : 2083003838 { 0x7c281dbe +1.31340765e121 } : BV:32
-8 : prod(7, 2) : PROD[BV:32,BV:32]
-9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : unit : UNIT
+3 : Indxform18 : BV:32
+4 : Lambda36 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda37 : BV:32
+7 : prod(1, 3) : PROD[BV:32,BV:32]
+8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-0.E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar39 : BV:32
-3 : Lambda116Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda117Var : BV:32
-6 : unit : UNIT
-7 : 348192464 { 0x14c0fed0 +1.50777626e170 } : BV:32
-8 : prod(7, 2) : PROD[BV:32,BV:32]
-9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : unit : UNIT
+3 : Indxform19 : BV:32
+4 : Lambda38 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda39 : BV:32
+7 : prod(1, 3) : PROD[BV:32,BV:32]
+8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.dst.llvm-%l
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 7 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 8; 11 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 12; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 8 { 0x8 +1.95e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 8 { 0x8 +1.95e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 11 { 0xb +1.131e129 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-0.E0%0%d.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.0
+=input.spec-%var-l-0.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 2288096780
@@ -1199,48 +1238,57 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce8 1786f55da9dc6c5cadc0ed43c056e5d4
+=counter_example_begin yices.ce8 7e1cc1d157f4b95e91f4bcb9cbba2a6
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar45 : BV:32
-3 : Lambda131Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda132Var : BV:32
-6 : unit : UNIT
-7 : 1398843383 { 0x5360a7f7 +1.75512588e39 } : BV:32
-8 : prod(7, 2) : PROD[BV:32,BV:32]
-9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : unit : UNIT
+3 : Indxform22 : BV:32
+4 : Lambda44 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda45 : BV:32
+7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
+9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
+10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%tmpvar-0.E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indvar47 : BV:32
-3 : Lambda136Var : BV:32
-4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda137Var : BV:32
-6 : unit : UNIT
-7 : 695579768 { 0x2975b478 +1.91956996e211 } : BV:32
-8 : prod(7, 2) : PROD[BV:32,BV:32]
-9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(1, 2, 4, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : unit : UNIT
+3 : Indxform23 : BV:32
+4 : Lambda46 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda47 : BV:32
+7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
+8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
+9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
+10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 12 : sym_const(11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.dst.llvm-%l
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%l
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-0.E0%0%d.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.0
+=input.spec-%var-l-0.2.0
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-0.E0%0%d.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 883278793
@@ -1304,8 +1352,8 @@ ret-implements-inductive-list
 =LhsExpr
 1 : input.spec-%tmpvar-0.E0%0%d : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : input.dst.llvm-%l : BV:32
-3 : Indvar0 : BV:32
-4 : Lambda1Var : BV:32
+3 : Indxform0 : BV:32
+4 : Lambda1 : BV:32
 5 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 6 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 7 : memlabel-mem-may-straddle-symbol.1-local./*___y___foo__x__=L0%0%argnum0=/-heap : MEMLABEL
@@ -1315,7 +1363,7 @@ ret-implements-inductive-list
 11 : 0 { 0x0 } : BOOL
 12 : select(5, 6, 7, 9, 10, 11) : BV:32
 13 : lambda(4, 12) : FUNCTION[BV:32 -> BV:32]
-14 : Lambda0Var : BV:32
+14 : Lambda0 : BV:32
 15 : 0 { 0x0 +1.0e129 } : BV:32
 16 : eq(15, 14) : BOOL
 17 : 1 { 0x1 +1.11e129 } : BV:32
@@ -1347,8 +1395,8 @@ ret-implements-inductive-list
 =LhsExpr
 1 : input.spec-%tmpvar-0.E0%0%d : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : input.dst.llvm-%l : BV:32
-3 : Indvar0 : BV:32
-4 : Lambda1Var : BV:32
+3 : Indxform0 : BV:32
+4 : Lambda1 : BV:32
 5 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 6 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 7 : memlabel-mem-may-straddle-symbol.1-local./*___y___foo__x__=L0%0%argnum0=/-heap : MEMLABEL
@@ -1358,7 +1406,7 @@ ret-implements-inductive-list
 11 : 0 { 0x0 } : BOOL
 12 : select(5, 6, 7, 9, 10, 11) : BV:32
 13 : lambda(4, 12) : FUNCTION[BV:32 -> BV:32]
-14 : Lambda0Var : BV:32
+14 : Lambda0 : BV:32
 15 : 0 { 0x0 +1.0e129 } : BV:32
 16 : eq(15, 14) : BOOL
 17 : 1 { 0x1 +1.11e129 } : BV:32
@@ -1389,15 +1437,15 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #0.pred
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
-140309 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140310 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140310 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140311 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 140328 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-140311 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140312 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 140286 : 4 { 0x4 +1.0e1025 } : INT
 140287 : 0 { 0x0 } : BOOL
-140329 : select(140309, 140310, 140328, 140311, 140286, 140287) : BV:32
+140329 : select(140310, 140311, 140328, 140312, 140286, 140287) : BV:32
 =RhsExpr
-140312 : input.dst.llvm-%l : BV:32
+140309 : input.dst.llvm-%l : BV:32
 =predicate done
 
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1
@@ -1408,9 +1456,9 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>E0%0%d
 =LhsExpr
-140312 : input.dst.llvm-%l : BV:32
+140309 : input.dst.llvm-%l : BV:32
 140317 : 8 { 0x8 +1.0e1025 } : INT
-140318 : islangaligned(140312, 140317) : BOOL
+140318 : islangaligned(140309, 140317) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1432,14 +1480,19 @@ precond-mlasserts
 140353 : bvadd(140348, 140352) : BV:32
 140354 : eq(140349, 140353) : BOOL
 140355 : and(140350, 140354) : BOOL
-140311 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140312 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 140356 : 3 { 0x3 +1.35e129 } : BV:32
-140357 : bvand(140311, 140356) : BV:32
+140357 : bvand(140312, 140356) : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
 140358 : eq(140357, 140276) : BOOL
 140359 : and(140355, 140358) : BOOL
-140360 : eq(140311, 140348) : BOOL
+140360 : eq(140312, 140348) : BOOL
 140361 : and(140359, 140360) : BOOL
+140311 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140288 : 1 { 0x1 +1.11e129 } : BV:32
+140313 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140362 : region_agrees_with_memlabel(140311, 140276, 140288, 140313) : BOOL
+140363 : and(140361, 140362) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1453,30 +1506,30 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.pred
 arg0-implements-inductive-list
 =LhsExpr
 140273 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140312 : input.dst.llvm-%l : BV:32
-140293 : Indvar0 : BV:32
-140298 : Lambda1Var : BV:32
-140309 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140310 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140362 : memlabel-mem-may-straddle-symbol.1-local./*___y___foo__x__=L0%0%argnum0=/-heap : MEMLABEL
+140309 : input.dst.llvm-%l : BV:32
+140293 : Indxform0 : BV:32
+140298 : Lambda1 : BV:32
+140310 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140311 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140364 : memlabel-mem-may-straddle-symbol.1-local./*___y___foo__x__=L0%0%argnum0=/-heap : MEMLABEL
 140299 : 4 { 0x4 +1.47e129 } : BV:32
 140300 : bvadd(140298, 140299) : BV:32
 140286 : 4 { 0x4 +1.0e1025 } : INT
 140287 : 0 { 0x0 } : BOOL
-140388 : select(140309, 140310, 140362, 140300, 140286, 140287) : BV:32
-140389 : lambda(140298, 140388) : FUNCTION[BV:32 -> BV:32]
-140289 : Lambda0Var : BV:32
+140393 : select(140310, 140311, 140364, 140300, 140286, 140287) : BV:32
+140394 : lambda(140298, 140393) : FUNCTION[BV:32 -> BV:32]
+140289 : Lambda0 : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140373 : eq(140276, 140289) : BOOL
+140378 : eq(140276, 140289) : BOOL
 140288 : 1 { 0x1 +1.11e129 } : BV:32
-140374 : ite(140373, 140276, 140288) : BV:32
+140379 : ite(140378, 140276, 140288) : BV:32
 140292 : unit : UNIT
-140390 : select(140309, 140310, 140362, 140289, 140286, 140287) : BV:32
-140391 : prod(140390, 140293) : PROD[BV:32,BV:32]
-140392 : sum(140374, 140292, 140391) : SUM[UNIT,PROD[BV:32,BV:32]]
-140393 : lambda(140289, 140392) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-140394 : ind(140312, 140293, 140389, 140393) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140395 : eq(140273, 140394) : BOOL
+140395 : select(140310, 140311, 140364, 140289, 140286, 140287) : BV:32
+140396 : prod(140395, 140293) : PROD[BV:32,BV:32]
+140397 : sum(140379, 140292, 140396) : SUM[UNIT,PROD[BV:32,BV:32]]
+140398 : lambda(140289, 140397) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+140399 : ind(140309, 140293, 140394, 140398) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140400 : eq(140273, 140399) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

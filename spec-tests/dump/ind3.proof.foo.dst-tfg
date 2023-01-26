@@ -8,6 +8,8 @@ L0%0%d => E0%0%d
 =is_ssa_graph:
 1
 =StartState:
+=dst.llvm-%l
+1 : input.dst.llvm-%l : BV:32
 =dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
@@ -55,6 +57,8 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%l : 4 : 4 : 0
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.dst.llvm.foo : memlabel-mem-may-straddle-symbol.1-heap
 =Edge: L0%0%d => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -207,8 +211,8 @@ dst.cur_rounding_mode.E0%0%d
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -254,7 +258,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100002
 =loc_expr
-140312 : input.dst.llvm-%l : BV:32
+140309 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100004
@@ -284,7 +288,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100011
 =loc_expr
-140311 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140312 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100016
@@ -451,9 +455,9 @@ tfg.assumes_around_edge at L0%0%d=>E0%0%d assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>E0%0%d
 =LhsExpr
-140312 : input.dst.llvm-%l : BV:32
+140309 : input.dst.llvm-%l : BV:32
 140317 : 8 { 0x8 +1.0e1025 } : INT
-140318 : islangaligned(140312, 140317) : BOOL
+140318 : islangaligned(140309, 140317) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -482,8 +486,8 @@ line 7
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
-input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%l : L0%0%d : l'
+input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%hidden-reg : L0%0%d : input.dst.llvm-%hidden-reg
 input.dst.llvm-callee-save.0 : L0%0%d : input.dst.llvm-callee-save.0
@@ -582,10 +586,10 @@ input.dst.cur_rounding_mode.E0%0%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =ReachingDefinitionsForLocs done
 =VarnameToLRStatus Begin:
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%l
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%hidden-reg

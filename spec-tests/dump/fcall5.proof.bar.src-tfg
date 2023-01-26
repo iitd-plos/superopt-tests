@@ -13,45 +13,45 @@ L4%2%fcallEnd => E0%0%d
 1
 =StartState:
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L4%1%fcallStart
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L4%1%fcallEnd
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L4%2%fcallStart
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at L4%2%fcallEnd
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: bar
@@ -80,6 +80,8 @@ L4%2%fcallEnd => E0%0%d
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;bar}
+=memlabel_map.0 for call-context {*;bar}
+mlheap.src.spec.bar : memlabel-mem--heap
 =Edge: L0%0%d => L4%1%fcallStart
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -95,13 +97,13 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
+=spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd
+1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =spec-%tmpvar-19.L4%1%fcallEnd
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
-=spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd
-1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -174,25 +176,25 @@ spec-%var-a2-0
 =Loc 9 in src.spec.bar.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 10 in src.spec.bar.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.0
 =Loc 11 in src.spec.bar.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.1
 =Loc 12 in src.spec.bar.
@@ -402,13 +404,13 @@ lr_status_bottom(; memlabel-mem--heap, )
 =graph_with_simplified_assets.simplified_to_state at L0%0%d=>L4%1%fcallStart
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L4%1%fcallStart=>L4%1%fcallEnd
+=spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd
+1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =spec-%tmpvar-19.L4%1%fcallEnd
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
-=spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd
-1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L4%1%fcallEnd=>L4%2%fcallStart
 =state_end

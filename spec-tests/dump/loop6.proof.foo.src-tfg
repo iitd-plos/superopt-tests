@@ -14,45 +14,45 @@ L2%10%bbentry => L2%7%bbentry (backedge)
 1
 =StartState:
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%7%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%8%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%9%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%10%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
@@ -75,10 +75,15 @@ L2%10%bbentry => L2%7%bbentry (backedge)
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.src.spec.foo : memlabel-mem--heap
 =Edge: L0%0%d => L2%7%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
+=spec-%var-m-0.L2%7%bbentry
+1 : SORT2EXPR.VAR : MAP[BV:32 -> BV:32]
+2 : map_init(1) : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-7.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-8.L2%7%bbentry
@@ -86,13 +91,10 @@ Memlabel map for call-context {*;foo}
 2 : map_init(1) : MAP[BV:32 -> BV:32]
 =spec-%var-i-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%var-m-0.L2%7%bbentry
-1 : SORT2EXPR.VAR : MAP[BV:32 -> BV:32]
-2 : map_init(1) : MAP[BV:32 -> BV:32]
-=spec-%var-n-0.L2%7%bbentry
-1 : input.spec-%var-n-1 : BV:32
 =src.spec-ghostvar.itervar.1.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-n-0.L2%7%bbentry
+1 : input.spec-%var-n-1 : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -142,9 +144,9 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-5.E0%0%d
-1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-10.E0%0%d
+1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
+=spec-%tmpvar-5.E0%0%d
 1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-6.E0%0%d
 1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
@@ -161,20 +163,20 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%var-i-0.L2%7%bbentry
-1 : input.spec-%var-i-0.L2%7%bbentry : BV:32
-2 : 1 { 0x1 +1.11e129 } : BV:32
-3 : bvadd(1, 2) : BV:32
 =spec-%var-m-0.L2%7%bbentry
 1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
 2 : input.spec-%var-i-0.L2%7%bbentry : BV:32
 3 : map_set(1, 2, 2) : MAP[BV:32 -> BV:32]
-=spec-%var-n-0.L2%7%bbentry
-1 : input.spec-%var-n-0.L2%7%bbentry : BV:32
+=spec-%var-i-0.L2%7%bbentry
+1 : input.spec-%var-i-0.L2%7%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
 =src.spec-ghostvar.itervar.1.L2%7%bbentry
 1 : input.src.spec-ghostvar.itervar.1.L2%7%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
+=spec-%var-n-0.L2%7%bbentry
+1 : input.spec-%var-n-0.L2%7%bbentry : BV:32
 =spec-%tmpvar-1.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =spec-%tmpvar-2.L2%7%bbentry
@@ -205,17 +207,17 @@ spec-%var-n-1
 =Loc 16 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 17 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.0
 =Loc 18 in src.spec.foo.
@@ -333,10 +335,10 @@ memlabel-mem--arg.0
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%7%bbentry for loc_id 20 {input.spec-%var-n-0.L2%7%bbentry }
 1 : input.spec-%var-n-1 : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%7%bbentry for loc_id 25 {input.spec-%var-m-0.L2%7%bbentry }
-1 : Lambda14Var : BV:32
+1 : Lambda18 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda15Var : BV:32
+4 : Lambda19 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
@@ -344,10 +346,10 @@ memlabel-mem--arg.0
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%7%bbentry for loc_id 26 {input.spec-%tmpvar-7.L2%7%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%7%bbentry for loc_id 27 {input.spec-%tmpvar-8.L2%7%bbentry }
-1 : Lambda14Var : BV:32
+1 : Lambda18 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda15Var : BV:32
+4 : Lambda19 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
@@ -427,27 +429,27 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 20
 =loc_expr
-140464 : input.spec-%var-n-0.L2%7%bbentry : BV:32
+140359 : input.spec-%var-n-0.L2%7%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-n-1 : BV:32
 =avail_exprs_val.end
 =loc 26
 =loc_expr
-140475 : input.spec-%tmpvar-7.L2%7%bbentry : BV:32
+140474 : input.spec-%tmpvar-7.L2%7%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 27
 =loc_expr
-140476 : input.spec-%tmpvar-8.L2%7%bbentry : MAP[BV:32 -> BV:32]
+140475 : input.spec-%tmpvar-8.L2%7%bbentry : MAP[BV:32 -> BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
-1 : Lambda14Var : BV:32
+1 : Lambda18 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda15Var : BV:32
+4 : Lambda19 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
@@ -469,14 +471,14 @@ discontiguous mls:
 =loc 27 expr
 1 : input.spec-%tmpvar-8.L2%7%bbentry : MAP[BV:32 -> BV:32]
 =loc 27 spreled-expr
-140480 : Lambda14Var : BV:32
+140485 : Lambda18 : BV:32
 140303 : 0 { 0x0 } : BOOL
-140482 : lambda(140480, 140303) : FUNCTION[BV:32 -> BOOL]
-140481 : Lambda15Var : BV:32
+140488 : lambda(140485, 140303) : FUNCTION[BV:32 -> BOOL]
+140491 : Lambda19 : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140483 : lambda(140481, 140276) : FUNCTION[BV:32 -> BV:32]
-140484 : map(140482, 140483) : MAP[BV:32 -> BV:32]
-140485 : sym_const(140484) : MAP[BV:32 -> BV:32]
+140492 : lambda(140491, 140276) : FUNCTION[BV:32 -> BV:32]
+140493 : map(140488, 140492) : MAP[BV:32 -> BV:32]
+140494 : sym_const(140493) : MAP[BV:32 -> BV:32]
 =loc 29 expr
 1 : input.spec-%tmpvar-1.L2%7%bbentry : BV:32
 =loc 29 spreled-expr
@@ -491,7 +493,7 @@ lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 17 lr-status in lr-status-map at call-context {*;foo}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 18 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_linearly_related(; )
 =loc_id 19 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 20 lr-status in lr-status-map at call-context {*;foo}
@@ -550,32 +552,32 @@ lr_status_linearly_related(; )
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
 =graph_with_simplified_assets.simplified_to_state at L0%0%d=>L2%7%bbentry
+=spec-%var-m-0.L2%7%bbentry
+1 : Lambda18 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda19 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-7.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-8.L2%7%bbentry
-1 : Lambda14Var : BV:32
+1 : Lambda18 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda15Var : BV:32
+4 : Lambda19 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =spec-%var-i-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%var-m-0.L2%7%bbentry
-1 : Lambda14Var : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda15Var : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=spec-%var-n-0.L2%7%bbentry
-1 : input.spec-%var-n-1 : BV:32
 =src.spec-ghostvar.itervar.1.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-n-0.L2%7%bbentry
+1 : input.spec-%var-n-1 : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%7%bbentry=>L2%8%d
 =spec-%tmpvar-0.L2%8%d
@@ -588,9 +590,9 @@ lr_status_linearly_related(; )
 =graph_with_simplified_assets.simplified_to_state at L2%8%d=>L2%10%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%9%bbentry=>E0%0%d
-=spec-%tmpvar-5.E0%0%d
-1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-10.E0%0%d
+1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
+=spec-%tmpvar-5.E0%0%d
 1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-6.E0%0%d
 1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
@@ -598,14 +600,14 @@ lr_status_linearly_related(; )
 1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%10%bbentry=>L2%7%bbentry
-=spec-%var-i-0.L2%7%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.spec-%var-i-0.L2%7%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
 =spec-%var-m-0.L2%7%bbentry
 1 : input.spec-%var-m-0.L2%7%bbentry : MAP[BV:32 -> BV:32]
 2 : input.spec-%var-i-0.L2%7%bbentry : BV:32
 3 : map_set(1, 2, 2) : MAP[BV:32 -> BV:32]
+=spec-%var-i-0.L2%7%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-i-0.L2%7%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
 =src.spec-ghostvar.itervar.1.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 2 : input.src.spec-ghostvar.itervar.1.L2%7%bbentry : BV:32

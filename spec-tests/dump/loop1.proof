@@ -3,7 +3,7 @@
 =cg_with_asm_annotation
 =cg_with_backtracker
 =cg_with_rank
-=corr_graph foo.A1.B2.C1
+=corr_graph foo.A2.B2.C1
 =src_tfg
 =TFG_SSA:
 =TFG_SPEC src.spec.foo:
@@ -21,45 +21,45 @@ L2%10%bbentry => L2%7%bbentry (backedge)
 1
 =StartState:
 =spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =state_end
 =PC to var-version map at L0%0%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%7%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%8%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%9%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at L2%10%bbentry
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =PC to var-version map at E0%0%d
 =version for spec-mem.alloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for spec-mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
@@ -82,6 +82,8 @@ L2%10%bbentry => L2%7%bbentry (backedge)
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.src.spec.foo : memlabel-mem--heap
 =Edge: L0%0%d => L2%7%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -210,17 +212,17 @@ spec-%var-n-1
 =Loc 16 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--heap
 =Loc 17 in src.spec.foo.
 MASKED
 =mem
-1 : input.spec-mem : ARRAY[BV:64 -> BV:8]
+1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =memalloc
-1 : input.spec-mem.alloc : ARRAY[BV:64 -> MEMLABEL]
+1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
 memlabel-mem--arg.0
 =Loc 18 in src.spec.foo.
@@ -468,7 +470,7 @@ lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 17 lr-status in lr-status-map at call-context {*;foo}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 18 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_linearly_related(; )
 =loc_id 19 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 20 lr-status in lr-status-map at call-context {*;foo}
@@ -657,6 +659,8 @@ Lfor.body%1%d => Lfor.cond%1%bbentry (backedge)
 =is_ssa_graph:
 1
 =StartState:
+=dst.llvm-%n
+1 : input.dst.llvm-%n : BV:32
 =dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
@@ -728,6 +732,8 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%n : 4 : 4 : 0
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
+=memlabel_map.0 for call-context {*;foo}
+mlheap.dst.llvm.foo : memlabel-mem-may-straddle-symbol.1-heap
 =Edge: L0%0%d => Lfor.cond%1%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -1038,8 +1044,8 @@ dst.cur_rounding_mode.Lfor.cond%1%bbentry
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -1140,7 +1146,7 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100006
 =loc_expr
-140315 : input.dst.llvm-%n : BV:32
+140312 : input.dst.llvm-%n : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100011
@@ -1175,7 +1181,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100021
 =loc_expr
-140314 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140315 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100026
@@ -1291,7 +1297,7 @@ lr_status_linearly_related(; )
 =loc_id 100029 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 100030 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+lr_status_linearly_related(; )
 =loc_id 100031 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 100032 lr-status in lr-status-map at call-context {*;foo}
@@ -1580,8 +1586,8 @@ Lfor.inc%2%d
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
 input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : L0%0%d : 0
-input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%n : L0%0%d : n'
+input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%r.0 : Lfor.cond%1%bbentry : r'
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%i.0.phi.tmpvar.entry : L0%0%d : 1
@@ -2245,10 +2251,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =VarnameToLRStatus Begin:
 =LR status for var input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%n
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%add.Lfor.cond%1%bbentry
@@ -2270,7 +2276,7 @@ lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%cmp.Lfor.cond%2%d
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%ret-reg.E0%0%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-indir_tgt.E0%0%d
@@ -2452,6 +2458,11 @@ precond-mlasserts
 15 : and(9, 14) : BOOL
 16 : eq(10, 1) : BOOL
 17 : and(15, 16) : BOOL
+18 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+19 : 1 { 0x1 +1.11e129 } : BV:32
+20 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
+22 : and(17, 21) : BOOL
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2471,9 +2482,9 @@ arg-location-contents-are-consistent-with-arg-value
 =predicate done
 =graph_with_precondition_done
 
-=Locs in foo.A1.B2.C1
+=Locs in foo.A2.B2.C1
 =Locs end
-=Liveness in foo.A1.B2.C1
+=Liveness in foo.A2.B2.C1
 =live locs at L0%0%d_L0%0%d
 
 =live locs at L2%7%bbentry_Lfor.cond%1%bbentry
@@ -2481,16 +2492,16 @@ arg-location-contents-are-consistent-with-arg-value
 =live locs at E0%0%d_E0%0%d
 
 
-=Definedness in foo.A1.B2.C1
+=Definedness in foo.A2.B2.C1
 
-=Branch affecting variable locs in foo.A1.B2.C1
+=Branch affecting variable locs in foo.A2.B2.C1
 
-=Relevant Memlabels in foo.A1.B2.C1
+=Relevant Memlabels in foo.A2.B2.C1
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -2503,10 +2514,10 @@ memlabel-mem-may-straddle-symbol.1-heap
 =graph_with_ml_contiguity_info discontiguous mls
 discontiguous mls:
 =graph_with_ml_contiguity_info done
-=Available expressions in foo.A1.B2.C1
+=Available expressions in foo.A2.B2.C1
 =avail_exprs begin
 =avail_exprs end
-=sprel_map in foo.A1.B2.C1
+=sprel_map in foo.A2.B2.C1
 =sprel_map done
 =lr-status-map
 =lr-status-map done
@@ -2518,26 +2529,26 @@ discontiguous mls:
 =graph_with_proofs done
 =global counterexamples for reason inductive-invariants
 =global nodece 0
-=global nodece 0 nodece cvc4.ce3.num_edges_traversed1
+=global nodece 0 nodece z3v487.ce3.num_edges_traversed1
 =global nodece 0 nodece_path
 =global nodece 0 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin cvc4.ce3 9056cc364d68f49ad436d5c5149d3f
+=counter_example_begin z3v487.ce3 a7ea5661563d2e5fcd47e653cfb5f
 =input.spec-%var-n-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.dst.llvm-%n
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.local_alloc_count.=L0%0%d=
 1 : 2109537953 { 0x7dbcfea1 +1.47652065e124 } : COUNT
 =input.spec-%var-n-0.L2%7%bbentry
@@ -2565,9 +2576,9 @@ discontiguous mls:
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
 1923208494
 =counter_example_end
@@ -2575,22 +2586,22 @@ discontiguous mls:
 =global nodece 0 nodece_visted_pcs: 
 L0%0%d_L0%0%d -> L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 1
-=global nodece 1 nodece z3v487.ce4.num_edges_traversed0
+=global nodece 1 nodece cvc4.ce4.num_edges_traversed0
 =global nodece 1 nodece_path
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin z3v487.ce4 69e479db551c26bdc978e2dab3f9842
+=counter_example_begin cvc4.ce4 9629babd786953df644d5eadbd83aba2
 =input.spec-%var-n-1
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%n
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
@@ -2600,9 +2611,9 @@ L0%0%d_L0%0%d -> L2%7%bbentry_Lfor.cond%1%bbentry
 =input.spec-%tmpvar-1.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
 1957747793
 =counter_example_end
@@ -2615,17 +2626,17 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce5 8244e56f46817585ed8afdc07e6f84
+=counter_example_begin yices.ce5 b63caaddcd3856b72b9d64e49a884
 =input.spec-%var-n-1
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%n
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
@@ -2635,9 +2646,9 @@ L0%0%d_L0%0%d
 =input.spec-%tmpvar-1.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
 424238335
 =counter_example_end
@@ -2645,28 +2656,28 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_visted_pcs: 
 L0%0%d_L0%0%d
 =global nodece 3
-=global nodece 3 nodece cvc4.ce39.num_edges_traversed1
+=global nodece 3 nodece cvc4.ce36.num_edges_traversed1
 =global nodece 3 nodece_path
 =global nodece 3 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 3 nodece_cached_counterexample
-=counter_example_begin cvc4.ce39 6c438b71f5ea12c5b4f6bd8090b0a540
+=counter_example_begin cvc4.ce36 ce7a13acf9c5ba3c7e11e152d0a8228d
 =input.spec-%var-n-1
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 40959 ] -> 0, [ 40960; 40960 ] -> 1, [ 40961; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 40959 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 40960; 40963 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 40964; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
 =input.dst.llvm-%n
 1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 2147483647 ] -> 0, [ 2147483648; 2147483648 ] -> 1, [ 2147483649; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.local_alloc_count.=L0%0%d=
-1 : 1025143396 { 0x3d1a7264 +1.20661592e251 } : COUNT
+1 : 26378497 { 0x1928101 +1.14456188e132 } : COUNT
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -2688,42 +2699,42 @@ L0%0%d_L0%0%d
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 1025143396 { 0x3d1a7264 +1.20661592e251 } : COUNT
+1 : 26378497 { 0x1928101 +1.14456188e132 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 40963 { 0xa003 +1.488317e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-2321869953
+1359071364
 =counter_example_end
 =global nodece 3 num_edges_traversed 1
 =global nodece 3 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 4
-=global nodece 4 nodece z3v487.ce40.num_edges_traversed1
+=global nodece 4 nodece z3v487.ce37.num_edges_traversed1
 =global nodece 4 nodece_path
 =global nodece 4 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 4 nodece_cached_counterexample
-=counter_example_begin z3v487.ce40 5f94b6ee664981f70ea87de42a08768
+=counter_example_begin z3v487.ce37 823dd75eca55da79dcb342e3f05b167b
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 0 ] -> 255, [ 1; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 255 { 0xff +1.3039e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 1073741823 ] -> 0, [ 1073741824; 1073741824 ] -> 255, [ 1073741825; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.local_alloc_count.=L0%0%d=
-1 : 633645325 { 0x25c4a90d +1.53640902e204 } : COUNT
+1 : 2092173037 { 0x7cb406ed +1.40646135e122 } : COUNT
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -2745,42 +2756,42 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 633645325 { 0x25c4a90d +1.53640902e204 } : COUNT
+1 : 2092173037 { 0x7cb406ed +1.40646135e122 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
-3641508616
+183319063
 =counter_example_end
 =global nodece 4 num_edges_traversed 1
 =global nodece 4 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 5
-=global nodece 5 nodece yices.ce41.num_edges_traversed1
+=global nodece 5 nodece yices.ce38.num_edges_traversed1
 =global nodece 5 nodece_path
 =global nodece 5 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 5 nodece_cached_counterexample
-=counter_example_begin yices.ce41 d6c83132d22347f9f9be57eaea6926a
+=counter_example_begin yices.ce38 312d534f5822f9429e3a4aca75acac14
 =input.spec-%var-n-1
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 2 ] -> 0, [ 3; 3 ] -> 128, [ 4; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 2147483650 ] -> 0, [ 2147483651; 2147483651 ] -> 128, [ 2147483652; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.local_alloc_count.=L0%0%d=
-1 : 703853482 { 0x29f3f3aa +1.90587353e212 } : COUNT
+1 : 1902036826 { 0x715ec75a +1.74045872e99 } : COUNT
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -2802,36 +2813,36 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 703853482 { 0x29f3f3aa +1.90587353e212 } : COUNT
+1 : 1902036826 { 0x715ec75a +1.74045872e99 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-464163488
+2136620830
 =counter_example_end
 =global nodece 5 num_edges_traversed 1
 =global nodece 5 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 6
-=global nodece 6 nodece cvc4.ce75.num_edges_traversed0
+=global nodece 6 nodece cvc4.ce69.num_edges_traversed0
 =global nodece 6 nodece_path
 =global nodece 6 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 6 nodece_cached_counterexample
-=counter_example_begin cvc4.ce75 98893f13e71e65f6dcc8477864cc69cc
+=counter_example_begin cvc4.ce69 d74bea7247b23370e273f84a905ed5fc
 =input.spec-%var-n-1
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 40959 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 40960; 40963 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 40964; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
 =input.dst.llvm-%n
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -2847,32 +2858,32 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 40963 { 0xa003 +1.488317e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-1548233367
+1433925857
 =counter_example_end
 =global nodece 6 num_edges_traversed 0
 =global nodece 6 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 7
-=global nodece 7 nodece z3v487.ce76.num_edges_traversed0
+=global nodece 7 nodece z3v487.ce70.num_edges_traversed0
 =global nodece 7 nodece_path
 =global nodece 7 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 7 nodece_cached_counterexample
-=counter_example_begin z3v487.ce76 a39f93302582b89ee5387805e1b64af
+=counter_example_begin z3v487.ce70 3cda2a1a9b6285f1ce14a1e3f906d53
 =input.spec-%var-n-1
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 511 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 512; 515 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 516; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 512 { 0x200 +1.6103e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -2888,32 +2899,32 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 512 { 0x200 +1.6103e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 515 { 0x203 +1.6139e129 } : BV:32
 =counter_example.random_seed
-610515434
+1141616124
 =counter_example_end
 =global nodece 7 num_edges_traversed 0
 =global nodece 7 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 8
-=global nodece 8 nodece yices.ce77.num_edges_traversed0
+=global nodece 8 nodece yices.ce71.num_edges_traversed0
 =global nodece 8 nodece_path
 =global nodece 8 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 8 nodece_cached_counterexample
-=counter_example_begin yices.ce77 2932a0744bfebbbdacdf6175d9e32
+=counter_example_begin yices.ce71 52d99cbdfea56c85447d493908fb7fe
 =input.spec-%var-n-1
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -2929,36 +2940,36 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-1585990364
+84353895
 =counter_example_end
 =global nodece 8 num_edges_traversed 0
 =global nodece 8 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 9
-=global nodece 9 nodece cvc4.ce131.num_edges_traversed2
+=global nodece 9 nodece cvc4.ce125.num_edges_traversed2
 =global nodece 9 nodece_path
 =global nodece 9 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 9 nodece_cached_counterexample
-=counter_example_begin cvc4.ce131 ae40243c95ab25977daeaede288d9b8f
+=counter_example_begin cvc4.ce125 27c454fb97b5b578b7bebdaf8b4bfca6
 =input.spec-%var-n-1
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 40959 ] -> 0, [ 40960; 40960 ] -> 1, [ 40961; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 40959 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 40960; 40963 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 40964; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
 =input.dst.llvm-%n
 1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 2147483647 ] -> 0, [ 2147483648; 2147483648 ] -> 1, [ 2147483649; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -2978,40 +2989,40 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 1025143396 { 0x3d1a7264 +1.20661592e251 } : COUNT
+1 : 26378497 { 0x1928101 +1.14456188e132 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 40963 { 0xa003 +1.488317e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-2321869953
+1359071364
 =counter_example_end
 =global nodece 9 num_edges_traversed 2
 =global nodece 9 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 10
-=global nodece 10 nodece z3v487.ce121.num_edges_traversed2
+=global nodece 10 nodece z3v487.ce115.num_edges_traversed2
 =global nodece 10 nodece_path
 =global nodece 10 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 10 nodece_cached_counterexample
-=counter_example_begin z3v487.ce121 14538a3cd8d24fb8cff7a0fe27f3ba
+=counter_example_begin z3v487.ce115 2cd71f7decf4b0276677cd8aa189d4a
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 0 ] -> 255, [ 1; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 255 { 0xff +1.3039e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 1073741823 ] -> 0, [ 1073741824; 1073741824 ] -> 255, [ 1073741825; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -3031,40 +3042,40 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 633645325 { 0x25c4a90d +1.53640902e204 } : COUNT
+1 : 2092173037 { 0x7cb406ed +1.40646135e122 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
-3641508616
+183319063
 =counter_example_end
 =global nodece 10 num_edges_traversed 2
 =global nodece 10 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 11
-=global nodece 11 nodece z3v487.ce155.num_edges_traversed3
+=global nodece 11 nodece z3v487.ce149.num_edges_traversed3
 =global nodece 11 nodece_path
 =global nodece 11 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 11 nodece_cached_counterexample
-=counter_example_begin z3v487.ce155 c23cb542a578227bb8e14d93a5e2b55
+=counter_example_begin z3v487.ce149 dac7a42ae62f3c7cb4c3b14c8d78bc32
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 0 ] -> 255, [ 1; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 255 { 0xff +1.3039e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 1073741823 ] -> 0, [ 1073741824; 1073741824 ] -> 255, [ 1073741825; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -3084,40 +3095,40 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 633645325 { 0x25c4a90d +1.53640902e204 } : COUNT
+1 : 2092173037 { 0x7cb406ed +1.40646135e122 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
-3641508616
+183319063
 =counter_example_end
 =global nodece 11 num_edges_traversed 3
 =global nodece 11 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 12
-=global nodece 12 nodece z3v487.ce176.num_edges_traversed4
+=global nodece 12 nodece z3v487.ce169.num_edges_traversed4
 =global nodece 12 nodece_path
 =global nodece 12 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 12 nodece_cached_counterexample
-=counter_example_begin z3v487.ce176 3032c6f610a7bbff6957b568011fa5c
+=counter_example_begin z3v487.ce169 cd26755b17029d06e153b307da51d34
 =input.spec-%var-n-1
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.dst.llvm-%r.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 4 { 0x4 +1.47e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 0 ] -> 255, [ 1; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 255 { 0xff +1.3039e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 1073741823 ] -> 0, [ 1073741824; 1073741824 ] -> 255, [ 1073741825; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 255 { 0xff +1.3039e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -3137,42 +3148,42 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 633645325 { 0x25c4a90d +1.53640902e204 } : COUNT
+1 : 2092173037 { 0x7cb406ed +1.40646135e122 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
-3641508616
+183319063
 =counter_example_end
 =global nodece 12 num_edges_traversed 4
 =global nodece 12 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 13
-=global nodece 13 nodece cvc4.ce107.num_edges_traversed1
+=global nodece 13 nodece cvc4.ce101.num_edges_traversed1
 =global nodece 13 nodece_path
 =global nodece 13 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 13 nodece_cached_counterexample
-=counter_example_begin cvc4.ce107 f784193afcededf42c745da252674773
+=counter_example_begin cvc4.ce101 d6f63168f4b2168a180fac76a179886
 =input.spec-%var-n-1
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 40959 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 40960; 40963 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 40964; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
 =input.dst.llvm-%n
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%7%bbentry
-1 : 1878340837 { 0x6ff534e5 +1.91567671e96 } : BV:32
+1 : 1309763985 { 0x4e116991 +1.13603413e29 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-8.L2%7%bbentry
@@ -3182,40 +3193,40 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 2011334925 { 0x77e2890d +1.76980745e112 } : BV:32
+1 : 251177338 { 0xef8a97a +1.94267201e158 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 40963 { 0xa003 +1.488317e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-2317828223
+80790665
 =counter_example_end
 =global nodece 13 num_edges_traversed 1
 =global nodece 13 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 14
-=global nodece 14 nodece cvc4.ce200.num_edges_traversed2
+=global nodece 14 nodece cvc4.ce192.num_edges_traversed2
 =global nodece 14 nodece_path
 =global nodece 14 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 14 nodece_cached_counterexample
-=counter_example_begin cvc4.ce200 82e0e9763d522cb14528cd2e72ff919
+=counter_example_begin cvc4.ce192 47f24b51665fa3ce9f618b2b4c911b
 =input.spec-%var-n-1
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 40959 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 40960; 40963 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 40964; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
 =input.dst.llvm-%n
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%7%bbentry
-1 : 1878340838 { 0x6ff534e6 +1.91567683e96 } : BV:32
+1 : 1309763986 { 0x4e116992 +1.13603425e29 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-8.L2%7%bbentry
@@ -3225,34 +3236,34 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 2011334926 { 0x77e2890e +1.76980757e112 } : BV:32
+1 : 251177339 { 0xef8a97b +1.94267213e158 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 40963 { 0xa003 +1.488317e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-2317828223
+80790665
 =counter_example_end
 =global nodece 14 num_edges_traversed 2
 =global nodece 14 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 15
-=global nodece 15 nodece z3v487.ce226.num_edges_traversed1
+=global nodece 15 nodece z3.ce216.num_edges_traversed1
 =global nodece 15 nodece_path
 =global nodece 15 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 15 nodece_cached_counterexample
-=counter_example_begin z3v487.ce226 87916cd1f4b6a43a528421ecee10f0b5
+=counter_example_begin z3.ce216 7d6227e43e6e2d6c83739b9e116ae18
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.llvm-%add.Lfor.cond%1%bbentry
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
@@ -3262,7 +3273,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.spec-%tmpvar-0.L2%8%d
 1 : 0 { 0x0 } : BOOL
 =input.src.spec-ghostvar.itervar.1.L2%7%bbentry
-1 : 907395522 { 0x3615c1c2 +1.16997551e237 } : BV:32
+1 : 1065371949 { 0x3f80492d +1.223314e0 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-8.L2%7%bbentry
@@ -3278,7 +3289,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 896629329 { 0x35717a51 +1.88654530e235 } : BV:32
+1 : 2104676366 { 0x7d72d00e +1.89697432e123 } : BV:32
 =input.dst.llvm-%cmp.Lfor.cond%2%d
 1 : 1 { 0x1 } : BOOL
 =input.dst.llvm-%inc.Lfor.cond%1%bbentry
@@ -3288,38 +3299,38 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.phi.tmpvar.for.inc.Lfor.cond%1%bbentry
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-200967382
+465539552
 =counter_example_end
 =global nodece 15 num_edges_traversed 1
 =global nodece 15 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 16
-=global nodece 16 nodece z3v487.ce258.num_edges_traversed2
+=global nodece 16 nodece z3.ce247.num_edges_traversed2
 =global nodece 16 nodece_path
 =global nodece 16 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 16 nodece_cached_counterexample
-=counter_example_begin z3v487.ce258 3e5bc1381a1ee6b827c1ded4cc3df61
+=counter_example_begin z3.ce247 2bb264cda43be4881398f3705feba0
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 2147483649 { 0x80000001 -2147483647 -1.11e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%7%bbentry
-1 : 907395523 { 0x3615c1c3 +1.16997563e237 } : BV:32
+1 : 1065371950 { 0x3f80492e +1.223326e0 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-8.L2%7%bbentry
@@ -3329,34 +3340,34 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 896629330 { 0x35717a52 +1.88654541e235 } : BV:32
+1 : 2104676367 { 0x7d72d00f +1.89697444e123 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-200967382
+465539552
 =counter_example_end
 =global nodece 16 num_edges_traversed 2
 =global nodece 16 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 17
-=global nodece 17 nodece z3.ce302.num_edges_traversed1
+=global nodece 17 nodece z3.ce289.num_edges_traversed1
 =global nodece 17 nodece_path
 =global nodece 17 nodece_path.graph_edge_composition
 (L2%7%bbentry_Lfor.cond%1%bbentry=>L2%7%bbentry_Lfor.cond%1%bbentry)
 =global nodece 17 nodece_cached_counterexample
-=counter_example_begin z3.ce302 2b73a237d419dde9b3844792f23b3
+=counter_example_begin z3.ce289 1a32d1270b388a8f8df3efdc45ce73
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.llvm-%add.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
@@ -3366,7 +3377,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.spec-%tmpvar-0.L2%8%d
 1 : 0 { 0x0 } : BOOL
 =input.src.spec-ghostvar.itervar.1.L2%7%bbentry
-1 : 847395379 { 0x32823a33 +1.1740109e230 } : BV:32
+1 : 21769288 { 0x14c2c48 +1.59510135e131 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-8.L2%7%bbentry
@@ -3382,7 +3393,7 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 900439795 { 0x35ab9ef3 +1.34078824e236 } : BV:32
+1 : 1515155830 { 0x5a4f7176 +1.62065005e53 } : BV:32
 =input.dst.llvm-%cmp.Lfor.cond%2%d
 1 : 1 { 0x1 } : BOOL
 =input.dst.llvm-%inc.Lfor.cond%1%bbentry
@@ -3392,38 +3403,38 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.phi.tmpvar.for.inc.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-4081800860
+1514823601
 =counter_example_end
 =global nodece 17 num_edges_traversed 1
 =global nodece 17 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 18
-=global nodece 18 nodece z3.ce334.num_edges_traversed2
+=global nodece 18 nodece z3.ce320.num_edges_traversed2
 =global nodece 18 nodece_path
 =global nodece 18 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 18 nodece_cached_counterexample
-=counter_example_begin z3.ce334 40e44c158cefae76269b27725b38894
+=counter_example_begin z3.ce320 decbc15a288a9343c9e77298c3cee37a
 =input.spec-%var-n-1
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 2147483647 { 0x7fffffff +1.99999988e128 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.src.spec-ghostvar.itervar.1.L2%7%bbentry
-1 : 847395380 { 0x32823a34 +1.1740121e230 } : BV:32
+1 : 21769289 { 0x14c2c49 +1.59510147e131 } : BV:32
 =input.spec-%tmpvar-7.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-8.L2%7%bbentry
@@ -3433,34 +3444,34 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-1 : 900439796 { 0x35ab9ef4 +1.34078836e236 } : BV:32
+1 : 1515155831 { 0x5a4f7177 +1.62065017e53 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-4081800860
+1514823601
 =counter_example_end
 =global nodece 18 num_edges_traversed 2
 =global nodece 18 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 19
-=global nodece 19 nodece cvc4.ce378.num_edges_traversed0
+=global nodece 19 nodece cvc4.ce362.num_edges_traversed0
 =global nodece 19 nodece_path
 =global nodece 19 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 19 nodece_cached_counterexample
-=counter_example_begin cvc4.ce378 8410cd8acc755688cc43c6ad829a43b
+=counter_example_begin cvc4.ce362 6184f0ba23b24feda57e929f8d227
 =input.spec-%var-n-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 40959 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 40960; 40963 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 40964; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
 =input.dst.llvm-%n
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -3476,32 +3487,32 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 40960 { 0xa000 +1.488281e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 40963 { 0xa003 +1.488317e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-2114937732
+1414647625
 =counter_example_end
 =global nodece 19 num_edges_traversed 0
 =global nodece 19 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 20
-=global nodece 20 nodece z3v487.ce379.num_edges_traversed0
+=global nodece 20 nodece z3v487.ce363.num_edges_traversed0
 =global nodece 20 nodece_path
 =global nodece 20 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 20 nodece_cached_counterexample
-=counter_example_begin z3v487.ce379 575fcbf6b7cbfcc64af882aa1fe4eb
+=counter_example_begin z3v487.ce363 3bf433381b8c52181c89c1f87db2f
 =input.spec-%var-n-1
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 2147483649 { 0x80000001 -2147483647 -1.11e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -3517,32 +3528,32 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
-726371155
+1635905385
 =counter_example_end
 =global nodece 20 num_edges_traversed 0
 =global nodece 20 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 21
-=global nodece 21 nodece yices.ce380.num_edges_traversed0
+=global nodece 21 nodece yices.ce364.num_edges_traversed0
 =global nodece 21 nodece_path
 =global nodece 21 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 21 nodece_cached_counterexample
-=counter_example_begin yices.ce380 61fd9b45b163c963c109e6ea9e523
+=counter_example_begin yices.ce364 373d7c1718e8766b121dcec01178d5e
 =input.spec-%var-n-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -3558,22 +3569,22 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-1927495994
+1046741222
 =counter_example_end
 =global nodece 21 num_edges_traversed 0
 =global nodece 21 nodece_visted_pcs: 
 L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 22
-=global nodece 22 nodece cvc4.ce593.num_edges_traversed2
+=global nodece 22 nodece z3v487.ce577.num_edges_traversed2
 =global nodece 22 nodece_path
 =global nodece 22 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 22 nodece_cached_counterexample
-=counter_example_begin cvc4.ce593 c595fade7d88ab6195a3d3382aa2bfa
+=counter_example_begin z3v487.ce577 9ea060d5cd4d7ca5892de9d49a9845eb
 =retaddr_const
 1 : 1458985843 { 0x56f65b73 +1.92466580e46 } : BV:32
 =input.spec-%var-n-1
@@ -3584,14 +3595,14 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.dst.llvm-%n
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-r-0.L2%7%bbentry
@@ -3631,9 +3642,9 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
 1700232902
 =counter_example_end
@@ -3641,14 +3652,14 @@ L2%7%bbentry_Lfor.cond%1%bbentry
 =global nodece 22 nodece_visted_pcs: 
 E0%0%d_E0%0%d
 =global nodece 23
-=global nodece 23 nodece yices.ce563.num_edges_traversed2
+=global nodece 23 nodece yices.ce547.num_edges_traversed2
 =global nodece 23 nodece_path
 =global nodece 23 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 23 nodece_cached_counterexample
-=counter_example_begin yices.ce563 37884b1e7125494fd9825e62a9a47c7
+=counter_example_begin yices.ce547 2c8aaf69ae91a1448e4b83373c3fbd8a
 =retaddr_const
-1 : 14228075 { 0xd91a6b +1.69611871e130 } : BV:32
+1 : 2110476754 { 0x7dcb51d2 +1.58843445e124 } : BV:32
 =input.spec-%var-n-1
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%tmpvar-6.E0%0%d
@@ -3657,13 +3668,13 @@ E0%0%d_E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L2%7%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 2 ] -> 0, [ 3; 3 ] -> 128, [ 4; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 4; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 2147483650 ] -> 0, [ 2147483651; 2147483651 ] -> 128, [ 2147483652; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-n-0.L2%7%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
@@ -3694,21 +3705,21 @@ E0%0%d_E0%0%d
 =input.dst.llvm-%ret-reg.E0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-indir_tgt.E0%0%d
-1 : 14228075 { 0xd91a6b +1.69611871e130 } : BV:32
+1 : 2110476754 { 0x7dcb51d2 +1.58843445e124 } : BV:32
 =input.dst.llvm-%hidden-reg.E0%0%d
-1 : 1369187926 { 0x519c2656 +1.21991991e36 } : BV:32
+1 : 1082105780 { 0x407f9fb4 +1.99706125e1 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.local_alloc_count.Lfor.cond%1%bbentry
-1 : 703853482 { 0x29f3f3aa +1.90587353e212 } : COUNT
+1 : 1902036826 { 0x715ec75a +1.74045872e99 } : COUNT
 =input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3 { 0x3 +1.35e129 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =counter_example.random_seed
-3994172024
+570861238
 =counter_example_end
 =global nodece 23 num_edges_traversed 2
 =global nodece 23 nodece_visted_pcs: 
@@ -3734,6 +3745,11 @@ E0%0%d_E0%0%d
 15 : and(9, 14) : BOOL
 16 : eq(10, 1) : BOOL
 17 : and(15, 16) : BOOL
+18 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+19 : 1 { 0x1 +1.11e129 } : BV:32
+20 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
+22 : and(17, 21) : BOOL
 =inductive-invariants point_set point_expr 2
 1 : input.spec-%var-n-1 : BV:32
 =inductive-invariants point_set point_expr 3
@@ -3782,79 +3798,9 @@ E0%0%d_E0%0%d
 3 : bvule(1, 2) : BOOL
 =inductive-invariants point_set global exprs map done
 =inductive-invariants point_set points
-=inductive-invariants point_set point cvc4.ce3
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 2 for input.spec-%var-n-1
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 3 for input.spec-%var-i-0.L2%7%bbentry
-1
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 4 for input.spec-%var-n-0.L2%7%bbentry
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 5 for input.spec-%var-r-0.L2%7%bbentry
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 6 for input.dst.llvm-%n
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-1
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 done
-=inductive-invariants point_set point z3v487.ce4
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 2 for input.spec-%var-n-1
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 3 for input.spec-%var-i-0.L2%7%bbentry
-1
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 4 for input.spec-%var-n-0.L2%7%bbentry
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 5 for input.spec-%var-r-0.L2%7%bbentry
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 6 for input.dst.llvm-%n
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-1
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 done
 =inductive-invariants point_set point yices.ce5
 =inductive-invariants point_set point yices.ce5 expr point yices.ce5
-=inductive-invariants point_set point yices.ce5 expr point yices.ce5 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point yices.ce5 expr point yices.ce5 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
 =inductive-invariants point_set point yices.ce5 expr point yices.ce5 val 2 for input.spec-%var-n-1
 0
@@ -3887,461 +3833,531 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point yices.ce5 expr point yices.ce5 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
 =inductive-invariants point_set point yices.ce5 expr point yices.ce5 done
-=inductive-invariants point_set point cvc4.ce39
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point z3v487.ce3
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 2 for input.spec-%var-n-1
-1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 3 for input.spec-%var-i-0.L2%7%bbentry
-1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 4 for input.spec-%var-n-0.L2%7%bbentry
-1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 2 for input.spec-%var-n-1
 0
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 3 for input.spec-%var-i-0.L2%7%bbentry
 1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 4 for input.spec-%var-n-0.L2%7%bbentry
 0
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 5 for input.spec-%var-r-0.L2%7%bbentry
 0
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 6 for input.dst.llvm-%n
 0
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 0
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+1
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 done
+=inductive-invariants point_set point cvc4.ce4
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 2 for input.spec-%var-n-1
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 3 for input.spec-%var-i-0.L2%7%bbentry
 1
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 done
-=inductive-invariants point_set point z3v487.ce40
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 4 for input.spec-%var-n-0.L2%7%bbentry
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 5 for input.spec-%var-r-0.L2%7%bbentry
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 6 for input.dst.llvm-%n
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 done
+=inductive-invariants point_set point cvc4.ce36
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 2 for input.spec-%var-n-1
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 3 for input.spec-%var-i-0.L2%7%bbentry
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 4 for input.spec-%var-n-0.L2%7%bbentry
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 5 for input.spec-%var-r-0.L2%7%bbentry
+0
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 6 for input.dst.llvm-%n
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point cvc4.ce36 expr point cvc4.ce36 done
+=inductive-invariants point_set point z3v487.ce37
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
+1
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 2 for input.spec-%var-n-1
 255
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 3 for input.spec-%var-i-0.L2%7%bbentry
 1
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 4 for input.spec-%var-n-0.L2%7%bbentry
 255
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 5 for input.spec-%var-r-0.L2%7%bbentry
 0
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 6 for input.dst.llvm-%n
 255
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 0
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 done
-=inductive-invariants point_set point yices.ce41
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point z3v487.ce37 expr point z3v487.ce37 done
+=inductive-invariants point_set point yices.ce38
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 2 for input.spec-%var-n-1
 2147483648
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 3 for input.spec-%var-i-0.L2%7%bbentry
 1
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 4 for input.spec-%var-n-0.L2%7%bbentry
 2147483648
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 5 for input.spec-%var-r-0.L2%7%bbentry
 0
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 6 for input.dst.llvm-%n
 2147483648
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 0
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 done
-=inductive-invariants point_set point yices.ce87
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point yices.ce38 expr point yices.ce38 done
+=inductive-invariants point_set point yices.ce81
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 2 for input.spec-%var-n-1
 1073741824
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 3 for input.spec-%var-i-0.L2%7%bbentry
 2
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 4 for input.spec-%var-n-0.L2%7%bbentry
 1073741824
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 5 for input.spec-%var-r-0.L2%7%bbentry
 1
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 6 for input.dst.llvm-%n
 1073741824
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 2
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce87 expr point yices.ce87 done
-=inductive-invariants point_set point z3v487.ce97
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point yices.ce81 expr point yices.ce81 done
+=inductive-invariants point_set point z3v487.ce91
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 2 for input.spec-%var-n-1
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 3 for input.spec-%var-i-0.L2%7%bbentry
 2
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 4 for input.spec-%var-n-0.L2%7%bbentry
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 5 for input.spec-%var-r-0.L2%7%bbentry
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 6 for input.dst.llvm-%n
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 2
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point z3v487.ce97 expr point z3v487.ce97 done
-=inductive-invariants point_set point z3v487.ce155
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point z3v487.ce91 expr point z3v487.ce91 done
+=inductive-invariants point_set point z3v487.ce149
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 2 for input.spec-%var-n-1
 255
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 3 for input.spec-%var-i-0.L2%7%bbentry
 3
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 4 for input.spec-%var-n-0.L2%7%bbentry
 255
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 5 for input.spec-%var-r-0.L2%7%bbentry
 3
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 6 for input.dst.llvm-%n
 255
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 3
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 3
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce155 expr point z3v487.ce155 done
-=inductive-invariants point_set point cvc4.ce107
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point z3v487.ce149 expr point z3v487.ce149 done
+=inductive-invariants point_set point cvc4.ce101
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 2 for input.spec-%var-n-1
 1073741824
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 3 for input.spec-%var-i-0.L2%7%bbentry
 2
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 4 for input.spec-%var-n-0.L2%7%bbentry
 1073741824
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 5 for input.spec-%var-r-0.L2%7%bbentry
 1
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 6 for input.dst.llvm-%n
 1073741824
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 1
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 2
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point cvc4.ce107 expr point cvc4.ce107 done
-=inductive-invariants point_set point cvc4.ce227
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point cvc4.ce101 expr point cvc4.ce101 done
+=inductive-invariants point_set point z3.ce216
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 2 for input.spec-%var-n-1
 2147483647
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 3 for input.spec-%var-i-0.L2%7%bbentry
 2147483648
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 4 for input.spec-%var-n-0.L2%7%bbentry
 2147483647
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 5 for input.spec-%var-r-0.L2%7%bbentry
 2147483647
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 6 for input.dst.llvm-%n
 2147483647
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 2147483647
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 2147483648
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point cvc4.ce227 expr point cvc4.ce227 done
-=inductive-invariants point_set point z3v487.ce226
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point z3.ce216 expr point z3.ce216 done
+=inductive-invariants point_set point yices.ce218
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 2 for input.spec-%var-n-1
 2147483647
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 3 for input.spec-%var-i-0.L2%7%bbentry
 2147483648
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 4 for input.spec-%var-n-0.L2%7%bbentry
 2147483647
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 5 for input.spec-%var-r-0.L2%7%bbentry
 2147483647
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 6 for input.dst.llvm-%n
 2147483647
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 2147483647
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 2147483648
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point z3v487.ce226 expr point z3v487.ce226 done
-=inductive-invariants point_set point yices.ce228
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point yices.ce218 expr point yices.ce218 done
+=inductive-invariants point_set point cvc4.ce217
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 2 for input.spec-%var-n-1
 2147483647
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 3 for input.spec-%var-i-0.L2%7%bbentry
 2147483648
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 4 for input.spec-%var-n-0.L2%7%bbentry
 2147483647
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 5 for input.spec-%var-r-0.L2%7%bbentry
 2147483647
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 6 for input.dst.llvm-%n
 2147483647
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 2147483647
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 2147483648
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 1
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 0
-=inductive-invariants point_set point yices.ce228 expr point yices.ce228 done
-=inductive-invariants point_set point yices.ce304
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
+=inductive-invariants point_set point cvc4.ce217 expr point cvc4.ce217 done
+=inductive-invariants point_set point cvc4.ce290
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
 1
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 2 for input.spec-%var-n-1
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 3 for input.spec-%var-i-0.L2%7%bbentry
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 4 for input.spec-%var-n-0.L2%7%bbentry
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 5 for input.spec-%var-r-0.L2%7%bbentry
-4294967295
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 6 for input.dst.llvm-%n
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
-4294967295
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point yices.ce304 expr point yices.ce304 done
-=inductive-invariants point_set point cvc4.ce303
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 2 for input.spec-%var-n-1
-33456031
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 3 for input.spec-%var-i-0.L2%7%bbentry
-0
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 4 for input.spec-%var-n-0.L2%7%bbentry
-33456031
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 5 for input.spec-%var-r-0.L2%7%bbentry
-4294967295
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 6 for input.dst.llvm-%n
-33456031
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
-4294967295
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point cvc4.ce303 expr point cvc4.ce303 done
-=inductive-invariants point_set point z3.ce302
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 1 for and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))
-1
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 2 for input.spec-%var-n-1
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 2 for input.spec-%var-n-1
 2147483647
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 3 for input.spec-%var-i-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 3 for input.spec-%var-i-0.L2%7%bbentry
 0
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 4 for input.spec-%var-n-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 4 for input.spec-%var-n-0.L2%7%bbentry
 2147483647
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 5 for input.spec-%var-r-0.L2%7%bbentry
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 5 for input.spec-%var-r-0.L2%7%bbentry
 4294967295
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 6 for input.dst.llvm-%n
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 6 for input.dst.llvm-%n
 2147483647
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
 4294967295
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 0
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3.ce302 expr point z3.ce302 done
+=inductive-invariants point_set point cvc4.ce290 expr point cvc4.ce290 done
+=inductive-invariants point_set point z3.ce289
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
+1
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 2 for input.spec-%var-n-1
+2147483647
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 3 for input.spec-%var-i-0.L2%7%bbentry
+0
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 4 for input.spec-%var-n-0.L2%7%bbentry
+2147483647
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 5 for input.spec-%var-r-0.L2%7%bbentry
+4294967295
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 6 for input.dst.llvm-%n
+2147483647
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+4294967295
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce289 expr point z3.ce289 done
+=inductive-invariants point_set point yices.ce291
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-heap))
+1
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 2 for input.spec-%var-n-1
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 3 for input.spec-%var-i-0.L2%7%bbentry
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 4 for input.spec-%var-n-0.L2%7%bbentry
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 5 for input.spec-%var-r-0.L2%7%bbentry
+4294967295
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 6 for input.dst.llvm-%n
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 7 for input.dst.llvm-%r.0.Lfor.cond%1%bbentry
+4294967295
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 8 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 9 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 10 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 11 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 12 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 13 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 14 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 15 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 val 16 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point yices.ce291 expr point yices.ce291 done
 =inductive-invariants point_set points done
 =out-of-bound-exprs for reason inductive-invariants
 =out-of-bound-exprs for reason inductive-invariants at L0%0%d_L0%0%d
@@ -4390,6 +4406,11 @@ is_stable 1
 15 : and(9, 14) : BOOL
 16 : eq(10, 1) : BOOL
 17 : and(15, 16) : BOOL
+18 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+19 : 1 { 0x1 +1.11e129 } : BV:32
+20 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
+22 : and(17, 21) : BOOL
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability pred 0
 =Comment
@@ -4412,12 +4433,17 @@ abstract-memlabel-asserts-houdini-guess
 15 : and(9, 14) : BOOL
 16 : eq(10, 1) : BOOL
 17 : and(15, 16) : BOOL
+18 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+19 : 1 { 0x1 +1.11e129 } : BV:32
+20 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
+22 : and(17, 21) : BOOL
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability predicate_set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ce 0: cvc4.ce3
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ce 0: z3v487.ce3
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ces set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 0 type houdini_expects_stability summary: number of exprs=1; number of visited CEs=1; number of preds=1
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1
@@ -4485,10 +4511,10 @@ expr-group-bvs.linear2-32-free_var_idx.4
 =predicate done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv predicate_set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 0: cvc4.ce3
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 1: cvc4.ce39
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 2: z3v487.ce155
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 3: cvc4.ce107
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 0: z3v487.ce3
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 1: cvc4.ce36
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 2: z3v487.ce149
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ce 3: cvc4.ce101
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv visited ces set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv summary: number of exprs=7; number of visited CEs=4; number of preds=4
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 1 type bv output matrix
@@ -4512,10 +4538,10 @@ matrix done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const predicate_set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 0: cvc4.ce3
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 1: z3v487.ce155
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 2: z3v487.ce226
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 3: z3.ce302
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 0: z3v487.ce3
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 1: z3v487.ce149
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 2: z3.ce216
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ce 3: z3.ce289
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const visited ces set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 2 type ineq_const summary: number of exprs=1; number of visited CEs=4; number of preds=0
 =m_lower_bound_signed_cur -2147483648
@@ -4540,10 +4566,10 @@ matrix done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const predicate_set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 0: cvc4.ce3
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 1: cvc4.ce39
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 2: z3v487.ce40
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 3: yices.ce41
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 0: z3v487.ce3
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 1: cvc4.ce36
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 2: z3v487.ce37
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ce 3: yices.ce38
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const visited ces set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 3 type ineq_const summary: number of exprs=1; number of visited CEs=4; number of preds=0
 =m_lower_bound_signed_cur -2147483648
@@ -4568,10 +4594,10 @@ matrix done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const predicate_set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 0: cvc4.ce3
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 1: cvc4.ce39
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 2: z3v487.ce40
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 3: yices.ce41
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 0: z3v487.ce3
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 1: cvc4.ce36
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 2: z3v487.ce37
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ce 3: yices.ce38
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const visited ces set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 4 type ineq_const summary: number of exprs=1; number of visited CEs=4; number of preds=0
 =m_lower_bound_signed_cur -2147483648
@@ -4596,10 +4622,10 @@ matrix done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const predicate_set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 0: cvc4.ce3
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 1: z3v487.ce155
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 2: z3v487.ce226
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 3: z3.ce302
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 0: z3v487.ce3
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 1: z3v487.ce149
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 2: z3.ce216
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ce 3: z3.ce289
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const visited ces set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 5 type ineq_const summary: number of exprs=1; number of visited CEs=4; number of preds=0
 =m_lower_bound_signed_cur -2147483648
@@ -4654,21 +4680,11 @@ matrix done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini predicate_set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini visited ce 0: cvc4.ce3
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini visited ce 1: cvc4.ce39
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini visited ce 2: z3v487.ce40
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini visited ce 0: z3v487.ce3
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini visited ce 1: cvc4.ce36
+=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini visited ce 2: z3v487.ce37
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini visited ces set done
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 6 type houdini summary: number of exprs=8; number of visited CEs=3; number of preds=0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini name local-sizes-are-equal
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini expr_group_type HOUDINI with 0 exprs
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini done
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini predicate_set done
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini is assumed eqclass : 0
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini visited ce 0: cvc4.ce3
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini visited ces set done
-=pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants smallest_point_cover 7 type houdini summary: number of exprs=0; number of visited CEs=1; number of preds=0
 =pc L2%7%bbentry_Lfor.cond%1%bbentry inductive-invariants invariant_state done
 =Invariant state at node E0%0%d_E0%0%d for reason inductive-invariants
 =pc E0%0%d_E0%0%d inductive-invariants invariant_state 
@@ -4820,15 +4836,15 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry assume
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
-140312 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140313 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140313 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140314 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 140342 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-140314 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140315 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 140343 : 4 { 0x4 +1.0e1025 } : INT
 140344 : 0 { 0x0 } : BOOL
-140345 : select(140312, 140313, 140342, 140314, 140343, 140344) : BV:32
+140345 : select(140313, 140314, 140342, 140315, 140343, 140344) : BV:32
 =RhsExpr
-140315 : input.dst.llvm-%n : BV:32
+140312 : input.dst.llvm-%n : BV:32
 =predicate done
 
 cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry assume #1
@@ -4840,8 +4856,8 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%7%bbentry_Lfor.cond%1%bbentry assume
 equal-arg0
 =LhsExpr
 140273 : input.spec-%var-n-1 : BV:32
-140315 : input.dst.llvm-%n : BV:32
-140436 : eq(140273, 140315) : BOOL
+140312 : input.dst.llvm-%n : BV:32
+140438 : eq(140273, 140312) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -4863,14 +4879,19 @@ precond-mlasserts
 140425 : bvadd(140420, 140424) : BV:32
 140426 : eq(140421, 140425) : BOOL
 140427 : and(140422, 140426) : BOOL
-140314 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140315 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 140428 : 3 { 0x3 +1.35e129 } : BV:32
-140429 : bvand(140314, 140428) : BV:32
+140429 : bvand(140315, 140428) : BV:32
 140277 : 0 { 0x0 +1.0e129 } : BV:32
 140430 : eq(140429, 140277) : BOOL
 140431 : and(140427, 140430) : BOOL
-140432 : eq(140314, 140420) : BOOL
+140432 : eq(140315, 140420) : BOOL
 140433 : and(140431, 140432) : BOOL
+140314 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140276 : 1 { 0x1 +1.11e129 } : BV:32
+140316 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140434 : region_agrees_with_memlabel(140314, 140277, 140276, 140316) : BOOL
+140435 : and(140433, 140434) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

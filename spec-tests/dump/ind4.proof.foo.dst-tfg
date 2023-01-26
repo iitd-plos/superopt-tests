@@ -17,6 +17,8 @@ Lwhile.body%1%d => Lwhile.cond%1%bbentry (backedge)
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=dst.llvm-%l
+1 : input.dst.llvm-%l : BV:32
 =state_end
 =PC to var-version map at L0%0%d
 =version for dst.llvm-mem
@@ -85,8 +87,10 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%l : 4 : 4 : 0
 =global assume predicate_set done
 Memlabel map for call-context {*;foo}
 =memlabel_map.0 for call-context {*;foo}
-mlvar.dst.llvm.foo.0 : memlabel-mem-no-straddle-symbol.1-heap-arg.0
+mlheap.dst.llvm.foo : memlabel-mem-may-straddle-symbol.1-heap
 =memlabel_map.1 for call-context {*;foo}
+mlvar.dst.llvm.foo.0 : memlabel-mem-no-straddle-symbol.1-heap-arg.0
+=memlabel_map.2 for call-context {*;foo}
 mlvar.dst.llvm.foo.1 : memlabel-mem-no-straddle-symbol.1-heap-arg.0
 =Edge: L0%0%d => Lwhile.cond%1%bbentry
 =Edge.EdgeCond: 
@@ -674,8 +678,8 @@ dst.cur_rounding_mode.Lwhile.cond%1%bbentry
 =relevant memlabels
 =function: foo
 memlabel-mem--arg.0
-memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/
 =touched symbol ids
 
 =relevant memlabels done
@@ -849,7 +853,7 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100002
 =loc_expr
-140341 : input.dst.llvm-%l : BV:32
+140340 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100024
@@ -884,7 +888,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100034
 =loc_expr
-140340 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140341 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100039
@@ -1169,7 +1173,7 @@ lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100042 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 100043 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+lr_status_linearly_related(; )
 =loc_id 100044 lr-status in lr-status-map at call-context {*;foo}
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100045 lr-status in lr-status-map at call-context {*;foo}
@@ -1494,9 +1498,9 @@ tfg.assumes_around_edge at L0%0%d=>Lwhile.cond%1%bbentry assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>Lwhile.cond%1%bbentry
 =LhsExpr
-140341 : input.dst.llvm-%l : BV:32
+140340 : input.dst.llvm-%l : BV:32
 140347 : 8 { 0x8 +1.0e1025 } : INT
-140348 : islangaligned(140341, 140347) : BOOL
+140348 : islangaligned(140340, 140347) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1697,8 +1701,8 @@ line 12
 =InputLLVMToSourceVarnames:
 input.dst.llvm-%l.addr.0.phi.tmpvar.while.body.Lwhile.cond%1%bbentry : L0%0%d : DSTMEM[(4 + input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry)]_4
 input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : L0%0%d : 4
-input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%l : L0%0%d : l'
+input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%sum.0 : Lwhile.cond%1%bbentry : sum'
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%sum.0.phi.tmpvar.entry : L0%0%d : 0
@@ -1732,12 +1736,12 @@ input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry : L0%0%d : 0
-input.dst.llvm-%tobool.Lwhile.cond%2%d : L0%0%d : not(input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry = 0)
 input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry : L0%0%d : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : L0%0%d : 0
-input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
-input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
 input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : L0%0%d : 0
+input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : L0%0%d : 0
+input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
+input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+input.dst.llvm-%tobool.Lwhile.cond%2%d : L0%0%d : not(input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry = 0)
 input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
 input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.1.total_offset.Lwhile.cond%1%bbentry : L0%0%d : 0
 input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry : L0%0%d : l'
@@ -2040,21 +2044,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 5 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
-=reaching defns for expr 6 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+=reaching defns for expr 6 edges
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2189,21 +2193,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 5 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
-=reaching defns for expr 6 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+=reaching defns for expr 6 edges
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2338,21 +2342,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 5 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
-=reaching defns for expr 6 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+=reaching defns for expr 6 edges
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2487,21 +2491,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 5 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
-=reaching defns for expr 6 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+=reaching defns for expr 6 edges
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2636,21 +2640,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 5 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
-=reaching defns for expr 5 edges done
-=reaching defns for expr 6
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
-=reaching defns for expr 6 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+=reaching defns for expr 5 edges done
+=reaching defns for expr 6
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+=reaching defns for expr 6 edges
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2775,10 +2779,10 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
 lr_status_linearly_related(; )
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%l
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%hidden-reg
@@ -2791,25 +2795,25 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
-=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry
 lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%tobool.Lwhile.cond%2%d
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-indir_tgt.E0%0%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%ret-reg.E0%0%d
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-indir_tgt.E0%0%d
+=LR status for var input.dst.llvm-%tobool.Lwhile.cond%2%d
 lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
+=LR status for var input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%hidden-reg.E0%0%d
 lr_status_linearly_related(; )

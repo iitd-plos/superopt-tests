@@ -16,6 +16,10 @@ Lentry%2%fcallEnd => E0%0%d
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=dst.llvm-%m1
+1 : input.dst.llvm-%m1 : BV:32
+=dst.llvm-%m2
+1 : input.dst.llvm-%m2 : BV:32
 =state_end
 =PC to var-version map at L0%0%d
 =version for dst.llvm-mem
@@ -99,6 +103,8 @@ mlcall.dst.llvm.bar.1 : memlabel-mem-
 mlcall.dst.llvm.bar.2 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap
 =memlabel_map.3 for call-context {*;bar}
 mlcall.dst.llvm.bar.3 : memlabel-mem-
+=memlabel_map.4 for call-context {*;bar}
+mlheap.dst.llvm.bar : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap
 =Edge: L0%0%d => Lentry%1%fcallStart
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -679,12 +685,12 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100011
 =loc_expr
-140443 : input.dst.llvm-%m1 : BV:32
+140442 : input.dst.llvm-%m1 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100012
 =loc_expr
-140445 : input.dst.llvm-%m2 : BV:32
+140443 : input.dst.llvm-%m2 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100016
@@ -694,12 +700,12 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100017
 =loc_expr
-140442 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
+140444 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100018
 =loc_expr
-140444 : input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : BV:32
+140445 : input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100026
@@ -1141,11 +1147,11 @@ tfg.assumes_around_edge at L0%0%d=>Lentry%1%fcallStart assume #0.pred
 =Comment
 undef-behavioursome.edge.L0%0%d=>Lentry%1%fcallStart
 =LhsExpr
-140443 : input.dst.llvm-%m1 : BV:32
+140442 : input.dst.llvm-%m1 : BV:32
 140420 : 4 { 0x4 +1.0e1025 } : INT
-140451 : islangaligned(140443, 140420) : BOOL
-140445 : input.dst.llvm-%m2 : BV:32
-140452 : islangaligned(140445, 140420) : BOOL
+140451 : islangaligned(140442, 140420) : BOOL
+140443 : input.dst.llvm-%m2 : BV:32
+140452 : islangaligned(140443, 140420) : BOOL
 140521 : and(140451, 140452) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
@@ -1219,10 +1225,10 @@ Lentry%4%d
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
-input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum0=/
 input.dst.llvm-%m1 : L0%0%d : m1'
-input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum1=/
 input.dst.llvm-%m2 : L0%0%d : m2'
+input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum0=/
+input.dst.local./*___y___bar__x__=L0%0%argnum1=/ : L0%0%d : input.dst.local./*___y___bar__x__=L0%0%argnum1=/
 input.dst.llvm-%sub : L0%0%d : (input.dst.llvm-%call - input.dst.llvm-%call1)
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%hidden-reg : L0%0%d : input.dst.llvm-%hidden-reg
@@ -1725,14 +1731,14 @@ input.dst.local_alloc_count.Lentry%1%fcallStart : L0%0%d : input.dst.local_alloc
 =reaching defns done
 =ReachingDefinitionsForLocs done
 =VarnameToLRStatus Begin:
-=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%m1
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, )
-=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum1=/
-lr_status_top
 =LR status for var input.dst.llvm-%m2
 lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, )
+=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum0=/
+lr_status_top
+=LR status for var input.dst.local./*___y___bar__x__=L0%0%argnum1=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.llvm-%hidden-reg

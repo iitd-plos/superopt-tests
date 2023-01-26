@@ -12,6 +12,8 @@ L0%0%d => E0%0%d
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=dst.llvm-%val
+1 : input.dst.llvm-%val : BV:32
 =state_end
 =PC to var-version map at L0%0%d
 =version for dst.llvm-mem
@@ -56,6 +58,8 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%val : 4 : 4 : 0
 =Global assumes
 =global assume predicate_set done
 Memlabel map for call-context {*;update_val}
+=memlabel_map.0 for call-context {*;update_val}
+mlheap.dst.llvm.update_val : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___opt_map__x__=L0%0%argnum0=/-heap
 =Edge: L0%0%d => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
@@ -262,7 +266,7 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100002
 =loc_expr
-140394 : input.dst.llvm-%val : BV:32
+140393 : input.dst.llvm-%val : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100003
@@ -297,7 +301,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100012
 =loc_expr
-140393 : input.dst.local./*___y___update_val__x__=L0%0%argnum0=/ : BV:32
+140394 : input.dst.local./*___y___update_val__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100017
@@ -517,8 +521,8 @@ input.dst.llvm-%ret-reg : L0%0%d : input.dst.llvm-%sub
 input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
-input.dst.local./*___y___update_val__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___update_val__x__=L0%0%argnum0=/
 input.dst.llvm-%val : L0%0%d : val'
+input.dst.local./*___y___update_val__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___update_val__x__=L0%0%argnum0=/
 input.dst.llvm-%sub : L0%0%d : ((-10) + val')
 input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : ((-10) + val')
 input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
@@ -655,10 +659,10 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
-=LR status for var input.dst.local./*___y___update_val__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%val
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___opt_map__x__=L0%0%argnum0=/-heap, )
+=LR status for var input.dst.local./*___y___update_val__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.llvm-%ret-reg.E0%0%d
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___opt_map__x__=L0%0%argnum0=/-heap, )
 =LR status for var input.dst.llvm-%hidden-reg.E0%0%d
