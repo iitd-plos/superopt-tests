@@ -40,6 +40,15 @@ memcpy_args = {
     'uClibc_powerpc': ['to', 'from', 'len']
 }
 
+stpncpy_args = {
+    'freebsd': ['dst', 'src', 'n'],
+    'netbsd': ['dst', 'src', 'n'],
+    'newlib_small': ['dst', 'src', 'count'],
+    'newlib_fast': ['dst', 'src', 'count'],
+    'openbsd': ['dst', 'src', 'n'],
+    'uClibc': ['s1', 's2', 'n'],
+}
+
 strlen_args = {
     'dietlibc_small': ['s'],
     'dietlibc': ['s'],
@@ -79,12 +88,24 @@ swab_args = {
     'uClibc': ['source', 'dest', 'count']
 }
 
+wcschr_args = {
+    'dietlibc': ['wcs', 'wc'],
+    'freebsd': ['s', 'c'],
+    'glibc': ['wcs', 'wc'],
+    'netbsd': ['p', 'c'],
+    'newlib': ['s', 'c'],
+    'openbsd': ['s', 'c'],
+    'uClibc': ['s', 'c']
+}
+
 UB_MAP = {
     'memccpy': ([UB.MEMORY_OVERLAP], memccpy_args),
     'memcpy': ([UB.MEMORY_OVERLAP], memcpy_args),
+    'stpncpy': ([UB.VALID_POINTER_VAL], stpncpy_args),
     'strlen': ([UB.VALID_POINTER_VAL], strlen_args),
     'strnlen': ([UB.VALID_POINTER_VAL], strnlen_args),
-    'swab': ([UB.EVEN_ARG], swab_args)
+    'swab': ([UB.EVEN_ARG], swab_args),
+    'wcschr': ([UB.VALID_POINTER_VAL], wcschr_args)
 }
 
 
@@ -116,6 +137,12 @@ def get_assume_string(ub_type, arg_list, comment='This is a Commment') -> str:
         2 : 0 : BV:32
         3 : eq(1, 2) : BOOL
         4 : not(3) : BOOL\n""")
+        if len(arg_list) > 2:
+            s += dedent(f"""\
+            5 : input.src.llvm-%{arg_list[1]} : BV:32
+            6 : eq(5, 2) : BOOL
+            7 : not(6) : BOOL
+            8 : and(4, 7) : BOOL\n""")
     elif ub_type == UB.EVEN_ARG:
         len = arg_list[-1]
         s += dedent(f"""\
