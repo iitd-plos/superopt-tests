@@ -1,8 +1,49 @@
 from io import TextIOWrapper
 import itertools
+from enum import Enum
 
 def set_to_string(s: set):
     return ', '.join(s)
+
+class TOOL_RESULT(Enum):
+    EQUIV = 0
+    FAIL = 1
+    INEQ = 2
+    ERROR = 3
+    TIMEOUT = 4
+
+class run_info:
+    def __init__(self, fname: str, src_lib: str, dst_lib: str, unroll: int, retcode: int, time_taken, timeout: bool) -> None:
+        self.fname = fname
+        self.src_lib = src_lib
+        self.dst_lib = dst_lib
+        self.unroll = unroll
+        self.retcode = retcode
+        if timeout:
+            self.result = TOOL_RESULT.TIMEOUT
+            self.time_taken = None
+        else :
+            self.time_taken = time_taken
+            if retcode == 0:
+                self.result = TOOL_RESULT.EQUIV
+            elif retcode == 1:
+                self.result = TOOL_RESULT.FAIL
+            elif retcode == 2:
+                self.result = TOOL_RESULT.INEQ
+            else:
+                self.result = TOOL_RESULT.FAIL
+    
+    def to_string(self):
+        s = f'{self.fname},{self.src_lib},{self.dst_lib},{self.unroll},{self.result}'
+        if self.result != TOOL_RESULT.TIMEOUT:
+            s += f',{self.time_taken}'
+        return s
+
+    def is_ineq(self):
+        return self.result == TOOL_RESULT.INEQ
+    
+    def type(self):
+        return self.result
 
 # Maintains equivalence classes for a benchmark
 # Also maintains Inequivalence classes -- helps in pruning the benchmarking space
@@ -14,7 +55,13 @@ class equivalence_classes:
         self.parent = {lib: lib for lib in libraries}
         # dictionary from string to a set of leaders, denoting the classes which are inequivalent
         self.inequivalent_sets = {lib: set() for lib in libraries}
+        # set of (src, dst) pairs that have already been run
         self.cache = set()
+        # List of all run_infos
+        self.runs = []
+
+    def get_runs(self) -> "list[run_info]":
+        return self.runs
 
     def add_cache(self, src: str, dst: str):
         self.cache.add((src, dst))
@@ -110,12 +157,16 @@ class equivalence_classes:
         # s = f'graph {{\n{node_string}{ineq_string}{fail_string}}}'
         return node_string, ineq_string, fail_string
 
+    def add_run_info(self, fname: str, src_lib: str, dst_lib: str, unroll: int, retcode: int, time_taken: float, timeout: bool):
+        self.runs.append(run_info(fname, src_lib, dst_lib, unroll, retcode, time_taken, timeout))
+
     def __add__(self, other):
         if isinstance(other, self.__class__):
             self.libraries = self.libraries.union(other.libraries)
             self.parent = {**self.parent, **other.parent}
             self.inequivalent_sets = {**self.inequivalent_sets, **other.inequivalent_sets}
             self.cache = self.cache.union(other.cache)
+            self.runs = self.runs + other.runs
         return self
 
 def merge_all_classes(class_list: "list[equivalence_classes]") -> equivalence_classes:

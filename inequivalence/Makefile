@@ -5,9 +5,9 @@ ASSUME_TESTS=tests_assumes.csv
 
 clean:
 	@rm -f *.o *.harvest *.tmp *.bc *.etfg *.tfg *.s
-	rm -f benchmarks/C/*/*.bc
-	rm -f benchmarks/C/*/*.tmp
-	rm -f benchmarks/C/*/*.etfg
+	@rm -f benchmarks/C/*/*.bc
+	@rm -f benchmarks/C/*/*.tmp
+	@rm -f benchmarks/C/*/*.etfg
 
 clean_all:	clean
 	@rm -rf logs/*.proof
@@ -30,7 +30,7 @@ run:
 
 gen_assumes:
 	mkdir -p assumes
-	python3 benchmarking.py --mode gen_assumes --input_file $(ASSUME_TESTS)
+	python3 gen_assumes.py
 
 run_assumes:
 	python3 benchmarking.py --mode run_all --input_file $(ASSUME_TESTS) --assumes

@@ -18,7 +18,7 @@ import xml.etree.ElementTree as ET
 ## {fname},{lib_1},{lib_2} . . .
 # input_file = sys.argv[1]
 
-FLAGS="correctness_covers,correlate"
+FLAGS="correctness_covers,correlate,invariants_map=2"
 FAILSET_PRUNE=-1
 FAILSET_SORT="next-cross"
 FAILSET_MU=16
@@ -28,10 +28,9 @@ SCRIPT_NAME = "benchmarking.sh"
 TIMEOUT=60*60*1 # 1 hour
 NJOBS=30
 VMEM_LIMIT=33*1024*1024 # 33GB
+NUM_CHUNKS=3
 
 USE_ASSUMES = False
-
-STAT_FILE = "stat.log"
 
 # Generates a brute force script for benchmarking
 def gen_script(input_file):
@@ -80,7 +79,7 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     with open(ce_out_file, 'w') as fp:
         fp.write(merge_data)
 
-def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, stat_file: TextIOWrapper, classes: equivalence_classes, unroll=UNROLL_FACTOR):
+def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, classes: equivalence_classes, unroll=UNROLL_FACTOR):
     u = classes.get_leader(src_lib)
     v = classes.get_leader(dst_lib)
     if u == v:
@@ -118,16 +117,17 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
         else:
             log_file.write(f'\t\tFound errcode {p.returncode} for {fname}, {src_lib}, {dst_lib}.\n')
             RETRY = True
-        stat_file.write(f'{fname}\t{src_lib}\t{dst_lib}\t{end_time-start_time}\t{unroll}\t{p.returncode}\n')
+        log_file.write(f'\tTime Taken = {end_time-start_time}, unroll-factor={unroll}\n')
+        classes.add_run_info(fname, src_lib, dst_lib, unroll, p.returncode, end_time-start_time, False)
     except subprocess.TimeoutExpired:
         os.killpg(os.getpgid(p.pid), signal.SIGTERM)
         log_file.write(f'\t\tTimeout for benchmark {fname} with src={src_lib}, dst={dst_lib}\n')
         RETRY = True
         TIMEOUT_OCCURED = True
-        stat_file.write(f'{fname}\t{src_lib}\t{dst_lib}\t{unroll}\tTIMEOUT\n')
+        log_file.write(f'\tTimeout occurred\n')
+        classes.add_run_info(fname, src_lib, dst_lib, unroll, p.returncode, None, True)
     finally:
         out_file.close()
-        stat_file.flush()
         log_file.flush()
     return RETRY, TIMEOUT_OCCURED
 
@@ -136,14 +136,13 @@ def run_benchmark(strings: str, tag: str, classes: equivalence_classes):
     fname = strings[0]
     libraries = strings[1:]
     # classes = equivalence_classes(fname, libraries)
-    stat_file_name, log_file_name = '', ''
+    log_file_name = ''
     if not USE_ASSUMES:
-        stat_file_name = f'stats/{fname}-{tag}-{STAT_FILE}'
+        # stat_file_name = f'stats/{fname}-{tag}-{STAT_FILE}'
         log_file_name = f'stats/{fname}-{tag}.log'
     else:
-        stat_file_name = f'stats/{fname}-{tag}-assumes-{STAT_FILE}'
+        # stat_file_name = f'stats/{fname}-{tag}-assumes-{STAT_FILE}'
         log_file_name = f'stats/{fname}-{tag}-assumes.log'
-    stat_file = open(stat_file_name, 'w')
     log_file = open(log_file_name, 'w')
     log_file.write(f'Running benchmarks for {fname}\n')
     for pair in itertools.combinations(libraries, 2):
@@ -155,14 +154,14 @@ def run_benchmark(strings: str, tag: str, classes: equivalence_classes):
         run_fwd, run_bwd = True, True
         while unroll <= UNROLL_FACTOR and not found and (run_fwd or run_bwd):
             if run_fwd and not found:
-                retry, timeout_fwd = run_ineq_checker(fname, l1, l2, log_file, stat_file, classes, unroll)
+                retry, timeout_fwd = run_ineq_checker(fname, l1, l2, log_file, classes, unroll)
                 if timeout_fwd:
                     run_fwd = False
                 else:
                     if not retry:
                         break
             if run_bwd and not found:
-                retry, timeout_bwd = run_ineq_checker(fname, l2, l1, log_file, stat_file, classes, unroll)
+                retry, timeout_bwd = run_ineq_checker(fname, l2, l1, log_file, classes, unroll)
                 if timeout_bwd:
                     run_bwd = False
                 else:
@@ -172,7 +171,6 @@ def run_benchmark(strings: str, tag: str, classes: equivalence_classes):
         classes.add_cache(l1, l2)
     log_file.write(f'Ran all experiments for {fname}\n')
     classes.print(log_file)
-    stat_file.close()
     log_file.close()
     
     return classes
@@ -181,7 +179,7 @@ def split(a, n):
     k, m = divmod(len(a), n)
     return (a[i*k+min(i, m):(i+1)*k+min(i+1, m)] for i in range(n))
 
-def divide_conquer(line: str, tag: str, num_chunks=3):
+def divide_conquer(line: str, tag: str, num_chunks=NUM_CHUNKS):
     strings = [s.strip() for s in line.split(',')]
     fname = strings[0]
     libraries = strings[1:]
@@ -196,7 +194,7 @@ def divide_conquer(line: str, tag: str, num_chunks=3):
         # The experiment has been run already, no need to run again
         return
 
-    if len(libraries) > 2:
+    if len(libraries) > 2 and num_chunks != 1:
         # Split Libraries into parts
         num_chunks = min(num_chunks, len(libraries))
         chunks = split(libraries, num_chunks)
@@ -212,6 +210,18 @@ def divide_conquer(line: str, tag: str, num_chunks=3):
     with open(eq_class_file, 'wb') as f:
         pickle.dump(classes, f)
 
+    stat_file_name = ''
+    if not USE_ASSUMES:
+        stat_file_name = f'stats/{fname}-{tag}-stats.csv'
+    else:
+        stat_file_name = f'stats/{fname}-{tag}-assumes-stats.csv'
+    
+    with open(stat_file_name, 'w') as f:
+        for info in classes.get_runs():
+            f.write(f'{info.to_string()}\n')
+
+    return [run for run in classes.get_runs() if run.is_ineq()]
+
 # Runs the experiments while keeping track of equivalence classes
 def run_experiments(input_file):
     file = open(input_file, 'r')
@@ -219,7 +229,16 @@ def run_experiments(input_file):
     lines = [line.strip() for line in lines]
     file.close()
 
-    Parallel(n_jobs=min(NJOBS, len(lines)))(delayed(divide_conquer)(line, str(i)) for i, line in enumerate(lines))
+    inequivalences = Parallel(n_jobs=min(NJOBS, len(lines)))(delayed(divide_conquer)(line, str(i)) for i, line in enumerate(lines))
+
+    ret = []
+    for ineq in inequivalences:
+        ret = ret + ineq
+    
+    ineq_file = f'stats/ineq-{input_file}'
+    with open(ineq_file, 'w') as f:
+        for info in ret:
+            f.write(f'{info.to_string()}\n')
 
 # Takes the computed classes and generates the classes in dot format
 def analysis():
@@ -276,19 +295,18 @@ def graph_gen():
         with open(file, 'r') as fp:
             lines = fp.readlines()
             for line in lines:
-                toks = line.split()
-                # print(toks)
+                toks = line.split(',')
                 if len(toks) == 5:
                     # TIMEOUT case
                     NTIMEOUTS += 1
                 elif len(toks) == 6:
-                    # FORMAT: {fname} {src} {dst} {time} {unroll} {retcode}
-                    if toks[-1] == '0':
-                        completion_times.append(float(toks[3]))
-                        eq_times.append(float(toks[3]))
-                    elif toks[-1] == '2':
-                        completion_times.append(float(toks[3]))
-                        ineq_times.append(float(toks[3]))
+                    # FORMAT: {fname},{src},{dst},{unroll},{result},{time}
+                    if toks[-2] == 'EQUIV':
+                        completion_times.append(float(toks[-1]))
+                        eq_times.append(float(toks[-1]))
+                    elif toks[-2] == 'INEQ':
+                        completion_times.append(float(toks[-1]))
+                        ineq_times.append(float(toks[-1]))
                         with open(f'logs/{toks[0]}-{toks[1]}-{toks[2]}.proof', 'r') as ld:
                             logs = ld.readlines()
                             N_FAILED_CGS = 0
@@ -306,13 +324,13 @@ def graph_gen():
                             ranking_ratio = INEQ_CG / N_FAILED_CGS
                             ranking_ratios.append(ranking_ratio)
                             ineq_loop_bound.append(FINAL_MU)
-                    elif toks[-1] == '1':
-                        completion_times.append(float(toks[3]))
-                        failure_times.append(float(toks[3]))
+                    elif toks[-2] == 'FAIL':
+                        completion_times.append(float(toks[-1]))
+                        failure_times.append(float(toks[-1]))
                     else:
-                        err_times.append(float(toks[3]))
+                        err_times.append(float(toks[-1]))
                 else:
-                    print(f'WARN: toks = {toks}')
+                    print(f'WARN: tokens = {toks}')
     print(f'NTIMEOUTS = {NTIMEOUTS}')
     plot_hist(completion_times, 'Completion_Times')
     plot_hist(eq_times, 'EquivalenceTimes')
@@ -333,6 +351,7 @@ if __name__ == "__main__":
     parser.add_argument('--timeout', action='store', type=int, help='Timeout for each run (in seconds)', default=TIMEOUT)
     parser.add_argument('--njobs', action='store', type=int, default=NJOBS)
     parser.add_argument('--assumes', action='store_true')
+    parser.add_argument('--num_chunks', action='store', type=int, help='Number of chunks into which each experiment is divided into', default=NUM_CHUNKS)
     args = parser.parse_args()
     assert(args.mode != '')
     assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen', f'Invalid Mode'
@@ -342,6 +361,7 @@ if __name__ == "__main__":
     TIMEOUT = args.timeout
     NJOBS = args.njobs
     USE_ASSUMES = args.assumes
+    NUM_CHUNKS = args.num_chunks
     print(f'My pid is {os.getpid()}, pgid is {os.getpgid(0)}')
     if args.mode == 'gen_script':
         assert(args.input_file != '')
