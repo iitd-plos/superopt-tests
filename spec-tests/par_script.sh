@@ -1,7 +1,7 @@
 #!/bin/sh
 
 spec_par_tmpdir="par_tmpdir"
-cmd_name="${SUPEROPT_INSTALL_DIR}/bin/eq32 --disable-dst-to-src-submap --smt-query-timeout=5"
+cmd_name="${SUPEROPT_INSTALL_DIR}/bin/eq32 --enable-src-epsilon-paths --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --smt-query-timeout=5 --axpred-solver-max-depth=3 --dyn-debug=invariants_dump"
 
 par_run() {
   ${cmd_name} --tmpdir-path=${spec_par_tmpdir} --proof="$1".proof --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
