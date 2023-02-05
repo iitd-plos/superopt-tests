@@ -1328,7 +1328,7 @@ void generateMTFValues ( void )
 #define LESSER_ICOST  0
 #define GREATER_ICOST 15
 
-// 2 local arrays
+// 4 local arrays
 void sendMTFValues ( void )
 {
    Int32 v, t, i, j, gs, ge, totc, bt, bc, iter;
@@ -1388,11 +1388,12 @@ void sendMTFValues ( void )
             ge--;
          }
 
-         if (verbosity >= 3)
-            fprintf ( stderr, 
-                      "      initial group %d, [%d .. %d], has %d syms (%4.1f%%)\n",
-                              nPart, gs, ge, aFreq, 
-                              (100.0 * (float)aFreq) / (float)nMTF );
+         // XXX commented out float
+         // if (verbosity >= 3)
+         //    fprintf ( stderr, 
+         //              "      initial group %d, [%d .. %d], has %d syms (%4.1f%%)\n",
+         //                      nPart, gs, ge, aFreq, 
+         //                      (100.0 * (float)aFreq) / (float)nMTF );
  
          for (v = 0; v < alphaSize; v++)
             if (v >= gs && v <= ge) 
@@ -1480,7 +1481,8 @@ void sendMTFValues ( void )
                    iter+1, totc/8 );
          for (t = 0; t < nGroups; t++)
             fprintf ( stderr, "%d ", fave[t] );
-         fprintf ( stderr, "\n" );
+         // XXX commented out the following line to avoid rodata-map collision
+         // fprintf ( stderr, "\n" );
       }
 
       /*--
@@ -2415,7 +2417,8 @@ void doReversibleTransformation ( void )
 {
    Int32 i;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   // XXX commented out the following line to avoid rodata-map collision
+   // if (verbosity >= 2) fprintf ( stderr, "\n" );
 
    workLimit       = workFactor * last;
    workDone        = 0;
@@ -2424,9 +2427,10 @@ void doReversibleTransformation ( void )
 
    sortIt ();
 
-   if (verbosity >= 3)
-      fprintf ( stderr, "      %d work, %d block, ratio %5.2f\n",
-                        workDone, last, (float)workDone / (float)(last) );
+   // XXX commented out float
+   // if (verbosity >= 3)
+   //    fprintf ( stderr, "      %d work, %d block, ratio %5.2f\n",
+   //                      workDone, last, (float)workDone / (float)(last) );
 
    if (workDone > workLimit && firstAttempt) {
       if (verbosity >= 2)
@@ -2436,9 +2440,10 @@ void doReversibleTransformation ( void )
       blockRandomised = True;
       firstAttempt = False;
       sortIt();
-      if (verbosity >= 3)
-         fprintf ( stderr, "      %d work, %d block, ratio %f\n",
-                           workDone, last, (float)workDone / (float)(last) );
+      // XXX commented out float
+      // if (verbosity >= 3)
+      //    fprintf ( stderr, "      %d work, %d block, ratio %f\n",
+      //                      workDone, last, (float)workDone / (float)(last) );
    }
 
    origPtr = -1;
@@ -2888,7 +2893,8 @@ void compressStream ( FILE *stream, FILE *zStream )
 
    combinedCRC = 0;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   // XXX commented out the following line to avoid rodata-map collision
+   // if (verbosity >= 2) fprintf ( stderr, "\n" );
 
    while (True) {
 
@@ -2941,10 +2947,11 @@ void compressStream ( FILE *stream, FILE *zStream )
       ERROR_IF_NOT_ZERO ( ferror(zStream) );
    }
 
-   if (verbosity >= 2 && nBlocksRandomised > 0)
-      fprintf ( stderr, "    %d block%s needed randomisation\n", 
-                        nBlocksRandomised,
-                        nBlocksRandomised == 1 ? "" : "s" );
+   // XXX commented out the following line to avoid rodata-map collision
+   // if (verbosity >= 2 && nBlocksRandomised > 0)
+   //    fprintf ( stderr, "    %d block%s needed randomisation\n", 
+   //                      nBlocksRandomised,
+   //                      nBlocksRandomised == 1 ? "" : "s" );
 
    /*--
       Now another magic 48-bit number, 0x177245385090, to
@@ -2978,15 +2985,16 @@ void compressStream ( FILE *stream, FILE *zStream )
    if (bytesIn == 0) bytesIn = 1;
    if (bytesOut == 0) bytesOut = 1;
 
-   if (verbosity >= 1)
-      fprintf ( stderr, "%6.3f:1, %6.3f bits/byte, "
-                        "%5.2f%% saved, %d in, %d out.\n",
-                (float)bytesIn / (float)bytesOut,
-                (8.0 * (float)bytesOut) / (float)bytesIn,
-                100.0 * (1.0 - (float)bytesOut / (float)bytesIn),
-                bytesIn,
-                bytesOut
-              );
+   // XXX commented out float
+   // if (verbosity >= 1)
+   //    fprintf ( stderr, "%6.3f:1, %6.3f bits/byte, "
+   //                      "%5.2f%% saved, %d in, %d out.\n",
+   //              (float)bytesIn / (float)bytesOut,
+   //              (8.0 * (float)bytesOut) / (float)bytesIn,
+   //              100.0 * (1.0 - (float)bytesOut / (float)bytesIn),
+   //              bytesIn,
+   //              bytesOut
+   //            );
 }
 
 
@@ -3035,7 +3043,8 @@ Bool uncompressStream ( FILE *zStream, FILE *stream )
    setDecompressStructureSizes ( magic4 - '0' );
    computedCombinedCRC = 0;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n    " );
+   // XXX commented out the following line to avoid rodata-map collision
+   // if (verbosity >= 2) fprintf ( stderr, "\n    " );
    currBlockNo = 0;
 
    while (True) {
@@ -3060,8 +3069,9 @@ Bool uncompressStream ( FILE *zStream, FILE *stream )
          blockRandomised = False;
 
       currBlockNo++;
-      if (verbosity >= 2)
-         fprintf ( stderr, "[%d: huff+mtf ", currBlockNo );
+      // XXX commented out the following line to avoid rodata-map collision
+      // if (verbosity >= 2)
+      //    fprintf ( stderr, "[%d: huff+mtf ", currBlockNo );
       getAndMoveToFrontDecode ();
       ERROR_IF_NOT_ZERO ( ferror(zStream) );
 
@@ -3087,7 +3097,8 @@ Bool uncompressStream ( FILE *zStream, FILE *stream )
       computedCombinedCRC ^= computedBlockCRC;
    };
 
-   if (verbosity >= 2) fprintf ( stderr, "\n    " );
+   // XXX commented out the following line to avoid rodata-map collision
+   //if (verbosity >= 2) fprintf ( stderr, "\n    " );
 
    storedCombinedCRC  = bsGetUInt32 ();
    if (verbosity >= 2)
@@ -3155,7 +3166,8 @@ Bool testStream ( FILE *zStream )
    setDecompressStructureSizes ( magic4 - '0' );
    computedCombinedCRC = 0;
 
-   if (verbosity >= 2) fprintf ( stderr, "\n" );
+   // XXX commented out the following line to avoid rodata-map collision
+   // if (verbosity >= 2) fprintf ( stderr, "\n" );
    currBlockNo = 0;
 
    while (True) {
@@ -3218,10 +3230,11 @@ Bool testStream ( FILE *zStream )
    };
 
    storedCombinedCRC  = bsGetUInt32 ();
-   if (verbosity >= 2)
-      fprintf ( stderr,
-                "    combined CRCs: stored = 0x%x, computed = 0x%x\n    ",
-                storedCombinedCRC, computedCombinedCRC );
+   // XXX commented out the following line to avoid rodata-map collision
+   // if (verbosity >= 2)
+   //    fprintf ( stderr,
+   //              "    combined CRCs: stored = 0x%x, computed = 0x%x\n    ",
+   //              storedCombinedCRC, computedCombinedCRC );
    if (storedCombinedCRC != computedCombinedCRC) {
       bsFinishedWithStream();
       fclose ( zStream );
@@ -3415,6 +3428,8 @@ void mySignalCatcher ( IntNative n )
 }
 
 
+// XXX clang -O1 merges the first ite thereby creating a situation where a
+// single dst pathset has to be correlated against multiple src pathsets
 /*---------------------------------------------*/
 void mySIGSEGVorSIGBUScatcher ( IntNative n )
 {
