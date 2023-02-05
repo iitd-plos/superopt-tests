@@ -6,6 +6,9 @@ VPATH = $(SRCDIR)/micro
 PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          fcall10 fcall10_with_memaccess \
          fcall_taking_locals \
+         ftmap_1 \
+         ftmap_2 \
+         ftmap_3 \
          rodata_simple \
          load_store_elim_simple \
          loop_hoisting \
