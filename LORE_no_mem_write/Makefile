@@ -3,10 +3,10 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/LORE_no_mem_write
 
-EXTRA_FLAGS := --global-timeout 7200
+EXTRA_FLAGS := --global-timeout 7200 --max-address-space-size-gb 16
 
-UNROLL4_GCC   := ex1 ex2 ex3 ex4 ex5 ex6 ex8 ex9 ex10 ex11 ex12 ex13 # should pass: ex3 (???), ex9 (???), ex10 (???)
-UNROLL8_GCC   := ex2u ex3u ex4u ex5u ex6u ex13u # should pass: ex3u (assert-fails in simplification; max simplification iter count reached - 1024)
+UNROLL4_GCC   := ex1 ex2 ex3 ex4 ex5 ex6 ex8 ex9 ex10 ex11 ex12 ex13 # should pass: ex9 (???)
+UNROLL8_GCC   := ex2u ex3u ex4u ex5u ex6u ex13u # should pass: ex5u (query-timeout)
 
 UNROLL16_CLANG := ex1 ex7 ex8 ex9 ex10 ex11 ex12 # should pass: ex1 (???), ex7 (timeout), ex8 (timeout), ex9 (timeout), ex10 (timeout), ex12 (timeout)
 
