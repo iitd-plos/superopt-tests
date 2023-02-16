@@ -9,6 +9,7 @@ PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          ftmap_1 \
          ftmap_2 \
          ftmap_3 \
+         ftmap_4 \
          rodata_simple \
          load_store_elim_simple \
          loop_hoisting \
