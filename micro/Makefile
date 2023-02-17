@@ -13,6 +13,7 @@ PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          rodata_simple \
          load_store_elim_simple \
          loop_hoisting \
+         non_linear_invariant_casting \
          # load_store_elim_cmove # needs "anticipated-cmove expressions"
          #ddec arg_passing fpadd  fcall100 fcall100_with_memaccess \
          #fpext : TOO SLOW
