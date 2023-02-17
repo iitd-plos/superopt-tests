@@ -30,7 +30,7 @@
 . par_script.sh ind5
 . par_script.sh ind6
 . par_script.sh ind7
-# . par_script.sh ind8
+. par_script.sh ind8
 # . par_script.sh ind9
 
 . par_script.sh fcall1
