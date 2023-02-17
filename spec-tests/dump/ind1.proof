@@ -8,14 +8,14 @@
 =TFG_SSA:
 =TFG_SPEC src.spec.head_or:
 =TFG:
-=Nodes: L0%0%d L1%1%d L1%2%bbentry L1%4%bbentry L1%9%bbentry E0%0%d
+=Nodes: L0%0%d L2%1%d L2%2%bbentry L2%4%bbentry L2%9%bbentry E0%0%d
 =Edges:
-L0%0%d => L1%1%d
-L1%1%d => L1%4%bbentry
-L1%1%d => L1%2%bbentry
-L1%2%bbentry => L1%9%bbentry
-L1%4%bbentry => L1%9%bbentry
-L1%9%bbentry => E0%0%d
+L0%0%d => L2%1%d
+L2%1%d => L2%4%bbentry
+L2%1%d => L2%2%bbentry
+L2%2%bbentry => L2%9%bbentry
+L2%4%bbentry => L2%9%bbentry
+L2%9%bbentry => E0%0%d
 =graph done
 =is_ssa_graph:
 1
@@ -31,25 +31,25 @@ L1%9%bbentry => E0%0%d
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%1%d
+=PC to var-version map at L2%1%d
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%2%bbentry
+=PC to var-version map at L2%2%bbentry
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%4%bbentry
+=PC to var-version map at L2%4%bbentry
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%9%bbentry
+=PC to var-version map at L2%9%bbentry
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
@@ -63,13 +63,13 @@ L1%9%bbentry => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: head_or
-=Input: spec-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : (undefined) : UNDEFINED
 =arg val
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =arg end
-=Input: spec-method-arg.1
+=Input: tfg-method-arg.1
 =arg addr
 1 : (undefined) : UNDEFINED
 =arg val
@@ -90,7 +90,7 @@ L1%9%bbentry => E0%0%d
 Memlabel map for call-context {*;head_or}
 =memlabel_map.0 for call-context {*;head_or}
 mlheap.src.spec.head_or : memlabel-mem--heap
-=Edge: L0%0%d => L1%1%d
+=Edge: L0%0%d => L2%1%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
@@ -101,7 +101,7 @@ mlheap.src.spec.head_or : memlabel-mem--heap
 0:2:func_head
 tfg_edge_comment end
 
-=Edge: L1%1%d => L1%4%bbentry
+=Edge: L2%1%d => L2%4%bbentry
 =Edge.EdgeCond: 
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
@@ -114,7 +114,7 @@ tfg_edge_comment end
 0:5:match_sum_cond_1
 tfg_edge_comment end
 
-=Edge: L1%1%d => L1%2%bbentry
+=Edge: L2%1%d => L2%2%bbentry
 =Edge.EdgeCond: 
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
@@ -127,13 +127,13 @@ tfg_edge_comment end
 0:3:match_sum_cond_0
 tfg_edge_comment end
 
-=Edge: L1%2%bbentry => L1%9%bbentry
+=Edge: L2%2%bbentry => L2%9%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-1.L1%9%bbentry
+=spec-%tmpvar-1.L2%9%bbentry
 1 : input.spec-%var-val-0 : BV:32
-=spec-%var-empty-0.L1%9%bbentry
+=spec-%var-empty-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
@@ -144,37 +144,37 @@ tfg_edge_comment end
 0:-1:((bb_entry*match_sum_val_0)*match_sum_merge_0)
 tfg_edge_comment end
 
-=Edge: L1%4%bbentry => L1%9%bbentry
+=Edge: L2%4%bbentry => L2%9%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-1.L1%9%bbentry
+=spec-%var-node_val-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=spec-%tmpvar-0.L1%9%bbentry
+=spec-%tmpvar-1.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=spec-%var-node-0.L1%9%bbentry
+=spec-%tmpvar-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=spec-%var-node_next-0.L1%9%bbentry
+4 : 0 { 0x0 +1.0e1025 } : INT
+5 : prod_get(3, 4) : BV:32
+=spec-%var-node-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=spec-%var-node_next-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-node_val-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : 0 { 0x0 +1.0e1025 } : INT
-5 : prod_get(3, 4) : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -182,12 +182,12 @@ tfg_edge_comment end
 0:-1:(((bb_entry*match_sum_val_1)*match_prod_0)*((match_prod_1*match_prod_final)*match_sum_merge_1))
 tfg_edge_comment end
 
-=Edge: L1%9%bbentry => E0%0%d
+=Edge: L2%9%bbentry => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
 =spec-%tmpvar-2.E0%0%d
-1 : input.spec-%tmpvar-1.L1%9%bbentry : BV:32
+1 : input.spec-%tmpvar-1.L2%9%bbentry : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -235,43 +235,43 @@ MASKED
 memlabel-mem--arg.1
 =Loc 13 in src.spec.head_or.
 REGMEM
-spec-%tmpvar-1.L1%9%bbentry
-1 : input.spec-%tmpvar-1.L1%9%bbentry : BV:32
+spec-%tmpvar-1.L2%9%bbentry
+1 : input.spec-%tmpvar-1.L2%9%bbentry : BV:32
 =Loc 14 in src.spec.head_or.
 REGMEM
 spec-%tmpvar-2.E0%0%d
 1 : input.spec-%tmpvar-2.E0%0%d : BV:32
 =Loc 15 in src.spec.head_or.
 REGMEM
-spec-%var-empty-0.L1%9%bbentry
-1 : input.spec-%var-empty-0.L1%9%bbentry : UNIT
+spec-%var-empty-0.L2%9%bbentry
+1 : input.spec-%var-empty-0.L2%9%bbentry : UNIT
 =Loc 16 in src.spec.head_or.
 REGMEM
-spec-%tmpvar-0.L1%9%bbentry
-1 : input.spec-%tmpvar-0.L1%9%bbentry : BV:32
+spec-%tmpvar-0.L2%9%bbentry
+1 : input.spec-%tmpvar-0.L2%9%bbentry : BV:32
 =Loc 17 in src.spec.head_or.
 REGMEM
-spec-%var-node-0.L1%9%bbentry
-1 : input.spec-%var-node-0.L1%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+spec-%var-node-0.L2%9%bbentry
+1 : input.spec-%var-node-0.L2%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =Loc 18 in src.spec.head_or.
 REGMEM
-spec-%var-node_next-0.L1%9%bbentry
-1 : input.spec-%var-node_next-0.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+spec-%var-node_next-0.L2%9%bbentry
+1 : input.spec-%var-node_next-0.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =Loc 19 in src.spec.head_or.
 REGMEM
-spec-%var-node_val-0.L1%9%bbentry
-1 : input.spec-%var-node_val-0.L1%9%bbentry : BV:32
+spec-%var-node_val-0.L2%9%bbentry
+1 : input.spec-%var-node_val-0.L2%9%bbentry : BV:32
 =Locs end
 =Liveness in src.spec.head_or
 =live locs at L0%0%d
 1, 2, 
-=live locs at L1%1%d
+=live locs at L2%1%d
 1, 2, 
-=live locs at L1%2%bbentry
+=live locs at L2%2%bbentry
 2, 
-=live locs at L1%4%bbentry
+=live locs at L2%4%bbentry
 1, 
-=live locs at L1%9%bbentry
+=live locs at L2%9%bbentry
 13, 
 =live locs at E0%0%d
 14[f], 
@@ -279,13 +279,13 @@ spec-%var-node_val-0.L1%9%bbentry
 =Definedness in src.spec.head_or
 =loc definedness at L0%0%d
 1, 2, 10, 11, 12
-=loc definedness at L1%1%d
+=loc definedness at L2%1%d
 1, 2, 10, 11, 12
-=loc definedness at L1%2%bbentry
+=loc definedness at L2%2%bbentry
 1, 2, 10, 11, 12
-=loc definedness at L1%4%bbentry
+=loc definedness at L2%4%bbentry
 1, 2, 10, 11, 12
-=loc definedness at L1%9%bbentry
+=loc definedness at L2%9%bbentry
 1, 2, 10, 11, 12, 13
 =loc definedness at E0%0%d
 1, 2, 10, 11, 12, 13, 14
@@ -293,13 +293,13 @@ spec-%var-node_val-0.L1%9%bbentry
 =Branch affecting variable locs in src.spec.head_or
 =branch affecting variable locs at L0%0%d
 1
-=branch affecting variable locs at L1%1%d
+=branch affecting variable locs at L2%1%d
 1
-=branch affecting variable locs at L1%2%bbentry
+=branch affecting variable locs at L2%2%bbentry
 
-=branch affecting variable locs at L1%4%bbentry
+=branch affecting variable locs at L2%4%bbentry
 
-=branch affecting variable locs at L1%9%bbentry
+=branch affecting variable locs at L2%9%bbentry
 
 =branch affecting variable locs at E0%0%d
 
@@ -315,68 +315,68 @@ memlabel-mem--arg.1
 =relevant memlabels done
 =graph_with_locs_done
 =graph_with_edge_structures
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L1%1%d
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L1%1%d done
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%2%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%2%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%4%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%4%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry for loc_id 13 {input.spec-%tmpvar-1.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%1%d
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%1%d done
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%2%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%2%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%4%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%4%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry for loc_id 13 {input.spec-%tmpvar-1.L2%9%bbentry }
 1 : input.spec-%var-val-0 : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry for loc_id 15 {input.spec-%var-empty-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry for loc_id 15 {input.spec-%var-empty-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 13 {input.spec-%tmpvar-1.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 13 {input.spec-%tmpvar-1.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 16 {input.spec-%tmpvar-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 16 {input.spec-%tmpvar-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 17 {input.spec-%var-node-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 17 {input.spec-%var-node-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 18 {input.spec-%var-node_next-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 18 {input.spec-%var-node_next-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 19 {input.spec-%var-node_val-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 19 {input.spec-%var-node_val-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%9%bbentry=>E0%0%d
-=graph_with_edge_structures.loc_to_expr_map at L1%9%bbentry=>E0%0%d for loc_id 14 {input.spec-%tmpvar-2.E0%0%d }
-1 : input.spec-%tmpvar-1.L1%9%bbentry : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L1%9%bbentry=>E0%0%d done
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%9%bbentry=>E0%0%d
+=graph_with_edge_structures.loc_to_expr_map at L2%9%bbentry=>E0%0%d for loc_id 14 {input.spec-%tmpvar-2.E0%0%d }
+1 : input.spec-%tmpvar-1.L2%9%bbentry : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L2%9%bbentry=>E0%0%d done
 =graph_with_edge_structures.loc_to_expr_map done
 =graph_with_edge_structures done
 =graph_with_ml_contiguity_info vacuous mls
 vacuous mls at L0%0%d:
-vacuous mls at L1%1%d:
-vacuous mls at L1%2%bbentry:
-vacuous mls at L1%4%bbentry:
-vacuous mls at L1%9%bbentry:
+vacuous mls at L2%1%d:
+vacuous mls at L2%2%bbentry:
+vacuous mls at L2%4%bbentry:
+vacuous mls at L2%9%bbentry:
 vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info non-vacuous mls
 non-vacuous mls at L0%0%d:
-non-vacuous mls at L1%1%d:
-non-vacuous mls at L1%2%bbentry:
-non-vacuous mls at L1%4%bbentry:
-non-vacuous mls at L1%9%bbentry:
+non-vacuous mls at L2%1%d:
+non-vacuous mls at L2%2%bbentry:
+non-vacuous mls at L2%4%bbentry:
+non-vacuous mls at L2%9%bbentry:
 non-vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info discontiguous mls
 discontiguous mls:
@@ -395,7 +395,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 15
 =loc_expr
-140410 : input.spec-%var-empty-0.L1%9%bbentry : UNIT
+140309 : input.spec-%var-empty-0.L2%9%bbentry : UNIT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -404,7 +404,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 16
 =loc_expr
-140417 : input.spec-%tmpvar-0.L1%9%bbentry : BV:32
+140310 : input.spec-%tmpvar-0.L2%9%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -415,7 +415,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 17
 =loc_expr
-140418 : input.spec-%var-node-0.L1%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140311 : input.spec-%var-node-0.L2%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -424,7 +424,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 18
 =loc_expr
-140419 : input.spec-%var-node_next-0.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140312 : input.spec-%var-node_next-0.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -434,7 +434,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 19
 =loc_expr
-140420 : input.spec-%var-node_val-0.L1%9%bbentry : BV:32
+140313 : input.spec-%var-node_val-0.L2%9%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -449,9 +449,9 @@ discontiguous mls:
 =lr-status-map
 =lr-status-map at call-context {*;head_or}
 =loc_id 1 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 2 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.1, )
 =loc_id 10 lr-status in lr-status-map at call-context {*;head_or}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 11 lr-status in lr-status-map at call-context {*;head_or}
@@ -459,19 +459,19 @@ lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 12 lr-status in lr-status-map at call-context {*;head_or}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 13 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, )
 =loc_id 14 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, )
 =loc_id 15 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 16 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 17 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 18 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 19 lr-status in lr-status-map at call-context {*;head_or}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =lr-status-map done
 =lr-status-for-sprel-locs-map
 =lr-status-for-sprel-locs-map done
@@ -483,83 +483,83 @@ lr_status_bottom(; memlabel-mem--heap, )
 =graph_with_points done
 =graph_with_guessing done
 =graph_with_simplified_assets
-=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L1%1%d
+=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L2%1%d
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%1%d=>L1%2%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%1%d=>L2%2%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_is(1, 2) : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%1%d=>L1%4%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%1%d=>L2%4%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_is(1, 2) : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%2%bbentry=>L1%9%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%2%bbentry=>L2%9%bbentry
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%4%bbentry=>L1%9%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%4%bbentry=>L2%9%bbentry
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%9%bbentry=>E0%0%d
+=graph_with_simplified_assets.simplified_edgecond at L2%9%bbentry=>E0%0%d
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
-=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L1%1%d
+=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L2%1%d
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%1%d=>L1%2%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%1%d=>L2%2%bbentry
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%1%d=>L1%4%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%1%d=>L2%4%bbentry
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%2%bbentry=>L1%9%bbentry
-=spec-%tmpvar-1.L1%9%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%2%bbentry=>L2%9%bbentry
+=spec-%tmpvar-1.L2%9%bbentry
 1 : input.spec-%var-val-0 : BV:32
-=spec-%var-empty-0.L1%9%bbentry
+=spec-%var-empty-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%4%bbentry=>L1%9%bbentry
-=spec-%tmpvar-1.L1%9%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%4%bbentry=>L2%9%bbentry
+=spec-%var-node_val-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=spec-%tmpvar-0.L1%9%bbentry
+=spec-%tmpvar-1.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=spec-%var-node-0.L1%9%bbentry
+=spec-%tmpvar-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=spec-%var-node_next-0.L1%9%bbentry
+4 : 0 { 0x0 +1.0e1025 } : INT
+5 : prod_get(3, 4) : BV:32
+=spec-%var-node-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=spec-%var-node_next-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-node_val-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : 0 { 0x0 +1.0e1025 } : INT
-5 : prod_get(3, 4) : BV:32
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%9%bbentry=>E0%0%d
+=graph_with_simplified_assets.simplified_to_state at L2%9%bbentry=>E0%0%d
 =spec-%tmpvar-2.E0%0%d
-1 : input.spec-%tmpvar-1.L1%9%bbentry : BV:32
+1 : input.spec-%tmpvar-1.L2%9%bbentry : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state done
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L1%1%d
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L1%1%d done
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%2%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%2%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%4%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%4%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%2%bbentry=>L1%9%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%2%bbentry=>L1%9%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%4%bbentry=>L1%9%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%4%bbentry=>L1%9%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%9%bbentry=>E0%0%d
-=graph_with_simplified_assets.simplified_assumes at L1%9%bbentry=>E0%0%d done
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L2%1%d
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L2%1%d done
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%2%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%2%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%4%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%4%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%2%bbentry=>L2%9%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%2%bbentry=>L2%9%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%4%bbentry=>L2%9%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%4%bbentry=>L2%9%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%9%bbentry=>E0%0%d
+=graph_with_simplified_assets.simplified_assumes at L2%9%bbentry=>E0%0%d done
 =graph_with_simplified_assets.simplified_assumes done
 =graph_with_simplified_assets done
 =max-memlabel-varnum
@@ -571,35 +571,35 @@ lr_status_bottom(; memlabel-mem--heap, )
 =suffixpath_at_L0%0%d for src.spec.head_or
 =suffixpath_at_L0%0%d.graph_edge_composition
 (epsilon)
-=suffixpath_at_L1%1%d for src.spec.head_or
-=suffixpath_at_L1%1%d.graph_edge_composition
-(L0%0%d=>L1%1%d)
-=suffixpath_at_L1%2%bbentry for src.spec.head_or
-=suffixpath_at_L1%2%bbentry.graph_edge_composition
-((L0%0%d=>L1%1%d)*(L1%1%d=>L1%2%bbentry))
-=suffixpath_at_L1%4%bbentry for src.spec.head_or
-=suffixpath_at_L1%4%bbentry.graph_edge_composition
-((L0%0%d=>L1%1%d)*(L1%1%d=>L1%4%bbentry))
-=suffixpath_at_L1%9%bbentry for src.spec.head_or
-=suffixpath_at_L1%9%bbentry.graph_edge_composition
-(((L0%0%d=>L1%1%d)*((L1%1%d=>L1%2%bbentry)*(L1%2%bbentry=>L1%9%bbentry)))+((L0%0%d=>L1%1%d)*((L1%1%d=>L1%4%bbentry)*(L1%4%bbentry=>L1%9%bbentry))))
+=suffixpath_at_L2%1%d for src.spec.head_or
+=suffixpath_at_L2%1%d.graph_edge_composition
+(L0%0%d=>L2%1%d)
+=suffixpath_at_L2%2%bbentry for src.spec.head_or
+=suffixpath_at_L2%2%bbentry.graph_edge_composition
+((L0%0%d=>L2%1%d)*(L2%1%d=>L2%2%bbentry))
+=suffixpath_at_L2%4%bbentry for src.spec.head_or
+=suffixpath_at_L2%4%bbentry.graph_edge_composition
+((L0%0%d=>L2%1%d)*(L2%1%d=>L2%4%bbentry))
+=suffixpath_at_L2%9%bbentry for src.spec.head_or
+=suffixpath_at_L2%9%bbentry.graph_edge_composition
+(((L0%0%d=>L2%1%d)*((L2%1%d=>L2%2%bbentry)*(L2%2%bbentry=>L2%9%bbentry)))+((L0%0%d=>L2%1%d)*((L2%1%d=>L2%4%bbentry)*(L2%4%bbentry=>L2%9%bbentry))))
 =suffixpath_at_E0%0%d for src.spec.head_or
 =suffixpath_at_E0%0%d.graph_edge_composition
-((((L0%0%d=>L1%1%d)*((L1%1%d=>L1%2%bbentry)*(L1%2%bbentry=>L1%9%bbentry)))+((L0%0%d=>L1%1%d)*((L1%1%d=>L1%4%bbentry)*(L1%4%bbentry=>L1%9%bbentry))))*(L1%9%bbentry=>E0%0%d))
+((((L0%0%d=>L2%1%d)*((L2%1%d=>L2%2%bbentry)*(L2%2%bbentry=>L2%9%bbentry)))+((L0%0%d=>L2%1%d)*((L2%1%d=>L2%4%bbentry)*(L2%4%bbentry=>L2%9%bbentry))))*(L2%9%bbentry=>E0%0%d))
 =suffixpaths for src.spec.head_or done
 =tfg.assumes_around_edge
-tfg.assumes_around_edge at L0%0%d=>L1%1%d
-tfg.assumes_around_edge at L0%0%d=>L1%1%d done
-tfg.assumes_around_edge at L1%1%d=>L1%2%bbentry
-tfg.assumes_around_edge at L1%1%d=>L1%2%bbentry done
-tfg.assumes_around_edge at L1%1%d=>L1%4%bbentry
-tfg.assumes_around_edge at L1%1%d=>L1%4%bbentry done
-tfg.assumes_around_edge at L1%2%bbentry=>L1%9%bbentry
-tfg.assumes_around_edge at L1%2%bbentry=>L1%9%bbentry done
-tfg.assumes_around_edge at L1%4%bbentry=>L1%9%bbentry
-tfg.assumes_around_edge at L1%4%bbentry=>L1%9%bbentry done
-tfg.assumes_around_edge at L1%9%bbentry=>E0%0%d
-tfg.assumes_around_edge at L1%9%bbentry=>E0%0%d done
+tfg.assumes_around_edge at L0%0%d=>L2%1%d
+tfg.assumes_around_edge at L0%0%d=>L2%1%d done
+tfg.assumes_around_edge at L2%1%d=>L2%2%bbentry
+tfg.assumes_around_edge at L2%1%d=>L2%2%bbentry done
+tfg.assumes_around_edge at L2%1%d=>L2%4%bbentry
+tfg.assumes_around_edge at L2%1%d=>L2%4%bbentry done
+tfg.assumes_around_edge at L2%2%bbentry=>L2%9%bbentry
+tfg.assumes_around_edge at L2%2%bbentry=>L2%9%bbentry done
+tfg.assumes_around_edge at L2%4%bbentry=>L2%9%bbentry
+tfg.assumes_around_edge at L2%4%bbentry=>L2%9%bbentry done
+tfg.assumes_around_edge at L2%9%bbentry=>E0%0%d
+tfg.assumes_around_edge at L2%9%bbentry=>E0%0%d done
 tfg.assumes_around_edge done
 =TFGdone
 =TFG_SPEC_done
@@ -620,12 +620,12 @@ Lcond.end%1%bbentry => E0%0%d
 =is_ssa_graph:
 1
 =StartState:
+=dst.llvm-%l
+1 : input.dst.llvm-%l : BV:32
 =dst.llvm-%val
 1 : input.dst.llvm-%val : BV:32
 =dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-=dst.llvm-%l
-1 : input.dst.llvm-%l : BV:32
 =dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =state_end
@@ -667,13 +667,13 @@ Lcond.end%1%bbentry => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: head_or
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
 =arg val
 1 : input.dst.llvm-%l : BV:32
 =arg end
-=Input: llvm-method-arg.1
+=Input: tfg-method-arg.1
 =arg addr
 1 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
 =arg val
@@ -1247,57 +1247,57 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100001
 =loc_expr
-140338 : input.dst.llvm-%l : BV:32
+140355 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100013
 =loc_expr
-140336 : input.dst.llvm-%val : BV:32
+140356 : input.dst.llvm-%val : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100014
 =loc_expr
-140381 : input.dst.llvm-%hidden-reg : BV:32
+140400 : input.dst.llvm-%hidden-reg : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100016
 =loc_expr
-140382 : input.dst.llvm-callee-save.0 : BV:32
+140401 : input.dst.llvm-callee-save.0 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100017
 =loc_expr
-140384 : input.dst.llvm-callee-save.1 : BV:32
+140403 : input.dst.llvm-callee-save.1 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100018
 =loc_expr
-140386 : input.dst.llvm-callee-save.2 : BV:32
+140405 : input.dst.llvm-callee-save.2 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100019
 =loc_expr
-140388 : input.dst.llvm-callee-save.3 : BV:32
+140407 : input.dst.llvm-callee-save.3 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100022
 =loc_expr
-140346 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140365 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100023
 =loc_expr
-140340 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
+140359 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100024
 =loc_expr
-140341 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
+140360 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100031
 =loc_expr
-140430 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
+140438 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1307,7 +1307,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100033
 =loc_expr
-140433 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+140445 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%hidden-reg : BV:32
@@ -1322,28 +1322,28 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100034
 =loc_expr
-140434 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140446 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%cond.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100035
 =loc_expr
-140435 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140447 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100036
 =loc_expr
-140436 : input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry : BV:32
+140448 : input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%val : BV:32
 =avail_exprs_val.end
 =loc 100037
 =loc_expr
-140437 : input.dst.llvm-%0.Lcond.end%1%bbentry : BV:32
+140449 : input.dst.llvm-%0.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1356,42 +1356,42 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100038
 =loc_expr
-140438 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : BV:32
+140450 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100039
 =loc_expr
-140439 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
+140451 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100040
 =loc_expr
-140440 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : BV:32
+140452 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.end
 =loc 100041
 =loc_expr
-140441 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : BV:32
+140453 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100042
 =loc_expr
-140442 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry : BV:32
+140454 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100043
 =loc_expr
-140443 : input.dst.llvm-%cond.phi.tmpvar.cond.true.Lcond.end%1%bbentry : BV:32
+140455 : input.dst.llvm-%cond.phi.tmpvar.cond.true.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1404,21 +1404,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100044
 =loc_expr
-140444 : input.dst.llvm-%val1.Lcond.end%1%bbentry : BV:32
+140456 : input.dst.llvm-%val1.Lcond.end%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.end
 =loc 100045
 =loc_expr
-140445 : input.dst.local_alloc_count.Lentry%2%d : COUNT
+140457 : input.dst.local_alloc_count.Lentry%2%d : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100046
 =loc_expr
-140446 : input.dst.cur_rounding_mode.Lentry%2%d : ROUNDING_MODE
+140458 : input.dst.cur_rounding_mode.Lentry%2%d : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
@@ -1448,11 +1448,11 @@ discontiguous mls:
 =loc 100045 expr
 1 : input.dst.local_alloc_count.Lentry%2%d : COUNT
 =loc 100045 spreled-expr
-140346 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140365 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =loc 100046 expr
 1 : input.dst.cur_rounding_mode.Lentry%2%d : ROUNDING_MODE
 =loc 100046 spreled-expr
-140345 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+140364 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;head_or}
@@ -1697,9 +1697,9 @@ tfg.assumes_around_edge at L0%0%d=>Lentry%2%d assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>Lentry%2%d
 =LhsExpr
-140338 : input.dst.llvm-%l : BV:32
-140347 : 8 { 0x8 +1.0e1025 } : INT
-140348 : islangaligned(140338, 140347) : BOOL
+140355 : input.dst.llvm-%l : BV:32
+140366 : 8 { 0x8 +1.0e1025 } : INT
+140367 : islangaligned(140355, 140366) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1718,9 +1718,9 @@ tfg.assumes_around_edge at Lcond.true%1%d=>Lcond.end%1%bbentry assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.Lcond.true%1%d=>Lcond.end%1%bbentry
 =LhsExpr
-140338 : input.dst.llvm-%l : BV:32
-140311 : 4 { 0x4 +1.0e1025 } : INT
-140473 : islangaligned(140338, 140311) : BOOL
+140355 : input.dst.llvm-%l : BV:32
+140324 : 4 { 0x4 +1.0e1025 } : INT
+140485 : islangaligned(140355, 140324) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1733,12 +1733,12 @@ tfg.assumes_around_edge at Lcond.true%1%d=>Lcond.end%1%bbentry assume #1.pred
 =Comment
 undef-behavioursome.edge.Lcond.true%1%d=>Lcond.end%1%bbentry
 =LhsExpr
-140338 : input.dst.llvm-%l : BV:32
+140355 : input.dst.llvm-%l : BV:32
 140291 : 0 { 0x0 +1.0e129 } : BV:32
-140416 : isgepoffset(140338, 140291) : BOOL
+140435 : isgepoffset(140355, 140291) : BOOL
 140276 : 1 { 0x1 } : BOOL
-140468 : and(140276, 140416) : BOOL
-140471 : and(140416, 140468) : BOOL
+140480 : and(140276, 140435) : BOOL
+140483 : and(140435, 140480) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1843,9 +1843,12 @@ Lentry%2%d
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
+input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : L0%0%d : 0
 input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : L0%0%d : l'{L0%0%d}
-input.dst.llvm-%val : L0%0%d : val'
+input.dst.llvm-%tobool.Lentry%2%d : L0%0%d : not(l'{L0%0%d} = 0)
+input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : L0%0%d : 0
 input.dst.llvm-%l : L0%0%d : l'
+input.dst.llvm-%val : L0%0%d : val'
 input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
 input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : L0%0%d : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
@@ -1868,18 +1871,15 @@ input.dst.llvm-%ret-reg : L0%0%d : input.dst.llvm-%cond
 input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
-input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : L0%0%d : 0
+input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%cond.Lcond.end%1%bbentry
+input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry : L0%0%d : val'{L0%0%d}
+input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
+input.dst.llvm-%0.Lcond.end%1%bbentry : L0%0%d : DSTMEM[l'{L0%0%d}]_4
+input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
+input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : L0%0%d : 0
+input.dst.llvm-%cond.phi.tmpvar.cond.true.Lcond.end%1%bbentry : L0%0%d : DSTMEM[l'{L0%0%d}]_4
 input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry : L0%0%d : 0
 input.dst.llvm-%val1.Lcond.end%1%bbentry : L0%0%d : l'{L0%0%d}
-input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : L0%0%d : 0
-input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
-input.dst.llvm-%cond.phi.tmpvar.cond.true.Lcond.end%1%bbentry : L0%0%d : DSTMEM[l'{L0%0%d}]_4
-input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
-input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry : L0%0%d : val'{L0%0%d}
-input.dst.llvm-%0.Lcond.end%1%bbentry : L0%0%d : DSTMEM[l'{L0%0%d}]_4
-input.dst.llvm-%tobool.Lentry%2%d : L0%0%d : not(l'{L0%0%d} = 0)
-input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : L0%0%d : 0
-input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%cond.Lcond.end%1%bbentry
 input.dst.local_alloc_count.Lentry%2%d : L0%0%d : input.dst.local_alloc_count.=L0%0%d={L0%0%d}
 input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =InputLLVMToSourceVarnames done
@@ -1963,12 +1963,12 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =ReachingDefinitionsForLocs:
 =Reaching Definitions at L0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%l : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%l : BV:32
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -2021,12 +2021,12 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%l : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%l : BV:32
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
@@ -2071,9 +2071,9 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   L0%0%d=>L0%0%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 8 edges
-  L0%0%d=>Lentry%2%d
+  Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
 1 : input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry : BV:32
@@ -2086,14 +2086,14 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 11 edges
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
 =reaching defns for expr 12 edges
-  Lcond.true%1%d=>Lcond.end%1%bbentry
+  L0%0%d=>Lentry%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
 1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : BV:32
@@ -2101,12 +2101,12 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 14 edges
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 15 edges done
@@ -2123,12 +2123,12 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at Lcond.false%1%intermediateVal0
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%l : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%l : BV:32
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -2180,12 +2180,12 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at Lcond.true%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%l : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%l : BV:32
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -2237,12 +2237,12 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at Lentry%2%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%l : BV:32
 =reaching defns for expr 0 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%l : BV:32
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
@@ -2294,46 +2294,40 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at E0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
-=reaching defns for expr 0 edges
-  Lcond.end%1%bbentry=>E0%0%d
-=reaching defns for expr 0 edges done
-=reaching defns for expr 1
 1 : input.dst.llvm-%cond.Lcond.end%1%bbentry : BV:32
-=reaching defns for expr 1 edges
+=reaching defns for expr 0 edges
   Lcond.false%1%intermediateVal0=>Lcond.end%1%bbentry
   Lcond.true%1%d=>Lcond.end%1%bbentry
+=reaching defns for expr 0 edges done
+=reaching defns for expr 1
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+=reaching defns for expr 1 edges
+  Lcond.end%1%bbentry=>E0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =reaching defns for expr 2 edges
-  L0%0%d=>L0%0%d
+  Lcond.end%1%bbentry=>E0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%l : BV:32
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =reaching defns for expr 3 edges
-  L0%0%d=>L0%0%d
+  Lcond.end%1%bbentry=>E0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%l : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
@@ -2341,7 +2335,7 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns for expr 7
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/ : MEMLABEL
+3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 7 edges
   L0%0%d=>L0%0%d
@@ -2349,25 +2343,31 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns for expr 8
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/ : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lentry%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lcond.end%1%bbentry=>E0%0%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
-1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 11 edges
-  Lcond.end%1%bbentry=>E0%0%d
+  Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry : BV:32
@@ -2380,14 +2380,14 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 14 edges
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
 =reaching defns for expr 15 edges
-  Lcond.true%1%d=>Lcond.end%1%bbentry
+  L0%0%d=>Lentry%2%d
 =reaching defns for expr 15 edges done
 =reaching defns for expr 16
 1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : BV:32
@@ -2395,12 +2395,12 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 17 edges
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 18 edges
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 18 edges done
@@ -2417,12 +2417,18 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =ReachingDefinitionsForLocs done
 =VarnameToLRStatus Begin:
+=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%tobool.Lentry%2%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%l
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%val
 lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%l
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
 lr_status_top
 =LR status for var input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
@@ -2439,32 +2445,26 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
-=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry
+=LR status for var input.dst.llvm-%cond.Lcond.end%1%bbentry
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%ret-reg.E0%0%d
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-indir_tgt.E0%0%d
 lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%0.Lcond.end%1%bbentry
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%hidden-reg.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%cond.phi.tmpvar.cond.true.Lcond.end%1%bbentry
+lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.2.offset.Lcond.end%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%val1.Lcond.end%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.1.total_offset.Lcond.end%1%bbentry
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%hidden-reg.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%cond.phi.tmpvar.cond.true.Lcond.end%1%bbentry
-lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-indir_tgt.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry
-lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%0.Lcond.end%1%bbentry
-lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%tobool.Lentry%2%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%ret-reg.E0%0%d
-lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%cond.Lcond.end%1%bbentry
-lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.local_alloc_count.Lentry%2%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.cur_rounding_mode.Lentry%2%d
@@ -2568,13 +2568,13 @@ L0%0%d_L0%0%d => E0%0%d_E0%0%d
 =state_end
 =graph_with_var_versions done
 =FunctionName: head_or
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
 =arg val
 1 : input.dst.llvm-%l : BV:32
 =arg end
-=Input: llvm-method-arg.1
+=Input: tfg-method-arg.1
 =arg addr
 1 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
 =arg val
@@ -2597,7 +2597,7 @@ C_LOCAL=L0%0%argnum1= : dst.llvm-%val : 4 : 4 : 0
 =Edge.src_tfg_full_pathset
 =Edge.src_tfg_full_pathset.ec from L0%0%d to E0%0%d at unroll 1 delta {1,0}
 =Edge.src_tfg_full_pathset.graph_edge_composition
-((L0%0%d#{0,0}=>L1%1%d#{0,0})*((((L1%1%d#{0,0}=>L1%2%bbentry#{0,0})*(L1%2%bbentry#{0,0}=>L1%9%bbentry#{0,0}))+((L1%1%d#{0,0}=>L1%4%bbentry#{0,0})*(L1%4%bbentry#{0,0}=>L1%9%bbentry#{0,0})))*(L1%9%bbentry#{0,0}=>E0%0%d#{0,0})))
+((L0%0%d#{0,0}=>L2%1%d#{0,0})*((((L2%1%d#{0,0}=>L2%2%bbentry#{0,0})*(L2%2%bbentry#{0,0}=>L2%9%bbentry#{0,0}))+((L2%1%d#{0,0}=>L2%4%bbentry#{0,0})*(L2%4%bbentry#{0,0}=>L2%9%bbentry#{0,0})))*(L2%9%bbentry#{0,0}=>E0%0%d#{0,0})))
 =Edge.src_tfg_full_pathset done
 =Edge.dst_tfg_full_pathset
 =Edge.dst_tfg_full_pathset.ec from L0%0%d to E0%0%d at unroll 1 delta {1,0}
@@ -2630,7 +2630,7 @@ pointer-implements-inductive-list
 4 : Lambda1 : BV:32
 5 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 6 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-7 : memlabel-mem-may-straddle-symbol.1-local./*___y___head_or__x__=L0%0%argnum0=/-local./*___y___head_or__x__=L0%0%argnum1=/-heap : MEMLABEL
+7 : memlabel-top : MEMLABEL
 8 : 4 { 0x4 +1.47e129 } : BV:32
 9 : bvadd(4, 8) : BV:32
 10 : 4 { 0x4 +1.0e1025 } : INT
@@ -2789,110 +2789,125 @@ discontiguous mls:
 =graph_with_proofs done
 =global counterexamples for reason inductive-invariants
 =global nodece 0
-=global nodece 0 nodece cvc4.ce6.num_edges_traversed0
+=global nodece 0 nodece z3v487.ce6.num_edges_traversed0
 =global nodece 0 nodece_path
 =global nodece 0 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin cvc4.ce6 bca877bffba53639e473ad9970a328f8
+=counter_example_begin z3v487.ce6 491242bf8cd7334dba92848fc817fad
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : Indxform21 : BV:32
-4 : Lambda42 : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda43 : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(1, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+3 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+4 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+5 : Indxform21 : BV:32
+6 : Lambda42 : BV:32
+7 : lambda(6, 6) : FUNCTION[BV:32 -> BV:32]
+8 : Lambda43 : BV:32
+9 : 359438398 { 0x156c983e +1.84839606e171 } : BV:32
+10 : prod(9, 5) : PROD[BV:32,BV:32]
+11 : sum(4, 2, 10) : SUM[UNIT,PROD[BV:32,BV:32]]
+12 : lambda(8, 11) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+13 : ind(1, 5, 7, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : prod(3, 13) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+15 : sum(4, 2, 14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+16 : prod(3, 15) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+17 : sum(1, 2, 16) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+18 : prod(3, 17) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+19 : sum(1, 2, 18) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+20 : sym_const(19) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-val-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%val
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-%l
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 2147483651 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483652; 2147483655 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/, [ 2147483656; 2148532223 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2148532224; 2148532227 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/, [ 2148532228; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
-1 : 2148532224 { 0x80100000 -2146435072 -1.12500000e129 } : BV:32
-=input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
-1 : 2147483652 { 0x80000004 -2147483644 -1.47e129 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indxform22 : BV:32
-4 : Lambda44 : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda45 : BV:32
-7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=input.spec-%var-node_next-0.L1%9%bbentry
+=input.spec-%var-node_next-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indxform23 : BV:32
 4 : Lambda46 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
 6 : Lambda47 : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-node_val-0.L1%9%bbentry
+7 : 358390502 { 0x155c9ae6 +1.72347712e171 } : BV:32
+8 : prod(7, 3) : PROD[BV:32,BV:32]
+9 : sum(1, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 3, 5, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : prod(1, 13) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+15 : sum(1, 2, 14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+16 : sym_const(15) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%var-node_val-0.L2%9%bbentry
+1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry
+1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : unit : UNIT
+4 : Indxform22 : BV:32
+5 : Lambda44 : BV:32
+6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
+7 : Lambda45 : BV:32
+8 : 342187326 { 0x14655d3e +1.79190802e169 } : BV:32
+9 : prod(8, 4) : PROD[BV:32,BV:32]
+10 : sum(2, 3, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+12 : ind(2, 4, 6, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : prod(2, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+14 : sum(2, 3, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+15 : prod(1, 14) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+16 : sym_const(15) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=input.dst.llvm-%l
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%val
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 83760951 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 83760952; 83760955 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/, [ 83760956; 4294844283 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 4294844284; 4294844287 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/, [ 4294844288; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
+1 : 83760952 { 0x4fe1738 +1.98508358e138 } : BV:32
+=input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
+1 : 4294844284 { 0xfffe1f7c -123012 -1.98533582e128 } : BV:32
+=input.spec-%tmpvar-0.L2%9%bbentry
+1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_begin
-1 : 2147483652 { 0x80000004 -2147483644 -1.47e129 } : BV:32
+1 : 4294844284 { 0xfffe1f7c -123012 -1.98533582e128 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_end
-1 : 2147483655 { 0x80000007 -2147483641 -1.83e129 } : BV:32
+1 : 4294844287 { 0xfffe1f7f -123009 -1.98533618e128 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_begin
-1 : 2148532224 { 0x80100000 -2146435072 -1.12500000e129 } : BV:32
+1 : 83760952 { 0x4fe1738 +1.98508358e138 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_end
-1 : 2148532227 { 0x80100003 -2146435069 -1.12500035e129 } : BV:32
-=input.spec-%var-l-0.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
+1 : 83760955 { 0x4fe173b +1.98508393e138 } : BV:32
 =input.spec-%var-l-0.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.0
+1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%var-l-0.2.1.2.1.0
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.0
+1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry.0
+1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry.1.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.1.2.0
+1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.1.2.1.0
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =counter_example.random_seed
 1868157306
 =counter_example_end
@@ -2900,111 +2915,123 @@ discontiguous mls:
 =global nodece 0 nodece_visted_pcs: 
 L0%0%d_L0%0%d
 =global nodece 1
-=global nodece 1 nodece z3v487.ce7.num_edges_traversed0
+=global nodece 1 nodece cvc4.ce7.num_edges_traversed0
 =global nodece 1 nodece_path
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin z3v487.ce7 e82d3a64320d0568a8013d9c5e22d68
+=counter_example_begin cvc4.ce7 a7ca1e12d4e1935efd8b7b9bad79e52e
 =input.spec-%var-l-0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : 0 { 0x0 +1.0e129 } : BV:32
+3 : 1 { 0x1 +1.11e129 } : BV:32
 4 : Indxform27 : BV:32
 5 : Lambda54 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
 7 : Lambda55 : BV:32
-8 : prod(3, 4) : PROD[BV:32,BV:32]
-9 : sum(3, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-11 : ind(3, 4, 6, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(3, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sum(3, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-14 : prod(3, 13) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-15 : sum(1, 2, 14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-16 : sym_const(15) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+8 : 348192464 { 0x14c0fed0 +1.50777626e170 } : BV:32
+9 : prod(8, 4) : PROD[BV:32,BV:32]
+10 : sum(1, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+12 : ind(1, 4, 6, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : prod(1, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+14 : sum(3, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+15 : prod(1, 14) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+16 : sum(1, 2, 15) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+17 : prod(1, 16) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+18 : sum(1, 2, 17) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+19 : sym_const(18) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-val-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%val
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4257359647 ] -> 0, [ 4257359648; 4257359648 ] -> 255, [ 4257359649; 4257359649 ] -> 255, [ 4257359650; 4257359650 ] -> 127, [ 4257359651; 4257359651 ] -> 93, [ 4257359652; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-%l
-1 : 1568669695 { 0x5d7fffff +1.99999988e59 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 4257359647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 4257359648; 4257359651 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/, [ 4257359652; 4290932595 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 4290932596; 4290932599 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/, [ 4290932600; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
-1 : 4257359648 { 0xfdc22720 -37607648 -1.51681900e124 } : BV:32
-=input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
-1 : 4290932596 { 0xffc26f74 -4034700 -1.51902627e128 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indxform28 : BV:32
-4 : Lambda56 : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda57 : BV:32
-7 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-8 : prod(1, 7) : PROD[BV:32,SUM[UNIT,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-11 : sum(1, 2, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=input.spec-%var-node_next-0.L1%9%bbentry
+=input.spec-%var-node_next-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : Indxform29 : BV:32
 4 : Lambda58 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
 6 : Lambda59 : BV:32
-7 : prod(1, 3) : PROD[BV:32,BV:32]
-8 : sum(1, 2, 7) : SUM[UNIT,PROD[BV:32,BV:32]]
-9 : lambda(6, 8) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-10 : ind(1, 3, 5, 9) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-11 : prod(1, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-node_val-0.L1%9%bbentry
+7 : 835703175 { 0x31cfd187 +1.62358176e228 } : BV:32
+8 : prod(7, 3) : PROD[BV:32,BV:32]
+9 : sum(1, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 3, 5, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : prod(1, 13) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+15 : sum(1, 2, 14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+16 : sym_const(15) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%var-node_val-0.L2%9%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : unit : UNIT
+3 : Indxform28 : BV:32
+4 : Lambda56 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda57 : BV:32
+7 : 1758393872 { 0x68cef610 +1.61688423e82 } : BV:32
+8 : prod(7, 3) : PROD[BV:32,BV:32]
+9 : sum(1, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 3, 5, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : prod(1, 13) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+15 : sym_const(14) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=input.dst.llvm-%l
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-%val
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2147352575 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147352576; 2147352579 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/, [ 2147352580; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
+1 : 2147352576 { 0x7ffe0000 +1.98437500e128 } : BV:32
+=input.spec-%tmpvar-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_begin
-1 : 4290932596 { 0xffc26f74 -4034700 -1.51902627e128 } : BV:32
+1 : 2147352576 { 0x7ffe0000 +1.98437500e128 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_end
-1 : 4290932599 { 0xffc26f77 -4034697 -1.51902663e128 } : BV:32
+1 : 2147352579 { 0x7ffe0003 +1.98437535e128 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_begin
-1 : 4257359648 { 0xfdc22720 -37607648 -1.51681900e124 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_end
-1 : 4257359651 { 0xfdc22723 -37607645 -1.51681935e124 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.2.1.0
+1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-l-0.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.1.0
+=input.spec-%var-node-0.L2%9%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.0
+=input.spec-%var-node-0.L2%9%bbentry.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry.1.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.2.0
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.0
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.0
+=input.spec-%var-l-0.2.1.2.1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =counter_example.random_seed
 784983708
 =counter_example_end
@@ -3017,7 +3044,7 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce8 98dce2606d2b8e2f3a013951234cf90
+=counter_example_begin yices.ce8 2f18b156939199d265643ccaf965462
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
@@ -3026,31 +3053,36 @@ L0%0%d_L0%0%d
 5 : Lambda66 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
 7 : Lambda67 : BV:32
-8 : sum(1, 2, 4) : SUM[UNIT,BV:32]
-9 : prod(1, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+8 : 695579768 { 0x2975b478 +1.91956996e211 } : BV:32
+9 : prod(8, 4) : PROD[BV:32,BV:32]
+10 : sum(1, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+12 : ind(1, 4, 6, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 13 : prod(3, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 14 : sum(1, 2, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-15 : sym_const(14) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+15 : prod(3, 14) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+16 : sum(1, 2, 15) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+17 : sym_const(16) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-val-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%val
+=input.spec-%var-node_next-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.dst.llvm-%l
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 1342177279 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1342177280; 1342177283 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/, [ 1342177284; 2684354563 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2684354564; 2684354567 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/, [ 2684354568; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
-1 : 2684354564 { 0xa0000004 -1610612732 -1.47e193 } : BV:32
-=input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
-1 : 1342177280 { 0x50000000 +1.0e33 } : BV:32
-=input.spec-%tmpvar-0.L1%9%bbentry
+2 : unit : UNIT
+3 : Indxform35 : BV:32
+4 : Lambda70 : BV:32
+5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
+6 : Lambda71 : BV:32
+7 : 355659295 { 0x1532ee1f +1.39789187e171 } : BV:32
+8 : prod(7, 3) : PROD[BV:32,BV:32]
+9 : sum(1, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
+10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+11 : ind(1, 3, 5, 10) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+12 : prod(1, 11) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+13 : sum(1, 2, 12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=input.spec-%var-node_val-0.L2%9%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry
+=input.spec-%var-node-0.L2%9%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : unit : UNIT
@@ -3058,28 +3090,28 @@ L0%0%d_L0%0%d
 5 : Lambda68 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
 7 : Lambda69 : BV:32
-8 : sum(2, 3, 4) : SUM[UNIT,BV:32]
-9 : prod(1, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(7, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(2, 4, 6, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(2, 3, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : prod(1, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-14 : sym_const(13) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=input.spec-%var-node_next-0.L1%9%bbentry
+8 : 723208484 { 0x2b1b4924 +1.21316957e215 } : BV:32
+9 : prod(8, 4) : PROD[BV:32,BV:32]
+10 : sum(2, 3, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
+11 : lambda(7, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+12 : ind(2, 4, 6, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+13 : prod(2, 12) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+14 : sum(2, 3, 13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+15 : prod(1, 14) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+16 : sym_const(15) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=input.dst.llvm-%l
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : unit : UNIT
-3 : Indxform35 : BV:32
-4 : Lambda70 : BV:32
-5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda71 : BV:32
-7 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-8 : sum(1, 2, 3) : SUM[UNIT,BV:32]
-9 : prod(7, 8) : PROD[BV:32,SUM[UNIT,BV:32]]
-10 : lambda(6, 9) : FUNCTION[BV:32 -> PROD[BV:32,SUM[UNIT,BV:32]]]
-11 : ind(1, 3, 5, 10) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-12 : sum(1, 2, 11) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-13 : sym_const(12) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=input.spec-%var-node_val-0.L1%9%bbentry
+=input.dst.llvm-%val
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 1342177279 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 1342177280; 1342177283 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/, [ 1342177284; 2684354563 ] -> memlabel-mem-may-straddle-symbol.1-heap, [ 2684354564; 2684354567 ] -> memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/, [ 2684354568; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___head_or__x__=L0%0%argnum0=/
+1 : 2684354564 { 0xa0000004 -1610612732 -1.47e193 } : BV:32
+=input.dst.local./*___y___head_or__x__=L0%0%argnum1=/
+1 : 1342177280 { 0x50000000 +1.0e33 } : BV:32
+=input.spec-%tmpvar-0.L2%9%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_begin
 1 : 1342177280 { 0x50000000 +1.0e33 } : BV:32
@@ -3089,29 +3121,29 @@ L0%0%d_L0%0%d
 1 : 2684354564 { 0xa0000004 -1610612732 -1.47e193 } : BV:32
 =input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_end
 1 : 2684354567 { 0xa0000007 -1610612729 -1.83e193 } : BV:32
+=input.spec-%var-l-0.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.0
+=input.spec-%var-l-0.2.1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.0
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L1%9%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.0
+=input.spec-%var-node-0.L2%9%bbentry.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node-0.L1%9%bbentry.1.2.1.0
+=input.spec-%var-node-0.L2%9%bbentry.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.0
+=input.spec-%var-node-0.L2%9%bbentry.1.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node-0.L2%9%bbentry.1.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
 251969561
@@ -3245,15 +3277,15 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #0.pred
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
-140337 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140339 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140390 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/ : MEMLABEL
-140341 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
-140311 : 4 { 0x4 +1.0e1025 } : INT
-140312 : 0 { 0x0 } : BOOL
-140391 : select(140337, 140339, 140390, 140341, 140311, 140312) : BV:32
+140357 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140358 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140409 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/ : MEMLABEL
+140360 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
+140324 : 4 { 0x4 +1.0e1025 } : INT
+140325 : 0 { 0x0 } : BOOL
+140410 : select(140357, 140358, 140409, 140360, 140324, 140325) : BV:32
 =RhsExpr
-140336 : input.dst.llvm-%val : BV:32
+140356 : input.dst.llvm-%val : BV:32
 =predicate done
 
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1
@@ -3264,15 +3296,15 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1.pred
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
-140337 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140339 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140392 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/ : MEMLABEL
-140340 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
-140311 : 4 { 0x4 +1.0e1025 } : INT
-140312 : 0 { 0x0 } : BOOL
-140393 : select(140337, 140339, 140392, 140340, 140311, 140312) : BV:32
+140357 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140358 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140411 : memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/ : MEMLABEL
+140359 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
+140324 : 4 { 0x4 +1.0e1025 } : INT
+140325 : 0 { 0x0 } : BOOL
+140412 : select(140357, 140358, 140411, 140359, 140324, 140325) : BV:32
 =RhsExpr
-140338 : input.dst.llvm-%l : BV:32
+140355 : input.dst.llvm-%l : BV:32
 =predicate done
 
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2
@@ -3283,59 +3315,59 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.pred
 =Comment
 precond-mlasserts
 =LhsExpr
-140483 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_begin : BV:32
-140484 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_end : BV:32
-140485 : bvule(140483, 140484) : BOOL
-140324 : 4 { 0x4 +1.47e129 } : BV:32
-140365 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-140486 : bvadd(140324, 140365) : BV:32
-140487 : bvadd(140483, 140486) : BV:32
-140488 : eq(140484, 140487) : BOOL
-140489 : and(140485, 140488) : BOOL
-140490 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_begin : BV:32
-140491 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_end : BV:32
-140492 : bvule(140490, 140491) : BOOL
-140493 : and(140489, 140492) : BOOL
-140494 : bvadd(140490, 140486) : BV:32
-140495 : eq(140491, 140494) : BOOL
-140496 : and(140493, 140495) : BOOL
-140497 : bvuge(140483, 140490) : BOOL
-140498 : bvule(140483, 140491) : BOOL
-140499 : and(140497, 140498) : BOOL
-140501 : bvuge(140484, 140490) : BOOL
-140502 : bvule(140484, 140491) : BOOL
-140503 : and(140501, 140502) : BOOL
-140504 : not(140503) : BOOL
-140505 : andnot1(140499, 140504) : BOOL
-140500 : bvuge(140490, 140483) : BOOL
-140506 : bvule(140490, 140484) : BOOL
-140507 : and(140500, 140506) : BOOL
-140509 : bvuge(140491, 140483) : BOOL
-140510 : bvule(140491, 140484) : BOOL
+140495 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_begin : BV:32
+140496 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_end : BV:32
+140497 : bvule(140495, 140496) : BOOL
+140336 : 4 { 0x4 +1.47e129 } : BV:32
+140384 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+140498 : bvadd(140336, 140384) : BV:32
+140499 : bvadd(140495, 140498) : BV:32
+140500 : eq(140496, 140499) : BOOL
+140501 : and(140497, 140500) : BOOL
+140502 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_begin : BV:32
+140503 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum0=/_end : BV:32
+140504 : bvule(140502, 140503) : BOOL
+140505 : and(140501, 140504) : BOOL
+140506 : bvadd(140502, 140498) : BV:32
+140507 : eq(140503, 140506) : BOOL
+140508 : and(140505, 140507) : BOOL
+140509 : bvuge(140495, 140502) : BOOL
+140510 : bvule(140495, 140503) : BOOL
 140511 : and(140509, 140510) : BOOL
-140512 : not(140511) : BOOL
-140513 : andnot1(140507, 140512) : BOOL
-140508 : and(140505, 140513) : BOOL
-140514 : and(140496, 140508) : BOOL
-140341 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
-140515 : 3 { 0x3 +1.35e129 } : BV:32
-140516 : bvand(140341, 140515) : BV:32
+140513 : bvuge(140496, 140502) : BOOL
+140514 : bvule(140496, 140503) : BOOL
+140515 : and(140513, 140514) : BOOL
+140516 : not(140515) : BOOL
+140517 : andnot1(140511, 140516) : BOOL
+140512 : bvuge(140502, 140495) : BOOL
+140518 : bvule(140502, 140496) : BOOL
+140519 : and(140512, 140518) : BOOL
+140521 : bvuge(140503, 140495) : BOOL
+140522 : bvule(140503, 140496) : BOOL
+140523 : and(140521, 140522) : BOOL
+140524 : not(140523) : BOOL
+140525 : andnot1(140519, 140524) : BOOL
+140520 : and(140517, 140525) : BOOL
+140526 : and(140508, 140520) : BOOL
+140360 : input.dst.local./*___y___head_or__x__=L0%0%argnum1=/ : BV:32
+140527 : 3 { 0x3 +1.35e129 } : BV:32
+140528 : bvand(140360, 140527) : BV:32
 140291 : 0 { 0x0 +1.0e129 } : BV:32
-140517 : eq(140516, 140291) : BOOL
-140340 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
-140518 : bvand(140340, 140515) : BV:32
-140519 : eq(140518, 140291) : BOOL
-140520 : and(140517, 140519) : BOOL
-140521 : and(140514, 140520) : BOOL
-140522 : eq(140341, 140483) : BOOL
-140523 : eq(140340, 140490) : BOOL
-140524 : and(140522, 140523) : BOOL
-140525 : and(140521, 140524) : BOOL
-140339 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140313 : 1 { 0x1 +1.11e129 } : BV:32
-140342 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-140526 : region_agrees_with_memlabel(140339, 140291, 140313, 140342) : BOOL
-140527 : and(140525, 140526) : BOOL
+140529 : eq(140528, 140291) : BOOL
+140359 : input.dst.local./*___y___head_or__x__=L0%0%argnum0=/ : BV:32
+140530 : bvand(140359, 140527) : BV:32
+140531 : eq(140530, 140291) : BOOL
+140532 : and(140529, 140531) : BOOL
+140533 : and(140526, 140532) : BOOL
+140534 : eq(140360, 140495) : BOOL
+140535 : eq(140359, 140502) : BOOL
+140536 : and(140534, 140535) : BOOL
+140537 : and(140533, 140536) : BOOL
+140358 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140316 : 1 { 0x1 +1.11e129 } : BV:32
+140361 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140538 : region_agrees_with_memlabel(140358, 140291, 140316, 140361) : BOOL
+140539 : and(140537, 140538) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -3349,8 +3381,8 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.pred
 equal-val
 =LhsExpr
 140274 : input.spec-%var-val-0 : BV:32
-140336 : input.dst.llvm-%val : BV:32
-140529 : eq(140274, 140336) : BOOL
+140356 : input.dst.llvm-%val : BV:32
+140540 : eq(140274, 140356) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -3363,9 +3395,9 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>Lentry%2%d
 =LhsExpr
-140338 : input.dst.llvm-%l : BV:32
-140347 : 8 { 0x8 +1.0e1025 } : INT
-140348 : islangaligned(140338, 140347) : BOOL
+140355 : input.dst.llvm-%l : BV:32
+140366 : 8 { 0x8 +1.0e1025 } : INT
+140367 : islangaligned(140355, 140366) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -3379,18 +3411,18 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #5.pred
 merged-predicate
 =LhsExpr
 140291 : 0 { 0x0 +1.0e129 } : BV:32
-140338 : input.dst.llvm-%l : BV:32
-140413 : eq(140291, 140338) : BOOL
-140414 : not(140413) : BOOL
-140311 : 4 { 0x4 +1.0e1025 } : INT
-140473 : islangaligned(140338, 140311) : BOOL
-140416 : isgepoffset(140338, 140291) : BOOL
+140355 : input.dst.llvm-%l : BV:32
+140432 : eq(140291, 140355) : BOOL
+140433 : not(140432) : BOOL
+140324 : 4 { 0x4 +1.0e1025 } : INT
+140485 : islangaligned(140355, 140324) : BOOL
+140435 : isgepoffset(140355, 140291) : BOOL
 140276 : 1 { 0x1 } : BOOL
-140468 : and(140276, 140416) : BOOL
-140471 : and(140416, 140468) : BOOL
-140765 : and(140473, 140471) : BOOL
-140766 : eq(140765, 140276) : BOOL
-140767 : implies(140414, 140766) : BOOL
+140480 : and(140276, 140435) : BOOL
+140483 : and(140435, 140480) : BOOL
+140759 : and(140485, 140483) : BOOL
+140760 : eq(140759, 140276) : BOOL
+140761 : implies(140433, 140760) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -3404,30 +3436,30 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #6.pred
 pointer-implements-inductive-list
 =LhsExpr
 140273 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140338 : input.dst.llvm-%l : BV:32
-140318 : Indxform0 : BV:32
-140323 : Lambda1 : BV:32
-140337 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140339 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140528 : memlabel-mem-may-straddle-symbol.1-local./*___y___head_or__x__=L0%0%argnum0=/-local./*___y___head_or__x__=L0%0%argnum1=/-heap : MEMLABEL
-140324 : 4 { 0x4 +1.47e129 } : BV:32
-140325 : bvadd(140323, 140324) : BV:32
-140311 : 4 { 0x4 +1.0e1025 } : INT
-140312 : 0 { 0x0 } : BOOL
-140568 : select(140337, 140339, 140528, 140325, 140311, 140312) : BV:32
-140569 : lambda(140323, 140568) : FUNCTION[BV:32 -> BV:32]
-140314 : Lambda0 : BV:32
+140355 : input.dst.llvm-%l : BV:32
+140330 : Indxform0 : BV:32
+140335 : Lambda1 : BV:32
+140357 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140358 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140323 : memlabel-top : MEMLABEL
+140336 : 4 { 0x4 +1.47e129 } : BV:32
+140337 : bvadd(140335, 140336) : BV:32
+140324 : 4 { 0x4 +1.0e1025 } : INT
+140325 : 0 { 0x0 } : BOOL
+140541 : select(140357, 140358, 140323, 140337, 140324, 140325) : BV:32
+140542 : lambda(140335, 140541) : FUNCTION[BV:32 -> BV:32]
+140326 : Lambda0 : BV:32
 140291 : 0 { 0x0 +1.0e129 } : BV:32
-140553 : eq(140291, 140314) : BOOL
-140313 : 1 { 0x1 +1.11e129 } : BV:32
-140554 : ite(140553, 140291, 140313) : BV:32
-140317 : unit : UNIT
-140570 : select(140337, 140339, 140528, 140314, 140311, 140312) : BV:32
-140571 : prod(140570, 140318) : PROD[BV:32,BV:32]
-140572 : sum(140554, 140317, 140571) : SUM[UNIT,PROD[BV:32,BV:32]]
-140573 : lambda(140314, 140572) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
-140574 : ind(140338, 140318, 140569, 140573) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-140575 : eq(140273, 140574) : BOOL
+140571 : eq(140291, 140326) : BOOL
+140316 : 1 { 0x1 +1.11e129 } : BV:32
+140572 : ite(140571, 140291, 140316) : BV:32
+140329 : unit : UNIT
+140543 : select(140357, 140358, 140323, 140326, 140324, 140325) : BV:32
+140557 : prod(140543, 140330) : PROD[BV:32,BV:32]
+140577 : sum(140572, 140329, 140557) : SUM[UNIT,PROD[BV:32,BV:32]]
+140579 : lambda(140326, 140577) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
+140584 : ind(140355, 140330, 140542, 140579) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140588 : eq(140273, 140584) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done

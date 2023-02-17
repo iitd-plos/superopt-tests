@@ -91,23 +91,23 @@ Lfor.end7%1%d => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
-=Input: llvm-method-arg.2
+=Input: tfg-method-arg.0
+=arg addr
+1 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+=arg val
+1 : input.dst.llvm-%x : BV:32
+=arg end
+=Input: tfg-method-arg.2
 =arg addr
 1 : input.dst.local./*___y___foo__x__=L0%0%argnum2=/ : BV:32
 =arg val
 1 : input.dst.llvm-%m : BV:32
 =arg end
-=Input: llvm-method-arg.1
+=Input: tfg-method-arg.1
 =arg addr
 1 : input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : BV:32
 =arg val
 1 : input.dst.llvm-%n : BV:32
-=arg end
-=Input: llvm-method-arg.0
-=arg addr
-1 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
-=arg val
-1 : input.dst.llvm-%x : BV:32
 =arg end
 =Node outputs: E0%0%d
 =Output: heap
@@ -673,16 +673,16 @@ dst.local_alloc_count.=L0%0%d=
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =Loc 100042 in dst.llvm.foo.
 REGMEM
+dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+=Loc 100043 in dst.llvm.foo.
+REGMEM
 dst.local./*___y___foo__x__=L0%0%argnum2=/
 1 : input.dst.local./*___y___foo__x__=L0%0%argnum2=/ : BV:32
-=Loc 100043 in dst.llvm.foo.
+=Loc 100044 in dst.llvm.foo.
 REGMEM
 dst.local./*___y___foo__x__=L0%0%argnum1=/
 1 : input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : BV:32
-=Loc 100044 in dst.llvm.foo.
-REGMEM
-dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =Loc 100046 in dst.llvm.foo.
 MASKED
 =mem
@@ -1236,67 +1236,67 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100006
 =loc_expr
-140380 : input.dst.llvm-%n : BV:32
+140413 : input.dst.llvm-%n : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100012
 =loc_expr
-140381 : input.dst.llvm-%m : BV:32
+140414 : input.dst.llvm-%m : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100015
 =loc_expr
-140379 : input.dst.llvm-%x : BV:32
+140412 : input.dst.llvm-%x : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100031
 =loc_expr
-140460 : input.dst.llvm-%hidden-reg : BV:32
+140493 : input.dst.llvm-%hidden-reg : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100033
 =loc_expr
-140461 : input.dst.llvm-callee-save.0 : BV:32
+140494 : input.dst.llvm-callee-save.0 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100034
 =loc_expr
-140463 : input.dst.llvm-callee-save.1 : BV:32
+140496 : input.dst.llvm-callee-save.1 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100035
 =loc_expr
-140465 : input.dst.llvm-callee-save.2 : BV:32
+140498 : input.dst.llvm-callee-save.2 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100036
 =loc_expr
-140467 : input.dst.llvm-callee-save.3 : BV:32
+140500 : input.dst.llvm-callee-save.3 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100041
 =loc_expr
-140391 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140424 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100042
 =loc_expr
-140384 : input.dst.local./*___y___foo__x__=L0%0%argnum2=/ : BV:32
+140417 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100043
 =loc_expr
-140385 : input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : BV:32
+140418 : input.dst.local./*___y___foo__x__=L0%0%argnum2=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100044
 =loc_expr
-140386 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140419 : input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100053
 =loc_expr
-140661 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+140747 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%hidden-reg : BV:32
@@ -1311,56 +1311,56 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100054
 =loc_expr
-140662 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140748 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100056
 =loc_expr
-140663 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140749 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100061
 =loc_expr
-140664 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+140750 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100062
 =loc_expr
-140665 : input.dst.llvm-%ret.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+140751 : input.dst.llvm-%ret.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100066
 =loc_expr
-140668 : input.dst.llvm-%ret.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+140754 : input.dst.llvm-%ret.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100068
 =loc_expr
-140669 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+140755 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100085
 =loc_expr
-140685 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
+140771 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100086
 =loc_expr
-140686 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
+140772 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
@@ -1386,11 +1386,11 @@ discontiguous mls:
 =loc 100085 expr
 1 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
 =loc 100085 spreled-expr
-140391 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140424 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =loc 100086 expr
 1 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
 =loc 100086 spreled-expr
-140390 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+140423 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;foo}
@@ -1928,9 +1928,9 @@ tfg.assumes_around_edge at L0%0%d=>Lfor.cond%1%bbentry assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>Lfor.cond%1%bbentry
 =LhsExpr
-140379 : input.dst.llvm-%x : BV:32
-140365 : 4 { 0x4 +1.0e1025 } : INT
-140392 : islangaligned(140379, 140365) : BOOL
+140412 : input.dst.llvm-%x : BV:32
+140398 : 4 { 0x4 +1.0e1025 } : INT
+140425 : islangaligned(140412, 140398) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1947,45 +1947,45 @@ tfg.assumes_around_edge at Lfor.body3%1%d=>Lfor.cond1%1%bbentry assume #0.pred
 =Comment
 undef-behavioursome.edge.Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =LhsExpr
-140508 : 4 { 0x4 +1.0e1025 } : BV:64
-140614 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
-140410 : 32 { 0x20 +1.0e1025 } : INT
-140635 : bvsign_ext(140614, 140410) : BV:64
-140754 : bvmul(140508, 140635) : BV:64
-140414 : 63 { 0x3f +1.0e1025 } : INT
-140755 : bvextract(140754, 140414, 140410) : BV:32
+140541 : 4 { 0x4 +1.0e1025 } : BV:64
+140700 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+140443 : 32 { 0x20 +1.0e1025 } : INT
+140721 : bvsign_ext(140700, 140443) : BV:64
+140840 : bvmul(140541, 140721) : BV:64
+140447 : 63 { 0x3f +1.0e1025 } : INT
+140841 : bvextract(140840, 140447, 140443) : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140634 : bvslt(140614, 140276) : BOOL
-140416 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-140768 : ite(140634, 140416, 140276) : BV:32
-140770 : eq(140755, 140768) : BOOL
-140365 : 4 { 0x4 +1.0e1025 } : INT
-140772 : isindexforsize(140770, 140365) : BOOL
-140379 : input.dst.llvm-%x : BV:32
-140362 : 4 { 0x4 +1.47e129 } : BV:32
-140701 : bvmul(140362, 140614) : BV:32
-140704 : bvadd(140379, 140701) : BV:32
-140774 : isgepoffset(140704, 140701) : BOOL
-140778 : islangaligned(140704, 140365) : BOOL
-140382 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140383 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140494 : memlabel-mem-no-straddle-symbol.1-heap-arg.0 : MEMLABEL
-140366 : 0 { 0x0 } : BOOL
-140710 : select(140382, 140383, 140494, 140704, 140365, 140366) : BV:32
-140780 : islangaligned(140710, 140365) : BOOL
-140783 : and(140778, 140780) : BOOL
-140616 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
-140650 : bvsign_ext(140616, 140410) : BV:64
-140796 : bvmul(140508, 140650) : BV:64
-140797 : bvextract(140796, 140414, 140410) : BV:32
-140649 : bvslt(140616, 140276) : BOOL
-140810 : ite(140649, 140416, 140276) : BV:32
-140812 : eq(140797, 140810) : BOOL
-140814 : isindexforsize(140812, 140365) : BOOL
-140713 : bvmul(140362, 140616) : BV:32
-140715 : bvadd(140710, 140713) : BV:32
-140816 : isgepoffset(140715, 140713) : BOOL
-140821 : and(140772, 140774, 140778, 140783, 140814, 140816) : BOOL
+140720 : bvslt(140700, 140276) : BOOL
+140449 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+140854 : ite(140720, 140449, 140276) : BV:32
+140856 : eq(140841, 140854) : BOOL
+140398 : 4 { 0x4 +1.0e1025 } : INT
+140858 : isindexforsize(140856, 140398) : BOOL
+140412 : input.dst.llvm-%x : BV:32
+140395 : 4 { 0x4 +1.47e129 } : BV:32
+140787 : bvmul(140395, 140700) : BV:32
+140790 : bvadd(140412, 140787) : BV:32
+140860 : isgepoffset(140790, 140787) : BOOL
+140864 : islangaligned(140790, 140398) : BOOL
+140415 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140416 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140527 : memlabel-mem-no-straddle-symbol.1-heap-arg.0 : MEMLABEL
+140399 : 0 { 0x0 } : BOOL
+140796 : select(140415, 140416, 140527, 140790, 140398, 140399) : BV:32
+140866 : islangaligned(140796, 140398) : BOOL
+140869 : and(140864, 140866) : BOOL
+140702 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+140736 : bvsign_ext(140702, 140443) : BV:64
+140882 : bvmul(140541, 140736) : BV:64
+140883 : bvextract(140882, 140447, 140443) : BV:32
+140735 : bvslt(140702, 140276) : BOOL
+140896 : ite(140735, 140449, 140276) : BV:32
+140898 : eq(140883, 140896) : BOOL
+140900 : isindexforsize(140898, 140398) : BOOL
+140799 : bvmul(140395, 140702) : BV:32
+140801 : bvadd(140796, 140799) : BV:32
+140902 : isgepoffset(140801, 140799) : BOOL
+140907 : and(140858, 140860, 140864, 140869, 140900, 140902) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1998,21 +1998,21 @@ tfg.assumes_around_edge at Lfor.body3%1%d=>Lfor.cond1%1%bbentry assume #1.pred
 =Comment
 undef-behaviour-align-assume.edge.Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =LhsExpr
-140382 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140383 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140494 : memlabel-mem-no-straddle-symbol.1-heap-arg.0 : MEMLABEL
-140379 : input.dst.llvm-%x : BV:32
-140362 : 4 { 0x4 +1.47e129 } : BV:32
-140614 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
-140701 : bvmul(140362, 140614) : BV:32
-140704 : bvadd(140379, 140701) : BV:32
-140365 : 4 { 0x4 +1.0e1025 } : INT
-140366 : 0 { 0x0 } : BOOL
-140710 : select(140382, 140383, 140494, 140704, 140365, 140366) : BV:32
-140616 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
-140713 : bvmul(140362, 140616) : BV:32
-140715 : bvadd(140710, 140713) : BV:32
-140736 : islangaligned(140715, 140365) : BOOL
+140415 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140416 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140527 : memlabel-mem-no-straddle-symbol.1-heap-arg.0 : MEMLABEL
+140412 : input.dst.llvm-%x : BV:32
+140395 : 4 { 0x4 +1.47e129 } : BV:32
+140700 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+140787 : bvmul(140395, 140700) : BV:32
+140790 : bvadd(140412, 140787) : BV:32
+140398 : 4 { 0x4 +1.0e1025 } : INT
+140399 : 0 { 0x0 } : BOOL
+140796 : select(140415, 140416, 140527, 140790, 140398, 140399) : BV:32
+140702 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+140799 : bvmul(140395, 140702) : BV:32
+140801 : bvadd(140796, 140799) : BV:32
+140822 : islangaligned(140801, 140398) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2264,9 +2264,9 @@ Lfor.inc5%2%d
 input.dst.llvm-%x : L0%0%d : x'
 input.dst.llvm-%n : L0%0%d : n'
 input.dst.llvm-%m : L0%0%d : m'
+input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.local./*___y___foo__x__=L0%0%argnum2=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum2=/
 input.dst.local./*___y___foo__x__=L0%0%argnum1=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum1=/
-input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%ret.0 : Lfor.cond%1%bbentry : ret'
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%i.0.phi.tmpvar.entry : L0%0%d : 0
@@ -2296,8 +2296,8 @@ input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry
-input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
 input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
+input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
 input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : L0%0%d : 0
 input.dst.llvm-%ret.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : L0%0%d : 0
 input.dst.llvm-%ret.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : L0%0%d : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry
@@ -2824,16 +2824,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -2841,9 +2840,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -2852,7 +2852,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -2864,10 +2864,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -3048,16 +3048,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -3065,9 +3064,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -3076,7 +3076,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -3088,10 +3088,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -3272,16 +3272,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -3289,9 +3288,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -3300,7 +3300,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -3312,10 +3312,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -3496,16 +3496,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -3513,9 +3512,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -3524,7 +3524,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -3536,10 +3536,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -3720,16 +3720,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -3737,9 +3736,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -3748,7 +3748,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -3760,10 +3760,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -3944,16 +3944,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -3961,9 +3960,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -3972,7 +3972,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -3984,10 +3984,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -4168,16 +4168,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -4185,9 +4184,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -4196,7 +4196,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -4208,10 +4208,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -4392,16 +4392,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -4409,9 +4408,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -4420,7 +4420,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -4432,10 +4432,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
@@ -4616,16 +4616,15 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
-=reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
-=reaching defns for expr 10 edges done
-=reaching defns for expr 11
 1 : input.dst.llvm-%ret.0.Lfor.cond%1%bbentry : BV:32
-=reaching defns for expr 11 edges
+=reaching defns for expr 10 edges
   L0%0%d=>Lfor.cond%1%bbentry
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+=reaching defns for expr 10 edges done
+=reaching defns for expr 11
+1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+=reaching defns for expr 11 edges
+  Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
@@ -4633,9 +4632,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  Lfor.cond%1%bbentry=>Lfor.cond%2%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
@@ -4644,7 +4644,7 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 15 edges
   Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
   Lfor.body3%1%d=>Lfor.cond1%1%bbentry
@@ -4656,10 +4656,10 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
@@ -4792,11 +4792,11 @@ lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap,
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, memlabel-mem--arg.1, )
 =LR status for var input.dst.llvm-%m
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, memlabel-mem--arg.2, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum2=/
 lr_status_top
 =LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum1=/
-lr_status_top
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
@@ -4814,29 +4814,29 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
-lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%ret.0.Lfor.cond%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%cmp.Lfor.cond%2%d
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%ret-reg.E0%0%d
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+=LR status for var input.dst.llvm-%hidden-reg.E0%0%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%j.0.Lfor.cond1%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%ret.1.Lfor.cond1%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-ghostvar.itervar.2.Lfor.cond1%1%bbentry
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%cmp2.Lfor.cond1%2%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.1.total_offset.Lfor.cond1%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-indir_tgt.E0%0%d
 lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%hidden-reg.E0%0%d
-lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%cmp.Lfor.cond%2%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%289705b5b10ef8e46579c979a515b48.gepoffset.2.total_offset.Lfor.cond1%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )

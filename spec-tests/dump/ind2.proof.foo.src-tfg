@@ -1,14 +1,14 @@
 =TFG_SSA:
 =TFG_SPEC src.spec.foo:
 =TFG:
-=Nodes: L0%0%d L1%1%d L1%2%bbentry L1%4%bbentry L1%9%bbentry E0%0%d
+=Nodes: L0%0%d L2%1%d L2%2%bbentry L2%4%bbentry L2%9%bbentry E0%0%d
 =Edges:
-L0%0%d => L1%1%d
-L1%1%d => L1%4%bbentry
-L1%1%d => L1%2%bbentry
-L1%2%bbentry => L1%9%bbentry
-L1%4%bbentry => L1%9%bbentry
-L1%9%bbentry => E0%0%d
+L0%0%d => L2%1%d
+L2%1%d => L2%4%bbentry
+L2%1%d => L2%2%bbentry
+L2%2%bbentry => L2%9%bbentry
+L2%4%bbentry => L2%9%bbentry
+L2%9%bbentry => E0%0%d
 =graph done
 =is_ssa_graph:
 1
@@ -24,25 +24,25 @@ L1%9%bbentry => E0%0%d
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%1%d
+=PC to var-version map at L2%1%d
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%2%bbentry
+=PC to var-version map at L2%2%bbentry
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%4%bbentry
+=PC to var-version map at L2%4%bbentry
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L1%9%bbentry
+=PC to var-version map at L2%9%bbentry
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
@@ -56,7 +56,7 @@ L1%9%bbentry => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
-=Input: spec-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : (undefined) : UNDEFINED
 =arg val
@@ -77,7 +77,7 @@ L1%9%bbentry => E0%0%d
 Memlabel map for call-context {*;foo}
 =memlabel_map.0 for call-context {*;foo}
 mlheap.src.spec.foo : memlabel-mem--heap
-=Edge: L0%0%d => L1%1%d
+=Edge: L0%0%d => L2%1%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
@@ -88,7 +88,7 @@ mlheap.src.spec.foo : memlabel-mem--heap
 0:2:func_head
 tfg_edge_comment end
 
-=Edge: L1%1%d => L1%4%bbentry
+=Edge: L2%1%d => L2%4%bbentry
 =Edge.EdgeCond: 
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
@@ -101,7 +101,7 @@ tfg_edge_comment end
 0:5:match_sum_cond_1
 tfg_edge_comment end
 
-=Edge: L1%1%d => L1%2%bbentry
+=Edge: L2%1%d => L2%2%bbentry
 =Edge.EdgeCond: 
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
@@ -114,13 +114,13 @@ tfg_edge_comment end
 0:3:match_sum_cond_0
 tfg_edge_comment end
 
-=Edge: L1%2%bbentry => L1%9%bbentry
+=Edge: L2%2%bbentry => L2%9%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-1.L1%9%bbentry
+=spec-%tmpvar-1.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-empty-0.L1%9%bbentry
+=spec-%var-empty-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
@@ -131,35 +131,35 @@ tfg_edge_comment end
 0:-1:((bb_entry*match_sum_val_0)*match_sum_merge_0)
 tfg_edge_comment end
 
-=Edge: L1%4%bbentry => L1%9%bbentry
+=Edge: L2%4%bbentry => L2%9%bbentry
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-1.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%tmpvar-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-node-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=spec-%var-node_next-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-node_val-0.L1%9%bbentry
+=spec-%var-node_val-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
+=spec-%tmpvar-1.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=spec-%tmpvar-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=spec-%var-node-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=spec-%var-node_next-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -167,12 +167,12 @@ tfg_edge_comment end
 0:-1:(((bb_entry*match_sum_val_1)*match_prod_0)*((match_prod_1*match_prod_final)*match_sum_merge_1))
 tfg_edge_comment end
 
-=Edge: L1%9%bbentry => E0%0%d
+=Edge: L2%9%bbentry => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
 =spec-%tmpvar-2.E0%0%d
-1 : input.spec-%tmpvar-1.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+1 : input.spec-%tmpvar-1.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -208,43 +208,43 @@ MASKED
 memlabel-mem--arg.0
 =Loc 11 in src.spec.foo.
 REGMEM
-spec-%tmpvar-1.L1%9%bbentry
-1 : input.spec-%tmpvar-1.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+spec-%tmpvar-1.L2%9%bbentry
+1 : input.spec-%tmpvar-1.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =Loc 12 in src.spec.foo.
 REGMEM
 spec-%tmpvar-2.E0%0%d
 1 : input.spec-%tmpvar-2.E0%0%d : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =Loc 13 in src.spec.foo.
 REGMEM
-spec-%var-empty-0.L1%9%bbentry
-1 : input.spec-%var-empty-0.L1%9%bbentry : UNIT
+spec-%var-empty-0.L2%9%bbentry
+1 : input.spec-%var-empty-0.L2%9%bbentry : UNIT
 =Loc 14 in src.spec.foo.
 REGMEM
-spec-%tmpvar-0.L1%9%bbentry
-1 : input.spec-%tmpvar-0.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+spec-%tmpvar-0.L2%9%bbentry
+1 : input.spec-%tmpvar-0.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =Loc 15 in src.spec.foo.
 REGMEM
-spec-%var-node-0.L1%9%bbentry
-1 : input.spec-%var-node-0.L1%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+spec-%var-node-0.L2%9%bbentry
+1 : input.spec-%var-node-0.L2%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =Loc 16 in src.spec.foo.
 REGMEM
-spec-%var-node_next-0.L1%9%bbentry
-1 : input.spec-%var-node_next-0.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+spec-%var-node_next-0.L2%9%bbentry
+1 : input.spec-%var-node_next-0.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =Loc 17 in src.spec.foo.
 REGMEM
-spec-%var-node_val-0.L1%9%bbentry
-1 : input.spec-%var-node_val-0.L1%9%bbentry : BV:32
+spec-%var-node_val-0.L2%9%bbentry
+1 : input.spec-%var-node_val-0.L2%9%bbentry : BV:32
 =Locs end
 =Liveness in src.spec.foo
 =live locs at L0%0%d
 1, 
-=live locs at L1%1%d
+=live locs at L2%1%d
 1, 
-=live locs at L1%2%bbentry
+=live locs at L2%2%bbentry
 1, 
-=live locs at L1%4%bbentry
+=live locs at L2%4%bbentry
 1, 
-=live locs at L1%9%bbentry
+=live locs at L2%9%bbentry
 11, 
 =live locs at E0%0%d
 12, 
@@ -252,13 +252,13 @@ spec-%var-node_val-0.L1%9%bbentry
 =Definedness in src.spec.foo
 =loc definedness at L0%0%d
 1, 9, 10
-=loc definedness at L1%1%d
+=loc definedness at L2%1%d
 1, 9, 10
-=loc definedness at L1%2%bbentry
+=loc definedness at L2%2%bbentry
 1, 9, 10
-=loc definedness at L1%4%bbentry
+=loc definedness at L2%4%bbentry
 1, 9, 10
-=loc definedness at L1%9%bbentry
+=loc definedness at L2%9%bbentry
 1, 9, 10, 11
 =loc definedness at E0%0%d
 1, 9, 10, 11, 12
@@ -266,13 +266,13 @@ spec-%var-node_val-0.L1%9%bbentry
 =Branch affecting variable locs in src.spec.foo
 =branch affecting variable locs at L0%0%d
 1
-=branch affecting variable locs at L1%1%d
+=branch affecting variable locs at L2%1%d
 1
-=branch affecting variable locs at L1%2%bbentry
+=branch affecting variable locs at L2%2%bbentry
 
-=branch affecting variable locs at L1%4%bbentry
+=branch affecting variable locs at L2%4%bbentry
 
-=branch affecting variable locs at L1%9%bbentry
+=branch affecting variable locs at L2%9%bbentry
 
 =branch affecting variable locs at E0%0%d
 
@@ -287,66 +287,66 @@ memlabel-mem--arg.0
 =relevant memlabels done
 =graph_with_locs_done
 =graph_with_edge_structures
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L1%1%d
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L1%1%d done
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%2%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%2%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%4%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%1%d=>L1%4%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry for loc_id 11 {input.spec-%tmpvar-1.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%1%d
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%1%d done
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%2%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%2%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%4%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%1%d=>L2%4%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry for loc_id 11 {input.spec-%tmpvar-1.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry for loc_id 13 {input.spec-%var-empty-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry for loc_id 13 {input.spec-%var-empty-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
-=graph_with_edge_structures.loc_to_expr_map at L1%2%bbentry=>L1%9%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 11 {input.spec-%tmpvar-1.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%2%bbentry=>L2%9%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 11 {input.spec-%tmpvar-1.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 14 {input.spec-%tmpvar-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 14 {input.spec-%tmpvar-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 15 {input.spec-%var-node-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 15 {input.spec-%var-node-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 16 {input.spec-%var-node_next-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 16 {input.spec-%var-node_next-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry for loc_id 17 {input.spec-%var-node_val-0.L1%9%bbentry }
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry for loc_id 17 {input.spec-%var-node_val-0.L2%9%bbentry }
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L1%4%bbentry=>L1%9%bbentry done
-=graph_with_edge_structures.loc_to_expr_map at L1%9%bbentry=>E0%0%d
-=graph_with_edge_structures.loc_to_expr_map at L1%9%bbentry=>E0%0%d for loc_id 12 {input.spec-%tmpvar-2.E0%0%d }
-1 : input.spec-%tmpvar-1.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=graph_with_edge_structures.loc_to_expr_map at L1%9%bbentry=>E0%0%d done
+=graph_with_edge_structures.loc_to_expr_map at L2%4%bbentry=>L2%9%bbentry done
+=graph_with_edge_structures.loc_to_expr_map at L2%9%bbentry=>E0%0%d
+=graph_with_edge_structures.loc_to_expr_map at L2%9%bbentry=>E0%0%d for loc_id 12 {input.spec-%tmpvar-2.E0%0%d }
+1 : input.spec-%tmpvar-1.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=graph_with_edge_structures.loc_to_expr_map at L2%9%bbentry=>E0%0%d done
 =graph_with_edge_structures.loc_to_expr_map done
 =graph_with_edge_structures done
 =graph_with_ml_contiguity_info vacuous mls
 vacuous mls at L0%0%d:
-vacuous mls at L1%1%d:
-vacuous mls at L1%2%bbentry:
-vacuous mls at L1%4%bbentry:
-vacuous mls at L1%9%bbentry:
+vacuous mls at L2%1%d:
+vacuous mls at L2%2%bbentry:
+vacuous mls at L2%4%bbentry:
+vacuous mls at L2%9%bbentry:
 vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info non-vacuous mls
 non-vacuous mls at L0%0%d:
-non-vacuous mls at L1%1%d:
-non-vacuous mls at L1%2%bbentry:
-non-vacuous mls at L1%4%bbentry:
-non-vacuous mls at L1%9%bbentry:
+non-vacuous mls at L2%1%d:
+non-vacuous mls at L2%2%bbentry:
+non-vacuous mls at L2%4%bbentry:
+non-vacuous mls at L2%9%bbentry:
 non-vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info discontiguous mls
 discontiguous mls:
@@ -360,7 +360,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 13
 =loc_expr
-140299 : input.spec-%var-empty-0.L1%9%bbentry : UNIT
+140299 : input.spec-%var-empty-0.L2%9%bbentry : UNIT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -369,7 +369,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 14
 =loc_expr
-140411 : input.spec-%tmpvar-0.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140310 : input.spec-%tmpvar-0.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -379,7 +379,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 15
 =loc_expr
-140412 : input.spec-%var-node-0.L1%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+140312 : input.spec-%var-node-0.L2%9%bbentry : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -388,7 +388,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 16
 =loc_expr
-140414 : input.spec-%var-node_next-0.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+140314 : input.spec-%var-node_next-0.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -398,7 +398,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 17
 =loc_expr
-140415 : input.spec-%var-node_val-0.L1%9%bbentry : BV:32
+140316 : input.spec-%var-node_val-0.L2%9%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -413,25 +413,25 @@ discontiguous mls:
 =lr-status-map
 =lr-status-map at call-context {*;foo}
 =loc_id 1 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 9 lr-status in lr-status-map at call-context {*;foo}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 10 lr-status in lr-status-map at call-context {*;foo}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 11 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 12 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 13 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 14 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 15 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 16 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 17 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =lr-status-map done
 =lr-status-for-sprel-locs-map
 =lr-status-for-sprel-locs-map done
@@ -443,81 +443,81 @@ lr_status_bottom(; memlabel-mem--heap, )
 =graph_with_points done
 =graph_with_guessing done
 =graph_with_simplified_assets
-=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L1%1%d
+=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L2%1%d
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%1%d=>L1%2%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%1%d=>L2%2%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_is(1, 2) : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%1%d=>L1%4%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%1%d=>L2%4%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_is(1, 2) : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%2%bbentry=>L1%9%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%2%bbentry=>L2%9%bbentry
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%4%bbentry=>L1%9%bbentry
+=graph_with_simplified_assets.simplified_edgecond at L2%4%bbentry=>L2%9%bbentry
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L1%9%bbentry=>E0%0%d
+=graph_with_simplified_assets.simplified_edgecond at L2%9%bbentry=>E0%0%d
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
-=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L1%1%d
+=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L2%1%d
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%1%d=>L1%2%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%1%d=>L2%2%bbentry
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%1%d=>L1%4%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%1%d=>L2%4%bbentry
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%2%bbentry=>L1%9%bbentry
-=spec-%tmpvar-1.L1%9%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%2%bbentry=>L2%9%bbentry
+=spec-%tmpvar-1.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-empty-0.L1%9%bbentry
+=spec-%var-empty-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%4%bbentry=>L1%9%bbentry
-=spec-%tmpvar-1.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%tmpvar-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-node-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-=spec-%var-node_next-0.L1%9%bbentry
-1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-node_val-0.L1%9%bbentry
+=graph_with_simplified_assets.simplified_to_state at L2%4%bbentry=>L2%9%bbentry
+=spec-%var-node_val-0.L2%9%bbentry
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 4 : 0 { 0x0 +1.0e1025 } : INT
 5 : prod_get(3, 4) : BV:32
+=spec-%tmpvar-1.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=spec-%tmpvar-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=spec-%var-node-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=spec-%var-node_next-0.L2%9%bbentry
+1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L1%9%bbentry=>E0%0%d
+=graph_with_simplified_assets.simplified_to_state at L2%9%bbentry=>E0%0%d
 =spec-%tmpvar-2.E0%0%d
-1 : input.spec-%tmpvar-1.L1%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+1 : input.spec-%tmpvar-1.L2%9%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =state_end
 =graph_with_simplified_assets.simplified_to_state done
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L1%1%d
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L1%1%d done
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%2%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%2%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%4%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%1%d=>L1%4%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%2%bbentry=>L1%9%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%2%bbentry=>L1%9%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%4%bbentry=>L1%9%bbentry
-=graph_with_simplified_assets.simplified_assumes at L1%4%bbentry=>L1%9%bbentry done
-=graph_with_simplified_assets.simplified_assumes at L1%9%bbentry=>E0%0%d
-=graph_with_simplified_assets.simplified_assumes at L1%9%bbentry=>E0%0%d done
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L2%1%d
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L2%1%d done
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%2%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%2%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%4%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%1%d=>L2%4%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%2%bbentry=>L2%9%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%2%bbentry=>L2%9%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%4%bbentry=>L2%9%bbentry
+=graph_with_simplified_assets.simplified_assumes at L2%4%bbentry=>L2%9%bbentry done
+=graph_with_simplified_assets.simplified_assumes at L2%9%bbentry=>E0%0%d
+=graph_with_simplified_assets.simplified_assumes at L2%9%bbentry=>E0%0%d done
 =graph_with_simplified_assets.simplified_assumes done
 =graph_with_simplified_assets done
 =max-memlabel-varnum
@@ -529,35 +529,35 @@ lr_status_bottom(; memlabel-mem--heap, )
 =suffixpath_at_L0%0%d for src.spec.foo
 =suffixpath_at_L0%0%d.graph_edge_composition
 (epsilon)
-=suffixpath_at_L1%1%d for src.spec.foo
-=suffixpath_at_L1%1%d.graph_edge_composition
-(L0%0%d=>L1%1%d)
-=suffixpath_at_L1%2%bbentry for src.spec.foo
-=suffixpath_at_L1%2%bbentry.graph_edge_composition
-((L0%0%d=>L1%1%d)*(L1%1%d=>L1%2%bbentry))
-=suffixpath_at_L1%4%bbentry for src.spec.foo
-=suffixpath_at_L1%4%bbentry.graph_edge_composition
-((L0%0%d=>L1%1%d)*(L1%1%d=>L1%4%bbentry))
-=suffixpath_at_L1%9%bbentry for src.spec.foo
-=suffixpath_at_L1%9%bbentry.graph_edge_composition
-(((L0%0%d=>L1%1%d)*((L1%1%d=>L1%2%bbentry)*(L1%2%bbentry=>L1%9%bbentry)))+((L0%0%d=>L1%1%d)*((L1%1%d=>L1%4%bbentry)*(L1%4%bbentry=>L1%9%bbentry))))
+=suffixpath_at_L2%1%d for src.spec.foo
+=suffixpath_at_L2%1%d.graph_edge_composition
+(L0%0%d=>L2%1%d)
+=suffixpath_at_L2%2%bbentry for src.spec.foo
+=suffixpath_at_L2%2%bbentry.graph_edge_composition
+((L0%0%d=>L2%1%d)*(L2%1%d=>L2%2%bbentry))
+=suffixpath_at_L2%4%bbentry for src.spec.foo
+=suffixpath_at_L2%4%bbentry.graph_edge_composition
+((L0%0%d=>L2%1%d)*(L2%1%d=>L2%4%bbentry))
+=suffixpath_at_L2%9%bbentry for src.spec.foo
+=suffixpath_at_L2%9%bbentry.graph_edge_composition
+(((L0%0%d=>L2%1%d)*((L2%1%d=>L2%2%bbentry)*(L2%2%bbentry=>L2%9%bbentry)))+((L0%0%d=>L2%1%d)*((L2%1%d=>L2%4%bbentry)*(L2%4%bbentry=>L2%9%bbentry))))
 =suffixpath_at_E0%0%d for src.spec.foo
 =suffixpath_at_E0%0%d.graph_edge_composition
-((((L0%0%d=>L1%1%d)*((L1%1%d=>L1%2%bbentry)*(L1%2%bbentry=>L1%9%bbentry)))+((L0%0%d=>L1%1%d)*((L1%1%d=>L1%4%bbentry)*(L1%4%bbentry=>L1%9%bbentry))))*(L1%9%bbentry=>E0%0%d))
+((((L0%0%d=>L2%1%d)*((L2%1%d=>L2%2%bbentry)*(L2%2%bbentry=>L2%9%bbentry)))+((L0%0%d=>L2%1%d)*((L2%1%d=>L2%4%bbentry)*(L2%4%bbentry=>L2%9%bbentry))))*(L2%9%bbentry=>E0%0%d))
 =suffixpaths for src.spec.foo done
 =tfg.assumes_around_edge
-tfg.assumes_around_edge at L0%0%d=>L1%1%d
-tfg.assumes_around_edge at L0%0%d=>L1%1%d done
-tfg.assumes_around_edge at L1%1%d=>L1%2%bbentry
-tfg.assumes_around_edge at L1%1%d=>L1%2%bbentry done
-tfg.assumes_around_edge at L1%1%d=>L1%4%bbentry
-tfg.assumes_around_edge at L1%1%d=>L1%4%bbentry done
-tfg.assumes_around_edge at L1%2%bbentry=>L1%9%bbentry
-tfg.assumes_around_edge at L1%2%bbentry=>L1%9%bbentry done
-tfg.assumes_around_edge at L1%4%bbentry=>L1%9%bbentry
-tfg.assumes_around_edge at L1%4%bbentry=>L1%9%bbentry done
-tfg.assumes_around_edge at L1%9%bbentry=>E0%0%d
-tfg.assumes_around_edge at L1%9%bbentry=>E0%0%d done
+tfg.assumes_around_edge at L0%0%d=>L2%1%d
+tfg.assumes_around_edge at L0%0%d=>L2%1%d done
+tfg.assumes_around_edge at L2%1%d=>L2%2%bbentry
+tfg.assumes_around_edge at L2%1%d=>L2%2%bbentry done
+tfg.assumes_around_edge at L2%1%d=>L2%4%bbentry
+tfg.assumes_around_edge at L2%1%d=>L2%4%bbentry done
+tfg.assumes_around_edge at L2%2%bbentry=>L2%9%bbentry
+tfg.assumes_around_edge at L2%2%bbentry=>L2%9%bbentry done
+tfg.assumes_around_edge at L2%4%bbentry=>L2%9%bbentry
+tfg.assumes_around_edge at L2%4%bbentry=>L2%9%bbentry done
+tfg.assumes_around_edge at L2%9%bbentry=>E0%0%d
+tfg.assumes_around_edge at L2%9%bbentry=>E0%0%d done
 tfg.assumes_around_edge done
 =TFGdone
 =TFG_SPEC_done

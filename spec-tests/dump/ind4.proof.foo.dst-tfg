@@ -13,12 +13,12 @@ Lwhile.body%1%d => Lwhile.cond%1%bbentry (backedge)
 =is_ssa_graph:
 1
 =StartState:
+=dst.llvm-%l
+1 : input.dst.llvm-%l : BV:32
 =dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-=dst.llvm-%l
-1 : input.dst.llvm-%l : BV:32
 =state_end
 =PC to var-version map at L0%0%d
 =version for dst.llvm-mem
@@ -58,7 +58,7 @@ Lwhile.body%1%d => Lwhile.cond%1%bbentry (backedge)
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =arg val
@@ -853,47 +853,47 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100002
 =loc_expr
-140340 : input.dst.llvm-%l : BV:32
+140357 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100024
 =loc_expr
-140399 : input.dst.llvm-%hidden-reg : BV:32
+140418 : input.dst.llvm-%hidden-reg : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100026
 =loc_expr
-140400 : input.dst.llvm-callee-save.0 : BV:32
+140419 : input.dst.llvm-callee-save.0 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100027
 =loc_expr
-140402 : input.dst.llvm-callee-save.1 : BV:32
+140421 : input.dst.llvm-callee-save.1 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100028
 =loc_expr
-140404 : input.dst.llvm-callee-save.2 : BV:32
+140423 : input.dst.llvm-callee-save.2 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100029
 =loc_expr
-140406 : input.dst.llvm-callee-save.3 : BV:32
+140425 : input.dst.llvm-callee-save.3 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100033
 =loc_expr
-140346 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140365 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100034
 =loc_expr
-140341 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140360 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100039
 =loc_expr
-140519 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+140538 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%hidden-reg : BV:32
@@ -908,21 +908,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100040
 =loc_expr
-140520 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140539 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100042
 =loc_expr
-140521 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140540 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100043
 =loc_expr
-140493 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+140511 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -932,21 +932,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100045
 =loc_expr
-140522 : input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry : BV:32
+140541 : input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%l : BV:32
 =avail_exprs_val.end
 =loc 100046
 =loc_expr
-140523 : input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry : BV:32
+140542 : input.dst.llvm-%sum.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100048
 =loc_expr
-140524 : input.dst.llvm-%0.Lwhile.cond%1%bbentry : BV:32
+140543 : input.dst.llvm-%0.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -959,7 +959,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100049
 =loc_expr
-140525 : input.dst.llvm-%1.Lwhile.cond%1%bbentry : BV:32
+140544 : input.dst.llvm-%1.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -974,56 +974,56 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100050
 =loc_expr
-140526 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.1.total_offset.Lwhile.cond%1%bbentry : BV:32
+140545 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.1.total_offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100051
 =loc_expr
-140527 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry : BV:32
+140546 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100052
 =loc_expr
-140528 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry : BV:32
+140547 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100053
 =loc_expr
-140529 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : BV:32
+140548 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100054
 =loc_expr
-140530 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : BV:32
+140549 : input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100056
 =loc_expr
-140532 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.1.total_offset.Lwhile.cond%1%bbentry : BV:32
+140551 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.1.total_offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100057
 =loc_expr
-140533 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.2.total_offset.Lwhile.cond%1%bbentry : BV:32
+140552 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.2.total_offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =avail_exprs_val.end
 =loc 100058
 =loc_expr
-140534 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.3.total_offset.Lwhile.cond%1%bbentry : BV:32
+140553 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.3.total_offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
@@ -1032,21 +1032,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100059
 =loc_expr
-140535 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : BV:32
+140554 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100060
 =loc_expr
-140536 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : BV:32
+140555 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =avail_exprs_val.end
 =loc 100061
 =loc_expr
-140537 : input.dst.llvm-%l.addr.0.phi.tmpvar.while.body.Lwhile.cond%1%bbentry : BV:32
+140556 : input.dst.llvm-%l.addr.0.phi.tmpvar.while.body.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1061,7 +1061,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100062
 =loc_expr
-140538 : input.dst.llvm-%next.Lwhile.cond%1%bbentry : BV:32
+140557 : input.dst.llvm-%next.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
@@ -1070,21 +1070,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100064
 =loc_expr
-140540 : input.dst.llvm-%val.Lwhile.cond%1%bbentry : BV:32
+140559 : input.dst.llvm-%val.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100065
 =loc_expr
-140541 : input.dst.local_alloc_count.Lwhile.cond%1%bbentry : COUNT
+140560 : input.dst.local_alloc_count.Lwhile.cond%1%bbentry : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100066
 =loc_expr
-140542 : input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : ROUNDING_MODE
+140561 : input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
@@ -1122,7 +1122,7 @@ discontiguous mls:
 =loc 100057 expr
 1 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.gepoffset.2.total_offset.Lwhile.cond%1%bbentry : BV:32
 =loc 100057 spreled-expr
-140329 : 4 { 0x4 +1.47e129 } : BV:32
+140341 : 4 { 0x4 +1.47e129 } : BV:32
 =loc 100059 expr
 1 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : BV:32
 =loc 100059 spreled-expr
@@ -1130,15 +1130,15 @@ discontiguous mls:
 =loc 100060 expr
 1 : input.dst.llvm-%e510672f36773ef3daa54ec6ffbe8630.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : BV:32
 =loc 100060 spreled-expr
-140329 : 4 { 0x4 +1.47e129 } : BV:32
+140341 : 4 { 0x4 +1.47e129 } : BV:32
 =loc 100065 expr
 1 : input.dst.local_alloc_count.Lwhile.cond%1%bbentry : COUNT
 =loc 100065 spreled-expr
-140346 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140365 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =loc 100066 expr
 1 : input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : ROUNDING_MODE
 =loc 100066 spreled-expr
-140345 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+140364 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;foo}
@@ -1498,9 +1498,9 @@ tfg.assumes_around_edge at L0%0%d=>Lwhile.cond%1%bbentry assume #0.pred
 =Comment
 undef-behaviour-align-assume.edge.L0%0%d=>Lwhile.cond%1%bbentry
 =LhsExpr
-140340 : input.dst.llvm-%l : BV:32
-140347 : 8 { 0x8 +1.0e1025 } : INT
-140348 : islangaligned(140340, 140347) : BOOL
+140357 : input.dst.llvm-%l : BV:32
+140366 : 8 { 0x8 +1.0e1025 } : INT
+140367 : islangaligned(140357, 140366) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1515,15 +1515,15 @@ tfg.assumes_around_edge at Lwhile.body%1%d=>Lwhile.cond%1%bbentry assume #0.pred
 =Comment
 undef-behavioursome.edge.Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =LhsExpr
-140495 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
+140514 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140576 : isgepoffset(140495, 140276) : BOOL
+140595 : isgepoffset(140514, 140276) : BOOL
 140275 : 1 { 0x1 } : BOOL
-140578 : and(140275, 140576) : BOOL
-140597 : and(140576, 140578) : BOOL
-140317 : 4 { 0x4 +1.0e1025 } : INT
-140601 : islangaligned(140495, 140317) : BOOL
-140603 : and(140597, 140601) : BOOL
+140597 : and(140275, 140595) : BOOL
+140616 : and(140595, 140597) : BOOL
+140329 : 4 { 0x4 +1.0e1025 } : INT
+140620 : islangaligned(140514, 140329) : BOOL
+140622 : and(140616, 140620) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1537,24 +1537,24 @@ tfg.assumes_around_edge at Lwhile.body%1%d=>Lwhile.cond%1%bbentry assume #1.pred
 undef-behavioursome.edge.Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =LhsExpr
 140275 : 1 { 0x1 } : BOOL
-140495 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
+140514 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140576 : isgepoffset(140495, 140276) : BOOL
-140578 : and(140275, 140576) : BOOL
-140329 : 4 { 0x4 +1.47e129 } : BV:32
-140551 : bvadd(140329, 140495) : BV:32
-140580 : isgepoffset(140551, 140329) : BOOL
-140317 : 4 { 0x4 +1.0e1025 } : INT
-140584 : islangaligned(140551, 140317) : BOOL
-140338 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140339 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140425 : memlabel-mem-no-straddle-symbol.1-heap-arg.0 : MEMLABEL
-140318 : 0 { 0x0 } : BOOL
-140557 : select(140338, 140339, 140425, 140551, 140317, 140318) : BV:32
-140347 : 8 { 0x8 +1.0e1025 } : INT
-140586 : islangaligned(140557, 140347) : BOOL
-140589 : and(140584, 140586) : BOOL
-140594 : and(140578, 140580, 140584, 140589) : BOOL
+140595 : isgepoffset(140514, 140276) : BOOL
+140597 : and(140275, 140595) : BOOL
+140341 : 4 { 0x4 +1.47e129 } : BV:32
+140570 : bvadd(140341, 140514) : BV:32
+140599 : isgepoffset(140570, 140341) : BOOL
+140329 : 4 { 0x4 +1.0e1025 } : INT
+140603 : islangaligned(140570, 140329) : BOOL
+140358 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140359 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140444 : memlabel-mem-no-straddle-symbol.1-heap-arg.0 : MEMLABEL
+140330 : 0 { 0x0 } : BOOL
+140576 : select(140358, 140359, 140444, 140570, 140329, 140330) : BV:32
+140366 : 8 { 0x8 +1.0e1025 } : INT
+140605 : islangaligned(140576, 140366) : BOOL
+140608 : and(140603, 140605) : BOOL
+140613 : and(140597, 140599, 140603, 140608) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1736,12 +1736,12 @@ input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry : L0%0%d : 0
-input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry : L0%0%d : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : L0%0%d : 0
-input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : L0%0%d : 0
-input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
-input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 input.dst.llvm-%tobool.Lwhile.cond%2%d : L0%0%d : not(input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry = 0)
+input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry : L0%0%d : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry : L0%0%d : 0
+input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
+input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
+input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry : L0%0%d : 0
 input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
 input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.1.total_offset.Lwhile.cond%1%bbentry : L0%0%d : 0
 input.dst.llvm-%l.addr.0.phi.tmpvar.entry.Lwhile.cond%1%bbentry : L0%0%d : l'
@@ -2044,21 +2044,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
 =reaching defns for expr 5 edges
-  L0%0%d=>Lwhile.cond%1%bbentry
-  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
+  L0%0%d=>Lwhile.cond%1%bbentry
+  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2193,21 +2193,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
 =reaching defns for expr 5 edges
-  L0%0%d=>Lwhile.cond%1%bbentry
-  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
+  L0%0%d=>Lwhile.cond%1%bbentry
+  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2342,21 +2342,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
 =reaching defns for expr 5 edges
-  L0%0%d=>Lwhile.cond%1%bbentry
-  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
+  L0%0%d=>Lwhile.cond%1%bbentry
+  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2491,21 +2491,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
 =reaching defns for expr 5 edges
-  L0%0%d=>Lwhile.cond%1%bbentry
-  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
+  L0%0%d=>Lwhile.cond%1%bbentry
+  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2640,21 +2640,21 @@ input.dst.cur_rounding_mode.Lwhile.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ti
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>Lwhile.cond%1%bbentry
   Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
 =reaching defns for expr 5 edges
-  L0%0%d=>Lwhile.cond%1%bbentry
-  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
+  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%tobool.Lwhile.cond%2%d : BOOL
+1 : input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  Lwhile.cond%1%bbentry=>Lwhile.cond%2%d
+  L0%0%d=>Lwhile.cond%1%bbentry
+  Lwhile.body%1%d=>Lwhile.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry : BV:32
@@ -2795,25 +2795,25 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
+=LR status for var input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%sum.0.Lwhile.cond%1%bbentry
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.2.total_offset.Lwhile.cond%1%bbentry
+=LR status for var input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%tobool.Lwhile.cond%2%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.gepoffset.3.total_offset.Lwhile.cond%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
-lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.1.offset.Lwhile.cond%1%bbentry
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-indir_tgt.E0%0%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%ret-reg.E0%0%d
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%tobool.Lwhile.cond%2%d
+=LR status for var input.dst.llvm-indir_tgt.E0%0%d
 lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%l.addr.0.Lwhile.cond%1%bbentry
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-ghostvar.itervar.1.Lwhile.cond%1%bbentry
+=LR status for var input.dst.llvm-%80e59119968041f08c268cb7ba21c5.intermediate.gepoffset.2.offset.Lwhile.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%hidden-reg.E0%0%d
 lr_status_linearly_related(; )

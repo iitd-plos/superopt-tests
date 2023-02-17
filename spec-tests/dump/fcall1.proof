@@ -8,11 +8,11 @@
 =TFG_SSA:
 =TFG_SPEC src.spec.bar:
 =TFG:
-=Nodes: L0%0%d L2%1%fcallStart L2%1%fcallEnd E0%0%d
+=Nodes: L0%0%d L3%1%fcallStart L3%1%fcallEnd E0%0%d
 =Edges:
-L0%0%d => L2%1%fcallStart
-L2%1%fcallStart => L2%1%fcallEnd
-L2%1%fcallEnd => E0%0%d
+L0%0%d => L3%1%fcallStart
+L3%1%fcallStart => L3%1%fcallEnd
+L3%1%fcallEnd => E0%0%d
 =graph done
 =is_ssa_graph:
 1
@@ -28,13 +28,13 @@ L2%1%fcallEnd => E0%0%d
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L2%1%fcallStart
+=PC to var-version map at L3%1%fcallStart
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L2%1%fcallEnd
+=PC to var-version map at L3%1%fcallEnd
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
@@ -48,7 +48,7 @@ L2%1%fcallEnd => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: bar
-=Input: spec-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : (undefined) : UNDEFINED
 =arg val
@@ -69,7 +69,7 @@ L2%1%fcallEnd => E0%0%d
 Memlabel map for call-context {*;bar}
 =memlabel_map.0 for call-context {*;bar}
 mlheap.src.spec.bar : memlabel-mem--heap
-=Edge: L0%0%d => L2%1%fcallStart
+=Edge: L0%0%d => L3%1%fcallStart
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
@@ -80,16 +80,16 @@ mlheap.src.spec.bar : memlabel-mem--heap
 0:2:(func_head*fcall_edge_start)
 tfg_edge_comment end
 
-=Edge: L2%1%fcallStart => L2%1%fcallEnd
+=Edge: L3%1%fcallStart => L3%1%fcallEnd
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-3.L2%1%fcallEnd
+=spec-%tmpvar-3.L3%1%fcallEnd
 1 : spec.func.call19e08a8492cfd0d4521b4a2c174dacb : FUNCTION[BV:32 -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-x-1 : BV:32
 4 : spec_function_call(1, 2, 3) : BV:32
-=spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : input.spec-%var-x-1 : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -98,26 +98,26 @@ tfg_edge_comment end
 0:-1:(fcall_edge_arg*fn_app)
 tfg_edge_comment end
 
-=Edge: L2%1%fcallEnd => E0%0%d
+=Edge: L3%1%fcallEnd => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
 =spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
 =spec-%tmpvar-5.E0%0%d
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 2 : 5 { 0x5 +1.59e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%tmpvar-6.E0%0%d
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 2 : 5 { 0x5 +1.59e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%tmpvar-7.E0%0%d
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 2 : 5 { 0x5 +1.59e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%var-y-0.E0%0%d
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -153,12 +153,12 @@ MASKED
 memlabel-mem--arg.0
 =Loc 11 in src.spec.bar.
 REGMEM
-spec-%tmpvar-3.L2%1%fcallEnd
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+spec-%tmpvar-3.L3%1%fcallEnd
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 =Loc 12 in src.spec.bar.
 REGMEM
-spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
-1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd : BV:32
+spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
+1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd : BV:32
 =Loc 13 in src.spec.bar.
 REGMEM
 spec-%tmpvar-4.E0%0%d
@@ -183,9 +183,9 @@ spec-%var-y-0.E0%0%d
 =Liveness in src.spec.bar
 =live locs at L0%0%d
 1, 
-=live locs at L2%1%fcallStart
+=live locs at L3%1%fcallStart
 1, 
-=live locs at L2%1%fcallEnd
+=live locs at L3%1%fcallEnd
 11, 
 =live locs at E0%0%d
 16[f], 
@@ -193,9 +193,9 @@ spec-%var-y-0.E0%0%d
 =Definedness in src.spec.bar
 =loc definedness at L0%0%d
 1, 9, 10
-=loc definedness at L2%1%fcallStart
+=loc definedness at L3%1%fcallStart
 1, 9, 10
-=loc definedness at L2%1%fcallEnd
+=loc definedness at L3%1%fcallEnd
 1, 9, 10, 11, 12
 =loc definedness at E0%0%d
 1, 9, 10, 11, 12, 13, 14, 15, 16, 17
@@ -203,9 +203,9 @@ spec-%var-y-0.E0%0%d
 =Branch affecting variable locs in src.spec.bar
 =branch affecting variable locs at L0%0%d
 
-=branch affecting variable locs at L2%1%fcallStart
+=branch affecting variable locs at L3%1%fcallStart
 
-=branch affecting variable locs at L2%1%fcallEnd
+=branch affecting variable locs at L3%1%fcallEnd
 
 =branch affecting variable locs at E0%0%d
 
@@ -220,46 +220,46 @@ memlabel-mem--arg.0
 =relevant memlabels done
 =graph_with_locs_done
 =graph_with_edge_structures
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%1%fcallStart
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L2%1%fcallStart done
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallStart=>L2%1%fcallEnd
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallStart=>L2%1%fcallEnd for loc_id 11 {input.spec-%tmpvar-3.L2%1%fcallEnd }
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%1%fcallStart
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%1%fcallStart done
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallStart=>L3%1%fcallEnd
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallStart=>L3%1%fcallEnd for loc_id 11 {input.spec-%tmpvar-3.L3%1%fcallEnd }
 1 : spec.func.call19e08a8492cfd0d4521b4a2c174dacb : FUNCTION[BV:32 -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-x-1 : BV:32
 4 : spec_function_call(1, 2, 3) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallStart=>L2%1%fcallEnd for loc_id 12 {input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd }
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallStart=>L3%1%fcallEnd for loc_id 12 {input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd }
 1 : input.spec-%var-x-1 : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallStart=>L2%1%fcallEnd done
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallEnd=>E0%0%d
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallEnd=>E0%0%d for loc_id 13 {input.spec-%tmpvar-4.E0%0%d }
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallStart=>L3%1%fcallEnd done
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallEnd=>E0%0%d
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallEnd=>E0%0%d for loc_id 13 {input.spec-%tmpvar-4.E0%0%d }
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallEnd=>E0%0%d for loc_id 14 {input.spec-%tmpvar-5.E0%0%d }
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallEnd=>E0%0%d for loc_id 14 {input.spec-%tmpvar-5.E0%0%d }
 1 : 5 { 0x5 +1.59e129 } : BV:32
-2 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallEnd=>E0%0%d for loc_id 15 {input.spec-%tmpvar-6.E0%0%d }
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallEnd=>E0%0%d for loc_id 15 {input.spec-%tmpvar-6.E0%0%d }
 1 : 5 { 0x5 +1.59e129 } : BV:32
-2 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallEnd=>E0%0%d for loc_id 16 {input.spec-%tmpvar-7.E0%0%d }
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallEnd=>E0%0%d for loc_id 16 {input.spec-%tmpvar-7.E0%0%d }
 1 : 5 { 0x5 +1.59e129 } : BV:32
-2 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallEnd=>E0%0%d for loc_id 17 {input.spec-%var-y-0.E0%0%d }
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L2%1%fcallEnd=>E0%0%d done
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallEnd=>E0%0%d for loc_id 17 {input.spec-%var-y-0.E0%0%d }
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L3%1%fcallEnd=>E0%0%d done
 =graph_with_edge_structures.loc_to_expr_map done
 =graph_with_edge_structures done
 =graph_with_ml_contiguity_info vacuous mls
 vacuous mls at L0%0%d:
-vacuous mls at L2%1%fcallStart:
-vacuous mls at L2%1%fcallEnd:
+vacuous mls at L3%1%fcallStart:
+vacuous mls at L3%1%fcallEnd:
 vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info non-vacuous mls
 non-vacuous mls at L0%0%d:
-non-vacuous mls at L2%1%fcallStart:
-non-vacuous mls at L2%1%fcallEnd:
+non-vacuous mls at L3%1%fcallStart:
+non-vacuous mls at L3%1%fcallEnd:
 non-vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info discontiguous mls
 discontiguous mls:
@@ -273,7 +273,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 12
 =loc_expr
-140304 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd : BV:32
+140304 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-x-1 : BV:32
@@ -295,25 +295,25 @@ discontiguous mls:
 =lr-status-map
 =lr-status-map at call-context {*;bar}
 =loc_id 1 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 9 lr-status in lr-status-map at call-context {*;bar}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 10 lr-status in lr-status-map at call-context {*;bar}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 11 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 12 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 13 lr-status in lr-status-map at call-context {*;bar}
 lr_status_linearly_related(; )
 =loc_id 14 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 15 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 16 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 17 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =lr-status-map done
 =lr-status-for-sprel-locs-map
 =loc_id 13 lr-status in lr-status-for-sprel-locs-map
@@ -327,49 +327,49 @@ lr_status_linearly_related(; )
 =graph_with_points done
 =graph_with_guessing done
 =graph_with_simplified_assets
-=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L2%1%fcallStart
+=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L3%1%fcallStart
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L2%1%fcallStart=>L2%1%fcallEnd
+=graph_with_simplified_assets.simplified_edgecond at L3%1%fcallStart=>L3%1%fcallEnd
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L2%1%fcallEnd=>E0%0%d
+=graph_with_simplified_assets.simplified_edgecond at L3%1%fcallEnd=>E0%0%d
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
-=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L2%1%fcallStart
+=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L3%1%fcallStart
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L2%1%fcallStart=>L2%1%fcallEnd
-=spec-%tmpvar-3.L2%1%fcallEnd
+=graph_with_simplified_assets.simplified_to_state at L3%1%fcallStart=>L3%1%fcallEnd
+=spec-%tmpvar-3.L3%1%fcallEnd
 1 : spec.func.call19e08a8492cfd0d4521b4a2c174dacb : FUNCTION[BV:32 -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-x-1 : BV:32
 4 : spec_function_call(1, 2, 3) : BV:32
-=spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : input.spec-%var-x-1 : BV:32
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L2%1%fcallEnd=>E0%0%d
+=graph_with_simplified_assets.simplified_to_state at L3%1%fcallEnd=>E0%0%d
 =spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
 =spec-%tmpvar-5.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-2 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%tmpvar-6.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-2 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%tmpvar-7.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-2 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%var-y-0.E0%0%d
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state done
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L2%1%fcallStart
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L2%1%fcallStart done
-=graph_with_simplified_assets.simplified_assumes at L2%1%fcallStart=>L2%1%fcallEnd
-=graph_with_simplified_assets.simplified_assumes at L2%1%fcallStart=>L2%1%fcallEnd done
-=graph_with_simplified_assets.simplified_assumes at L2%1%fcallEnd=>E0%0%d
-=graph_with_simplified_assets.simplified_assumes at L2%1%fcallEnd=>E0%0%d done
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L3%1%fcallStart
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L3%1%fcallStart done
+=graph_with_simplified_assets.simplified_assumes at L3%1%fcallStart=>L3%1%fcallEnd
+=graph_with_simplified_assets.simplified_assumes at L3%1%fcallStart=>L3%1%fcallEnd done
+=graph_with_simplified_assets.simplified_assumes at L3%1%fcallEnd=>E0%0%d
+=graph_with_simplified_assets.simplified_assumes at L3%1%fcallEnd=>E0%0%d done
 =graph_with_simplified_assets.simplified_assumes done
 =graph_with_simplified_assets done
 =max-memlabel-varnum
@@ -382,23 +382,23 @@ C_NEXTPC1 : foo
 =suffixpath_at_L0%0%d for src.spec.bar
 =suffixpath_at_L0%0%d.graph_edge_composition
 (epsilon)
-=suffixpath_at_L2%1%fcallStart for src.spec.bar
-=suffixpath_at_L2%1%fcallStart.graph_edge_composition
-(L0%0%d=>L2%1%fcallStart)
-=suffixpath_at_L2%1%fcallEnd for src.spec.bar
-=suffixpath_at_L2%1%fcallEnd.graph_edge_composition
-((L0%0%d=>L2%1%fcallStart)*(L2%1%fcallStart=>L2%1%fcallEnd))
+=suffixpath_at_L3%1%fcallStart for src.spec.bar
+=suffixpath_at_L3%1%fcallStart.graph_edge_composition
+(L0%0%d=>L3%1%fcallStart)
+=suffixpath_at_L3%1%fcallEnd for src.spec.bar
+=suffixpath_at_L3%1%fcallEnd.graph_edge_composition
+((L0%0%d=>L3%1%fcallStart)*(L3%1%fcallStart=>L3%1%fcallEnd))
 =suffixpath_at_E0%0%d for src.spec.bar
 =suffixpath_at_E0%0%d.graph_edge_composition
-((L0%0%d=>L2%1%fcallStart)*((L2%1%fcallStart=>L2%1%fcallEnd)*(L2%1%fcallEnd=>E0%0%d)))
+((L0%0%d=>L3%1%fcallStart)*((L3%1%fcallStart=>L3%1%fcallEnd)*(L3%1%fcallEnd=>E0%0%d)))
 =suffixpaths for src.spec.bar done
 =tfg.assumes_around_edge
-tfg.assumes_around_edge at L0%0%d=>L2%1%fcallStart
-tfg.assumes_around_edge at L0%0%d=>L2%1%fcallStart done
-tfg.assumes_around_edge at L2%1%fcallStart=>L2%1%fcallEnd
-tfg.assumes_around_edge at L2%1%fcallStart=>L2%1%fcallEnd done
-tfg.assumes_around_edge at L2%1%fcallEnd=>E0%0%d
-tfg.assumes_around_edge at L2%1%fcallEnd=>E0%0%d done
+tfg.assumes_around_edge at L0%0%d=>L3%1%fcallStart
+tfg.assumes_around_edge at L0%0%d=>L3%1%fcallStart done
+tfg.assumes_around_edge at L3%1%fcallStart=>L3%1%fcallEnd
+tfg.assumes_around_edge at L3%1%fcallStart=>L3%1%fcallEnd done
+tfg.assumes_around_edge at L3%1%fcallEnd=>E0%0%d
+tfg.assumes_around_edge at L3%1%fcallEnd=>E0%0%d done
 tfg.assumes_around_edge done
 =TFGdone
 =TFG_SPEC_done
@@ -449,7 +449,7 @@ Lentry%1%fcallEnd => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: bar
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
 =arg val
@@ -1522,11 +1522,11 @@ equal-ret
 =SpecFuncIOSpecs done
 =eqcheck done
 =graph_with_guessing
-=Nodes: L0%0%d_L0%0%d L2%1%fcallStart_Lentry%1%fcallStart L2%1%fcallEnd_Lentry%1%fcallEnd E0%0%d_E0%0%d
+=Nodes: L0%0%d_L0%0%d L3%1%fcallStart_Lentry%1%fcallStart L3%1%fcallEnd_Lentry%1%fcallEnd E0%0%d_E0%0%d
 =Edges:
-L0%0%d_L0%0%d => L2%1%fcallStart_Lentry%1%fcallStart
-L2%1%fcallStart_Lentry%1%fcallStart => L2%1%fcallEnd_Lentry%1%fcallEnd
-L2%1%fcallEnd_Lentry%1%fcallEnd => E0%0%d_E0%0%d
+L0%0%d_L0%0%d => L3%1%fcallStart_Lentry%1%fcallStart
+L3%1%fcallStart_Lentry%1%fcallStart => L3%1%fcallEnd_Lentry%1%fcallEnd
+L3%1%fcallEnd_Lentry%1%fcallEnd => E0%0%d_E0%0%d
 =graph done
 =is_ssa_graph:
 0
@@ -1534,7 +1534,7 @@ L2%1%fcallEnd_Lentry%1%fcallEnd => E0%0%d_E0%0%d
 =state_end
 =graph_with_var_versions done
 =FunctionName: bar
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___bar__x__=L0%0%argnum0=/ : BV:32
 =arg val
@@ -1553,11 +1553,11 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%x : 4 : 4 : 0
 =Locals-map done
 =Global assumes
 =global assume predicate_set done
-=Edge: L0%0%d_L0%0%d => L2%1%fcallStart_Lentry%1%fcallStart
+=Edge: L0%0%d_L0%0%d => L3%1%fcallStart_Lentry%1%fcallStart
 =Edge.src_tfg_full_pathset
-=Edge.src_tfg_full_pathset.ec from L0%0%d to L2%1%fcallStart at unroll 1 delta {1,0}
+=Edge.src_tfg_full_pathset.ec from L0%0%d to L3%1%fcallStart at unroll 1 delta {1,0}
 =Edge.src_tfg_full_pathset.graph_edge_composition
-(L0%0%d#{0,0}=>L2%1%fcallStart#{0,0})
+(L0%0%d#{0,0}=>L3%1%fcallStart#{0,0})
 =Edge.src_tfg_full_pathset done
 =Edge.dst_tfg_full_pathset
 =Edge.dst_tfg_full_pathset.ec from L0%0%d to Lentry%1%fcallStart at unroll 1 delta {1,0}
@@ -1567,11 +1567,11 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%x : 4 : 4 : 0
 =Edge.cg_edge_assumes.Assumes.begin:
 =Edge.cg_edge_assumes.Assumes.end
 
-=Edge: L2%1%fcallStart_Lentry%1%fcallStart => L2%1%fcallEnd_Lentry%1%fcallEnd
+=Edge: L3%1%fcallStart_Lentry%1%fcallStart => L3%1%fcallEnd_Lentry%1%fcallEnd
 =Edge.src_tfg_full_pathset
-=Edge.src_tfg_full_pathset.ec from L2%1%fcallStart to L2%1%fcallEnd at unroll 1 delta {1,0}
+=Edge.src_tfg_full_pathset.ec from L3%1%fcallStart to L3%1%fcallEnd at unroll 1 delta {1,0}
 =Edge.src_tfg_full_pathset.graph_edge_composition
-(L2%1%fcallStart#{0,0}=>L2%1%fcallEnd#{0,0})
+(L3%1%fcallStart#{0,0}=>L3%1%fcallEnd#{0,0})
 =Edge.src_tfg_full_pathset done
 =Edge.dst_tfg_full_pathset
 =Edge.dst_tfg_full_pathset.ec from Lentry%1%fcallStart to Lentry%1%fcallEnd at unroll 1 delta {1,0}
@@ -1581,11 +1581,11 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%x : 4 : 4 : 0
 =Edge.cg_edge_assumes.Assumes.begin:
 =Edge.cg_edge_assumes.Assumes.end
 
-=Edge: L2%1%fcallEnd_Lentry%1%fcallEnd => E0%0%d_E0%0%d
+=Edge: L3%1%fcallEnd_Lentry%1%fcallEnd => E0%0%d_E0%0%d
 =Edge.src_tfg_full_pathset
-=Edge.src_tfg_full_pathset.ec from L2%1%fcallEnd to E0%0%d at unroll 1 delta {1,0}
+=Edge.src_tfg_full_pathset.ec from L3%1%fcallEnd to E0%0%d at unroll 1 delta {1,0}
 =Edge.src_tfg_full_pathset.graph_edge_composition
-(L2%1%fcallEnd#{0,0}=>E0%0%d#{0,0})
+(L3%1%fcallEnd#{0,0}=>E0%0%d#{0,0})
 =Edge.src_tfg_full_pathset done
 =Edge.dst_tfg_full_pathset
 =Edge.dst_tfg_full_pathset.ec from Lentry%1%fcallEnd to E0%0%d at unroll 1 delta {1,0}
@@ -1594,7 +1594,7 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%x : 4 : 4 : 0
 =Edge.dst_tfg_full_pathset done
 =Edge.cg_edge_assumes.Assumes.begin:
 =Edge.cg_edge_assumesAssume.0
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 3 : eq(1, 2) : BOOL
 =Edge.cg_edge_assumes.Assumes.end
@@ -1662,9 +1662,9 @@ arg-location-contents-are-consistent-with-arg-value
 =Liveness in bar.A2.B2.C1
 =live locs at L0%0%d_L0%0%d
 
-=live locs at L2%1%fcallStart_Lentry%1%fcallStart
+=live locs at L3%1%fcallStart_Lentry%1%fcallStart
 
-=live locs at L2%1%fcallEnd_Lentry%1%fcallEnd
+=live locs at L3%1%fcallEnd_Lentry%1%fcallEnd
 
 =live locs at E0%0%d_E0%0%d
 
@@ -1706,35 +1706,35 @@ discontiguous mls:
 =graph_with_proofs done
 =global counterexamples for reason inductive-invariants
 =global nodece 0
-=global nodece 0 nodece z3v487.ce3.num_edges_traversed2
+=global nodece 0 nodece cvc4.ce3.num_edges_traversed2
 =global nodece 0 nodece_path
 =global nodece 0 nodece_path.graph_edge_composition
-((L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart)*(L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd))
+((L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart)*(L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd))
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin z3v487.ce3 d0e8b43763fca756acc4cbe91eb2146
+=counter_example_begin cvc4.ce3 b76b525b9d1043a0664283b26f59a1ed
 =nextpc_const.1
 1 : 1458985843 { 0x56f65b73 +1.92466580e46 } : BV:32
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec.func.call19e08a8492cfd0d4521b4a2c174dacb
 1 : ([ 0; 4294967295 ] -> 571456685, ) : FUNCTION[BV:32 -> BV:32]
-=input.spec-%tmpvar-3.L2%1%fcallEnd
+=input.spec-%tmpvar-3.L3%1%fcallEnd
 1 : 571456685 { 0x220fbcad +1.12294542e197 } : BV:32
 =input.dst.llvm-%x
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___bar__x__=L0%0%argnum0=/
-1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.local_alloc_count.=L0%0%d=
 1 : 2109537953 { 0x7dbcfea1 +1.47652065e124 } : COUNT
 =func.calla4bcb626de6152719ca44f8b649b9c4a.reg
 1 : (( memlabel-mem--dummy , memlabel-mem--dummy , ({ [ 0; 4294967295 ], } -> (RAC: m_multiplier -> 244 , m_adder -> 178), ) , ([ 0; 4294967295 ] -> memlabel-mem--dummy, ) , 1458985843 , 1000 , 0 ) -> 143544635, () -> 711605912, ) : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> BV:32]
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.Lentry%1%fcallEnd
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
@@ -1747,9 +1747,9 @@ discontiguous mls:
 =input.dst.cur_rounding_mode.Lentry%1%fcallStart
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin
-1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
+1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end
-1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
+1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
 =memzero_memvar
 1 : ({ [ 0; 4294967295 ], } -> (RAC: m_multiplier -> 244 , m_adder -> 178), ) : ARRAY[BV:32 -> BV:8]
 =counter_example.random_seed
@@ -1757,14 +1757,14 @@ discontiguous mls:
 =counter_example_end
 =global nodece 0 num_edges_traversed 2
 =global nodece 0 nodece_visted_pcs: 
-L0%0%d_L0%0%d -> L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
+L0%0%d_L0%0%d -> L3%1%fcallStart_Lentry%1%fcallStart -> L3%1%fcallEnd_Lentry%1%fcallEnd
 =global nodece 1
-=global nodece 1 nodece cvc4.ce4.num_edges_traversed0
+=global nodece 1 nodece z3v487.ce4.num_edges_traversed0
 =global nodece 1 nodece_path
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin cvc4.ce4 ef4774b348d6337f9fa17f86ac9b6059
+=counter_example_begin z3v487.ce4 4583f51a47ba8f754c3d61612bd173c
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%x
@@ -1772,17 +1772,17 @@ L0%0%d_L0%0%d -> L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%f
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
-1 : ([ 0; 2147483647 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, [ 2147483648; 2147483651 ] -> memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/, [ 2147483652; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+1 : ([ 0; 1073741823 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, [ 1073741824; 1073741827 ] -> memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.local./*___y___bar__x__=L0%0%argnum0=/
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin
-1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end
-1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =counter_example.random_seed
 1957747793
 =counter_example_end
@@ -1795,7 +1795,7 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce5 45a714f1d8a6a8d42a82c3eda847941
+=counter_example_begin yices.ce5 2cdd7bf592555713becdef6e1a6414c6
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%x
@@ -1808,7 +1808,7 @@ L0%0%d_L0%0%d
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
@@ -1824,16 +1824,16 @@ L0%0%d_L0%0%d
 =global nodece 3 nodece cvc4.ce21.num_edges_traversed2
 =global nodece 3 nodece_path
 =global nodece 3 nodece_path.graph_edge_composition
-((L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart)*(L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd))
+((L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart)*(L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd))
 =global nodece 3 nodece_cached_counterexample
-=counter_example_begin cvc4.ce21 5ce3823181fc58d4ac114342a1fd29
+=counter_example_begin cvc4.ce21 e4c837d73c66d38abd594907a37aff1
 =nextpc_const.1
 1 : 105595974 { 0x64b4446 +1.58802103e141 } : BV:32
 =input.spec-%var-x-1
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =spec.func.call19e08a8492cfd0d4521b4a2c174dacb
 1 : ([ 0; 4294967295 ] -> 1674548167, ) : FUNCTION[BV:32 -> BV:32]
-=input.spec-%tmpvar-3.L2%1%fcallEnd
+=input.spec-%tmpvar-3.L3%1%fcallEnd
 1 : 1674548167 { 0x63cf93c7 +1.62169730e72 } : BV:32
 =input.dst.llvm-%x
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -1849,7 +1849,7 @@ L0%0%d_L0%0%d
 1 : (( memlabel-mem--dummy , memlabel-mem--dummy , ({ [ 0; 4294967295 ], } -> (RAC: m_multiplier -> 245 , m_adder -> 120), ) , ([ 0; 4294967295 ] -> memlabel-mem--dummy, ) , 105595974 , 1000 , 1 ) -> 820192200, () -> 1314064692, ) : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> BV:32]
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-mem.Lentry%1%fcallEnd
 1 : ([ 0; 2147483647 ] -> 0, [ 2147483648; 2147483648 ] -> 1, [ 2147483649; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
@@ -1872,21 +1872,21 @@ L0%0%d_L0%0%d
 =counter_example_end
 =global nodece 3 num_edges_traversed 2
 =global nodece 3 nodece_visted_pcs: 
-L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
+L3%1%fcallStart_Lentry%1%fcallStart -> L3%1%fcallEnd_Lentry%1%fcallEnd
 =global nodece 4
 =global nodece 4 nodece cvc4.ce39.num_edges_traversed1
 =global nodece 4 nodece_path
 =global nodece 4 nodece_path.graph_edge_composition
-(L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd)
+(L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd)
 =global nodece 4 nodece_cached_counterexample
-=counter_example_begin cvc4.ce39 29ca1ab1d3f53a997e9c517cd3162
+=counter_example_begin cvc4.ce39 3b1c95ee161cea4ed09a4e3a5c949922
 =nextpc_const.1
 1 : 1526262149 { 0x5af8e985 +1.94462645e54 } : BV:32
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec.func.call19e08a8492cfd0d4521b4a2c174dacb
 1 : ([ 0; 4294967295 ] -> 939892413, ) : FUNCTION[BV:32 -> BV:32]
-=input.spec-%tmpvar-3.L2%1%fcallEnd
+=input.spec-%tmpvar-3.L3%1%fcallEnd
 1 : 939892413 { 0x38059ebd +1.4390680e241 } : BV:32
 =input.dst.llvm-%x
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1900,7 +1900,7 @@ L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
 1 : (( memlabel-mem--dummy , memlabel-mem--dummy , ({ [ 0; 4294967295 ], } -> (RAC: m_multiplier -> 9 , m_adder -> 100), ) , ([ 0; 4294967295 ] -> memlabel-mem--dummy, ) , 1526262149 , 1000 , 0 ) -> 1912412264, () -> 207808149, ) : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> BV:32]
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.Lentry%1%fcallEnd
 1 : ({ [ 0; 4294967295 ], } -> (RAC: m_multiplier -> 9 , m_adder -> 100), ) : ARRAY[BV:32 -> BV:8]
@@ -1919,21 +1919,21 @@ L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
 =counter_example_end
 =global nodece 4 num_edges_traversed 1
 =global nodece 4 nodece_visted_pcs: 
-L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
+L3%1%fcallStart_Lentry%1%fcallStart -> L3%1%fcallEnd_Lentry%1%fcallEnd
 =global nodece 5
 =global nodece 5 nodece z3v487.ce40.num_edges_traversed1
 =global nodece 5 nodece_path
 =global nodece 5 nodece_path.graph_edge_composition
-(L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd)
+(L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd)
 =global nodece 5 nodece_cached_counterexample
-=counter_example_begin z3v487.ce40 fc7836de60ed46811264ffb687b4f99
+=counter_example_begin z3v487.ce40 98b4afb1addad76c668c4155fe3dd520
 =nextpc_const.1
 1 : 2100339867 { 0x7d30a49b +1.38002336e123 } : BV:32
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec.func.call19e08a8492cfd0d4521b4a2c174dacb
 1 : ([ 0; 4294967295 ] -> 978829628, ) : FUNCTION[BV:32 -> BV:32]
-=input.spec-%tmpvar-3.L2%1%fcallEnd
+=input.spec-%tmpvar-3.L3%1%fcallEnd
 1 : 978829628 { 0x3a57c13c +1.68558454e245 } : BV:32
 =input.dst.llvm-%x
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1947,7 +1947,7 @@ L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
 1 : (( memlabel-mem--dummy , memlabel-mem--dummy , ({ [ 0; 4294967295 ], } -> (RAC: m_multiplier -> 83 , m_adder -> 13), ) , ([ 0; 4294967295 ] -> memlabel-mem--dummy, ) , 2100339867 , 1000 , 0 ) -> 724222014, () -> 1179487554, ) : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> BV:32]
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.Lentry%1%fcallEnd
 1 : ({ [ 0; 4294967295 ], } -> (RAC: m_multiplier -> 83 , m_adder -> 13), ) : ARRAY[BV:32 -> BV:8]
@@ -1966,14 +1966,14 @@ L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
 =counter_example_end
 =global nodece 5 num_edges_traversed 1
 =global nodece 5 nodece_visted_pcs: 
-L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
+L3%1%fcallStart_Lentry%1%fcallStart -> L3%1%fcallEnd_Lentry%1%fcallEnd
 =global nodece 6
 =global nodece 6 nodece yices.ce41.num_edges_traversed0
 =global nodece 6 nodece_path
 =global nodece 6 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 6 nodece_cached_counterexample
-=counter_example_begin yices.ce41 f6fdc63fb2a0e2879ec334611d6b4f5
+=counter_example_begin yices.ce41 a01288539bb69d78947bac854d39dea
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%x
@@ -1984,7 +1984,7 @@ L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
@@ -1995,14 +1995,14 @@ L2%1%fcallStart_Lentry%1%fcallStart -> L2%1%fcallEnd_Lentry%1%fcallEnd
 =counter_example_end
 =global nodece 6 num_edges_traversed 0
 =global nodece 6 nodece_visted_pcs: 
-L2%1%fcallStart_Lentry%1%fcallStart
+L3%1%fcallStart_Lentry%1%fcallStart
 =global nodece 7
 =global nodece 7 nodece cvc4.ce77.num_edges_traversed0
 =global nodece 7 nodece_path
 =global nodece 7 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 7 nodece_cached_counterexample
-=counter_example_begin cvc4.ce77 bd44178152b2a74b7d42c4f674ad769c
+=counter_example_begin cvc4.ce77 bdfba3022a783b17392b1cc46fe50
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -2011,7 +2011,7 @@ L2%1%fcallStart_Lentry%1%fcallStart
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
@@ -2022,14 +2022,14 @@ L2%1%fcallStart_Lentry%1%fcallStart
 =counter_example_end
 =global nodece 7 num_edges_traversed 0
 =global nodece 7 nodece_visted_pcs: 
-L2%1%fcallEnd_Lentry%1%fcallEnd
+L3%1%fcallEnd_Lentry%1%fcallEnd
 =global nodece 8
 =global nodece 8 nodece z3v487.ce78.num_edges_traversed0
 =global nodece 8 nodece_path
 =global nodece 8 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 8 nodece_cached_counterexample
-=counter_example_begin z3v487.ce78 4f6c889729d259b34999f539bf64524
+=counter_example_begin z3v487.ce78 f212de543bb4eceb45a4bf2e597c991c
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -2038,7 +2038,7 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin
 1 : 1073741824 { 0x40000000 +1.0e1 } : BV:32
@@ -2049,14 +2049,14 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 =counter_example_end
 =global nodece 8 num_edges_traversed 0
 =global nodece 8 nodece_visted_pcs: 
-L2%1%fcallEnd_Lentry%1%fcallEnd
+L3%1%fcallEnd_Lentry%1%fcallEnd
 =global nodece 9
 =global nodece 9 nodece yices.ce79.num_edges_traversed0
 =global nodece 9 nodece_path
 =global nodece 9 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 9 nodece_cached_counterexample
-=counter_example_begin yices.ce79 53941e3df373becf95e4ae429bcc1f9
+=counter_example_begin yices.ce79 9ea21b3ad65be5fa873d4ac0d3aeb9d
 =input.spec-%var-x-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -2065,7 +2065,7 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 =input.spec-%tmpvar-4.E0%0%d
 1 : 5 { 0x5 +1.59e129 } : BV:32
-=input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
@@ -2076,7 +2076,7 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 =counter_example_end
 =global nodece 9 num_edges_traversed 0
 =global nodece 9 nodece_visted_pcs: 
-L2%1%fcallEnd_Lentry%1%fcallEnd
+L3%1%fcallEnd_Lentry%1%fcallEnd
 =graph_with_ce done
 =point_set for reason inductive-invariants
 =inductive-invariants point_set global exprs map
@@ -2108,9 +2108,9 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 =inductive-invariants point_set point_expr 3
 1 : input.dst.llvm-%x : BV:32
 =inductive-invariants point_set point_expr 4
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 =inductive-invariants point_set point_expr 5
-1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd : BV:32
+1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd : BV:32
 =inductive-invariants point_set point_expr 6
 1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =inductive-invariants point_set global exprs map done
@@ -2124,39 +2124,39 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 =inductive-invariants point_set point yices.ce5 expr point yices.ce5 val 3 for input.dst.llvm-%x
 0
 =inductive-invariants point_set point yices.ce5 expr point yices.ce5 done
-=inductive-invariants point_set point z3v487.ce3
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap))
+=inductive-invariants point_set point cvc4.ce3
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap))
 1
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 2 for input.spec-%var-x-1
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 2 for input.spec-%var-x-1
 0
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 3 for input.dst.llvm-%x
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 3 for input.dst.llvm-%x
 0
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 4 for input.spec-%tmpvar-3.L2%1%fcallEnd
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 4 for input.spec-%tmpvar-3.L3%1%fcallEnd
 571456685
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 0
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 val 6 for input.dst.llvm-%call.Lentry%1%fcallEnd
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 val 6 for input.dst.llvm-%call.Lentry%1%fcallEnd
 143544635
-=inductive-invariants point_set point z3v487.ce3 expr point z3v487.ce3 done
-=inductive-invariants point_set point cvc4.ce4
-=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4
-=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap))
+=inductive-invariants point_set point cvc4.ce3 expr point cvc4.ce3 done
+=inductive-invariants point_set point z3v487.ce4
+=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4
+=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap))
 1
-=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 2 for input.spec-%var-x-1
+=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 2 for input.spec-%var-x-1
 0
-=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 val 3 for input.dst.llvm-%x
+=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 val 3 for input.dst.llvm-%x
 0
-=inductive-invariants point_set point cvc4.ce4 expr point cvc4.ce4 done
+=inductive-invariants point_set point z3v487.ce4 expr point z3v487.ce4 done
 =inductive-invariants point_set point z3v487.ce40
 =inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40
 =inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___bar__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap))
 1
 =inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 2 for input.spec-%var-x-1
 0
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 4 for input.spec-%tmpvar-3.L2%1%fcallEnd
+=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 4 for input.spec-%tmpvar-3.L3%1%fcallEnd
 978829628
-=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 0
 =inductive-invariants point_set point z3v487.ce40 expr point z3v487.ce40 val 6 for input.dst.llvm-%call.Lentry%1%fcallEnd
 724222014
@@ -2169,9 +2169,9 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 1
 =inductive-invariants point_set point cvc4.ce21 expr point cvc4.ce21 val 3 for input.dst.llvm-%x
 1
-=inductive-invariants point_set point cvc4.ce21 expr point cvc4.ce21 val 4 for input.spec-%tmpvar-3.L2%1%fcallEnd
+=inductive-invariants point_set point cvc4.ce21 expr point cvc4.ce21 val 4 for input.spec-%tmpvar-3.L3%1%fcallEnd
 1674548167
-=inductive-invariants point_set point cvc4.ce21 expr point cvc4.ce21 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=inductive-invariants point_set point cvc4.ce21 expr point cvc4.ce21 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 1
 =inductive-invariants point_set point cvc4.ce21 expr point cvc4.ce21 val 6 for input.dst.llvm-%call.Lentry%1%fcallEnd
 820192200
@@ -2200,9 +2200,9 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 1
 =inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 2 for input.spec-%var-x-1
 0
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 4 for input.spec-%tmpvar-3.L2%1%fcallEnd
+=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 4 for input.spec-%tmpvar-3.L3%1%fcallEnd
 939892413
-=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 0
 =inductive-invariants point_set point cvc4.ce39 expr point cvc4.ce39 val 6 for input.dst.llvm-%call.Lentry%1%fcallEnd
 1912412264
@@ -2213,9 +2213,9 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 1
 =inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 2 for input.spec-%var-x-1
 0
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 4 for input.spec-%tmpvar-3.L2%1%fcallEnd
+=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 4 for input.spec-%tmpvar-3.L3%1%fcallEnd
 81277458
-=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd
+=inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 5 for input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd
 0
 =inductive-invariants point_set point yices.ce41 expr point yices.ce41 val 6 for input.dst.llvm-%call.Lentry%1%fcallEnd
 1152896273
@@ -2224,9 +2224,9 @@ L2%1%fcallEnd_Lentry%1%fcallEnd
 =out-of-bound-exprs for reason inductive-invariants
 =out-of-bound-exprs for reason inductive-invariants at L0%0%d_L0%0%d
 
-=out-of-bound-exprs for reason inductive-invariants at L2%1%fcallStart_Lentry%1%fcallStart
+=out-of-bound-exprs for reason inductive-invariants at L3%1%fcallStart_Lentry%1%fcallStart
 
-=out-of-bound-exprs for reason inductive-invariants at L2%1%fcallEnd_Lentry%1%fcallEnd
+=out-of-bound-exprs for reason inductive-invariants at L3%1%fcallEnd_Lentry%1%fcallEnd
 
 =out-of-bound-exprs for reason inductive-invariants at E0%0%d_E0%0%d
 
@@ -2240,19 +2240,19 @@ is_stable 1
 =pc L0%0%d_L0%0%d inductive-invariants invariant_state failcond.expr is null
 =pc L0%0%d_L0%0%d inductive-invariants invariant_state failcond done
 =pc L0%0%d_L0%0%d inductive-invariants invariant_state done
-=Invariant state at node L2%1%fcallStart_Lentry%1%fcallStart for reason inductive-invariants
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state 
+=Invariant state at node L3%1%fcallStart_Lentry%1%fcallStart for reason inductive-invariants
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state 
 is_top 0
 is_stable 1
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state failcond.description
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state failcond.description
 
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state failcond.expr is null
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state failcond done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability name abstract-memlabel-asserts
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability expr_group_type HOUDINI_EXPECTS_STABILITY with 1 exprs
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability point_expr 1
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state failcond.expr is null
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state failcond done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability name abstract-memlabel-asserts
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability expr_group_type HOUDINI_EXPECTS_STABILITY with 1 exprs
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability point_expr 1
 1 : input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin : BV:32
 2 : input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end : BV:32
 3 : bvule(1, 2) : BOOL
@@ -2275,8 +2275,8 @@ is_stable 1
 20 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap : MEMLABEL
 21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
 22 : and(17, 21) : BOOL
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability pred 0
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability pred 0
 =Comment
 abstract-memlabel-asserts-houdini-guess
 =LhsExpr
@@ -2305,21 +2305,21 @@ abstract-memlabel-asserts-houdini-guess
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability predicate_set done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability is assumed eqclass : 0
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ce 0: z3v487.ce3
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ces set done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability summary: number of exprs=1; number of visited CEs=1; number of preds=1
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv name expr-group-bvs
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv expr_group_type BV_EQ with 2 exprs
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv point_expr 2
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability predicate_set done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability is assumed eqclass : 0
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ce 0: cvc4.ce3
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ces set done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 0 type houdini_expects_stability summary: number of exprs=1; number of visited CEs=1; number of preds=1
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv name expr-group-bvs
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv expr_group_type BV_EQ with 2 exprs
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv point_expr 2
 1 : input.spec-%var-x-1 : BV:32
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv point_expr 3
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv point_expr 3
 1 : input.dst.llvm-%x : BV:32
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv pred 0
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv pred 0
 =Comment
 expr-group-bvs.linear2-32-free_var_idx.3
 =LhsExpr
@@ -2330,32 +2330,32 @@ expr-group-bvs.linear2-32-free_var_idx.3
 =RhsExpr
 1 : input.dst.llvm-%x : BV:32
 =predicate done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv predicate_set done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv is assumed eqclass : 0
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv visited ce 0: z3v487.ce3
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv visited ce 1: cvc4.ce21
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv visited ces set done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv summary: number of exprs=2; number of visited CEs=2; number of preds=1
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv output matrix
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv predicate_set done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv is assumed eqclass : 0
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv visited ce 0: cvc4.ce3
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv visited ce 1: cvc4.ce21
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv visited ces set done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv summary: number of exprs=2; number of visited CEs=2; number of preds=1
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv output matrix
 matrix:
 3
 -2147483648->0; 2->4294967295; 3->1; 
 matrix done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv state elems done
-=pc L2%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state done
-=Invariant state at node L2%1%fcallEnd_Lentry%1%fcallEnd for reason inductive-invariants
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state 
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants smallest_point_cover 1 type bv state elems done
+=pc L3%1%fcallStart_Lentry%1%fcallStart inductive-invariants invariant_state done
+=Invariant state at node L3%1%fcallEnd_Lentry%1%fcallEnd for reason inductive-invariants
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state 
 is_top 0
 is_stable 1
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state failcond.description
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state failcond.description
 
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state failcond.expr is null
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state failcond done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability name abstract-memlabel-asserts
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability expr_group_type HOUDINI_EXPECTS_STABILITY with 1 exprs
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability point_expr 1
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state failcond.expr is null
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state failcond done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability name abstract-memlabel-asserts
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability expr_group_type HOUDINI_EXPECTS_STABILITY with 1 exprs
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability point_expr 1
 1 : input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_begin : BV:32
 2 : input.dst.memlabel-mem--local./*___y___bar__x__=L0%0%argnum0=/_end : BV:32
 3 : bvule(1, 2) : BOOL
@@ -2378,8 +2378,8 @@ is_stable 1
 20 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___foo__x__=L0%0%argnum0=/-heap : MEMLABEL
 21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
 22 : and(17, 21) : BOOL
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability pred 0
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability pred 0
 =Comment
 abstract-memlabel-asserts-houdini-guess
 =LhsExpr
@@ -2408,25 +2408,25 @@ abstract-memlabel-asserts-houdini-guess
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability predicate_set done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability is assumed eqclass : 0
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ce 0: z3v487.ce3
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ces set done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability summary: number of exprs=1; number of visited CEs=1; number of preds=1
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv name expr-group-bvs
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv expr_group_type BV_EQ with 4 exprs
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 2
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability predicate_set done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability is assumed eqclass : 0
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ce 0: cvc4.ce3
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability visited ces set done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 0 type houdini_expects_stability summary: number of exprs=1; number of visited CEs=1; number of preds=1
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv name expr-group-bvs
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv expr_group_type BV_EQ with 4 exprs
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 2
 1 : input.spec-%var-x-1 : BV:32
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 4
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 5
-1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd : BV:32
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 6
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 4
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 5
+1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd : BV:32
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv point_expr 6
 1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv pred 0
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv pred 0
 =Comment
 expr-group-bvs.linear2-32-free_var_idx.5
 =LhsExpr
@@ -2435,23 +2435,23 @@ expr-group-bvs.linear2-32-free_var_idx.5
 3 : bvmul(1, 2) : BV:32
 4 : bvneg(3) : BV:32
 =RhsExpr
-1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd : BV:32
+1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd : BV:32
 =predicate done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv predicate_set done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv is assumed eqclass : 0
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 0: z3v487.ce3
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 1: z3v487.ce40
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 2: cvc4.ce21
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 3: cvc4.ce39
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ces set done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv summary: number of exprs=4; number of visited CEs=4; number of preds=1
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv output matrix
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv predicate_set done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv is assumed eqclass : 0
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 0: cvc4.ce3
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 1: z3v487.ce40
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 2: cvc4.ce21
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ce 3: cvc4.ce39
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv visited ces set done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv summary: number of exprs=4; number of visited CEs=4; number of preds=1
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv output matrix
 matrix:
 5
 -2147483648->0; 2->4294967295; 4->0; 5->1; 6->0; 
 matrix done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv state elems done
-=pc L2%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants smallest_point_cover 1 type bv state elems done
+=pc L3%1%fcallEnd_Lentry%1%fcallEnd inductive-invariants invariant_state done
 =Invariant state at node E0%0%d_E0%0%d for reason inductive-invariants
 =pc E0%0%d_E0%0%d inductive-invariants invariant_state 
 is_top 0
@@ -2491,21 +2491,21 @@ equal-ret
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=well-formedness-conditions for L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart
-=well-formedness-conditions for L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart edge well-formedness condition
-=well-formedness-conditions for L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart edge well-formedness condition done
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge well-formedness condition
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond cg_path
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond cg_path.graph_edge_composition
+=well-formedness-conditions for L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart
+=well-formedness-conditions for L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart edge well-formedness condition
+=well-formedness-conditions for L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart edge well-formedness condition done
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge well-formedness condition
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond cg_path
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond cg_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond src_path
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond src_path.graph_edge_composition
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond src_path
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond src_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond dst_path
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond dst_path.graph_edge_composition
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond dst_path
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond dst_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond pred.0
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge-wf-cond pred.0
 =Comment
 equal-arg0
 =LhsExpr
@@ -2515,23 +2515,23 @@ equal-arg0
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=well-formedness-conditions for L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd edge well-formedness condition done
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge well-formedness condition
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path.graph_edge_composition
+=well-formedness-conditions for L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd edge well-formedness condition done
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge well-formedness condition
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path.graph_edge_composition
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path.graph_edge_composition
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond pred.0
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond pred.0
 =Comment
-wfcond.from_pcL2%1%fcallEnd_Lentry%1%fcallEnd.to_pcE0%0%d_E0%0%d-dst-edgecond-implies-src-edgecond
+wfcond.from_pcL3%1%fcallEnd_Lentry%1%fcallEnd.to_pcE0%0%d_E0%0%d-dst-edgecond-implies-src-edgecond
 =LhsExpr
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 3 : eq(1, 2) : BOOL
 4 : 1 { 0x1 } : BOOL
@@ -2539,16 +2539,16 @@ wfcond.from_pcL2%1%fcallEnd_Lentry%1%fcallEnd.to_pcE0%0%d_E0%0%d-dst-edgecond-im
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path.graph_edge_composition
-(L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d)
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path.graph_edge_composition
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond cg_path.graph_edge_composition
+(L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d)
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond src_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path.graph_edge_composition
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond dst_path.graph_edge_composition
 (epsilon)
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond pred.0
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge-wf-cond pred.0
 =Comment
 equal-ret
 =LhsExpr
@@ -2558,39 +2558,39 @@ equal-ret
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=well-formedness-conditions for L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge well-formedness condition done
-=Ranking exprs at node L2%1%fcallStart_Lentry%1%fcallStart
+=well-formedness-conditions for L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d edge well-formedness condition done
+=Ranking exprs at node L3%1%fcallStart_Lentry%1%fcallStart
 =SRC Ranking expr 0
 1 : input.spec-%var-x-1 : BV:32
 =DST Ranking expr 0
 1 : input.dst.llvm-%x : BV:32
 =bv_rank_exprs done
-=Ranking exprs at node L2%1%fcallEnd_Lentry%1%fcallEnd
+=Ranking exprs at node L3%1%fcallEnd_Lentry%1%fcallEnd
 =SRC Ranking expr 0
-1 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+1 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 =SRC Tie Breaking expr 0
 1 : input.spec-%var-x-1 : BV:32
 =SRC Tie Breaking expr 1
-1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L2%1%fcallEnd : BV:32
+1 : input.spec-fcall_arg_copy.0.spec-%var-x-1.L3%1%fcallEnd : BV:32
 =DST Ranking expr 0
 1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =bv_rank_exprs done
 =Ranking exprs done
 =dst-to-src submaps done
-=cg-edge-contains-repeated-src-tfg-edge at edge-id L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart
+=cg-edge-contains-repeated-src-tfg-edge at edge-id L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart
 0
-=cg-edge-contains-repeated-src-tfg-edge at edge-id L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd
+=cg-edge-contains-repeated-src-tfg-edge at edge-id L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd
 0
-=cg-edge-contains-repeated-src-tfg-edge at edge-id L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d
+=cg-edge-contains-repeated-src-tfg-edge at edge-id L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d
 0
 =cg-edge-contains-repeated-src-tfg-edge-map done
 =cg.assumes_around_edge
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #0
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #0.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #0.ec.graph_edge_composition
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #0
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #0.ec
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #0.ec.graph_edge_composition
 (epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #0.pred
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #0.pred
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
@@ -2605,26 +2605,26 @@ arg-location-contents-are-consistent-with-arg-value
 140317 : input.dst.llvm-%x : BV:32
 =predicate done
 
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #1
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #1.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #1.ec.graph_edge_composition
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #1
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #1.ec
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #1.ec.graph_edge_composition
 (epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #1.pred
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #1.pred
 =Comment
 equal-arg0
 =LhsExpr
 140273 : input.spec-%var-x-1 : BV:32
 140317 : input.dst.llvm-%x : BV:32
-140435 : eq(140273, 140317) : BOOL
+140434 : eq(140273, 140317) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
 
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #2
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #2.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #2.ec.graph_edge_composition
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #2
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #2.ec
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #2.ec.graph_edge_composition
 (epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart assume #2.pred
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart assume #2.pred
 =Comment
 precond-mlasserts
 =LhsExpr
@@ -2654,34 +2654,34 @@ precond-mlasserts
 140275 : 1 { 0x1 } : BOOL
 =predicate done
 
-cg.assumes_around_edge at L0%0%d_L0%0%d=>L2%1%fcallStart_Lentry%1%fcallStart done
-cg.assumes_around_edge at L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd
-cg.assumes_around_edge at L2%1%fcallStart_Lentry%1%fcallStart=>L2%1%fcallEnd_Lentry%1%fcallEnd done
-cg.assumes_around_edge at L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d
-cg.assumes_around_edge at L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0
-cg.assumes_around_edge at L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0.ec
-cg.assumes_around_edge at L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0.ec.graph_edge_composition
+cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%1%fcallStart_Lentry%1%fcallStart done
+cg.assumes_around_edge at L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd
+cg.assumes_around_edge at L3%1%fcallStart_Lentry%1%fcallStart=>L3%1%fcallEnd_Lentry%1%fcallEnd done
+cg.assumes_around_edge at L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d
+cg.assumes_around_edge at L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0
+cg.assumes_around_edge at L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0.ec
+cg.assumes_around_edge at L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0.ec.graph_edge_composition
 (epsilon)
-cg.assumes_around_edge at L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0.pred
+cg.assumes_around_edge at L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d assume #0.pred
 =Comment
 cg-edge-assume
 =LhsExpr
-140294 : input.spec-%tmpvar-3.L2%1%fcallEnd : BV:32
+140294 : input.spec-%tmpvar-3.L3%1%fcallEnd : BV:32
 140364 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-140904 : eq(140294, 140364) : BOOL
+140873 : eq(140294, 140364) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
 
-cg.assumes_around_edge at L2%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d done
+cg.assumes_around_edge at L3%1%fcallEnd_Lentry%1%fcallEnd=>E0%0%d_E0%0%d done
 cg.assumes_around_edge done
 =corr_graph_done
 =bv_rank_map
 =bv_rank at L0%0%d_L0%0%d
 m_dst_rank: 0, m_src_rank: 0, m_spec_rank: 0
-=bv_rank at L2%1%fcallStart_Lentry%1%fcallStart
+=bv_rank at L3%1%fcallStart_Lentry%1%fcallStart
 m_dst_rank: 0, m_src_rank: 0, m_spec_rank: 0
-=bv_rank at L2%1%fcallEnd_Lentry%1%fcallEnd
+=bv_rank at L3%1%fcallEnd_Lentry%1%fcallEnd
 m_dst_rank: 0, m_src_rank: 0, m_spec_rank: 0
 =bv_rank at E0%0%d_E0%0%d
 m_dst_rank: 0, m_src_rank: 0, m_spec_rank: 0
@@ -2726,7 +2726,7 @@ L0%0%d => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
-=Input: spec-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : (undefined) : UNDEFINED
 =arg val
@@ -2900,7 +2900,7 @@ discontiguous mls:
 =lr-status-map
 =lr-status-map at call-context {*;foo}
 =loc_id 1 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 5 lr-status in lr-status-map at call-context {*;foo}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 6 lr-status in lr-status-map at call-context {*;foo}
@@ -2908,9 +2908,9 @@ lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 7 lr-status in lr-status-map at call-context {*;foo}
 lr_status_linearly_related(; )
 =loc_id 8 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 9 lr-status in lr-status-map at call-context {*;foo}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =lr-status-map done
 =lr-status-for-sprel-locs-map
 =loc_id 7 lr-status in lr-status-for-sprel-locs-map
@@ -2996,7 +2996,7 @@ L0%0%d => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: foo
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =arg val
@@ -3736,7 +3736,7 @@ L0%0%d_L0%0%d => E0%0%d_E0%0%d
 =state_end
 =graph_with_var_versions done
 =FunctionName: foo
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =arg val
@@ -3774,6 +3774,16 @@ C_LOCAL=L0%0%argnum0= : dst.llvm-%x : 4 : 4 : 0
 =start_pc_preconditions
 =start_pc_precondition.0
 =Comment
+equal-arg0
+=LhsExpr
+1 : input.spec-%var-x-0 : BV:32
+2 : input.dst.llvm-%x : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 { 0x1 } : BOOL
+=predicate done
+=start_pc_precondition.1
+=Comment
 precond-mlasserts
 =LhsExpr
 1 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin : BV:32
@@ -3798,16 +3808,6 @@ precond-mlasserts
 20 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-heap : MEMLABEL
 21 : region_agrees_with_memlabel(18, 13, 19, 20) : BOOL
 22 : and(17, 21) : BOOL
-=RhsExpr
-1 : 1 { 0x1 } : BOOL
-=predicate done
-=start_pc_precondition.1
-=Comment
-equal-arg0
-=LhsExpr
-1 : input.spec-%var-x-0 : BV:32
-2 : input.dst.llvm-%x : BV:32
-3 : eq(1, 2) : BOOL
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
@@ -4122,7 +4122,7 @@ equal-arg0
 =LhsExpr
 140295 : input.spec-%var-x-0 : BV:32
 140317 : input.dst.llvm-%x : BV:32
-140437 : eq(140295, 140317) : BOOL
+140416 : eq(140295, 140317) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

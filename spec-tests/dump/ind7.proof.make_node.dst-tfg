@@ -12,52 +12,52 @@ Lentry%2%d => E0%0%d
 =is_ssa_graph:
 1
 =StartState:
-=dst.llvm-mem.alloc
-1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-=dst.llvm-mem
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-%val
 1 : input.dst.llvm-%val : BV:32
+=dst.llvm-mem
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =state_end
 =PC to var-version map at L0%0%d
-=version for dst.llvm-mem.alloc
-1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at Lentry%1%intermediateVal1
-=version for dst.llvm-mem.alloc
-1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for dst.llvm-mem
 1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at Lentry%1%fcallStart
-=version for dst.llvm-mem.alloc
-1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =version for dst.llvm-mem
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-=var-version done
-=PC to var-version map at Lentry%1%fcallEnd
 =version for dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=PC to var-version map at Lentry%1%fcallEnd
 =version for dst.llvm-mem
 1 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =PC to var-version map at Lentry%2%d
-=version for dst.llvm-mem.alloc
-1 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 =version for dst.llvm-mem
 1 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-=var-version done
-=PC to var-version map at E0%0%d
 =version for dst.llvm-mem.alloc
 1 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+=var-version done
+=PC to var-version map at E0%0%d
 =version for dst.llvm-mem
 1 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
+=version for dst.llvm-mem.alloc
+1 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
 =graph_with_var_versions done
 =FunctionName: make_node
-=Input: llvm-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : input.dst.local./*___y___make_node__x__=L0%0%argnum0=/ : BV:32
 =arg val
@@ -114,6 +114,16 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
+=dst.llvm-mem.Lentry%1%fcallEnd
+1 : func.call30eccc4aa0775a3174483e053ab761b.mem : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> ARRAY[BV:32 -> BV:8]]
+2 : mlcall.dst.llvm.make_node.2 : MEMLABEL
+3 : mlcall.dst.llvm.make_node.3 : MEMLABEL
+4 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : nextpc_const.1 : BV:32
+7 : 0 { 0x0 +1.0e129 } : REGID
+8 : 8 { 0x8 +1.95e129 } : BV:32
+9 : function_call(1, 2, 3, 4, 5, 6, 7, 8) : ARRAY[BV:32 -> BV:8]
 =dst.llvm-%call.Lentry%1%fcallEnd
 1 : func.calla4bcb626de6152719ca44f8b649b9c4a.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> BV:32]
 2 : mlcall.dst.llvm.make_node.2 : MEMLABEL
@@ -126,16 +136,6 @@ tfg_edge_comment end
 9 : function_call(1, 2, 3, 4, 5, 6, 7, 8) : BV:32
 =dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd
 1 : 8 { 0x8 +1.95e129 } : BV:32
-=dst.llvm-mem.Lentry%1%fcallEnd
-1 : func.call30eccc4aa0775a3174483e053ab761b.mem : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> ARRAY[BV:32 -> BV:8]]
-2 : mlcall.dst.llvm.make_node.2 : MEMLABEL
-3 : mlcall.dst.llvm.make_node.3 : MEMLABEL
-4 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-6 : nextpc_const.1 : BV:32
-7 : 0 { 0x0 +1.0e129 } : REGID
-8 : 8 { 0x8 +1.95e129 } : BV:32
-9 : function_call(1, 2, 3, 4, 5, 6, 7, 8) : ARRAY[BV:32 -> BV:8]
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -191,6 +191,15 @@ tfg_edge_comment end
 8 : heap_alloc(5, 6, 2, 7) : ARRAY[BV:32 -> MEMLABEL]
 9 : ite(4, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
 10 : malloc_side_effect(1, 9, 6) : BV:32
+=dst.llvm-mem.alloc.Lentry%2%d
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : eq(1, 2) : BOOL
+4 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+5 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+6 : 8 { 0x8 +1.95e129 } : BV:32
+7 : heap_alloc(4, 5, 1, 6) : ARRAY[BV:32 -> MEMLABEL]
+8 : ite(3, 4, 7) : ARRAY[BV:32 -> MEMLABEL]
 =dst.llvm-mem.Lentry%2%d
 1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
@@ -205,15 +214,6 @@ tfg_edge_comment end
 11 : ite(3, 4, 10) : ARRAY[BV:32 -> BV:8]
 12 : ite(3, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
 13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
-=dst.llvm-mem.alloc.Lentry%2%d
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : eq(1, 2) : BOOL
-4 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-5 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-6 : 8 { 0x8 +1.95e129 } : BV:32
-7 : heap_alloc(4, 5, 1, 6) : ARRAY[BV:32 -> MEMLABEL]
-8 : ite(3, 4, 7) : ARRAY[BV:32 -> MEMLABEL]
 =dst.local_alloc_count.Lentry%2%d
 1 : input.dst.local_alloc_count.Lentry%1%fcallStart : COUNT
 2 : increment_count(1) : COUNT
@@ -603,7 +603,7 @@ MASKED
 =memalloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
-memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
+memlabel-mem-may-straddle-symbol.1-heap
 =Loc 100059 in dst.llvm.make_node.
 MASKED
 =mem
@@ -611,7 +611,7 @@ MASKED
 =memalloc
 1 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
-memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 =Loc 100060 in dst.llvm.make_node.
 MASKED
 =mem
@@ -643,7 +643,7 @@ MASKED
 =memalloc
 1 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
-memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
+memlabel-mem-may-straddle-symbol.1-heap
 =Loc 100064 in dst.llvm.make_node.
 MASKED
 =mem
@@ -651,7 +651,7 @@ MASKED
 =memalloc
 1 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
-memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 =Loc 100065 in dst.llvm.make_node.
 MASKED
 =mem
@@ -683,7 +683,7 @@ MASKED
 =memalloc
 1 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
-memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
+memlabel-mem-may-straddle-symbol.1-heap
 =Loc 100069 in dst.llvm.make_node.
 MASKED
 =mem
@@ -691,7 +691,7 @@ MASKED
 =memalloc
 1 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 =memlabel
-memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 =Loc 100070 in dst.llvm.make_node.
 MASKED
 =mem
@@ -713,15 +713,15 @@ memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 =live locs at L0%0%d
 100002, 100029, 100030, 100031, 100032, 
 =live locs at Lentry%1%intermediateVal1
-100002, 100033, 100059, 
+100002, 100033, 100058, 
 =live locs at Lentry%1%fcallStart
 100002, 100029, 100030, 100031, 100032, 
 =live locs at Lentry%1%fcallEnd
-100002, 100033, 100059, 
+100002, 100033, 100058, 
 =live locs at Lentry%2%d
-100034[f], 100035, 100064, 
+100034[f], 100035, 100063, 
 =live locs at E0%0%d
-100034[f], 100069, 
+100034[f], 100068, 
 
 =Definedness in dst.llvm.make_node
 =loc definedness at L0%0%d
@@ -755,8 +755,8 @@ memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 =relevant memlabels
 =function: make_node
 memlabel-mem--arg.0
-memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 memlabel-mem-may-straddle-symbol.1-heap
+memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/
 memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 =touched symbol ids
@@ -818,22 +818,7 @@ memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
 14 : memlabel-mem--arg.0 : MEMLABEL
 15 : memmask(13, 12, 14) : ARRAY[BV:32 -> BV:8]
-=graph_with_edge_structures.loc_to_expr_map at Lentry%1%intermediateVal1=>Lentry%2%d for loc_id 100063 {memmask(input.dst.llvm-mem.Lentry%2%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/) }
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-3 : eq(1, 2) : BOOL
-4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
-5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-6 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-7 : 8 { 0x8 +1.95e129 } : BV:32
-8 : heap_alloc(5, 6, 2, 7) : ARRAY[BV:32 -> MEMLABEL]
-9 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-10 : store_uninit(4, 8, 6, 2, 7, 9) : ARRAY[BV:32 -> BV:8]
-11 : ite(3, 4, 10) : ARRAY[BV:32 -> BV:8]
-12 : ite(3, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
-13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
-14 : memmask(13, 12, 6) : ARRAY[BV:32 -> BV:8]
-=graph_with_edge_structures.loc_to_expr_map at Lentry%1%intermediateVal1=>Lentry%2%d for loc_id 100064 {memmask(input.dst.llvm-mem.Lentry%2%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem-may-straddle-symbol.1-heap) }
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%intermediateVal1=>Lentry%2%d for loc_id 100063 {memmask(input.dst.llvm-mem.Lentry%2%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem-may-straddle-symbol.1-heap) }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 3 : eq(1, 2) : BOOL
@@ -849,6 +834,21 @@ memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
 14 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 15 : memmask(13, 12, 14) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%intermediateVal1=>Lentry%2%d for loc_id 100064 {memmask(input.dst.llvm-mem.Lentry%2%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/) }
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+3 : eq(1, 2) : BOOL
+4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+7 : 8 { 0x8 +1.95e129 } : BV:32
+8 : heap_alloc(5, 6, 2, 7) : ARRAY[BV:32 -> MEMLABEL]
+9 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+10 : store_uninit(4, 8, 6, 2, 7, 9) : ARRAY[BV:32 -> BV:8]
+11 : ite(3, 4, 10) : ARRAY[BV:32 -> BV:8]
+12 : ite(3, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
+13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
+14 : memmask(13, 12, 6) : ARRAY[BV:32 -> BV:8]
 =graph_with_edge_structures.loc_to_expr_map at Lentry%1%intermediateVal1=>Lentry%2%d for loc_id 100065 {memmask(input.dst.llvm-mem.Lentry%2%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/) }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
@@ -899,15 +899,15 @@ memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100058 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/) }
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100059 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem-may-straddle-symbol.1-heap) }
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100058 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem-may-straddle-symbol.1-heap) }
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100059 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/) }
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =graph_with_edge_structures.loc_to_expr_map at Lentry%1%fcallStart=>Lentry%1%fcallEnd for loc_id 100060 {memmask(input.dst.llvm-mem.Lentry%1%fcallEnd, input.dst.llvm-mem.alloc, memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/) }
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -972,7 +972,12 @@ memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 2 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=graph_with_edge_structures.loc_to_expr_map at Lentry%2%d=>E0%0%d for loc_id 100068 {memmask(input.dst.llvm-mem.E0%0%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/) }
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%d=>E0%0%d for loc_id 100068 {memmask(input.dst.llvm-mem.E0%0%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem-may-straddle-symbol.1-heap) }
+1 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=graph_with_edge_structures.loc_to_expr_map at Lentry%2%d=>E0%0%d for loc_id 100069 {memmask(input.dst.llvm-mem.E0%0%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/) }
 1 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
@@ -986,11 +991,6 @@ memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 11 : 0 { 0x0 +1.0e129 } : BV:32
 12 : store(8, 2, 3, 10, 11, 6, 7) : ARRAY[BV:32 -> BV:8]
 13 : memmask(12, 2, 3) : ARRAY[BV:32 -> BV:8]
-=graph_with_edge_structures.loc_to_expr_map at Lentry%2%d=>E0%0%d for loc_id 100069 {memmask(input.dst.llvm-mem.E0%0%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem-may-straddle-symbol.1-heap) }
-1 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =graph_with_edge_structures.loc_to_expr_map at Lentry%2%d=>E0%0%d for loc_id 100070 {memmask(input.dst.llvm-mem.E0%0%d, input.dst.llvm-mem.alloc.Lentry%2%d, memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/) }
 1 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
@@ -1025,47 +1025,47 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100002
 =loc_expr
-140339 : input.dst.llvm-%val : BV:32
+140417 : input.dst.llvm-%val : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100017
 =loc_expr
-140431 : input.dst.llvm-%hidden-reg : BV:32
+140496 : input.dst.llvm-%hidden-reg : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100019
 =loc_expr
-140432 : input.dst.llvm-callee-save.0 : BV:32
+140497 : input.dst.llvm-callee-save.0 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100020
 =loc_expr
-140434 : input.dst.llvm-callee-save.1 : BV:32
+140499 : input.dst.llvm-callee-save.1 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100021
 =loc_expr
-140436 : input.dst.llvm-callee-save.2 : BV:32
+140501 : input.dst.llvm-callee-save.2 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100022
 =loc_expr
-140438 : input.dst.llvm-callee-save.3 : BV:32
+140503 : input.dst.llvm-callee-save.3 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100025
 =loc_expr
-140344 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140424 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100026
 =loc_expr
-140340 : input.dst.local./*___y___make_node__x__=L0%0%argnum0=/ : BV:32
+140420 : input.dst.local./*___y___make_node__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100034
 =loc_expr
-140542 : input.dst.llvm-%call.Lentry%2%d : BV:32
+140554 : input.dst.llvm-%call.Lentry%2%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1077,7 +1077,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100035
 =loc_expr
-140547 : input.dst.llvm-%val.Lentry%2%d : BV:32
+140559 : input.dst.llvm-%val.Lentry%2%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%val : BV:32
@@ -1093,14 +1093,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100036
 =loc_expr
-140526 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
+140402 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 8 { 0x8 +1.95e129 } : BV:32
 =avail_exprs_val.end
 =loc 100037
 =loc_expr
-140564 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : BV:32
+140576 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 8 { 0x8 +1.95e129 } : BV:32
@@ -1115,28 +1115,28 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100038
 =loc_expr
-140565 : input.dst.llvm-%0.E0%0%d : BV:32
+140577 : input.dst.llvm-%0.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%call.Lentry%2%d : BV:32
 =avail_exprs_val.end
 =loc 100039
 =loc_expr
-140566 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d : BV:32
+140578 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100040
 =loc_expr
-140567 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d : BV:32
+140579 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =avail_exprs_val.end
 =loc 100041
 =loc_expr
-140568 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d : BV:32
+140580 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
@@ -1145,56 +1145,56 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100042
 =loc_expr
-140569 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+140581 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100043
 =loc_expr
-140570 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d : BV:32
+140582 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =avail_exprs_val.end
 =loc 100044
 =loc_expr
-140571 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d : BV:32
+140583 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100045
 =loc_expr
-140572 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d : BV:32
+140584 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100046
 =loc_expr
-140573 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.3.total_offset.E0%0%d : BV:32
+140585 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.3.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%call.Lentry%2%d : BV:32
 =avail_exprs_val.end
 =loc 100047
 =loc_expr
-140574 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+140586 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100048
 =loc_expr
-140575 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d : BV:32
+140587 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100049
 =loc_expr
-140576 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+140588 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%hidden-reg : BV:32
@@ -1209,7 +1209,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100050
 =loc_expr
-140577 : input.dst.llvm-%next.E0%0%d : BV:32
+140589 : input.dst.llvm-%next.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
@@ -1218,35 +1218,35 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100051
 =loc_expr
-140578 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140590 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%call.Lentry%2%d : BV:32
 =avail_exprs_val.end
 =loc 100052
 =loc_expr
-140579 : input.dst.llvm-%val1.E0%0%d : BV:32
+140591 : input.dst.llvm-%val1.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%call.Lentry%2%d : BV:32
 =avail_exprs_val.end
 =loc 100053
 =loc_expr
-140580 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140592 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100054
 =loc_expr
-140529 : input.dst.local_alloc_count.Lentry%1%fcallStart : COUNT
+140408 : input.dst.local_alloc_count.Lentry%1%fcallStart : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100055
 =loc_expr
-140581 : input.dst.local_alloc_count.Lentry%2%d : COUNT
+140593 : input.dst.local_alloc_count.Lentry%2%d : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
@@ -1254,17 +1254,17 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100056
 =loc_expr
-140582 : input.dst.cur_rounding_mode.Lentry%1%fcallStart : ROUNDING_MODE
+140594 : input.dst.cur_rounding_mode.Lentry%1%fcallStart : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =avail_exprs_val.end
 =loc 100057
 =loc_expr
-140528 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
-140337 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140404 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140419 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 140290 : memlabel-mem--arg.0 : MEMLABEL
-140584 : memmask(140528, 140337, 140290) : ARRAY[BV:32 -> BV:8]
+140595 : memmask(140404, 140419, 140290) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1274,23 +1274,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100058
 =loc_expr
-140528 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
-140337 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140362 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-140585 : memmask(140528, 140337, 140362) : ARRAY[BV:32 -> BV:8]
-=avail_exprs_val.m_is_top 0
-=avail_exprs_val.m_expr
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
-=avail_exprs_val.end
-=loc 100059
-=loc_expr
-140528 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
-140337 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140341 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-140586 : memmask(140528, 140337, 140341) : ARRAY[BV:32 -> BV:8]
+140404 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140419 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140421 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140597 : memmask(140404, 140419, 140421) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1298,12 +1285,25 @@ discontiguous mls:
 3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.end
+=loc 100059
+=loc_expr
+140404 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140419 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140438 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+140598 : memmask(140404, 140419, 140438) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
 =loc 100060
 =loc_expr
-140528 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
-140337 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140440 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
-140587 : memmask(140528, 140337, 140440) : ARRAY[BV:32 -> BV:8]
+140404 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140419 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140505 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+140599 : memmask(140404, 140419, 140505) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1313,10 +1313,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100061
 =loc_expr
-140528 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
-140337 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140455 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-140588 : memmask(140528, 140337, 140455) : ARRAY[BV:32 -> BV:8]
+140404 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+140419 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140520 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+140600 : memmask(140404, 140419, 140520) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1326,10 +1326,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100062
 =loc_expr
-140545 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140557 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 140290 : memlabel-mem--arg.0 : MEMLABEL
-140589 : memmask(140545, 140546, 140290) : ARRAY[BV:32 -> BV:8]
+140601 : memmask(140557, 140558, 140290) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1350,33 +1350,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100063
 =loc_expr
-140545 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140362 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-140590 : memmask(140545, 140546, 140362) : ARRAY[BV:32 -> BV:8]
-=avail_exprs_val.m_is_top 0
-=avail_exprs_val.m_expr
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-3 : eq(1, 2) : BOOL
-4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
-5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-6 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-7 : 8 { 0x8 +1.95e129 } : BV:32
-8 : heap_alloc(5, 6, 2, 7) : ARRAY[BV:32 -> MEMLABEL]
-9 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-10 : store_uninit(4, 8, 6, 2, 7, 9) : ARRAY[BV:32 -> BV:8]
-11 : ite(3, 4, 10) : ARRAY[BV:32 -> BV:8]
-12 : ite(3, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
-13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
-14 : memmask(13, 12, 6) : ARRAY[BV:32 -> BV:8]
-=avail_exprs_val.end
-=loc 100064
-=loc_expr
-140545 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140341 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-140591 : memmask(140545, 140546, 140341) : ARRAY[BV:32 -> BV:8]
+140557 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140421 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140602 : memmask(140557, 140558, 140421) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1395,12 +1372,35 @@ discontiguous mls:
 14 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 15 : memmask(13, 12, 14) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.end
+=loc 100064
+=loc_expr
+140557 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140438 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+140603 : memmask(140557, 140558, 140438) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+3 : eq(1, 2) : BOOL
+4 : input.dst.llvm-mem.Lentry%1%fcallEnd : ARRAY[BV:32 -> BV:8]
+5 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+6 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+7 : 8 { 0x8 +1.95e129 } : BV:32
+8 : heap_alloc(5, 6, 2, 7) : ARRAY[BV:32 -> MEMLABEL]
+9 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+10 : store_uninit(4, 8, 6, 2, 7, 9) : ARRAY[BV:32 -> BV:8]
+11 : ite(3, 4, 10) : ARRAY[BV:32 -> BV:8]
+12 : ite(3, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
+13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
+14 : memmask(13, 12, 6) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
 =loc 100065
 =loc_expr
-140545 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140440 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
-140592 : memmask(140545, 140546, 140440) : ARRAY[BV:32 -> BV:8]
+140557 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140505 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+140604 : memmask(140557, 140558, 140505) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1421,10 +1421,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100066
 =loc_expr
-140545 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140455 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-140593 : memmask(140545, 140546, 140455) : ARRAY[BV:32 -> BV:8]
+140557 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140520 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+140605 : memmask(140557, 140558, 140520) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1445,10 +1445,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100067
 =loc_expr
-140562 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140574 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
 140290 : memlabel-mem--arg.0 : MEMLABEL
-140594 : memmask(140562, 140546, 140290) : ARRAY[BV:32 -> BV:8]
+140606 : memmask(140574, 140558, 140290) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1469,32 +1469,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100068
 =loc_expr
-140562 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140362 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-140595 : memmask(140562, 140546, 140362) : ARRAY[BV:32 -> BV:8]
-=avail_exprs_val.m_is_top 0
-=avail_exprs_val.m_expr
-1 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-4 : input.dst.llvm-%call.Lentry%2%d : BV:32
-5 : input.dst.llvm-%val.Lentry%2%d : BV:32
-6 : 4 { 0x4 +1.0e1025 } : INT
-7 : 0 { 0x0 } : BOOL
-8 : store(1, 2, 3, 4, 5, 6, 7) : ARRAY[BV:32 -> BV:8]
-9 : 4 { 0x4 +1.47e129 } : BV:32
-10 : bvadd(9, 4) : BV:32
-11 : 0 { 0x0 +1.0e129 } : BV:32
-12 : store(8, 2, 3, 10, 11, 6, 7) : ARRAY[BV:32 -> BV:8]
-13 : memmask(12, 2, 3) : ARRAY[BV:32 -> BV:8]
-=avail_exprs_val.end
-=loc 100069
-=loc_expr
-140562 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140341 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-140563 : memmask(140562, 140546, 140341) : ARRAY[BV:32 -> BV:8]
+140574 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140421 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140575 : memmask(140574, 140558, 140421) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1513,12 +1491,34 @@ discontiguous mls:
 14 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 15 : memmask(13, 12, 14) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.end
+=loc 100069
+=loc_expr
+140574 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140438 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+140607 : memmask(140574, 140558, 140438) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem.Lentry%2%d : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : input.dst.llvm-%call.Lentry%2%d : BV:32
+5 : input.dst.llvm-%val.Lentry%2%d : BV:32
+6 : 4 { 0x4 +1.0e1025 } : INT
+7 : 0 { 0x0 } : BOOL
+8 : store(1, 2, 3, 4, 5, 6, 7) : ARRAY[BV:32 -> BV:8]
+9 : 4 { 0x4 +1.47e129 } : BV:32
+10 : bvadd(9, 4) : BV:32
+11 : 0 { 0x0 +1.0e129 } : BV:32
+12 : store(8, 2, 3, 10, 11, 6, 7) : ARRAY[BV:32 -> BV:8]
+13 : memmask(12, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
 =loc 100070
 =loc_expr
-140562 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140440 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
-140596 : memmask(140562, 140546, 140440) : ARRAY[BV:32 -> BV:8]
+140574 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140505 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+140608 : memmask(140574, 140558, 140505) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1539,10 +1539,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100071
 =loc_expr
-140562 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
-140546 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
-140455 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-140597 : memmask(140562, 140546, 140455) : ARRAY[BV:32 -> BV:8]
+140574 : input.dst.llvm-mem.E0%0%d : ARRAY[BV:32 -> BV:8]
+140558 : input.dst.llvm-mem.alloc.Lentry%2%d : ARRAY[BV:32 -> MEMLABEL]
+140520 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+140609 : memmask(140574, 140558, 140520) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1566,7 +1566,7 @@ discontiguous mls:
 =loc 100036 expr
 1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
 =loc 100036 spreled-expr
-140346 : 8 { 0x8 +1.95e129 } : BV:32
+140426 : 8 { 0x8 +1.95e129 } : BV:32
 =loc 100039 expr
 1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d : BV:32
 =loc 100039 spreled-expr
@@ -1574,7 +1574,7 @@ discontiguous mls:
 =loc 100040 expr
 1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d : BV:32
 =loc 100040 spreled-expr
-140311 : 4 { 0x4 +1.47e129 } : BV:32
+140400 : 4 { 0x4 +1.47e129 } : BV:32
 =loc 100042 expr
 1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =loc 100042 spreled-expr
@@ -1582,7 +1582,7 @@ discontiguous mls:
 =loc 100043 expr
 1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d : BV:32
 =loc 100043 spreled-expr
-140311 : 4 { 0x4 +1.47e129 } : BV:32
+140400 : 4 { 0x4 +1.47e129 } : BV:32
 =loc 100044 expr
 1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d : BV:32
 =loc 100044 spreled-expr
@@ -1606,16 +1606,16 @@ discontiguous mls:
 =loc 100054 expr
 1 : input.dst.local_alloc_count.Lentry%1%fcallStart : COUNT
 =loc 100054 spreled-expr
-140344 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140424 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =loc 100055 expr
 1 : input.dst.local_alloc_count.Lentry%2%d : COUNT
 =loc 100055 spreled-expr
-140344 : input.dst.local_alloc_count.=L0%0%d= : COUNT
-140647 : increment_count(140344) : COUNT
+140424 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140660 : increment_count(140424) : COUNT
 =loc 100056 expr
 1 : input.dst.cur_rounding_mode.Lentry%1%fcallStart : ROUNDING_MODE
 =loc 100056 spreled-expr
-140345 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+140425 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;make_node}
@@ -1706,9 +1706,9 @@ lr_status_bottom(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/,
 =loc_id 100062 lr-status in lr-status-map at call-context {*;make_node}
 lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100063 lr-status in lr-status-map at call-context {*;make_node}
-lr_status_bottom(local./*___y___make_node__x__=L0%0%argnum0=/, hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
-=loc_id 100064 lr-status in lr-status-map at call-context {*;make_node}
 lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
+=loc_id 100064 lr-status in lr-status-map at call-context {*;make_node}
+lr_status_bottom(local./*___y___make_node__x__=L0%0%argnum0=/, hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100065 lr-status in lr-status-map at call-context {*;make_node}
 lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100066 lr-status in lr-status-map at call-context {*;make_node}
@@ -1716,9 +1716,9 @@ lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/
 =loc_id 100067 lr-status in lr-status-map at call-context {*;make_node}
 lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100068 lr-status in lr-status-map at call-context {*;make_node}
-lr_status_bottom(local./*___y___make_node__x__=L0%0%argnum0=/, hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=loc_id 100069 lr-status in lr-status-map at call-context {*;make_node}
 lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
+=loc_id 100069 lr-status in lr-status-map at call-context {*;make_node}
+lr_status_bottom(local./*___y___make_node__x__=L0%0%argnum0=/, hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100070 lr-status in lr-status-map at call-context {*;make_node}
 lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem-may-straddle-symbol.1-heap, )
 =loc_id 100071 lr-status in lr-status-map at call-context {*;make_node}
@@ -1806,6 +1806,15 @@ lr_status_linearly_related(; )
 8 : heap_alloc(5, 6, 3, 7) : ARRAY[BV:32 -> MEMLABEL]
 9 : ite(4, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
 10 : malloc_side_effect(1, 9, 6) : BV:32
+=dst.llvm-mem.alloc.Lentry%2%d
+1 : 0 { 0x0 +1.0e129 } : BV:32
+2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+3 : eq(1, 2) : BOOL
+4 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+5 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+6 : 8 { 0x8 +1.95e129 } : BV:32
+7 : heap_alloc(4, 5, 2, 6) : ARRAY[BV:32 -> MEMLABEL]
+8 : ite(3, 4, 7) : ARRAY[BV:32 -> MEMLABEL]
 =dst.llvm-mem.Lentry%2%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
@@ -1820,20 +1829,13 @@ lr_status_linearly_related(; )
 11 : ite(3, 4, 10) : ARRAY[BV:32 -> BV:8]
 12 : ite(3, 5, 8) : ARRAY[BV:32 -> MEMLABEL]
 13 : malloc_side_effect(11, 12, 6) : ARRAY[BV:32 -> BV:8]
-=dst.llvm-mem.alloc.Lentry%2%d
-1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-3 : eq(1, 2) : BOOL
-4 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-5 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-6 : 8 { 0x8 +1.95e129 } : BV:32
-7 : heap_alloc(4, 5, 2, 6) : ARRAY[BV:32 -> MEMLABEL]
-8 : ite(3, 4, 7) : ARRAY[BV:32 -> MEMLABEL]
 =dst.local_alloc_count.Lentry%2%d
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 2 : increment_count(1) : COUNT
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lentry%1%fcallStart=>Lentry%1%fcallEnd
+=dst.llvm-mem.Lentry%1%fcallEnd
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =dst.llvm-%call.Lentry%1%fcallEnd
 1 : func.calla4bcb626de6152719ca44f8b649b9c4a.reg : FUNCTION[MEMLABEL,MEMLABEL,ARRAY[BV:32 -> BV:8],ARRAY[BV:32 -> MEMLABEL],BV:32,REGID,BV:32 -> BV:32]
 2 : memlabel-mem- : MEMLABEL
@@ -1845,8 +1847,6 @@ lr_status_linearly_related(; )
 8 : function_call(1, 2, 2, 3, 4, 5, 6, 7) : BV:32
 =dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd
 1 : 8 { 0x8 +1.95e129 } : BV:32
-=dst.llvm-mem.Lentry%1%fcallEnd
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lentry%1%fcallEnd=>Lentry%1%intermediateVal1
 =state_end
@@ -1930,7 +1930,7 @@ lr_status_linearly_related(; )
 5 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
 6 : heap_alloc_ptr(2, 5) : BV:32
 7 : 7 { 0x7 +1.83e129 } : BV:32
-8 : bvadd(7, 6) : BV:32
+8 : bvadd(6, 7) : BV:32
 9 : bvule(6, 8) : BOOL
 10 : or(4, 9) : BOOL
 11 : or(3, 10) : BOOL
@@ -2001,13 +2001,13 @@ tfg.assumes_around_edge at Lentry%1%intermediateVal1=>Lentry%2%d assume #0.pred
 undef-behavioursome.edge.Lentry%1%intermediateVal1=>Lentry%2%d
 =LhsExpr
 140287 : 0 { 0x0 +1.0e129 } : BV:32
-140509 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-140621 : eq(140287, 140509) : BOOL
-140337 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140346 : 8 { 0x8 +1.95e129 } : BV:32
-140341 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-140815 : region_agrees_with_memlabel(140337, 140509, 140346, 140341) : BOOL
-140824 : or(140621, 140815) : BOOL
+140385 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+140633 : eq(140287, 140385) : BOOL
+140419 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140426 : 8 { 0x8 +1.95e129 } : BV:32
+140421 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+140829 : region_agrees_with_memlabel(140419, 140385, 140426, 140421) : BOOL
+140838 : or(140633, 140829) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2021,16 +2021,16 @@ tfg.assumes_around_edge at Lentry%1%intermediateVal1=>Lentry%2%d assume #1.pred
 undef-behavioursome.edge.Lentry%1%intermediateVal1=>Lentry%2%d
 =LhsExpr
 140287 : 0 { 0x0 +1.0e129 } : BV:32
-140509 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-140621 : eq(140287, 140509) : BOOL
-140301 : 0 { 0x0 } : BOOL
-140362 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-140511 : heap_alloc_ptr(140509, 140362) : BV:32
-140483 : 7 { 0x7 +1.83e129 } : BV:32
-140650 : bvadd(140483, 140511) : BV:32
-140653 : bvule(140511, 140650) : BOOL
-140656 : or(140301, 140653) : BOOL
-140660 : or(140621, 140656) : BOOL
+140385 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+140633 : eq(140287, 140385) : BOOL
+140363 : 0 { 0x0 } : BOOL
+140438 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+140391 : heap_alloc_ptr(140385, 140438) : BV:32
+140548 : 7 { 0x7 +1.83e129 } : BV:32
+140662 : bvadd(140391, 140548) : BV:32
+140666 : bvule(140391, 140662) : BOOL
+140670 : or(140363, 140666) : BOOL
+140674 : or(140633, 140670) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2047,9 +2047,9 @@ tfg.assumes_around_edge at Lentry%1%fcallEnd=>Lentry%1%intermediateVal1 assume #
 =Comment
 undef-behaviour-align-assume.edge.Lentry%1%fcallEnd=>Lentry%1%intermediateVal1
 =LhsExpr
-140509 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+140385 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 140283 : 1 { 0x1 +1.0e1025 } : INT
-140541 : islangaligned(140509, 140283) : BOOL
+140544 : islangaligned(140385, 140283) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2065,19 +2065,19 @@ tfg.assumes_around_edge at Lentry%2%d=>E0%0%d assume #0.pred
 undef-behavioursome.edge.Lentry%2%d=>E0%0%d
 =LhsExpr
 140275 : 1 { 0x1 } : BOOL
-140542 : input.dst.llvm-%call.Lentry%2%d : BV:32
+140554 : input.dst.llvm-%call.Lentry%2%d : BV:32
 140287 : 0 { 0x0 +1.0e129 } : BV:32
-140757 : isgepoffset(140542, 140287) : BOOL
-140768 : and(140275, 140757) : BOOL
-140771 : and(140757, 140768) : BOOL
-140300 : 4 { 0x4 +1.0e1025 } : INT
-140773 : islangaligned(140542, 140300) : BOOL
-140311 : 4 { 0x4 +1.47e129 } : BV:32
-140749 : bvadd(140311, 140542) : BV:32
-140777 : isgepoffset(140749, 140311) : BOOL
-140784 : and(140768, 140771, 140773, 140777) : BOOL
-140786 : islangaligned(140749, 140300) : BOOL
-140789 : and(140784, 140786) : BOOL
+140771 : isgepoffset(140554, 140287) : BOOL
+140782 : and(140275, 140771) : BOOL
+140785 : and(140771, 140782) : BOOL
+140362 : 4 { 0x4 +1.0e1025 } : INT
+140787 : islangaligned(140554, 140362) : BOOL
+140400 : 4 { 0x4 +1.47e129 } : BV:32
+140763 : bvadd(140400, 140554) : BV:32
+140791 : isgepoffset(140763, 140400) : BOOL
+140798 : and(140782, 140785, 140787, 140791) : BOOL
+140800 : islangaligned(140763, 140362) : BOOL
+140803 : and(140798, 140800) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2178,8 +2178,28 @@ line 10
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
-input.dst.local./*___y___make_node__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___make_node__x__=L0%0%argnum0=/
+input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 0
+input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d : L0%0%d : 0
+input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d : L0%0%d : 0
+input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d : L0%0%d : 4
+input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
+input.dst.llvm-%next.E0%0%d : L0%0%d : (4 + input.dst.llvm-%call.Lentry%2%d)
+input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d : L0%0%d : (4 + input.dst.llvm-%call.Lentry%2%d)
+input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 0
+input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
+input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d : L0%0%d : 4
+input.dst.llvm-%val1.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
+input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
+input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d : L0%0%d : 0
+input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : L0%0%d : 8
+input.dst.llvm-%val.Lentry%2%d : L0%0%d : malloc_side_effect(val', ite(input.dst.llvm-%call.Lentry%1%fcallEnd = 0, input.dst.llvm-mem.alloc, heap_alloc(input.dst.llvm-mem.alloc, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, input.dst.llvm-%call.Lentry%1%fcallEnd, 8)), memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/)
+input.dst.llvm-%0.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
+input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.3.total_offset.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
+input.dst.llvm-%call.Lentry%2%d : L0%0%d : ite(input.dst.llvm-%call.Lentry%1%fcallEnd = 0, 0, heap_alloc_ptr(input.dst.llvm-%call.Lentry%1%fcallEnd, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/))
+input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d : L0%0%d : 0
+input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : L0%0%d : malloc_side_effect(8, ite(input.dst.llvm-%call.Lentry%1%fcallEnd = 0, input.dst.llvm-mem.alloc, heap_alloc(input.dst.llvm-mem.alloc, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, input.dst.llvm-%call.Lentry%1%fcallEnd, 8)), memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/)
 input.dst.llvm-%val : L0%0%d : val'
+input.dst.local./*___y___make_node__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___make_node__x__=L0%0%argnum0=/
 input.dst.local_alloc_count.=L0%0%d= : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.local_alloc_count.Lentry%1%fcallStart : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset : L0%0%d : 0
@@ -2203,26 +2223,6 @@ input.dst.llvm-%next : L0%0%d : input.dst.llvm-%23b466432f6ed930e4a402888b91590.
 input.dst.llvm-%ret-reg : L0%0%d : input.dst.llvm-%0
 input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
-input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d : L0%0%d : 0
-input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : L0%0%d : 8
-input.dst.llvm-%0.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
-input.dst.llvm-%call.Lentry%2%d : L0%0%d : ite(input.dst.llvm-%call.Lentry%1%fcallEnd = 0, 0, heap_alloc_ptr(input.dst.llvm-%call.Lentry%1%fcallEnd, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/))
-input.dst.llvm-%val.Lentry%2%d : L0%0%d : malloc_side_effect(val', ite(input.dst.llvm-%call.Lentry%1%fcallEnd = 0, input.dst.llvm-mem.alloc, heap_alloc(input.dst.llvm-mem.alloc, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, input.dst.llvm-%call.Lentry%1%fcallEnd, 8)), memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/)
-input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.3.total_offset.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
-input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : L0%0%d : malloc_side_effect(8, ite(input.dst.llvm-%call.Lentry%1%fcallEnd = 0, input.dst.llvm-mem.alloc, heap_alloc(input.dst.llvm-mem.alloc, memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, input.dst.llvm-%call.Lentry%1%fcallEnd, 8)), memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/)
-input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 0
-input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d : L0%0%d : 0
-input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d : L0%0%d : 4
-input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
-input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d : L0%0%d : 0
-input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d : L0%0%d : 0
-input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
-input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d : L0%0%d : (4 + input.dst.llvm-%call.Lentry%2%d)
-input.dst.llvm-%next.E0%0%d : L0%0%d : (4 + input.dst.llvm-%call.Lentry%2%d)
-input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 0
-input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d : L0%0%d : 4
-input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
-input.dst.llvm-%val1.E0%0%d : L0%0%d : input.dst.llvm-%call.Lentry%2%d
 input.dst.local_alloc_count.Lentry%2%d : L0%0%d : increment_count(input.dst.local_alloc_count.=L0%0%d=)
 input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties_to_even
 =InputLLVMToSourceVarnames done
@@ -2382,30 +2382,24 @@ input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lentry%1%intermediateVal1
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 1 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -2413,7 +2407,7 @@ input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
@@ -2421,20 +2415,26 @@ input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 6 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 7 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  L0%0%d=>L0%0%d
 =reaching defns for expr 7 edges done
 =reaching defns done
 =Reaching Definitions at Lentry%1%fcallStart
@@ -2486,30 +2486,24 @@ input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lentry%1%fcallEnd
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 1 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -2517,7 +2511,7 @@ input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+3 : memlabel-mem--arg.0 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
@@ -2525,169 +2519,160 @@ input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 5
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 6 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 7 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  L0%0%d=>L0%0%d
 =reaching defns for expr 7 edges done
 =reaching defns done
 =Reaching Definitions at Lentry%2%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 1 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%call.Lentry%2%d : BV:32
 =reaching defns for expr 2 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%intermediateVal1=>Lentry%2%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%val.Lentry%2%d : BV:32
 =reaching defns for expr 3 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%intermediateVal1=>Lentry%2%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : BV:32
 =reaching defns for expr 4 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%intermediateVal1=>Lentry%2%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 6 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  L0%0%d=>L0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%call.Lentry%2%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 7 edges
-  Lentry%1%intermediateVal1=>Lentry%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%val.Lentry%2%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lentry%1%intermediateVal1=>Lentry%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lentry%1%intermediateVal1=>Lentry%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns done
 =Reaching Definitions at E0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%val : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 1 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%call.Lentry%2%d : BV:32
 =reaching defns for expr 2 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%intermediateVal1=>Lentry%2%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%val.Lentry%2%d : BV:32
 =reaching defns for expr 3 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%intermediateVal1=>Lentry%2%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%0.E0%0%d : BV:32
 =reaching defns for expr 4 edges
-  L0%0%d=>L0%0%d
+  Lentry%2%d=>E0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : BV:32
 =reaching defns for expr 5 edges
-  L0%0%d=>L0%0%d
+  Lentry%1%intermediateVal1=>Lentry%2%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d : BV:32
 =reaching defns for expr 6 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%next.E0%0%d : BV:32
+1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d : BV:32
 =reaching defns for expr 7 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d : BV:32
+1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =reaching defns for expr 8 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d : BV:32
 =reaching defns for expr 9 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  Lentry%2%d=>E0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%call.Lentry%2%d : BV:32
+1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d : BV:32
 =reaching defns for expr 10 edges
-  Lentry%1%intermediateVal1=>Lentry%2%d
+  Lentry%2%d=>E0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
-1 : input.dst.llvm-%val.Lentry%2%d : BV:32
+1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d : BV:32
 =reaching defns for expr 11 edges
-  Lentry%1%intermediateVal1=>Lentry%2%d
+  Lentry%2%d=>E0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
 1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.3.total_offset.E0%0%d : BV:32
@@ -2695,82 +2680,139 @@ input.dst.cur_rounding_mode.Lentry%1%fcallStart : L0%0%d : ROUND_to_nearest_ties
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d : BV:32
+1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d : BV:32
 =reaching defns for expr 13 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d : BV:32
 =reaching defns for expr 14 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d : BV:32
+1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =reaching defns for expr 15 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 15 edges done
 =reaching defns for expr 16
-1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d : BV:32
+1 : input.dst.llvm-%next.E0%0%d : BV:32
 =reaching defns for expr 16 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d : BV:32
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =reaching defns for expr 17 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
-1 : input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d : BV:32
+1 : input.dst.llvm-%val1.E0%0%d : BV:32
 =reaching defns for expr 18 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 18 edges done
 =reaching defns for expr 19
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =reaching defns for expr 19 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  Lentry%2%d=>E0%0%d
 =reaching defns for expr 19 edges done
 =reaching defns for expr 20
-1 : input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d : BV:32
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =reaching defns for expr 20 edges
   Lentry%2%d=>E0%0%d
 =reaching defns for expr 20 edges done
 =reaching defns for expr 21
-1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%val : BV:32
 =reaching defns for expr 21 edges
-  Lentry%2%d=>E0%0%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 21 edges done
 =reaching defns for expr 22
-1 : input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 22 edges
-  Lentry%1%intermediateVal1=>Lentry%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 22 edges done
 =reaching defns for expr 23
-1 : input.dst.llvm-%0.E0%0%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 23 edges
-  Lentry%2%d=>E0%0%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 23 edges done
 =reaching defns for expr 24
-1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 24 edges
-  Lentry%2%d=>E0%0%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 24 edges done
 =reaching defns for expr 25
-1 : input.dst.llvm-%val1.E0%0%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___make_node__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 25 edges
-  Lentry%2%d=>E0%0%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 25 edges done
 =reaching defns for expr 26
-1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 26 edges
-  Lentry%2%d=>E0%0%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 26 edges done
 =reaching defns done
 =ReachingDefinitionsForLocs done
 =VarnameToLRStatus Begin:
-=LR status for var input.dst.local./*___y___make_node__x__=L0%0%argnum0=/
-lr_status_top
+=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%hidden-reg.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%next.E0%0%d
+lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
+=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d
+lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
+=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%ret-reg.E0%0%d
+lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
+=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%val1.E0%0%d
+lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
+=LR status for var input.dst.llvm-indir_tgt.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%call.Lentry%1%fcallEnd
+lr_status_bottom(; )
+=LR status for var input.dst.llvm-%val.Lentry%2%d
+lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.llvm-%0.E0%0%d
+lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
+=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.3.total_offset.E0%0%d
+lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
+=LR status for var input.dst.llvm-%call.Lentry%2%d
+lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
+=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d
+lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%val
 lr_status_bottom(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
+=LR status for var input.dst.local./*___y___make_node__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.local_alloc_count.=L0%0%d=
 lr_status_top
 =LR status for var input.dst.local_alloc_count.Lentry%1%fcallStart
@@ -2785,48 +2827,6 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
-=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.1.total_offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%1%fcallEnd
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%call.Lentry%1%fcallEnd
-lr_status_bottom(; )
-=LR status for var input.dst.llvm-%0.E0%0%d
-lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
-=LR status for var input.dst.llvm-%call.Lentry%2%d
-lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
-=LR status for var input.dst.llvm-%val.Lentry%2%d
-lr_status_bottom(hpalloc.R2p./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.3.total_offset.E0%0%d
-lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
-=LR status for var input.dst.llvm-fcall_arg_copy.0.8.BV_32.Lentry%2%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.1.offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.2.total_offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.2.total_offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%hidden-reg.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.intermediate.gepoffset.2.offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%385a3b2bda8eee35f95ea1bb11c76ec.gepoffset.1.total_offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-indir_tgt.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.gepoffset.3.total_offset.E0%0%d
-lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
-=LR status for var input.dst.llvm-%next.E0%0%d
-lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
-=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.1.offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%23b466432f6ed930e4a402888b91590.intermediate.gepoffset.2.offset.E0%0%d
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%ret-reg.E0%0%d
-lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
-=LR status for var input.dst.llvm-%val1.E0%0%d
-lr_status_linearly_related(hpalloc.R1./*___y___make_node__x__=Lentry%1%intermediateVal0=/, ; )
 =LR status for var input.dst.local_alloc_count.Lentry%2%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.cur_rounding_mode.Lentry%1%fcallStart

@@ -1,13 +1,13 @@
 =TFG_SSA:
 =TFG_SPEC src.spec.bar:
 =TFG:
-=Nodes: L0%0%d L4%1%fcallStart L4%1%fcallEnd L4%2%fcallStart L4%2%fcallEnd E0%0%d
+=Nodes: L0%0%d L5%1%fcallStart L5%1%fcallEnd L5%2%fcallStart L5%2%fcallEnd E0%0%d
 =Edges:
-L0%0%d => L4%1%fcallStart
-L4%1%fcallStart => L4%1%fcallEnd
-L4%1%fcallEnd => L4%2%fcallStart
-L4%2%fcallStart => L4%2%fcallEnd
-L4%2%fcallEnd => E0%0%d
+L0%0%d => L5%1%fcallStart
+L5%1%fcallStart => L5%1%fcallEnd
+L5%1%fcallEnd => L5%2%fcallStart
+L5%2%fcallStart => L5%2%fcallEnd
+L5%2%fcallEnd => E0%0%d
 =graph done
 =is_ssa_graph:
 1
@@ -23,25 +23,25 @@ L4%2%fcallEnd => E0%0%d
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L4%1%fcallStart
+=PC to var-version map at L5%1%fcallStart
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L4%1%fcallEnd
+=PC to var-version map at L5%1%fcallEnd
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L4%2%fcallStart
+=PC to var-version map at L5%2%fcallStart
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
 1 : input.spec-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 =var-version done
-=PC to var-version map at L4%2%fcallEnd
+=PC to var-version map at L5%2%fcallEnd
 =version for spec-mem
 1 : input.spec-mem : ARRAY[BV:32 -> BV:8]
 =version for spec-mem.alloc
@@ -55,13 +55,13 @@ L4%2%fcallEnd => E0%0%d
 =var-version done
 =graph_with_var_versions done
 =FunctionName: bar
-=Input: spec-method-arg.0
+=Input: tfg-method-arg.0
 =arg addr
 1 : (undefined) : UNDEFINED
 =arg val
 1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =arg end
-=Input: spec-method-arg.1
+=Input: tfg-method-arg.1
 =arg addr
 1 : (undefined) : UNDEFINED
 =arg val
@@ -82,7 +82,7 @@ L4%2%fcallEnd => E0%0%d
 Memlabel map for call-context {*;bar}
 =memlabel_map.0 for call-context {*;bar}
 mlheap.src.spec.bar : memlabel-mem--heap
-=Edge: L0%0%d => L4%1%fcallStart
+=Edge: L0%0%d => L5%1%fcallStart
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
@@ -93,17 +93,17 @@ mlheap.src.spec.bar : memlabel-mem--heap
 0:2:(func_head*fcall_edge_start)
 tfg_edge_comment end
 
-=Edge: L4%1%fcallStart => L4%1%fcallEnd
+=Edge: L5%1%fcallStart => L5%1%fcallEnd
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd
-1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
-=spec-%tmpvar-19.L4%1%fcallEnd
+=spec-%tmpvar-19.L5%1%fcallEnd
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
+=spec-fcall_arg_copy.0.spec-%var-a1-0.L5%1%fcallEnd
+1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -111,7 +111,7 @@ tfg_edge_comment end
 0:-1:(fcall_edge_arg*fn_app)
 tfg_edge_comment end
 
-=Edge: L4%1%fcallEnd => L4%2%fcallStart
+=Edge: L5%1%fcallEnd => L5%2%fcallStart
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
@@ -122,16 +122,16 @@ tfg_edge_comment end
 0:-1:(fcall_edge_end*fcall_edge_start)
 tfg_edge_comment end
 
-=Edge: L4%2%fcallStart => L4%2%fcallEnd
+=Edge: L5%2%fcallStart => L5%2%fcallEnd
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-20.L4%2%fcallEnd
+=spec-%tmpvar-20.L5%2%fcallEnd
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a2-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
-=spec-fcall_arg_copy.0.spec-%var-a2-0.L4%2%fcallEnd
+=spec-fcall_arg_copy.0.spec-%var-a2-0.L5%2%fcallEnd
 1 : input.spec-%var-a2-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =state_end
 =Edge.Assumes.begin:
@@ -140,17 +140,17 @@ tfg_edge_comment end
 0:-1:(fcall_edge_arg*fn_app)
 tfg_edge_comment end
 
-=Edge: L4%2%fcallEnd => E0%0%d
+=Edge: L5%2%fcallEnd => E0%0%d
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
 =spec-%tmpvar-21.E0%0%d
-1 : input.spec-%tmpvar-19.L4%1%fcallEnd : BV:32
-2 : input.spec-%tmpvar-20.L4%2%fcallEnd : BV:32
+1 : input.spec-%tmpvar-19.L5%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-20.L5%2%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%tmpvar-22.E0%0%d
-1 : input.spec-%tmpvar-19.L4%1%fcallEnd : BV:32
-2 : input.spec-%tmpvar-20.L4%2%fcallEnd : BV:32
+1 : input.spec-%tmpvar-19.L5%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-20.L5%2%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -199,20 +199,20 @@ MASKED
 memlabel-mem--arg.1
 =Loc 12 in src.spec.bar.
 REGMEM
-spec-%tmpvar-19.L4%1%fcallEnd
-1 : input.spec-%tmpvar-19.L4%1%fcallEnd : BV:32
+spec-%tmpvar-19.L5%1%fcallEnd
+1 : input.spec-%tmpvar-19.L5%1%fcallEnd : BV:32
 =Loc 13 in src.spec.bar.
 REGMEM
-spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd
-1 : input.spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+spec-fcall_arg_copy.0.spec-%var-a1-0.L5%1%fcallEnd
+1 : input.spec-fcall_arg_copy.0.spec-%var-a1-0.L5%1%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =Loc 14 in src.spec.bar.
 REGMEM
-spec-%tmpvar-20.L4%2%fcallEnd
-1 : input.spec-%tmpvar-20.L4%2%fcallEnd : BV:32
+spec-%tmpvar-20.L5%2%fcallEnd
+1 : input.spec-%tmpvar-20.L5%2%fcallEnd : BV:32
 =Loc 15 in src.spec.bar.
 REGMEM
-spec-fcall_arg_copy.0.spec-%var-a2-0.L4%2%fcallEnd
-1 : input.spec-fcall_arg_copy.0.spec-%var-a2-0.L4%2%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+spec-fcall_arg_copy.0.spec-%var-a2-0.L5%2%fcallEnd
+1 : input.spec-fcall_arg_copy.0.spec-%var-a2-0.L5%2%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =Loc 16 in src.spec.bar.
 REGMEM
 spec-%tmpvar-21.E0%0%d
@@ -225,13 +225,13 @@ spec-%tmpvar-22.E0%0%d
 =Liveness in src.spec.bar
 =live locs at L0%0%d
 1, 2, 
-=live locs at L4%1%fcallStart
+=live locs at L5%1%fcallStart
 1, 2, 
-=live locs at L4%1%fcallEnd
+=live locs at L5%1%fcallEnd
 2, 12, 
-=live locs at L4%2%fcallStart
+=live locs at L5%2%fcallStart
 2, 12, 
-=live locs at L4%2%fcallEnd
+=live locs at L5%2%fcallEnd
 12, 14, 
 =live locs at E0%0%d
 17[f], 
@@ -239,13 +239,13 @@ spec-%tmpvar-22.E0%0%d
 =Definedness in src.spec.bar
 =loc definedness at L0%0%d
 1, 2, 9, 10, 11
-=loc definedness at L4%1%fcallStart
+=loc definedness at L5%1%fcallStart
 1, 2, 9, 10, 11
-=loc definedness at L4%1%fcallEnd
+=loc definedness at L5%1%fcallEnd
 1, 2, 9, 10, 11, 12, 13
-=loc definedness at L4%2%fcallStart
+=loc definedness at L5%2%fcallStart
 1, 2, 9, 10, 11, 12, 13
-=loc definedness at L4%2%fcallEnd
+=loc definedness at L5%2%fcallEnd
 1, 2, 9, 10, 11, 12, 13, 14, 15
 =loc definedness at E0%0%d
 1, 2, 9, 10, 11, 12, 13, 14, 15, 16, 17
@@ -253,13 +253,13 @@ spec-%tmpvar-22.E0%0%d
 =Branch affecting variable locs in src.spec.bar
 =branch affecting variable locs at L0%0%d
 
-=branch affecting variable locs at L4%1%fcallStart
+=branch affecting variable locs at L5%1%fcallStart
 
-=branch affecting variable locs at L4%1%fcallEnd
+=branch affecting variable locs at L5%1%fcallEnd
 
-=branch affecting variable locs at L4%2%fcallStart
+=branch affecting variable locs at L5%2%fcallStart
 
-=branch affecting variable locs at L4%2%fcallEnd
+=branch affecting variable locs at L5%2%fcallEnd
 
 =branch affecting variable locs at E0%0%d
 
@@ -275,53 +275,53 @@ memlabel-mem--arg.1
 =relevant memlabels done
 =graph_with_locs_done
 =graph_with_edge_structures
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L4%1%fcallStart
-=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L4%1%fcallStart done
-=graph_with_edge_structures.loc_to_expr_map at L4%1%fcallStart=>L4%1%fcallEnd
-=graph_with_edge_structures.loc_to_expr_map at L4%1%fcallStart=>L4%1%fcallEnd for loc_id 12 {input.spec-%tmpvar-19.L4%1%fcallEnd }
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L5%1%fcallStart
+=graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L5%1%fcallStart done
+=graph_with_edge_structures.loc_to_expr_map at L5%1%fcallStart=>L5%1%fcallEnd
+=graph_with_edge_structures.loc_to_expr_map at L5%1%fcallStart=>L5%1%fcallEnd for loc_id 12 {input.spec-%tmpvar-19.L5%1%fcallEnd }
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L4%1%fcallStart=>L4%1%fcallEnd for loc_id 13 {input.spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd }
+=graph_with_edge_structures.loc_to_expr_map at L5%1%fcallStart=>L5%1%fcallEnd for loc_id 13 {input.spec-fcall_arg_copy.0.spec-%var-a1-0.L5%1%fcallEnd }
 1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
-=graph_with_edge_structures.loc_to_expr_map at L4%1%fcallStart=>L4%1%fcallEnd done
-=graph_with_edge_structures.loc_to_expr_map at L4%1%fcallEnd=>L4%2%fcallStart
-=graph_with_edge_structures.loc_to_expr_map at L4%1%fcallEnd=>L4%2%fcallStart done
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallStart=>L4%2%fcallEnd
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallStart=>L4%2%fcallEnd for loc_id 14 {input.spec-%tmpvar-20.L4%2%fcallEnd }
+=graph_with_edge_structures.loc_to_expr_map at L5%1%fcallStart=>L5%1%fcallEnd done
+=graph_with_edge_structures.loc_to_expr_map at L5%1%fcallEnd=>L5%2%fcallStart
+=graph_with_edge_structures.loc_to_expr_map at L5%1%fcallEnd=>L5%2%fcallStart done
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallStart=>L5%2%fcallEnd
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallStart=>L5%2%fcallEnd for loc_id 14 {input.spec-%tmpvar-20.L5%2%fcallEnd }
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a2-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallStart=>L4%2%fcallEnd for loc_id 15 {input.spec-fcall_arg_copy.0.spec-%var-a2-0.L4%2%fcallEnd }
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallStart=>L5%2%fcallEnd for loc_id 15 {input.spec-fcall_arg_copy.0.spec-%var-a2-0.L5%2%fcallEnd }
 1 : input.spec-%var-a2-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallStart=>L4%2%fcallEnd done
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallEnd=>E0%0%d
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallEnd=>E0%0%d for loc_id 16 {input.spec-%tmpvar-21.E0%0%d }
-1 : input.spec-%tmpvar-19.L4%1%fcallEnd : BV:32
-2 : input.spec-%tmpvar-20.L4%2%fcallEnd : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallStart=>L5%2%fcallEnd done
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallEnd=>E0%0%d
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallEnd=>E0%0%d for loc_id 16 {input.spec-%tmpvar-21.E0%0%d }
+1 : input.spec-%tmpvar-19.L5%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-20.L5%2%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallEnd=>E0%0%d for loc_id 17 {input.spec-%tmpvar-22.E0%0%d }
-1 : input.spec-%tmpvar-19.L4%1%fcallEnd : BV:32
-2 : input.spec-%tmpvar-20.L4%2%fcallEnd : BV:32
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallEnd=>E0%0%d for loc_id 17 {input.spec-%tmpvar-22.E0%0%d }
+1 : input.spec-%tmpvar-19.L5%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-20.L5%2%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
-=graph_with_edge_structures.loc_to_expr_map at L4%2%fcallEnd=>E0%0%d done
+=graph_with_edge_structures.loc_to_expr_map at L5%2%fcallEnd=>E0%0%d done
 =graph_with_edge_structures.loc_to_expr_map done
 =graph_with_edge_structures done
 =graph_with_ml_contiguity_info vacuous mls
 vacuous mls at L0%0%d:
-vacuous mls at L4%1%fcallStart:
-vacuous mls at L4%1%fcallEnd:
-vacuous mls at L4%2%fcallStart:
-vacuous mls at L4%2%fcallEnd:
+vacuous mls at L5%1%fcallStart:
+vacuous mls at L5%1%fcallEnd:
+vacuous mls at L5%2%fcallStart:
+vacuous mls at L5%2%fcallEnd:
 vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info non-vacuous mls
 non-vacuous mls at L0%0%d:
-non-vacuous mls at L4%1%fcallStart:
-non-vacuous mls at L4%1%fcallEnd:
-non-vacuous mls at L4%2%fcallStart:
-non-vacuous mls at L4%2%fcallEnd:
+non-vacuous mls at L5%1%fcallStart:
+non-vacuous mls at L5%1%fcallEnd:
+non-vacuous mls at L5%2%fcallStart:
+non-vacuous mls at L5%2%fcallEnd:
 non-vacuous mls at E0%0%d:
 =graph_with_ml_contiguity_info discontiguous mls
 discontiguous mls:
@@ -340,14 +340,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 13
 =loc_expr
-140351 : input.spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+140351 : input.spec-fcall_arg_copy.0.spec-%var-a1-0.L5%1%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =avail_exprs_val.end
 =loc 15
 =loc_expr
-140352 : input.spec-fcall_arg_copy.0.spec-%var-a2-0.L4%2%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+140352 : input.spec-fcall_arg_copy.0.spec-%var-a2-0.L5%2%fcallEnd : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-a2-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
@@ -358,9 +358,9 @@ discontiguous mls:
 =lr-status-map
 =lr-status-map at call-context {*;bar}
 =loc_id 1 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 2 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.1, )
 =loc_id 9 lr-status in lr-status-map at call-context {*;bar}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 10 lr-status in lr-status-map at call-context {*;bar}
@@ -368,17 +368,17 @@ lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 11 lr-status in lr-status-map at call-context {*;bar}
 lr_status_bottom(; memlabel-mem--heap, )
 =loc_id 12 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 13 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, )
 =loc_id 14 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.1, )
 =loc_id 15 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.1, )
 =loc_id 16 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, )
 =loc_id 17 lr-status in lr-status-map at call-context {*;bar}
-lr_status_bottom(; memlabel-mem--heap, )
+lr_status_bottom(; memlabel-mem--heap, memlabel-mem--arg.0, memlabel-mem--arg.1, )
 =lr-status-map done
 =lr-status-for-sprel-locs-map
 =lr-status-for-sprel-locs-map done
@@ -390,60 +390,60 @@ lr_status_bottom(; memlabel-mem--heap, )
 =graph_with_points done
 =graph_with_guessing done
 =graph_with_simplified_assets
-=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L4%1%fcallStart
+=graph_with_simplified_assets.simplified_edgecond at L0%0%d=>L5%1%fcallStart
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L4%1%fcallStart=>L4%1%fcallEnd
+=graph_with_simplified_assets.simplified_edgecond at L5%1%fcallStart=>L5%1%fcallEnd
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L4%1%fcallEnd=>L4%2%fcallStart
+=graph_with_simplified_assets.simplified_edgecond at L5%1%fcallEnd=>L5%2%fcallStart
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L4%2%fcallStart=>L4%2%fcallEnd
+=graph_with_simplified_assets.simplified_edgecond at L5%2%fcallStart=>L5%2%fcallEnd
 1 : 1 { 0x1 } : BOOL
-=graph_with_simplified_assets.simplified_edgecond at L4%2%fcallEnd=>E0%0%d
+=graph_with_simplified_assets.simplified_edgecond at L5%2%fcallEnd=>E0%0%d
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
-=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L4%1%fcallStart
+=graph_with_simplified_assets.simplified_to_state at L0%0%d=>L5%1%fcallStart
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L4%1%fcallStart=>L4%1%fcallEnd
-=spec-fcall_arg_copy.0.spec-%var-a1-0.L4%1%fcallEnd
-1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
-=spec-%tmpvar-19.L4%1%fcallEnd
+=graph_with_simplified_assets.simplified_to_state at L5%1%fcallStart=>L5%1%fcallEnd
+=spec-%tmpvar-19.L5%1%fcallEnd
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
+=spec-fcall_arg_copy.0.spec-%var-a1-0.L5%1%fcallEnd
+1 : input.spec-%var-a1-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L4%1%fcallEnd=>L4%2%fcallStart
+=graph_with_simplified_assets.simplified_to_state at L5%1%fcallEnd=>L5%2%fcallStart
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L4%2%fcallStart=>L4%2%fcallEnd
-=spec-%tmpvar-20.L4%2%fcallEnd
+=graph_with_simplified_assets.simplified_to_state at L5%2%fcallStart=>L5%2%fcallEnd
+=spec-%tmpvar-20.L5%2%fcallEnd
 1 : spec.func.callce2a64b6d50c535e767d529437c596 : FUNCTION[MAP[BV:32 -> MAP[BV:32 -> BV:32]] -> BV:32]
 2 : nextpc_const.1 : BV:32
 3 : input.spec-%var-a2-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 4 : spec_function_call(1, 2, 3) : BV:32
-=spec-fcall_arg_copy.0.spec-%var-a2-0.L4%2%fcallEnd
+=spec-fcall_arg_copy.0.spec-%var-a2-0.L5%2%fcallEnd
 1 : input.spec-%var-a2-0 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =state_end
-=graph_with_simplified_assets.simplified_to_state at L4%2%fcallEnd=>E0%0%d
+=graph_with_simplified_assets.simplified_to_state at L5%2%fcallEnd=>E0%0%d
 =spec-%tmpvar-21.E0%0%d
-1 : input.spec-%tmpvar-19.L4%1%fcallEnd : BV:32
-2 : input.spec-%tmpvar-20.L4%2%fcallEnd : BV:32
+1 : input.spec-%tmpvar-19.L5%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-20.L5%2%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
 =spec-%tmpvar-22.E0%0%d
-1 : input.spec-%tmpvar-19.L4%1%fcallEnd : BV:32
-2 : input.spec-%tmpvar-20.L4%2%fcallEnd : BV:32
+1 : input.spec-%tmpvar-19.L5%1%fcallEnd : BV:32
+2 : input.spec-%tmpvar-20.L5%2%fcallEnd : BV:32
 3 : bvadd(1, 2) : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state done
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L4%1%fcallStart
-=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L4%1%fcallStart done
-=graph_with_simplified_assets.simplified_assumes at L4%1%fcallStart=>L4%1%fcallEnd
-=graph_with_simplified_assets.simplified_assumes at L4%1%fcallStart=>L4%1%fcallEnd done
-=graph_with_simplified_assets.simplified_assumes at L4%1%fcallEnd=>L4%2%fcallStart
-=graph_with_simplified_assets.simplified_assumes at L4%1%fcallEnd=>L4%2%fcallStart done
-=graph_with_simplified_assets.simplified_assumes at L4%2%fcallStart=>L4%2%fcallEnd
-=graph_with_simplified_assets.simplified_assumes at L4%2%fcallStart=>L4%2%fcallEnd done
-=graph_with_simplified_assets.simplified_assumes at L4%2%fcallEnd=>E0%0%d
-=graph_with_simplified_assets.simplified_assumes at L4%2%fcallEnd=>E0%0%d done
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L5%1%fcallStart
+=graph_with_simplified_assets.simplified_assumes at L0%0%d=>L5%1%fcallStart done
+=graph_with_simplified_assets.simplified_assumes at L5%1%fcallStart=>L5%1%fcallEnd
+=graph_with_simplified_assets.simplified_assumes at L5%1%fcallStart=>L5%1%fcallEnd done
+=graph_with_simplified_assets.simplified_assumes at L5%1%fcallEnd=>L5%2%fcallStart
+=graph_with_simplified_assets.simplified_assumes at L5%1%fcallEnd=>L5%2%fcallStart done
+=graph_with_simplified_assets.simplified_assumes at L5%2%fcallStart=>L5%2%fcallEnd
+=graph_with_simplified_assets.simplified_assumes at L5%2%fcallStart=>L5%2%fcallEnd done
+=graph_with_simplified_assets.simplified_assumes at L5%2%fcallEnd=>E0%0%d
+=graph_with_simplified_assets.simplified_assumes at L5%2%fcallEnd=>E0%0%d done
 =graph_with_simplified_assets.simplified_assumes done
 =graph_with_simplified_assets done
 =max-memlabel-varnum
@@ -456,33 +456,33 @@ C_NEXTPC1 : foo
 =suffixpath_at_L0%0%d for src.spec.bar
 =suffixpath_at_L0%0%d.graph_edge_composition
 (epsilon)
-=suffixpath_at_L4%1%fcallStart for src.spec.bar
-=suffixpath_at_L4%1%fcallStart.graph_edge_composition
-(L0%0%d=>L4%1%fcallStart)
-=suffixpath_at_L4%1%fcallEnd for src.spec.bar
-=suffixpath_at_L4%1%fcallEnd.graph_edge_composition
-((L0%0%d=>L4%1%fcallStart)*(L4%1%fcallStart=>L4%1%fcallEnd))
-=suffixpath_at_L4%2%fcallStart for src.spec.bar
-=suffixpath_at_L4%2%fcallStart.graph_edge_composition
-((L0%0%d=>L4%1%fcallStart)*((L4%1%fcallStart=>L4%1%fcallEnd)*(L4%1%fcallEnd=>L4%2%fcallStart)))
-=suffixpath_at_L4%2%fcallEnd for src.spec.bar
-=suffixpath_at_L4%2%fcallEnd.graph_edge_composition
-((L0%0%d=>L4%1%fcallStart)*((L4%1%fcallStart=>L4%1%fcallEnd)*((L4%1%fcallEnd=>L4%2%fcallStart)*(L4%2%fcallStart=>L4%2%fcallEnd))))
+=suffixpath_at_L5%1%fcallStart for src.spec.bar
+=suffixpath_at_L5%1%fcallStart.graph_edge_composition
+(L0%0%d=>L5%1%fcallStart)
+=suffixpath_at_L5%1%fcallEnd for src.spec.bar
+=suffixpath_at_L5%1%fcallEnd.graph_edge_composition
+((L0%0%d=>L5%1%fcallStart)*(L5%1%fcallStart=>L5%1%fcallEnd))
+=suffixpath_at_L5%2%fcallStart for src.spec.bar
+=suffixpath_at_L5%2%fcallStart.graph_edge_composition
+((L0%0%d=>L5%1%fcallStart)*((L5%1%fcallStart=>L5%1%fcallEnd)*(L5%1%fcallEnd=>L5%2%fcallStart)))
+=suffixpath_at_L5%2%fcallEnd for src.spec.bar
+=suffixpath_at_L5%2%fcallEnd.graph_edge_composition
+((L0%0%d=>L5%1%fcallStart)*((L5%1%fcallStart=>L5%1%fcallEnd)*((L5%1%fcallEnd=>L5%2%fcallStart)*(L5%2%fcallStart=>L5%2%fcallEnd))))
 =suffixpath_at_E0%0%d for src.spec.bar
 =suffixpath_at_E0%0%d.graph_edge_composition
-((L0%0%d=>L4%1%fcallStart)*((L4%1%fcallStart=>L4%1%fcallEnd)*((L4%1%fcallEnd=>L4%2%fcallStart)*((L4%2%fcallStart=>L4%2%fcallEnd)*(L4%2%fcallEnd=>E0%0%d)))))
+((L0%0%d=>L5%1%fcallStart)*((L5%1%fcallStart=>L5%1%fcallEnd)*((L5%1%fcallEnd=>L5%2%fcallStart)*((L5%2%fcallStart=>L5%2%fcallEnd)*(L5%2%fcallEnd=>E0%0%d)))))
 =suffixpaths for src.spec.bar done
 =tfg.assumes_around_edge
-tfg.assumes_around_edge at L0%0%d=>L4%1%fcallStart
-tfg.assumes_around_edge at L0%0%d=>L4%1%fcallStart done
-tfg.assumes_around_edge at L4%1%fcallStart=>L4%1%fcallEnd
-tfg.assumes_around_edge at L4%1%fcallStart=>L4%1%fcallEnd done
-tfg.assumes_around_edge at L4%1%fcallEnd=>L4%2%fcallStart
-tfg.assumes_around_edge at L4%1%fcallEnd=>L4%2%fcallStart done
-tfg.assumes_around_edge at L4%2%fcallStart=>L4%2%fcallEnd
-tfg.assumes_around_edge at L4%2%fcallStart=>L4%2%fcallEnd done
-tfg.assumes_around_edge at L4%2%fcallEnd=>E0%0%d
-tfg.assumes_around_edge at L4%2%fcallEnd=>E0%0%d done
+tfg.assumes_around_edge at L0%0%d=>L5%1%fcallStart
+tfg.assumes_around_edge at L0%0%d=>L5%1%fcallStart done
+tfg.assumes_around_edge at L5%1%fcallStart=>L5%1%fcallEnd
+tfg.assumes_around_edge at L5%1%fcallStart=>L5%1%fcallEnd done
+tfg.assumes_around_edge at L5%1%fcallEnd=>L5%2%fcallStart
+tfg.assumes_around_edge at L5%1%fcallEnd=>L5%2%fcallStart done
+tfg.assumes_around_edge at L5%2%fcallStart=>L5%2%fcallEnd
+tfg.assumes_around_edge at L5%2%fcallStart=>L5%2%fcallEnd done
+tfg.assumes_around_edge at L5%2%fcallEnd=>E0%0%d
+tfg.assumes_around_edge at L5%2%fcallEnd=>E0%0%d done
 tfg.assumes_around_edge done
 =TFGdone
 =TFG_SPEC_done
