@@ -2,14 +2,14 @@
 
 spec_run_tmpdir="run_tmpdir"
 spec_run_out="run.out"
-cmd_name="${SUPEROPT_INSTALL_DIR}/bin/eq32 --enable-src-epsilon-paths --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --smt-query-timeout=5 --axpred-solver-max-depth=3"
+cmd_name="${SUPEROPT_INSTALL_DIR}/bin/eq32 --enable-src-epsilon-paths --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --smt-query-timeout=5"
 
 speceq_run() {
   ${cmd_name} --tmpdir-path=${spec_run_tmpdir} --proof="$1".proof --dyn-debug=invariants_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c |& tee ${spec_run_out}
 }
 
 speceq_debug() {
-  ${cmd_name} --tmpdir-path=${spec_run_tmpdir} --proof="$1".proof --dyn-debug=invariants_dump,axpred_depth,axpred_solver=3 --spec-iospecs="$1".iospecs "$1".spec "$1".c |& tee ${spec_run_out}
+  ${cmd_name} --tmpdir-path=${spec_run_tmpdir} --proof="$1".proof --dyn-debug=invariants_dump,spec_coupling=3 --spec-iospecs="$1".iospecs "$1".spec "$1".c |& tee ${spec_run_out}
 }
 
 speceq_debug_replay() {
