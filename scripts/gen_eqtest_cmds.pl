@@ -32,16 +32,25 @@ my $benchmark = basename($VPATH);
 my $PWD = getcwd;
 
 my $extraflagsarg = $ARGV[6];
-#print "extraflagsarg = $extraflagsarg\n";
 my @extraflags = split('@', $extraflagsarg);
 shift(@extraflags);
 my $extraflagsstr = join('',@extraflags);
-#print "extraflagsstr = $extraflagsstr\n";
+
+my $expectedfailsarg = $ARGV[7];
+#print "expectedfailsarg = $expectedfailsarg\n";
+my @expectedfails_tmp = split('@', $expectedfailsarg);
+shift(@expectedfails_tmp);
+my %expectedfails = ();
+if (scalar @expectedfails_tmp gt 0) {
+  if (scalar @expectedfails_tmp gt 1) { die "expectedfails formatted illegally"; }
+  my @expectedfails_ls = split(' ',$expectedfails_tmp[0]);
+  for (@expectedfails_ls) { $expectedfails{$_} = 1 }
+}
 
 my %unroll;
 
 my $cur;
-foreach(my $i = 7; $i <= $#ARGV; $i++) {
+foreach(my $i = 8; $i <= $#ARGV; $i++) {
   my $arg = $ARGV[$i];
   #print "arg = $arg\n";
   if ($arg eq "unroll1") {
@@ -78,21 +87,23 @@ foreach my $prog (keys %unroll) {
   if (-f "$VPATH/$prog.$compiler.eqflags") {
     $prog_extraflagsstr = $prog_extraflagsstr . " " . read_file("$VPATH/$prog.$compiler.eqflags");
   }
+  my $prog_expectfailstr = '';
+  if ($expectedfails{$prog}) {
+    $prog_expectfailstr = "-expect-fail";
+  }
   if ($compiler eq "srcdst") {
     my $src_pathname = identify_filetype_extension("$VPATH/$prog\_src");
     my $dst_pathname = identify_filetype_extension("$VPATH/$prog\_dst");
-    print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
+    print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' $prog_expectfailstr -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
   } else {
     my $compile_log_str = "";
     if ($compiler =~ /^clang/) {
       $compile_log_str = "-compile_log $PWD/$prog.$compiler$compiler_suffix.log"
     }
-    #print "compiler = $compiler\n";
     my $src_pathname = identify_filetype_extension("$VPATH/$prog");
     if ($compiler ne "ack" || -f "$PWD/$prog.$compiler$compiler_suffix") { # skip missing binaries for 'ack' which does not support VLA/alloca()
-      print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
+      print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' $prog_expectfailstr  -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
     } else {
-      #print "Ignoring $PWD/$prog.$compiler$compiler_suffix\n";
     }
   }
 }
