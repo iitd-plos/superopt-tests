@@ -22,8 +22,23 @@ EXTRA_FLAGS :=
 
 UNROLL8_GCC := $(PROGS) \
                # load_store_elim_conditional not passing in GCC!
+EXPECTED_FAILS_GCC := non_linear_invariant_casting  \
+                      ftmap_1                       \
+                      ftmap_2                       \
+                      ftmap_3                       \
+                      ftmap_4                       \
+                      # non_linear_invariant_casting [requires: pointer arithmetic overflow UB modelling]
+                      # ftmap_1 [eqgen fails because of incorrect disassembly]
+                      # ftmap_2 [harvest output does not include function main]
+                      # ftmap_3 [harvest output does not include function main]
+                      # ftmap_4 [harvest output does not include function main]
+
 UNROLL16_CLANG := $(PROGS) \
                   load_store_elim_conditional
+EXPECTED_FAILS_CLANG := ftmap_3                     \
+                        ftmap_4                     \
+                        # ftmap_3 [harvest output does not include function main]
+                        # ftmap_4 [harvest output does not include function main]
 
 # compiler flags
 ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
