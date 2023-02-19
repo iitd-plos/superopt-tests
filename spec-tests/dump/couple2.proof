@@ -1735,6 +1735,23 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.ec.graph_edge_c
 (epsilon)
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.pred
 =Comment
+seperate-args-implement-prod
+=LhsExpr
+140273 : input.spec-%var-x-0 : PROD[BV:32,BV:32]
+140311 : input.dst.llvm-%x : BV:32
+140312 : input.dst.llvm-%y : BV:32
+140419 : prod(140311, 140312) : PROD[BV:32,BV:32]
+140420 : eq(140273, 140419) : BOOL
+=RhsExpr
+140275 : 1 { 0x1 } : BOOL
+=predicate done
+
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec.graph_edge_composition
+(epsilon)
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.pred
+=Comment
 precond-mlasserts
 =LhsExpr
 140374 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin : BV:32
@@ -1790,23 +1807,6 @@ precond-mlasserts
 140317 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
 140417 : region_agrees_with_memlabel(140314, 140285, 140357, 140317) : BOOL
 140418 : and(140416, 140417) : BOOL
-=RhsExpr
-140275 : 1 { 0x1 } : BOOL
-=predicate done
-
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec.graph_edge_composition
-(epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.pred
-=Comment
-seperate-args-implement-prod
-=LhsExpr
-140273 : input.spec-%var-x-0 : PROD[BV:32,BV:32]
-140311 : input.dst.llvm-%x : BV:32
-140312 : input.dst.llvm-%y : BV:32
-140419 : prod(140311, 140312) : PROD[BV:32,BV:32]
-140420 : eq(140273, 140419) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

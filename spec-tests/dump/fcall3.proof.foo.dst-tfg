@@ -1600,9 +1600,9 @@ undef-behavioursome.edge.L0%0%d=>E0%0%d
 141105 : and(140276, 140743) : BOOL
 141107 : and(141094, 141105) : BOOL
 141109 : islangaligned(140720, 140483) : BOOL
-141144 : and(140276, 140712, 141107, 141109) : BOOL
-141146 : islangaligned(140697, 140483) : BOOL
-141149 : and(141144, 141146) : BOOL
+141143 : and(140276, 140712, 141107, 141109) : BOOL
+141145 : islangaligned(140697, 140483) : BOOL
+141148 : and(141143, 141145) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1802,6 +1802,16 @@ input.dst.llvm-%ret-reg : L0%0%d : input.dst.llvm-%add4
 input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
+input.dst.llvm-%add.E0%0%d : L0%0%d : (DSTMEM[m']_4 + DSTMEM[(m' + 12)]_4)
+input.dst.llvm-%1.E0%0%d : L0%0%d : DSTMEM[(m' + 12)]_4
+input.dst.llvm-%2.E0%0%d : L0%0%d : DSTMEM[(4 + m')]_4
+input.dst.llvm-%arrayidx.E0%0%d : L0%0%d : m'
+input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.1.total_offset.E0%0%d : L0%0%d : 8
+input.dst.llvm-%arrayidx1.E0%0%d : L0%0%d : (m' + 12)
+input.dst.llvm-%0.E0%0%d : L0%0%d : DSTMEM[m']_4
+input.dst.llvm-%3.E0%0%d : L0%0%d : DSTMEM[(m' + 8)]_4
+input.dst.llvm-%arrayidx2.E0%0%d : L0%0%d : (4 + m')
+input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d : L0%0%d : (m' + 8)
 input.dst.llvm-%m : L0%0%d : m'
 input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%add4 : L0%0%d : (input.dst.llvm-%add + input.dst.llvm-%sub)
@@ -1826,16 +1836,6 @@ input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.intermediate.gepoffset.1.offset
 input.dst.llvm-%arrayidx2 : L0%0%d : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.gepoffset.2.total_offset
 input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.intermediate.gepoffset.1.offset : L0%0%d : 8
 input.dst.llvm-%arrayidx3 : L0%0%d : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset
-input.dst.llvm-%add.E0%0%d : L0%0%d : (DSTMEM[m']_4 + DSTMEM[(m' + 12)]_4)
-input.dst.llvm-%1.E0%0%d : L0%0%d : DSTMEM[(m' + 12)]_4
-input.dst.llvm-%2.E0%0%d : L0%0%d : DSTMEM[(4 + m')]_4
-input.dst.llvm-%arrayidx.E0%0%d : L0%0%d : m'
-input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.1.total_offset.E0%0%d : L0%0%d : 8
-input.dst.llvm-%arrayidx1.E0%0%d : L0%0%d : (m' + 12)
-input.dst.llvm-%0.E0%0%d : L0%0%d : DSTMEM[m']_4
-input.dst.llvm-%3.E0%0%d : L0%0%d : DSTMEM[(m' + 8)]_4
-input.dst.llvm-%arrayidx2.E0%0%d : L0%0%d : (4 + m')
-input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d : L0%0%d : (m' + 8)
 input.dst.llvm-%72f0355cb9847d924c673de58468b759.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 0
 input.dst.llvm-%arrayidx3.E0%0%d : L0%0%d : (m' + 8)
 input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 8
@@ -2379,10 +2379,6 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
-=LR status for var input.dst.llvm-%m
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%add.E0%0%d
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
 =LR status for var input.dst.llvm-%1.E0%0%d
@@ -2403,6 +2399,10 @@ lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___ba
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
 =LR status for var input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
+=LR status for var input.dst.llvm-%m
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.llvm-%72f0355cb9847d924c673de58468b759.intermediate.gepoffset.1.offset.E0%0%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%arrayidx3.E0%0%d

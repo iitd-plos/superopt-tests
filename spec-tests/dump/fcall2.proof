@@ -1344,6 +1344,58 @@ discontiguous mls:
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =avail_exprs_val.end
+=loc 100031
+=loc_expr
+140421 : input.dst.llvm-mem.Lif.end%1%bbentry : ARRAY[BV:32 -> BV:8]
+140351 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140386 : memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/ : MEMLABEL
+140437 : memmask(140421, 140351, 140386) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100032
+=loc_expr
+140418 : input.dst.llvm-mem.Lif.then%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140351 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140295 : memlabel-mem--arg.0 : MEMLABEL
+140438 : memmask(140418, 140351, 140295) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100033
+=loc_expr
+140418 : input.dst.llvm-mem.Lif.then%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140351 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140354 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap : MEMLABEL
+140439 : memmask(140418, 140351, 140354) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
+=loc 100034
+=loc_expr
+140418 : input.dst.llvm-mem.Lif.then%2%fcallEnd : ARRAY[BV:32 -> BV:8]
+140351 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140386 : memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/ : MEMLABEL
+140440 : memmask(140418, 140351, 140386) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.m_is_top 0
+=avail_exprs_val.m_expr
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+=avail_exprs_val.end
 =avail_exprs end
 =sprel_map in dst.llvm.opt_map
 =loc 100024 expr
@@ -3009,17 +3061,15 @@ L3%5%fcallStart_Lif.then%2%fcallStart
 =global nodece 10 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 10 nodece_cached_counterexample
-=counter_example_begin cvc4.ce287 b6cf9da9bf77a1a51e843d3f9d1aff50
+=counter_example_begin cvc4.ce287 ea9ca2a82c36ceaa5d5f765f2e1f1380
 =input.spec-%var-opt-0
-1 : 8192 { 0x2000 +1.97656e129 } : BV:32
+1 : 65536 { 0x10000 +1.781250e129 } : BV:32
 2 : unit : UNIT
 3 : 0 { 0x0 +1.0e129 } : BV:32
 4 : sum(1, 2, 3) : SUM[UNIT,BV:32]
 5 : sym_const(4) : SUM[UNIT,BV:32]
 =input.spec-%var-val-1.L3%5%fcallStart
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
 1 : ([ 0; 2147483651 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, [ 2147483652; 2147483655 ] -> memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/, [ 2147483656; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.llvm-%opt
@@ -3029,11 +3079,11 @@ L3%5%fcallStart_Lif.then%2%fcallStart
 =input.spec-fcall_arg_copy.0.spec-%var-val-1.L3%5%fcallEnd
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-opt-0.0
-1 : 8192 { 0x2000 +1.97656e129 } : BV:32
+1 : 65536 { 0x10000 +1.781250e129 } : BV:32
 =input.spec-%var-opt-0.2
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.Lif.then%2%fcallEnd
-1 : ([ 0; 1073741823 ] -> 1, [ 1073741824; 1073741824 ] -> 0, [ 1073741825; 1073741825 ] -> 0, [ 1073741826; 1073741826 ] -> 0, [ 1073741827; 1073741827 ] -> 0, [ 1073741828; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
+1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin
 1 : 2147483652 { 0x80000004 -2147483644 -1.47e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end
@@ -3050,7 +3100,7 @@ L3%5%fcallEnd_Lif.then%2%fcallEnd
 =global nodece 11 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 11 nodece_cached_counterexample
-=counter_example_begin z3v487.ce288 1e6cfa906d398989a3b62daba44bae
+=counter_example_begin z3v487.ce288 f63635dedefbb71804beb57e0fbd2
 =input.spec-%var-opt-0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 2 : unit : UNIT
@@ -3059,8 +3109,6 @@ L3%5%fcallEnd_Lif.then%2%fcallEnd
 5 : sym_const(4) : SUM[UNIT,BV:32]
 =input.spec-%var-val-1.L3%5%fcallStart
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
 1 : ([ 0; 540764387 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, [ 540764388; 540764391 ] -> memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/, [ 540764392; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.llvm-%opt
@@ -3091,7 +3139,7 @@ L3%5%fcallEnd_Lif.then%2%fcallEnd
 =global nodece 12 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 12 nodece_cached_counterexample
-=counter_example_begin yices.ce289 8cbcb5826a9f6216fa118257df7b90b9
+=counter_example_begin yices.ce289 cbd919addb513b1a78e11f9fdef35f
 =input.spec-%var-opt-0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 2 : unit : UNIT
@@ -3100,8 +3148,6 @@ L3%5%fcallEnd_Lif.then%2%fcallEnd
 5 : sym_const(4) : SUM[UNIT,BV:32]
 =input.spec-%var-val-1.L3%5%fcallStart
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 3489660927 ] -> 1, [ 3489660928; 3489660931 ] -> 0, [ 3489660932; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-mem.alloc
 1 : ([ 0; 2684354563 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, [ 2684354564; 2684354567 ] -> memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/, [ 2684354568; 4294967295 ] -> memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap, ) : ARRAY[BV:32 -> MEMLABEL]
 =input.dst.llvm-%opt
@@ -3672,36 +3718,36 @@ L0%0%d_L0%0%d
 =inductive-invariants point_set point z3v487.ce240 expr point z3v487.ce240 val 12 for input.dst.llvm-%call.Lif.then%2%fcallEnd
 640355011
 =inductive-invariants point_set point z3v487.ce240 expr point z3v487.ce240 done
-=inductive-invariants point_set point z3v487.ce264
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap))
+=inductive-invariants point_set point cvc4.ce264
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap))
 1
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264 val 2 for input.spec-%var-val-1.L3%5%fcallStart
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264 val 2 for input.spec-%var-val-1.L3%5%fcallStart
 0
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264 val 3 for input.dst.llvm-%opt
-540745856
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264 val 10 for input.spec-%tmpvar-3.L3%5%fcallEnd
-1362531287
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264 val 11 for input.spec-fcall_arg_copy.0.spec-%var-val-1.L3%5%fcallEnd
-0
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264 val 12 for input.dst.llvm-%call.Lif.then%2%fcallEnd
-908461673
-=inductive-invariants point_set point z3v487.ce264 expr point z3v487.ce264 done
-=inductive-invariants point_set point cvc4.ce263
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap))
-1
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263 val 2 for input.spec-%var-val-1.L3%5%fcallStart
-0
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263 val 3 for input.dst.llvm-%opt
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264 val 3 for input.dst.llvm-%opt
 1073741824
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263 val 10 for input.spec-%tmpvar-3.L3%5%fcallEnd
-1901767649
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263 val 11 for input.spec-fcall_arg_copy.0.spec-%var-val-1.L3%5%fcallEnd
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264 val 10 for input.spec-%tmpvar-3.L3%5%fcallEnd
+1362531287
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264 val 11 for input.spec-fcall_arg_copy.0.spec-%var-val-1.L3%5%fcallEnd
 0
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263 val 12 for input.dst.llvm-%call.Lif.then%2%fcallEnd
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264 val 12 for input.dst.llvm-%call.Lif.then%2%fcallEnd
+908461673
+=inductive-invariants point_set point cvc4.ce264 expr point cvc4.ce264 done
+=inductive-invariants point_set point z3v487.ce263
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap))
+1
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263 val 2 for input.spec-%var-val-1.L3%5%fcallStart
+0
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263 val 3 for input.dst.llvm-%opt
+540745856
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263 val 10 for input.spec-%tmpvar-3.L3%5%fcallEnd
+1901767649
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263 val 11 for input.spec-fcall_arg_copy.0.spec-%var-val-1.L3%5%fcallEnd
+0
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263 val 12 for input.dst.llvm-%call.Lif.then%2%fcallEnd
 6069143
-=inductive-invariants point_set point cvc4.ce263 expr point cvc4.ce263 done
+=inductive-invariants point_set point z3v487.ce263 expr point z3v487.ce263 done
 =inductive-invariants point_set point cvc4.ce239
 =inductive-invariants point_set point cvc4.ce239 expr point cvc4.ce239
 =inductive-invariants point_set point cvc4.ce239 expr point cvc4.ce239 val 1 for and(and(and(and(bvule(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end), eq(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), eq(bvand(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, 3), 0)), eq(input.dst.local./*___y___opt_map__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___opt_map__x__=L0%0%argnum0=/_begin)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___update_val__x__=L0%0%argnum0=/-heap))
@@ -4149,23 +4195,7 @@ matrix done
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based name spec-coupling-invariants
-=pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based expr_group_type HOUDINI_AXIOM_BASED with 3 exprs
-=pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based point_expr 8
-1 : input.spec-%var-opt-0 : SUM[UNIT,BV:32]
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : input.dst.llvm-%opt : BV:32
-4 : eq(2, 3) : BOOL
-5 : 1 { 0x1 +1.11e129 } : BV:32
-6 : ite(4, 2, 5) : BV:32
-7 : unit : UNIT
-8 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-9 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-10 : memlabel-top : MEMLABEL
-11 : 4 { 0x4 +1.0e1025 } : INT
-12 : 0 { 0x0 } : BOOL
-13 : select(8, 9, 10, 3, 11, 12) : BV:32
-14 : sum(6, 7, 13) : SUM[UNIT,BV:32]
-15 : eq(1, 14) : BOOL
+=pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based expr_group_type HOUDINI_AXIOM_BASED with 2 exprs
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based point_expr 13
 1 : input.spec-%var-opt-0 : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e129 } : BV:32
@@ -4221,33 +4251,11 @@ houdini-axiom-based-guess
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based pred 1
-=Comment
-houdini-axiom-based-guess
-=LhsExpr
-1 : input.spec-%var-opt-0 : SUM[UNIT,BV:32]
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : input.dst.llvm-%opt : BV:32
-4 : eq(2, 3) : BOOL
-5 : 1 { 0x1 +1.11e129 } : BV:32
-6 : ite(4, 2, 5) : BV:32
-7 : unit : UNIT
-8 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-9 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-10 : memlabel-top : MEMLABEL
-11 : 4 { 0x4 +1.0e1025 } : INT
-12 : 0 { 0x0 } : BOOL
-13 : select(8, 9, 10, 3, 11, 12) : BV:32
-14 : sum(6, 7, 13) : SUM[UNIT,BV:32]
-15 : eq(1, 14) : BOOL
-=RhsExpr
-1 : 1 { 0x1 } : BOOL
-=predicate done
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based predicate_set done
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based is assumed eqclass : 0
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based visited ce 0: yices.ce5
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based visited ces set done
-=pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based summary: number of exprs=3; number of visited CEs=1; number of preds=2
+=pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants smallest_point_cover 2 type houdini-axiom-based summary: number of exprs=2; number of visited CEs=1; number of preds=1
 =pc L3%5%fcallEnd_Lif.then%2%fcallEnd inductive-invariants invariant_state done
 =Invariant state at node E0%0%d_E0%0%d for reason inductive-invariants
 =pc E0%0%d_E0%0%d inductive-invariants invariant_state 
@@ -4780,7 +4788,7 @@ cg-edge-assume
 =LhsExpr
 140301 : input.spec-%tmpvar-3.L3%5%fcallEnd : BV:32
 140419 : input.dst.llvm-%call.Lif.then%2%fcallEnd : BV:32
-141944 : eq(140301, 140419) : BOOL
+141917 : eq(140301, 140419) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
