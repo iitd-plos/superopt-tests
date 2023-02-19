@@ -31,7 +31,7 @@
 . par_script.sh ind6
 . par_script.sh ind7
 . par_script.sh ind8
-# . par_script.sh ind9
+. par_script.sh ind9
 
 . par_script.sh fcall1
 . par_script.sh fcall2
