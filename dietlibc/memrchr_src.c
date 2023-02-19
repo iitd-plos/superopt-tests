@@ -12,13 +12,14 @@ void* memrchr(const void *s, int c, size_t n) {
   return (void*)last; /* man, what an utterly b0rken prototype */
 }
 
-//int main(int argc, char* argv[])
-//{
-//  // memchr stops at first byte
-//  //const char src[] = { 255, 128 };
-//  //printf("%p %p\n", src, (int*)memrchr(src, 128, 2));
-//  //if (!memrchr(src, 128, 2))
-//  //  printf("BUG!\n");
-//  return 0;
-//}
-
+/*
+int main(int argc, char* argv[])
+{
+  // memchr stops at first byte
+  //const char src[] = { 255, 128 };
+  //printf("%p %p\n", src, (int*)memrchr(src, 128, 2));
+  //if (!memrchr(src, 128, 2))
+  //  printf("BUG!\n");
+  return 0;
+}
+*/
