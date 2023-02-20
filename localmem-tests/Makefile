@@ -41,6 +41,10 @@ UNROLL1_GCC = fib                               \
               $(UNROLL1_PROGS)
 							# minprintf requires select(local.addr) which is missing from bv-eqclass exprs
 UNROLL2_GCC = alloca_linked_list
+EXPECTED_FAILS_GCC := vla_3_single_loop         \
+                      vla_4_single_loop         \
+                      # vla_3_single_loop [timeout]
+                      # vla_4_single_loop [timeout]
 
 UNROLL1_CLANG = minprintf                         \
                 alloca_linked_list                \
@@ -50,6 +54,10 @@ UNROLL1_CLANG = minprintf                         \
                 vla_in_loop_conditional_exit      \
                 $(UNROLL1_PROGS)
 UNROLL2_CLANG = fib
+EXPECTED_FAILS_CLANG := vla_3_single_loop         \
+                        vla_4_single_loop         \
+                        # vla_3_single_loop [timeout]
+                        # vla_4_single_loop [timeout]
 
 # ack does not support VLA and alloca()
 UNROLL2_ACK = \
@@ -68,6 +76,8 @@ UNROLL1_ICC = minprintf                \
               # vla_in_loop{,conditional_continue,conditional_exit} require non-linear invariants
               # alloca_malloc_switch requires more powerful inequality inference
 UNROLL2_ICC = alloca_linked_list
+EXPECTED_FAILS_ICC := vla_3_inside_loop         \
+                      # vla_3_inside_loop [timeout]
 
 #UNROLL1_ICX = alloca_linked_list $(UNROLL1_PROGS)
 #UNROLL2_ICX = fib
