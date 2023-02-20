@@ -252,6 +252,6 @@ int main(int argc, char ** argv)
   }
   do_test(test_input_1, test_output_1);
   do_test(test_input_2, test_output_2);
-  //do_bench(1000000);
+  do_bench(1000000);
   return 0;
 }

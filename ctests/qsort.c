@@ -6,6 +6,7 @@ void *MYmymalloc(size_t size);
 int MYmyprintf(const char *format, ...);
 int MYmyrand();
 
+/* // swap inlined
 void quicksort_orig(int lo, int hi, int * base)
 { 
   int i,j;
@@ -23,6 +24,7 @@ void quicksort_orig(int lo, int hi, int * base)
     quicksort_orig(lo,i-1,base);  quicksort_orig(i+1,hi,base);
   }
 }
+*/
 
 void swap(int* base, int i, int j)
 {
@@ -71,6 +73,7 @@ int equal_array(int* a, int* b, int n)
     return 0;
 }
 
+/* XXX uncomment this -- commented because of assert-fail in points-to analysis
 int main(int argc, char* argv[])
 {
   if (argc < 2) {
@@ -95,7 +98,9 @@ int main(int argc, char* argv[])
   }
   return 0;
 }
+*/
 
+/*
 int quicksort_char(int lo, int hi, char base[])
 {
   int i,j;
@@ -118,3 +123,4 @@ int quicksort_char(int lo, int hi, char base[])
   }
   return 0;
 }
+*/

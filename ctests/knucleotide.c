@@ -46,13 +46,15 @@ struct ht_ht {
 #endif /* HT_DEBUG */
 };
 
-/*inline*/ int ht_val(struct ht_node *node) {
-    return(node->val);
-}
+// // unused
+// /*inline*/ int ht_val(struct ht_node *node) {
+//     return(node->val);
+// }
 
-/*inline*/ char *ht_key(struct ht_node *node) {
-    return(node->key);
-}
+// // unused
+// /*inline*/ char *ht_key(struct ht_node *node) {
+//     return(node->key);
+// }
 
 /*inline*/ int ht_hashcode(struct ht_ht *ht, char *key) {
     unsigned long val = 0;
@@ -108,15 +110,16 @@ void ht_destroy(struct ht_ht *ht) {
   MYmyfree(ht);
 }
 
-/*inline*/ struct ht_node *ht_find(struct ht_ht *ht, char *key) {
-    int hash_code = ht_hashcode(ht, key);
-    struct ht_node *node = ht->tbl[hash_code];
-    while (node) {
-	if (MYmystrcmp(key, node->key) == 0) return(node);
-	node = node->next;
-    }
-    return((struct ht_node *)NULL);
-}
+// // unused
+// /*inline*/ struct ht_node *ht_find(struct ht_ht *ht, char *key) {
+//     int hash_code = ht_hashcode(ht, key);
+//     struct ht_node *node = ht->tbl[hash_code];
+//     while (node) {
+// 	if (MYmystrcmp(key, node->key) == 0) return(node);
+// 	node = node->next;
+//     }
+//     return((struct ht_node *)NULL);
+// }
 
 /*inline*/ __attribute__((noinline)) struct ht_node *ht_find_new(struct ht_ht *ht, char *key) {
   int hash_code = ht_hashcode(ht, key);
@@ -165,9 +168,10 @@ void ht_destroy(struct ht_ht *ht) {
     return(ht_next(ht));
 }
 
-/*inline*/ int ht_count(struct ht_ht *ht) {
-    return(ht->items);
-}
+// // unused
+// /*inline*/ int ht_count(struct ht_ht *ht) {
+//     return(ht->items);
+// }
 
 __attribute__((noinline)) long
 hash_table_size (int fl, long buflen)
