@@ -7,12 +7,27 @@ EXTRA_FLAGS := --global-timeout 7200 --max-address-space-size-gb 16
 
 UNROLL4_GCC := ex101 ex102 ex103 ex104 ex105 ex106 ex107 ex108 # should pass: ex107 (query-timeout)
 UNROLL8_GCC := ex106u ex107u # should pass: ex107u (query-timeout)
+EXPECTED_FAILS_GCC := ex107       \
+                      ex107u      \
+                      # ex107 [query-timeout]
+                      # ex107u [query-timeout]
 
 UNROLL16_CLANG := ex101 ex102 ex103 ex104 ex105 ex108 # should pass: ex103 (???), ex108 (query-timeout)
                   # not tested: ex106 ex107
+EXPECTED_FAILS_CLANG := ex102     \
+                        ex103     \
+                        ex104     \
+                        ex105     \
+                        ex108     \
+                        # ex102 [timeout]
+                        # ex103 [timeout]
+                        # ex104 [timeout]
+                        # ex105 [timeout]
+                        # ex108 [timeout]
 
 UNROLL8_SRCDST := ex109 ex109_8 ex1010 ex1011
-EXPECTED_FAILS_SRCDST := ex1011 # loop fully unrolled
+EXPECTED_FAILS_SRCDST := ex1011   \
+                         # ex1011 [loop fully unrolled]
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)

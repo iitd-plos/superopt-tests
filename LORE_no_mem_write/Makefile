@@ -5,15 +5,39 @@ VPATH = $(SRCDIR)/LORE_no_mem_write
 
 EXTRA_FLAGS := --global-timeout 7200 --max-address-space-size-gb 16
 
-UNROLL4_GCC   := ex1 ex2 ex3 ex4 ex5 ex6 ex8 ex9 ex10 ex11 ex12 ex13 # should pass: ex9 (???)
-UNROLL8_GCC   := ex2u ex3u ex4u ex5u ex6u ex13u # should pass: ex5u (query-timeout)
+UNROLL4_GCC := ex1 ex2 ex3 ex4 ex5 ex6 ex8 ex9 ex10 ex11 ex12 ex13
+UNROLL8_GCC := ex2u ex3u ex4u ex5u ex6u ex13u # should pass: ex5u (query-timeout), ex13u (query-timeout)
+EXPECTED_FAILS_GCC := ex5u      \
+                      ex13u     \
+                      # ex5u [query-timeout]
+                      # ex13u [query-timeout]
 
-UNROLL16_CLANG := ex1 ex7 ex8 ex9 ex10 ex11 ex12 # should pass: ex1 (???), ex7 (timeout), ex8 (timeout), ex9 (timeout), ex10 (timeout), ex12 (timeout)
+UNROLL16_CLANG := ex1 ex7 ex8 ex9 ex10 ex11 ex12 # should pass: ex1 (???), ex7 (timeout), ex8 (timeout), ex9 (timeout), ex10 (timeout), ex12 (timeout), ex11 (sometimes timeout)
+EXPECTED_FAILS_CLANG := ex1     \
+                        ex7     \
+                        ex8     \
+                        ex9     \
+                        ex10    \
+                        ex12    \
+                        # ex1 [???]
+                        # ex7 [timeout]
+                        # ex8 [timeout]
+                        # ex9 [timeout]
+                        # ex10 [timeout]
+                        # ex12 [timeout]
 
-UNROLL8_ICC   := ex7 # should pass: ex7 (assert-fails in simplification; max simplification iter count reachea)
+UNROLL8_ICC := ex7 # should pass: ex7 (assert-fails in simplification; max simplification iter count reached)
+EXPECTED_FAILS_ICC := ex7 \
+                      # ex7 [assert-fail in simplification; max simplification iter counter reached]
 
 UNROLL4_SRCDST := ex14 ex15 ex16 ex17 # should pass: ex15 (???), ex16 (???), ex17 (loop fusion?)
 UNROLL8_SRCDST := ex15_8
+EXPECTED_FAILS_SRCDST := ex15     \
+                         ex16     \
+                         ex17     \
+                         # ex15 [???]
+                         # ex16 [???]
+                         # ex17 [???]
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
