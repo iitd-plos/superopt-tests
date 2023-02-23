@@ -1,6 +1,7 @@
 int a[10][10];
 
-int main() {
+int nested_loop_peeling()
+{
   for (int i = 0; i<10; i++) {
     a[i][0] = 0;
     a[i][1] = 0;
