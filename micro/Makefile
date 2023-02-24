@@ -6,6 +6,7 @@ VPATH = $(SRCDIR)/micro
 PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          fcall10 fcall10_with_memaccess \
          fcall_taking_locals \
+         fcalls_merge \
          ftmap_1 \
          ftmap_2 \
          ftmap_3 \
@@ -29,11 +30,13 @@ EXPECTED_FAILS_GCC := non_linear_invariant_casting  \
                       ftmap_3                       \
                       ftmap_4                       \
                       non_linear_invariant_shl      \
+                      fcalls_merge                  \
                       # non_linear_invariant_casting [requires: pointer arithmetic overflow UB modelling]
                       # ftmap_1 [eqgen fails because of incorrect disassembly]
                       # ftmap_2 [harvest output does not include function main]
                       # ftmap_3 [harvest output does not include function main]
                       # ftmap_4 [harvest output does not include function main]
+                      # fcalls_merge [calls to bar() are sinked and merged]
 
 UNROLL16_CLANG := $(PROGS) \
                   load_store_elim_conditional
