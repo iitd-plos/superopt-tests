@@ -26,8 +26,6 @@ EXPECTED_FAILS_CLANG := ex102     \
                         # ex108 [timeout]
 
 UNROLL8_SRCDST := ex109 ex109_8 ex1010 ex1011
-EXPECTED_FAILS_SRCDST := ex1011   \
-                         # ex1011 [loop fully unrolled]
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)

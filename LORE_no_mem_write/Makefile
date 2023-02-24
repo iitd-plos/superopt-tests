@@ -30,13 +30,11 @@ UNROLL8_ICC := ex7 # should pass: ex7 (assert-fails in simplification; max simpl
 EXPECTED_FAILS_ICC := ex7 \
                       # ex7 [assert-fail in simplification; max simplification iter counter reached]
 
-UNROLL4_SRCDST := ex14 ex15 ex16 ex17 # should pass: ex15 (???), ex16 (???), ex17 (loop fusion?)
+UNROLL4_SRCDST := ex14 ex15 ex16 ex17 # should pass: ex15 (???), ex17 (loop fusion?)
 UNROLL8_SRCDST := ex15_8
 EXPECTED_FAILS_SRCDST := ex15     \
-                         ex16     \
                          ex17     \
                          # ex15 [???]
-                         # ex16 [???]
                          # ex17 [???]
 
 # compiler flags
