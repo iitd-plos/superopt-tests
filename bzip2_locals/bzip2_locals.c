@@ -2757,6 +2757,7 @@ void undoReversibleTransformation_fast ( FILE* dst )
 
 #define MY_EOF 257
 
+// XXX store sinking in UPDATE_CRC loop
 #ifdef SPEC_CPU2000
 INLINE Int32 getRLEpair ( int src )
 #else
@@ -3428,8 +3429,6 @@ void mySignalCatcher ( IntNative n )
 }
 
 
-// XXX clang -O1 merges the first ite thereby creating a situation where a
-// single dst pathset has to be correlated against multiple src pathsets
 /*---------------------------------------------*/
 void mySIGSEGVorSIGBUScatcher ( IntNative n )
 {
