@@ -22,13 +22,15 @@ FLAGS="correctness_covers,correlate,invariants_map=2"
 FAILSET_PRUNE=-1
 FAILSET_SORT="next-cross"
 FAILSET_MU=16
-UNROLL_FACTOR=64
-CE_BOUND=20
+UNROLL_FACTOR_MIN=1
+UNROLL_FACTOR_MAX=64
+UNROLL_FACTOR_RATIO=2
+CE_BOUND=22
 SCRIPT_NAME = "benchmarking.sh"
-TIMEOUT=60*60*1 # 1 hour
+TIMEOUT=45*60
 NJOBS=30
-VMEM_LIMIT=33*1024*1024 # 33GB
-NUM_CHUNKS=3
+VMEM_LIMIT=32*1024*1024 # 32GB
+NUM_CHUNKS=1
 
 USE_ASSUMES = False
 
@@ -47,7 +49,7 @@ def gen_script(input_file):
         for pair in itertools.permutations(libraries, 2):
             l1, l2 = pair
             # command = f'/usr/bin/time -ao logs/timing.log -f "{fname}\t{l1}\t{l2}\t%e" eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
-            command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={UNROLL_FACTOR} --ce_bound={CE_BOUND} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
+            command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={UNROLL_FACTOR_MAX} --ce_bound={CE_BOUND} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
             script.write(command + "\n")
     script.close()
     file.close()
@@ -79,7 +81,7 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     with open(ce_out_file, 'w') as fp:
         fp.write(merge_data)
 
-def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, classes: equivalence_classes, unroll=UNROLL_FACTOR):
+def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, classes: equivalence_classes, unroll):
     u = classes.get_leader(src_lib)
     v = classes.get_leader(dst_lib)
     if u == v:
@@ -138,10 +140,8 @@ def run_benchmark(strings: str, tag: str, classes: equivalence_classes):
     # classes = equivalence_classes(fname, libraries)
     log_file_name = ''
     if not USE_ASSUMES:
-        # stat_file_name = f'stats/{fname}-{tag}-{STAT_FILE}'
         log_file_name = f'stats/{fname}-{tag}.log'
     else:
-        # stat_file_name = f'stats/{fname}-{tag}-assumes-{STAT_FILE}'
         log_file_name = f'stats/{fname}-{tag}-assumes.log'
     log_file = open(log_file_name, 'w')
     log_file.write(f'Running benchmarks for {fname}\n')
@@ -149,25 +149,15 @@ def run_benchmark(strings: str, tag: str, classes: equivalence_classes):
         l1, l2 = pair
         if (l1, l2) in classes.cache:
             continue
-        unroll = min(8, UNROLL_FACTOR)
-        found = False
-        run_fwd, run_bwd = True, True
-        while unroll <= UNROLL_FACTOR and not found and (run_fwd or run_bwd):
-            if run_fwd and not found:
-                retry, timeout_fwd = run_ineq_checker(fname, l1, l2, log_file, classes, unroll)
-                if timeout_fwd:
-                    run_fwd = False
-                else:
-                    if not retry:
-                        break
-            if run_bwd and not found:
-                retry, timeout_bwd = run_ineq_checker(fname, l2, l1, log_file, classes, unroll)
-                if timeout_bwd:
-                    run_bwd = False
-                else:
-                    if not retry:
-                        break
-            unroll *= 2
+        unroll = UNROLL_FACTOR_MIN
+        while unroll <= UNROLL_FACTOR_MAX:
+            retry, _ = run_ineq_checker(fname, l1, l2, log_file, classes, unroll)
+            if not retry:
+                break
+            retry, _ = run_ineq_checker(fname, l2, l1, log_file, classes, unroll)
+            if not retry:
+                break
+            unroll *= UNROLL_FACTOR_RATIO
         classes.add_cache(l1, l2)
     log_file.write(f'Ran all experiments for {fname}\n')
     classes.print(log_file)
@@ -179,7 +169,7 @@ def split(a, n):
     k, m = divmod(len(a), n)
     return (a[i*k+min(i, m):(i+1)*k+min(i+1, m)] for i in range(n))
 
-def divide_conquer(line: str, tag: str, num_chunks=NUM_CHUNKS):
+def divide_conquer(line: str, tag: str, num_chunks):
     strings = [s.strip() for s in line.split(',')]
     fname = strings[0]
     libraries = strings[1:]
@@ -193,7 +183,9 @@ def divide_conquer(line: str, tag: str, num_chunks=NUM_CHUNKS):
     if os.path.isfile(eq_class_file):
         # The experiment has been run already, no need to run again
         return
-
+    
+    classes = None
+    
     if len(libraries) > 2 and num_chunks != 1:
         # Split Libraries into parts
         num_chunks = min(num_chunks, len(libraries))
@@ -229,7 +221,7 @@ def run_experiments(input_file):
     lines = [line.strip() for line in lines]
     file.close()
 
-    inequivalences = Parallel(n_jobs=min(NJOBS, len(lines)))(delayed(divide_conquer)(line, str(i)) for i, line in enumerate(lines))
+    inequivalences = Parallel(n_jobs=min(NJOBS, len(lines)))(delayed(divide_conquer)(line, str(i), NUM_CHUNKS) for i, line in enumerate(lines))
 
     ret = []
     for ineq in inequivalences:
@@ -281,7 +273,7 @@ def plot_hist(times, title, xlabel='Time (in seconds)'):
 
 # Analyses the logs to generate statistics
 def graph_gen():
-    stats = glob.glob('stats/*-stat.log')
+    stats = glob.glob('stats/*-stats.csv')
     stats.sort()
     NTIMEOUTS = 0
     completion_times = []
@@ -292,6 +284,8 @@ def graph_gen():
     ranking_ratios = []
     ineq_loop_bound = []
     for file in stats:
+        if 'assumes' in file:
+            continue
         with open(file, 'r') as fp:
             lines = fp.readlines()
             for line in lines:
@@ -301,10 +295,10 @@ def graph_gen():
                     NTIMEOUTS += 1
                 elif len(toks) == 6:
                     # FORMAT: {fname},{src},{dst},{unroll},{result},{time}
-                    if toks[-2] == 'EQUIV':
+                    if toks[-2] == 'ToolResult.EQUIV':
                         completion_times.append(float(toks[-1]))
                         eq_times.append(float(toks[-1]))
-                    elif toks[-2] == 'INEQ':
+                    elif toks[-2] == 'ToolResult.INEQ':
                         completion_times.append(float(toks[-1]))
                         ineq_times.append(float(toks[-1]))
                         with open(f'logs/{toks[0]}-{toks[1]}-{toks[2]}.proof', 'r') as ld:
@@ -324,7 +318,7 @@ def graph_gen():
                             ranking_ratio = INEQ_CG / N_FAILED_CGS
                             ranking_ratios.append(ranking_ratio)
                             ineq_loop_bound.append(FINAL_MU)
-                    elif toks[-2] == 'FAIL':
+                    elif toks[-2] == 'ToolResult.FAIL':
                         completion_times.append(float(toks[-1]))
                         failure_times.append(float(toks[-1]))
                     else:
@@ -346,7 +340,7 @@ if __name__ == "__main__":
     parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|graph_gen]', default='')
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
     parser.add_argument('--failset_mu', action='store', type=int, help='Denotes the mu to be used in inequivalence checking', default=FAILSET_MU)
-    parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR)
+    parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR_MAX)
     parser.add_argument('--ce_bound', action='store', type=int, help='Sets a bound on the counter examples to be generated', default=CE_BOUND)
     parser.add_argument('--timeout', action='store', type=int, help='Timeout for each run (in seconds)', default=TIMEOUT)
     parser.add_argument('--njobs', action='store', type=int, default=NJOBS)
@@ -356,7 +350,7 @@ if __name__ == "__main__":
     assert(args.mode != '')
     assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen', f'Invalid Mode'
     FAILSET_MU = args.failset_mu
-    UNROLL_FACTOR = args.unroll_factor
+    UNROLL_FACTOR_MAX = args.unroll_factor
     CE_BOUND = args.ce_bound
     TIMEOUT = args.timeout
     NJOBS = args.njobs

@@ -5,7 +5,7 @@ from enum import Enum
 def set_to_string(s: set):
     return ', '.join(s)
 
-class TOOL_RESULT(Enum):
+class ToolResult(Enum):
     EQUIV = 0
     FAIL = 1
     INEQ = 2
@@ -20,27 +20,27 @@ class run_info:
         self.unroll = unroll
         self.retcode = retcode
         if timeout:
-            self.result = TOOL_RESULT.TIMEOUT
+            self.result = ToolResult.TIMEOUT
             self.time_taken = None
         else :
             self.time_taken = time_taken
             if retcode == 0:
-                self.result = TOOL_RESULT.EQUIV
+                self.result = ToolResult.EQUIV
             elif retcode == 1:
-                self.result = TOOL_RESULT.FAIL
+                self.result = ToolResult.FAIL
             elif retcode == 2:
-                self.result = TOOL_RESULT.INEQ
+                self.result = ToolResult.INEQ
             else:
-                self.result = TOOL_RESULT.FAIL
+                self.result = ToolResult.FAIL
     
     def to_string(self):
         s = f'{self.fname},{self.src_lib},{self.dst_lib},{self.unroll},{self.result}'
-        if self.result != TOOL_RESULT.TIMEOUT:
+        if self.result != ToolResult.TIMEOUT:
             s += f',{self.time_taken}'
         return s
 
     def is_ineq(self):
-        return self.result == TOOL_RESULT.INEQ
+        return self.result == ToolResult.INEQ
     
     def type(self):
         return self.result

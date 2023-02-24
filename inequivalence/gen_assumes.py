@@ -1,5 +1,8 @@
 from enum import Enum
 from textwrap import dedent
+import glob
+import shlex
+import subprocess
 
 class UB(Enum):
     MEMORY_OVERLAP = 1
@@ -10,102 +13,44 @@ ASSUME_HEADER = '=assumes'
 COMMENT_HEADER = '=Comment'
 PREDICATE_DONE = "=predicate done"
 
-memccpy_args = {
-    'dietlibc': ['dst', 'src', 'c', 'count'],
-    'freebsd': ['t', 'f', 'c', 'n'],
-    'glibc': ['dst', 'src', 'c', 'n'],
-    'klibc': ['dst', 'src', 'c', 'n'],
-    'musl': ['dest', 'src', 'c', 'n'],
-    'netbsd': ['t', 'f', 'c', 'n'],
-    'newlib_small': ['dst0', 'src0', 'endchar0', 'len0'],
-    'newlib_fast': ['dst0', 'src0', 'endchar0', 'len0'],
-    'openbsd': ['t', 'f', 'c', 'n'],
-    'uClibc': ['s1', 's2', 'c', 'n'],
-}
-
 memcpy_args = {
-    'dietlibc_small': ['dst', 'src', 'n'],
-    'dietlibc_fast': ['dst', 'src', 'n'],
-    'freebsd': ['dst0', 'src0', 'length'],
-    'klibc': ['dst', 'src', 'n'],
-    'musl': ['dest', 'src', 'n'],
+    # 'dietlibc_small': ['dst', 'src', 'n'],
+    # 'dietlibc_fast': ['dst', 'src', 'n'],
+    # 'freebsd': ['dst0', 'src0', 'length'],
+    # 'klibc': ['dst', 'src', 'n'],
+    # 'musl': ['dest', 'src', 'n'],
     'netbsd_small': ['s1', 's2', 'n'],
     'netbsd_fast': ['dst0', 'src0', 'length'],
-    'netbsd_or1k': ['a', 'b', 'len'],
-    'newlib_small': ['dst0', 'src0', 'len0'],
-    'newlib_fast': ['dst0', 'src0', 'len0'],
-    'openbsd': ['dst0', 'src0', 'length'],
-    'openbsd_m88k': ['s1', 's2', 'n'],
-    'uClibc': ['s1', 's2', 'n'],
-    'uClibc_powerpc': ['to', 'from', 'len']
-}
-
-stpncpy_args = {
-    'freebsd': ['dst', 'src', 'n'],
-    'netbsd': ['dst', 'src', 'n'],
-    'newlib_small': ['dst', 'src', 'count'],
-    'newlib_fast': ['dst', 'src', 'count'],
-    'openbsd': ['dst', 'src', 'n'],
-    'uClibc': ['s1', 's2', 'n'],
+    # 'netbsd_or1k': ['a', 'b', 'len'],
+    # 'newlib_small': ['dst0', 'src0', 'len0'],
+    # 'newlib_fast': ['dst0', 'src0', 'len0'],
+    # 'openbsd': ['dst0', 'src0', 'length'],
+    # 'openbsd_m88k': ['s1', 's2', 'n'],
+    # 'uClibc': ['s1', 's2', 'n'],
+    # 'uClibc_powerpc': ['to', 'from', 'len']
 }
 
 strlen_args = {
     'dietlibc_small': ['s'],
     'dietlibc': ['s'],
-    'freebsd': ['str'],
-    'glibc': ['str'],
-    'klibc': ['s'],
-    'musl': ['s'],
-    'netbsd': ['str'],
-    'newlib': ['str'],
-    'openbsd': ['str'],
-    'uClibc': ['s'],
-}
-
-strnlen_args = {
-    'freebsd': ['s', 'maxlen'],
-    'freebsd_heimdal': ['s', 'len'],
-    'freebsd_openssh': ['str', 'maxlen'],
-    'glibc': ['str', 'maxlen'],
-    'klibc': ['s', 'maxlen'],
-    'netbsd': ['s', 'maxlen'],
-    'netbsd_heimdal': ['s', 'len'],
-    'newlib': ['str', 'n'],
-    'openbsd': ['str', 'maxlen'],
-    'uClibc': ['s', 'max']
-}
-
-swab_args = {
-    'dietlibc': ['src', 'dest', 'nbytes'],
-    'freebsd': ['from', 'to', 'len'],
-    'freebsd_heimdal': ['from', 'to', 'nbytes'],
-    'glibc': ['bfrom', 'bto', 'n'],
-    'musl': ['_src', '_dest', 'n'],
-    'netbsd': ['from', 'to', 'len'],
-    'netbsd_heimdal': ['from', 'to', 'nbytes'],
-    'newlib': ['b1', 'b2', 'length'],
-    'openbsd': ['from', 'to', 'len'],
-    'uClibc': ['source', 'dest', 'count']
-}
-
-wcschr_args = {
-    'dietlibc': ['wcs', 'wc'],
-    'freebsd': ['s', 'c'],
-    'glibc': ['wcs', 'wc'],
-    'netbsd': ['p', 'c'],
-    'newlib': ['s', 'c'],
-    'openbsd': ['s', 'c'],
-    'uClibc': ['s', 'c']
+    # 'freebsd': ['str'],
+    # 'glibc': ['str'],
+    # 'klibc': ['s'],
+    # 'musl': ['s'],
+    # 'netbsd': ['str'],
+    # 'newlib': ['str'],
+    # 'openbsd': ['str'],
+    # 'uClibc': ['s'],
 }
 
 UB_MAP = {
-    'memccpy': ([UB.MEMORY_OVERLAP], memccpy_args),
+    'memccpy': ([UB.MEMORY_OVERLAP], {}),
     'memcpy': ([UB.MEMORY_OVERLAP], memcpy_args),
-    'stpncpy': ([UB.VALID_POINTER_VAL], stpncpy_args),
+    'stpncpy': ([UB.VALID_POINTER_VAL], {}),
     'strlen': ([UB.VALID_POINTER_VAL], strlen_args),
-    'strnlen': ([UB.VALID_POINTER_VAL], strnlen_args),
-    'swab': ([UB.EVEN_ARG], swab_args),
-    'wcschr': ([UB.VALID_POINTER_VAL], wcschr_args)
+    'strnlen': ([UB.VALID_POINTER_VAL], {}),
+    'swab': ([UB.EVEN_ARG], {}),
+    'wcschr': ([UB.VALID_POINTER_VAL], {})
 }
 
 
@@ -144,9 +89,9 @@ def get_assume_string(ub_type, arg_list, comment='This is a Commment') -> str:
             7 : not(6) : BOOL
             8 : and(4, 7) : BOOL\n""")
     elif ub_type == UB.EVEN_ARG:
-        len = arg_list[-1]
+        length = arg_list[-1]
         s += dedent(f"""\
-        1 : input.src.llvm-%{len} : BV:32
+        1 : input.src.llvm-%{length} : BV:32
         2 : 2 : BV:32
         3 : bvsrem(1, 2) : BV:32
         4 : 0 : BV:32
@@ -157,14 +102,38 @@ def get_assume_string(ub_type, arg_list, comment='This is a Commment') -> str:
     s += PREDICATE_DONE + '\n'
     return s
 
+def get_args(fname):
+    benchmarks = glob.glob(f'benchmarks/C/{fname}/*.c')
+    ret = dict()
+    for bench in benchmarks:
+        libName = bench.split('/')[-1][:-2].split('_', maxsplit=1)[1]
+        command = f'ctags -x --c-kinds=fz --sort=no --if0=no {bench}'
+        tokens = shlex.split(command)
+        result = subprocess.run(tokens, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        outputLines = result.stdout.decode('utf-8').splitlines()
+        
+        tags = [line.split(maxsplit=4) for line in outputLines]
+        functions = [line[0] for line in tags if line[1] == 'function']
+        if len(functions) != 1:
+            print(f'Multiple functions present in file {bench}')
+            ret[libName] = None
+            continue
+        args = [line[0] for line in tags if line[1] == 'parameter']
+        ret[libName] = args
+    return ret
+
 def gen_assumes():
     for fname in UB_MAP:
-        ub_list, libargs = UB_MAP[fname]
-        for lib in libargs:
+        ub_list, libArgsHardcoded = UB_MAP[fname]
+        libArgs = get_args(fname)
+        for lib in libArgs:
+            args = libArgs[lib]
+            if args == None:
+                args = libArgsHardcoded[lib]
             with open(f'assumes/{fname}-{lib}.assumes', 'w') as fp:
                 s = ''
                 for ub in ub_list:
-                    s += get_assume_string(ub, libargs[lib])
+                    s += get_assume_string(ub, args)
                 s += '=done'
                 fp.write(s)
 

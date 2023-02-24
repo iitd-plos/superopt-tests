@@ -18,13 +18,9 @@
 #include <wchar.h>
 #include "../loop_unroll.h"
 
-#ifndef WCSRCHR
-# define WCSRCHR wcsrchr
-#endif
-
 /* Find the last occurrence of WC in WCS.  */
 wchar_t *
-WCSRCHR (const wchar_t *wcs, const wchar_t wc)
+wcsrchr (const wchar_t *wcs, const wchar_t wc)
 {
   wchar_t *retval = NULL;
 

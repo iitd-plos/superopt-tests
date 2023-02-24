@@ -1,7 +1,9 @@
 TEST_FILE=tests_v4.csv
 ASSUME_TESTS=tests_assumes.csv
+NJOBS=30
+NUM_CHUNKS=1
 
-.PHONY: clean	clean_all	run	run_spec gen_assumes
+.PHONY: clean	clean_all	clean_classes	run	gen_assumes
 
 clean:
 	@rm -f *.o *.harvest *.tmp *.bc *.etfg *.tfg *.s
@@ -11,11 +13,13 @@ clean:
 
 clean_all:	clean
 	@rm -rf logs/*.proof
-	@rm -rf stats/*.log
-	@rm -rf eq_classes/*.pkl
+	@rm -rf stats/*.log stats/*.csv
 	@rm -rf graphviz/*.dot
 	@rm -f *.ALL *.record *.src-tfg *.dst-tfg
 	@rm -f counterexamples/*
+
+clean_classes:
+	@rm -rf eq_classes/*.pkl
 
 run:
 	mkdir -p logs
@@ -24,7 +28,7 @@ run:
 	mkdir -p graphviz
 	mkdir -p counterexamples
 	mkdir -p plots
-	python3 benchmarking.py --mode run_all --input_file $(TEST_FILE)
+	python3 benchmarking.py --mode run_all --input_file $(TEST_FILE) --njobs $(NJOBS) --num_chunks $(NUM_CHUNKS)
 	python3 benchmarking.py --mode analysis --input_file $(TEST_FILE)
 	python3 benchmarking.py --mode graph_gen --input_file $(TEST_FILE)
 
@@ -33,6 +37,6 @@ gen_assumes:
 	python3 gen_assumes.py
 
 run_assumes:
-	python3 benchmarking.py --mode run_all --input_file $(ASSUME_TESTS) --assumes
+	python3 benchmarking.py --mode run_all --input_file $(ASSUME_TESTS) --assumes --njobs $(NJOBS) --num_chunks $(NUM_CHUNKS)
 	python3 benchmarking.py --mode analysis --input_file $(ASSUME_TESTS)
-
+	python3 benchmarking.py --mode graph_gen --input_file $(ASSUME_TESTS)
