@@ -72,16 +72,6 @@ mlvar.dst.llvm.foo.3 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y__
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=dst.llvm-%hidden-reg.E0%0%d
-1 : input.dst.llvm-%hidden-reg : BV:32
-2 : input.dst.llvm-callee-save.0 : BV:32
-3 : bvxor(1, 2) : BV:32
-4 : input.dst.llvm-callee-save.1 : BV:32
-5 : bvxor(3, 4) : BV:32
-6 : input.dst.llvm-callee-save.2 : BV:32
-7 : bvxor(5, 6) : BV:32
-8 : input.dst.llvm-callee-save.3 : BV:32
-9 : bvxor(7, 8) : BV:32
 =dst.llvm-%ret-reg.E0%0%d
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
@@ -116,6 +106,16 @@ mlvar.dst.llvm.foo.3 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y__
 31 : select(1, 2, 26, 30, 10, 11) : BV:32
 32 : bvsub(25, 31) : BV:32
 33 : bvadd(19, 32) : BV:32
+=dst.llvm-%hidden-reg.E0%0%d
+1 : input.dst.llvm-%hidden-reg : BV:32
+2 : input.dst.llvm-callee-save.0 : BV:32
+3 : bvxor(1, 2) : BV:32
+4 : input.dst.llvm-callee-save.1 : BV:32
+5 : bvxor(3, 4) : BV:32
+6 : input.dst.llvm-callee-save.2 : BV:32
+7 : bvxor(5, 6) : BV:32
+8 : input.dst.llvm-callee-save.3 : BV:32
+9 : bvxor(7, 8) : BV:32
 =dst.llvm-%sub.E0%0%d
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
@@ -890,7 +890,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100039
 =loc_expr
-141002 : input.dst.llvm-%0.E0%0%d : BV:32
+141044 : input.dst.llvm-%0.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -903,7 +903,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100040
 =loc_expr
-141003 : input.dst.llvm-%1.E0%0%d : BV:32
+141045 : input.dst.llvm-%1.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -918,7 +918,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100041
 =loc_expr
-141004 : input.dst.llvm-%2.E0%0%d : BV:32
+141046 : input.dst.llvm-%2.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -933,7 +933,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100042
 =loc_expr
-141005 : input.dst.llvm-%3.E0%0%d : BV:32
+141047 : input.dst.llvm-%3.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -948,14 +948,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100043
 =loc_expr
-141006 : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.1.total_offset.E0%0%d : BV:32
+141048 : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.1.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 8 { 0x8 +1.95e129 } : BV:32
 =avail_exprs_val.end
 =loc 100044
 =loc_expr
-141007 : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d : BV:32
+141049 : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%m : BV:32
@@ -964,21 +964,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100045
 =loc_expr
-141008 : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+141050 : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 8 { 0x8 +1.95e129 } : BV:32
 =avail_exprs_val.end
 =loc 100046
 =loc_expr
-141009 : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.gepoffset.1.total_offset.E0%0%d : BV:32
+141051 : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.gepoffset.1.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =avail_exprs_val.end
 =loc 100047
 =loc_expr
-141010 : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.gepoffset.2.total_offset.E0%0%d : BV:32
+141052 : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.gepoffset.2.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
@@ -987,35 +987,35 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100048
 =loc_expr
-141011 : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+141053 : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =avail_exprs_val.end
 =loc 100049
 =loc_expr
-141012 : input.dst.llvm-%72f0355cb9847d924c673de58468b759.gepoffset.1.total_offset.E0%0%d : BV:32
+141054 : input.dst.llvm-%72f0355cb9847d924c673de58468b759.gepoffset.1.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100050
 =loc_expr
-141013 : input.dst.llvm-%72f0355cb9847d924c673de58468b759.gepoffset.2.total_offset.E0%0%d : BV:32
+141055 : input.dst.llvm-%72f0355cb9847d924c673de58468b759.gepoffset.2.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%m : BV:32
 =avail_exprs_val.end
 =loc 100051
 =loc_expr
-141014 : input.dst.llvm-%72f0355cb9847d924c673de58468b759.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+141056 : input.dst.llvm-%72f0355cb9847d924c673de58468b759.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100052
 =loc_expr
-141015 : input.dst.llvm-%add.E0%0%d : BV:32
+141057 : input.dst.llvm-%add.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1032,7 +1032,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100053
 =loc_expr
-141001 : input.dst.llvm-%add4.E0%0%d : BV:32
+141043 : input.dst.llvm-%add4.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1057,14 +1057,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100054
 =loc_expr
-141016 : input.dst.llvm-%arrayidx.E0%0%d : BV:32
+141058 : input.dst.llvm-%arrayidx.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%m : BV:32
 =avail_exprs_val.end
 =loc 100055
 =loc_expr
-141017 : input.dst.llvm-%arrayidx1.E0%0%d : BV:32
+141059 : input.dst.llvm-%arrayidx1.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%m : BV:32
@@ -1073,7 +1073,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100056
 =loc_expr
-141018 : input.dst.llvm-%arrayidx2.E0%0%d : BV:32
+141060 : input.dst.llvm-%arrayidx2.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4 { 0x4 +1.47e129 } : BV:32
@@ -1082,7 +1082,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100057
 =loc_expr
-141019 : input.dst.llvm-%arrayidx3.E0%0%d : BV:32
+141061 : input.dst.llvm-%arrayidx3.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%m : BV:32
@@ -1091,14 +1091,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100058
 =loc_expr
-141020 : input.dst.llvm-%be7d873adafde1195cfad5d1695ee47.gepoffset.1.total_offset.E0%0%d : BV:32
+141062 : input.dst.llvm-%be7d873adafde1195cfad5d1695ee47.gepoffset.1.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 12 { 0xc +1.143e129 } : BV:32
 =avail_exprs_val.end
 =loc 100059
 =loc_expr
-141021 : input.dst.llvm-%be7d873adafde1195cfad5d1695ee47.gepoffset.2.total_offset.E0%0%d : BV:32
+141063 : input.dst.llvm-%be7d873adafde1195cfad5d1695ee47.gepoffset.2.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%m : BV:32
@@ -1107,7 +1107,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100060
 =loc_expr
-141022 : input.dst.llvm-%be7d873adafde1195cfad5d1695ee47.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+141064 : input.dst.llvm-%be7d873adafde1195cfad5d1695ee47.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 12 { 0xc +1.143e129 } : BV:32
@@ -1182,14 +1182,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100065
 =loc_expr
-141023 : input.dst.local_alloc_count.E0%0%d : COUNT
+141065 : input.dst.local_alloc_count.E0%0%d : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100066
 =loc_expr
-141024 : input.dst.cur_rounding_mode.E0%0%d : ROUNDING_MODE
+141066 : input.dst.cur_rounding_mode.E0%0%d : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
@@ -1358,16 +1358,6 @@ lr_status_linearly_related(; )
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
 =graph_with_simplified_assets.simplified_to_state at L0%0%d=>E0%0%d
-=dst.llvm-%hidden-reg.E0%0%d
-1 : input.dst.llvm-%hidden-reg : BV:32
-2 : input.dst.llvm-callee-save.0 : BV:32
-3 : bvxor(1, 2) : BV:32
-4 : input.dst.llvm-callee-save.1 : BV:32
-5 : bvxor(3, 4) : BV:32
-6 : input.dst.llvm-callee-save.2 : BV:32
-7 : bvxor(5, 6) : BV:32
-8 : input.dst.llvm-callee-save.3 : BV:32
-9 : bvxor(7, 8) : BV:32
 =dst.llvm-%ret-reg.E0%0%d
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
@@ -1388,6 +1378,16 @@ lr_status_linearly_related(; )
 17 : select(1, 2, 3, 16, 5, 6) : BV:32
 18 : bvmul(14, 17) : BV:32
 19 : bvadd(7, 10, 13, 18) : BV:32
+=dst.llvm-%hidden-reg.E0%0%d
+1 : input.dst.llvm-%hidden-reg : BV:32
+2 : input.dst.llvm-callee-save.0 : BV:32
+3 : bvxor(1, 2) : BV:32
+4 : input.dst.llvm-callee-save.1 : BV:32
+5 : bvxor(3, 4) : BV:32
+6 : input.dst.llvm-callee-save.2 : BV:32
+7 : bvxor(5, 6) : BV:32
+8 : input.dst.llvm-callee-save.3 : BV:32
+9 : bvxor(7, 8) : BV:32
 =dst.llvm-%sub.E0%0%d
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
@@ -1593,16 +1593,16 @@ undef-behavioursome.edge.L0%0%d=>E0%0%d
 140691 : 12 { 0xc +1.143e129 } : BV:32
 140692 : bvadd(140561, 140691) : BV:32
 140483 : 4 { 0x4 +1.0e1025 } : INT
-141094 : islangaligned(140692, 140483) : BOOL
+141155 : islangaligned(140692, 140483) : BOOL
 140486 : 4 { 0x4 +1.47e129 } : BV:32
 140720 : bvadd(140486, 140561) : BV:32
 140743 : isgepoffset(140720, 140486) : BOOL
-141105 : and(140276, 140743) : BOOL
-141107 : and(141094, 141105) : BOOL
-141109 : islangaligned(140720, 140483) : BOOL
-141143 : and(140276, 140712, 141107, 141109) : BOOL
-141145 : islangaligned(140697, 140483) : BOOL
-141148 : and(141143, 141145) : BOOL
+141166 : and(140276, 140743) : BOOL
+141168 : and(141155, 141166) : BOOL
+141170 : islangaligned(140720, 140483) : BOOL
+141192 : and(140276, 140712, 141168, 141170) : BOOL
+141194 : islangaligned(140697, 140483) : BOOL
+141198 : and(141192, 141194) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1624,9 +1624,9 @@ undef-behavioursome.edge.L0%0%d=>E0%0%d
 140710 : isgepoffset(140692, 140691) : BOOL
 140290 : 0 { 0x0 +1.0e129 } : BV:32
 140709 : isgepoffset(140561, 140290) : BOOL
-141075 : and(140276, 140709) : BOOL
-141077 : and(140594, 141075) : BOOL
-141092 : and(140276, 140594, 140710, 141077) : BOOL
+141117 : and(140276, 140709) : BOOL
+141119 : and(140594, 141117) : BOOL
+141153 : and(140276, 140594, 140710, 141119) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -1802,16 +1802,6 @@ input.dst.llvm-%ret-reg : L0%0%d : input.dst.llvm-%add4
 input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
-input.dst.llvm-%add.E0%0%d : L0%0%d : (DSTMEM[m']_4 + DSTMEM[(m' + 12)]_4)
-input.dst.llvm-%1.E0%0%d : L0%0%d : DSTMEM[(m' + 12)]_4
-input.dst.llvm-%2.E0%0%d : L0%0%d : DSTMEM[(4 + m')]_4
-input.dst.llvm-%arrayidx.E0%0%d : L0%0%d : m'
-input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.1.total_offset.E0%0%d : L0%0%d : 8
-input.dst.llvm-%arrayidx1.E0%0%d : L0%0%d : (m' + 12)
-input.dst.llvm-%0.E0%0%d : L0%0%d : DSTMEM[m']_4
-input.dst.llvm-%3.E0%0%d : L0%0%d : DSTMEM[(m' + 8)]_4
-input.dst.llvm-%arrayidx2.E0%0%d : L0%0%d : (4 + m')
-input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d : L0%0%d : (m' + 8)
 input.dst.llvm-%m : L0%0%d : m'
 input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : L0%0%d : input.dst.local./*___y___foo__x__=L0%0%argnum0=/
 input.dst.llvm-%add4 : L0%0%d : (input.dst.llvm-%add + input.dst.llvm-%sub)
@@ -1836,6 +1826,16 @@ input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.intermediate.gepoffset.1.offset
 input.dst.llvm-%arrayidx2 : L0%0%d : input.dst.llvm-%55a147996d5c345040cc3a80efece8a6.gepoffset.2.total_offset
 input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.intermediate.gepoffset.1.offset : L0%0%d : 8
 input.dst.llvm-%arrayidx3 : L0%0%d : input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset
+input.dst.llvm-%add.E0%0%d : L0%0%d : (DSTMEM[m']_4 + DSTMEM[(m' + 12)]_4)
+input.dst.llvm-%1.E0%0%d : L0%0%d : DSTMEM[(m' + 12)]_4
+input.dst.llvm-%2.E0%0%d : L0%0%d : DSTMEM[(4 + m')]_4
+input.dst.llvm-%arrayidx.E0%0%d : L0%0%d : m'
+input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.1.total_offset.E0%0%d : L0%0%d : 8
+input.dst.llvm-%arrayidx1.E0%0%d : L0%0%d : (m' + 12)
+input.dst.llvm-%0.E0%0%d : L0%0%d : DSTMEM[m']_4
+input.dst.llvm-%3.E0%0%d : L0%0%d : DSTMEM[(m' + 8)]_4
+input.dst.llvm-%arrayidx2.E0%0%d : L0%0%d : (4 + m')
+input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d : L0%0%d : (m' + 8)
 input.dst.llvm-%72f0355cb9847d924c673de58468b759.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 0
 input.dst.llvm-%arrayidx3.E0%0%d : L0%0%d : (m' + 8)
 input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.intermediate.gepoffset.1.offset.E0%0%d : L0%0%d : 8
@@ -2203,17 +2203,17 @@ input.dst.cur_rounding_mode.E0%0%d : L0%0%d : ROUND_to_nearest_ties_to_even
   L0%0%d=>E0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>E0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =reaching defns for expr 2 edges
   L0%0%d=>E0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =reaching defns for expr 3 edges
   L0%0%d=>E0%0%d
 =reaching defns for expr 3 edges done
@@ -2379,6 +2379,10 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
+=LR status for var input.dst.llvm-%m
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
+=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+lr_status_top
 =LR status for var input.dst.llvm-%add.E0%0%d
 lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
 =LR status for var input.dst.llvm-%1.E0%0%d
@@ -2399,10 +2403,6 @@ lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___ba
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
 =LR status for var input.dst.llvm-%4ad719ffd051f6fadb1eb586f6dacea2.gepoffset.2.total_offset.E0%0%d
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
-=LR status for var input.dst.llvm-%m
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-heap, )
-=LR status for var input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-lr_status_top
 =LR status for var input.dst.llvm-%72f0355cb9847d924c673de58468b759.intermediate.gepoffset.1.offset.E0%0%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%arrayidx3.E0%0%d

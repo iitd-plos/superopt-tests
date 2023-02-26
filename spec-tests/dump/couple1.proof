@@ -336,7 +336,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 12
 =loc_expr
-140295 : input.spec-%var-u-0.L2%7%bbentry : UNIT
+140296 : input.spec-%var-u-0.L2%7%bbentry : UNIT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-x-0 : SUM[UNIT,BV:32]
@@ -345,7 +345,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 13
 =loc_expr
-140296 : input.spec-%var-x_val-0.L2%7%bbentry : BV:32
+140297 : input.spec-%var-x_val-0.L2%7%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-x-0 : SUM[UNIT,BV:32]
@@ -2316,8 +2316,8 @@ pointer-implements-opt
 140287 : 0 { 0x0 +1.0e129 } : BV:32
 140318 : input.dst.llvm-%x : BV:32
 140354 : eq(140287, 140318) : BOOL
-140297 : 1 { 0x1 +1.11e129 } : BV:32
-140413 : ite(140354, 140287, 140297) : BV:32
+140295 : 1 { 0x1 +1.11e129 } : BV:32
+140413 : ite(140354, 140287, 140295) : BV:32
 140312 : unit : UNIT
 140319 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 140320 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
@@ -2357,9 +2357,9 @@ precond-mlasserts
 140404 : eq(140321, 140392) : BOOL
 140405 : and(140403, 140404) : BOOL
 140320 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140297 : 1 { 0x1 +1.11e129 } : BV:32
+140295 : 1 { 0x1 +1.11e129 } : BV:32
 140322 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-140406 : region_agrees_with_memlabel(140320, 140287, 140297, 140322) : BOOL
+140406 : region_agrees_with_memlabel(140320, 140287, 140295, 140322) : BOOL
 140407 : and(140405, 140406) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
@@ -2380,8 +2380,8 @@ undef-behaviour-align-assume.edge.Lif.then%1%d=>Lreturn%1%bbentry
 140308 : 4 { 0x4 +1.0e1025 } : INT
 140327 : islangaligned(140318, 140308) : BOOL
 140275 : 1 { 0x1 } : BOOL
-140523 : eq(140327, 140275) : BOOL
-140545 : implies(140355, 140523) : BOOL
+140470 : eq(140327, 140275) : BOOL
+140524 : implies(140355, 140470) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done

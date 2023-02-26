@@ -139,6 +139,11 @@ mlheap.src.spec.foo : memlabel-mem--heap
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
+=spec-%tmpvar-0.L2%13%d
+1 : SORT2EXPR.VAR : MAP[BV:32 -> BV:32]
+2 : map_init(1) : MAP[BV:32 -> BV:32]
+=spec-%tmpvar-1.L2%13%d
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-10.L2%13%d
 1 : input.spec-%var-x-0 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
@@ -191,11 +196,6 @@ mlheap.src.spec.foo : memlabel-mem--heap
 9 : 12 { 0xc +1.143e129 } : BV:32
 10 : bvadd(9, 4) : BV:32
 11 : map_set(7, 8, 10) : MAP[BV:32 -> BV:32]
-=spec-%tmpvar-0.L2%13%d
-1 : SORT2EXPR.VAR : MAP[BV:32 -> BV:32]
-2 : map_init(1) : MAP[BV:32 -> BV:32]
-=spec-%tmpvar-1.L2%13%d
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -879,7 +879,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 32
 =loc_expr
-140337 : input.spec-%tmpvar-16.L2%25%d : SUM[UNIT,BV:32]
+140338 : input.spec-%tmpvar-16.L2%25%d : SUM[UNIT,BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -902,7 +902,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 33
 =loc_expr
-140340 : input.spec-%tmpvar-12.L2%17%d : SUM[UNIT,BV:32]
+140342 : input.spec-%tmpvar-12.L2%17%d : SUM[UNIT,BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -925,14 +925,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 34
 =loc_expr
-140450 : input.spec-%tmpvar-11.L2%17%d : BV:32
+140477 : input.spec-%tmpvar-11.L2%17%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 35
 =loc_expr
-140343 : input.spec-%var-t1-0.L2%13%d : MAP[BV:32 -> BV:32]
+140466 : input.spec-%var-t1-0.L2%13%d : MAP[BV:32 -> BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -954,14 +954,14 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 36
 =loc_expr
-140455 : input.spec-%tmpvar-15.L2%25%d : BV:32
+140479 : input.spec-%tmpvar-15.L2%25%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =avail_exprs_val.end
 =loc 40
 =loc_expr
-140457 : input.spec-%tmpvar-0.L2%13%d : MAP[BV:32 -> BV:32]
+140481 : input.spec-%tmpvar-0.L2%13%d : MAP[BV:32 -> BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -975,21 +975,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 41
 =loc_expr
-140458 : input.spec-%tmpvar-1.L2%13%d : BV:32
+140482 : input.spec-%tmpvar-1.L2%13%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 42
 =loc_expr
-140459 : input.spec-%tmpvar-2.L2%13%d : BV:32
+140483 : input.spec-%tmpvar-2.L2%13%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 5 { 0x5 +1.59e129 } : BV:32
 =avail_exprs_val.end
 =loc 43
 =loc_expr
-140460 : input.spec-%tmpvar-3.L2%13%d : BV:32
+140484 : input.spec-%tmpvar-3.L2%13%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-x-0 : BV:32
@@ -998,7 +998,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 44
 =loc_expr
-140461 : input.spec-%tmpvar-4.L2%13%d : MAP[BV:32 -> BV:32]
+140485 : input.spec-%tmpvar-4.L2%13%d : MAP[BV:32 -> BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -1016,21 +1016,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 45
 =loc_expr
-140462 : input.spec-%tmpvar-5.L2%13%d : BV:32
+140486 : input.spec-%tmpvar-5.L2%13%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =avail_exprs_val.end
 =loc 46
 =loc_expr
-140463 : input.spec-%tmpvar-6.L2%13%d : BV:32
+140487 : input.spec-%tmpvar-6.L2%13%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 12 { 0xc +1.143e129 } : BV:32
 =avail_exprs_val.end
 =loc 47
 =loc_expr
-140464 : input.spec-%tmpvar-7.L2%13%d : BV:32
+140488 : input.spec-%tmpvar-7.L2%13%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-x-0 : BV:32
@@ -1039,7 +1039,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 48
 =loc_expr
-140465 : input.spec-%tmpvar-8.L2%13%d : MAP[BV:32 -> BV:32]
+140489 : input.spec-%tmpvar-8.L2%13%d : MAP[BV:32 -> BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -1061,28 +1061,46 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 49
 =loc_expr
-140467 : input.spec-%tmpvar-9.L2%13%d : BV:32
+140490 : input.spec-%tmpvar-9.L2%13%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 50
 =loc_expr
-140468 : input.spec-%tmpvar-13.L2%23%bbentry : BV:32
+140491 : input.spec-%tmpvar-13.L2%23%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 52
 =loc_expr
-140469 : input.spec-%var-u-0.L2%23%bbentry : UNIT
+140492 : input.spec-%var-u-0.L2%23%bbentry : UNIT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
-1 : unit : UNIT
+1 : Lambda33 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda34 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
+9 : input.spec-%var-x-0 : BV:32
+10 : 4294967291 { 0xfffffffb -5 -1.99999940e128 } : BV:32
+11 : bvadd(9, 10) : BV:32
+12 : map_set(8, 5, 11) : MAP[BV:32 -> BV:32]
+13 : 1 { 0x1 +1.11e129 } : BV:32
+14 : 12 { 0xc +1.143e129 } : BV:32
+15 : bvadd(9, 14) : BV:32
+16 : map_set(12, 13, 15) : MAP[BV:32 -> BV:32]
+17 : map_get(16, 5) : SUM[UNIT,BV:32]
+18 : 0 { 0x0 +1.0e1025 } : INT
+19 : sum_get(17, 18) : UNIT
 =avail_exprs_val.end
 =loc 53
 =loc_expr
-140470 : input.spec-%var-y-0.L2%23%bbentry : BV:32
+140493 : input.spec-%var-y-0.L2%23%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -1107,21 +1125,39 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 54
 =loc_expr
-140471 : input.spec-%tmpvar-17.L2%31%bbentry : BV:32
+140494 : input.spec-%tmpvar-17.L2%31%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 56
 =loc_expr
-140472 : input.spec-%var-u-1.L2%31%bbentry : UNIT
+140495 : input.spec-%var-u-1.L2%31%bbentry : UNIT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
-1 : unit : UNIT
+1 : Lambda33 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda34 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
+9 : input.spec-%var-x-0 : BV:32
+10 : 4294967291 { 0xfffffffb -5 -1.99999940e128 } : BV:32
+11 : bvadd(9, 10) : BV:32
+12 : map_set(8, 5, 11) : MAP[BV:32 -> BV:32]
+13 : 1 { 0x1 +1.11e129 } : BV:32
+14 : 12 { 0xc +1.143e129 } : BV:32
+15 : bvadd(9, 14) : BV:32
+16 : map_set(12, 13, 15) : MAP[BV:32 -> BV:32]
+17 : map_get(16, 13) : SUM[UNIT,BV:32]
+18 : 0 { 0x0 +1.0e1025 } : INT
+19 : sum_get(17, 18) : UNIT
 =avail_exprs_val.end
 =loc 57
 =loc_expr
-140473 : input.spec-%var-y-1.L2%31%bbentry : BV:32
+140496 : input.spec-%var-y-1.L2%31%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : Lambda33 : BV:32
@@ -1157,14 +1193,14 @@ discontiguous mls:
 =loc 40 expr
 1 : input.spec-%tmpvar-0.L2%13%d : MAP[BV:32 -> BV:32]
 =loc 40 spreled-expr
-140479 : Lambda33 : BV:32
+140497 : Lambda33 : BV:32
 140331 : 0 { 0x0 } : BOOL
-140482 : lambda(140479, 140331) : FUNCTION[BV:32 -> BOOL]
-140485 : Lambda34 : BV:32
+140498 : lambda(140497, 140331) : FUNCTION[BV:32 -> BOOL]
+140499 : Lambda34 : BV:32
 140278 : 0 { 0x0 +1.0e129 } : BV:32
-140486 : lambda(140485, 140278) : FUNCTION[BV:32 -> BV:32]
-140487 : map(140482, 140486) : MAP[BV:32 -> BV:32]
-140488 : sym_const(140487) : MAP[BV:32 -> BV:32]
+140500 : lambda(140499, 140278) : FUNCTION[BV:32 -> BV:32]
+140501 : map(140498, 140500) : MAP[BV:32 -> BV:32]
+140502 : sym_const(140501) : MAP[BV:32 -> BV:32]
 =loc 41 expr
 1 : input.spec-%tmpvar-1.L2%13%d : BV:32
 =loc 41 spreled-expr
@@ -1189,18 +1225,10 @@ discontiguous mls:
 1 : input.spec-%tmpvar-13.L2%23%bbentry : BV:32
 =loc 50 spreled-expr
 140278 : 0 { 0x0 +1.0e129 } : BV:32
-=loc 52 expr
-1 : input.spec-%var-u-0.L2%23%bbentry : UNIT
-=loc 52 spreled-expr
-140391 : unit : UNIT
 =loc 54 expr
 1 : input.spec-%tmpvar-17.L2%31%bbentry : BV:32
 =loc 54 spreled-expr
 140278 : 0 { 0x0 +1.0e129 } : BV:32
-=loc 56 expr
-1 : input.spec-%var-u-1.L2%31%bbentry : UNIT
-=loc 56 spreled-expr
-140391 : unit : UNIT
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;foo}
@@ -1284,11 +1312,7 @@ lr_status_linearly_related(; )
 lr_status_linearly_related(; )
 =loc_id 50 lr-status in lr-status-for-sprel-locs-map
 lr_status_linearly_related(; )
-=loc_id 52 lr-status in lr-status-for-sprel-locs-map
-lr_status_linearly_related(; )
 =loc_id 54 lr-status in lr-status-for-sprel-locs-map
-lr_status_linearly_related(; )
-=loc_id 56 lr-status in lr-status-for-sprel-locs-map
 lr_status_linearly_related(; )
 =lr-status-for-sprel-locs-map done
 =graph_with_aliasing_done
@@ -1342,6 +1366,17 @@ lr_status_linearly_related(; )
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
 =graph_with_simplified_assets.simplified_to_state at L0%0%d=>L2%13%d
+=spec-%tmpvar-0.L2%13%d
+1 : Lambda33 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda34 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
+=spec-%tmpvar-1.L2%13%d
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-10.L2%13%d
 1 : input.spec-%var-x-0 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
@@ -1409,17 +1444,6 @@ lr_status_linearly_related(; )
 14 : 12 { 0xc +1.143e129 } : BV:32
 15 : bvadd(9, 14) : BV:32
 16 : map_set(12, 13, 15) : MAP[BV:32 -> BV:32]
-=spec-%tmpvar-0.L2%13%d
-1 : Lambda33 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda34 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=spec-%tmpvar-1.L2%13%d
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%13%d=>L2%14%bbentry
 =state_end

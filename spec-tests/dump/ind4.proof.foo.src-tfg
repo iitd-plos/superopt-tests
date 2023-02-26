@@ -81,13 +81,13 @@ mlheap.src.spec.foo : memlabel-mem--heap
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=src.spec-ghostvar.itervar.1.L3%5%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%tmpvar-5.L3%5%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-l-0.L3%5%bbentry
 1 : input.spec-%var-l-1 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =spec-%var-sum-0.L3%5%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=src.spec-ghostvar.itervar.1.L3%5%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-5.L3%5%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -137,12 +137,12 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-7.E0%0%d
-1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 =spec-%var-u-0.E0%0%d
 1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
+=spec-%tmpvar-7.E0%0%d
+1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 =spec-%tmpvar-3.E0%0%d
 1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 =spec-%tmpvar-4.E0%0%d
@@ -160,10 +160,15 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=src.spec-ghostvar.itervar.1.L3%5%bbentry
-1 : input.src.spec-ghostvar.itervar.1.L3%5%bbentry : BV:32
-2 : 1 { 0x1 +1.11e129 } : BV:32
-3 : bvadd(1, 2) : BV:32
+=spec-%var-l2-0.L3%5%bbentry
+1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=spec-%var-n-0.L3%5%bbentry
+1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =spec-%tmpvar-0.L3%5%bbentry
 1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
@@ -185,15 +190,10 @@ tfg_edge_comment end
 5 : prod_get(3, 4) : BV:32
 6 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 7 : bvadd(5, 6) : BV:32
-=spec-%var-l2-0.L3%5%bbentry
-1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-n-0.L3%5%bbentry
-1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=src.spec-ghostvar.itervar.1.L3%5%bbentry
+1 : input.src.spec-ghostvar.itervar.1.L3%5%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
 =spec-%var-val-0.L3%5%bbentry
 1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT
@@ -515,13 +515,13 @@ lr_status_linearly_related(; )
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
 =graph_with_simplified_assets.simplified_to_state at L0%0%d=>L3%5%bbentry
-=src.spec-ghostvar.itervar.1.L3%5%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%tmpvar-5.L3%5%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-l-0.L3%5%bbentry
 1 : input.spec-%var-l-1 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =spec-%var-sum-0.L3%5%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=src.spec-ghostvar.itervar.1.L3%5%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-5.L3%5%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L3%5%bbentry=>L3%5%d
@@ -531,12 +531,12 @@ lr_status_linearly_related(; )
 =graph_with_simplified_assets.simplified_to_state at L3%5%d=>L3%8%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L3%6%bbentry=>E0%0%d
-=spec-%tmpvar-7.E0%0%d
-1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 =spec-%var-u-0.E0%0%d
 1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
+=spec-%tmpvar-7.E0%0%d
+1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 =spec-%tmpvar-3.E0%0%d
 1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 =spec-%tmpvar-4.E0%0%d
@@ -545,10 +545,15 @@ lr_status_linearly_related(; )
 1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L3%8%bbentry=>L3%5%bbentry
-=src.spec-ghostvar.itervar.1.L3%5%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.spec-ghostvar.itervar.1.L3%5%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
+=spec-%var-l2-0.L3%5%bbentry
+1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+=spec-%var-n-0.L3%5%bbentry
+1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
+2 : 1 { 0x1 +1.0e1025 } : INT
+3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
 =spec-%tmpvar-0.L3%5%bbentry
 1 : input.spec-%var-sum-0.L3%5%bbentry : BV:32
 2 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -570,15 +575,10 @@ lr_status_linearly_related(; )
 5 : 0 { 0x0 +1.0e1025 } : INT
 6 : prod_get(4, 5) : BV:32
 7 : bvadd(1, 6) : BV:32
-=spec-%var-l2-0.L3%5%bbentry
-1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
-4 : prod_get(3, 2) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-=spec-%var-n-0.L3%5%bbentry
-1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
-2 : 1 { 0x1 +1.0e1025 } : INT
-3 : sum_get(1, 2) : IND[Type0,PROD[BV:32,SUM[UNIT,DECL[Type0]]]]
+=src.spec-ghostvar.itervar.1.L3%5%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.src.spec-ghostvar.itervar.1.L3%5%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
 =spec-%var-val-0.L3%5%bbentry
 1 : input.spec-%var-l-0.L3%5%bbentry : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 2 : 1 { 0x1 +1.0e1025 } : INT

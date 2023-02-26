@@ -1312,56 +1312,56 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100054
 =loc_expr
-140373 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140372 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100056
 =loc_expr
-140374 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140373 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100061
 =loc_expr
-141063 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+141075 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100062
 =loc_expr
-141064 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+141076 : input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100066
 =loc_expr
-141067 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
+141079 : input.dst.llvm-%x.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100068
 =loc_expr
-141068 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
+141080 : input.dst.llvm-%j.0.phi.tmpvar.for.body.Lfor.cond1%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100085
 =loc_expr
-141084 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
+141096 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100086
 =loc_expr
-141085 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
+141097 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
@@ -1949,44 +1949,44 @@ tfg.assumes_around_edge at Lfor.body3%1%d=>Lfor.cond1%1%bbentry assume #0.pred
 undef-behavioursome.edge.Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =LhsExpr
 140665 : 4 { 0x4 +1.0e1025 } : BV:64
-141006 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+141019 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 140587 : 32 { 0x20 +1.0e1025 } : INT
-141034 : bvsign_ext(141006, 140587) : BV:64
-141155 : bvmul(140665, 141034) : BV:64
+141049 : bvsign_ext(141019, 140587) : BV:64
+141167 : bvmul(140665, 141049) : BV:64
 140591 : 63 { 0x3f +1.0e1025 } : INT
-141156 : bvextract(141155, 140591, 140587) : BV:32
+141168 : bvextract(141167, 140591, 140587) : BV:32
 140286 : 0 { 0x0 +1.0e129 } : BV:32
-141033 : bvslt(141006, 140286) : BOOL
+141048 : bvslt(141019, 140286) : BOOL
 140593 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-141169 : ite(141033, 140593, 140286) : BV:32
-141171 : eq(141156, 141169) : BOOL
+141181 : ite(141048, 140593, 140286) : BV:32
+141183 : eq(141168, 141181) : BOOL
 140402 : 4 { 0x4 +1.0e1025 } : INT
-141173 : isindexforsize(141171, 140402) : BOOL
+141185 : isindexforsize(141183, 140402) : BOOL
 140523 : input.dst.llvm-%arr : BV:32
 140415 : 4 { 0x4 +1.47e129 } : BV:32
-141100 : bvmul(140415, 141006) : BV:32
-141103 : bvadd(140523, 141100) : BV:32
-141175 : isgepoffset(141103, 141100) : BOOL
-141179 : islangaligned(141103, 140402) : BOOL
+141112 : bvmul(140415, 141019) : BV:32
+141115 : bvadd(140523, 141112) : BV:32
+141187 : isgepoffset(141115, 141112) : BOOL
+141191 : islangaligned(141115, 140402) : BOOL
 140453 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 140454 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-141107 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap-arg.0 : MEMLABEL
+141119 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap-arg.0 : MEMLABEL
 140403 : 0 { 0x0 } : BOOL
-141110 : select(140453, 140454, 141107, 141103, 140402, 140403) : BV:32
-141181 : islangaligned(141110, 140402) : BOOL
-141184 : and(141179, 141181) : BOOL
-141008 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
-141052 : bvsign_ext(141008, 140587) : BV:64
-141197 : bvmul(140665, 141052) : BV:64
-141198 : bvextract(141197, 140591, 140587) : BV:32
-141051 : bvslt(141008, 140286) : BOOL
-141211 : ite(141051, 140593, 140286) : BV:32
-141213 : eq(141198, 141211) : BOOL
-141215 : isindexforsize(141213, 140402) : BOOL
-141113 : bvmul(140415, 141008) : BV:32
-141115 : bvadd(141110, 141113) : BV:32
-141217 : isgepoffset(141115, 141113) : BOOL
-141222 : and(141173, 141175, 141179, 141184, 141215, 141217) : BOOL
+141122 : select(140453, 140454, 141119, 141115, 140402, 140403) : BV:32
+141193 : islangaligned(141122, 140402) : BOOL
+141196 : and(141191, 141193) : BOOL
+141021 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+141064 : bvsign_ext(141021, 140587) : BV:64
+141209 : bvmul(140665, 141064) : BV:64
+141210 : bvextract(141209, 140591, 140587) : BV:32
+141063 : bvslt(141021, 140286) : BOOL
+141223 : ite(141063, 140593, 140286) : BV:32
+141225 : eq(141210, 141223) : BOOL
+141227 : isindexforsize(141225, 140402) : BOOL
+141125 : bvmul(140415, 141021) : BV:32
+141127 : bvadd(141122, 141125) : BV:32
+141229 : isgepoffset(141127, 141125) : BOOL
+141234 : and(141185, 141187, 141191, 141196, 141227, 141229) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2001,19 +2001,19 @@ undef-behaviour-align-assume.edge.Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =LhsExpr
 140453 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 140454 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-141107 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap-arg.0 : MEMLABEL
+141119 : memlabel-mem-no-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap-arg.0 : MEMLABEL
 140523 : input.dst.llvm-%arr : BV:32
 140415 : 4 { 0x4 +1.47e129 } : BV:32
-141006 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
-141100 : bvmul(140415, 141006) : BV:32
-141103 : bvadd(140523, 141100) : BV:32
+141019 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+141112 : bvmul(140415, 141019) : BV:32
+141115 : bvadd(140523, 141112) : BV:32
 140402 : 4 { 0x4 +1.0e1025 } : INT
 140403 : 0 { 0x0 } : BOOL
-141110 : select(140453, 140454, 141107, 141103, 140402, 140403) : BV:32
-141008 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
-141113 : bvmul(140415, 141008) : BV:32
-141115 : bvadd(141110, 141113) : BV:32
-141137 : islangaligned(141115, 140402) : BOOL
+141122 : select(140453, 140454, 141119, 141115, 140402, 140403) : BV:32
+141021 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+141125 : bvmul(140415, 141021) : BV:32
+141127 : bvadd(141122, 141125) : BV:32
+141149 : islangaligned(141127, 140402) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2754,25 +2754,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.body%1%intermediateVal0
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -2780,23 +2782,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -2804,53 +2804,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -2978,25 +2978,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.body3%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -3004,23 +3006,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -3028,53 +3028,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -3202,25 +3202,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.cond%1%bbentry
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -3228,23 +3230,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -3252,53 +3252,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -3426,25 +3426,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.cond%2%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -3452,23 +3454,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -3476,53 +3476,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -3650,25 +3650,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.cond1%1%bbentry
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -3676,23 +3678,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -3700,53 +3700,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -3874,25 +3874,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.cond1%2%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -3900,23 +3902,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -3924,53 +3924,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -4098,25 +4098,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.end7%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -4124,23 +4126,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -4148,53 +4148,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -4322,25 +4322,27 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at Lfor.inc5%1%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 0 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 1 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 2 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 3 edges
   L0%0%d=>L0%0%d
@@ -4348,23 +4350,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 4
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 6 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -4372,53 +4372,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 8 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 9 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 10 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 12 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 13 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 14 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -4546,40 +4546,42 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns done
 =Reaching Definitions at E0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =reaching defns for expr 0 edges
   Lfor.end7%1%d=>E0%0%d
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =reaching defns for expr 1 edges
   Lfor.end7%1%d=>E0%0%d
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =reaching defns for expr 2 edges
   Lfor.end7%1%d=>E0%0%d
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-%n : BV:32
 =reaching defns for expr 3 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%n : BV:32
+1 : input.dst.llvm-%m : BV:32
 =reaching defns for expr 4 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%m : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--arg.0 : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 5 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.0 : MEMLABEL
+3 : memlabel-mem--arg.1 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 6 edges
   L0%0%d=>L0%0%d
@@ -4587,23 +4589,21 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
 =reaching defns for expr 7
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.1 : MEMLABEL
+3 : memlabel-mem--arg.2 : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 7 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--arg.2 : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%arr : BV:32
 =reaching defns for expr 8 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%arr : BV:32
+1 : input.dst.llvm-%x.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 9 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
 1 : input.dst.llvm-%cmp.Lfor.cond%2%d : BOOL
@@ -4611,53 +4611,53 @@ input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : L0%0%d : ROUND_to_nearest_ties
   Lfor.cond%1%bbentry=>Lfor.cond%2%d
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
-1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 11 edges
-  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
+  L0%0%d=>L0%0%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 12 edges
-  L0%0%d=>Lfor.cond%1%bbentry
-  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
-1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
+1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
+4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 13 edges
-  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
-  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
+  L0%0%d=>L0%0%d
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
 2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___bar__x__=L0%0%argnum0=/-local./*___y___bar__x__=L0%0%argnum1=/-local./*___y___bar__x__=L0%0%argnum2=/-local./*___y___bar__x__=L0%0%argnum3=/-heap : MEMLABEL
+3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
 4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
 =reaching defns for expr 14 edges
   L0%0%d=>L0%0%d
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%cmp2.Lfor.cond1%2%d : BOOL
 =reaching defns for expr 15 edges
-  L0%0%d=>L0%0%d
+  Lfor.cond1%1%bbentry=>Lfor.cond1%2%d
 =reaching defns for expr 15 edges done
 =reaching defns for expr 16
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum2=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
 =reaching defns for expr 16 edges
-  L0%0%d=>L0%0%d
+  L0%0%d=>Lfor.cond%1%bbentry
+  Lfor.inc5%1%d=>Lfor.cond%1%bbentry
 =reaching defns for expr 16 edges done
 =reaching defns for expr 17
-1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-2 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-3 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum1=/ : MEMLABEL
-4 : memmask(1, 2, 3) : ARRAY[BV:32 -> BV:8]
+1 : input.dst.llvm-%j.0.Lfor.cond1%1%bbentry : BV:32
 =reaching defns for expr 17 edges
-  L0%0%d=>L0%0%d
+  Lfor.body%1%intermediateVal0=>Lfor.cond1%1%bbentry
+  Lfor.body3%1%d=>Lfor.cond1%1%bbentry
 =reaching defns for expr 17 edges done
 =reaching defns for expr 18
 1 : input.dst.llvm-%x.1.Lfor.cond1%1%bbentry : BV:32
@@ -4817,6 +4817,8 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry
+lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%x.0.phi.tmpvar.entry.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%i.0.Lfor.cond%1%bbentry
@@ -4874,8 +4876,6 @@ lr_status_bottom(; memlabel-mem-may-straddle-symbol.1-symbol.2-local./*___y___ba
 =LR status for var input.dst.local_alloc_count.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.cur_rounding_mode.Lfor.cond%1%bbentry
-lr_status_linearly_related(; )
-=LR status for var input.dst.llvm-%i.0.phi.tmpvar.for.inc5.Lfor.cond%1%bbentry
 lr_status_linearly_related(; )
 =VarnameToLRStatus End
 =TFG_LLVM_done

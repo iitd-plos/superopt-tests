@@ -88,20 +88,20 @@ mlheap.src.spec.foo : memlabel-mem--heap
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%var-i-0.L3%6%bbentry
+=spec-%var-n-0.L3%6%bbentry
+1 : input.spec-%var-n-1 : BV:32
+=src.spec-ghostvar.itervar.1.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-7.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-8.L3%6%bbentry
 1 : SORT2EXPR.VAR : MAP[BV:32 -> BV:32]
 2 : map_init(1) : MAP[BV:32 -> BV:32]
-=spec-%var-n-0.L3%6%bbentry
-1 : input.spec-%var-n-1 : BV:32
+=spec-%var-i-0.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-m-0.L3%6%bbentry
 1 : SORT2EXPR.VAR : MAP[BV:32 -> BV:32]
 2 : map_init(1) : MAP[BV:32 -> BV:32]
-=src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -153,9 +153,9 @@ tfg_edge_comment end
 =Edge.StateTo: 
 =spec-%tmpvar-10.E0%0%d
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
-=spec-%tmpvar-5.E0%0%d
-1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-6.E0%0%d
+1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
+=spec-%tmpvar-5.E0%0%d
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-9.E0%0%d
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
@@ -170,26 +170,26 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%var-i-0.L3%6%bbentry
-1 : input.spec-%var-i-0.L3%6%bbentry : BV:32
-2 : 1 { 0x1 +1.11e129 } : BV:32
-3 : bvadd(1, 2) : BV:32
 =spec-%var-n-0.L3%6%bbentry
 1 : input.spec-%var-n-0.L3%6%bbentry : BV:32
-=spec-%var-m-0.L3%6%bbentry
-1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
-2 : input.spec-%var-i-0.L3%6%bbentry : BV:32
-3 : map_set(1, 2, 2) : MAP[BV:32 -> BV:32]
 =src.spec-ghostvar.itervar.1.L3%6%bbentry
 1 : input.src.spec-ghostvar.itervar.1.L3%6%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
-=spec-%tmpvar-1.L3%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
+=spec-%var-i-0.L3%6%bbentry
+1 : input.spec-%var-i-0.L3%6%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-m-0.L3%6%bbentry
+1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
+2 : input.spec-%var-i-0.L3%6%bbentry : BV:32
+3 : map_set(1, 2, 2) : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-2.L3%6%bbentry
 1 : input.spec-%var-i-0.L3%6%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
+=spec-%tmpvar-1.L3%6%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
 =spec-%tmpvar-3.L3%6%bbentry
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 2 : input.spec-%var-i-0.L3%6%bbentry : BV:32
@@ -342,10 +342,10 @@ memlabel-mem--arg.0
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%6%bbentry for loc_id 20 {input.spec-%var-n-0.L3%6%bbentry }
 1 : input.spec-%var-n-1 : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%6%bbentry for loc_id 25 {input.spec-%var-m-0.L3%6%bbentry }
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
@@ -353,10 +353,10 @@ memlabel-mem--arg.0
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%6%bbentry for loc_id 26 {input.spec-%tmpvar-7.L3%6%bbentry }
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =graph_with_edge_structures.loc_to_expr_map at L0%0%d=>L3%6%bbentry for loc_id 27 {input.spec-%tmpvar-8.L3%6%bbentry }
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
@@ -436,27 +436,27 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 20
 =loc_expr
-140358 : input.spec-%var-n-0.L3%6%bbentry : BV:32
+140365 : input.spec-%var-n-0.L3%6%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.spec-%var-n-1 : BV:32
 =avail_exprs_val.end
 =loc 26
 =loc_expr
-140376 : input.spec-%tmpvar-7.L3%6%bbentry : BV:32
+140474 : input.spec-%tmpvar-7.L3%6%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 27
 =loc_expr
-140377 : input.spec-%tmpvar-8.L3%6%bbentry : MAP[BV:32 -> BV:32]
+140475 : input.spec-%tmpvar-8.L3%6%bbentry : MAP[BV:32 -> BV:32]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
@@ -464,7 +464,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 29
 =loc_expr
-140378 : input.spec-%tmpvar-1.L3%6%bbentry : BV:32
+140476 : input.spec-%tmpvar-1.L3%6%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 1 { 0x1 +1.11e129 } : BV:32
@@ -478,14 +478,14 @@ discontiguous mls:
 =loc 27 expr
 1 : input.spec-%tmpvar-8.L3%6%bbentry : MAP[BV:32 -> BV:32]
 =loc 27 spreled-expr
-140484 : Lambda18 : BV:32
+140480 : Lambda14 : BV:32
 140303 : 0 { 0x0 } : BOOL
-140488 : lambda(140484, 140303) : FUNCTION[BV:32 -> BOOL]
-140491 : Lambda19 : BV:32
+140481 : lambda(140480, 140303) : FUNCTION[BV:32 -> BOOL]
+140482 : Lambda15 : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140492 : lambda(140491, 140276) : FUNCTION[BV:32 -> BV:32]
-140493 : map(140488, 140492) : MAP[BV:32 -> BV:32]
-140494 : sym_const(140493) : MAP[BV:32 -> BV:32]
+140483 : lambda(140482, 140276) : FUNCTION[BV:32 -> BV:32]
+140484 : map(140481, 140483) : MAP[BV:32 -> BV:32]
+140485 : sym_const(140484) : MAP[BV:32 -> BV:32]
 =loc 29 expr
 1 : input.spec-%tmpvar-1.L3%6%bbentry : BV:32
 =loc 29 spreled-expr
@@ -559,32 +559,32 @@ lr_status_linearly_related(; )
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
 =graph_with_simplified_assets.simplified_to_state at L0%0%d=>L3%6%bbentry
-=spec-%var-i-0.L3%6%bbentry
+=spec-%var-n-0.L3%6%bbentry
+1 : input.spec-%var-n-1 : BV:32
+=src.spec-ghostvar.itervar.1.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-7.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=spec-%var-n-0.L3%6%bbentry
-1 : input.spec-%var-n-1 : BV:32
-=spec-%var-m-0.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=src.spec-ghostvar.itervar.1.L3%6%bbentry
+=spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-m-0.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L3%6%bbentry=>L3%7%d
 =spec-%tmpvar-0.L3%7%d
@@ -599,14 +599,18 @@ lr_status_linearly_related(; )
 =graph_with_simplified_assets.simplified_to_state at L3%8%bbentry=>E0%0%d
 =spec-%tmpvar-10.E0%0%d
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
-=spec-%tmpvar-5.E0%0%d
-1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-6.E0%0%d
+1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
+=spec-%tmpvar-5.E0%0%d
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 =spec-%tmpvar-9.E0%0%d
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L3%9%bbentry=>L3%6%bbentry
+=src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.src.spec-ghostvar.itervar.1.L3%6%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
 =spec-%var-i-0.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 2 : input.spec-%var-i-0.L3%6%bbentry : BV:32
@@ -615,16 +619,12 @@ lr_status_linearly_related(; )
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 2 : input.spec-%var-i-0.L3%6%bbentry : BV:32
 3 : map_set(1, 2, 2) : MAP[BV:32 -> BV:32]
-=src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.spec-ghostvar.itervar.1.L3%6%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
-=spec-%tmpvar-1.L3%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
 =spec-%tmpvar-2.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 2 : input.spec-%var-i-0.L3%6%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
+=spec-%tmpvar-1.L3%6%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
 =spec-%tmpvar-3.L3%6%bbentry
 1 : input.spec-%var-m-0.L3%6%bbentry : MAP[BV:32 -> BV:32]
 2 : input.spec-%var-i-0.L3%6%bbentry : BV:32
@@ -1542,89 +1542,89 @@ discontiguous mls:
 =avail_exprs begin
 =loc 100004
 =loc_expr
-140368 : input.dst.llvm-%n : BV:32
+140359 : input.dst.llvm-%n : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100019
 =loc_expr
-140443 : input.dst.llvm-%hidden-reg : BV:32
+140434 : input.dst.llvm-%hidden-reg : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100021
 =loc_expr
-140444 : input.dst.llvm-callee-save.0 : BV:32
+140435 : input.dst.llvm-callee-save.0 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100022
 =loc_expr
-140446 : input.dst.llvm-callee-save.1 : BV:32
+140437 : input.dst.llvm-callee-save.1 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100023
 =loc_expr
-140448 : input.dst.llvm-callee-save.2 : BV:32
+140439 : input.dst.llvm-callee-save.2 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100024
 =loc_expr
-140450 : input.dst.llvm-callee-save.3 : BV:32
+140441 : input.dst.llvm-callee-save.3 : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100028
 =loc_expr
-140387 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140378 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100029
 =loc_expr
-140375 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140361 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
 =avail_exprs_val.m_is_top 1
 =avail_exprs_val.end
 =loc 100038
 =loc_expr
-140574 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.constexpr.E0%0%d : BV:32
+140554 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.constexpr.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : symbol.1 : BV:32
 =avail_exprs_val.end
 =loc 100039
 =loc_expr
-140575 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.gepoffset.1.total_offset.E0%0%d : BV:32
+140555 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.gepoffset.1.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100040
 =loc_expr
-140576 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.gepoffset.2.total_offset.E0%0%d : BV:32
+140556 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.gepoffset.2.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100041
 =loc_expr
-140573 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.gepoffset.3.total_offset.E0%0%d : BV:32
+140553 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.gepoffset.3.total_offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : symbol.1 : BV:32
 =avail_exprs_val.end
 =loc 100042
 =loc_expr
-140577 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.intermediate.gepoffset.1.offset.E0%0%d : BV:32
+140557 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.intermediate.gepoffset.1.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100043
 =loc_expr
-140578 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.intermediate.gepoffset.2.offset.E0%0%d : BV:32
+140558 : input.dst.llvm-%47516aa5a9eab7a5f0d0bce668115131.intermediate.gepoffset.2.offset.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100044
 =loc_expr
-140579 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+140559 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%hidden-reg : BV:32
@@ -1639,59 +1639,59 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100045
 =loc_expr
-140580 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140560 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : symbol.1 : BV:32
 =avail_exprs_val.end
 =loc 100046
 =loc_expr
-140581 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140561 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100047
 =loc_expr
-140582 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
+140562 : input.dst.llvm-%i.0.phi.tmpvar.entry.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100049
 =loc_expr
-140583 : input.dst.llvm-%2765c615cd3308ea01ce016481e.gepoffset.1.total_offset.Lfor.cond%1%bbentry : BV:32
+140563 : input.dst.llvm-%2765c615cd3308ea01ce016481e.gepoffset.1.total_offset.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100052
 =loc_expr
-140586 : input.dst.llvm-%2765c615cd3308ea01ce016481e.intermediate.gepoffset.1.offset.Lfor.cond%1%bbentry : BV:32
+140566 : input.dst.llvm-%2765c615cd3308ea01ce016481e.intermediate.gepoffset.1.offset.Lfor.cond%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =avail_exprs_val.end
 =loc 100057
 =loc_expr
-140591 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
+140571 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =avail_exprs_val.end
 =loc 100058
 =loc_expr
-140592 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
+140572 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =avail_exprs_val.end
 =loc 100059
 =loc_expr
-140560 : input.dst.llvm-mem.Lfor.cond%1%bbentry : ARRAY[BV:32 -> BV:8]
-140374 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140540 : input.dst.llvm-mem.Lfor.cond%1%bbentry : ARRAY[BV:32 -> BV:8]
+140360 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 140300 : memlabel-mem--arg.0 : MEMLABEL
-140593 : memmask(140560, 140374, 140300) : ARRAY[BV:32 -> BV:8]
+140573 : memmask(140540, 140360, 140300) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1701,10 +1701,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100060
 =loc_expr
-140560 : input.dst.llvm-mem.Lfor.cond%1%bbentry : ARRAY[BV:32 -> BV:8]
-140374 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140383 : memlabel-mem-may-straddle-symbol.2-heap : MEMLABEL
-140572 : memmask(140560, 140374, 140383) : ARRAY[BV:32 -> BV:8]
+140540 : input.dst.llvm-mem.Lfor.cond%1%bbentry : ARRAY[BV:32 -> BV:8]
+140360 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140374 : memlabel-mem-may-straddle-symbol.2-heap : MEMLABEL
+140552 : memmask(140540, 140360, 140374) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1714,10 +1714,10 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100062
 =loc_expr
-140560 : input.dst.llvm-mem.Lfor.cond%1%bbentry : ARRAY[BV:32 -> BV:8]
-140374 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140452 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-140594 : memmask(140560, 140374, 140452) : ARRAY[BV:32 -> BV:8]
+140540 : input.dst.llvm-mem.Lfor.cond%1%bbentry : ARRAY[BV:32 -> BV:8]
+140360 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140443 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+140574 : memmask(140540, 140360, 140443) : ARRAY[BV:32 -> BV:8]
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
@@ -1774,11 +1774,11 @@ discontiguous mls:
 =loc 100057 expr
 1 : input.dst.local_alloc_count.Lfor.cond%1%bbentry : COUNT
 =loc 100057 spreled-expr
-140387 : input.dst.local_alloc_count.=L0%0%d= : COUNT
+140378 : input.dst.local_alloc_count.=L0%0%d= : COUNT
 =loc 100058 expr
 1 : input.dst.cur_rounding_mode.Lfor.cond%1%bbentry : ROUNDING_MODE
 =loc 100058 spreled-expr
-140386 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
+140377 : ROUND_to_nearest_ties_to_even : ROUNDING_MODE
 =sprel_map done
 =lr-status-map
 =lr-status-map at call-context {*;foo}
@@ -2108,22 +2108,22 @@ undef-behavioursome.edge.Lfor.body%1%d=>Lfor.cond%1%bbentry
 140275 : 1 { 0x1 } : BOOL
 258 : symbol.1 : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140477 : isgepoffset(258, 140276) : BOOL
-140478 : 4 { 0x4 +1.0e1025 } : BV:64
-140552 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
-140399 : 32 { 0x20 +1.0e1025 } : INT
-140562 : bvsign_ext(140552, 140399) : BV:64
-140647 : bvmul(140478, 140562) : BV:64
-140403 : 63 { 0x3f +1.0e1025 } : INT
-140648 : bvextract(140647, 140403, 140399) : BV:32
-140652 : eq(140276, 140648) : BOOL
-140341 : 4 { 0x4 +1.0e1025 } : INT
-140654 : isindexforsize(140652, 140341) : BOOL
-140338 : 4 { 0x4 +1.47e129 } : BV:32
-140611 : bvmul(140338, 140552) : BV:32
-140614 : bvadd(258, 140611) : BV:32
-140656 : isgepoffset(140614, 140611) : BOOL
-140661 : and(140275, 140477, 140654, 140656) : BOOL
+140468 : isgepoffset(258, 140276) : BOOL
+140469 : 4 { 0x4 +1.0e1025 } : BV:64
+140532 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+140390 : 32 { 0x20 +1.0e1025 } : INT
+140542 : bvsign_ext(140532, 140390) : BV:64
+140627 : bvmul(140469, 140542) : BV:64
+140394 : 63 { 0x3f +1.0e1025 } : INT
+140628 : bvextract(140627, 140394, 140390) : BV:32
+140632 : eq(140276, 140628) : BOOL
+140339 : 4 { 0x4 +1.0e1025 } : INT
+140634 : isindexforsize(140632, 140339) : BOOL
+140336 : 4 { 0x4 +1.47e129 } : BV:32
+140591 : bvmul(140336, 140532) : BV:32
+140594 : bvadd(258, 140591) : BV:32
+140636 : isgepoffset(140594, 140591) : BOOL
+140641 : and(140275, 140468, 140634, 140636) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2137,12 +2137,12 @@ tfg.assumes_around_edge at Lfor.body%1%d=>Lfor.cond%1%bbentry assume #1.pred
 undef-behaviour-align-assume.edge.Lfor.body%1%d=>Lfor.cond%1%bbentry
 =LhsExpr
 258 : symbol.1 : BV:32
-140338 : 4 { 0x4 +1.47e129 } : BV:32
-140552 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
-140611 : bvmul(140338, 140552) : BV:32
-140614 : bvadd(258, 140611) : BV:32
-140341 : 4 { 0x4 +1.0e1025 } : INT
-140626 : islangaligned(140614, 140341) : BOOL
+140336 : 4 { 0x4 +1.47e129 } : BV:32
+140532 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+140591 : bvmul(140336, 140532) : BV:32
+140594 : bvadd(258, 140591) : BV:32
+140339 : 4 { 0x4 +1.0e1025 } : INT
+140606 : islangaligned(140594, 140339) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2166,8 +2166,8 @@ undef-behavioursome.edge.Lfor.end%1%d=>E0%0%d
 140275 : 1 { 0x1 } : BOOL
 258 : symbol.1 : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140477 : isgepoffset(258, 140276) : BOOL
-140640 : and(140275, 140477) : BOOL
+140468 : isgepoffset(258, 140276) : BOOL
+140620 : and(140275, 140468) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -3448,7 +3448,7 @@ discontiguous mls:
 =global nodece 0 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin z3.ce3 c97c9ba9f5c9d565facf146d32129934
+=counter_example_begin z3.ce3 f77cb4649ed66de9f449dc3f4a9ac17
 =symbol.1
 1 : 2147483360 { 0x7ffffee0 +1.99996566e128 } : BV:32
 =dst_symbol_addr.1
@@ -3460,27 +3460,14 @@ discontiguous mls:
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -3495,6 +3482,19 @@ discontiguous mls:
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
@@ -3529,32 +3529,12 @@ L0%0%d_L0%0%d -> L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin z3v487.ce4 887dc6420f42289edb244bec473e226
+=counter_example_begin z3v487.ce4 9bcb13a4f1e9a8c65a4a527359ee1b1
 =symbol.1
 1 : 2147483264 { 0x7ffffe80 +1.99995422e128 } : BV:32
 =dst_symbol_addr.1
 1 : 2147483264 { 0x7ffffe80 +1.99995422e128 } : BV:32
 =input.spec-%var-n-1
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda40 : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : bvule(2, 1) : BOOL
-4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-5 : bvule(1, 4) : BOOL
-6 : and(3, 5) : BOOL
-7 : 0 { 0x0 } : BOOL
-8 : ite(6, 7, 7) : BOOL
-9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda41 : BV:32
-11 : bvule(2, 10) : BOOL
-12 : bvule(10, 4) : BOOL
-13 : and(11, 12) : BOOL
-14 : ite(13, 2, 2) : BV:32
-15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
-16 : map(9, 15) : MAP[BV:32 -> BV:32]
-17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-7.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
@@ -3566,6 +3546,26 @@ L0%0%d_L0%0%d -> L3%6%bbentry_Lfor.cond%1%bbentry
 1 : 65536 { 0x10000 +1.781250e129 } : BV:32
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda34 : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : bvule(2, 1) : BOOL
+4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+5 : bvule(1, 4) : BOOL
+6 : and(3, 5) : BOOL
+7 : 0 { 0x0 } : BOOL
+8 : ite(6, 7, 7) : BOOL
+9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
+10 : Lambda35 : BV:32
+11 : bvule(2, 10) : BOOL
+12 : bvule(10, 4) : BOOL
+13 : and(11, 12) : BOOL
+14 : ite(13, 2, 2) : BV:32
+15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
+16 : map(9, 15) : MAP[BV:32 -> BV:32]
+17 : sym_const(16) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.memlabel-mem--symbol.1_begin
@@ -3592,7 +3592,7 @@ L0%0%d_L0%0%d
 =global nodece 2 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin z3.ce25 214b4795efba298c9c8ccdda42bca5
+=counter_example_begin z3.ce25 21fa7db8a191844158fdd0609d1ee7
 =symbol.1
 1 : 2786934772 { 0xa61d3ff4 -1508032524 -1.22851419e205 } : BV:32
 =dst_symbol_addr.1
@@ -3604,27 +3604,14 @@ L0%0%d_L0%0%d
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -3639,6 +3626,19 @@ L0%0%d_L0%0%d
 1 : ([ 0; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 16843009 { 0x1010101 +1.784313e131 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
@@ -3673,7 +3673,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 3 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 3 nodece_cached_counterexample
-=counter_example_begin z3.ce47 71ce6a40cfea3f52cc48209237981f4c
+=counter_example_begin z3.ce47 59102993171f3ef96bc7dcf1ba2dd22d
 =symbol.1
 1 : 2147483644 { 0x7ffffffc +1.99999952e128 } : BV:32
 =dst_symbol_addr.1
@@ -3685,27 +3685,14 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 255, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -3720,6 +3707,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 4294967295 ] -> 255, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
@@ -3754,7 +3754,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 4 nodece_path.graph_edge_composition
 (L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 4 nodece_cached_counterexample
-=counter_example_begin z3.ce69 fc8b4f1b5ca0bb486156f03abf4436d1
+=counter_example_begin z3.ce69 517b3b9aef29633b8464a37acbfb6316
 =symbol.1
 1 : 2684354556 { 0x9ffffffc -1610612740 -1.99999952e192 } : BV:32
 =dst_symbol_addr.1
@@ -3766,27 +3766,14 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967294 ] -> 0, [ 4294967295; 4294967295 ] -> 128, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -3801,6 +3788,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 4294967294 ] -> 0, [ 4294967295; 4294967295 ] -> 128, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
@@ -3835,7 +3835,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 5 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 5 nodece_cached_counterexample
-=counter_example_begin z3.ce407 28eaca76bce64187ed33295cc480214c
+=counter_example_begin z3.ce407 56fdd9ec6bf154ebc52d9d925d6c664
 =symbol.1
 1 : 889192464 { 0x35000010 +1.190e235 } : BV:32
 =dst_symbol_addr.1
@@ -3845,7 +3845,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda431 : BV:32
+1 : Lambda425 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -3854,7 +3854,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda432 : BV:32
+10 : Lambda426 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -3862,26 +3862,6 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda435 : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : bvule(2, 1) : BOOL
-4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-5 : bvule(1, 4) : BOOL
-6 : and(3, 5) : BOOL
-7 : 0 { 0x0 } : BOOL
-8 : ite(6, 7, 7) : BOOL
-9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda436 : BV:32
-11 : bvule(2, 10) : BOOL
-12 : bvule(10, 4) : BOOL
-13 : and(11, 12) : BOOL
-14 : ite(13, 2, 2) : BV:32
-15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
-16 : map(9, 15) : MAP[BV:32 -> BV:32]
-17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -3892,6 +3872,26 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda429 : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : bvule(2, 1) : BOOL
+4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+5 : bvule(1, 4) : BOOL
+6 : and(3, 5) : BOOL
+7 : 0 { 0x0 } : BOOL
+8 : ite(6, 7, 7) : BOOL
+9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
+10 : Lambda430 : BV:32
+11 : bvule(2, 10) : BOOL
+12 : bvule(10, 4) : BOOL
+13 : and(11, 12) : BOOL
+14 : ite(13, 2, 2) : BV:32
+15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
+16 : map(9, 15) : MAP[BV:32 -> BV:32]
+17 : sym_const(16) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry.0.1
@@ -3924,7 +3924,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 6 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 6 nodece_cached_counterexample
-=counter_example_begin z3v487.ce408 80f68b2b8433f5d7551f06e9c8e028
+=counter_example_begin z3v487.ce408 181cf08f7fc8d20237de5791af78157
 =symbol.1
 1 : 2147483264 { 0x7ffffe80 +1.99995422e128 } : BV:32
 =dst_symbol_addr.1
@@ -3934,7 +3934,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda443 : BV:32
+1 : Lambda437 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -3943,7 +3943,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda444 : BV:32
+10 : Lambda438 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -3951,26 +3951,6 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda447 : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : bvule(2, 1) : BOOL
-4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-5 : bvule(1, 4) : BOOL
-6 : and(3, 5) : BOOL
-7 : 0 { 0x0 } : BOOL
-8 : ite(6, 7, 7) : BOOL
-9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda448 : BV:32
-11 : bvule(2, 10) : BOOL
-12 : bvule(10, 4) : BOOL
-13 : and(11, 12) : BOOL
-14 : ite(13, 2, 2) : BV:32
-15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
-16 : map(9, 15) : MAP[BV:32 -> BV:32]
-17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -3981,6 +3961,26 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda441 : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : bvule(2, 1) : BOOL
+4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+5 : bvule(1, 4) : BOOL
+6 : and(3, 5) : BOOL
+7 : 0 { 0x0 } : BOOL
+8 : ite(6, 7, 7) : BOOL
+9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
+10 : Lambda442 : BV:32
+11 : bvule(2, 10) : BOOL
+12 : bvule(10, 4) : BOOL
+13 : and(11, 12) : BOOL
+14 : ite(13, 2, 2) : BV:32
+15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
+16 : map(9, 15) : MAP[BV:32 -> BV:32]
+17 : sym_const(16) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry.0.1
@@ -4013,7 +4013,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 7 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 7 nodece_cached_counterexample
-=counter_example_begin z3.ce458 8dbe3cf0ed7ef590be23ac74797d71d
+=counter_example_begin z3.ce458 bb85f9fb4896d7ca894e972f28ea1d6b
 =symbol.1
 1 : 2786934772 { 0xa61d3ff4 -1508032524 -1.22851419e205 } : BV:32
 =dst_symbol_addr.1
@@ -4025,29 +4025,16 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda483 : BV:32
+1 : Lambda459 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : lambda(1, 3) : FUNCTION[BV:32 -> BOOL]
-5 : Lambda484 : BV:32
+5 : Lambda460 : BV:32
 6 : eq(5, 2) : BOOL
 7 : ite(6, 2, 2) : BV:32
 8 : lambda(5, 7) : FUNCTION[BV:32 -> BV:32]
 9 : map(4, 8) : MAP[BV:32 -> BV:32]
 10 : sym_const(9) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -4060,6 +4047,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 2786934771 ] -> 1, [ 2786934772; 2786934772 ] -> 0, [ 2786934773; 2786934773 ] -> 0, [ 2786934774; 2786934774 ] -> 0, [ 2786934775; 2786934775 ] -> 0, [ 2786934776; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 16843009 { 0x1010101 +1.784313e131 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
@@ -4092,7 +4092,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 8 nodece_path.graph_edge_composition
 (L3%6%bbentry_Lfor.cond%1%bbentry=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 8 nodece_cached_counterexample
-=counter_example_begin z3.ce475 81db7cffbe219d535a188ebf9b432
+=counter_example_begin z3.ce475 817c1ae0fd2310c6a6e3cbdfcee33a1d
 =symbol.1
 1 : 2786934772 { 0xa61d3ff4 -1508032524 -1.22851419e205 } : BV:32
 =dst_symbol_addr.1
@@ -4104,14 +4104,14 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda491 : BV:32
+1 : Lambda463 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : 1 { 0x1 +1.11e129 } : BV:32
 5 : eq(1, 4) : BOOL
 6 : or(3, 5) : BOOL
 7 : lambda(1, 6) : FUNCTION[BV:32 -> BOOL]
-8 : Lambda492 : BV:32
+8 : Lambda464 : BV:32
 9 : eq(8, 4) : BOOL
 10 : eq(8, 2) : BOOL
 11 : ite(10, 2, 2) : BV:32
@@ -4119,19 +4119,6 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 13 : lambda(8, 12) : FUNCTION[BV:32 -> BV:32]
 14 : map(7, 13) : MAP[BV:32 -> BV:32]
 15 : sym_const(14) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 2 { 0x2 +1.23e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -4144,6 +4131,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 2786934771 ] -> 1, [ 2786934772; 2786934772 ] -> 0, [ 2786934773; 2786934773 ] -> 0, [ 2786934774; 2786934774 ] -> 0, [ 2786934775; 2786934775 ] -> 0, [ 2786934776; 2786934776 ] -> 1, [ 2786934777; 2786934777 ] -> 0, [ 2786934778; 2786934778 ] -> 0, [ 2786934779; 2786934779 ] -> 0, [ 2786934780; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 16843009 { 0x1010101 +1.784313e131 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 2 { 0x2 +1.23e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
@@ -4176,7 +4176,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 9 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 9 nodece_cached_counterexample
-=counter_example_begin z3.ce495 86eb59e7ab8f482710a8586e7eb3553
+=counter_example_begin z3.ce495 f182b18bc969281414688e5b149acff8
 =symbol.1
 1 : 2786934772 { 0xa61d3ff4 -1508032524 -1.22851419e205 } : BV:32
 =dst_symbol_addr.1
@@ -4188,7 +4188,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda499 : BV:32
+1 : Lambda467 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : 1 { 0x1 +1.11e129 } : BV:32
@@ -4198,7 +4198,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 8 : eq(1, 7) : BOOL
 9 : or(6, 8) : BOOL
 10 : lambda(1, 9) : FUNCTION[BV:32 -> BOOL]
-11 : Lambda500 : BV:32
+11 : Lambda468 : BV:32
 12 : eq(11, 7) : BOOL
 13 : eq(11, 4) : BOOL
 14 : eq(11, 2) : BOOL
@@ -4208,19 +4208,6 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 18 : lambda(11, 17) : FUNCTION[BV:32 -> BV:32]
 19 : map(10, 18) : MAP[BV:32 -> BV:32]
 20 : sym_const(19) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 3 { 0x3 +1.35e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -4233,6 +4220,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 2786934771 ] -> 1, [ 2786934772; 2786934772 ] -> 0, [ 2786934773; 2786934773 ] -> 0, [ 2786934774; 2786934774 ] -> 0, [ 2786934775; 2786934775 ] -> 0, [ 2786934776; 2786934776 ] -> 1, [ 2786934777; 2786934777 ] -> 0, [ 2786934778; 2786934778 ] -> 0, [ 2786934779; 2786934779 ] -> 0, [ 2786934780; 2786934780 ] -> 2, [ 2786934781; 2786934781 ] -> 0, [ 2786934782; 2786934782 ] -> 0, [ 2786934783; 2786934783 ] -> 0, [ 2786934784; 4294967295 ] -> 1, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 16843009 { 0x1010101 +1.784313e131 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 3 { 0x3 +1.35e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1 : 3 { 0x3 +1.35e129 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
@@ -4265,7 +4265,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 10 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 10 nodece_cached_counterexample
-=counter_example_begin z3.ce448 923afbd4c348249788a696156756b13
+=counter_example_begin z3.ce448 94afa1b488fbc33d759229a591a0e95a
 =symbol.1
 1 : 2147483644 { 0x7ffffffc +1.99999952e128 } : BV:32
 =dst_symbol_addr.1
@@ -4277,29 +4277,16 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda475 : BV:32
+1 : Lambda455 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : lambda(1, 3) : FUNCTION[BV:32 -> BOOL]
-5 : Lambda476 : BV:32
+5 : Lambda456 : BV:32
 6 : eq(5, 2) : BOOL
 7 : ite(6, 2, 2) : BV:32
 8 : lambda(5, 7) : FUNCTION[BV:32 -> BV:32]
 9 : map(4, 8) : MAP[BV:32 -> BV:32]
 10 : sym_const(9) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967295 ] -> 255, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -4312,6 +4299,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 2147483643 ] -> 255, [ 2147483644; 2147483644 ] -> 0, [ 2147483645; 2147483645 ] -> 0, [ 2147483646; 2147483646 ] -> 0, [ 2147483647; 2147483647 ] -> 0, [ 2147483648; 4294967295 ] -> 255, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
@@ -4344,7 +4344,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 11 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 11 nodece_cached_counterexample
-=counter_example_begin z3.ce438 df80f18859229f7d8d70aeb41a1ada4
+=counter_example_begin z3.ce438 81f6df5eeb576a4233c8502aa255341
 =symbol.1
 1 : 2684354556 { 0x9ffffffc -1610612740 -1.99999952e192 } : BV:32
 =dst_symbol_addr.1
@@ -4356,29 +4356,16 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda467 : BV:32
+1 : Lambda451 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : lambda(1, 3) : FUNCTION[BV:32 -> BOOL]
-5 : Lambda468 : BV:32
+5 : Lambda452 : BV:32
 6 : eq(5, 2) : BOOL
 7 : ite(6, 2, 2) : BV:32
 8 : lambda(5, 7) : FUNCTION[BV:32 -> BV:32]
 9 : map(4, 8) : MAP[BV:32 -> BV:32]
 10 : sym_const(9) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem
 1 : ([ 0; 4294967294 ] -> 0, [ 4294967295; 4294967295 ] -> 128, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
@@ -4391,6 +4378,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 4294967294 ] -> 0, [ 4294967295; 4294967295 ] -> 128, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
@@ -4423,7 +4423,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 12 nodece_path.graph_edge_composition
 (L3%6%bbentry_Lfor.cond%1%bbentry=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 12 nodece_cached_counterexample
-=counter_example_begin z3.ce428 4f829486eaa1307ff8ed45868593a8
+=counter_example_begin z3.ce428 b58442cff33de7e9e0ac324e33ea7ff1
 =symbol.1
 1 : 889192464 { 0x35000010 +1.190e235 } : BV:32
 =dst_symbol_addr.1
@@ -4433,7 +4433,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda459 : BV:32
+1 : Lambda447 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -4444,7 +4444,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 9 : eq(1, 2) : BOOL
 10 : or(8, 9) : BOOL
 11 : lambda(1, 10) : FUNCTION[BV:32 -> BOOL]
-12 : Lambda460 : BV:32
+12 : Lambda448 : BV:32
 13 : eq(12, 2) : BOOL
 14 : bvule(2, 12) : BOOL
 15 : bvule(12, 4) : BOOL
@@ -4454,28 +4454,6 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 19 : lambda(12, 18) : FUNCTION[BV:32 -> BV:32]
 20 : map(11, 19) : MAP[BV:32 -> BV:32]
 21 : sym_const(20) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda435 : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : bvule(2, 1) : BOOL
-4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-5 : bvule(1, 4) : BOOL
-6 : and(3, 5) : BOOL
-7 : 0 { 0x0 } : BOOL
-8 : ite(6, 7, 7) : BOOL
-9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda436 : BV:32
-11 : bvule(2, 10) : BOOL
-12 : bvule(10, 4) : BOOL
-13 : and(11, 12) : BOOL
-14 : ite(13, 2, 2) : BV:32
-15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
-16 : map(9, 15) : MAP[BV:32 -> BV:32]
-17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 673806246 { 0x282977a6 +1.32396388e209 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -4486,6 +4464,28 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 673806246 { 0x282977a6 +1.32396388e209 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda429 : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : bvule(2, 1) : BOOL
+4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+5 : bvule(1, 4) : BOOL
+6 : and(3, 5) : BOOL
+7 : 0 { 0x0 } : BOOL
+8 : ite(6, 7, 7) : BOOL
+9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
+10 : Lambda430 : BV:32
+11 : bvule(2, 10) : BOOL
+12 : bvule(10, 4) : BOOL
+13 : and(11, 12) : BOOL
+14 : ite(13, 2, 2) : BV:32
+15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
+16 : map(9, 15) : MAP[BV:32 -> BV:32]
+17 : sym_const(16) : MAP[BV:32 -> BV:32]
 =input.spec-%var-m-0.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%var-m-0.L3%6%bbentry.1.1
@@ -4518,7 +4518,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 13 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 13 nodece_cached_counterexample
-=counter_example_begin z3.ce564 ac7d68515869ab0b495c53a128bc7d
+=counter_example_begin z3.ce564 1c2a43986aa637a582ed35d9b4649649
 =symbol.1
 1 : 889192464 { 0x35000010 +1.190e235 } : BV:32
 =dst_symbol_addr.1
@@ -4528,7 +4528,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 2 { 0x2 +1.23e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda523 : BV:32
+1 : Lambda479 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -4542,7 +4542,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 12 : eq(1, 11) : BOOL
 13 : or(10, 12) : BOOL
 14 : lambda(1, 13) : FUNCTION[BV:32 -> BOOL]
-15 : Lambda524 : BV:32
+15 : Lambda480 : BV:32
 16 : eq(15, 11) : BOOL
 17 : eq(15, 2) : BOOL
 18 : bvule(2, 15) : BOOL
@@ -4554,28 +4554,6 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 24 : lambda(15, 23) : FUNCTION[BV:32 -> BV:32]
 25 : map(14, 24) : MAP[BV:32 -> BV:32]
 26 : sym_const(25) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda435 : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : bvule(2, 1) : BOOL
-4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-5 : bvule(1, 4) : BOOL
-6 : and(3, 5) : BOOL
-7 : 0 { 0x0 } : BOOL
-8 : ite(6, 7, 7) : BOOL
-9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda436 : BV:32
-11 : bvule(2, 10) : BOOL
-12 : bvule(10, 4) : BOOL
-13 : and(11, 12) : BOOL
-14 : ite(13, 2, 2) : BV:32
-15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
-16 : map(9, 15) : MAP[BV:32 -> BV:32]
-17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 673806247 { 0x282977a7 +1.32396399e209 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-%n
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -4586,6 +4564,28 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 889192467 ] -> 0, [ 889192468; 889192468 ] -> 1, [ 889192469; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 673806247 { 0x282977a7 +1.32396399e209 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda429 : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : bvule(2, 1) : BOOL
+4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+5 : bvule(1, 4) : BOOL
+6 : and(3, 5) : BOOL
+7 : 0 { 0x0 } : BOOL
+8 : ite(6, 7, 7) : BOOL
+9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
+10 : Lambda430 : BV:32
+11 : bvule(2, 10) : BOOL
+12 : bvule(10, 4) : BOOL
+13 : and(11, 12) : BOOL
+14 : ite(13, 2, 2) : BV:32
+15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
+16 : map(9, 15) : MAP[BV:32 -> BV:32]
+17 : sym_const(16) : MAP[BV:32 -> BV:32]
 =input.spec-%var-m-0.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%var-m-0.L3%6%bbentry.1.1
@@ -4618,17 +4618,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 14 nodece_path.graph_edge_composition
 (L3%6%bbentry_Lfor.cond%1%bbentry=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 14 nodece_cached_counterexample
-=counter_example_begin z3v487.ce578 72eecb3732ccd3b6e6c07895d63e5575
+=counter_example_begin z3v487.ce578 fc114e93e45ca080bc190baed6bd
 =symbol.1
-1 : 536871360 { 0x200001c0 +1.5340e193 } : BV:32
+1 : 2450259960 { 0x920bfff8 -1844707336 -1.9374904e165 } : BV:32
 =dst_symbol_addr.1
-1 : 536871360 { 0x200001c0 +1.5340e193 } : BV:32
+1 : 2450259960 { 0x920bfff8 -1844707336 -1.9374904e165 } : BV:32
 =input.spec-%var-n-1
 1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 4 { 0x4 +1.47e129 } : BV:32
+=input.spec-%tmpvar-0.L3%7%d
+1 : 0 { 0x0 } : BOOL
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda578 : BV:32
+1 : Lambda530 : BV:32
 2 : 3 { 0x3 +1.35e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : 0 { 0x0 } : BOOL
@@ -4637,7 +4639,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : ite(3, 4, 6) : BOOL
 8 : or(7, 3) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda579 : BV:32
+10 : Lambda531 : BV:32
 11 : eq(10, 2) : BOOL
 12 : 0 { 0x0 +1.0e129 } : BV:32
 13 : bvule(12, 10) : BOOL
@@ -4649,30 +4651,22 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 19 : lambda(10, 18) : FUNCTION[BV:32 -> BV:32]
 20 : map(9, 19) : MAP[BV:32 -> BV:32]
 21 : sym_const(20) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-3.L3%6%bbentry
-1 : Lambda582 : BV:32
-2 : 3 { 0x3 +1.35e129 } : BV:32
-3 : eq(1, 2) : BOOL
-4 : 0 { 0x0 } : BOOL
-5 : bvule(2, 1) : BOOL
-6 : not(5) : BOOL
-7 : ite(3, 4, 6) : BOOL
-8 : or(7, 3) : BOOL
-9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda583 : BV:32
-11 : eq(10, 2) : BOOL
-12 : 0 { 0x0 +1.0e129 } : BV:32
-13 : bvule(12, 10) : BOOL
-14 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-15 : bvule(10, 14) : BOOL
-16 : and(13, 15) : BOOL
-17 : ite(16, 12, 12) : BV:32
-18 : ite(11, 2, 17) : BV:32
-19 : lambda(10, 18) : FUNCTION[BV:32 -> BV:32]
-20 : map(9, 19) : MAP[BV:32 -> BV:32]
-21 : sym_const(20) : MAP[BV:32 -> BV:32]
+=input.dst.llvm-%n
+1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 67895291 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 67895292; 67895295 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 67895296; 2450259959 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 2450259960; 2450260359 ] -> memlabel-mem--symbol.1, [ 2450260360; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 67895292 { 0x40bfffc +1.9374952e137 } : BV:32
+=input.dst.llvm-mem.Lfor.cond%1%bbentry
+1 : ([ 0; 2450259971 ] -> 0, [ 2450259972; 2450259972 ] -> 3, [ 2450259973; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.spec-%var-n-0.L3%6%bbentry
+1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1208682876 { 0x480b097c +1.8622694e17 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda562 : BV:32
+1 : Lambda516 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -4681,7 +4675,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda563 : BV:32
+10 : Lambda517 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -4689,28 +4683,34 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1208682876 { 0x480b097c +1.8622694e17 } : BV:32
-=input.spec-%tmpvar-0.L3%7%d
-1 : 0 { 0x0 } : BOOL
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 1023 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 1024; 1027 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1028; 536871359 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 536871360; 536871759 ] -> memlabel-mem--symbol.1, [ 536871760; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 1024 { 0x400 +1.12207e129 } : BV:32
-=input.dst.llvm-mem.Lfor.cond%1%bbentry
-1 : ([ 0; 536871371 ] -> 0, [ 536871372; 536871372 ] -> 3, [ 536871373; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.spec-%var-n-0.L3%6%bbentry
-1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-2.L3%6%bbentry
 1 : 4 { 0x4 +1.47e129 } : BV:32
+=input.spec-%tmpvar-3.L3%6%bbentry
+1 : Lambda532 : BV:32
+2 : 3 { 0x3 +1.35e129 } : BV:32
+3 : eq(1, 2) : BOOL
+4 : 0 { 0x0 } : BOOL
+5 : bvule(2, 1) : BOOL
+6 : not(5) : BOOL
+7 : ite(3, 4, 6) : BOOL
+8 : or(7, 3) : BOOL
+9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
+10 : Lambda533 : BV:32
+11 : eq(10, 2) : BOOL
+12 : 0 { 0x0 +1.0e129 } : BV:32
+13 : bvule(12, 10) : BOOL
+14 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+15 : bvule(10, 14) : BOOL
+16 : and(13, 15) : BOOL
+17 : ite(16, 12, 12) : BV:32
+18 : ite(11, 2, 17) : BV:32
+19 : lambda(10, 18) : FUNCTION[BV:32 -> BV:32]
+20 : map(9, 19) : MAP[BV:32 -> BV:32]
+21 : sym_const(20) : MAP[BV:32 -> BV:32]
 =input.spec-%var-m-0.L3%6%bbentry.0.1
-1 : Lambda542 : BV:32
+1 : Lambda496 : BV:32
 2 : 3 { 0x3 +1.35e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : 0 { 0x0 } : BOOL
@@ -4736,21 +4736,21 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%2765c615cd3308ea01ce016481e.gepoffset.2.total_offset.Lfor.cond%1%bbentry
 1 : 12 { 0xc +1.143e129 } : BV:32
 =input.dst.llvm-%arrayidx.Lfor.cond%1%bbentry
-1 : 536871372 { 0x200001cc +1.5483e193 } : BV:32
+1 : 2450259972 { 0x920c0004 -1844707324 -1.9375047e165 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.for.inc.Lfor.cond%1%bbentry
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =input.dst.llvm-%2765c615cd3308ea01ce016481e.gepoffset.3.total_offset.Lfor.cond%1%bbentry
-1 : 536871372 { 0x200001cc +1.5483e193 } : BV:32
+1 : 2450259972 { 0x920c0004 -1844707324 -1.9375047e165 } : BV:32
 =input.dst.llvm-%inc.Lfor.cond%1%bbentry
 1 : 4 { 0x4 +1.47e129 } : BV:32
 =input.memlabel-mem--symbol.1_begin
-1 : 536871360 { 0x200001c0 +1.5340e193 } : BV:32
+1 : 2450259960 { 0x920bfff8 -1844707336 -1.9374904e165 } : BV:32
 =input.memlabel-mem--symbol.1_end
-1 : 536871759 { 0x2000034f +1.10097e193 } : BV:32
+1 : 2450260359 { 0x920c0187 -1844706937 -1.9379661e165 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 1024 { 0x400 +1.12207e129 } : BV:32
+1 : 67895292 { 0x40bfffc +1.9374952e137 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 1027 { 0x403 +1.12242e129 } : BV:32
+1 : 67895295 { 0x40bffff +1.9374988e137 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%tmpvar-8.L3%6%bbentry.1.1
@@ -4767,17 +4767,17 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 15 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 15 nodece_cached_counterexample
-=counter_example_begin z3v487.ce608 f442cad8a02ff9b74c2186e216f98774
+=counter_example_begin z3v487.ce608 9dce80473d391043125f157b447dd3
 =symbol.1
-1 : 536871360 { 0x200001c0 +1.5340e193 } : BV:32
+1 : 2450259960 { 0x920bfff8 -1844707336 -1.9374904e165 } : BV:32
 =dst_symbol_addr.1
-1 : 536871360 { 0x200001c0 +1.5340e193 } : BV:32
+1 : 2450259960 { 0x920bfff8 -1844707336 -1.9374904e165 } : BV:32
 =input.spec-%var-n-1
 1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 5 { 0x5 +1.59e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda586 : BV:32
+1 : Lambda534 : BV:32
 2 : 3 { 0x3 +1.35e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : 0 { 0x0 } : BOOL
@@ -4789,7 +4789,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 10 : eq(1, 9) : BOOL
 11 : or(8, 10) : BOOL
 12 : lambda(1, 11) : FUNCTION[BV:32 -> BOOL]
-13 : Lambda587 : BV:32
+13 : Lambda535 : BV:32
 14 : eq(13, 9) : BOOL
 15 : eq(13, 2) : BOOL
 16 : 0 { 0x0 +1.0e129 } : BV:32
@@ -4803,8 +4803,22 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 24 : lambda(13, 23) : FUNCTION[BV:32 -> BV:32]
 25 : map(12, 24) : MAP[BV:32 -> BV:32]
 26 : sym_const(25) : MAP[BV:32 -> BV:32]
+=input.dst.llvm-%n
+1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 67895291 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 67895292; 67895295 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 67895296; 2450259959 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 2450259960; 2450260359 ] -> memlabel-mem--symbol.1, [ 2450260360; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 67895292 { 0x40bfffc +1.9374952e137 } : BV:32
+=input.dst.llvm-mem.Lfor.cond%1%bbentry
+1 : ([ 0; 2450259971 ] -> 0, [ 2450259972; 2450259972 ] -> 3, [ 2450259973; 2450259975 ] -> 0, [ 2450259976; 2450259976 ] -> 4, [ 2450259977; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.spec-%var-n-0.L3%6%bbentry
+1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1208682877 { 0x480b097d +1.8622705e17 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda562 : BV:32
+1 : Lambda516 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -4813,7 +4827,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda563 : BV:32
+10 : Lambda517 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -4821,22 +4835,8 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1208682877 { 0x480b097d +1.8622705e17 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 1023 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 1024; 1027 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1028; 536871359 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 536871360; 536871759 ] -> memlabel-mem--symbol.1, [ 536871760; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 1024 { 0x400 +1.12207e129 } : BV:32
-=input.dst.llvm-mem.Lfor.cond%1%bbentry
-1 : ([ 0; 536871371 ] -> 0, [ 536871372; 536871372 ] -> 3, [ 536871373; 536871375 ] -> 0, [ 536871376; 536871376 ] -> 4, [ 536871377; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.spec-%var-n-0.L3%6%bbentry
-1 : 2147483650 { 0x80000002 -2147483646 -1.23e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry.0.1
-1 : Lambda542 : BV:32
+1 : Lambda496 : BV:32
 2 : 3 { 0x3 +1.35e129 } : BV:32
 3 : eq(1, 2) : BOOL
 4 : 0 { 0x0 } : BOOL
@@ -4852,13 +4852,13 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 2078027744 { 0x7bdc2fe0 +1.72021102e120 } : BV:32
 =input.memlabel-mem--symbol.1_begin
-1 : 536871360 { 0x200001c0 +1.5340e193 } : BV:32
+1 : 2450259960 { 0x920bfff8 -1844707336 -1.9374904e165 } : BV:32
 =input.memlabel-mem--symbol.1_end
-1 : 536871759 { 0x2000034f +1.10097e193 } : BV:32
+1 : 2450260359 { 0x920c0187 -1844706937 -1.9379661e165 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 1024 { 0x400 +1.12207e129 } : BV:32
+1 : 67895292 { 0x40bfffc +1.9374952e137 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 1027 { 0x403 +1.12242e129 } : BV:32
+1 : 67895295 { 0x40bffff +1.9374988e137 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%tmpvar-8.L3%6%bbentry.1.1
@@ -4875,17 +4875,19 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 16 nodece_path.graph_edge_composition
 (L3%6%bbentry_Lfor.cond%1%bbentry=>L3%6%bbentry_Lfor.cond%1%bbentry)
 =global nodece 16 nodece_cached_counterexample
-=counter_example_begin z3.ce631 6bb6222315fd75316ee88cd4ce551475
+=counter_example_begin z3.ce631 ff4b7f1b31785f8eff1cfcee6909f
 =symbol.1
-1 : 84885536 { 0x50f4020 +1.11914443e139 } : BV:32
+1 : 2751463428 { 0xa4000004 -1543503868 -1.47e201 } : BV:32
 =dst_symbol_addr.1
-1 : 84885536 { 0x50f4020 +1.11914443e139 } : BV:32
+1 : 2751463428 { 0xa4000004 -1543503868 -1.47e201 } : BV:32
 =input.spec-%var-n-1
-1 : 33554433 { 0x2000001 +1.11e133 } : BV:32
+1 : 8388609 { 0x800001 +1.11e130 } : BV:32
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 5 { 0x5 +1.59e129 } : BV:32
+=input.spec-%tmpvar-0.L3%7%d
+1 : 0 { 0x0 } : BOOL
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda641 : BV:32
+1 : Lambda581 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 3 { 0x3 +1.35e129 } : BV:32
@@ -4903,7 +4905,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 16 : eq(1, 8) : BOOL
 17 : or(15, 16) : BOOL
 18 : lambda(1, 17) : FUNCTION[BV:32 -> BOOL]
-19 : Lambda642 : BV:32
+19 : Lambda582 : BV:32
 20 : eq(19, 8) : BOOL
 21 : bvule(2, 19) : BOOL
 22 : bvule(19, 10) : BOOL
@@ -4913,37 +4915,22 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 26 : lambda(19, 25) : FUNCTION[BV:32 -> BV:32]
 27 : map(18, 26) : MAP[BV:32 -> BV:32]
 28 : sym_const(27) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-3.L3%6%bbentry
-1 : Lambda645 : BV:32
-2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : bvule(2, 1) : BOOL
-4 : 3 { 0x3 +1.35e129 } : BV:32
-5 : bvule(1, 4) : BOOL
-6 : and(3, 5) : BOOL
-7 : 1 { 0x1 } : BOOL
-8 : 4 { 0x4 +1.47e129 } : BV:32
-9 : bvule(8, 1) : BOOL
-10 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-11 : bvule(1, 10) : BOOL
-12 : and(9, 11) : BOOL
-13 : 0 { 0x0 } : BOOL
-14 : ite(12, 13, 13) : BOOL
-15 : ite(6, 7, 14) : BOOL
-16 : eq(1, 8) : BOOL
-17 : or(15, 16) : BOOL
-18 : lambda(1, 17) : FUNCTION[BV:32 -> BOOL]
-19 : Lambda646 : BV:32
-20 : eq(19, 8) : BOOL
-21 : bvule(2, 19) : BOOL
-22 : bvule(19, 10) : BOOL
-23 : and(21, 22) : BOOL
-24 : ite(23, 2, 2) : BV:32
-25 : ite(20, 8, 24) : BV:32
-26 : lambda(19, 25) : FUNCTION[BV:32 -> BV:32]
-27 : map(18, 26) : MAP[BV:32 -> BV:32]
-28 : sym_const(27) : MAP[BV:32 -> BV:32]
+=input.dst.llvm-%n
+1 : 8388609 { 0x800001 +1.11e130 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2751463427 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 2751463428; 2751463827 ] -> memlabel-mem--symbol.1, [ 2751463828; 2923430603 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 2923430604; 2923430607 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2923430608; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2923430604 { 0xae4002cc -1371536692 -1.50008535e221 } : BV:32
+=input.dst.llvm-mem.Lfor.cond%1%bbentry
+1 : ([ 0; 2751463443 ] -> 0, [ 2751463444; 2751463444 ] -> 4, [ 2751463445; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.spec-%var-n-0.L3%6%bbentry
+1 : 8388609 { 0x800001 +1.11e130 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1561665095 { 0x5d151e47 +1.16498649e59 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda626 : BV:32
+1 : Lambda568 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -4952,7 +4939,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda627 : BV:32
+10 : Lambda569 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -4960,26 +4947,39 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1561665095 { 0x5d151e47 +1.16498649e59 } : BV:32
-=input.spec-%tmpvar-0.L3%7%d
-1 : 0 { 0x0 } : BOOL
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 33554433 { 0x2000001 +1.11e133 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 71802879 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 71802880; 71802883 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 71802884; 84885535 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 84885536; 84885935 ] -> memlabel-mem--symbol.1, [ 84885936; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 71802880 { 0x447a000 +1.55957031e137 } : BV:32
-=input.dst.llvm-mem.Lfor.cond%1%bbentry
-1 : ([ 0; 84885551 ] -> 0, [ 84885552; 84885552 ] -> 4, [ 84885553; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.spec-%var-n-0.L3%6%bbentry
-1 : 33554433 { 0x2000001 +1.11e133 } : BV:32
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%tmpvar-2.L3%6%bbentry
 1 : 5 { 0x5 +1.59e129 } : BV:32
+=input.spec-%tmpvar-3.L3%6%bbentry
+1 : Lambda583 : BV:32
+2 : 0 { 0x0 +1.0e129 } : BV:32
+3 : bvule(2, 1) : BOOL
+4 : 3 { 0x3 +1.35e129 } : BV:32
+5 : bvule(1, 4) : BOOL
+6 : and(3, 5) : BOOL
+7 : 1 { 0x1 } : BOOL
+8 : 4 { 0x4 +1.47e129 } : BV:32
+9 : bvule(8, 1) : BOOL
+10 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+11 : bvule(1, 10) : BOOL
+12 : and(9, 11) : BOOL
+13 : 0 { 0x0 } : BOOL
+14 : ite(12, 13, 13) : BOOL
+15 : ite(6, 7, 14) : BOOL
+16 : eq(1, 8) : BOOL
+17 : or(15, 16) : BOOL
+18 : lambda(1, 17) : FUNCTION[BV:32 -> BOOL]
+19 : Lambda584 : BV:32
+20 : eq(19, 8) : BOOL
+21 : bvule(2, 19) : BOOL
+22 : bvule(19, 10) : BOOL
+23 : and(21, 22) : BOOL
+24 : ite(23, 2, 2) : BV:32
+25 : ite(20, 8, 24) : BV:32
+26 : lambda(19, 25) : FUNCTION[BV:32 -> BV:32]
+27 : map(18, 26) : MAP[BV:32 -> BV:32]
+28 : sym_const(27) : MAP[BV:32 -> BV:32]
 =input.spec-%var-m-0.L3%6%bbentry.0.1
 1 : ([ 0; 3 ] -> true, [ 4; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%var-m-0.L3%6%bbentry.1.1
@@ -4999,21 +4999,21 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-%2765c615cd3308ea01ce016481e.gepoffset.2.total_offset.Lfor.cond%1%bbentry
 1 : 16 { 0x10 +1.190e129 } : BV:32
 =input.dst.llvm-%arrayidx.Lfor.cond%1%bbentry
-1 : 84885552 { 0x50f4030 +1.11914634e139 } : BV:32
+1 : 2751463444 { 0xa4000014 -1543503852 -1.238e201 } : BV:32
 =input.dst.llvm-%i.0.phi.tmpvar.for.inc.Lfor.cond%1%bbentry
 1 : 5 { 0x5 +1.59e129 } : BV:32
 =input.dst.llvm-%2765c615cd3308ea01ce016481e.gepoffset.3.total_offset.Lfor.cond%1%bbentry
-1 : 84885552 { 0x50f4030 +1.11914634e139 } : BV:32
+1 : 2751463444 { 0xa4000014 -1543503852 -1.238e201 } : BV:32
 =input.dst.llvm-%inc.Lfor.cond%1%bbentry
 1 : 5 { 0x5 +1.59e129 } : BV:32
 =input.memlabel-mem--symbol.1_begin
-1 : 84885536 { 0x50f4020 +1.11914443e139 } : BV:32
+1 : 2751463428 { 0xa4000004 -1543503868 -1.47e201 } : BV:32
 =input.memlabel-mem--symbol.1_end
-1 : 84885935 { 0x50f41af +1.11919200e139 } : BV:32
+1 : 2751463827 { 0xa4000193 -1543503469 -1.4804e201 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 71802880 { 0x447a000 +1.55957031e137 } : BV:32
+1 : 2923430604 { 0xae4002cc -1371536692 -1.50008535e221 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 71802883 { 0x447a003 +1.55957067e137 } : BV:32
+1 : 2923430607 { 0xae4002cf -1371536689 -1.50008571e221 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%tmpvar-8.L3%6%bbentry.1.1
@@ -5030,17 +5030,17 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 17 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 17 nodece_cached_counterexample
-=counter_example_begin z3.ce661 12ec6f6ee95bcdcb8771f23e385da28
+=counter_example_begin z3.ce661 6cdb7b214a8095a2f3b8cd678d5775fd
 =symbol.1
-1 : 84885536 { 0x50f4020 +1.11914443e139 } : BV:32
+1 : 2751463428 { 0xa4000004 -1543503868 -1.47e201 } : BV:32
 =dst_symbol_addr.1
-1 : 84885536 { 0x50f4020 +1.11914443e139 } : BV:32
+1 : 2751463428 { 0xa4000004 -1543503868 -1.47e201 } : BV:32
 =input.spec-%var-n-1
-1 : 33554433 { 0x2000001 +1.11e133 } : BV:32
+1 : 8388609 { 0x800001 +1.11e130 } : BV:32
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 6 { 0x6 +1.71e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda649 : BV:32
+1 : Lambda585 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 3 { 0x3 +1.35e129 } : BV:32
@@ -5061,7 +5061,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 19 : eq(1, 18) : BOOL
 20 : or(17, 19) : BOOL
 21 : lambda(1, 20) : FUNCTION[BV:32 -> BOOL]
-22 : Lambda650 : BV:32
+22 : Lambda586 : BV:32
 23 : eq(22, 18) : BOOL
 24 : eq(22, 8) : BOOL
 25 : bvule(2, 22) : BOOL
@@ -5073,8 +5073,22 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 31 : lambda(22, 30) : FUNCTION[BV:32 -> BV:32]
 32 : map(21, 31) : MAP[BV:32 -> BV:32]
 33 : sym_const(32) : MAP[BV:32 -> BV:32]
+=input.dst.llvm-%n
+1 : 8388609 { 0x800001 +1.11e130 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 2751463427 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 2751463428; 2751463827 ] -> memlabel-mem--symbol.1, [ 2751463828; 2923430603 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 2923430604; 2923430607 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2923430608; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 2923430604 { 0xae4002cc -1371536692 -1.50008535e221 } : BV:32
+=input.dst.llvm-mem.Lfor.cond%1%bbentry
+1 : ([ 0; 2751463443 ] -> 0, [ 2751463444; 2751463444 ] -> 4, [ 2751463445; 2751463447 ] -> 0, [ 2751463448; 2751463448 ] -> 5, [ 2751463449; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.spec-%var-n-0.L3%6%bbentry
+1 : 8388609 { 0x800001 +1.11e130 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 1561665096 { 0x5d151e48 +1.16498661e59 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda626 : BV:32
+1 : Lambda568 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -5083,7 +5097,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda627 : BV:32
+10 : Lambda569 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -5091,20 +5105,6 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 1561665096 { 0x5d151e48 +1.16498661e59 } : BV:32
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 33554433 { 0x2000001 +1.11e133 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 71802879 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 71802880; 71802883 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 71802884; 84885535 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 84885536; 84885935 ] -> memlabel-mem--symbol.1, [ 84885936; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 71802880 { 0x447a000 +1.55957031e137 } : BV:32
-=input.dst.llvm-mem.Lfor.cond%1%bbentry
-1 : ([ 0; 84885551 ] -> 0, [ 84885552; 84885552 ] -> 4, [ 84885553; 84885555 ] -> 0, [ 84885556; 84885556 ] -> 5, [ 84885557; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.spec-%var-n-0.L3%6%bbentry
-1 : 33554433 { 0x2000001 +1.11e133 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry.0.1
 1 : ([ 0; 3 ] -> true, [ 4; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%var-m-0.L3%6%bbentry.1.1
@@ -5114,13 +5114,13 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.dst.llvm-ghostvar.itervar.1.Lfor.cond%1%bbentry
 1 : 785122349 { 0x2ecc042d +1.59387743e222 } : BV:32
 =input.memlabel-mem--symbol.1_begin
-1 : 84885536 { 0x50f4020 +1.11914443e139 } : BV:32
+1 : 2751463428 { 0xa4000004 -1543503868 -1.47e201 } : BV:32
 =input.memlabel-mem--symbol.1_end
-1 : 84885935 { 0x50f41af +1.11919200e139 } : BV:32
+1 : 2751463827 { 0xa4000193 -1543503469 -1.4804e201 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 71802880 { 0x447a000 +1.55957031e137 } : BV:32
+1 : 2923430604 { 0xae4002cc -1371536692 -1.50008535e221 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 71802883 { 0x447a003 +1.55957067e137 } : BV:32
+1 : 2923430607 { 0xae4002cf -1371536689 -1.50008571e221 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%tmpvar-8.L3%6%bbentry.1.1
@@ -5137,24 +5137,24 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 18 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 18 nodece_cached_counterexample
-=counter_example_begin z3.ce684 29d33ba4f4cc63cf39e681c9855ed90
+=counter_example_begin z3.ce684 a63ca4699671db808dabd948995a77dc
 =symbol.1
-1 : 4160231576 { 0xf7f81898 -134735720 -1.93825054e112 } : BV:32
+1 : 1646784516 { 0x6227f004 +1.31201219e69 } : BV:32
 =dst_symbol_addr.1
-1 : 4160231576 { 0xf7f81898 -134735720 -1.93825054e112 } : BV:32
+1 : 1646784516 { 0x6227f004 +1.31201219e69 } : BV:32
 =input.spec-%var-n-1
-1 : 384 { 0x180 +1.4577e129 } : BV:32
+1 : 328 { 0x148 +1.3910e129 } : BV:32
 =input.spec-%var-i-0.L3%6%bbentry
-1 : 384 { 0x180 +1.4577e129 } : BV:32
+1 : 328 { 0x148 +1.3910e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda793 : BV:32
+1 : Lambda723 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
-4 : 383 { 0x17f +1.4565e129 } : BV:32
+4 : 327 { 0x147 +1.3898e129 } : BV:32
 5 : bvule(1, 4) : BOOL
 6 : and(3, 5) : BOOL
 7 : 1 { 0x1 } : BOOL
-8 : 384 { 0x180 +1.4577e129 } : BV:32
+8 : 328 { 0x148 +1.3910e129 } : BV:32
 9 : bvule(8, 1) : BOOL
 10 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 11 : bvule(1, 10) : BOOL
@@ -5163,7 +5163,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 14 : ite(12, 13, 13) : BOOL
 15 : ite(6, 7, 14) : BOOL
 16 : lambda(1, 15) : FUNCTION[BV:32 -> BOOL]
-17 : Lambda794 : BV:32
+17 : Lambda724 : BV:32
 18 : bvule(2, 17) : BOOL
 19 : bvule(17, 10) : BOOL
 20 : and(18, 19) : BOOL
@@ -5171,8 +5171,20 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 22 : lambda(17, 21) : FUNCTION[BV:32 -> BV:32]
 23 : map(16, 22) : MAP[BV:32 -> BV:32]
 24 : sym_const(23) : MAP[BV:32 -> BV:32]
+=input.dst.llvm-%n
+1 : 328 { 0x148 +1.3910e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 1646784515 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 1646784516; 1646784915 ] -> memlabel-mem--symbol.1, [ 1646784916; 1789858815 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 1789858816; 1789858819 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 1789858820; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 1789858816 { 0x6aaf1400 +1.36779785e86 } : BV:32
+=input.dst.llvm-mem.Lfor.cond%1%bbentry
+1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.spec-%var-n-0.L3%6%bbentry
+1 : 328 { 0x148 +1.3910e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda797 : BV:32
+1 : Lambda727 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -5181,7 +5193,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda798 : BV:32
+10 : Lambda728 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -5189,34 +5201,22 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 384 { 0x180 +1.4577e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 3698478091 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 3698478092; 3698478095 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 3698478096; 4160231575 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 4160231576; 4160231975 ] -> memlabel-mem--symbol.1, [ 4160231976; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 3698478092 { 0xdc724c0c -596489204 -1.89294576e57 } : BV:32
-=input.dst.llvm-mem.Lfor.cond%1%bbentry
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.spec-%var-n-0.L3%6%bbentry
-1 : 384 { 0x180 +1.4577e129 } : BV:32
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry.0.1
-1 : ([ 0; 383 ] -> true, [ 384; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
+1 : ([ 0; 327 ] -> true, [ 328; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%var-m-0.L3%6%bbentry.1.1
 1 : ([ 0; 4294967295 ] -> 0, ) : FUNCTION[BV:32 -> BV:32]
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-1 : 384 { 0x180 +1.4577e129 } : BV:32
+1 : 328 { 0x148 +1.3910e129 } : BV:32
 =input.memlabel-mem--symbol.1_begin
-1 : 4160231576 { 0xf7f81898 -134735720 -1.93825054e112 } : BV:32
+1 : 1646784516 { 0x6227f004 +1.31201219e69 } : BV:32
 =input.memlabel-mem--symbol.1_end
-1 : 4160231975 { 0xf7f81a27 -134735321 -1.93829810e112 } : BV:32
+1 : 1646784915 { 0x6227f193 +1.31205976e69 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 3698478092 { 0xdc724c0c -596489204 -1.89294576e57 } : BV:32
+1 : 1789858816 { 0x6aaf1400 +1.36779785e86 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 3698478095 { 0xdc724c0f -596489201 -1.89294612e57 } : BV:32
+1 : 1789858819 { 0x6aaf1403 +1.36779820e86 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%tmpvar-8.L3%6%bbentry.1.1
@@ -5233,24 +5233,24 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 19 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 19 nodece_cached_counterexample
-=counter_example_begin z3v487.ce685 e9b8d74375c76a061797cdb98befdc9
+=counter_example_begin z3v487.ce685 b4f9d2d32f5421c9b8ac7625ffc5259
 =symbol.1
-1 : 2147483252 { 0x7ffffe74 +1.99995279e128 } : BV:32
+1 : 1073741428 { 0x3ffffe74 +1.99995279e0 } : BV:32
 =dst_symbol_addr.1
-1 : 2147483252 { 0x7ffffe74 +1.99995279e128 } : BV:32
+1 : 1073741428 { 0x3ffffe74 +1.99995279e0 } : BV:32
 =input.spec-%var-n-1
-1 : 338 { 0x152 +1.4029e129 } : BV:32
+1 : 14 { 0xe +1.166e129 } : BV:32
 =input.spec-%var-i-0.L3%6%bbentry
-1 : 338 { 0x152 +1.4029e129 } : BV:32
+1 : 14 { 0xe +1.166e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda805 : BV:32
+1 : Lambda735 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
-4 : 337 { 0x151 +1.4017e129 } : BV:32
+4 : 13 { 0xd +1.154e129 } : BV:32
 5 : bvule(1, 4) : BOOL
 6 : and(3, 5) : BOOL
 7 : 1 { 0x1 } : BOOL
-8 : 338 { 0x152 +1.4029e129 } : BV:32
+8 : 14 { 0xe +1.166e129 } : BV:32
 9 : bvule(8, 1) : BOOL
 10 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 11 : bvule(1, 10) : BOOL
@@ -5259,7 +5259,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 14 : ite(12, 13, 13) : BOOL
 15 : ite(6, 7, 14) : BOOL
 16 : lambda(1, 15) : FUNCTION[BV:32 -> BOOL]
-17 : Lambda806 : BV:32
+17 : Lambda736 : BV:32
 18 : bvule(2, 17) : BOOL
 19 : bvule(17, 10) : BOOL
 20 : and(18, 19) : BOOL
@@ -5267,8 +5267,20 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 22 : lambda(17, 21) : FUNCTION[BV:32 -> BV:32]
 23 : map(16, 22) : MAP[BV:32 -> BV:32]
 24 : sym_const(23) : MAP[BV:32 -> BV:32]
+=input.dst.llvm-%n
+1 : 14 { 0xe +1.166e129 } : BV:32
+=input.dst.llvm-mem.alloc
+1 : ([ 0; 3 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 4; 7 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 8; 1073741427 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 1073741428; 1073741827 ] -> memlabel-mem--symbol.1, [ 1073741828; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
+=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
+1 : 4 { 0x4 +1.47e129 } : BV:32
+=input.dst.llvm-mem.Lfor.cond%1%bbentry
+1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.spec-%var-n-0.L3%6%bbentry
+1 : 14 { 0xe +1.166e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda809 : BV:32
+1 : Lambda739 : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
 3 : bvule(2, 1) : BOOL
 4 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -5277,7 +5289,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 7 : 0 { 0x0 } : BOOL
 8 : ite(6, 7, 7) : BOOL
 9 : lambda(1, 8) : FUNCTION[BV:32 -> BOOL]
-10 : Lambda810 : BV:32
+10 : Lambda740 : BV:32
 11 : bvule(2, 10) : BOOL
 12 : bvule(10, 4) : BOOL
 13 : and(11, 12) : BOOL
@@ -5285,34 +5297,22 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 15 : lambda(10, 14) : FUNCTION[BV:32 -> BV:32]
 16 : map(9, 15) : MAP[BV:32 -> BV:32]
 17 : sym_const(16) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-%n
-1 : 338 { 0x152 +1.4029e129 } : BV:32
-=input.dst.llvm-mem.alloc
-1 : ([ 0; 2147483251 ] -> memlabel-mem-may-straddle-symbol.2-heap, [ 2147483252; 2147483651 ] -> memlabel-mem--symbol.1, [ 2147483652; 2147483655 ] -> memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/, [ 2147483656; 4294967295 ] -> memlabel-mem-may-straddle-symbol.2-heap, ) : ARRAY[BV:32 -> MEMLABEL]
-=input.dst.local./*___y___foo__x__=L0%0%argnum0=/
-1 : 2147483652 { 0x80000004 -2147483644 -1.47e129 } : BV:32
-=input.dst.llvm-mem.Lfor.cond%1%bbentry
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
-=input.spec-%var-n-0.L3%6%bbentry
-1 : 338 { 0x152 +1.4029e129 } : BV:32
 =input.spec-%tmpvar-1.L3%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =input.spec-%var-m-0.L3%6%bbentry.0.1
-1 : ([ 0; 337 ] -> true, [ 338; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
+1 : ([ 0; 13 ] -> true, [ 14; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%var-m-0.L3%6%bbentry.1.1
 1 : ([ 0; 4294967295 ] -> 0, ) : FUNCTION[BV:32 -> BV:32]
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-1 : 338 { 0x152 +1.4029e129 } : BV:32
+1 : 14 { 0xe +1.166e129 } : BV:32
 =input.memlabel-mem--symbol.1_begin
-1 : 2147483252 { 0x7ffffe74 +1.99995279e128 } : BV:32
+1 : 1073741428 { 0x3ffffe74 +1.99995279e0 } : BV:32
 =input.memlabel-mem--symbol.1_end
-1 : 2147483651 { 0x80000003 -2147483645 -1.35e129 } : BV:32
+1 : 1073741827 { 0x40000003 +1.35e1 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin
-1 : 2147483652 { 0x80000004 -2147483644 -1.47e129 } : BV:32
+1 : 4 { 0x4 +1.47e129 } : BV:32
 =input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end
-1 : 2147483655 { 0x80000007 -2147483641 -1.83e129 } : BV:32
+1 : 7 { 0x7 +1.83e129 } : BV:32
 =input.spec-%tmpvar-8.L3%6%bbentry.0.1
 1 : ([ 0; 4294967295 ] -> false, ) : FUNCTION[BV:32 -> BOOL]
 =input.spec-%tmpvar-8.L3%6%bbentry.1.1
@@ -5329,7 +5329,7 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =global nodece 20 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 20 nodece_cached_counterexample
-=counter_example_begin z3.ce849 f4dc059d58a8f406e772fdcbecbb392
+=counter_example_begin z3.ce849 dde0131a9976e9d03bdc16908df8aa
 =symbol.1
 1 : 2147483360 { 0x7ffffee0 +1.99996566e128 } : BV:32
 =dst_symbol_addr.1
@@ -5339,10 +5339,10 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 =input.spec-%var-n-1
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%tmpvar-6.E0%0%d
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
@@ -5351,59 +5351,37 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-i-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-5.E0%0%d
-1 : Lambda18 : BV:32
+=input.spec-%tmpvar-0.L3%7%d
+1 : 1 { 0x1 } : BOOL
+=input.spec-%var-m-0.L3%6%bbentry
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.spec-%var-m-0.L3%6%bbentry
-1 : Lambda18 : BV:32
+=input.dst.llvm-mem
+1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
+=input.spec-%tmpvar-5.E0%0%d
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.spec-%tmpvar-9.E0%0%d
-1 : Lambda18 : BV:32
+1 : Lambda14 : BV:32
 2 : 0 { 0x0 } : BOOL
 3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
+4 : Lambda15 : BV:32
 5 : 0 { 0x0 +1.0e129 } : BV:32
 6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
 7 : map(3, 6) : MAP[BV:32 -> BV:32]
 8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-10.E0%0%d
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.spec-%tmpvar-8.L3%6%bbentry
-1 : Lambda18 : BV:32
-2 : 0 { 0x0 } : BOOL
-3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
-4 : Lambda19 : BV:32
-5 : 0 { 0x0 +1.0e129 } : BV:32
-6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
-7 : map(3, 6) : MAP[BV:32 -> BV:32]
-8 : sym_const(7) : MAP[BV:32 -> BV:32]
-=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%tmpvar-0.L3%7%d
-1 : 1 { 0x1 } : BOOL
-=input.spec-%tmpvar-7.L3%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.dst.llvm-mem
-1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.dst.llvm-%n
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.dst.llvm-mem.alloc
@@ -5414,6 +5392,28 @@ L3%6%bbentry_Lfor.cond%1%bbentry
 1 : ([ 0; 4294967295 ] -> 0, ) : ARRAY[BV:32 -> BV:8]
 =input.spec-%var-n-0.L3%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.src.spec-ghostvar.itervar.1.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-7.L3%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%tmpvar-8.L3%6%bbentry
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
+=input.spec-%tmpvar-10.E0%0%d
+1 : Lambda14 : BV:32
+2 : 0 { 0x0 } : BOOL
+3 : lambda(1, 2) : FUNCTION[BV:32 -> BOOL]
+4 : Lambda15 : BV:32
+5 : 0 { 0x0 +1.0e129 } : BV:32
+6 : lambda(4, 5) : FUNCTION[BV:32 -> BV:32]
+7 : map(3, 6) : MAP[BV:32 -> BV:32]
+8 : sym_const(7) : MAP[BV:32 -> BV:32]
 =input.dst.llvm-indir_tgt.E0%0%d
 1 : 1728220986 { 0x67028f3a +1.1999592e79 } : BV:32
 =input.dst.llvm-%i.0.Lfor.cond%1%bbentry
@@ -5893,6 +5893,37 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3v487.ce70 expr point z3v487.ce70 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
 =inductive-invariants point_set point z3v487.ce70 expr point z3v487.ce70 done
+=inductive-invariants point_set point z3v487.ce418
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
+1
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 2 for input.spec-%var-n-1
+4294967295
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 3 for input.spec-%var-i-0.L3%6%bbentry
+1
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 4 for input.spec-%var-n-0.L3%6%bbentry
+4294967295
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 5 for input.dst.llvm-%n
+4294967295
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+1
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 done
 =inductive-invariants point_set point z3.ce428
 =inductive-invariants point_set point z3.ce428 expr point z3.ce428
 =inductive-invariants point_set point z3.ce428 expr point z3.ce428 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
@@ -5924,37 +5955,6 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3.ce428 expr point z3.ce428 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
 =inductive-invariants point_set point z3.ce428 expr point z3.ce428 done
-=inductive-invariants point_set point z3.ce475
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
-1
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 2 for input.spec-%var-n-1
-16843009
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 3 for input.spec-%var-i-0.L3%6%bbentry
-2
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 4 for input.spec-%var-n-0.L3%6%bbentry
-16843009
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 5 for input.dst.llvm-%n
-16843009
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-2
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce475 expr point z3.ce475 done
 =inductive-invariants point_set point z3.ce91
 =inductive-invariants point_set point z3.ce91 expr point z3.ce91
 =inductive-invariants point_set point z3.ce91 expr point z3.ce91 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
@@ -6079,130 +6079,6 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3v487.ce114 expr point z3v487.ce114 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
 =inductive-invariants point_set point z3v487.ce114 expr point z3v487.ce114 done
-=inductive-invariants point_set point z3.ce157
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 2 for input.spec-%var-n-1
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 3 for input.spec-%var-i-0.L3%6%bbentry
-0
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 4 for input.spec-%var-n-0.L3%6%bbentry
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 5 for input.dst.llvm-%n
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce157 expr point z3.ce157 done
-=inductive-invariants point_set point z3v487.ce136
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
-1
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 2 for input.spec-%var-n-1
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 3 for input.spec-%var-i-0.L3%6%bbentry
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 4 for input.spec-%var-n-0.L3%6%bbentry
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 5 for input.dst.llvm-%n
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 done
-=inductive-invariants point_set point z3.ce135
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 2 for input.spec-%var-n-1
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 3 for input.spec-%var-i-0.L3%6%bbentry
-0
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 4 for input.spec-%var-n-0.L3%6%bbentry
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 5 for input.dst.llvm-%n
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce135 expr point z3.ce135 done
-=inductive-invariants point_set point z3.ce179
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
-1
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 2 for input.spec-%var-n-1
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 3 for input.spec-%var-i-0.L3%6%bbentry
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 4 for input.spec-%var-n-0.L3%6%bbentry
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 5 for input.dst.llvm-%n
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3.ce179 expr point z3.ce179 done
 =inductive-invariants point_set point z3v487.ce158
 =inductive-invariants point_set point z3v487.ce158 expr point z3v487.ce158
 =inductive-invariants point_set point z3v487.ce158 expr point z3v487.ce158 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
@@ -6234,6 +6110,130 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3v487.ce158 expr point z3v487.ce158 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
 =inductive-invariants point_set point z3v487.ce158 expr point z3v487.ce158 done
+=inductive-invariants point_set point z3.ce135
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 2 for input.spec-%var-n-1
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 3 for input.spec-%var-i-0.L3%6%bbentry
+0
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 4 for input.spec-%var-n-0.L3%6%bbentry
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 5 for input.dst.llvm-%n
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce135 expr point z3.ce135 done
+=inductive-invariants point_set point z3v487.ce136
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
+1
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 2 for input.spec-%var-n-1
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 3 for input.spec-%var-i-0.L3%6%bbentry
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 4 for input.spec-%var-n-0.L3%6%bbentry
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 5 for input.dst.llvm-%n
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3v487.ce136 expr point z3v487.ce136 done
+=inductive-invariants point_set point z3.ce179
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
+1
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 2 for input.spec-%var-n-1
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 3 for input.spec-%var-i-0.L3%6%bbentry
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 4 for input.spec-%var-n-0.L3%6%bbentry
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 5 for input.dst.llvm-%n
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce179 expr point z3.ce179 done
+=inductive-invariants point_set point z3.ce157
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 2 for input.spec-%var-n-1
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 3 for input.spec-%var-i-0.L3%6%bbentry
+0
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 4 for input.spec-%var-n-0.L3%6%bbentry
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 5 for input.dst.llvm-%n
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+0
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce157 expr point z3.ce157 done
 =inductive-invariants point_set point z3v487.ce180
 =inductive-invariants point_set point z3v487.ce180 expr point z3v487.ce180
 =inductive-invariants point_set point z3v487.ce180 expr point z3v487.ce180 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
@@ -6265,68 +6265,37 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3v487.ce180 expr point z3v487.ce180 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
 =inductive-invariants point_set point z3v487.ce180 expr point z3v487.ce180 done
-=inductive-invariants point_set point z3v487.ce418
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
+=inductive-invariants point_set point z3.ce475
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
 1
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 2 for input.spec-%var-n-1
-4294967295
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 3 for input.spec-%var-i-0.L3%6%bbentry
-1
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 4 for input.spec-%var-n-0.L3%6%bbentry
-4294967295
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 5 for input.dst.llvm-%n
-4294967295
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
-1
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-0
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
-=inductive-invariants point_set point z3v487.ce418 expr point z3v487.ce418 done
-=inductive-invariants point_set point z3.ce511
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
-1
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 2 for input.spec-%var-n-1
-4294967295
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 3 for input.spec-%var-i-0.L3%6%bbentry
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 2 for input.spec-%var-n-1
+16843009
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 3 for input.spec-%var-i-0.L3%6%bbentry
 2
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 4 for input.spec-%var-n-0.L3%6%bbentry
-4294967295
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 5 for input.dst.llvm-%n
-4294967295
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 4 for input.spec-%var-n-0.L3%6%bbentry
+16843009
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 5 for input.dst.llvm-%n
+16843009
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 2
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-1
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
-=inductive-invariants point_set point z3.ce511 expr point z3.ce511 done
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce475 expr point z3.ce475 done
 =inductive-invariants point_set point z3.ce534
 =inductive-invariants point_set point z3.ce534 expr point z3.ce534
 =inductive-invariants point_set point z3.ce534 expr point z3.ce534 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
@@ -6358,6 +6327,37 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3.ce534 expr point z3.ce534 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
 =inductive-invariants point_set point z3.ce534 expr point z3.ce534 done
+=inductive-invariants point_set point z3.ce511
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
+1
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 2 for input.spec-%var-n-1
+4294967295
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 3 for input.spec-%var-i-0.L3%6%bbentry
+2
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 4 for input.spec-%var-n-0.L3%6%bbentry
+4294967295
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 5 for input.dst.llvm-%n
+4294967295
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
+2
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+1
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
+0
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+0
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
+1
+=inductive-invariants point_set point z3.ce511 expr point z3.ce511 done
 =inductive-invariants point_set point z3v487.ce578
 =inductive-invariants point_set point z3v487.ce578 expr point z3v487.ce578
 =inductive-invariants point_set point z3v487.ce578 expr point z3v487.ce578 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
@@ -6394,13 +6394,13 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
 1
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 2 for input.spec-%var-n-1
-33554434
+4
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 3 for input.spec-%var-i-0.L3%6%bbentry
 4
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 4 for input.spec-%var-n-0.L3%6%bbentry
-33554434
+4
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 5 for input.dst.llvm-%n
-33554434
+4
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 4
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
@@ -6408,13 +6408,13 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 8 for bvult(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
 0
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 9 for bvslt(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
+0
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 10 for bvult(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
-1
+0
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 11 for bvsle(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
+1
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 12 for bvule(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
-0
+1
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 13 for bvsle(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
 1
 =inductive-invariants point_set point z3.ce579 expr point z3.ce579 val 14 for bvule(input.dst.llvm-%i.0.Lfor.cond%1%bbentry, input.dst.llvm-%n)
@@ -6456,13 +6456,13 @@ E0%0%d_E0%0%d
 =inductive-invariants point_set point z3.ce631 expr point z3.ce631 val 1 for and(and(and(and(and(and(and(and(bvule(input.memlabel-mem--symbol.1_begin, input.memlabel-mem--symbol.1_end), eq(input.memlabel-mem--symbol.1_end, bvadd(input.memlabel-mem--symbol.1_begin, bvadd(400, 4294967295)))), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), eq(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, bvadd(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, bvadd(4, 4294967295)))), and(andnot1(and(bvuge(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_begin, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)), not(and(bvuge(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin), bvule(input.memlabel-mem--symbol.1_end, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))), andnot1(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin, input.memlabel-mem--symbol.1_end)), not(and(bvuge(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_begin), bvule(input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end, input.memlabel-mem--symbol.1_end)))))), and(eq(bvand(symbol.1, 3), 0), eq(bvand(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, 3), 0))), and(eq(symbol.1, input.memlabel-mem--symbol.1_begin), eq(input.dst.local./*___y___foo__x__=L0%0%argnum0=/, input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin))), eq(symbol.1, dst_symbol_addr.1)), region_agrees_with_memlabel(input.dst.llvm-mem.alloc, 0, 1, memlabel-mem-may-straddle-symbol.2-heap))
 1
 =inductive-invariants point_set point z3.ce631 expr point z3.ce631 val 2 for input.spec-%var-n-1
-33554433
+8388609
 =inductive-invariants point_set point z3.ce631 expr point z3.ce631 val 3 for input.spec-%var-i-0.L3%6%bbentry
 5
 =inductive-invariants point_set point z3.ce631 expr point z3.ce631 val 4 for input.spec-%var-n-0.L3%6%bbentry
-33554433
+8388609
 =inductive-invariants point_set point z3.ce631 expr point z3.ce631 val 5 for input.dst.llvm-%n
-33554433
+8388609
 =inductive-invariants point_set point z3.ce631 expr point z3.ce631 val 6 for input.dst.llvm-%i.0.Lfor.cond%1%bbentry
 5
 =inductive-invariants point_set point z3.ce631 expr point z3.ce631 val 7 for bvslt(input.dst.llvm-%n, input.dst.llvm-%i.0.Lfor.cond%1%bbentry)
@@ -7232,9 +7232,9 @@ symbol-implements-variable-sized-map
 =well-formedness-conditions for L3%6%bbentry_Lfor.cond%1%bbentry=>E0%0%d_E0%0%d edge well-formedness condition done
 =Ranking exprs at node L3%6%bbentry_Lfor.cond%1%bbentry
 =SRC Ranking expr 0
-1 : input.spec-%var-i-0.L3%6%bbentry : BV:32
-=SRC Ranking expr 1
 1 : input.spec-%var-n-0.L3%6%bbentry : BV:32
+=SRC Ranking expr 1
+1 : input.spec-%var-i-0.L3%6%bbentry : BV:32
 =SRC Tie Breaking expr 0
 1 : input.spec-%var-n-1 : BV:32
 =SRC Tie Breaking expr 1
@@ -7263,15 +7263,15 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry assume
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
-140367 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140374 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140452 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-140375 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
-140341 : 4 { 0x4 +1.0e1025 } : INT
+140357 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
+140360 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140443 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
+140361 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140339 : 4 { 0x4 +1.0e1025 } : INT
 140303 : 0 { 0x0 } : BOOL
-140453 : select(140367, 140374, 140452, 140375, 140341, 140303) : BV:32
+140444 : select(140357, 140360, 140443, 140361, 140339, 140303) : BV:32
 =RhsExpr
-140368 : input.dst.llvm-%n : BV:32
+140359 : input.dst.llvm-%n : BV:32
 =predicate done
 
 cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry assume #1
@@ -7283,8 +7283,8 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry assume
 equal-arg0
 =LhsExpr
 140273 : input.spec-%var-n-1 : BV:32
-140368 : input.dst.llvm-%n : BV:32
-140772 : eq(140273, 140368) : BOOL
+140359 : input.dst.llvm-%n : BV:32
+140752 : eq(140273, 140359) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -7297,64 +7297,64 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>L3%6%bbentry_Lfor.cond%1%bbentry assume
 =Comment
 precond-mlasserts
 =LhsExpr
-140724 : input.memlabel-mem--symbol.1_begin : BV:32
-140725 : input.memlabel-mem--symbol.1_end : BV:32
-140726 : bvule(140724, 140725) : BOOL
-140393 : 400 { 0x190 +1.4768e129 } : BV:32
-140405 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-140727 : bvadd(140393, 140405) : BV:32
-140728 : bvadd(140724, 140727) : BV:32
-140729 : eq(140725, 140728) : BOOL
-140730 : and(140726, 140729) : BOOL
-140731 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin : BV:32
-140732 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end : BV:32
-140733 : bvule(140731, 140732) : BOOL
-140734 : and(140730, 140733) : BOOL
-140338 : 4 { 0x4 +1.47e129 } : BV:32
-140735 : bvadd(140338, 140405) : BV:32
-140736 : bvadd(140731, 140735) : BV:32
-140737 : eq(140732, 140736) : BOOL
-140738 : and(140734, 140737) : BOOL
-140739 : bvuge(140724, 140731) : BOOL
-140740 : bvule(140724, 140732) : BOOL
-140741 : and(140739, 140740) : BOOL
-140743 : bvuge(140725, 140731) : BOOL
-140744 : bvule(140725, 140732) : BOOL
-140745 : and(140743, 140744) : BOOL
-140746 : not(140745) : BOOL
-140747 : andnot1(140741, 140746) : BOOL
-140742 : bvuge(140731, 140724) : BOOL
-140748 : bvule(140731, 140725) : BOOL
-140749 : and(140742, 140748) : BOOL
-140751 : bvuge(140732, 140724) : BOOL
-140752 : bvule(140732, 140725) : BOOL
-140753 : and(140751, 140752) : BOOL
-140754 : not(140753) : BOOL
-140755 : andnot1(140749, 140754) : BOOL
-140750 : and(140747, 140755) : BOOL
-140756 : and(140738, 140750) : BOOL
+140704 : input.memlabel-mem--symbol.1_begin : BV:32
+140705 : input.memlabel-mem--symbol.1_end : BV:32
+140706 : bvule(140704, 140705) : BOOL
+140384 : 400 { 0x190 +1.4768e129 } : BV:32
+140396 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+140707 : bvadd(140384, 140396) : BV:32
+140708 : bvadd(140704, 140707) : BV:32
+140709 : eq(140705, 140708) : BOOL
+140710 : and(140706, 140709) : BOOL
+140711 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin : BV:32
+140712 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end : BV:32
+140713 : bvule(140711, 140712) : BOOL
+140714 : and(140710, 140713) : BOOL
+140336 : 4 { 0x4 +1.47e129 } : BV:32
+140715 : bvadd(140336, 140396) : BV:32
+140716 : bvadd(140711, 140715) : BV:32
+140717 : eq(140712, 140716) : BOOL
+140718 : and(140714, 140717) : BOOL
+140719 : bvuge(140704, 140711) : BOOL
+140720 : bvule(140704, 140712) : BOOL
+140721 : and(140719, 140720) : BOOL
+140723 : bvuge(140705, 140711) : BOOL
+140724 : bvule(140705, 140712) : BOOL
+140725 : and(140723, 140724) : BOOL
+140726 : not(140725) : BOOL
+140727 : andnot1(140721, 140726) : BOOL
+140722 : bvuge(140711, 140704) : BOOL
+140728 : bvule(140711, 140705) : BOOL
+140729 : and(140722, 140728) : BOOL
+140731 : bvuge(140712, 140704) : BOOL
+140732 : bvule(140712, 140705) : BOOL
+140733 : and(140731, 140732) : BOOL
+140734 : not(140733) : BOOL
+140735 : andnot1(140729, 140734) : BOOL
+140730 : and(140727, 140735) : BOOL
+140736 : and(140718, 140730) : BOOL
 258 : symbol.1 : BV:32
-140757 : 3 { 0x3 +1.35e129 } : BV:32
-140758 : bvand(258, 140757) : BV:32
+140737 : 3 { 0x3 +1.35e129 } : BV:32
+140738 : bvand(258, 140737) : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140759 : eq(140758, 140276) : BOOL
-140375 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
-140760 : bvand(140375, 140757) : BV:32
-140761 : eq(140760, 140276) : BOOL
-140762 : and(140759, 140761) : BOOL
-140763 : and(140756, 140762) : BOOL
-140764 : eq(258, 140724) : BOOL
-140765 : eq(140375, 140731) : BOOL
-140766 : and(140764, 140765) : BOOL
-140767 : and(140763, 140766) : BOOL
+140739 : eq(140738, 140276) : BOOL
+140361 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
+140740 : bvand(140361, 140737) : BV:32
+140741 : eq(140740, 140276) : BOOL
+140742 : and(140739, 140741) : BOOL
+140743 : and(140736, 140742) : BOOL
+140744 : eq(258, 140704) : BOOL
+140745 : eq(140361, 140711) : BOOL
+140746 : and(140744, 140745) : BOOL
+140747 : and(140743, 140746) : BOOL
 65794 : dst_symbol_addr.1 : BV:32
-140768 : eq(258, 65794) : BOOL
-140769 : and(140767, 140768) : BOOL
-140374 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
+140748 : eq(258, 65794) : BOOL
+140749 : and(140747, 140748) : BOOL
+140360 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
 140286 : 1 { 0x1 +1.11e129 } : BV:32
-140383 : memlabel-mem-may-straddle-symbol.2-heap : MEMLABEL
-140770 : region_agrees_with_memlabel(140374, 140276, 140286, 140383) : BOOL
-140771 : and(140769, 140770) : BOOL
+140374 : memlabel-mem-may-straddle-symbol.2-heap : MEMLABEL
+140750 : region_agrees_with_memlabel(140360, 140276, 140286, 140374) : BOOL
+140751 : and(140749, 140750) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -7369,31 +7369,31 @@ cg.assumes_around_edge at L3%6%bbentry_Lfor.cond%1%bbentry=>L3%6%bbentry_Lfor.co
 =Comment
 merged-predicate
 =LhsExpr
-140552 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
-140368 : input.dst.llvm-%n : BV:32
-140553 : bvult(140552, 140368) : BOOL
+140532 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+140359 : input.dst.llvm-%n : BV:32
+140533 : bvult(140532, 140359) : BOOL
 140275 : 1 { 0x1 } : BOOL
 258 : symbol.1 : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140477 : isgepoffset(258, 140276) : BOOL
-140478 : 4 { 0x4 +1.0e1025 } : BV:64
-140399 : 32 { 0x20 +1.0e1025 } : INT
-140562 : bvsign_ext(140552, 140399) : BV:64
-140647 : bvmul(140478, 140562) : BV:64
-140403 : 63 { 0x3f +1.0e1025 } : INT
-140648 : bvextract(140647, 140403, 140399) : BV:32
-140652 : eq(140276, 140648) : BOOL
-140341 : 4 { 0x4 +1.0e1025 } : INT
-140654 : isindexforsize(140652, 140341) : BOOL
-140338 : 4 { 0x4 +1.47e129 } : BV:32
-140611 : bvmul(140338, 140552) : BV:32
-140614 : bvadd(258, 140611) : BV:32
-140656 : isgepoffset(140614, 140611) : BOOL
-140661 : and(140275, 140477, 140654, 140656) : BOOL
-140626 : islangaligned(140614, 140341) : BOOL
-142686 : and(140661, 140626) : BOOL
-142687 : eq(142686, 140275) : BOOL
-142700 : implies(140553, 142687) : BOOL
+140468 : isgepoffset(258, 140276) : BOOL
+140469 : 4 { 0x4 +1.0e1025 } : BV:64
+140390 : 32 { 0x20 +1.0e1025 } : INT
+140542 : bvsign_ext(140532, 140390) : BV:64
+140627 : bvmul(140469, 140542) : BV:64
+140394 : 63 { 0x3f +1.0e1025 } : INT
+140628 : bvextract(140627, 140394, 140390) : BV:32
+140632 : eq(140276, 140628) : BOOL
+140339 : 4 { 0x4 +1.0e1025 } : INT
+140634 : isindexforsize(140632, 140339) : BOOL
+140336 : 4 { 0x4 +1.47e129 } : BV:32
+140591 : bvmul(140336, 140532) : BV:32
+140594 : bvadd(258, 140591) : BV:32
+140636 : isgepoffset(140594, 140591) : BOOL
+140641 : and(140275, 140468, 140634, 140636) : BOOL
+140606 : islangaligned(140594, 140339) : BOOL
+142635 : and(140641, 140606) : BOOL
+142669 : eq(142635, 140275) : BOOL
+142670 : implies(140533, 142669) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
@@ -7408,17 +7408,17 @@ cg.assumes_around_edge at L3%6%bbentry_Lfor.cond%1%bbentry=>E0%0%d_E0%0%d assume
 =Comment
 undef-behavioursome.edge.Lfor.end%1%d=>E0%0%d
 =LhsExpr
-140552 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
-140368 : input.dst.llvm-%n : BV:32
-140553 : bvult(140552, 140368) : BOOL
-140723 : not(140553) : BOOL
+140532 : input.dst.llvm-%i.0.Lfor.cond%1%bbentry : BV:32
+140359 : input.dst.llvm-%n : BV:32
+140533 : bvult(140532, 140359) : BOOL
+140703 : not(140533) : BOOL
 140275 : 1 { 0x1 } : BOOL
 258 : symbol.1 : BV:32
 140276 : 0 { 0x0 +1.0e129 } : BV:32
-140477 : isgepoffset(258, 140276) : BOOL
-140640 : and(140275, 140477) : BOOL
-147793 : eq(140640, 140275) : BOOL
-147794 : implies(140723, 147793) : BOOL
+140468 : isgepoffset(258, 140276) : BOOL
+140620 : and(140275, 140468) : BOOL
+145191 : eq(140620, 140275) : BOOL
+146568 : implies(140703, 145191) : BOOL
 =RhsExpr
 140275 : 1 { 0x1 } : BOOL
 =predicate done
