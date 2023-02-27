@@ -18,6 +18,7 @@ PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          loop_hoisting \
          non_linear_invariant_casting \
          non_linear_invariant_shl \
+         path_enum_1 \
          # load_store_elim_cmove # needs "anticipated-cmove expressions"
          #ddec arg_passing fpadd  fcall100 fcall100_with_memaccess \
          #fpext : TOO SLOW
