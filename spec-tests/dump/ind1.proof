@@ -2612,16 +2612,6 @@ C_LOCAL=L0%0%argnum1= : dst.llvm-%val : 4 : 4 : 0
 =start_pc_preconditions
 =start_pc_precondition.0
 =Comment
-equal-val
-=LhsExpr
-1 : input.spec-%var-val-0 : BV:32
-2 : input.dst.llvm-%val : BV:32
-3 : eq(1, 2) : BOOL
-=RhsExpr
-1 : 1 { 0x1 } : BOOL
-=predicate done
-=start_pc_precondition.1
-=Comment
 pointer-implements-inductive-list
 =LhsExpr
 1 : input.spec-%var-l-0 : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
@@ -2652,7 +2642,7 @@ pointer-implements-inductive-list
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=start_pc_precondition.2
+=start_pc_precondition.1
 =Comment
 precond-mlasserts
 =LhsExpr
@@ -2712,7 +2702,7 @@ precond-mlasserts
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
-=start_pc_precondition.3
+=start_pc_precondition.2
 =Comment
 arg-location-contents-are-consistent-with-arg-value
 =LhsExpr
@@ -2725,6 +2715,16 @@ arg-location-contents-are-consistent-with-arg-value
 7 : select(1, 2, 3, 4, 5, 6) : BV:32
 =RhsExpr
 1 : input.dst.llvm-%val : BV:32
+=predicate done
+=start_pc_precondition.3
+=Comment
+equal-val
+=LhsExpr
+1 : input.spec-%var-val-0 : BV:32
+2 : input.dst.llvm-%val : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 { 0x1 } : BOOL
 =predicate done
 =start_pc_precondition.4
 =Comment
@@ -2789,20 +2789,20 @@ discontiguous mls:
 =graph_with_proofs done
 =global counterexamples for reason inductive-invariants
 =global nodece 0
-=global nodece 0 nodece cvc4.ce15.num_edges_traversed0
+=global nodece 0 nodece cvc4.ce6.num_edges_traversed0
 =global nodece 0 nodece_path
 =global nodece 0 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 0 nodece_cached_counterexample
-=counter_example_begin cvc4.ce15 114effa32af58c64ca64a75a1e742444
+=counter_example_begin cvc4.ce6 cc7fe864076d53ed3973f1c9d15814
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : Indxform75 : BV:32
-4 : Lambda150 : BV:32
+3 : Indxform21 : BV:32
+4 : Lambda42 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda151 : BV:32
-7 : 864805264 { 0x338be190 +1.9282112e232 } : BV:32
+6 : Lambda43 : BV:32
+7 : 359438398 { 0x156c983e +1.84839606e171 } : BV:32
 8 : prod(7, 3) : PROD[BV:32,BV:32]
 9 : sum(1, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
 10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -2817,11 +2817,11 @@ discontiguous mls:
 =input.spec-%var-node_next-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : Indxform77 : BV:32
-4 : Lambda154 : BV:32
+3 : Indxform23 : BV:32
+4 : Lambda46 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda155 : BV:32
-7 : 1201583600 { 0x479eb5f0 +1.23992729e16 } : BV:32
+6 : Lambda47 : BV:32
+7 : 358390502 { 0x155c9ae6 +1.72347712e171 } : BV:32
 8 : prod(7, 3) : PROD[BV:32,BV:32]
 9 : sum(1, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
 10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -2831,12 +2831,12 @@ discontiguous mls:
 14 : sym_const(13) : IND[Type0,SUM[UNIT,PROD[BV:32,DECL[Type0]]]]
 =input.spec-%var-node-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indxform76 : BV:32
-3 : Lambda152 : BV:32
+2 : Indxform22 : BV:32
+3 : Lambda44 : BV:32
 4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda153 : BV:32
+5 : Lambda45 : BV:32
 6 : unit : UNIT
-7 : 212397443 { 0xca8ed83 +1.31974828e154 } : BV:32
+7 : 342187326 { 0x14655d3e +1.79190802e169 } : BV:32
 8 : prod(7, 2) : PROD[BV:32,BV:32]
 9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
 10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -2871,44 +2871,44 @@ discontiguous mls:
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L2%9%bbentry.0
+=input.spec-%var-node-0.L2%9%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node-0.L2%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node-0.L2%9%bbentry.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node_next-0.L2%9%bbentry.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L2%9%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
-1548946806
+1868157306
 =counter_example_end
 =global nodece 0 num_edges_traversed 0
 =global nodece 0 nodece_visted_pcs: 
 L0%0%d_L0%0%d
 =global nodece 1
-=global nodece 1 nodece z3v487.ce16.num_edges_traversed0
+=global nodece 1 nodece z3v487.ce7.num_edges_traversed0
 =global nodece 1 nodece_path
 =global nodece 1 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 1 nodece_cached_counterexample
-=counter_example_begin z3v487.ce16 719d4e628998353f98cc48e52fabf6
+=counter_example_begin z3v487.ce7 8c3ef17cd24e6ea2d4e3961e3471d5a
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-4 : Indxform81 : BV:32
-5 : Lambda162 : BV:32
+4 : Indxform27 : BV:32
+5 : Lambda54 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda163 : BV:32
-8 : 891646780 { 0x3525733c +1.29257917e235 } : BV:32
+7 : Lambda55 : BV:32
+8 : 348192464 { 0x14c0fed0 +1.50777626e170 } : BV:32
 9 : prod(8, 4) : PROD[BV:32,BV:32]
 10 : sum(1, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
 11 : lambda(7, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -2923,11 +2923,11 @@ L0%0%d_L0%0%d
 =input.spec-%var-node_next-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
-3 : Indxform83 : BV:32
-4 : Lambda166 : BV:32
+3 : Indxform29 : BV:32
+4 : Lambda58 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda167 : BV:32
-7 : 1901835600 { 0x715bb550 +1.71647071e99 } : BV:32
+6 : Lambda59 : BV:32
+7 : 835703175 { 0x31cfd187 +1.62358176e228 } : BV:32
 8 : prod(7, 3) : PROD[BV:32,BV:32]
 9 : sum(1, 2, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
 10 : lambda(6, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -2938,12 +2938,12 @@ L0%0%d_L0%0%d
 =input.spec-%var-node-0.L2%9%bbentry
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : Indxform82 : BV:32
-4 : Lambda164 : BV:32
+3 : Indxform28 : BV:32
+4 : Lambda56 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda165 : BV:32
+6 : Lambda57 : BV:32
 7 : unit : UNIT
-8 : 1537261539 { 0x5ba0bfe3 +1.25585591e56 } : BV:32
+8 : 1758393872 { 0x68cef610 +1.61688423e82 } : BV:32
 9 : prod(8, 3) : PROD[BV:32,BV:32]
 10 : sum(2, 7, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
 11 : lambda(6, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -2978,44 +2978,44 @@ L0%0%d_L0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.0
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-=input.spec-%var-node_next-0.L2%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node-0.L2%9%bbentry.0
 1 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node-0.L2%9%bbentry.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node_next-0.L2%9%bbentry.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L2%9%bbentry.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.1.2.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
-3118510636
+784983708
 =counter_example_end
 =global nodece 1 num_edges_traversed 0
 =global nodece 1 nodece_visted_pcs: 
 L0%0%d_L0%0%d
 =global nodece 2
-=global nodece 2 nodece yices.ce17.num_edges_traversed0
+=global nodece 2 nodece yices.ce8.num_edges_traversed0
 =global nodece 2 nodece_path
 =global nodece 2 nodece_path.graph_edge_composition
 (epsilon)
 =global nodece 2 nodece_cached_counterexample
-=counter_example_begin yices.ce17 efcf8b4554e235e960a3e9cd639e50df
+=counter_example_begin yices.ce8 8b555d9bad8974e418895ea9ef9b977
 =input.spec-%var-l-0
 1 : 0 { 0x0 +1.0e129 } : BV:32
 2 : unit : UNIT
 3 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-4 : Indxform87 : BV:32
-5 : Lambda174 : BV:32
+4 : Indxform33 : BV:32
+5 : Lambda66 : BV:32
 6 : lambda(5, 5) : FUNCTION[BV:32 -> BV:32]
-7 : Lambda175 : BV:32
-8 : 1326256705 { 0x4f0d1241 +1.10211956e31 } : BV:32
+7 : Lambda67 : BV:32
+8 : 695579768 { 0x2975b478 +1.91956996e211 } : BV:32
 9 : prod(8, 4) : PROD[BV:32,BV:32]
 10 : sum(1, 2, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
 11 : lambda(7, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -3027,12 +3027,12 @@ L0%0%d_L0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node_next-0.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-2 : Indxform89 : BV:32
-3 : Lambda178 : BV:32
+2 : Indxform35 : BV:32
+3 : Lambda70 : BV:32
 4 : lambda(3, 3) : FUNCTION[BV:32 -> BV:32]
-5 : Lambda179 : BV:32
+5 : Lambda71 : BV:32
 6 : unit : UNIT
-7 : 322974518 { 0x13403336 +1.50156283e167 } : BV:32
+7 : 355659295 { 0x1532ee1f +1.39789187e171 } : BV:32
 8 : prod(7, 2) : PROD[BV:32,BV:32]
 9 : sum(1, 6, 8) : SUM[UNIT,PROD[BV:32,BV:32]]
 10 : lambda(5, 9) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -3041,12 +3041,12 @@ L0%0%d_L0%0%d
 =input.spec-%var-node-0.L2%9%bbentry
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
 2 : 0 { 0x0 +1.0e129 } : BV:32
-3 : Indxform88 : BV:32
-4 : Lambda176 : BV:32
+3 : Indxform34 : BV:32
+4 : Lambda68 : BV:32
 5 : lambda(4, 4) : FUNCTION[BV:32 -> BV:32]
-6 : Lambda177 : BV:32
+6 : Lambda69 : BV:32
 7 : unit : UNIT
-8 : 1654892032 { 0x62a3a600 +1.27850341e70 } : BV:32
+8 : 723208484 { 0x2b1b4924 +1.21316957e215 } : BV:32
 9 : prod(8, 3) : PROD[BV:32,BV:32]
 10 : sum(2, 7, 9) : SUM[UNIT,PROD[BV:32,BV:32]]
 11 : lambda(6, 10) : FUNCTION[BV:32 -> SUM[UNIT,PROD[BV:32,BV:32]]]
@@ -3081,16 +3081,16 @@ L0%0%d_L0%0%d
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-l-0.2.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
-=input.spec-%var-node_next-0.L2%9%bbentry.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=input.spec-%var-l-0.2.1.0
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node-0.L2%9%bbentry.0
 1 : 2147483648 { 0x80000000 -2147483648 -1.0e129 } : BV:32
+=input.spec-%var-l-0.2.1.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =input.spec-%var-node-0.L2%9%bbentry.1.0
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=input.spec-%var-node_next-0.L2%9%bbentry.0
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =counter_example.random_seed
-1195417074
+251969561
 =counter_example_end
 =global nodece 2 num_edges_traversed 0
 =global nodece 2 nodece_visted_pcs: 
@@ -3257,6 +3257,46 @@ cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.ec.graph_edge_c
 (epsilon)
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.pred
 =Comment
+merged-predicate
+=LhsExpr
+140291 : 0 { 0x0 +1.0e129 } : BV:32
+140355 : input.dst.llvm-%l : BV:32
+140432 : eq(140291, 140355) : BOOL
+140433 : not(140432) : BOOL
+140324 : 4 { 0x4 +1.0e1025 } : INT
+140485 : islangaligned(140355, 140324) : BOOL
+140435 : isgepoffset(140355, 140291) : BOOL
+140276 : 1 { 0x1 } : BOOL
+140480 : and(140276, 140435) : BOOL
+140483 : and(140435, 140480) : BOOL
+140753 : and(140485, 140483) : BOOL
+140754 : eq(140753, 140276) : BOOL
+140755 : implies(140433, 140754) : BOOL
+=RhsExpr
+140276 : 1 { 0x1 } : BOOL
+=predicate done
+
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec.graph_edge_composition
+(epsilon)
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.pred
+=Comment
+undef-behaviour-align-assume.edge.L0%0%d=>Lentry%2%d
+=LhsExpr
+140355 : input.dst.llvm-%l : BV:32
+140366 : 8 { 0x8 +1.0e1025 } : INT
+140367 : islangaligned(140355, 140366) : BOOL
+=RhsExpr
+140276 : 1 { 0x1 } : BOOL
+=predicate done
+
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4.ec
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4.ec.graph_edge_composition
+(epsilon)
+cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4.pred
+=Comment
 precond-mlasserts
 =LhsExpr
 140495 : input.dst.memlabel-mem--local./*___y___head_or__x__=L0%0%argnum1=/_begin : BV:32
@@ -3316,57 +3356,17 @@ precond-mlasserts
 140276 : 1 { 0x1 } : BOOL
 =predicate done
 
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.ec.graph_edge_composition
-(epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #3.pred
-=Comment
-equal-val
-=LhsExpr
-140274 : input.spec-%var-val-0 : BV:32
-140356 : input.dst.llvm-%val : BV:32
-140540 : eq(140274, 140356) : BOOL
-=RhsExpr
-140276 : 1 { 0x1 } : BOOL
-=predicate done
-
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4.ec.graph_edge_composition
-(epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #4.pred
-=Comment
-undef-behaviour-align-assume.edge.L0%0%d=>Lentry%2%d
-=LhsExpr
-140355 : input.dst.llvm-%l : BV:32
-140366 : 8 { 0x8 +1.0e1025 } : INT
-140367 : islangaligned(140355, 140366) : BOOL
-=RhsExpr
-140276 : 1 { 0x1 } : BOOL
-=predicate done
-
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #5
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #5.ec
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #5.ec.graph_edge_composition
 (epsilon)
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #5.pred
 =Comment
-merged-predicate
+equal-val
 =LhsExpr
-140291 : 0 { 0x0 +1.0e129 } : BV:32
-140355 : input.dst.llvm-%l : BV:32
-140432 : eq(140291, 140355) : BOOL
-140433 : not(140432) : BOOL
-140324 : 4 { 0x4 +1.0e1025 } : INT
-140485 : islangaligned(140355, 140324) : BOOL
-140435 : isgepoffset(140355, 140291) : BOOL
-140276 : 1 { 0x1 } : BOOL
-140480 : and(140276, 140435) : BOOL
-140483 : and(140435, 140480) : BOOL
-140743 : and(140485, 140483) : BOOL
-140763 : eq(140743, 140276) : BOOL
-140764 : implies(140433, 140763) : BOOL
+140274 : input.spec-%var-val-0 : BV:32
+140356 : input.dst.llvm-%val : BV:32
+140540 : eq(140274, 140356) : BOOL
 =RhsExpr
 140276 : 1 { 0x1 } : BOOL
 =predicate done

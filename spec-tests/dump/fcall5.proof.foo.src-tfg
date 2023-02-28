@@ -110,17 +110,17 @@ mlheap.src.spec.foo : memlabel-mem--heap
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%var-i-0.L4%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%tmpvar-16.L4%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%var-a-0.L4%6%bbentry
-1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
-=spec-%tmpvar-15.L4%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =src.spec-ghostvar.itervar.1.L4%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-x-1.L4%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-i-0.L4%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-15.L4%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-a-0.L4%6%bbentry
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=spec-%tmpvar-16.L4%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -197,6 +197,10 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
+=spec-%var-x-0.L4%18%bbentry
+1 : input.spec-%var-x-1.L4%6%bbentry : BV:32
+=src.spec-ghostvar.itervar.2.L4%18%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-j-0.L4%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-a_i-0.L4%18%bbentry
@@ -215,10 +219,6 @@ tfg_edge_comment end
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =spec-%tmpvar-10.L4%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=src.spec-ghostvar.itervar.2.L4%18%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%var-x-0.L4%18%bbentry
-1 : input.spec-%var-x-1.L4%6%bbentry : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -271,26 +271,26 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%var-i-0.L4%6%bbentry
-1 : input.spec-%tmpvar-9.L4%18%bbentry : BV:32
-=spec-%var-a-0.L4%6%bbentry
-1 : input.spec-%var-a-0.L4%6%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
-=spec-%tmpvar-5.L4%6%bbentry
+=spec-%tmpvar-11.L4%6%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 =src.spec-ghostvar.itervar.1.L4%6%bbentry
 1 : input.src.spec-ghostvar.itervar.1.L4%6%bbentry : BV:32
 2 : 1 { 0x1 +1.11e129 } : BV:32
 3 : bvadd(1, 2) : BV:32
-=spec-%tmpvar-11.L4%6%bbentry
+=spec-%tmpvar-5.L4%6%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 =spec-%var-x-1.L4%6%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
-=spec-%tmpvar-6.L4%6%bbentry
-1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
+=spec-%var-i-0.L4%6%bbentry
+1 : input.spec-%tmpvar-9.L4%18%bbentry : BV:32
+=spec-%var-a-0.L4%6%bbentry
+1 : input.spec-%var-a-0.L4%6%bbentry : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
 =spec-%var-u-0.L4%6%bbentry
 1 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
+=spec-%tmpvar-6.L4%6%bbentry
+1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -306,34 +306,34 @@ tfg_edge_comment end
 1 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : BV:32
-=spec-%var-j-0.L4%18%bbentry
-1 : input.spec-%var-j-0.L4%18%bbentry : BV:32
-2 : 1 { 0x1 +1.11e129 } : BV:32
-3 : bvadd(1, 2) : BV:32
-=spec-%var-a_i-0.L4%18%bbentry
-1 : input.spec-%var-a_i-0.L4%18%bbentry : MAP[BV:32 -> BV:32]
-=spec-%tmpvar-2.L4%18%bbentry
-1 : input.spec-%var-j-0.L4%18%bbentry : BV:32
-2 : 1 { 0x1 +1.11e129 } : BV:32
-3 : bvadd(1, 2) : BV:32
-=src.spec-ghostvar.itervar.2.L4%18%bbentry
-1 : input.src.spec-ghostvar.itervar.2.L4%18%bbentry : BV:32
-2 : 1 { 0x1 +1.11e129 } : BV:32
-3 : bvadd(1, 2) : BV:32
-=spec-%tmpvar-1.L4%18%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=spec-%var-x-0.L4%18%bbentry
-1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
-2 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
-3 : 1 { 0x1 +1.0e1025 } : INT
-4 : sum_get(2, 3) : BV:32
-5 : bvadd(1, 4) : BV:32
 =spec-%tmpvar-3.L4%18%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 2 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
 3 : 1 { 0x1 +1.0e1025 } : INT
 4 : sum_get(2, 3) : BV:32
 5 : bvadd(1, 4) : BV:32
+=spec-%tmpvar-2.L4%18%bbentry
+1 : input.spec-%var-j-0.L4%18%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-x-0.L4%18%bbentry
+1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=spec-%tmpvar-1.L4%18%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=src.spec-ghostvar.itervar.2.L4%18%bbentry
+1 : input.src.spec-ghostvar.itervar.2.L4%18%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-j-0.L4%18%bbentry
+1 : input.spec-%var-j-0.L4%18%bbentry : BV:32
+2 : 1 { 0x1 +1.11e129 } : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-a_i-0.L4%18%bbentry
+1 : input.spec-%var-a_i-0.L4%18%bbentry : MAP[BV:32 -> BV:32]
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -902,17 +902,17 @@ lr_status_linearly_related(; )
 1 : 1 { 0x1 } : BOOL
 =graph_with_simplified_assets.simplified_edgecond done
 =graph_with_simplified_assets.simplified_to_state at L0%0%d=>L4%6%bbentry
-=spec-%var-i-0.L4%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%tmpvar-16.L4%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%var-a-0.L4%6%bbentry
-1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
-=spec-%tmpvar-15.L4%6%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =src.spec-ghostvar.itervar.1.L4%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-x-1.L4%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-i-0.L4%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-15.L4%6%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%var-a-0.L4%6%bbentry
+1 : input.spec-%var-a-1 : MAP[BV:32 -> MAP[BV:32 -> BV:32]]
+=spec-%tmpvar-16.L4%6%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L4%6%bbentry=>L4%7%d
@@ -940,6 +940,10 @@ lr_status_linearly_related(; )
 1 : input.spec-%var-x-1.L4%6%bbentry : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L4%10%bbentry=>L4%18%bbentry
+=spec-%var-x-0.L4%18%bbentry
+1 : input.spec-%var-x-1.L4%6%bbentry : BV:32
+=src.spec-ghostvar.itervar.2.L4%18%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-j-0.L4%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-a_i-0.L4%18%bbentry
@@ -958,10 +962,6 @@ lr_status_linearly_related(; )
 1 : 1 { 0x1 +1.11e129 } : BV:32
 =spec-%tmpvar-10.L4%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
-=src.spec-ghostvar.itervar.2.L4%18%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
-=spec-%var-x-0.L4%18%bbentry
-1 : input.spec-%var-x-1.L4%6%bbentry : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L4%18%bbentry=>L4%19%d
 =spec-%tmpvar-0.L4%19%d
@@ -974,56 +974,56 @@ lr_status_linearly_related(; )
 =graph_with_simplified_assets.simplified_to_state at L4%19%d=>L4%22%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L4%20%bbentry=>L4%6%bbentry
-=spec-%var-i-0.L4%6%bbentry
-1 : input.spec-%tmpvar-9.L4%18%bbentry : BV:32
-=spec-%tmpvar-5.L4%6%bbentry
+=spec-%tmpvar-11.L4%6%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 =src.spec-ghostvar.itervar.1.L4%6%bbentry
 1 : 1 { 0x1 +1.11e129 } : BV:32
 2 : input.src.spec-ghostvar.itervar.1.L4%6%bbentry : BV:32
 3 : bvadd(1, 2) : BV:32
-=spec-%tmpvar-11.L4%6%bbentry
+=spec-%tmpvar-5.L4%6%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 =spec-%var-x-1.L4%6%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
-=spec-%tmpvar-6.L4%6%bbentry
-1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
+=spec-%var-i-0.L4%6%bbentry
+1 : input.spec-%tmpvar-9.L4%18%bbentry : BV:32
 =spec-%var-u-0.L4%6%bbentry
 1 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
+=spec-%tmpvar-6.L4%6%bbentry
+1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L4%22%bbentry=>L4%18%bbentry
 =spec-%var-a_ij-0.L4%18%bbentry
 1 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : BV:32
-=spec-%var-j-0.L4%18%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.spec-%var-j-0.L4%18%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
-=spec-%tmpvar-2.L4%18%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.spec-%var-j-0.L4%18%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
-=src.spec-ghostvar.itervar.2.L4%18%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-2 : input.src.spec-ghostvar.itervar.2.L4%18%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
-=spec-%tmpvar-1.L4%18%bbentry
-1 : 1 { 0x1 +1.11e129 } : BV:32
-=spec-%var-x-0.L4%18%bbentry
-1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
-2 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
-3 : 1 { 0x1 +1.0e1025 } : INT
-4 : sum_get(2, 3) : BV:32
-5 : bvadd(1, 4) : BV:32
 =spec-%tmpvar-3.L4%18%bbentry
 1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
 2 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
 3 : 1 { 0x1 +1.0e1025 } : INT
 4 : sum_get(2, 3) : BV:32
 5 : bvadd(1, 4) : BV:32
+=spec-%tmpvar-2.L4%18%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-j-0.L4%18%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-x-0.L4%18%bbentry
+1 : input.spec-%var-x-0.L4%18%bbentry : BV:32
+2 : input.spec-%tmpvar-0.L4%19%d : SUM[UNIT,BV:32]
+3 : 1 { 0x1 +1.0e1025 } : INT
+4 : sum_get(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=spec-%tmpvar-1.L4%18%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+=src.spec-ghostvar.itervar.2.L4%18%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.src.spec-ghostvar.itervar.2.L4%18%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-j-0.L4%18%bbentry
+1 : 1 { 0x1 +1.11e129 } : BV:32
+2 : input.spec-%var-j-0.L4%18%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state done
 =graph_with_simplified_assets.simplified_assumes at L0%0%d=>L4%6%bbentry

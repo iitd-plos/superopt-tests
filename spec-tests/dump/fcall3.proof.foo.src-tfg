@@ -211,13 +211,13 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-2.L2%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u-0.L2%9%bbentry
 1 : input.spec-%tmpvar-1.L2%3%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =spec-%tmpvar-3.L2%9%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-2.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -294,13 +294,13 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-6.L2%18%bbentry
+=spec-%tmpvar-7.L2%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u2-0.L2%18%bbentry
 1 : input.spec-%tmpvar-5.L2%12%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
-=spec-%tmpvar-7.L2%18%bbentry
+=spec-%tmpvar-6.L2%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -332,14 +332,14 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
+=spec-%var-m1-0.L2%21%d
+1 : input.spec-%tmpvar-7.L2%18%bbentry : BV:32
 =spec-%tmpvar-9.L2%21%d
 1 : input.spec-%var-m-0 : MAP[BV:32 -> BV:32]
 2 : 2 { 0x2 +1.23e129 } : BV:32
 3 : map_get(1, 2) : SUM[UNIT,BV:32]
 =spec-%tmpvar-8.L2%21%d
 1 : 2 { 0x2 +1.23e129 } : BV:32
-=spec-%var-m1-0.L2%21%d
-1 : input.spec-%tmpvar-7.L2%18%bbentry : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -377,13 +377,13 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-10.L2%27%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u3-0.L2%27%bbentry
 1 : input.spec-%tmpvar-9.L2%21%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =spec-%tmpvar-11.L2%27%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-10.L2%27%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -460,13 +460,13 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-14.L2%36%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u4-0.L2%36%bbentry
 1 : input.spec-%tmpvar-13.L2%30%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =spec-%tmpvar-15.L2%36%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-14.L2%36%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =Edge.Assumes.begin:
@@ -479,11 +479,11 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=spec-%tmpvar-15.L2%36%bbentry
+=spec-%var-val-3.L2%36%bbentry
 1 : input.spec-%tmpvar-13.L2%30%d : SUM[UNIT,BV:32]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : BV:32
-=spec-%var-val-3.L2%36%bbentry
+=spec-%tmpvar-15.L2%36%bbentry
 1 : input.spec-%tmpvar-13.L2%30%d : SUM[UNIT,BV:32]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : BV:32
@@ -530,6 +530,16 @@ tfg_edge_comment end
 5 : input.spec-%var-m2-0.L2%30%d : BV:32
 6 : bvsub(4, 5) : BV:32
 7 : bvadd(3, 6) : BV:32
+=spec-%tmpvar-17.E0%0%d
+1 : input.spec-%var-m1-0.L2%21%d : BV:32
+2 : input.spec-%var-m2-0.L2%30%d : BV:32
+3 : bvsub(1, 2) : BV:32
+=spec-%tmpvar-16.E0%0%d
+1 : input.spec-%var-m0-0.L2%12%d : BV:32
+2 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-m3-0.E0%0%d
+1 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
 =spec-%tmpvar-23.E0%0%d
 1 : input.spec-%var-m0-0.L2%12%d : BV:32
 2 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
@@ -546,16 +556,6 @@ tfg_edge_comment end
 5 : input.spec-%var-m2-0.L2%30%d : BV:32
 6 : bvsub(4, 5) : BV:32
 7 : bvadd(3, 6) : BV:32
-=spec-%var-m3-0.E0%0%d
-1 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
-=spec-%tmpvar-17.E0%0%d
-1 : input.spec-%var-m1-0.L2%21%d : BV:32
-2 : input.spec-%var-m2-0.L2%30%d : BV:32
-3 : bvsub(1, 2) : BV:32
-=spec-%tmpvar-16.E0%0%d
-1 : input.spec-%var-m0-0.L2%12%d : BV:32
-2 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
 =state_end
 =Edge.Assumes.begin:
 =Edge.Assumes.end
@@ -1498,13 +1498,13 @@ lr_status_linearly_related(; )
 =graph_with_simplified_assets.simplified_to_state at L2%3%d=>L2%7%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%4%bbentry=>L2%9%bbentry
-=spec-%tmpvar-2.L2%9%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u-0.L2%9%bbentry
 1 : input.spec-%tmpvar-1.L2%3%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =spec-%tmpvar-3.L2%9%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-2.L2%9%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%7%bbentry=>L2%9%bbentry
@@ -1532,13 +1532,13 @@ lr_status_linearly_related(; )
 =graph_with_simplified_assets.simplified_to_state at L2%12%d=>L2%16%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%13%bbentry=>L2%18%bbentry
-=spec-%tmpvar-6.L2%18%bbentry
+=spec-%tmpvar-7.L2%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u2-0.L2%18%bbentry
 1 : input.spec-%tmpvar-5.L2%12%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
-=spec-%tmpvar-7.L2%18%bbentry
+=spec-%tmpvar-6.L2%18%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%16%bbentry=>L2%18%bbentry
@@ -1552,27 +1552,27 @@ lr_status_linearly_related(; )
 3 : sum_get(1, 2) : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%18%bbentry=>L2%21%d
+=spec-%var-m1-0.L2%21%d
+1 : input.spec-%tmpvar-7.L2%18%bbentry : BV:32
 =spec-%tmpvar-9.L2%21%d
 1 : input.spec-%var-m-0 : MAP[BV:32 -> BV:32]
 2 : 2 { 0x2 +1.23e129 } : BV:32
 3 : map_get(1, 2) : SUM[UNIT,BV:32]
 =spec-%tmpvar-8.L2%21%d
 1 : 2 { 0x2 +1.23e129 } : BV:32
-=spec-%var-m1-0.L2%21%d
-1 : input.spec-%tmpvar-7.L2%18%bbentry : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%21%d=>L2%22%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%21%d=>L2%25%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%22%bbentry=>L2%27%bbentry
-=spec-%tmpvar-10.L2%27%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u3-0.L2%27%bbentry
 1 : input.spec-%tmpvar-9.L2%21%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =spec-%tmpvar-11.L2%27%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-10.L2%27%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%25%bbentry=>L2%27%bbentry
@@ -1600,21 +1600,21 @@ lr_status_linearly_related(; )
 =graph_with_simplified_assets.simplified_to_state at L2%30%d=>L2%34%bbentry
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%31%bbentry=>L2%36%bbentry
-=spec-%tmpvar-14.L2%36%bbentry
-1 : 0 { 0x0 +1.0e129 } : BV:32
 =spec-%var-u4-0.L2%36%bbentry
 1 : input.spec-%tmpvar-13.L2%30%d : SUM[UNIT,BV:32]
 2 : 0 { 0x0 +1.0e1025 } : INT
 3 : sum_get(1, 2) : UNIT
 =spec-%tmpvar-15.L2%36%bbentry
 1 : 0 { 0x0 +1.0e129 } : BV:32
+=spec-%tmpvar-14.L2%36%bbentry
+1 : 0 { 0x0 +1.0e129 } : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at L2%34%bbentry=>L2%36%bbentry
-=spec-%tmpvar-15.L2%36%bbentry
+=spec-%var-val-3.L2%36%bbentry
 1 : input.spec-%tmpvar-13.L2%30%d : SUM[UNIT,BV:32]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : BV:32
-=spec-%var-val-3.L2%36%bbentry
+=spec-%tmpvar-15.L2%36%bbentry
 1 : input.spec-%tmpvar-13.L2%30%d : SUM[UNIT,BV:32]
 2 : 1 { 0x1 +1.0e1025 } : INT
 3 : sum_get(1, 2) : BV:32
@@ -1652,6 +1652,18 @@ lr_status_linearly_related(; )
 5 : input.spec-%var-m2-0.L2%30%d : BV:32
 6 : bvmul(4, 5) : BV:32
 7 : bvadd(1, 2, 3, 6) : BV:32
+=spec-%tmpvar-17.E0%0%d
+1 : input.spec-%var-m1-0.L2%21%d : BV:32
+2 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+3 : input.spec-%var-m2-0.L2%30%d : BV:32
+4 : bvmul(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
+=spec-%tmpvar-16.E0%0%d
+1 : input.spec-%var-m0-0.L2%12%d : BV:32
+2 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
+3 : bvadd(1, 2) : BV:32
+=spec-%var-m3-0.E0%0%d
+1 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
 =spec-%tmpvar-23.E0%0%d
 1 : input.spec-%var-m0-0.L2%12%d : BV:32
 2 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
@@ -1668,18 +1680,6 @@ lr_status_linearly_related(; )
 5 : input.spec-%var-m2-0.L2%30%d : BV:32
 6 : bvmul(4, 5) : BV:32
 7 : bvadd(1, 2, 3, 6) : BV:32
-=spec-%var-m3-0.E0%0%d
-1 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
-=spec-%tmpvar-17.E0%0%d
-1 : input.spec-%var-m1-0.L2%21%d : BV:32
-2 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-3 : input.spec-%var-m2-0.L2%30%d : BV:32
-4 : bvmul(2, 3) : BV:32
-5 : bvadd(1, 4) : BV:32
-=spec-%tmpvar-16.E0%0%d
-1 : input.spec-%var-m0-0.L2%12%d : BV:32
-2 : input.spec-%tmpvar-15.L2%36%bbentry : BV:32
-3 : bvadd(1, 2) : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state done
 =graph_with_simplified_assets.simplified_assumes at L0%0%d=>L2%3%d

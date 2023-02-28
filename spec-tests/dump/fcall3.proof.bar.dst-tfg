@@ -208,6 +208,10 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
+=dst.llvm-%ret-reg.E0%0%d
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+3 : bvsub(1, 2) : BV:32
 =dst.llvm-%hidden-reg.E0%0%d
 1 : input.dst.llvm-%hidden-reg : BV:32
 2 : input.dst.llvm-callee-save.0 : BV:32
@@ -218,10 +222,6 @@ tfg_edge_comment end
 7 : bvxor(5, 6) : BV:32
 8 : input.dst.llvm-callee-save.3 : BV:32
 9 : bvxor(7, 8) : BV:32
-=dst.llvm-%ret-reg.E0%0%d
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
-3 : bvsub(1, 2) : BV:32
 =dst.llvm-%sub.E0%0%d
 1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 2 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
@@ -1066,6 +1066,12 @@ lr_status_linearly_related(; )
 1 : input.dst.llvm-%m2 : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lentry%2%fcallEnd=>E0%0%d
+=dst.llvm-%ret-reg.E0%0%d
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+2 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
+3 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+4 : bvmul(2, 3) : BV:32
+5 : bvadd(1, 4) : BV:32
 =dst.llvm-%hidden-reg.E0%0%d
 1 : input.dst.llvm-%hidden-reg : BV:32
 2 : input.dst.llvm-callee-save.0 : BV:32
@@ -1076,12 +1082,6 @@ lr_status_linearly_related(; )
 7 : bvxor(5, 6) : BV:32
 8 : input.dst.llvm-callee-save.3 : BV:32
 9 : bvxor(7, 8) : BV:32
-=dst.llvm-%ret-reg.E0%0%d
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
-2 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-3 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
-4 : bvmul(2, 3) : BV:32
-5 : bvadd(1, 4) : BV:32
 =dst.llvm-%sub.E0%0%d
 1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 2 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
@@ -1443,12 +1443,12 @@ input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at Lentry%1%fcallEnd
 =reaching defns for expr 0
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
   Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 1 edges
   Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 1 edges done
@@ -1505,12 +1505,12 @@ input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at Lentry%2%fcallStart
 =reaching defns for expr 0
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
   Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 1 edges
   Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 1 edges done
@@ -1567,24 +1567,24 @@ input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at Lentry%2%fcallEnd
 =reaching defns for expr 0
-1 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
-  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
 =reaching defns for expr 1 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m2.Lentry%2%fcallEnd : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 2 edges
-  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m2.Lentry%2%fcallEnd : BV:32
 =reaching defns for expr 3 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
 1 : input.dst.llvm-%m1 : BV:32
@@ -1639,42 +1639,42 @@ input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =Reaching Definitions at E0%0%d
 =reaching defns for expr 0
-1 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 0 edges
-  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 0 edges done
 =reaching defns for expr 1
-1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
+1 : input.dst.llvm-%call1.Lentry%2%fcallEnd : BV:32
 =reaching defns for expr 1 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
 =reaching defns for expr 1 edges done
 =reaching defns for expr 2
-1 : input.dst.llvm-%sub.E0%0%d : BV:32
+1 : input.dst.llvm-%call.Lentry%1%fcallEnd : BV:32
 =reaching defns for expr 2 edges
-  Lentry%2%fcallEnd=>E0%0%d
+  Lentry%1%fcallStart=>Lentry%1%fcallEnd
 =reaching defns for expr 2 edges done
 =reaching defns for expr 3
-1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m2.Lentry%2%fcallEnd : BV:32
+1 : input.dst.llvm-%sub.E0%0%d : BV:32
 =reaching defns for expr 3 edges
-  Lentry%2%fcallStart=>Lentry%2%fcallEnd
+  Lentry%2%fcallEnd=>E0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m1.Lentry%1%fcallEnd : BV:32
+1 : input.llvm-fcall_arg_copy.0.dst.llvm-%m2.Lentry%2%fcallEnd : BV:32
 =reaching defns for expr 4 edges
-  Lentry%1%fcallStart=>Lentry%1%fcallEnd
+  Lentry%2%fcallStart=>Lentry%2%fcallEnd
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =reaching defns for expr 5 edges
   Lentry%2%fcallEnd=>E0%0%d
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =reaching defns for expr 6 edges
   Lentry%2%fcallEnd=>E0%0%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =reaching defns for expr 7 edges
   Lentry%2%fcallEnd=>E0%0%d
 =reaching defns for expr 7 edges done

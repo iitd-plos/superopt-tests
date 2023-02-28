@@ -1236,9 +1236,9 @@ Lentry%2%d
 =SourceToLLVMVarnames:
 =SourceToLLVMVarnames done
 =InputLLVMToSourceVarnames:
-input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : L0%0%d : 0
-input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : L0%0%d : l'{L0%0%d}
 input.dst.llvm-%tobool.Lentry%2%d : L0%0%d : not(l'{L0%0%d} = 0)
+input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : L0%0%d : l'{L0%0%d}
+input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : L0%0%d : 0
 input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry : L0%0%d : 0
 input.dst.llvm-%l : L0%0%d : l'
 input.dst.llvm-%val : L0%0%d : val'
@@ -1479,14 +1479,14 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
 =reaching defns for expr 11 edges
-  Lcond.true%1%d=>Lcond.end%1%bbentry
+  L0%0%d=>Lentry%2%d
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
-1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 12 edges
-  L0%0%d=>Lentry%2%d
+  Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 12 edges done
 =reaching defns for expr 13
 1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : BV:32
@@ -1773,14 +1773,14 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 13 edges done
 =reaching defns for expr 14
-1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
+1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
 =reaching defns for expr 14 edges
-  Lcond.true%1%d=>Lcond.end%1%bbentry
+  L0%0%d=>Lentry%2%d
 =reaching defns for expr 14 edges done
 =reaching defns for expr 15
-1 : input.dst.llvm-%tobool.Lentry%2%d : BOOL
+1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry : BV:32
 =reaching defns for expr 15 edges
-  L0%0%d=>Lentry%2%d
+  Lcond.true%1%d=>Lcond.end%1%bbentry
 =reaching defns for expr 15 edges done
 =reaching defns for expr 16
 1 : input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry : BV:32
@@ -1810,11 +1810,13 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
 =reaching defns done
 =ReachingDefinitionsForLocs done
 =VarnameToLRStatus Begin:
-=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry
+=LR status for var input.dst.llvm-%tobool.Lentry%2%d
 lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%cond.Lcond.end%1%bbentry
+lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.3.total_offset.Lcond.end%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%tobool.Lentry%2%d
+=LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.gepoffset.2.total_offset.Lcond.end%1%bbentry
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%acfdcc15ff8b6e2c45d799138e49eb.intermediate.gepoffset.1.offset.Lcond.end%1%bbentry
 lr_status_linearly_related(; )
@@ -1838,8 +1840,6 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-callee-save.3
 lr_status_top
-=LR status for var input.dst.llvm-%cond.Lcond.end%1%bbentry
-lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%ret-reg.E0%0%d
 lr_status_bottom(; memlabel-mem--arg.1, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%cond.phi.tmpvar.cond.false.Lcond.end%1%bbentry
