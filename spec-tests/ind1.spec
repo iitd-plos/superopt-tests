@@ -1,4 +1,4 @@
-type i32, list = BV32, Sum<Unit, Prod<i32, list>>.
+type i32, list = BV32, Sum[Unit, Prod[i32, list]].
 
 fn head_or (l : list) (val : i32) : i32 =
   match l with
