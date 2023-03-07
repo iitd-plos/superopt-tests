@@ -22,7 +22,7 @@ class run_info:
         if timeout:
             self.result = ToolResult.TIMEOUT
             self.time_taken = None
-        else :
+        else:
             self.time_taken = time_taken
             if retcode == 0:
                 self.result = ToolResult.EQUIV
@@ -31,7 +31,7 @@ class run_info:
             elif retcode == 2:
                 self.result = ToolResult.INEQ
             else:
-                self.result = ToolResult.FAIL
+                self.result = ToolResult.ERROR
     
     def to_string(self):
         s = f'{self.fname},{self.src_lib},{self.dst_lib},{self.unroll},{self.result}'
@@ -60,6 +60,19 @@ class equivalence_classes:
         # List of all run_infos
         self.runs = []
 
+    def add_new_libraries(self, updated_libs: "list[str]"):
+        libs = set(updated_libs)
+        added_libs = libs.difference(self.libraries)
+        print(f'Libraries added = {set_to_string(added_libs)}')
+        removed_libs = self.libraries.difference(libs)
+        assert len(removed_libs) == 0, f'Removing libraries not supported. Removed libraries = {set_to_string(removed_libs)}'
+        
+        self.libraries = self.libraries.union(added_libs)
+        
+        for lib in added_libs:
+            self.parent[lib] = lib
+            self.inequivalent_sets[lib] = set()
+    
     def get_runs(self) -> "list[run_info]":
         return self.runs
 

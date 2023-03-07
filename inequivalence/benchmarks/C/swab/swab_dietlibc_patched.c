@@ -7,7 +7,7 @@ void swab(const void *src, void *dest, ssize_t nbytes)
   char *d=dest;
   nbytes&=~1;
   for (i=0; i<nbytes; i+=2) {
-    char s0 = s[0], s1 = s[i+1];
+    char s0 = s[i], s1 = s[i+1];
     d[i]=s1;
     d[i+1]=s0;
   }

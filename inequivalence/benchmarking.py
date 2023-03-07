@@ -1,7 +1,6 @@
 from io import TextIOWrapper
 import os, signal
 import subprocess
-import shlex
 import itertools
 import time
 from joblib import Parallel, delayed
@@ -57,19 +56,23 @@ def gen_script(input_file):
 # Generates a combined file consisting of both the src, dst programs and the generated counterexample
 def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     src_data, dst_data, xml_data = '', '', ''
-    with open(f'benchmarks/C/{fname}/{fname}_{src_lib}.c', 'r') as fp:
+    with open(get_bench_path(fname, src_lib), 'r') as fp:
         src_data = fp.read()
     
-    with open(f'benchmarks/C/{fname}/{fname}_{dst_lib}.c', 'r') as fp:
+    with open(get_bench_path(fname, dst_lib), 'r') as fp:
         dst_data = fp.read()
     
     if not USE_ASSUMES:
         xml_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}.xml'
     else:
         xml_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml'
-    tree = ET.parse(xml_file)
-    root = tree.getroot()
-    for neighbor in root.iter('inequivalence_cond_counterexample'):
+    
+    with open(xml_file, 'r') as fp:
+        xml = fp.read()
+        xml = '<eqchecker>' + xml
+    
+    root = ET.fromstring(xml)
+    for neighbor in root.iter('MSG'):
         xml_data = neighbor.text
 
     merge_data = src_data + '\n\n' + dst_data + '\n\n' + xml_data
@@ -81,6 +84,15 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     with open(ce_out_file, 'w') as fp:
         fp.write(merge_data)
 
+def get_bench_path(fname: str, lib: str) -> str:
+    extension = lib.split('.')[-1]
+    if extension == 'c':
+        return f'benchmarks/C/{fname}/{fname}_{lib}'
+    elif extension == 's' or extension == 'S':
+        return f'benchmarks/Assembly/{fname}/{fname}_{lib}'
+    else:
+        assert False, f'Invalid file extension .{extension}'
+ 
 def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, classes: equivalence_classes, unroll):
     u = classes.get_leader(src_lib)
     v = classes.get_leader(dst_lib)
@@ -98,9 +110,9 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
     else:
         out_file = open(f'logs/{fname}-{src_lib}-{dst_lib}-assumes.proof', 'w')
     if not USE_ASSUMES:
-        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}.xml benchmarks/C/{fname}/{fname}_{src_lib}.c benchmarks/C/{fname}/{fname}_{dst_lib}.c'
+        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}.xml {get_bench_path(fname, src_lib)} {get_bench_path(fname, dst_lib)}'
     else:
-        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml --assume=assumes/{fname}-{src_lib}.assumes benchmarks/C/{fname}/{fname}_{src_lib}.c benchmarks/C/{fname}/{fname}_{dst_lib}.c'
+        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml --assume=assumes/{fname}-{src_lib}.assumes {get_bench_path(fname, src_lib)} {get_bench_path(fname, dst_lib)}'
     # tokens = shlex.split(command)
     p = None
     try:
@@ -180,14 +192,19 @@ def divide_conquer(line: str, tag: str, num_chunks):
     else:
         eq_class_file = f'eq_classes/{fname}-{tag}-assumes-classes.pkl'
 
-    if os.path.isfile(eq_class_file):
-        # The experiment has been run already, no need to run again
-        return
-    
+    split_classes = len(libraries) > 2 and num_chunks != 1
     classes = None
     
-    if len(libraries) > 2 and num_chunks != 1:
-        # Split Libraries into parts
+    if os.path.isfile(eq_class_file):
+        # Load the pickled equivalence_classes
+        split_classes = False
+        with open(eq_class_file, 'rb') as f:
+            classes: equivalence_classes = pickle.load(f)
+            # The internal cache will make sure that we only run the tool for new pairs
+            classes.add_new_libraries(libraries)
+    
+    if split_classes:
+        # Split libraries into parts, run each chunk in parallel and then merge the results
         num_chunks = min(num_chunks, len(libraries))
         chunks = split(libraries, num_chunks)
         # for each chunk in chunks, run the eq_checker, get the classes, merge them, and rerun the eq_checker
@@ -250,7 +267,7 @@ def analysis():
         node_str, ineq_str, fail_str = '', '', ''
         for file in files:
             with open(file, 'rb') as f:
-                classes = pickle.load(f)
+                classes: equivalence_classes = pickle.load(f)
                 dot_dump = classes.dot_dump(file[11:-12])
                 node_str += dot_dump[0]
                 ineq_str += dot_dump[1]
@@ -313,7 +330,7 @@ def graph_gen():
                                     FINAL_MU = int(log_line.split()[-1])
                                 elif 'computing correctness cover' in log_line:
                                     INEQ_CG = int(log_line.split()[-1])
-                            print(f'Number of Failed CGs for {toks[0]}-{toks[1]}-{toks[2]}-{toks[4]} = {N_FAILED_CGS}')
+                            print(f'Number of Failed CGs for {toks[0]}-{toks[1]}-{toks[2]}-{toks[3]} = {N_FAILED_CGS}')
                             print(f'Inequivalence found at mu = {FINAL_MU} at CG {INEQ_CG}')
                             ranking_ratio = INEQ_CG / N_FAILED_CGS
                             ranking_ratios.append(ranking_ratio)
@@ -333,11 +350,19 @@ def graph_gen():
     plot_hist(err_times, 'ErrorTimes') # Includes assertion failures and memory errors
     plot_hist(ranking_ratios, 'RankingRatio')
     plot_hist(ineq_loop_bound, 'InequivalenceLoopBound')
-
+    
+def parse_xml_test(xml_file):
+    with open(xml_file, 'r') as fp:
+        xml = fp.read()
+    xml = '<eqchecker>' + xml
+    root = ET.fromstring(xml)
+    for neighbor in root.iter('MSG'):
+        xml_data = neighbor.text
+    print(xml_data)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
-    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|graph_gen]', default='')
+    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|graph_gen|sml_parse]', default='')
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
     parser.add_argument('--failset_mu', action='store', type=int, help='Denotes the mu to be used in inequivalence checking', default=FAILSET_MU)
     parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR_MAX)
@@ -348,7 +373,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_chunks', action='store', type=int, help='Number of chunks into which each experiment is divided into', default=NUM_CHUNKS)
     args = parser.parse_args()
     assert(args.mode != '')
-    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen', f'Invalid Mode'
+    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen' or args.mode == 'xml_parse', f'Invalid Mode'
     FAILSET_MU = args.failset_mu
     UNROLL_FACTOR_MAX = args.unroll_factor
     CE_BOUND = args.ce_bound
@@ -367,3 +392,5 @@ if __name__ == "__main__":
         analysis()
     elif args.mode == 'graph_gen':
         graph_gen()
+    elif args.mode == 'xml_parse':
+        parse_xml_test(args.input_file)
