@@ -114,7 +114,7 @@ sat
 )
 ==DATA_END==
 ==solver_result_code: SOLVER_SAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2675895/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2171420/query
 ==query_number: 1
 ==CVC4_FILE_START==
 ; benchmark
@@ -253,6 +253,24 @@ sat
  (default #b00000000))
 ==DATA_END==
 ==solver_result_code: SOLVER_SAT
+==index: 2
+==solver_id: 3
+==recvd_data
+==DATA_START==
+sat
+(model
+(define-fun input.dst.llvm-%x () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32) (_ bv2147483648 32))
+(define-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8)) ((as const (Array (_ BitVec 32) (_ BitVec 8))) (_ bv0 8)))
+(define-fun input.spec-%var-x-0 () (_ BitVec 32) (_ bv0 32))
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32) (_ bv2147483648 32))
+(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32) (_ bv2147483651 32))
+(define-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32) (_ bv3 32))
+(define-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32) (_ bv3 32))
+(define-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32) (_ bv3 32))
+)
+==DATA_END==
+==solver_result_code: SOLVER_SAT
 ==index: 4
 ==solver_id: 1
 ==recvd_data
@@ -280,25 +298,7 @@ sat
 )
 ==DATA_END==
 ==solver_result_code: SOLVER_SAT
-==index: 2
-==solver_id: 3
-==recvd_data
-==DATA_START==
-sat
-(model
-(define-fun input.dst.llvm-%x () (_ BitVec 32) (_ bv0 32))
-(define-fun input.dst.local./*___y___foo__x__=L0%0%argnum0=/ () (_ BitVec 32) (_ bv2147483648 32))
-(define-fun input.dst.llvm-mem () (Array (_ BitVec 32) (_ BitVec 8)) ((as const (Array (_ BitVec 32) (_ BitVec 8))) (_ bv0 8)))
-(define-fun input.spec-%var-x-0 () (_ BitVec 32) (_ bv0 32))
-(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin () (_ BitVec 32) (_ bv2147483648 32))
-(define-fun input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end () (_ BitVec 32) (_ bv2147483651 32))
-(define-fun input.spec-%tmpvar-0.E0%0%d () (_ BitVec 32) (_ bv3 32))
-(define-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32) (_ bv3 32))
-(define-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32) (_ bv3 32))
-)
-==DATA_END==
-==solver_result_code: SOLVER_SAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2675895/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2171420/query
 ==query_number: 2
 ==CVC4_FILE_START==
 ; benchmark
@@ -314,46 +314,55 @@ sat
 (declare-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32))
 (declare-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32))
 (assert
- (let ((?x73 (bvadd (_ bv3 32) input.dst.llvm-%x)))
+ (let ((?x79 (bvadd (_ bv3 32) input.dst.llvm-%x)))
  (let ((?x34 (bvadd input.spec-%var-x-0 (_ bv3 32))))
- (let (($x74 (= ?x34 ?x73)))
- (let (($x32 (= $x74 true)))
+ (let (($x80 (= ?x34 ?x79)))
+ (let (($x81 (= $x80 true)))
+ (let (($x82 (= $x81 true)))
+ (let ((?x26 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let ((?x25 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
+ (let ((?x54 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
+ (let ((?x56 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
+ (let ((?x60 (concat ?x56 (concat ?x54 (concat ?x25 ?x26)))))
+ (let (($x32 (= ?x60 input.dst.llvm-%x)))
  (let (($x29 (= $x32 true)))
- (let ((?x46 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
- (let ((?x57 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
- (let ((?x25 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
- (let ((?x47 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
- (let ((?x54 (concat ?x47 (concat ?x25 (concat ?x57 ?x46)))))
- (let (($x66 (= ?x54 input.dst.llvm-%x)))
- (let (($x67 (= $x66 true)))
- (let (($x68 (= $x67 true)))
- (let (($x55 (= input.dst.llvm-%x ?x54)))
- (let ((?x36 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
- (let (($x6 (= (_ bv0 32) ?x36)))
- (let ((?x50 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
- (let (($x19 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x50)))
- (let (($x27 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
- (let (($x48 (and $x27 $x19)))
- (let (($x28 (and $x48 $x6)))
- (let (($x10 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
- (let (($x42 (and $x10 $x28)))
- (let (($x9 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x52 (= $x29 true)))
+ (let (($x43 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x71 (= $x43 true)))
+ (let (($x72 (= $x71 true)))
+ (let (($x73 (= $x72 true)))
+ (let (($x63 (= input.dst.llvm-%x ?x60)))
+ (let ((?x19 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let (($x48 (= (_ bv0 32) ?x19)))
+ (let ((?x10 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x27 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x10)))
+ (let (($x33 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x50 (and $x33 $x27)))
+ (let (($x36 (and $x50 $x48)))
+ (let (($x9 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x6 (and $x9 $x36)))
  (let (($x8 (bvugt (_ bv0 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
  (let (($x15 (bvugt input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin (bvadd (_ bv0 32) (_ bv0 32)))))
  (let (($x11 (=> (bvule (_ bv0 32) (bvsub (bvadd (_ bv0 32) (_ bv1 32)) (_ bv1 32))) (or false (or false (and true (or $x15 $x8)))))))
- (let (($x60 (and (and (and $x11 $x9) $x42) $x55)))
- (let (($x63 (= $x60 true)))
- (let (($x64 (= $x63 true)))
- (let (($x65 (= $x64 true)))
- (let (($x69 (and $x65 $x68)))
+ (let (($x66 (and (and (and $x11 $x43) $x6) $x63)))
+ (let (($x67 (= $x66 true)))
+ (let (($x68 (= $x67 true)))
+ (let (($x69 (= $x68 true)))
+ (let (($x28 (and $x11 $x6)))
+ (let (($x42 (= $x28 true)))
+ (let (($x44 (= $x42 true)))
+ (let (($x31 (= $x44 true)))
+ (let (($x70 (and $x31 $x69)))
+ (let (($x74 (and $x70 $x73)))
+ (let (($x75 (and $x74 $x52)))
  (let (($x20 (= (_ bv3 32) input.spec-%tmpvar-0.E0%0%d)))
- (let (($x70 (and $x20 $x69)))
+ (let (($x76 (and $x20 $x75)))
  (let (($x35 (= ?x34 input.spec-%tmpvar-1.E0%0%d)))
- (let (($x71 (and $x35 $x70)))
+ (let (($x77 (and $x35 $x76)))
  (let (($x23 (= ?x34 input.spec-%tmpvar-2.E0%0%d)))
- (let (($x72 (and $x23 $x71)))
- (let (($x52 (=> $x72 $x29)))
- (not $x52)))))))))))))))))))))))))))))))))))))))))
+ (let (($x78 (and $x23 $x77)))
+ (let (($x83 (=> $x78 $x82)))
+ (not $x83))))))))))))))))))))))))))))))))))))))))))))))))))
 (check-sat)
 (get-model)
 ==CVC4_FILE_END==
@@ -371,46 +380,55 @@ sat
 (declare-fun input.spec-%tmpvar-1.E0%0%d () (_ BitVec 32))
 (declare-fun input.spec-%tmpvar-2.E0%0%d () (_ BitVec 32))
 (assert
- (let ((?x73 (bvadd (_ bv3 32) input.dst.llvm-%x)))
+ (let ((?x79 (bvadd (_ bv3 32) input.dst.llvm-%x)))
  (let ((?x34 (bvadd input.spec-%var-x-0 (_ bv3 32))))
- (let (($x74 (= ?x34 ?x73)))
- (let (($x32 (= $x74 true)))
+ (let (($x80 (= ?x34 ?x79)))
+ (let (($x81 (= $x80 true)))
+ (let (($x82 (= $x81 true)))
+ (let ((?x26 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let ((?x25 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
+ (let ((?x54 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
+ (let ((?x56 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
+ (let ((?x60 (concat ?x56 (concat ?x54 (concat ?x25 ?x26)))))
+ (let (($x32 (= ?x60 input.dst.llvm-%x)))
  (let (($x29 (= $x32 true)))
- (let ((?x46 (select input.dst.llvm-mem input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
- (let ((?x57 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv1 32)))))
- (let ((?x25 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv2 32)))))
- (let ((?x47 (select input.dst.llvm-mem (bvadd input.dst.local./*___y___foo__x__=L0%0%argnum0=/ (_ bv3 32)))))
- (let ((?x54 (concat ?x47 (concat ?x25 (concat ?x57 ?x46)))))
- (let (($x66 (= ?x54 input.dst.llvm-%x)))
- (let (($x67 (= $x66 true)))
- (let (($x68 (= $x67 true)))
- (let (($x55 (= input.dst.llvm-%x ?x54)))
- (let ((?x36 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
- (let (($x6 (= (_ bv0 32) ?x36)))
- (let ((?x50 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
- (let (($x19 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x50)))
- (let (($x27 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
- (let (($x48 (and $x27 $x19)))
- (let (($x28 (and $x48 $x6)))
- (let (($x10 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
- (let (($x42 (and $x10 $x28)))
- (let (($x9 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x52 (= $x29 true)))
+ (let (($x43 (= input.spec-%var-x-0 input.dst.llvm-%x)))
+ (let (($x71 (= $x43 true)))
+ (let (($x72 (= $x71 true)))
+ (let (($x73 (= $x72 true)))
+ (let (($x63 (= input.dst.llvm-%x ?x60)))
+ (let ((?x19 (bvand (_ bv3 32) input.dst.local./*___y___foo__x__=L0%0%argnum0=/)))
+ (let (($x48 (= (_ bv0 32) ?x19)))
+ (let ((?x10 (bvadd (_ bv3 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x27 (= input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end ?x10)))
+ (let (($x33 (bvule input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
+ (let (($x50 (and $x33 $x27)))
+ (let (($x36 (and $x50 $x48)))
+ (let (($x9 (= input.dst.local./*___y___foo__x__=L0%0%argnum0=/ input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin)))
+ (let (($x6 (and $x9 $x36)))
  (let (($x8 (bvugt (_ bv0 32) input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end)))
  (let (($x15 (bvugt input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin (bvadd (_ bv0 32) (_ bv0 32)))))
  (let (($x11 (=> (bvule (_ bv0 32) (bvsub (bvadd (_ bv0 32) (_ bv1 32)) (_ bv1 32))) (or false (or false (and true (or $x15 $x8)))))))
- (let (($x60 (and (and (and $x11 $x9) $x42) $x55)))
- (let (($x63 (= $x60 true)))
- (let (($x64 (= $x63 true)))
- (let (($x65 (= $x64 true)))
- (let (($x69 (and $x65 $x68)))
+ (let (($x66 (and (and (and $x11 $x43) $x6) $x63)))
+ (let (($x67 (= $x66 true)))
+ (let (($x68 (= $x67 true)))
+ (let (($x69 (= $x68 true)))
+ (let (($x28 (and $x11 $x6)))
+ (let (($x42 (= $x28 true)))
+ (let (($x44 (= $x42 true)))
+ (let (($x31 (= $x44 true)))
+ (let (($x70 (and $x31 $x69)))
+ (let (($x74 (and $x70 $x73)))
+ (let (($x75 (and $x74 $x52)))
  (let (($x20 (= (_ bv3 32) input.spec-%tmpvar-0.E0%0%d)))
- (let (($x70 (and $x20 $x69)))
+ (let (($x76 (and $x20 $x75)))
  (let (($x35 (= ?x34 input.spec-%tmpvar-1.E0%0%d)))
- (let (($x71 (and $x35 $x70)))
+ (let (($x77 (and $x35 $x76)))
  (let (($x23 (= ?x34 input.spec-%tmpvar-2.E0%0%d)))
- (let (($x72 (and $x23 $x71)))
- (let (($x52 (=> $x72 $x29)))
- (not $x52)))))))))))))))))))))))))))))))))))))))))
+ (let (($x78 (and $x23 $x77)))
+ (let (($x83 (=> $x78 $x82)))
+ (not $x83))))))))))))))))))))))))))))))))))))))))))))))))))
 (check-sat)
 (get-model)
 ==SMT2_FILE_END==
@@ -424,4 +442,4 @@ unsat
 (error "the context is unsatisfiable")
 ==DATA_END==
 ==solver_result_code: SOLVER_UNSAT
-==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2675895/query
+==smt2_file: /tmp/smt-solver-tmp-files/indrajit.2171420/query
