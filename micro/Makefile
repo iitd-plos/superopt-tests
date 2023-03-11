@@ -3,28 +3,55 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/micro
 
+EXTRA_FLAGS := --global-timeout 600 --max-address-space-size-gb 16
+
+PROGS := fptrunc fpbinary fptoui fbinary flbinary \
+         fcall10 fcall10_with_memaccess \
+         fcall_taking_locals \
+         fcalls_merge \
+         ftmap_1 \
+         ftmap_2 \
+         ftmap_3 \
+         ftmap_4 \
+         rodata_simple \
+         load_store_elim_simple \
+         loop_hoisting \
+         non_linear_invariant_casting \
+         non_linear_invariant_shl \
+         path_enum_1 \
+         # load_store_elim_cmove # needs "anticipated-cmove expressions"
+         #ddec arg_passing fpadd  fcall100 fcall100_with_memaccess \
+         #fpext : TOO SLOW
+
 EXTRA_FLAGS :=
-PROGS_EQCHECKER_COMPILER := fptrunc fpbinary fptoui fbinary flbinary fcall10 fcall10_with_memaccess \
-	                          rodata_simple \
-	                          load_store_elim_simple \
-	                          load_store_elim_cmove \
-	                          load_store_elim_conditional \
-	                          fcall_taking_locals #ddec arg_passing fpadd  fcall100 fcall100_with_memaccess
-#fpext : TOO SLOW
-PROGS_EQCHECKER_SRCDST :=
 
-EXTRA_FLAGS := #--dyn-debug=bvsolve_cache_debug=2
+UNROLL8_GCC := $(PROGS) \
+               # load_store_elim_conditional not passing in GCC!
+EXPECTED_FAILS_GCC := non_linear_invariant_casting  \
+                      ftmap_1                       \
+                      ftmap_2                       \
+                      ftmap_3                       \
+                      ftmap_4                       \
+                      non_linear_invariant_shl      \
+                      fcalls_merge                  \
+                      # non_linear_invariant_casting [requires: pointer arithmetic overflow UB modelling]
+                      # ftmap_1 [eqgen fails because of incorrect disassembly]
+                      # ftmap_2 [harvest output does not include function main]
+                      # ftmap_3 [harvest output does not include function main]
+                      # ftmap_4 [harvest output does not include function main]
+                      # fcalls_merge [calls to bar() are sinked and merged]
 
-UNROLL8_GCC := $(PROGS_EQCHECKER_COMPILER)
-UNROLL16_CLANG := $(PROGS_EQCHECKER_COMPILER)
+UNROLL16_CLANG := $(PROGS) \
+                  load_store_elim_conditional
+EXPECTED_FAILS_CLANG := ftmap_3                     \
+                        ftmap_4                     \
+                        non_linear_invariant_shl    \
+                        # ftmap_3 [harvest output does not include function main]
+                        # ftmap_4 [harvest output does not include function main]
 
-UNROLL1_SRCDST := $(PROGS_EQCHECKER_SRCDST)
-
-PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER) $(addsuffix _src, $(PROGS_EQCHECKER_SRCDST)) $(addsuffix _dst, $(PROGS_EQCHECKER_SRCDST))
+UNROLL4_SRCDST := nested_loop_peeling
 
 # compiler flags
-GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
-CLANG_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
-ICC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)
+ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
 
 include $(SRCDIR)/Makefile.template

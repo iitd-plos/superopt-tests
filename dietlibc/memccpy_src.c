@@ -15,14 +15,15 @@ void *memccpy(void *dst, const void *src, int c, size_t count) {
     return 0;
 }
 
+/*
 int main(int argc, char* argv[])
 {
   // signext(128) != 128, hence all 4 bytes are written in dst
-  /*const char src[] = { 128, 1, 2, 3 };
+  const char src[] = { 128, 1, 2, 3 };
   char dst[4] = { 'A', 'B', 'C', 'D' };
   memccpy(dst, src, 128, 4);
   for (int i = 0; i < 4; ++i)
     printf("%c", dst[i]);
-  */
   return 0;
 }
+*/

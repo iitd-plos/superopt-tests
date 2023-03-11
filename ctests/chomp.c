@@ -69,14 +69,15 @@ void melt_data(int *data1,int *data2) /* melts 2 _data's into the first one. */
     }
 }
 
-void melt_data_simple(int *data1,int *data2) /* melts 2 _data's into the first one. */
-{
-  int counter = ncol;
-  while (counter --)     /* do every column */
-    {
-      data1[counter] = data2[counter]; /* put in first _data */
-    }
-}
+// // unused
+// void melt_data_simple(int *data1,int *data2) /* melts 2 _data's into the first one. */
+// {
+//   int counter = ncol;
+//   while (counter --)     /* do every column */
+//     {
+//       data1[counter] = data2[counter]; /* put in first _data */
+//     }
+// }
 
 
 
@@ -131,45 +132,46 @@ int get_value(int *data) /* get the value (0 or 1) for a specific _data */
   return search -> value; /* return its value */
 }
 
-void show_data(int *data) /* little display routine to give off results */
-{
-  int counter = 0;
-  while (counter != ncol)
-    {
-      MYmyprintf("%d",data[counter ++]);
-      if (counter != ncol) MYmyputchar(',');
-    }
-}
-
-void show_move(int *data) /* puts in the "(" and ")" for show_data() */
-{
-  MYmyputchar('(');
-  show_data(data);
-  MYmyputchar(')');
-  MYmyputchar('\n');
-}
-
-void show_list(struct _list *list) /* show the entire list of moves */
-{
-  while (list != NULL)
-    {
-      show_move(list -> data);
-      list = list -> next;
-    }
-}
-
-void show_play(struct _play *play) /* to diplay the whole tree */
-{
-  while (play != NULL)
-    {
-      MYmyprintf("For state :\n");
-      show_data(play -> state);
-      MYmyprintf("  value = %d\n",play -> value);
-      MYmyprintf("We get, in order :\n");
-      show_list(play -> first);
-      play = play -> next;
-    }
-}
+// // unused
+//void show_data(int *data) /* little display routine to give off results */
+//{
+//  int counter = 0;
+//  while (counter != ncol)
+//    {
+//      MYmyprintf("%d",data[counter ++]);
+//      if (counter != ncol) MYmyputchar(',');
+//    }
+//}
+//
+//void show_move(int *data) /* puts in the "(" and ")" for show_data() */
+//{
+//  MYmyputchar('(');
+//  show_data(data);
+//  MYmyputchar(')');
+//  MYmyputchar('\n');
+//}
+//
+//void show_list(struct _list *list) /* show the entire list of moves */
+//{
+//  while (list != NULL)
+//    {
+//      show_move(list -> data);
+//      list = list -> next;
+//    }
+//}
+//
+//void show_play(struct _play *play) /* to diplay the whole tree */
+//{
+//  while (play != NULL)
+//    {
+//      MYmyprintf("For state :\n");
+//      show_data(play -> state);
+//      MYmyprintf("  value = %d\n",play -> value);
+//      MYmyprintf("We get, in order :\n");
+//      show_list(play -> first);
+//      play = play -> next;
+//    }
+//}
 
 int in_wanted(int *data) /* checks if the current _data is in the wanted list */
 {
@@ -286,47 +288,48 @@ __attribute__((noinline)) struct _play *make_play(int* all) /* make up the entir
   return current;         /* and return pointer to start of list */
 }
 
-void make_wanted(int *data) /* makes up the list of positions from the full board */
-{
-  /* everything here is almost like in the previous function. */
-	/* The reason its here, is that it does not do as much as   */
-	/* the one before, and thus goes faster. Also, it saves the */
-	/* results directly in wanted, which is a global variable.  */
-
-  int row,col;
-  int *temp;
-  struct _list *head,*current;
-  head = NLIST;
-  head -> next = NULL;
-  current = head;
-  for (row = 0;row != nrow;row ++)
-  {
-    DBG(__LINE__);
-    for (col = 0;col != ncol;col ++)
-    {
-	    temp = make_data(row,col);
-	    melt_data(temp,data);
-	    if (! equal_data(temp,data))
-	    {
-	      current -> next = NLIST;
-	      int* unspec_tmp = copy_data(temp);
-	      current -> next -> data = unspec_tmp;
-	      //current -> next -> data = copy_data(temp);
-	      current -> next -> next = NULL;
-	      current = current -> next;
-	    }
-	    else
-	    {
-	      if (col == 0) row = nrow - 1;
-	      col = ncol - 1;
-	    }
-	    MYmyfree(temp);
-	  }
-  }
-  current = head -> next;
-  MYmyfree(head);
-  wanted = current;
-}
+// // unused
+// void make_wanted(int *data) /* makes up the list of positions from the full board */
+// {
+//   /* everything here is almost like in the previous function. */
+// 	/* The reason its here, is that it does not do as much as   */
+// 	/* the one before, and thus goes faster. Also, it saves the */
+// 	/* results directly in wanted, which is a global variable.  */
+// 
+//   int row,col;
+//   int *temp;
+//   struct _list *head,*current;
+//   head = NLIST;
+//   head -> next = NULL;
+//   current = head;
+//   for (row = 0;row != nrow;row ++)
+//   {
+//     DBG(__LINE__);
+//     for (col = 0;col != ncol;col ++)
+//     {
+// 	    temp = make_data(row,col);
+// 	    melt_data(temp,data);
+// 	    if (! equal_data(temp,data))
+// 	    {
+// 	      current -> next = NLIST;
+// 	      int* unspec_tmp = copy_data(temp);
+// 	      current -> next -> data = unspec_tmp;
+// 	      //current -> next -> data = copy_data(temp);
+// 	      current -> next -> next = NULL;
+// 	      current = current -> next;
+// 	    }
+// 	    else
+// 	    {
+// 	      if (col == 0) row = nrow - 1;
+// 	      col = ncol - 1;
+// 	    }
+// 	    MYmyfree(temp);
+// 	  }
+//   }
+//   current = head -> next;
+//   MYmyfree(head);
+//   wanted = current;
+// }
 
 __attribute__((noinline)) int *get_good_move(struct _list *list) /* gets the first good move from a _list */
 {
@@ -337,15 +340,15 @@ __attribute__((noinline)) int *get_good_move(struct _list *list) /* gets the fir
       list = list -> next;
   return copy_data(list -> data); /* return the value */
 }
-
-int *get_winning_move(struct _play *play) /* just scans for the first good move */
-                                          /* in the last _list of a _play. This */
-{                                         /* is the full board */
-  int *temp;
-  while (play -> next != NULL) play = play -> next; /* go to end of _play */
-  temp = get_good_move(play -> first); /* get good move */
-  return temp;                         /* return it */
-}
+// // unused
+//int *get_winning_move(struct _play *play) /* just scans for the first good move */
+//                                          /* in the last _list of a _play. This */
+//{                                         /* is the full board */
+//  int *temp;
+//  while (play -> next != NULL) play = play -> next; /* go to end of _play */
+//  temp = get_good_move(play -> first); /* get good move */
+//  return temp;                         /* return it */
+//}
 
 __attribute__((noinline)) struct _list *where(int *data,struct _play *play)
 {
