@@ -1,6 +1,7 @@
 from io import TextIOWrapper
 import itertools
 from enum import Enum
+from typing import *
 
 def set_to_string(s: set):
     return ', '.join(s)
@@ -48,19 +49,19 @@ class run_info:
 # Maintains equivalence classes for a benchmark
 # Also maintains Inequivalence classes -- helps in pruning the benchmarking space
 class equivalence_classes:
-    def __init__(self, fname: str, libraries: "list[str]") -> None:
-        self.fname = fname
+    def __init__(self, fname: str, libraries: List[str]) -> None:
+        self.fname: str = fname
          # set of libraries to be considered for this benchmark
-        self.libraries = set(libraries)
-        self.parent = {lib: lib for lib in libraries}
+        self.libraries: Set[str] = set(libraries)
+        self.parent: Dict[str, str] = {lib: lib for lib in libraries}
         # dictionary from string to a set of leaders, denoting the classes which are inequivalent
-        self.inequivalent_sets = {lib: set() for lib in libraries}
+        self.inequivalent_sets: Dict[str, Set[str]] = {lib: set() for lib in libraries}
         # set of (src, dst) pairs that have already been run
-        self.cache = set()
+        self.cache: Set[Tuple[str, str]] = set()
         # List of all run_infos
-        self.runs = []
+        self.runs: List[run_info] = []
 
-    def add_new_libraries(self, updated_libs: "list[str]"):
+    def add_new_libraries(self, updated_libs: List[str]) -> None:
         libs = set(updated_libs)
         added_libs = libs.difference(self.libraries)
         print(f'Libraries added = {set_to_string(added_libs)}')
@@ -73,7 +74,17 @@ class equivalence_classes:
             self.parent[lib] = lib
             self.inequivalent_sets[lib] = set()
     
-    def get_runs(self) -> "list[run_info]":
+    def update_libraries(self, transform: Callable[[str], str]) -> None:
+        self.libraries = set(map(transform, self.libraries))
+        self.parent = {transform(lib): transform(self.parent[lib]) for lib in self.parent}
+        self.inequivalent_sets = {transform(lib): set(map(transform, self.inequivalent_sets[lib])) for lib in self.inequivalent_sets}
+        self.cache = {(transform(l1), transform(l2)) for (l1, l2) in self.cache}
+        for i, run in enumerate(self.runs):
+            run.src_lib = transform(run.src_lib)
+            run.dst_lib = transform(run.dst_lib)
+            self.runs[i] = run
+    
+    def get_runs(self) -> List[run_info]:
         return self.runs
 
     def add_cache(self, src: str, dst: str):

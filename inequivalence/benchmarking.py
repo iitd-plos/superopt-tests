@@ -212,7 +212,7 @@ def divide_conquer(line: str, tag: str, num_chunks):
 
         classes = merge_all_classes(all_classes)
     else:
-        classes = equivalence_classes(fname, libraries)
+        classes = equivalence_classes(fname, libraries) if classes is None else classes
     
     classes = run_benchmark(strings, tag, classes)
 
@@ -359,10 +359,26 @@ def parse_xml_test(xml_file):
     for neighbor in root.iter('MSG'):
         xml_data = neighbor.text
     print(xml_data)
+    
+def update_eq_classes():
+    pickled_files = glob.glob('eq_classes/*-classes.pkl')
+    pickled_files.sort()
+    
+    for file in pickled_files:
+        with open(file, 'rb') as fp:
+            classes: equivalence_classes = pickle.load(fp)
+            def add_extension(lib: str) -> str:
+                if len(lib.split('.')) == 1:
+                    return lib + '.c'
+                else:
+                    return lib
+            classes.update_libraries(add_extension)
+        with open(file, 'wb') as fp:
+            pickle.dump(classes, fp)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
-    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|graph_gen|sml_parse]', default='')
+    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|graph_gen|xml_parse|update_eq_classes]', default='')
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
     parser.add_argument('--failset_mu', action='store', type=int, help='Denotes the mu to be used in inequivalence checking', default=FAILSET_MU)
     parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR_MAX)
@@ -373,7 +389,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_chunks', action='store', type=int, help='Number of chunks into which each experiment is divided into', default=NUM_CHUNKS)
     args = parser.parse_args()
     assert(args.mode != '')
-    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen' or args.mode == 'xml_parse', f'Invalid Mode'
+    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen' or args.mode == 'xml_parse' or args.mode == 'update_eq_classes', f'Invalid Mode'
     FAILSET_MU = args.failset_mu
     UNROLL_FACTOR_MAX = args.unroll_factor
     CE_BOUND = args.ce_bound
@@ -383,10 +399,8 @@ if __name__ == "__main__":
     NUM_CHUNKS = args.num_chunks
     print(f'My pid is {os.getpid()}, pgid is {os.getpgid(0)}')
     if args.mode == 'gen_script':
-        assert(args.input_file != '')
         gen_script(args.input_file)
     elif args.mode == 'run_all':
-        assert(args.input_file != '')
         run_experiments(args.input_file)
     elif args.mode == 'analysis':
         analysis()
@@ -394,3 +408,5 @@ if __name__ == "__main__":
         graph_gen()
     elif args.mode == 'xml_parse':
         parse_xml_test(args.input_file)
+    elif args.mode == 'update_eq_classes':
+        update_eq_classes()
