@@ -1,0 +1,92 @@
+=SpecFuncIOSpecs
+=FunctionName: strchr
+=EntryPreconds
+=pred 0
+=Comment
+ptr-impl-cstr
+=LhsExpr
+1 : $spec-arg-0 : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
+2 : $llvm-arg-0 : BV:32
+3 : $llvm-md : ARRAY[BV:32 -> BV:8]
+4 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+5 : memlabel-top : MEMLABEL
+6 : 1 : INT
+7 : 0 : BOOL
+8 : 0 : BV:32
+9 : 1 : BV:32
+10 : Lambda0 : BV:32
+11 : select(3, 4, 5, 10, 6, 7) : BV:8
+12 : 0 : BV:8
+13 : eq(11, 12) : BOOL
+14 : ite(13, 8, 9) : BV:32
+15 : unit : UNIT
+16 : Indxform0 : BV:32
+17 : prod(11, 16) : PROD[BV:8, BV:32]
+18 : eq(10, 8) : BOOL
+19 : ite(18, 8, 9) : BV:32
+20 : sum(14, 15, 17) : SUM[UNIT, PROD[BV:8, BV:32]]
+21 : sum(19, 15, 20) : SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]
+22 : lambda(10, 21) : FUNCTION[BV:32 -> SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]]
+23 : Lambda1 : BV:32
+24 : bvadd(23, 9) : BV:32
+25 : lambda(23, 24) : FUNCTION[BV:32 -> BV:32]
+28 : 1 : INT
+26 : ind(28, 28, 2, 16, 25, 22) : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
+27 : eq(1, 26) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=pred 1
+=Comment
+eq-arg1
+=LhsExpr
+1 : $spec-arg-1 : BV:8
+2 : $llvm-arg-1 : BV:32
+3 : 7 : INT
+4 : 0 : INT
+5 : bvextract(2, 3, 4) : BV:8
+3 : eq(1, 5) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+ptr-impl-cstr
+=LhsExpr
+1 : $spec-ret : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
+2 : $llvm-ret : BV:32
+3 : $llvm-md : ARRAY[BV:32 -> BV:8]
+4 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+5 : memlabel-top : MEMLABEL
+6 : 1 : INT
+7 : 0 : BOOL
+8 : 0 : BV:32
+9 : 1 : BV:32
+10 : Lambda0 : BV:32
+11 : select(3, 4, 5, 10, 6, 7) : BV:8
+12 : 0 : BV:8
+13 : eq(11, 12) : BOOL
+14 : ite(13, 8, 9) : BV:32
+15 : unit : UNIT
+16 : Indxform0 : BV:32
+17 : prod(11, 16) : PROD[BV:8, BV:32]
+18 : eq(10, 8) : BOOL
+19 : ite(18, 8, 9) : BV:32
+20 : sum(14, 15, 17) : SUM[UNIT, PROD[BV:8, BV:32]]
+21 : sum(19, 15, 20) : SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]
+22 : lambda(10, 21) : FUNCTION[BV:32 -> SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]]
+23 : Lambda1 : BV:32
+24 : bvadd(23, 9) : BV:32
+25 : lambda(23, 24) : FUNCTION[BV:32 -> BV:32]
+28 : 1 : INT
+26 : ind(28, 28, 2, 16, 25, 22) : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
+27 : eq(1, 26) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done
