@@ -33,38 +33,45 @@ speceq_tfg2dot() {
 }
 
 speceq_spec2tfg() {
-  ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/spec2tfg --call-context-depth 0 "$1".spec --ast-dump speceq_tmpdir/"$1".ast -o speceq_tmpdir/"$1".spec.etfg >& "$1".spec2tfg
+  mkdir -p "speceq_tmpdir_spec2tfg"
+  ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/spec2tfg --call-context-depth 0 "$1".spec --ast-dump "speceq_tmpdir_spec2tfg/$1.out".ast -o "speceq_tmpdir_spec2tfg/$1.spec.etfg" >& "$1".spec2tfg
+}
+
+speceq_tfg_get_unrolled_paths() {
+  ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/tfg_get_unrolled_paths $1 $2 --to-pc="$3" --unroll-factor="$4" --dyn-debug=graph_ec_unroll_dot_debug=3 >& "$1".paths
 }
 
 speceq_prove() {
-  ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/prove --dyn-debug=speceq_solve=3,speceq_syntactic=3 --speceq-solver-approx-depth=20 "$1".in >& "$1".out
+  ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/prove --dyn-debug=speceq_solve=3,speceq_syntactic=3 --speceq-solver-approx-depth=16 "$1".in >& "$1".out
 }
 
 speceq_spec_debug() {
   ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/spec_debug >& spec_debug.out
 }
 
-speceq_tmpdir="speceq_tmpdir"
-speceq_cmd="${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq --speceq-solver-approx-depth=10 --enable-src-epsilon-paths --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --houdini-axiom-based-smt-query-timeout=10"
+speceq_cmd="${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/eq --speceq-solver-approx-depth=16 --enable-src-epsilon-paths --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --houdini-axiom-based-smt-query-timeout=20"
 
 speceq_run() {
-  ${speceq_cmd} --tmpdir-path=${speceq_tmpdir} --proof="$1".proof --dyn-debug=invariants_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
+  mkdir -p "speceq_tmpdir_$1"
+  ${speceq_cmd} --tmpdir-path="speceq_tmpdir_$1" --proof="$1".proof --dyn-debug=invariants_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
 }
 
 speceq_run_preprocessed() {
-  ${speceq_cmd} --use-already-preprocessed-files --tmpdir-path=${speceq_tmpdir} --proof="$1".proof --dyn-debug=invariants_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
+  mkdir -p "speceq_tmpdir_$1"
+  ${speceq_cmd} --use-already-preprocessed-files --tmpdir-path="speceq_tmpdir_$1" --proof="$1".proof --dyn-debug=invariants_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
 }
 
 speceq_debug() {
-  ${speceq_cmd} --tmpdir-path=${speceq_tmpdir} --proof="$1".proof --dyn-debug=invariants_dump,prove_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
+  mkdir -p "speceq_tmpdir_$1"
+  ${speceq_cmd} --tmpdir-path="speceq_tmpdir_$1" --proof="$1".proof --dyn-debug=invariants_dump,prove_dump,correl_paths_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
 }
 
 speceq_debug_preprocessed() {
-  ${speceq_cmd} --use-already-preprocessed-files --tmpdir-path=${speceq_tmpdir} --proof="$1".proof --dyn-debug=invariants_dump,prove_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
+  mkdir -p "speceq_tmpdir_$1"
+  ${speceq_cmd} --use-already-preprocessed-files --tmpdir-path="speceq_tmpdir_$1" --proof="$1".proof --dyn-debug=invariants_dump,prove_dump,correl_paths_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
 }
 
 speceq_debug_replay() {
-  ${speceq_cmd} --tmpdir-path=${speceq_tmpdir} --proof="$1".proof --replay="$1".proof.record --dyn-debug=prove_dump=3,ce_translate=2,add_point_using_ce=2,ce_eval=2 --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
+  mkdir -p "speceq_tmpdir_$1"
+  ${speceq_cmd} --tmpdir-path="speceq_tmpdir_$1" --proof="$1".proof --replay="$1".proof.record --dyn-debug=prove_dump=3,correl_paths_dump,ce_translate=2,add_point_using_ce=2,ce_eval=2 --spec-iospecs="$1".iospecs "$1".spec "$1".c >& "$1".out
 }
-
-mkdir -p ${speceq_tmpdir}

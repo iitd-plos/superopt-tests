@@ -1,0 +1,86 @@
+=SpecFuncIOSpecs
+=FunctionName: matfreq
+=EntryPreconds
+=pred 0
+=Comment
+arr-cls-impl-mat
+=LhsExpr
+1 : $spec-arg-0 : IND[mat, SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], DECL[mat]]]]
+2 : $llvm-arg-0 : BV:32
+3 : $llvm-arg-1 : BV:32
+5 : memlabel-top : MEMLABEL
+6 : 4 : INT
+7 : 1 : INT
+8 : 0 : BOOL
+9 : Lambda0 : BV:32
+10 : Lambda1 : BV:32
+11 : 4 : BV:32
+12 : Indxform0 : BV:32
+13 : Indxform1 : BV:32
+14 : 0 : BV:32
+15 : 1 : BV:32
+16 : $llvm-md : ARRAY[BV:32 -> BV:8]
+17 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+18 : unit : UNIT
+19 : bvadd(10, 15) : BV:32
+20 : lambda(10, 19) : FUNCTION[BV:32 -> BV:32]
+21 : Lambda2 : BV:32
+22 : 3 : BV:32
+23 : eq(21, 22) : BOOL
+24 : 16 : BV:32
+25 : bvadd(9, 24) : BV:32
+26 : select(16, 17, 5, 25, 6, 8) : BV:32
+27 : ite(23, 26, 9) : BV:32
+28 : lambda(9, 21, 27) : FUNCTION[BV:32, BV:32 -> BV:32]
+29 : bvadd(21, 15) : BV:32
+30 : bvurem(29, 11) : BV:32
+31 : lambda(9, 21, 30) : FUNCTION[BV:32, BV:32 -> BV:32]
+32 : bvuge(10, 3) : BOOL
+33 : ite(32, 14, 15) : BV:32
+34 : eq(9, 14) : BOOL
+35 : ite(34, 14, 15) : BV:32
+36 : bvmul(11, 21) : BV:32
+37 : bvadd(9, 36) : BV:32
+38 : select(16, 17, 5, 37, 6, 8) : BV:32
+39 : bvmul(11, 10) : BV:32
+40 : bvadd(2, 39) : BV:32
+41 : select(16, 17, 5, 40, 6, 8) : BV:32
+42 : prod(38, 12) : PROD[BV:32, BV:32]
+43 : sum(35, 18, 42) : SUM[UNIT, PROD[BV:32, BV:32]]
+44 : lambda(9, 21, 43) : FUNCTION[BV:32, BV:32 -> SUM[UNIT, PROD[BV:32, BV:32]]]
+45 : 2 : INT
+46 : ind(45, 7, 41, 14, 12, 28, 31, 44) : IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]]
+47 : prod(46, 13) : PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]
+48 : sum(33, 18, 47) : SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]]
+49 : lambda(10, 48) : FUNCTION[BV:32 -> SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]]]
+50 : ind(7, 7, 14, 13, 20, 49) : IND[mat, SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], DECL[mat]]]]
+51 : eq(1, 50) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=pred 1
+=Comment
+eq-x
+=LhsExpr
+1 : $spec-arg-1 : BV:32
+2 : $llvm-arg-2 : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+eq-freq
+=LhsExpr
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done

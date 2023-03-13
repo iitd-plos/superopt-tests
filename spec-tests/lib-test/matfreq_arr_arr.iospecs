@@ -1,0 +1,77 @@
+=SpecFuncIOSpecs
+=FunctionName: matfreq
+=EntryPreconds
+=pred 0
+=Comment
+dptr-impl-mat
+=LhsExpr
+1 : $spec-arg-0 : IND[mat, SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], DECL[mat]]]]
+2 : $llvm-arg-0 : BV:32
+3 : $llvm-arg-1 : BV:32
+4 : $llvm-arg-2 : BV:32
+5 : memlabel-top : MEMLABEL
+6 : 4 : INT
+7 : 1 : INT
+8 : 0 : BOOL
+9 : Lambda0 : BV:32
+10 : Lambda1 : BV:32
+11 : 4 : BV:32
+12 : Indxform0 : BV:32
+13 : Indxform1 : BV:32
+14 : 0 : BV:32
+15 : 1 : BV:32
+16 : bvadd(9, 15) : BV:32
+17 : lambda(9, 16) : FUNCTION[BV:32 -> BV:32]
+18 : bvuge(9, 4) : BOOL
+19 : ite(18, 14, 15) : BV:32
+20 : unit : UNIT
+21 : bvmul(11, 10) : BV:32
+22 : bvadd(2, 21) : BV:32
+23 : $llvm-md : ARRAY[BV:32 -> BV:8]
+24 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+25 : select(23, 24, 5, 22, 6, 8) : BV:32
+26 : bvmul(11, 9) : BV:32
+27 : bvadd(25, 26) : BV:32
+28 : select(23, 24, 5, 27, 6, 8) : BV:32
+29 : prod(28, 12) : PROD[BV:32, BV:32]
+30 : sum(19, 20, 29) : SUM[UNIT, PROD[BV:32, BV:32]]
+31 : lambda(9, 30) : FUNCTION[BV:32 -> SUM[UNIT, PROD[BV:32, BV:32]]]
+32 : ind(7, 7, 14, 12, 17, 31) : IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]]
+33 : bvadd(10, 15) : BV:32
+34 : lambda(10, 33) : FUNCTION[BV:32 -> BV:32]
+35 : bvuge(10, 3) : BOOL
+36 : ite(35, 14, 15) : BV:32
+37 : prod(32, 13) : PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]
+38 : sum(36, 20, 37) : SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]]
+39 : lambda(10, 38) : FUNCTION[BV:32 -> SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]]]
+40 : ind(7, 7, 14, 13, 34, 39) : IND[mat, SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], DECL[mat]]]]
+41 : eq(1, 40) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=pred 1
+=Comment
+eq-x
+=LhsExpr
+1 : $spec-arg-1 : BV:32
+2 : $llvm-arg-3 : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+eq-freq
+=LhsExpr
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done

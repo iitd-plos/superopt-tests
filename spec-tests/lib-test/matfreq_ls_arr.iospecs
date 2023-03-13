@@ -1,0 +1,75 @@
+=SpecFuncIOSpecs
+=FunctionName: matfreq
+=EntryPreconds
+=pred 0
+=Comment
+ls-arr-impl-mat
+=LhsExpr
+1 : $spec-arg-0 : IND[mat, SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], DECL[mat]]]]
+2 : $llvm-arg-0 : BV:32
+3 : $llvm-arg-1 : BV:32
+5 : memlabel-top : MEMLABEL
+6 : 4 : INT
+7 : 1 : INT
+8 : 0 : BOOL
+9 : Lambda0 : BV:32
+10 : Lambda1 : BV:32
+11 : 4 : BV:32
+12 : Indxform0 : BV:32
+13 : Indxform1 : BV:32
+14 : 0 : BV:32
+15 : 1 : BV:32
+16 : $llvm-md : ARRAY[BV:32 -> BV:8]
+17 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+18 : unit : UNIT
+19 : bvadd(9, 15) : BV:32
+20 : lambda(9, 19) : FUNCTION[BV:32 -> BV:32]
+21 : bvadd(10, 11) : BV:32
+22 : select(16, 17, 5, 21, 6, 8) : BV:32
+23 : lambda(10, 22) : FUNCTION[BV:32 -> BV:32]
+24 : eq(10, 14) : BOOL
+25 : ite(24, 14, 15) : BV:32
+26 : bvuge(9, 3) : BOOL
+27 : ite(26, 14, 15) : BV:32
+28 : select(16, 17, 5, 10, 6, 8) : BV:32
+29 : bvmul(11, 9) : BV:32
+30 : bvadd(28, 29) : BV:32
+31 : select(16, 17, 5, 30, 6, 8) : BV:32
+32 : prod(31, 12) : PROD[BV:32, BV:32]
+33 : sum(27, 18, 32) : SUM[UNIT, PROD[BV:32, BV:32]]
+34 : lambda(9, 33) : FUNCTION[BV:32 -> SUM[UNIT, PROD[BV:32, BV:32]]]
+35 : ind(7, 7, 14, 12, 20, 34) : IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]]
+36 : prod(35, 13) : PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]
+37 : sum(25, 18, 36) : SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]]
+38 : lambda(10, 37) : FUNCTION[BV:32 -> SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], BV:32]]]
+39 : ind(7, 7, 2, 13, 23, 38) : IND[mat, SUM[UNIT, PROD[IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]], DECL[mat]]]]
+40 : eq(1, 39) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=pred 1
+=Comment
+eq-x
+=LhsExpr
+1 : $spec-arg-1 : BV:32
+2 : $llvm-arg-2 : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+eq-freq
+=LhsExpr
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done
