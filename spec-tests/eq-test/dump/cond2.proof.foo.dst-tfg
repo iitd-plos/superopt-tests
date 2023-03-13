@@ -180,8 +180,6 @@ tfg_edge_comment end
 =Edge.EdgeCond: 
 1 : 1 { 0x1 } : BOOL
 =Edge.StateTo: 
-=dst.llvm-indir_tgt.E0%0%d
-1 : retaddr_const : BV:32
 =dst.llvm-%hidden-reg.E0%0%d
 1 : input.dst.llvm-%hidden-reg : BV:32
 2 : input.dst.llvm-callee-save.0 : BV:32
@@ -192,6 +190,8 @@ tfg_edge_comment end
 7 : bvxor(5, 6) : BV:32
 8 : input.dst.llvm-callee-save.3 : BV:32
 9 : bvxor(7, 8) : BV:32
+=dst.llvm-indir_tgt.E0%0%d
+1 : retaddr_const : BV:32
 =dst.llvm-%ret-reg.E0%0%d
 1 : input.dst.llvm-%retval.0.Lreturn%1%bbentry : BV:32
 =state_end
@@ -496,7 +496,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100022
 =loc_expr
-140702 : input.dst.llvm-%cmp.Lentry%2%d : BOOL
+140706 : input.dst.llvm-%cmp.Lentry%2%d : BOOL
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%x : BV:32
@@ -505,7 +505,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100023
 =loc_expr
-140709 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+140710 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%hidden-reg : BV:32
@@ -520,21 +520,21 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100024
 =loc_expr
-140710 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+140714 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : input.dst.llvm-%retval.0.Lreturn%1%bbentry : BV:32
 =avail_exprs_val.end
 =loc 100026
 =loc_expr
-140711 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+140715 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : retaddr_const : BV:32
 =avail_exprs_val.end
 =loc 100027
 =loc_expr
-140715 : input.dst.llvm-%add.Lreturn%1%bbentry : BV:32
+140716 : input.dst.llvm-%add.Lreturn%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 12 { 0xc +1.143e129 } : BV:32
@@ -543,7 +543,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100028
 =loc_expr
-140716 : input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : BV:32
+140717 : input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 12 { 0xc +1.143e129 } : BV:32
@@ -552,7 +552,7 @@ discontiguous mls:
 =avail_exprs_val.end
 =loc 100029
 =loc_expr
-140717 : input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : BV:32
+140718 : input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : BV:32
 =avail_exprs_val.m_is_top 0
 =avail_exprs_val.m_expr
 1 : 4294967291 { 0xfffffffb -5 -1.99999940e128 } : BV:32
@@ -717,8 +717,6 @@ lr_status_linearly_related(; )
 3 : bvadd(1, 2) : BV:32
 =state_end
 =graph_with_simplified_assets.simplified_to_state at Lreturn%1%bbentry=>E0%0%d
-=dst.llvm-indir_tgt.E0%0%d
-1 : retaddr_const : BV:32
 =dst.llvm-%hidden-reg.E0%0%d
 1 : input.dst.llvm-%hidden-reg : BV:32
 2 : input.dst.llvm-callee-save.0 : BV:32
@@ -729,6 +727,8 @@ lr_status_linearly_related(; )
 7 : bvxor(5, 6) : BV:32
 8 : input.dst.llvm-callee-save.3 : BV:32
 9 : bvxor(7, 8) : BV:32
+=dst.llvm-indir_tgt.E0%0%d
+1 : retaddr_const : BV:32
 =dst.llvm-%ret-reg.E0%0%d
 1 : input.dst.llvm-%retval.0.Lreturn%1%bbentry : BV:32
 =state_end
@@ -898,11 +898,11 @@ input.dst.llvm-indir_tgt : L0%0%d : return-address
 input.dst.local_alloc_count : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
 input.dst.cur_rounding_mode : L0%0%d : ROUND_to_nearest_ties_to_even
 input.dst.llvm-indir_tgt.E0%0%d : L0%0%d : return-address
+input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : L0%0%d : (12 + x')
 input.dst.llvm-%cmp.Lentry%2%d : L0%0%d : (x' <_s 0)
 input.dst.llvm-%add.Lreturn%1%bbentry : L0%0%d : (12 + x')
-input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : L0%0%d : ((-5) + x')
 input.dst.llvm-%ret-reg.E0%0%d : L0%0%d : input.dst.llvm-%retval.0.Lreturn%1%bbentry
-input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : L0%0%d : (12 + x')
+input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : L0%0%d : ((-5) + x')
 input.dst.llvm-%hidden-reg.E0%0%d : L0%0%d : bvxor(bvxor(bvxor(bvxor(input.dst.llvm-%hidden-reg, input.dst.llvm-callee-save.0), input.dst.llvm-callee-save.1), input.dst.llvm-callee-save.2), input.dst.llvm-callee-save.3)
 input.dst.llvm-%sub.Lreturn%1%bbentry : L0%0%d : ((-5) + x')
 input.dst.local_alloc_count.Lentry%2%d : L0%0%d : input.dst.local_alloc_count.=L0%0%d=
@@ -1164,29 +1164,29 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-%add.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 4 edges
-  Lif.then%1%d=>Lreturn%1%bbentry
+  Lif.else%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%add.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 5 edges
   Lif.else%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lentry%2%d : BOOL
 =reaching defns for expr 6 edges
-  Lif.else%1%d=>Lreturn%1%bbentry
+  L0%0%d=>Lentry%2%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%cmp.Lentry%2%d : BOOL
+1 : input.dst.llvm-%retval.0.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 7 edges
-  L0%0%d=>Lentry%2%d
+  Lif.else%1%d=>Lreturn%1%bbentry
+  Lif.then%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%retval.0.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 8 edges
-  Lif.else%1%d=>Lreturn%1%bbentry
   Lif.then%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
@@ -1226,44 +1226,44 @@ input.dst.cur_rounding_mode.Lentry%2%d : L0%0%d : ROUND_to_nearest_ties_to_even
   L0%0%d=>L0%0%d
 =reaching defns for expr 3 edges done
 =reaching defns for expr 4
-1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
+1 : input.dst.llvm-%add.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 4 edges
-  Lreturn%1%bbentry=>E0%0%d
+  Lif.else%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 4 edges done
 =reaching defns for expr 5
-1 : input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 5 edges
-  Lif.then%1%d=>Lreturn%1%bbentry
+  Lif.else%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 5 edges done
 =reaching defns for expr 6
-1 : input.dst.llvm-%add.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-%cmp.Lentry%2%d : BOOL
 =reaching defns for expr 6 edges
-  Lif.else%1%d=>Lreturn%1%bbentry
+  L0%0%d=>Lentry%2%d
 =reaching defns for expr 6 edges done
 =reaching defns for expr 7
-1 : input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-indir_tgt.E0%0%d : BV:32
 =reaching defns for expr 7 edges
-  Lif.else%1%d=>Lreturn%1%bbentry
+  Lreturn%1%bbentry=>E0%0%d
 =reaching defns for expr 7 edges done
 =reaching defns for expr 8
-1 : input.dst.llvm-%cmp.Lentry%2%d : BOOL
+1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
 =reaching defns for expr 8 edges
-  L0%0%d=>Lentry%2%d
+  Lreturn%1%bbentry=>E0%0%d
 =reaching defns for expr 8 edges done
 =reaching defns for expr 9
-1 : input.dst.llvm-%ret-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
 =reaching defns for expr 9 edges
   Lreturn%1%bbentry=>E0%0%d
 =reaching defns for expr 9 edges done
 =reaching defns for expr 10
-1 : input.dst.llvm-%hidden-reg.E0%0%d : BV:32
+1 : input.dst.llvm-%retval.0.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 10 edges
-  Lreturn%1%bbentry=>E0%0%d
+  Lif.else%1%d=>Lreturn%1%bbentry
+  Lif.then%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 10 edges done
 =reaching defns for expr 11
-1 : input.dst.llvm-%retval.0.Lreturn%1%bbentry : BV:32
+1 : input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry : BV:32
 =reaching defns for expr 11 edges
-  Lif.else%1%d=>Lreturn%1%bbentry
   Lif.then%1%d=>Lreturn%1%bbentry
 =reaching defns for expr 11 edges done
 =reaching defns for expr 12
@@ -1292,17 +1292,17 @@ lr_status_top
 lr_status_top
 =LR status for var input.dst.llvm-indir_tgt.E0%0%d
 lr_status_linearly_related(; )
+=LR status for var input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry
+lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%cmp.Lentry%2%d
 lr_status_linearly_related(; )
 =LR status for var input.dst.llvm-%add.Lreturn%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry
+=LR status for var input.dst.llvm-%ret-reg.E0%0%d
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%retval.0.Lreturn%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%ret-reg.E0%0%d
-lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
-=LR status for var input.dst.llvm-%retval.0.phi.tmpvar.if.else.Lreturn%1%bbentry
+=LR status for var input.dst.llvm-%retval.0.phi.tmpvar.if.then.Lreturn%1%bbentry
 lr_status_bottom(; memlabel-mem--arg.0, memlabel-mem-may-straddle-symbol.1-heap, )
 =LR status for var input.dst.llvm-%hidden-reg.E0%0%d
 lr_status_linearly_related(; )

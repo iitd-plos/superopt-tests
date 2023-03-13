@@ -2467,12 +2467,11 @@ wfcond.from_pcL0%0%d_L0%0%d.to_pcE0%0%d_E0%0%d-dst-edgecond-implies-src-edgecond
 3 : bvsgt(1, 2) : BOOL
 4 : not(3) : BOOL
 5 : or(3, 4) : BOOL
-6 : not(5) : BOOL
-7 : input.spec-%var-x-0 : BV:32
-8 : bvsgt(7, 2) : BOOL
-9 : not(8) : BOOL
-10 : or(8, 9) : BOOL
-11 : or(6, 10) : BOOL
+6 : input.spec-%var-x-0 : BV:32
+7 : bvsgt(6, 2) : BOOL
+8 : not(7) : BOOL
+9 : or(7, 8) : BOOL
+10 : implies(5, 9) : BOOL
 =RhsExpr
 1 : 1 { 0x1 } : BOOL
 =predicate done
@@ -2503,74 +2502,6 @@ equal-ret
 =cg-edge-contains-repeated-src-tfg-edge-map done
 =cg.assumes_around_edge
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #0
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #0.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #0.ec.graph_edge_composition
-(epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #0.pred
-=Comment
-arg-location-contents-are-consistent-with-arg-value
-=LhsExpr
-140333 : input.dst.llvm-mem : ARRAY[BV:32 -> BV:8]
-140334 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140355 : memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/ : MEMLABEL
-140335 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
-140356 : 4 { 0x4 +1.0e1025 } : INT
-140357 : 0 { 0x0 } : BOOL
-140358 : select(140333, 140334, 140355, 140335, 140356, 140357) : BV:32
-=RhsExpr
-140332 : input.dst.llvm-%x : BV:32
-=predicate done
-
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1.ec.graph_edge_composition
-(epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #1.pred
-=Comment
-equal-arg0
-=LhsExpr
-140273 : input.spec-%var-x-0 : BV:32
-140332 : input.dst.llvm-%x : BV:32
-140432 : eq(140273, 140332) : BOOL
-=RhsExpr
-140275 : 1 { 0x1 } : BOOL
-=predicate done
-
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.ec
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.ec.graph_edge_composition
-(epsilon)
-cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d assume #2.pred
-=Comment
-precond-mlasserts
-=LhsExpr
-140416 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_begin : BV:32
-140417 : input.dst.memlabel-mem--local./*___y___foo__x__=L0%0%argnum0=/_end : BV:32
-140418 : bvule(140416, 140417) : BOOL
-140405 : 4 { 0x4 +1.47e129 } : BV:32
-140419 : 4294967295 { 0xffffffff -1 -1.99999988e128 } : BV:32
-140420 : bvadd(140405, 140419) : BV:32
-140421 : bvadd(140416, 140420) : BV:32
-140422 : eq(140417, 140421) : BOOL
-140423 : and(140418, 140422) : BOOL
-140335 : input.dst.local./*___y___foo__x__=L0%0%argnum0=/ : BV:32
-140424 : 3 { 0x3 +1.35e129 } : BV:32
-140425 : bvand(140335, 140424) : BV:32
-140276 : 0 { 0x0 +1.0e129 } : BV:32
-140426 : eq(140425, 140276) : BOOL
-140427 : and(140423, 140426) : BOOL
-140428 : eq(140335, 140416) : BOOL
-140429 : and(140427, 140428) : BOOL
-140334 : input.dst.llvm-mem.alloc : ARRAY[BV:32 -> MEMLABEL]
-140287 : 1 { 0x1 +1.11e129 } : BV:32
-140336 : memlabel-mem-may-straddle-symbol.1-heap : MEMLABEL
-140430 : region_agrees_with_memlabel(140334, 140276, 140287, 140336) : BOOL
-140431 : and(140429, 140430) : BOOL
-=RhsExpr
-140275 : 1 { 0x1 } : BOOL
-=predicate done
-
 cg.assumes_around_edge at L0%0%d_L0%0%d=>E0%0%d_E0%0%d done
 cg.assumes_around_edge done
 =corr_graph_done
