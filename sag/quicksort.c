@@ -60,11 +60,11 @@ void printArray(int array[], int size) {
   for (int i = 0; i < size; ++i) {
     printf("%d  ", array[i]);
   }
-  printf("\n");
+  putchar('\n');
 }
 
 // main function
-int main() {
+int main2() {
   int data[] = {8, 7, 2, 1, 0, 9, 6};
   
   int n = sizeof(data) / sizeof(data[0]);
