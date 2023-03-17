@@ -49,7 +49,7 @@ EXPECTED_FAILS_CLANG := ftmap_3                     \
                         # ftmap_3 [harvest output does not include function main]
                         # ftmap_4 [harvest output does not include function main]
 
-UNROLL4_SRCDST := nested_loop_peeling
+UNROLL4_SRCDST := nested_loop_peeling nested_loop_unrolling
 
 # compiler flags
 ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
