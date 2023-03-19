@@ -5,23 +5,17 @@ VPATH = $(SRCDIR)/LORE_mem_write
 
 EXTRA_FLAGS := --global-timeout 600 --max-address-space-size-gb 16 --disable-dst-to-src-submap # dst-to-src-submap incurs overhead
 
-UNROLL4_GCC := ex101 ex102 ex103 ex104 ex105 ex106 ex107 ex108 # should pass: ex107 (query-timeout)
-UNROLL8_GCC := ex106u ex107u # should pass: ex107u (query-timeout)
+UNROLL4_GCC := ex101 ex102 ex103 ex104 ex105 ex106 ex107 ex108
+UNROLL8_GCC := ex106u ex107u
 EXPECTED_FAILS_GCC := ex107       \
                       ex107u      \
                       # ex107 [query-timeout]
                       # ex107u [query-timeout]
 
-UNROLL16_CLANG := ex101 ex102 ex103 ex104 ex105 ex108 # should pass: ex103 (???), ex108 (query-timeout)
+UNROLL16_CLANG := ex101 ex102 ex103 ex104 ex105 ex108
                   # not tested: ex106 ex107
-EXPECTED_FAILS_CLANG := ex102     \
-                        ex103     \
-                        ex104     \
-                        ex105     \
+EXPECTED_FAILS_CLANG := ex105     \
                         ex108     \
-                        # ex102 [timeout]
-                        # ex103 [timeout]
-                        # ex104 [timeout]
                         # ex105 [timeout]
                         # ex108 [timeout]
 
