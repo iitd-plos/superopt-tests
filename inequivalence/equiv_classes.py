@@ -4,6 +4,8 @@ from enum import Enum
 from typing import *
 
 def set_to_string(s: set):
+    if len(s) == 0:
+        return '{}'
     return ', '.join(s)
 
 class ToolResult(Enum):

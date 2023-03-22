@@ -84,12 +84,24 @@ def write_ce_file(fname: str, src_lib: str, dst_lib: str):
     with open(ce_out_file, 'w') as fp:
         fp.write(merge_data)
 
+# .S files could use preprocessor directives. If they do, then eq32 currently classifies those as C source files
+# A hack is to preprocess the files on the fly through gcc and then run the tool
+def preprocess_asm(fname: str, lib: str):
+    lib_prefix = lib.split('.')[0]
+    command = f'gcc -E -P benchmarks/Assembly/{fname}/{fname}_{lib} > benchmarks/Assembly/{fname}/{fname}_{lib_prefix}_tmp.S' 
+    result = subprocess.run(command, shell=True, check=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    if result.returncode != 0:
+        assert False, f'Preprocessing for {fname}_{lib} failed'
+    return f'benchmarks/Assembly/{fname}/{fname}_{lib_prefix}_tmp.S'
+
 def get_bench_path(fname: str, lib: str) -> str:
     extension = lib.split('.')[-1]
     if extension == 'c':
         return f'benchmarks/C/{fname}/{fname}_{lib}'
-    elif extension == 's' or extension == 'S':
+    elif extension == 's':
         return f'benchmarks/Assembly/{fname}/{fname}_{lib}'
+    elif extension == 'S':
+        return preprocess_asm(fname, lib)
     else:
         assert False, f'Invalid file extension .{extension}'
  

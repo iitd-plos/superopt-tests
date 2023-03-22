@@ -7,9 +7,13 @@ NUM_CHUNKS=1
 
 clean:
 	@rm -f *.o *.harvest *.tmp *.bc *.etfg *.tfg *.s
-	@rm -f benchmarks/*/*/*.bc
+	@rm -f benchmarks/C/*/*.bc
 	@rm -f benchmarks/*/*/*.tmp
 	@rm -f benchmarks/*/*/*.etfg
+	@rm -f benchmarks/Assembly/*/*.o
+	@rm -f benchmarks/Assembly/*/*.harvest
+	@rm -f benchmarks/Assembly/*/*.log
+	@rm -f benchmarks/Assembly/*/*.tfg
 
 clean_all:	clean
 	@rm -rf logs/*.proof
@@ -33,6 +37,9 @@ run:
 
 graph_gen:
 	python3 benchmarking.py --mode graph_gen --input_file $(TEST_FILE)
+
+backup_classes:
+	cp -a eq_classes/. eq_classes_backup/
 
 gen_assumes:
 	mkdir -p assumes
