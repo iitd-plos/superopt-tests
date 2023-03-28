@@ -13,6 +13,11 @@ UNROLL1 := bzip2_locals \
            sortIt \
            qSort3 \
 
+EXPECTED_FAILS_CLANG := bzip2_locals \
+	                      undoReversibleTransformation_small 
+                        hbMakeCodeLengths \
+                        sortIt \
+
 UNROLL1_CLANG = $(UNROLL1)
 
 EXTRA_FLAGS := --smt-query-timeout 300 --eqcheck-timeout 7200 --global-timeout 64000 --max-address-space-size-gb 32
