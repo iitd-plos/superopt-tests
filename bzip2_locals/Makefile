@@ -14,7 +14,7 @@ UNROLL1 := bzip2_locals \
            qSort3 \
 
 EXPECTED_FAILS_CLANG := bzip2_locals \
-	                      undoReversibleTransformation_small 
+                        undoReversibleTransformation_small \
                         hbMakeCodeLengths \
                         sortIt \
 
