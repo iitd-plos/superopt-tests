@@ -1,4 +1,4 @@
-TEST_FILE=tests_v4.csv
+TEST_FILE=tests_C.csv
 ASSUME_TESTS=tests_assumes.csv
 NJOBS=30
 NUM_CHUNKS=1

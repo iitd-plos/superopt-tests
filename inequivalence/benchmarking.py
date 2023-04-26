@@ -104,6 +104,9 @@ def get_bench_path(fname: str, lib: str) -> str:
         return preprocess_asm(fname, lib)
     else:
         assert False, f'Invalid file extension .{extension}'
+
+def is_c_file(file_name: str) -> bool:
+    return file_name.split('.')[-1] == 'c'
  
 def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, classes: equivalence_classes, unroll):
     u = classes.get_leader(src_lib)
@@ -124,7 +127,10 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
     if not USE_ASSUMES:
         command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}.xml {get_bench_path(fname, src_lib)} {get_bench_path(fname, dst_lib)}'
     else:
-        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml --assume=assumes/{fname}-{src_lib}.assumes {get_bench_path(fname, src_lib)} {get_bench_path(fname, dst_lib)}'
+        src_lib_ = src_lib.split('.')[0]
+        if not is_c_file(src_lib):
+            assert False, f'{src_lib} is not a c file, cannot use assumes'
+        command = f'ulimit -v {VMEM_LIMIT}; eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={unroll} --ce_bound={CE_BOUND} --xml-output=counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml --assume=assumes/{fname}-{src_lib_}.assumes {get_bench_path(fname, src_lib)} {get_bench_path(fname, dst_lib)}'
     # tokens = shlex.split(command)
     p = None
     try:
