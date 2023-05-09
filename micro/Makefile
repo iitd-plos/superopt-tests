@@ -55,3 +55,6 @@ UNROLL4_SRCDST := nested_loop_peeling nested_loop_unrolling
 ICC_EQCHECKER_FLAGS_EXTRA= $(ICC_EQCHECKER_NOUNROLL_FLAGS)
 
 include $(SRCDIR)/Makefile.template
+
+test: eqtest_i386_O3 eqtest_srcdst
+	cat $^ > $@
