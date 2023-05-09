@@ -16,6 +16,7 @@ PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          rodata_simple \
          load_store_elim_simple \
          loop_hoisting \
+         nested_loops \
          non_linear_invariant_casting \
          non_linear_invariant_shl \
          # load_store_elim_cmove # needs "anticipated-cmove expressions"
