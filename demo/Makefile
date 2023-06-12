@@ -8,19 +8,20 @@ UNROLL1_GCC := sum1d \
                sum2d \
                kernel_mvt \
                # s441 -- incomplete CG
+
 UNROLL1_SRCDST := nestedLoop \
                   ifswitch \
                   inequiv_1 \
                   inequiv_2
+
 UNROLL4_SRCDST := bitflip \
                   # loopSplitting -- times out
+
 UNROLL8_SRCDST := strlen
 
-EXTRA_FLAGS := --smt-query-timeout 600
+EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 7200
 
-PROGS_EQCHECKER_SRCDST := $(UNROLL1_SRCDST) $(UNROLL4_SRCDST) $(UNROLL8_SRCDST)
-PROGS_EQCHECKER_COMPILER := $(UNROLL1_GCC)
-PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER) $(addsuffix _src, $(PROGS_EQCHECKER_SRCDST)) $(addsuffix _dst, $(PROGS_EQCHECKER_SRCDST))
+EXPECTED_FAILS_SRCDST := inequiv_1 inequiv_2
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(GCC_EQCHECKER_NOUNROLL_FLAGS)

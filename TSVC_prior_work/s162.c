@@ -6,7 +6,7 @@ int s162(int k)
 //	deriving assertions
 
 		if (k > 0) {
-			for (int i = 0; i < LEN-1; i++) {
+			for (int i = 0; i < LEN-k; i++) {
 				a[i] = a[i + k] + b[i] * c[i];
 			}
 		}

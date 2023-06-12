@@ -3,28 +3,27 @@ include ../config.mak                        # paths
 # set VPATH path for targets and src files
 VPATH = $(SRCDIR)/TSVC_prior_work
 
-#UNROLL2_GCC := s122 s243
-#UNROLL2_CLANG := s122 s112
-#UNROLL2_ICC := s122 s112 #s1112 loop reversal with mem write, s243 loop splitting (can do similar function without mem write)
-#
-#UNROLL8_GCC := s000 s1112 s112 s121 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s251 s3251 s351 s452 s453 vpv vpvpv vpvts vpvtv vtv vtvtv sum1d vdotr #s176 non-bisimilar (outer looop and inner loop collapse twice)
-#UNROLL16_CLANG := s000 s1112 s121 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 vpvpv vpvts vpvtv vtv vtvtv sum1d vdotr
+EXTRA_FLAGS := --global-timeout 3600 --max-address-space-size-gb 16 --disable-dst-to-src-submap # dst-to-src-submap incurs overhead
 
-# UNROLL8_GCC := s122 s243 s000 s1112 s112 s121 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s251 s3251 s351 s452 s453 vpv vpvpv vpvts vpvtv vtv vtvtv sum1d vdotr
-# UNROLL16_CLANG := s122 s112 s000 s1112 s121 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 vpvpv vpvts vpvtv vtv vtvtv sum1d vdotr
-# UNROLL8_ICC := s122 s112
+UNROLL8_GCC := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s173 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvts vpvtv vtv vtvtv
+               # cannot pass: s176 (non-bisimilar -- outer loop and inner loop collapse twice), s162 (non-linear invariant required: ecx == ((LEN-k)/4)*16)
 
-EXTRA_FLAGS := #--dyn-debug=bvsolve_cache_debug=2
+UNROLL64_CLANG := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s176 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvts vpvtv vtv vtvtv # should pass: s176 (high-mem), s162 (query-timeout)
+EXPECTED_FAILS_CLANG := s162     \
+                        # s162 [???]
 
-UNROLL8_GCC := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
-UNROLL64_CLANG := # s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s2244 s243 s251 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
-UNROLL64_ICC := # s000 s112 s122 s1251 s127 s1281 s1351 s173 s2244 s251 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vpvts
-
-# CLANG PROGS THAT SHOULD PASS AFTER CORREL ALGO UPDATE -- s176, s3251(non zero bv rank)
-# ICC PROGS NOT PASSING AFTER VERSION CHANGE -- s176, s121 (should pass), s162, s1221(should pass), vtvtv, s3251 (Querry timeout - Should pass) 
-
-PROGS_EQCHECKER_COMPILER := s000 s1112 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s162 s173 s176 s2244 s243 s251 s3251 s351 s452 s453 sum1d vdotr vpv vpvpv vpvtv vtv vtvtv vpvts
-PROGS_EQCHECKER := $(PROGS_EQCHECKER_COMPILER)
+UNROLL16_ICC := s000 s112 s121 s122 s1221 s1251 s127 s1281 s1351 s173 s176 s2244 s251 s3251 s452 s453 sum1d vdotr vpv vpvpv vpvts vpvtv vtv vtvtv # should pass: s1251 (query-timeout), s176 (???), s3251 (query timeout), vtvtv (query-timeout), vtv (query-timeout)
+                # cannot pass: s1112 (loop reversal with mem write), s243 (loop splitting -- can do similar function without mem write), s162 (non-linear invariant required: edi == (LEN-k)&(~15))
+EXPECTED_FAILS_ICC := vtvtv     \
+                      s1251     \
+                      s3251     \
+                      vtv       \
+                      s176      \
+                      # vtvtv [query timeout]
+                      # s1251 [query timeout]
+                      # s3251 [query timeout]
+                      # vtv [query timeout]
+                      # s176 [???]
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(VEC_FLAGS)

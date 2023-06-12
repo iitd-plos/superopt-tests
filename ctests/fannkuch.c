@@ -14,6 +14,7 @@
 
 void *MYmymalloc(size_t size);
 int MYmyprintf(const char *format, ...);
+int MYmyputchar(int);
 int MYmyatoi(const char *nptr);
 void *MYmycalloc(size_t nmemb, size_t size);
 
@@ -91,7 +92,7 @@ __attribute__((noinline))void print_perm(Aint* perm1, int n)
 {
     int		i;
 	  for( i=0 ; i<n ; ++i ) MYmyprintf("%d", (int)(1+perm1[i]));
-	  MYmyprintf("\n");
+	  MYmyputchar('\n');
 }
 
 long

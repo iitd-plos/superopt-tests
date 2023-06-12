@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use Cwd;
+use File::Basename;
 
 sub read_file {
   my $filename = $_[0];
@@ -13,12 +14,13 @@ sub read_file {
 }
 
 #constants
-
-my $SUPEROPT_PROJECT_DIR = $ARGV[0];
-my $VPATH = $ARGV[1];
-my $dst_arch = $ARGV[2];
-my $compiler = convert_PP_to_plusplus($ARGV[3]);
-my $compiler_suffix = convert_PP_to_plusplus($ARGV[4]);
+my $filename = $ARGV[0];
+my $SUPEROPT_PROJECT_DIR = $ARGV[1];
+my $VPATH = $ARGV[2];
+my $dst_arch = $ARGV[3];
+my $compiler = convert_PP_to_plusplus($ARGV[4]);
+my $compiler_suffix = convert_PP_to_plusplus($ARGV[5]);
+my $benchmark = basename($VPATH);
 #my $srcdst_default_compiler_suffix = "gcc.eqchecker.O0.$dst_arch.s";
 #my $srcdst_default_isa = "x64";
 #my $srcdst_default_isa = "i386";
@@ -29,17 +31,26 @@ my $compiler_suffix = convert_PP_to_plusplus($ARGV[4]);
 
 my $PWD = getcwd;
 
-my $extraflagsarg = $ARGV[5];
-#print "extraflagsarg = $extraflagsarg\n";
+my $extraflagsarg = $ARGV[6];
 my @extraflags = split('@', $extraflagsarg);
 shift(@extraflags);
 my $extraflagsstr = join('',@extraflags);
-#print "extraflagsstr = $extraflagsstr\n";
+
+my $expectedfailsarg = $ARGV[7];
+#print "expectedfailsarg = $expectedfailsarg\n";
+my @expectedfails_tmp = split('@', $expectedfailsarg);
+shift(@expectedfails_tmp);
+my %expectedfails = ();
+if (scalar @expectedfails_tmp gt 0) {
+  if (scalar @expectedfails_tmp gt 1) { die "expectedfails formatted illegally"; }
+  my @expectedfails_ls = split(' ',$expectedfails_tmp[0]);
+  for (@expectedfails_ls) { $expectedfails{$_} = 1 }
+}
 
 my %unroll;
 
 my $cur;
-foreach(my $i = 6; $i <= $#ARGV; $i++) {
+foreach(my $i = 8; $i <= $#ARGV; $i++) {
   my $arg = $ARGV[$i];
   #print "arg = $arg\n";
   if ($arg eq "unroll1") {
@@ -63,6 +74,7 @@ foreach(my $i = 6; $i <= $#ARGV; $i++) {
   }
 }
 
+open(OUT, '>', $filename) or die $!;
 foreach my $prog (keys %unroll) {
   my $u = $unroll{$prog};
   my $prog_extraflagsstr = $extraflagsstr;
@@ -75,27 +87,27 @@ foreach my $prog (keys %unroll) {
   if (-f "$VPATH/$prog.$compiler.eqflags") {
     $prog_extraflagsstr = $prog_extraflagsstr . " " . read_file("$VPATH/$prog.$compiler.eqflags");
   }
+  my $prog_expectfailstr = '';
+  if ($expectedfails{$prog}) {
+    $prog_expectfailstr = "-expect-fail";
+  }
   if ($compiler eq "srcdst") {
-    #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch $VPATH/$prog\_src.c $PWD/$prog\_dst.$srcdst_default_compiler_suffix.UNROLL$u\n";
-    #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $srcdst_default_isa -extra_flags=$extraflagsstr $VPATH/$prog\_src.c $VPATH/$prog\_dst.c.UNROLL$u\n";
     my $src_pathname = identify_filetype_extension("$VPATH/$prog\_src");
     my $dst_pathname = identify_filetype_extension("$VPATH/$prog\_dst");
-    print "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
+    print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' $prog_expectfailstr -tmpdir $PWD $src_pathname $dst_pathname.UNROLL$u\n";
   } else {
-    #print "python $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags=$extraflagsstr $VPATH/$prog.c $PWD/$prog.$compiler_suffix.UNROLL$u\n";
     my $compile_log_str = "";
     if ($compiler =~ /^clang/) {
       $compile_log_str = "-compile_log $PWD/$prog.$compiler$compiler_suffix.log"
     }
-    #print "compiler = $compiler\n";
     my $src_pathname = identify_filetype_extension("$VPATH/$prog");
-    if ($compiler ne "ack" || -f "$PWD/$prog.$compiler$compiler_suffix") {
-      print "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -extra_flags='$prog_extraflagsstr' -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
+    if ($compiler ne "ack" || -f "$PWD/$prog.$compiler$compiler_suffix") { # skip missing binaries for 'ack' which does not support VLA/alloca()
+      print OUT "python3 $SUPEROPT_PROJECT_DIR/superopt/utils/eqbin.py -isa $dst_arch -logdir 'logs_$benchmark' -extra_flags='$prog_extraflagsstr' $prog_expectfailstr  -tmpdir $PWD $src_pathname $PWD/$prog.$compiler$compiler_suffix.UNROLL$u $compile_log_str\n";
     } else {
-      #print "Ignoring $PWD/$prog.$compiler$compiler_suffix\n";
     }
   }
 }
+close(OUT);
 
 sub identify_filetype_extension
 {
@@ -108,8 +120,8 @@ sub identify_filetype_extension
   if (-e $llpath) {
     return $llpath;
   }
-  print "Neither C file ($cpath) nor LLVM file ($llpath) exists\n";
-  exit(1);
+  unlink($filename);
+  die "Neither C file ($cpath) nor LLVM file ($llpath) exists\n";
 }
 
 sub convert_PP_to_plusplus

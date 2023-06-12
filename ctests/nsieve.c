@@ -29,7 +29,7 @@ unsigned int nsieve_static(int m) {
 int main(int argc, char * argv[]) {
     int m = argc < 2 ? 9 : MYmyatoi(argv[1]);
     int i;
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < m; i++)
     {
         unsigned int count = nsieve_static(10000 << (m-i));
         MYmyprintf("Primes up to %8u %8u\n", 10000 << (m-i), count);
