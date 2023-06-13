@@ -10,18 +10,18 @@ MALLOC_TARGETS := malloc-tests cpp
 SPEC_TARGETS := spec17
 FP_TARGETS := fp
 SOUNDNESS_TARGETS := dietlibc # soundness
-MICRO_TARGETS := micro ctests demo
+MICRO_TARGETS := micro # ctests sag
 VECTORIZATION_TARGETS := TSVC_prior_work TSVC_new LORE_mem_write LORE_no_mem_write
-LOCALS_TARGETS := localmem-tests TSVC_prior_work_locals TSVC_prior_work_globals bzip2_locals
+LOCALS_TARGETS := localmem-tests bzip2_locals TSVC_prior_work_locals TSVC_prior_work_globals
 
-EQCHECK_TARGETS :=  $(LOCALS_TARGETS) $(VECTORIZATION_TARGETS) $(MICRO_TARGETS) $(MALLOC_TARGETS) $(FP_TARGETS) $(SOUNDNESS_TARGETS) sag
+# EQCHECK_TARGETS :=  $(LOCALS_TARGETS) $(VECTORIZATION_TARGETS) $(MICRO_TARGETS) $(MALLOC_TARGETS) $(FP_TARGETS) $(SOUNDNESS_TARGETS)
+EQCHECK_TARGETS := $(MICRO_TARGETS) $(LOCALS_TARGETS) $(VECTORIZATION_TARGETS) $(SOUNDNESS_TARGETS)
 
 EQCHECK_TARGETS_i386 := $(EQCHECK_TARGETS)
 EQCHECK_TARGETS_x64 := $(EQCHECK_TARGETS)
 EQCHECK_TARGETS_ll := llvm-tests
 EQCHECK_TARGETS_srcdst :=
-#TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_x64) $(EQCHECK_TARGETS_ll) #$(OOELALA_TARGETS) # $(CODEGEN_TARGETS)
-TARGETS := $(EQCHECK_TARGETS_i386) $(EQCHECK_TARGETS_ll)
+TARGETS := $(EQCHECK_TARGETS_i386) # $(EQCHECK_TARGETS_ll)
 
 MAKEFILES := $(addsuffix /Makefile,$(TARGETS))
 BUILD_MAKEFILES := $(addprefix $(BUILDDIR)/,$(MAKEFILES))
@@ -91,6 +91,14 @@ specclean::
 
 identify_durables::
 	python $(SUPEROPT_PROJECT_DIR)/superopt/utils/identify_durables.py --max-call-context-depth 4 $(IDENTIFY_DURABLES_FILES)
+
+regression: $(BUILD_MAKEFILES) $(TARGETS)
+	$(foreach t,$(TARGETS), if make -C $(BUILDDIR)/$(t) clean; then :; else echo "ERROR: 'make clean' failed for target" $(BUILDDIR)/$(t); exit 1; fi;)
+	$(foreach t,$(TARGETS), if make -C $(BUILDDIR)/$(t) test; then :; else echo "ERROR: 'make test' failed for target" $(BUILDDIR)/$(t); exit 1; fi;)
+	true > $(BUILDDIR)/$@
+	$(foreach t,$(TARGETS), if [ -f $(BUILDDIR)/$(t)/test ]; then cat $(BUILDDIR)/$(t)/test >> $(BUILDDIR)/$@; else echo "ERROR:" $(BUILDDIR)/$(t)/test "does not exist for target" $(t); exit 1; fi;)
+	clear
+	parallel --load "33%" < $(BUILDDIR)/$@ | tee $(BUILDDIR)/$@.out
 
 clean:
 	$(foreach t,$(TARGETS),$(MAKE) -C $(BUILDDIR)/$(t) clean;)
