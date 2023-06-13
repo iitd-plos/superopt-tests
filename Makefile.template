@@ -161,10 +161,12 @@ clean:
 BENCH_NAME := $(shell basename $(VPATH))
 BENCH_RUN_LOGS_DIR := $(addprefix logs_, $(BENCH_NAME))
 ARCHIVE_PREFIX := last_eqrun
+ARCHIVE_LAST := $(ARCHIVE_PREFIX)
 ARCHIVE_FNAME := $(shell sh $(SUPEROPT_PROJECT_DIR)/superopt/utils/next_avail_fname.sh $(ARCHIVE_PREFIX))
 
 archive_run:
 	python3 $(SUPEROPT_PROJECT_DIR)/superopt/utils/eq_read_log.py '$(BENCH_RUN_LOGS_DIR)/*.log' > $(ARCHIVE_FNAME)
 	apack $(ARCHIVE_FNAME).zip $(BENCH_RUN_LOGS_DIR)/*.log $(BENCH_RUN_LOGS_DIR)/*.proof
+	ln -sf $(ARCHIVE_FNAME) $(ARCHIVE_LAST)
 
 .PHONY: all clean eqtest archive_run
