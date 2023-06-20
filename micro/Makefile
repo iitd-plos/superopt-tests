@@ -22,6 +22,7 @@ PROGS := fptrunc fpbinary fptoui fbinary flbinary \
          non_linear_invariant_shl \
          sum_positive \
          sum2d \
+         path_enum_2 \
          # load_store_elim_cmove # needs "anticipated-cmove expressions"
          #ddec arg_passing fpadd  fcall100 fcall100_with_memaccess \
          #fpext : TOO SLOW
