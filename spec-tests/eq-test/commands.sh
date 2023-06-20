@@ -55,7 +55,7 @@ s2c_cmd="${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/s2c --speceq-solver-we
 speceq_run() {
   mkdir -p "tmpdir_$1"
   mkdir -p "tmpdir"
-  ${s2c_cmd} --tmpdir-path="tmpdir_$1" --proof=tmpdir_$1/proof --dyn-debug=invariants_dump --spec-iospecs="$1".iospecs "$1".spec "$1".c >& tmpdir/"$1".eq.out
+  ${s2c_cmd} --tmpdir-path="tmpdir_$1" --proof=tmpdir_$1/proof --dyn-debug=invariants_dump,expr_eqclasses=3 --spec-iospecs="$1".iospecs "$1".spec "$1".c >& tmpdir/"$1".eq.out
 }
 
 speceq_debug() {
