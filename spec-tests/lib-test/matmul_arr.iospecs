@@ -1,0 +1,87 @@
+=SpecFuncIOSpecs
+=FunctionName: dot
+=EntryPreconds
+=pred 0
+=Comment
+ptr-impl-vec-1
+=LhsExpr
+1 : $spec-arg-0 : IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]]
+2 : $llvm-arg-0 : BV:32
+3 : $llvm-arg-2 : BV:32
+4 : $llvm-md : ARRAY[BV:32 -> BV:8]
+5 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+6 : memlabel-top : MEMLABEL
+7 : 4 : INT
+8 : 0 : BOOL
+9 : Lambda0 : BV:32
+10 : 4 : BV:32
+11 : bvuge(9, 3) : BOOL
+12 : 0 : BV:32
+13 : 1 : BV:32
+14 : ite(11, 12, 13) : BV:32
+15 : unit : UNIT
+16 : bvmul(10, 9) : BV:32
+17 : bvadd(16, 2) : BV:32
+18 : select(4, 5, 6, 17, 7, 8) : BV:32
+19 : Indxform0 : BV:32
+20 : prod(18, 19) : PROD[BV:32, BV:32]
+21 : sum(14, 15, 20) : SUM[UNIT, PROD[BV:32, BV:32]]
+22 : lambda(9, 21) : FUNCTION[BV:32 -> SUM[UNIT, PROD[BV:32, BV:32]]]
+23 : bvadd(9, 13) : BV:32
+24 : lambda(9, 23) : FUNCTION[BV:32 -> BV:32]
+25 : 1 : INT
+26 : ind(25, 25, 12, 19, 24, 22) : IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]]
+27 : eq(1, 26) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=pred 1
+=Comment
+ptr-impl-vec-2
+=LhsExpr
+1 : $spec-arg-1 : IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]]
+2 : $llvm-arg-1 : BV:32
+3 : $llvm-arg-2 : BV:32
+4 : $llvm-md : ARRAY[BV:32 -> BV:8]
+5 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
+6 : memlabel-top : MEMLABEL
+7 : 4 : INT
+8 : 0 : BOOL
+9 : Lambda0 : BV:32
+10 : 4 : BV:32
+11 : bvuge(9, 3) : BOOL
+12 : 0 : BV:32
+13 : 1 : BV:32
+14 : ite(11, 12, 13) : BV:32
+15 : unit : UNIT
+16 : bvmul(10, 9) : BV:32
+17 : bvadd(16, 2) : BV:32
+18 : select(4, 5, 6, 17, 7, 8) : BV:32
+19 : Indxform0 : BV:32
+20 : prod(18, 19) : PROD[BV:32, BV:32]
+21 : sum(14, 15, 20) : SUM[UNIT, PROD[BV:32, BV:32]]
+22 : lambda(9, 21) : FUNCTION[BV:32 -> SUM[UNIT, PROD[BV:32, BV:32]]]
+23 : bvadd(9, 13) : BV:32
+24 : lambda(9, 23) : FUNCTION[BV:32 -> BV:32]
+25 : 1 : INT
+26 : ind(25, 25, 12, 19, 24, 22) : IND[vec, SUM[UNIT, PROD[BV:32, DECL[vec]]]]
+27 : eq(1, 26) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=EntryPreconds done
+=ExitAsserts
+=pred 0
+=Comment
+eq-size
+=LhsExpr
+1 : $spec-ret : BV:32
+2 : $llvm-ret : BV:32
+3 : eq(1, 2) : BOOL
+=RhsExpr
+1 : 1 : BOOL
+=predicate done
+=predicate_set done
+=ExitAsserts done
+=SpecFuncIOSpecs done

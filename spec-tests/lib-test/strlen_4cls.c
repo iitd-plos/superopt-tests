@@ -7,17 +7,21 @@ struct chunked_list {
 
 size_t strlen(struct chunked_list *l) {
     register size_t i;
-    for (i=0; l->vals[0]; l = l->next) {
-        ++i;
+    const unsigned long int *longword_ptr;
+    unsigned long int longword, himagic, lomagic;
 
-        if (!l->vals[1]) break;
-        ++i;
+    himagic = 0x80808080L;
+    lomagic = 0x01010101L;
+    for (i=0;; l = l->next, i += 4) {
+        longword_ptr = (unsigned long int *) l->vals;
+        longword = *longword_ptr;
+        if (((longword - lomagic) & ~longword & himagic) != 0) {
+            const char *cp = (const char *) longword_ptr;
 
-        if (!l->vals[2]) break;
-        ++i;
-
-        if (!l->vals[3]) break;
-        ++i;
+            if (cp[0] == 0) return i;
+            if (cp[1] == 0) return i + 1;
+            if (cp[2] == 0) return i + 2;
+            if (cp[3] == 0) return i + 3;
+        }
     }
-    return i;
 }

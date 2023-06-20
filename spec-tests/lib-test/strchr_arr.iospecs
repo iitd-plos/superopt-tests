@@ -5,7 +5,7 @@
 =Comment
 ptr-impl-cstr
 =LhsExpr
-1 : $spec-arg-0 : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
+1 : $spec-arg-0 : IND[str, SUM[UNIT, UNIT, PROD[BV:8, DECL[str]]]]
 2 : $llvm-arg-0 : BV:32
 3 : $llvm-md : ARRAY[BV:32 -> BV:8]
 4 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
@@ -14,24 +14,23 @@ ptr-impl-cstr
 7 : 0 : BOOL
 8 : 0 : BV:32
 9 : 1 : BV:32
-10 : Lambda0 : BV:32
-11 : select(3, 4, 5, 10, 6, 7) : BV:8
-12 : 0 : BV:8
-13 : eq(11, 12) : BOOL
-14 : ite(13, 8, 9) : BV:32
-15 : unit : UNIT
-16 : Indxform0 : BV:32
-17 : prod(11, 16) : PROD[BV:8, BV:32]
-18 : eq(10, 8) : BOOL
-19 : ite(18, 8, 9) : BV:32
-20 : sum(14, 15, 17) : SUM[UNIT, PROD[BV:8, BV:32]]
-21 : sum(19, 15, 20) : SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]
-22 : lambda(10, 21) : FUNCTION[BV:32 -> SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]]
+10 : 2 : BV:32
+11 : Lambda0 : BV:32
+12 : select(3, 4, 5, 11, 6, 7) : BV:8
+13 : 0 : BV:8
+14 : eq(12, 13) : BOOL
+15 : eq(11, 8) : BOOL
+16 : ite(14, 9, 10) : BV:32
+17 : ite(15, 8, 16) : BV:32
+18 : unit : UNIT
+19 : Indxform0 : BV:32
+20 : prod(12, 19) : PROD[BV:8, BV:32]
+21 : sum(17, 18, 18, 20) : SUM[UNIT, UNIT, PROD[BV:8, BV:32]]
+22 : lambda(11, 21) : FUNCTION[BV:32 -> SUM[UNIT, UNIT, PROD[BV:8, BV:32]]]
 23 : Lambda1 : BV:32
 24 : bvadd(23, 9) : BV:32
 25 : lambda(23, 24) : FUNCTION[BV:32 -> BV:32]
-28 : 1 : INT
-26 : ind(28, 28, 2, 16, 25, 22) : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
+26 : ind(6, 6, 2, 19, 25, 22) : IND[str, SUM[UNIT, UNIT, PROD[BV:8, DECL[str]]]]
 27 : eq(1, 26) : BOOL
 =RhsExpr
 1 : 1 : BOOL
@@ -56,7 +55,7 @@ eq-arg1
 =Comment
 ptr-impl-cstr
 =LhsExpr
-1 : $spec-ret : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
+1 : $spec-ret : SUM[UNIT, IND[str, SUM[UNIT, UNIT, PROD[BV:8, DECL[str]]]]]
 2 : $llvm-ret : BV:32
 3 : $llvm-md : ARRAY[BV:32 -> BV:8]
 4 : $llvm-ma : ARRAY[BV:32 -> MEMLABEL]
@@ -65,25 +64,27 @@ ptr-impl-cstr
 7 : 0 : BOOL
 8 : 0 : BV:32
 9 : 1 : BV:32
-10 : Lambda0 : BV:32
-11 : select(3, 4, 5, 10, 6, 7) : BV:8
-12 : 0 : BV:8
-13 : eq(11, 12) : BOOL
-14 : ite(13, 8, 9) : BV:32
-15 : unit : UNIT
-16 : Indxform0 : BV:32
-17 : prod(11, 16) : PROD[BV:8, BV:32]
-18 : eq(10, 8) : BOOL
-19 : ite(18, 8, 9) : BV:32
-20 : sum(14, 15, 17) : SUM[UNIT, PROD[BV:8, BV:32]]
-21 : sum(19, 15, 20) : SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]
-22 : lambda(10, 21) : FUNCTION[BV:32 -> SUM[UNIT, SUM[UNIT, PROD[BV:8, BV:32]]]]
+10 : 2 : BV:32
+11 : Lambda0 : BV:32
+12 : select(3, 4, 5, 11, 6, 7) : BV:8
+13 : 0 : BV:8
+14 : eq(12, 13) : BOOL
+15 : eq(11, 8) : BOOL
+16 : ite(14, 9, 10) : BV:32
+17 : ite(15, 8, 16) : BV:32
+18 : unit : UNIT
+19 : Indxform0 : BV:32
+20 : prod(12, 19) : PROD[BV:8, BV:32]
+21 : sum(17, 18, 18, 20) : SUM[UNIT, UNIT, PROD[BV:8, BV:32]]
+22 : lambda(11, 21) : FUNCTION[BV:32 -> SUM[UNIT, UNIT, PROD[BV:8, BV:32]]]
 23 : Lambda1 : BV:32
 24 : bvadd(23, 9) : BV:32
 25 : lambda(23, 24) : FUNCTION[BV:32 -> BV:32]
-28 : 1 : INT
-26 : ind(28, 28, 2, 16, 25, 22) : IND[str, SUM[UNIT, SUM[UNIT, PROD[BV:8, DECL[str]]]]]
-27 : eq(1, 26) : BOOL
+26 : ind(6, 6, 2, 19, 25, 22) : IND[str, SUM[UNIT, UNIT, PROD[BV:8, DECL[str]]]]
+90 : eq(2, 8) : BOOL
+91 : ite(90, 8, 9) : BV:32
+92 : sum(91, 18, 26) : SUM[UNIT, IND[str, SUM[UNIT, UNIT, PROD[BV:8, DECL[str]]]]]
+27 : eq(1, 92) : BOOL
 =RhsExpr
 1 : 1 : BOOL
 =predicate done

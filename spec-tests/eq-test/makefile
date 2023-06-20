@@ -1,6 +1,6 @@
 run:
-	parallel --load=70% :::: suite.sh
+	parallel --load=30% :::: suite.sh
 
 clean:
-	rm -rf speceq_tmpdir_*  par_tmpdir_*  *.out *.proof*
+	rm -rf tmpdir*  par_tmpdir* scan.*
 
