@@ -25,7 +25,6 @@ UNROLL_FACTOR_MIN=1
 UNROLL_FACTOR_MAX=64
 UNROLL_FACTOR_RATIO=2
 CE_BOUND=22
-SCRIPT_NAME = "benchmarking.sh"
 TIMEOUT=45*60
 NJOBS=30
 VMEM_LIMIT=32*1024*1024 # 32GB
@@ -33,56 +32,36 @@ NUM_CHUNKS=1
 
 USE_ASSUMES = False
 
-# Generates a brute force script for benchmarking
-def gen_script(input_file):
-    script = open(SCRIPT_NAME, 'w')
-    script.write('#!/bin/bash\n')
-    script.write('set -x\n')
-    file = open(input_file, 'r')
-    lines = file.readlines()
-    lines = [line.strip() for line in lines]
-    for line in lines:
-        strings = line.split()
-        fname = strings[0]
-        libraries = strings[1:]
-        for pair in itertools.permutations(libraries, 2):
-            l1, l2 = pair
-            # command = f'/usr/bin/time -ao logs/timing.log -f "{fname}\t{l1}\t{l2}\t%e" eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
-            command = f'eq32 --dyn-debug={FLAGS} --failset-prune={FAILSET_PRUNE} --failset-sort={FAILSET_SORT} --failset-mu={FAILSET_MU} --unroll-factor={UNROLL_FACTOR_MAX} --ce_bound={CE_BOUND} benchmarks/{fname}_{l1}.c benchmarks/{fname}_{l2}.c > logs/{fname}_{l1}_{l2}.proof 2>&1'
-            script.write(command + "\n")
-    script.close()
-    file.close()
-
-# Generates a combined file consisting of both the src, dst programs and the generated counterexample
-def write_ce_file(fname: str, src_lib: str, dst_lib: str):
-    src_data, dst_data, xml_data = '', '', ''
-    with open(get_bench_path(fname, src_lib), 'r') as fp:
-        src_data = fp.read()
-    
-    with open(get_bench_path(fname, dst_lib), 'r') as fp:
-        dst_data = fp.read()
-    
-    if not USE_ASSUMES:
-        xml_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}.xml'
-    else:
-        xml_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.xml'
-    
-    with open(xml_file, 'r') as fp:
-        xml = fp.read()
-        xml = '<eqchecker>' + xml
-    
-    root = ET.fromstring(xml)
-    for neighbor in root.iter('MSG'):
-        xml_data = neighbor.text
-
-    merge_data = src_data + '\n\n' + dst_data + '\n\n' + xml_data
-    
-    if not USE_ASSUMES:
-        ce_out_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}.ce'
-    else:
-        ce_out_file = f'counterexamples/{fname}-{src_lib}-{dst_lib}-assumes.ce'
-    with open(ce_out_file, 'w') as fp:
-        fp.write(merge_data)
+class RunConfig():
+    def __init__(self,
+                 failset_prune: int,
+                 failset_sort: str,
+                 loop_bound: int,
+                 unroll_factor_min: int,
+                 unroll_factor_max: int,
+                 unroll_factor_ratio: int,
+                 ce_bound: int,
+                 timeout: float,
+                 njobs: int,
+                 vmem_limit: int,
+                 num_chunks: int,
+                 use_assumes: bool,
+                 ineq_individual_tfgs: bool,
+                 debug_flags: str):
+        self.failset_prune = failset_prune
+        self.failset_sort = failset_sort
+        self.loop_bound = loop_bound
+        self.unroll_factor_min = unroll_factor_min
+        self.unroll_factor_max = unroll_factor_max
+        self.unroll_factor_ratio = unroll_factor_ratio
+        self.ce_bound = ce_bound
+        self.timeout = timeout
+        self.njobs = njobs
+        self.vmem_limit = vmem_limit
+        self.num_chunks = num_chunks
+        self.use_assumes = use_assumes
+        self.ineq_individual_tfgs = ineq_individual_tfgs
+        self.debug_flags = debug_flags
 
 # .S files could use preprocessor directives. If they do, then eq32 currently classifies those as C source files
 # A hack is to preprocess the files on the fly through gcc and then run the tool
@@ -107,6 +86,26 @@ def get_bench_path(fname: str, lib: str) -> str:
 
 def is_c_file(file_name: str) -> bool:
     return file_name.split('.')[-1] == 'c'
+
+def get_eq_command_from_config(eqrun_cfg: RunConfig, fname: str, src: str, dst: str, unroll: int) -> str:
+    tokens = ['eq32']
+    if eqrun_cfg.debug_flags != '':
+        tokens.append(f'--dyn-debug={eqrun_cfg.debug_flags}')
+    tokens.append(f'--unroll-factor={unroll}')
+    if eqrun_cfg.ineq_individual_tfgs:
+        tokens.append('--ineq-individual-tfgs')
+    else:
+        tokens.append(f'--failset-prune={eqrun_cfg.failset_prune}')
+        tokens.append(f'--failset-sort={eqrun_cfg.failset_sort}')
+        tokens.append(f'--ce-bound={eqrun_cfg.ce_bound}')
+    tokens.append(f'{get_bench_path(fname, src)}')
+    tokens.append(f'--dst={get_bench_path(fname, dst)}')
+    # TODO: --ce-output, --tmpdir-path, --disable-inequivalence
+    return ' '.join(tokens)
+
+def get_eq_command_with_vmem_limit(eqrun_cfg: RunConfig, fname: str, src: str, dst: str, unroll: int) -> str:
+    command = get_eq_command_from_config(eqrun_cfg, fname, src, dst, unroll)
+    return f'ulimit -v {eqrun_cfg.vmem_limit}; {command}'
  
 def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrapper, classes: equivalence_classes, unroll):
     u = classes.get_leader(src_lib)
@@ -145,7 +144,6 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file:TextIOWrap
         elif p.returncode == 2:
             log_file.write(f'\t\tProved {fname} to be inequivalent for {src_lib}, {dst_lib}.\n')
             classes.add_inequivalent(src_lib, dst_lib)
-            write_ce_file(fname, src_lib, dst_lib)
         else:
             log_file.write(f'\t\tFound errcode {p.returncode} for {fname}, {src_lib}, {dst_lib}.\n')
             RETRY = True
@@ -369,15 +367,6 @@ def graph_gen():
     plot_hist(ranking_ratios, 'RankingRatio')
     plot_hist(ineq_loop_bound, 'InequivalenceLoopBound')
     
-def parse_xml_test(xml_file):
-    with open(xml_file, 'r') as fp:
-        xml = fp.read()
-    xml = '<eqchecker>' + xml
-    root = ET.fromstring(xml)
-    for neighbor in root.iter('MSG'):
-        xml_data = neighbor.text
-    print(xml_data)
-    
 def update_eq_classes():
     pickled_files = glob.glob('eq_classes/*-classes.pkl')
     pickled_files.sort()
@@ -396,7 +385,7 @@ def update_eq_classes():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
-    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [gen_script|run_all|analysis|graph_gen|xml_parse|update_eq_classes]', default='')
+    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [run|analysis|graph_gen|update_eq_classes]', default='')
     parser.add_argument('--input_file', action='store', type=str, help='File containing the benchmarks to run', default='')
     parser.add_argument('--failset_mu', action='store', type=int, help='Denotes the mu to be used in inequivalence checking', default=FAILSET_MU)
     parser.add_argument('--unroll_factor', action='store', type=int, default=UNROLL_FACTOR_MAX)
@@ -407,7 +396,7 @@ if __name__ == "__main__":
     parser.add_argument('--num_chunks', action='store', type=int, help='Number of chunks into which each experiment is divided into', default=NUM_CHUNKS)
     args = parser.parse_args()
     assert(args.mode != '')
-    assert args.mode == 'gen_script' or args.mode == 'run_all' or args.mode == 'analysis' or args.mode == 'graph_gen' or args.mode == 'xml_parse' or args.mode == 'update_eq_classes', f'Invalid Mode'
+    assert args.mode == 'run' or args.mode == 'analysis' or args.mode == 'graph_gen' or args.mode == 'update_eq_classes', f'Invalid Mode'
     FAILSET_MU = args.failset_mu
     UNROLL_FACTOR_MAX = args.unroll_factor
     CE_BOUND = args.ce_bound
@@ -416,15 +405,11 @@ if __name__ == "__main__":
     USE_ASSUMES = args.assumes
     NUM_CHUNKS = args.num_chunks
     print(f'My pid is {os.getpid()}, pgid is {os.getpgid(0)}')
-    if args.mode == 'gen_script':
-        gen_script(args.input_file)
-    elif args.mode == 'run_all':
+    if args.mode == 'run':
         run_experiments(args.input_file)
     elif args.mode == 'analysis':
         analysis()
     elif args.mode == 'graph_gen':
         graph_gen()
-    elif args.mode == 'xml_parse':
-        parse_xml_test(args.input_file)
     elif args.mode == 'update_eq_classes':
         update_eq_classes()
