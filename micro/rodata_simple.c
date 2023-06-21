@@ -1,5 +1,7 @@
 const char hw[] = "hello world";
 
+int MYmystrlen(char const* p);
+
 int rodata_simple(const char *s)
 {
   const char* p = s != 0 ? s : hw;
