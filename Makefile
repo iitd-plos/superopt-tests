@@ -35,6 +35,8 @@ export SUPEROPT_INSTALL_DIR
 
 all: $(TARGETS)
 
+locals_paper_targets: $(LOCALS_TARGETS)
+
 $(BUILDDIR)/%:
 	mkdir -p $@
 

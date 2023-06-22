@@ -15,7 +15,7 @@ UNROLL1 := bzip2_locals \
 
 UNROLL1_CLANG = $(UNROLL1)
 
-EXTRA_FLAGS := --smt-query-timeout 300 --global-timeout 28800 --max-address-space-size-gb 32
+EXTRA_FLAGS := --smt-query-timeout 120 --eqcheck-timeout 28800 --max-address-space-size-gb 32
 
 # compiler flags
 GCC_EQCHECKER_FLAGS_EXTRA= $(GCC_EQCHECKER_NOUNROLL_FLAGS)
