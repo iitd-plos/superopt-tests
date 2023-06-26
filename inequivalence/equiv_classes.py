@@ -16,28 +16,19 @@ class ToolResult(Enum):
     TIMEOUT = 4
 
 class run_info:
-    def __init__(self, fname: str, src_lib: str, dst_lib: str, unroll: int, retcode: int, time_taken, timeout: bool) -> None:
+    def __init__(self, fname: str, src_lib: str, dst_lib: str, unroll: int, result: ToolResult, retcode: int, time_taken) -> None:
         self.fname = fname
         self.src_lib = src_lib
         self.dst_lib = dst_lib
         self.unroll = unroll
+        self.result = result
         self.retcode = retcode
-        if timeout:
-            self.result = ToolResult.TIMEOUT
-            self.time_taken = None
-        else:
-            self.time_taken = time_taken
-            if retcode == 0:
-                self.result = ToolResult.EQUIV
-            elif retcode == 1:
-                self.result = ToolResult.FAIL
-            elif retcode == 2:
-                self.result = ToolResult.INEQ
-            else:
-                self.result = ToolResult.ERROR
+        self.time_taken = time_taken
     
     def to_string(self):
-        s = f'{self.fname},{self.src_lib},{self.dst_lib},{self.unroll},{self.result}'
+        s = f'{self.fname},{self.src_lib},{self.dst_lib},{self.result},{self.unroll}'
+        if self.result == ToolResult.INEQ:
+            s += f',{self.loop_bound}'
         if self.result != ToolResult.TIMEOUT:
             s += f',{self.time_taken}'
         return s
@@ -45,6 +36,12 @@ class run_info:
     def is_ineq(self):
         return self.result == ToolResult.INEQ
     
+    def is_eq(self):
+        return self.result == ToolResult.EQUIV
+
+    def add_loop_bound(self, loop_bound: int):
+        self.loop_bound = loop_bound
+
     def type(self):
         return self.result
 
@@ -183,8 +180,8 @@ class equivalence_classes:
         # s = f'graph {{\n{node_string}{ineq_string}{fail_string}}}'
         return node_string, ineq_string, fail_string
 
-    def add_run_info(self, fname: str, src_lib: str, dst_lib: str, unroll: int, retcode: int, time_taken: float, timeout: bool):
-        self.runs.append(run_info(fname, src_lib, dst_lib, unroll, retcode, time_taken, timeout))
+    def add_run_info(self, info: run_info):
+        self.runs.append(info)
 
     def __add__(self, other):
         if isinstance(other, self.__class__):

@@ -7,15 +7,17 @@ from joblib import Parallel, delayed
 import pickle
 import argparse
 import glob
-from equiv_classes import equivalence_classes, merge_all_classes
+from equiv_classes import equivalence_classes, merge_all_classes, ToolResult, run_info
 import glob
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
+from typing import *
 
 # Contains benchmarking information
 # FORMAT: each line represents one function
 ## {fname},{lib_1}.c,{lib_2}.S . . .
 
+RUN_STATUS_FILE = 'eqcheck.runstatus'
 class RunConfig():
     def __init__(self,
                  input_file: str,
@@ -81,6 +83,9 @@ def is_asm_file(file_name: str) -> bool:
     extension = file_name.split('.')[-1]
     return extension == 's' or extension == 'S'
 
+def get_tmpdir_path_from_config(eqrun_cfg: RunConfig, fname: str, src: str, dst: str, unroll: int) -> str:
+    return f'{eqrun_cfg.output_dir}/tmpdir/ineq.{fname}-{src}-{dst}-{unroll}-{eqrun_cfg.loop_bound}'
+
 def get_eq_command_from_config(eqrun_cfg: RunConfig, fname: str, src: str, dst: str, unroll: int) -> str:
     tokens = ['eq32']
     if eqrun_cfg.debug_flags != '':
@@ -92,7 +97,7 @@ def get_eq_command_from_config(eqrun_cfg: RunConfig, fname: str, src: str, dst: 
         tokens.append('--disable-inequivalence')
     else:
         tokens.append(f'--failset-mu={eqrun_cfg.loop_bound}')
-        tokens.append(f'--ce-output={eqrun_cfg.output_dir}/counterexamples/ineq.{fname}-{src}-{dst}-{unroll}-{eqrun_cfg.loop_bound}.ce')
+        tokens.append(f'--ce-output={eqrun_cfg.output_dir}/counterexamples/ineq.{fname}-{src}-{dst}-{unroll}-{eqrun_cfg.loop_bound}.xml')
         if eqrun_cfg.ineq_individual_tfgs:
             tokens.append('--ineq-individual-tfgs')
         else:
@@ -103,7 +108,8 @@ def get_eq_command_from_config(eqrun_cfg: RunConfig, fname: str, src: str, dst: 
     tokens.append(f'{get_bench_path(fname, src)}')
     tokens.append(f'--dst={get_bench_path(fname, dst)}')
 
-    tokens.append(f'--tmpdir-path={eqrun_cfg.output_dir}/tmpdir/ineq.{fname}-{src}-{dst}-{unroll}-{eqrun_cfg.loop_bound}')
+    tokens.append(f'--tmpdir-path={get_tmpdir_path_from_config(eqrun_cfg, fname, src, dst, unroll)}')
+    tokens.append(f'--iquote-path=benchmarks/C/,benchmarks/Assembly/')
     if eqrun_cfg.use_assumes:
         # Provide an assumes file for the source (C) program
         # TODO: Handle the case when the source is an ASM program
@@ -115,6 +121,40 @@ def get_eq_command_from_config(eqrun_cfg: RunConfig, fname: str, src: str, dst: 
 def get_eq_command_with_vmem_limit(eqrun_cfg: RunConfig, fname: str, src: str, dst: str, unroll: int) -> str:
     command = get_eq_command_from_config(eqrun_cfg, fname, src, dst, unroll)
     return f'ulimit -v {eqrun_cfg.vmem_limit}; {command}'
+
+def get_running_status_from_tmpdir(eqrun_cfg: RunConfig, fname: str, src: str, dst: str, unroll: int) -> str:
+    tmpdir_path = get_tmpdir_path_from_config(eqrun_cfg, fname, src, dst, unroll)
+    run_status_filename = f'{tmpdir_path}/submit.{fname}/{RUN_STATUS_FILE}'
+
+    assert os.path.isfile(run_status_filename)
+    tree = ET.parse(run_status_filename)
+    root = tree.getroot()
+    status_flag = root.find('status_flag')
+    assert status_flag != None
+
+    return status_flag.text
+
+def get_tool_result_from_running_status(running_status: str) -> ToolResult:
+    if running_status == 'found_proof':
+        return ToolResult.EQUIV
+    elif running_status == 'found_inequivalence':
+        return ToolResult.INEQ
+    elif running_status == 'exhausted_search_space':
+        return ToolResult.FAIL
+    else:
+        assert False, f'Unrecognized running_status {running_status}'
+
+def get_field_from_ce_output(eqrun_cfg: RunConfig, fname: str, src: str, dst: str, unroll: int, field: str) -> str:
+    ce_out_file = f'{eqrun_cfg.output_dir}/counterexamples/ineq.{fname}-{src}-{dst}-{unroll}-{eqrun_cfg.loop_bound}.xml'
+
+    assert os.path.isfile(ce_out_file)
+
+    tree = ET.parse(ce_out_file)
+    root = tree.getroot()
+    field_val = root.find(field)
+    assert field_val != None
+
+    return field_val.text
  
 def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file: TextIOWrapper, classes: equivalence_classes, unroll: int, eqrun_cfg: RunConfig) -> bool:
     u = classes.get_leader(src_lib)
@@ -129,35 +169,47 @@ def run_ineq_checker(fname: str, src_lib: str, dst_lib: str, log_file: TextIOWra
             return False
 
     RETRY = False
-    out_file = open(f'{eqrun_cfg.output_dir}/logs/{fname}-{src_lib}-{dst_lib}.proof', 'w')
+    out_file = open(f'{eqrun_cfg.output_dir}/logs/{fname}-{src_lib}-{dst_lib}-{unroll}-{eqrun_cfg.loop_bound}.proof', 'w')
 
     command = get_eq_command_with_vmem_limit(eqrun_cfg, fname, src_lib, dst_lib, unroll)
     # tokens = shlex.split(command)
     p = None
     try:
         log_file.write(f'\tRunning the tool for benchmark {fname} with src={src_lib}, dst={dst_lib}, at unroll_factor={unroll}\n')
+
         start_time = time.perf_counter()
         p = subprocess.Popen(command, stdout=out_file, stderr=out_file, shell=True, preexec_fn=os.setsid)
         p.wait(eqrun_cfg.timeout)
         end_time = time.perf_counter()
-        # TODO: Cannot use return code to check tool result
+
         if p.returncode == 0:
-            log_file.write(f'\t\tProved {fname} to be equivalent for {src_lib}, {dst_lib}.\n')
-            classes.merge(src_lib, dst_lib)
-        elif p.returncode == 2:
-            log_file.write(f'\t\tProved {fname} to be inequivalent for {src_lib}, {dst_lib}.\n')
-            classes.add_inequivalent(src_lib, dst_lib)
+            # EQUIV/INEQ/FAIL
+            running_status = get_running_status_from_tmpdir(eqrun_cfg, fname, src_lib, dst_lib, unroll)
+            tool_result = get_tool_result_from_running_status(running_status)
+            info = run_info(fname, src_lib, dst_lib, unroll, tool_result, 0, end_time-start_time)
+
+            if tool_result == ToolResult.EQUIV:
+                log_file.write(f'\t\tProved {fname} to be equivalent for {src_lib}, {dst_lib}.\n')
+                classes.merge(src_lib, dst_lib)
+            elif tool_result == ToolResult.INEQ:
+                log_file.write(f'\t\tProved {fname} to be inequivalent for {src_lib}, {dst_lib}.\n')
+                classes.add_inequivalent(src_lib, dst_lib)
+                loop_bound = int(get_field_from_ce_output(eqrun_cfg, fname, src_lib, dst_lib, unroll, 'loop_bound'))
+                info.add_loop_bound(loop_bound)
+            else:
+                log_file.write(f'\t\tExhausted search space for {fname}, {src_lib}, {dst_lib}.\n')
+                RETRY = True
+            classes.add_run_info(info)
         else:
             log_file.write(f'\t\tFound errcode {p.returncode} for {fname}, {src_lib}, {dst_lib}.\n')
             RETRY = True
+            classes.add_run_info(run_info(fname, src_lib, dst_lib, unroll, ToolResult.ERROR, p.returncode, end_time-start_time))
         log_file.write(f'\tTime Taken = {end_time-start_time}, unroll-factor={unroll}\n')
-        classes.add_run_info(fname, src_lib, dst_lib, unroll, p.returncode, end_time-start_time, False)
     except subprocess.TimeoutExpired:
         os.killpg(os.getpgid(p.pid), signal.SIGTERM)
         log_file.write(f'\t\tTimeout for benchmark {fname} with src={src_lib}, dst={dst_lib}\n')
         RETRY = True
-        log_file.write(f'\tTimeout occurred\n')
-        classes.add_run_info(fname, src_lib, dst_lib, unroll, p.returncode, None, True)
+        classes.add_run_info(run_info(fname, src_lib, dst_lib, unroll, ToolResult.TIMEOUT, p.returncode, None))
     finally:
         out_file.close()
         log_file.flush()
@@ -170,7 +222,7 @@ def run_benchmark(strings: str, tag: str, classes: equivalence_classes, eqrun_cf
 
     log_file_name = f'{eqrun_cfg.output_dir}/stats/{fname}-{tag}.log'
     log_file = open(log_file_name, 'w')
-    log_file.write(f'Running benchmarks for {fname}\n')
+    log_file.write(f'Running experiments for {fname}\n')
     for pair in itertools.combinations(libraries, 2):
         l1, l2 = pair
         if (l1, l2) in classes.cache:
@@ -195,12 +247,12 @@ def split(a, n):
     k, m = divmod(len(a), n)
     return (a[i*k+min(i, m):(i+1)*k+min(i+1, m)] for i in range(n))
 
-def divide_conquer(line: str, tag: str, eqrun_cfg: RunConfig):
+def divide_conquer(line: str, tag: str, eqrun_cfg: RunConfig) -> Tuple[List[run_info], List[run_info]]:
     strings = [s.strip() for s in line.split(',')]
     fname = strings[0]
     libraries = strings[1:]
 
-    eq_class_file = f'eq_classes/{fname}-{tag}-classes.pkl'
+    eq_class_file = f'{eqrun_cfg.output_dir}/eq_classes/{fname}-{tag}-classes.pkl'
 
     split_classes = len(libraries) > 2 and num_chunks != 1
     classes = None
@@ -229,13 +281,13 @@ def divide_conquer(line: str, tag: str, eqrun_cfg: RunConfig):
     with open(eq_class_file, 'wb') as f:
         pickle.dump(classes, f)
 
-    stat_file_name = f'stats/{fname}-{tag}-stats.csv'
+    stat_file_name = f'{eqrun_cfg.output_dir}/stats/{fname}-{tag}-stats.csv'
     
     with open(stat_file_name, 'w') as f:
         for info in classes.get_runs():
             f.write(f'{info.to_string()}\n')
 
-    return [run for run in classes.get_runs() if run.is_ineq()]
+    return [run for run in classes.get_runs() if run.is_eq()], [run for run in classes.get_runs() if run.is_ineq()]
 
 # Runs the experiments while keeping track of equivalence classes
 def run_experiments(eqrun_cfg: RunConfig):
@@ -244,15 +296,23 @@ def run_experiments(eqrun_cfg: RunConfig):
     lines = [line.strip() for line in lines]
     file.close()
 
-    inequivalences = Parallel(n_jobs=min(eqrun_cfg.njobs, len(lines)))(delayed(divide_conquer)(line, str(i), eqrun_cfg) for i, line in enumerate(lines))
+    results: List[Tuple[List[run_info], List[run_info]]] = Parallel(n_jobs=min(eqrun_cfg.njobs, len(lines)))(delayed(divide_conquer)(line, str(i), eqrun_cfg) for i, line in enumerate(lines))
 
-    ret = []
-    for ineq in inequivalences:
-        ret = ret + ineq
-    
-    ineq_file = f'{eqrun_cfg.output_dir}/stats/ineq-{eqrun_cfg.input_file}'
+    equivalences: List[run_info] = []
+    inequivalences: List[run_info] = []
+    for res in results:
+        eq, ineq = res
+        equivalences += eq
+        inequivalences += ineq
+
+    eq_file = f'{eqrun_cfg.output_dir}/results/eq-{eqrun_cfg.input_file}'
+    with open(eq_file, 'w') as f:
+        for info in equivalences:
+            f.write(f'{info.to_string()}\n')
+
+    ineq_file = f'{eqrun_cfg.output_dir}/results/ineq-{eqrun_cfg.input_file}'
     with open(ineq_file, 'w') as f:
-        for info in ret:
+        for info in inequivalences:
             f.write(f'{info.to_string()}\n')
 
 # Takes the computed classes and generates the classes in dot format
@@ -280,16 +340,16 @@ def analysis(eqrun_cfg: RunConfig):
         ineq_str = f'\tsubgraph inequivalence\n\t{{\n\t\tedge [dir=none, color=blue]\n{ineq_str}\t}}\n'
         fail_str = f'\tsubgraph fail\n\t{{\n\t\tedge [dir=none, color=red, style=dashed]\n{fail_str}\t}}\n'
         dot_dump = f'graph {{\n{node_str}{ineq_str}{fail_str}}}'
-        dot_file = open(f'graphviz/{fname}_classes.dot', 'w')
+        dot_file = open(f'{eqrun_cfg.output_dir}/graphviz/{fname}-classes.dot', 'w')
         dot_file.write(f'{dot_dump}\n')
         dot_file.close()
 
-def plot_hist(times, title, xlabel='Time (in seconds)'):
+def plot_hist(eqrun_cfg: RunConfig, times, title, xlabel='Time (in seconds)'):
     plt.rcParams.update({'figure.figsize':(7,5), 'figure.dpi':100})
 
     plt.hist(times, bins=50)
     plt.gca().set(title=f'{title}', ylabel='Frequency', xlabel=xlabel)
-    plt.savefig(f'plots/{title}.png')
+    plt.savefig(f'{eqrun_cfg.output_dir}/plots/{title}.png')
     plt.clf()
 
 # Analyses the logs to generate statistics
@@ -301,81 +361,56 @@ def graph_gen(eqrun_cfg: RunConfig):
     eq_times = []
     ineq_times = []
     failure_times = []
-    err_times = []
     ranking_ratios = []
     ineq_loop_bound = []
+    eq_unroll_factor = []
+    ineq_unroll_factor = []
     for file in stats:
-        if 'assumes' in file:
-            continue
         with open(file, 'r') as fp:
             lines = fp.readlines()
             for line in lines:
                 toks = line.split(',')
-                if len(toks) == 5:
-                    # TIMEOUT case
+                assert len(toks) >= 5
+                if toks[3] == ToolResult.TIMEOUT:
+                    # FORMAT: {fname},{src},{dst},{result},{unroll}
                     NTIMEOUTS += 1
-                elif len(toks) == 6:
-                    # FORMAT: {fname},{src},{dst},{unroll},{result},{time}
-                    if toks[-2] == 'ToolResult.EQUIV':
-                        completion_times.append(float(toks[-1]))
-                        eq_times.append(float(toks[-1]))
-                    elif toks[-2] == 'ToolResult.INEQ':
-                        completion_times.append(float(toks[-1]))
-                        ineq_times.append(float(toks[-1]))
-                        with open(f'logs/{toks[0]}-{toks[1]}-{toks[2]}.proof', 'r') as ld:
-                            logs = ld.readlines()
-                            N_FAILED_CGS = 0
-                            FINAL_MU = 0
-                            INEQ_CG = 0
-                            for log_line in logs:
-                                if 'm_ls.size()' in log_line:
-                                    N_FAILED_CGS = int(log_line.split()[-1])
-                                elif 'computing inequivalence at mu' in log_line:
-                                    FINAL_MU = int(log_line.split()[-1])
-                                elif 'computing correctness cover' in log_line:
-                                    INEQ_CG = int(log_line.split()[-1])
-                            print(f'Number of Failed CGs for {toks[0]}-{toks[1]}-{toks[2]}-{toks[3]} = {N_FAILED_CGS}')
-                            print(f'Inequivalence found at mu = {FINAL_MU} at CG {INEQ_CG}')
-                            ranking_ratio = INEQ_CG / N_FAILED_CGS
-                            ranking_ratios.append(ranking_ratio)
-                            ineq_loop_bound.append(FINAL_MU)
-                    elif toks[-2] == 'ToolResult.FAIL':
-                        completion_times.append(float(toks[-1]))
-                        failure_times.append(float(toks[-1]))
-                    else:
-                        err_times.append(float(toks[-1]))
-                else:
-                    print(f'WARN: tokens = {toks}')
+                elif toks[3] == ToolResult.EQUIV:
+                    # FORMAT: {fname},{src},{dst},{result},{unroll},{time}
+                    completion_times.append(float(toks[-1]))
+                    eq_times.append(float(toks[-1]))
+                    eq_unroll_factor.append(toks[4])
+                elif toks[3] == ToolResult.INEQ:
+                    # FORMAT: {fname},{src},{dst},{result},{unroll},{loop-bound},{time}
+                    completion_times.append(float(toks[-1]))
+                    ineq_times.append(float(toks[-1]))
+                    loop_bound = get_field_from_ce_output(eqrun_cfg, toks[0], toks[1], toks[2], toks[4], 'loop_bound')
+                    ineq_loop_bound.append(loop_bound)
+                    ineq_unroll_factor.append(toks[4])
+                    if eqrun_cfg.ineq_individual_tfgs:
+                        cg_rank = int(get_field_from_ce_output(eqrun_cfg, toks[0], toks[1], toks[2], toks[4], 'cg_rank'))
+                        failed_cg_set_size = int(get_field_from_ce_output(eqrun_cfg, toks[0], toks[1], toks[2], toks[4], 'failed_cg_set_size'))
+                        ranking_ratios.append(cg_rank / failed_cg_set_size)
+                elif toks[3] == 'ToolResult.FAIL':
+                    completion_times.append(float(toks[-1]))
+                    failure_times.append(float(toks[-1]))
+
     print(f'NTIMEOUTS = {NTIMEOUTS}')
-    plot_hist(completion_times, 'Completion_Times')
-    plot_hist(eq_times, 'EquivalenceTimes')
-    plot_hist(ineq_times, 'InequivalenceTimes')
-    plot_hist(failure_times, 'FailureTimes')
-    plot_hist(err_times, 'ErrorTimes') # Includes assertion failures and memory errors
-    plot_hist(ranking_ratios, 'RankingRatio')
-    plot_hist(ineq_loop_bound, 'InequivalenceLoopBound')
-    
-def update_eq_classes():
-    pickled_files = glob.glob('eq_classes/*-classes.pkl')
-    pickled_files.sort()
-    
-    for file in pickled_files:
-        with open(file, 'rb') as fp:
-            classes: equivalence_classes = pickle.load(fp)
-            def add_extension(lib: str) -> str:
-                if len(lib.split('.')) == 1:
-                    return lib + '.c'
-                else:
-                    return lib
-            classes.update_libraries(add_extension)
-        with open(file, 'wb') as fp:
-            pickle.dump(classes, fp)
+    plot_hist(eqrun_cfg, completion_times, 'Completion Times')
+    plot_hist(eqrun_cfg, eq_times, 'Equivalence Times')
+    plot_hist(eqrun_cfg, ineq_times, 'Inequivalence Times')
+    plot_hist(eqrun_cfg, failure_times, 'Failure Times')
+    if eqrun_cfg.ineq_individual_tfgs:
+        plot_hist(eqrun_cfg, ranking_ratios, 'Ranking Ratio')
+    plot_hist(eqrun_cfg, ineq_loop_bound, 'Inequivalence Loop-Bound')
+    plot_hist(eqrun_cfg, eq_unroll_factor, 'Equivalence Unroll Factor')
+    plot_hist(eqrun_cfg, ineq_unroll_factor, 'Inequivalence Unroll Factor')
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Inequivalence Checking Benchmarking')
 
     # Flags pertaining to benchmarking
-    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [run|analysis|graph-gen|update-eq-classes]', default='')
+    parser.add_argument('--mode', action='store', type=str, help='Denotes the function of the script. Options = [run|analysis|graph-gen]', default='')
     parser.add_argument('--input-file', action='store', type=str, help='File containing the benchmarks to run', default='')
     parser.add_argument('--timeout', action='store', type=int, help='Timeout for each run (in seconds)', default=60*60)
     parser.add_argument('--njobs', action='store', type=int, default=25)
@@ -399,13 +434,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
     argsMap = args.__dict__
     assert(argsMap['mode'] != '')
-    assert argsMap['mode'] == 'run' or argsMap['mode'] == 'analysis' or argsMap['mode'] == 'graph-gen' or argsMap['mode'] == 'update-eq-classes', f'Invalid Mode'
+    assert argsMap['mode'] == 'run' or argsMap['mode'] == 'analysis' or argsMap['mode'] == 'graph-gen', f'Invalid Mode'
     assert(argsMap['input-file'] != '')
 
     print(f'My pid is {os.getpid()}, pgid is {os.getpgid(0)}')
 
+    output_dir = f'ineq.{argsMap["input-file"]}' if argsMap['output-dir'] == '' else argsMap['output-dir']
+
     eqrun_cfg = RunConfig(argsMap['input-file'],
-                          argsMap['output-dir'],
+                          output_dir,
                           argsMap['failset-prune'],
                           argsMap['failset-sort'],
                           argsMap['failset-mu'],
@@ -427,6 +464,4 @@ if __name__ == "__main__":
     elif argsMap['mode'] == 'analysis':
         analysis(eqrun_cfg)
     elif argsMap['mode'] == 'graph-gen':
-        graph_gen()
-    elif argsMap['mode'] == 'update-eq-classes':
-        update_eq_classes()
+        graph_gen(eqrun_cfg)
