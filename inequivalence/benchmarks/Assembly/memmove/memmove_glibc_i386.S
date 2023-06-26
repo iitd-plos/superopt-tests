@@ -21,7 +21,7 @@
    License along with the GNU C Library; if not, see
    <https://www.gnu.org/licenses/>.  */
 
-#include "../glibc-inc.h"
+#include "glibc-inc.h"
 
 #ifndef MEMCPY
 #define MEMCPY		memcpy

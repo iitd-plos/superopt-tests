@@ -28,7 +28,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../freebsd-inc.h"
+#include "freebsd-inc.h"
 
 /*
  * memset(void *b, int c, size_t len)

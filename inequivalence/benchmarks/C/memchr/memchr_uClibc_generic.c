@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-#include "../memcopy.h"
+#include "memcopy.h"
 
 #define LONG_MAX_32_BITS 2147483647
 

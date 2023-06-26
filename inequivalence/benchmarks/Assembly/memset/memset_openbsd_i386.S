@@ -4,7 +4,7 @@
  * Public domain.
  */
 
-#include "../openbsd-inc.h"
+#include "openbsd-inc.h"
 
 ENTRY(memset)
 	pushl	%edi

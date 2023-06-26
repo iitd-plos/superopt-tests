@@ -2,7 +2,7 @@
 
 #define BCOPY
 
-#include "../netbsd-inc.h"
+#include "netbsd-inc.h"
 
 	/*
 	 * (ov)bcopy (src,dst,cnt)

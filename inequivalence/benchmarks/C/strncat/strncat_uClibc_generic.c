@@ -17,7 +17,7 @@
 
 #include <string.h>
 
-#include "../memcopy.h"
+#include "memcopy.h"
 
 char *strncat (char *s1, const char *s2, size_t n)
 {

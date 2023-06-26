@@ -16,7 +16,7 @@
    <https://www.gnu.org/licenses/>.  */
 
 #include <wchar.h>
-#include "../loop_unroll.h"
+#include "loop_unroll.h"
 
 #ifndef WCSCHR
 # define WCSCHR __wcschr

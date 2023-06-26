@@ -18,7 +18,7 @@
 #include <string.h>
 #include <stdint.h>
 #include <libc-pointer-arith.h>
-#include "../funcdecl.h"
+#include "funcdecl.h"
 
 #undef strcspn
 

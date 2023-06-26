@@ -3,7 +3,7 @@
  * Public domain.
  */
 
-#include "../netbsd-inc.h"
+#include "netbsd-inc.h"
 
 /*
  * This strcpy implementation copies a byte at a time until the

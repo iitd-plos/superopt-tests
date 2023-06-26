@@ -1,7 +1,7 @@
 /* fast memchr -- Copyright (C) 2003 Thomas M. Ogrisegg <tom@hi-tek.fnord.at> */
 #include <string.h>
 #include <stdint.h>
-#include "../dietstring.h"
+#include "dietstring.h"
 
 #if __WORDSIZE == 64
 # define MB 0x7efefefefefefeff

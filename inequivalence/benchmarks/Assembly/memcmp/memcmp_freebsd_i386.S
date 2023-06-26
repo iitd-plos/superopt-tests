@@ -28,7 +28,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../freebsd-inc.h"
+#include "freebsd-inc.h"
 
 /*
  * memcmp (void *b1, void *b2, size_t len)

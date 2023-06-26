@@ -1,6 +1,6 @@
 /* fast strcpy -- Copyright (C) 2003 Thomas M. Ogrisegg <tom@hi-tek.fnord.at> */
 #include <string.h>
-#include "../dietstring.h"
+#include "dietstring.h"
 #include <stdint.h>
 
 char *

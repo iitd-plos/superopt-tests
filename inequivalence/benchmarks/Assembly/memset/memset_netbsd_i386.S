@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../netbsd-inc.h"
+#include "netbsd-inc.h"
 
 #ifdef BZERO
 ENTRY(bzero)

@@ -1,5 +1,5 @@
 #include <string.h>
-#include "../funcdecl.h"
+#include "funcdecl.h"
 
 char *strchr(const char *s, int c)
 {

@@ -33,7 +33,7 @@
  * SUCH DAMAGE.
  */
 
-#include "../openbsd-inc.h"
+#include "openbsd-inc.h"
 
 /*
  * memmove(caddr_t dst, caddr_t src, size_t len);

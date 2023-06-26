@@ -30,7 +30,7 @@
  */
 
 #include <string.h>
-#include "../globals.h"
+#include "globals.h"
 
 /*
  * This array is designed for mapping upper and lower case letter

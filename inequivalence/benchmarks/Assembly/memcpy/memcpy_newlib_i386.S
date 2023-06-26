@@ -8,7 +8,7 @@
  * ====================================================
  */
 
-#include "../newlib-inc.h"
+#include "newlib-inc.h"
 
 .text
 .global SYM (memcpy)

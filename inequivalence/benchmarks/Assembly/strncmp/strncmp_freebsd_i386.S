@@ -28,7 +28,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../freebsd-inc.h"
+#include "freebsd-inc.h"
 
 /*
  * strncmp(s1, s2, n)

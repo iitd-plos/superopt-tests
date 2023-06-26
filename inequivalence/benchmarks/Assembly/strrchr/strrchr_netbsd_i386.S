@@ -3,7 +3,7 @@
  * Public domain.
  */
 
-#include "../netbsd-inc.h"
+#include "netbsd-inc.h"
 
 ENTRY(strrchr)
 	pushl	%esi

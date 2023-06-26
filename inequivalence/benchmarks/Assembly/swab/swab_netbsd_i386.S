@@ -3,7 +3,7 @@
  * Public domain.
  */
 
-#include "../netbsd-inc.h"
+#include "netbsd-inc.h"
 
 /*
  * On the i486, this code is negligibly faster than the code generated

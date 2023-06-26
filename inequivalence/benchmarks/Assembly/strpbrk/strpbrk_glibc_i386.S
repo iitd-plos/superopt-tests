@@ -18,7 +18,7 @@
    License along with the GNU C Library; if not, see
    <https://www.gnu.org/licenses/>.  */
 
-#include "../glibc-inc.h"
+#include "glibc-inc.h"
 
 #define PARMS	4		/* no space for saved regs */
 #define RTN	PARMS

@@ -4,7 +4,7 @@
  * Public domain.
  */
 
-#include "../openbsd-inc.h"
+#include "openbsd-inc.h"
 
 ENTRY(strchr)
 	movl	4(%esp),%eax

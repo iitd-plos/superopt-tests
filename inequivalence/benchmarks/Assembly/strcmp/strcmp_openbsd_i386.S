@@ -4,7 +4,7 @@
  * Public domain.
  */
 
-#include "../openbsd-inc.h"
+#include "openbsd-inc.h"
 
 /*
  * NOTE: I've unrolled the loop eight times: large enough to make a

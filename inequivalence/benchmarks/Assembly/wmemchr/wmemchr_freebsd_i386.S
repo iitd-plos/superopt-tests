@@ -24,7 +24,7 @@
  * SUCH DAMAGE.
  */
 
-#include "../freebsd-inc.h"
+#include "freebsd-inc.h"
 
 /*
  * wchar_t *

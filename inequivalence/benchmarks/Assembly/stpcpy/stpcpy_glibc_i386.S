@@ -20,7 +20,7 @@
 /* This function is defined neither in ANSI nor POSIX standards but is
    also not invented here.  */
 
-#include "../glibc-inc.h"
+#include "glibc-inc.h"
 
 #define PARMS	4		/* no space for saved regs */
 #define RTN	PARMS

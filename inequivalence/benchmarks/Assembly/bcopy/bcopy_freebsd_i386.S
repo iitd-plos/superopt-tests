@@ -29,7 +29,7 @@
  * SUCH DAMAGE.
  */
 
-#include "../freebsd-inc.h"
+#include "freebsd-inc.h"
 
 #if 0
 	RCSID("$NetBSD: bcopy.S,v 1.6 1996/11/12 00:50:06 jtc Exp $")

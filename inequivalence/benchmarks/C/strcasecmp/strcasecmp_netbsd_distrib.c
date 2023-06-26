@@ -6,7 +6,7 @@
  */
 
 #include <strings.h>
-#include "../globals.h"
+#include "globals.h"
 
 /*
  * Simple strcasecmp, try to avoid pulling in real locales

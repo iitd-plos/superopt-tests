@@ -16,7 +16,7 @@
    <https://www.gnu.org/licenses/>.  */
 
 #include <wchar.h>
-#include "../loop_unroll.h"
+#include "loop_unroll.h"
 
 /* Find the last occurrence of WC in WCS.  */
 wchar_t *
