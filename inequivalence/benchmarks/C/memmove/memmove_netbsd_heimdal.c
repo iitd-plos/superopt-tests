@@ -33,8 +33,6 @@
  * SUCH DAMAGE.
  */
 
-#include <config.h>
-
 /*
  * memmove for systems that doesn't have it
  */

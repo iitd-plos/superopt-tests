@@ -31,7 +31,6 @@
  * SUCH DAMAGE.
  */
 
-#include <config.h>
 #include <stdlib.h>
 
 size_t
