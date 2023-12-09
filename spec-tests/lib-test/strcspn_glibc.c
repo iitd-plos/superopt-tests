@@ -17,7 +17,8 @@
 
 #include <string.h>
 #include <stdint.h>
-#include "funcdecl.h"
+
+char*  strchrnul(const char *s, int c);
 
 #undef strcspn
 

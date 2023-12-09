@@ -50,16 +50,14 @@ speceq_spec_debug() {
   ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/spec_debug >& "tmpdir/spec_debug.out"
 }
 
-s2c_cmd="${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/s2c --unroll-factor=4 --speceq-solver-weakening-depth=16 --speceq-solver-strengthening-depth=16 --enable-old-dst-path-enumeration --discard-llvm-ub-assumes --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --houdini-axiom-based-smt-query-timeout=20"
-
 speceq_run() {
-  mkdir -p "tmpdir_$1_$2_$3"
+  mkdir -p "tmpdir_$1_$2_$3_$4_$5_$6"
   mkdir -p "tmpdir"
-  ${s2c_cmd} --tmpdir-path="tmpdir_$1_$2_$3" --spec-coupling-hint-string="$1_$3" --proof=tmpdir_$1_$2_$3/.proof --dyn-debug=invariants_dump --spec-iospecs="$1_$2".iospecs "$1".spec "$1_$3".c >& tmpdir/"$1_$2_$3".eq.out
+  ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/s2c --unroll-factor=4 --enable-old-dst-path-enumeration --discard-llvm-ub-assumes --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --houdini-axiom-based-smt-query-timeout=20 --speceq-solver-exact-expansion-depth=$4 --speceq-solver-weakening-depth=$5 --speceq-solver-strengthening-depth=$6 --spec-coupling-hint-string="$1_$3" --tmpdir-path="tmpdir_$1_$2_$3_$4_$5_$6" --proof=tmpdir_$1_$2_$3_$4_$5_$6/proof --dyn-debug=invariants_dump,correl_paths_dump --spec-iospecs="$1_$2".iospecs "$1".spec "$1_$3".c >& tmpdir/"$1_$2_$3_$4_$5_$6".eq.out
 }
 
 speceq_debug() {
-  mkdir -p "tmpdir_$1_$2_$3"
+  mkdir -p "tmpdir_$1_$2_$3_$4_$5_$6"
   mkdir -p "tmpdir"
-  ${s2c_cmd} --tmpdir-path="tmpdir_$1_$2_$3" --spec-coupling-hint-string="$1_$3" --proof=tmpdir_$1_$2_$3.proof --dyn-debug=invariants_dump,prove_dump,correl_paths_dump,spec_dbg --spec-iospecs="$1_$2".iospecs "$1".spec "$1_$3".c >& tmpdir/"$1_$2_$3".eq.out
+  ${SUPEROPT_PROJECT_DIR}/superopt/build/etfg_i386/s2c --unroll-factor=4 --use-already-preprocessed-files --enable-old-dst-path-enumeration --discard-llvm-ub-assumes --disable-dst-to-src-submap --disable-assumed-eqclasses --disable-houdini-axiom-based-timeout-dumps --houdini-axiom-based-smt-query-timeout=20 --speceq-solver-exact-expansion-depth=$4 --speceq-solver-weakening-depth=$5 --speceq-solver-strengthening-depth=$6 --spec-coupling-hint-string="$1_$3" --tmpdir-path="tmpdir_$1_$2_$3_$4_$5_$6" --proof=tmpdir_$1_$2_$3_$4_$5_$6/proof --dyn-debug=invariants_dump,correl_paths_dump,prove_dump,spec_dbg,purify_pred_dump,speceq_solve=3 --spec-iospecs="$1_$2".iospecs "$1".spec "$1_$3".c >& tmpdir/"$1_$2_$3_$4_$5_$6".eq.out
 }

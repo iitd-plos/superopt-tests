@@ -25,7 +25,8 @@
 #include <sys/cdefs.h>
 
 #include <string.h>
-#include "funcdecl.h"
+
+char*  strchrnul(const char *s, int c);
 
 char *
 strchr(const char *s, int c)

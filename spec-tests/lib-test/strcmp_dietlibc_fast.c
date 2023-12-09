@@ -1,7 +1,20 @@
 /* fast strcmp -- Copyright (C) 2003 Thomas M. Ogrisegg <tom@hi-tek.fnord.at> */
 #include <string.h>
-#include "dietstring.h"
 #include <stdint.h>
+
+#define MKW(x) ((unsigned long)x*0x0101010101010101)
+
+#define STRALIGN(x) ((((uintptr_t)x+sizeof(long)-1)&(-sizeof(long)))-(uintptr_t)x)
+
+#define UNALIGNED(x,y) (((unsigned long)x & (sizeof (unsigned long)-1)) ^ ((unsigned long)y & (sizeof (unsigned long)-1)))
+
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+# define GFC(x) ((x)&0xff)
+# define INCSTR(x) x >>= 8;
+#else
+# define GFC(x) (((x)>>(sizeof(x)*8-8))&0xff)
+# define INCSTR(x) x <<= 8;
+#endif
 
 int
 strcmp (const char *s1, const char *s2)
@@ -32,7 +45,7 @@ strcmp (const char *s1, const char *s2)
             ((((l2 - MKW(0x1ul)) & ~l2) & MKW(0x80ul))) || l1 != l2) {
             unsigned char c1, c2;
             while (1) {
-		c1 = GFC(l1);
+		        c1 = GFC(l1);
                 c2 = GFC(l2);
                 if (!c1 || c1 != c2)
                     return (c1 - c2);
