@@ -1,5 +1,5 @@
-.PHONY: all
-all: samples benchmarks
+.PHONY: run
+run: samples benchmarks
 
 .PHONY: samples
 samples:

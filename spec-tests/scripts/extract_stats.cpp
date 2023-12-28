@@ -202,13 +202,13 @@ void populate_testcase_stats(TestCase &testcase, fs::path const &filepath) {
     if (auto const match = extract_match(type_ii_proven_regex); match.has_value()) {
       auto const key = unsigned_at(match.value(), 1);
       auto const val = unsigned_at(match.value(), 2);
-      testcase.m_type_ii_proven[key] = val;
+      testcase.m_type_ii_proven[key / 2] = val;
     }
 
     if (auto const match = extract_match(type_ii_disproven_regex); match.has_value()) {
       auto const key = unsigned_at(match.value(), 1);
       auto const val = unsigned_at(match.value(), 2);
-      testcase.m_type_ii_disproven[key] = val;
+      testcase.m_type_ii_disproven[key / 2] = val;
     }
 
     if (auto const match = extract_match(type_ii_timeout_regex); match.has_value()) {
@@ -218,7 +218,7 @@ void populate_testcase_stats(TestCase &testcase, fs::path const &filepath) {
     if (auto const match = extract_match(type_iii_proven_regex); match.has_value()) {
       auto const key = unsigned_at(match.value(), 1);
       auto const val = unsigned_at(match.value(), 2);
-      testcase.m_type_iii_proven[key] = val;
+      testcase.m_type_iii_proven[key / 2] = val;
     }
 
     if (auto const match = extract_match(type_iii_timeout_regex); match.has_value()) {
